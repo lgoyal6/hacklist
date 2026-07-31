@@ -1,0 +1,24 @@
+name: SF hackathon discovery
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Roughly 8am and 8pm Pacific; adjust by one hour around DST if desired.
+    - cron: "0 3,15 * * *"
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run discover:sf
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "data: refresh SF hackathon discovery"
+          file_pattern: data/discovery-output.json
