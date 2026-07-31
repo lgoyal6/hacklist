@@ -224,7 +224,7 @@ export default function Home() {
       </section>
 
       <section className="signal-strip" aria-label="Coverage summary">
-        <div><strong>13</strong><span>current candidates</span></div>
+        <div><strong>13</strong><span>sweep candidates</span></div>
         <div><strong>31</strong><span>organizer nodes</span></div>
         <div><strong>12</strong><span>source surfaces</span></div>
         <div><strong>2×</strong><span>daily refresh</span></div>
