@@ -1,19 +1,18 @@
 import assert from "node:assert/strict";
-import { access, readFile, readdir } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const developmentPreviewMeta =
-  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-const templateRoot = new URL("../", import.meta.url);
-const previewRoot = new URL("../app/_sites-preview/", import.meta.url);
+const eventsData = JSON.parse(
+  await readFile(new URL("../data/events.json", import.meta.url), "utf8"),
+);
 
-async function render() {
+async function render(path) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${path}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -28,64 +27,62 @@ async function render() {
   );
 }
 
-test("server-renders the starter loading skeleton", async () => {
-  const response = await render();
+test("events.json only contains upcoming, fully-normalized events", () => {
+  const sweepTime = new Date(eventsData.meta.sweepCompletedAt).getTime();
+  assert.ok(eventsData.events.length > 0, "expected at least one event");
+  for (const event of eventsData.events) {
+    assert.match(event.url, /^https:\/\/luma\.com\//);
+    assert.ok(event.title.length > 3);
+    assert.ok(event.organizer.length > 0);
+    assert.ok(event.score >= 0 && event.score <= 100);
+    if (event.end) {
+      assert.ok(
+        new Date(event.end).getTime() >= sweepTime,
+        `${event.title} already ended before the sweep`,
+      );
+    }
+  }
+});
+
+test("server-renders the ranked event board", async () => {
+  const response = await render("/");
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, developmentPreviewMeta);
-  assert.match(html, /<title>Your site is taking shape<\/title>/i);
-  assert.match(html, /Building your site/);
-  assert.match(html, /Your site is taking shape/);
-  assert.match(
-    html,
-    /Your first version will appear here automatically when it’s ready\./,
+  assert.match(html, /HACKLIST/);
+  assert.match(html, /SF signal board/);
+  assert.match(html, /ranked events/);
+  // The top-ranked event from the generated data must appear on the board.
+  assert.ok(
+    html.includes(eventsData.events[0].url),
+    "top event link missing from rendered board",
   );
-  assert.doesNotMatch(html, /Codex/);
-  assert.match(html, /react-loading-skeleton/);
-  assert.match(html, /role="status"/);
 });
 
-test("keeps the loading skeleton scoped and disposable", async () => {
-  const [preview, css, page, layout, packageJson, files] = await Promise.all([
-    readFile(new URL("SkeletonPreview.tsx", previewRoot), "utf8"),
-    readFile(new URL("preview.css", previewRoot), "utf8"),
-    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
-    readFile(new URL("../package.json", import.meta.url), "utf8"),
-    readdir(previewRoot),
-  ]);
-
-  assert.deepEqual(files.sort(), ["SkeletonPreview.tsx", "preview.css"]);
-  assert.match(preview, /from "react-loading-skeleton"/);
-  assert.match(preview, /baseColor="#eceae7"/);
-  assert.match(preview, /highlightColor="#f9f8f6"/);
-  assert.match(preview, /duration=\{2\.8\}/);
-  assert.match(preview, /sites-skeleton-search-placeholder/);
-  assert.match(packageJson, /"react-loading-skeleton": "3\.5\.0"/);
-
-  const shellIndex = preview.indexOf('className="sites-skeleton-shell"');
-  const statusIndex = preview.indexOf('className="sites-skeleton-status"');
-  assert.ok(shellIndex >= 0 && statusIndex > shellIndex);
-  assert.match(css, /position:\s*fixed/);
-  assert.match(css, /inset:\s*0/);
-  assert.match(css, /opacity:\s*0\.52/);
-  assert.match(css, /prefers-reduced-motion:\s*reduce/);
-  assert.doesNotMatch(css, /#020617|canvas|pets|progress/i);
-  assert.doesNotMatch(
-    preview,
-    /loading-spinner|status-mark|status-progress|canvas|cookie|random/i,
+test("serves an ICS feed with one VEVENT per dated event", async () => {
+  const response = await render("/calendar.ics");
+  assert.equal(response.status, 200);
+  assert.match(
+    response.headers.get("content-type") ?? "",
+    /^text\/calendar\b/i,
   );
 
-  assert.match(page, /export const metadata:\s*Metadata/);
-  assert.match(page, /"codex-preview": "development"/);
-  assert.match(page, /<SkeletonPreview \/>/);
-  assert.match(layout, /title:\s*"Starter Project"/);
-  assert.doesNotMatch(layout, /codex-preview|_sites-preview|themeColor|\bViewport\b/);
-  assert.doesNotMatch(css, /(^|\s)(html|body)\s*\{/m);
+  const ics = await response.text();
+  assert.match(ics, /BEGIN:VCALENDAR/);
+  assert.match(ics, /BEGIN:VTIMEZONE/);
+  assert.match(ics, /X-WR-CALNAME:Hacklist SF/);
 
-  await assert.rejects(
-    access(new URL("public/_sites-preview", templateRoot)),
-  );
+  const datedEvents = eventsData.events.filter((e) => e.start && e.end);
+  const vevents = ics.match(/BEGIN:VEVENT/g) ?? [];
+  assert.equal(vevents.length, datedEvents.length);
+  // Unfold folded lines before checking content.
+  const unfolded = ics.replace(/\r\n[ \t]/g, "");
+  for (const event of datedEvents) {
+    assert.ok(
+      unfolded.includes(`UID:${event.id}@hacklist-sf`),
+      `missing VEVENT for ${event.title}`,
+    );
+  }
+  assert.match(unfolded, /DTSTART;TZID=America\/Los_Angeles:\d{8}T\d{6}/);
 });

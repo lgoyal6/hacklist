@@ -27,6 +27,27 @@ meetups are excluded.
 The prototype keeps classification confidence separate from relevance. A real
 hackathon can be low relevance when it is far away, closed or already past.
 
+## Pipeline
+
+`npm run discover:sf` runs two stages:
+
+1. `scripts/discover-sf.mjs` sweeps Luma with Lightpanda + Playwright and
+   writes raw candidates to `data/discovery-output.json`.
+2. `scripts/normalize-events.mjs` parses each candidate's page evidence into a
+   structured record — start/end datetimes (timezone-aware, with
+   weekday-checked year inference), venue, city, area bucket, organizer,
+   registration status, prize text, tags and attendance — then scores it with
+   the weights below and writes `data/events.json`.
+
+The normalizer also snapshots every sweep to `data/history/` and diffs against
+the previous snapshot, writing added/updated/removed events to
+`data/changes.json`.
+
+The site (`app/page.tsx`) and the ICS feed (`app/calendar.ics/route.ts`) are
+both generated from `data/events.json`, so a sweep plus rebuild refreshes the
+board and the subscribable calendar together. Events whose dates cannot be
+parsed stay on the board marked "TBC" but are excluded from the ICS feed.
+
 ## Refresh
 
 The included workflow runs at 03:00 and 15:00 UTC, roughly 8am and 8pm Pacific.

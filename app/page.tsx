@@ -1,168 +1,90 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import discovery from "../data/events.json";
 
-type Event = {
-  id: number;
+type EventRecord = {
+  id: string;
+  url: string;
   title: string;
   organizer: string;
-  place: string;
-  area: "SF" | "Peninsula" | "South Bay";
-  date: string;
+  venue: string | null;
+  city: string | null;
+  area: string;
+  start: string | null;
+  end: string | null;
+  timezone: string;
+  dateLabel: string;
   dateDetail: string;
+  status: string;
+  prize: string;
+  tags: string[];
+  going: number | null;
+  why: string;
   score: number;
   confidence: number;
-  status: "Open" | "Approval" | "Waitlist" | "Sold out";
-  tags: string[];
-  prize: string;
-  sourceCount: number;
-  url: string;
-  why: string;
+  scores: {
+    confidence: number;
+    builderValue: number;
+    accessibility: number;
+    freshness: number;
+  };
+  discoveredVia: string;
+  checkedAt: string;
 };
 
-const events: Event[] = [
-  {
-    id: 1,
-    title: "Close the Loop — Voice AI Hackathon",
-    organizer: "a1mobile",
-    place: "San Francisco",
-    area: "SF",
-    date: "JUL 31",
-    dateDetail: "Fri · 9am–9pm",
-    score: 98,
-    confidence: 99,
-    status: "Approval",
-    tags: ["Voice AI", "Agents", "12 hours"],
-    prize: "$4K prizes",
-    sourceCount: 3,
-    url: "https://luma.com/f8cratbb",
-    why: "12-hour build, live judging, concrete challenge, cash prizes.",
-  },
-  {
-    id: 2,
-    title: "Memory Meets Motion: Hackathon",
-    organizer: "Devnovate",
-    place: "Frontier Tower · 995 Market",
-    area: "SF",
-    date: "AUG 03",
-    dateDetail: "Mon · 8am–3:30pm",
-    score: 95,
-    confidence: 98,
-    status: "Open",
-    tags: ["AI", "Agents", "Frontier tech"],
-    prize: "Prizes listed",
-    sourceCount: 2,
-    url: "https://luma.com/iu9svaun",
-    why: "Dedicated build day with technical tracks and a concrete submission format.",
-  },
-  {
-    id: 3,
-    title: "Pizza Agent Challenge",
-    organizer: "AlphaSignal",
-    place: "San Francisco",
-    area: "SF",
-    date: "AUG 06",
-    dateDetail: "Thu · 5:30–9pm",
-    score: 93,
-    confidence: 98,
-    status: "Approval",
-    tags: ["AI Agents", "90 min", "Live"],
-    prize: "$2.5K top prize",
-    sourceCount: 2,
-    url: "https://luma.com/o0id5abn",
-    why: "Timed build-from-scratch competition with a live result and vote.",
-  },
-  {
-    id: 4,
-    title: "Snowflake × Beta Fund Agent & Token Economy",
-    organizer: "Beta University",
-    place: "Menlo Park",
-    area: "Peninsula",
-    date: "AUG 07",
-    dateDetail: "Fri · 9am–6pm",
-    score: 91,
-    confidence: 99,
-    status: "Approval",
-    tags: ["AI", "Snowflake", "Agents"],
-    prize: "$1.5K cash",
-    sourceCount: 3,
-    url: "https://luma.com/beta-fdnw",
-    why: "Full build day, three tracks, hard deadline, demos and awards.",
-  },
-  {
-    id: 5,
-    title: "AI for Social Good @ Open Atlas Summit",
-    organizer: "Open Atlas",
-    place: "India Community Center · Milpitas",
-    area: "South Bay",
-    date: "AUG 21",
-    dateDetail: "Fri · 9am–5pm",
-    score: 90,
-    confidence: 97,
-    status: "Open",
-    tags: ["Social impact", "AI", "Demo day"],
-    prize: "Awards",
-    sourceCount: 2,
-    url: "https://luma.com/s6pv7mw1",
-    why: "Teams build for two months, then demo live to judges at the summit.",
-  },
-  {
-    id: 6,
-    title: "Better Days: A Hackathon",
-    organizer: "ClickHouse Events",
-    place: "KOHO Co-Creative Hub",
-    area: "SF",
-    date: "AUG 28",
-    dateDetail: "Fri · 9am–7pm",
-    score: 87,
-    confidence: 91,
-    status: "Open",
-    tags: ["Analytics", "AI", "Open theme"],
-    prize: "Not listed",
-    sourceCount: 2,
-    url: "https://luma.com/clickh-sie8",
-    why: "Confirmed full-day hackathon in SF; prize and judging details need verification.",
-  },
-  {
-    id: 7,
-    title: "AI Hackathon: Sales Copilot AI",
-    organizer: "TatianaSF",
-    place: "San Francisco",
-    area: "SF",
-    date: "SEP 05",
-    dateDetail: "Sat · 11am–7pm",
-    score: 84,
-    confidence: 94,
-    status: "Open",
-    tags: ["Sales AI", "Agents", "Vibe coding"],
-    prize: "Prizes listed",
-    sourceCount: 2,
-    url: "https://luma.com/qzct3ybt",
-    why: "Eight-hour build with builder tickets and a defined AI sales theme.",
-  },
-  {
-    id: 8,
-    title: "AI Infra Summit Hackathon",
-    organizer: "lablab.ai",
-    place: "Santa Clara Convention Center",
-    area: "South Bay",
-    date: "SEP 15",
-    dateDetail: "Tue–Thu · 3 days",
-    score: 82,
-    confidence: 97,
-    status: "Open",
-    tags: ["AI infra", "Compute", "Physical AI"],
-    prize: "Not listed",
-    sourceCount: 2,
-    url: "https://luma.com/lablab-zbl9",
-    why: "Multi-day builder event with technical infrastructure tracks; lower rank for travel radius.",
-  },
-];
+type Meta = {
+  city: string;
+  timezone: string;
+  sweepCompletedAt: string;
+  pagesVisited: number;
+  candidatesFound: number;
+  publishedCount: number;
+  organizerCount: number;
+  sourceCount: number;
+  seedCount: number;
+};
+
+const meta = discovery.meta as Meta;
+const events = discovery.events as EventRecord[];
+
+const lastSweepLabel = `${new Intl.DateTimeFormat("en-US", {
+  timeZone: meta.timezone,
+  month: "short",
+  day: "2-digit",
+  hour: "numeric",
+  minute: "2-digit",
+})
+  .format(new Date(meta.sweepCompletedAt))
+  .replace(",", " ·")
+  .toUpperCase()} PT`;
+
+const sweepHour = Number(
+  new Intl.DateTimeFormat("en-US", {
+    timeZone: meta.timezone,
+    hour: "numeric",
+    hour12: false,
+  }).format(new Date(meta.sweepCompletedAt)),
+);
+const nextSweepLabel = sweepHour >= 8 && sweepHour < 20 ? "08:00 PM" : "08:00 AM";
 
 const filters = ["All", "Open now", "AI", "SF proper", "Cash prizes"];
 
-function StatusDot({ status }: { status: Event["status"] }) {
-  return <span className={`status status-${status.toLowerCase().replace(" ", "-")}`}>{status}</span>;
+function sourceLabel(via: string) {
+  try {
+    const url = new URL(via);
+    return `luma.com${url.pathname}`;
+  } catch {
+    return via;
+  }
+}
+
+function StatusDot({ status }: { status: string }) {
+  return (
+    <span className={`status status-${status.toLowerCase().replace(/ /g, "-")}`}>
+      {status}
+    </span>
+  );
 }
 
 export default function Home() {
@@ -175,19 +97,23 @@ export default function Home() {
     const list = events.filter((event) => {
       const matchesQuery =
         !normalized ||
-        `${event.title} ${event.organizer} ${event.tags.join(" ")}`
+        `${event.title} ${event.organizer} ${event.tags.join(" ")} ${event.city ?? ""}`
           .toLowerCase()
           .includes(normalized);
       const matchesFilter =
         filter === "All" ||
         (filter === "Open now" && ["Open", "Approval"].includes(event.status)) ||
-        (filter === "AI" && event.tags.some((tag) => tag.toLowerCase().includes("ai") || tag === "Agents")) ||
+        (filter === "AI" &&
+          (event.tags.some((tag) => /ai|agent/i.test(tag)) ||
+            /\bai\b/i.test(event.title))) ||
         (filter === "SF proper" && event.area === "SF") ||
-        (filter === "Cash prizes" && event.prize.toLowerCase().includes("$"));
+        (filter === "Cash prizes" && event.prize.includes("$"));
       return matchesQuery && matchesFilter;
     });
     return [...list].sort((a, b) =>
-      sort === "relevance" ? b.score - a.score : a.id - b.id,
+      sort === "relevance"
+        ? b.score - a.score
+        : (a.start ?? "9999").localeCompare(b.start ?? "9999"),
     );
   }, [filter, query, sort]);
 
@@ -224,11 +150,11 @@ export default function Home() {
       </section>
 
       <section className="signal-strip" aria-label="Coverage summary">
-        <div><strong>13</strong><span>sweep candidates</span></div>
-        <div><strong>31</strong><span>organizer nodes</span></div>
-        <div><strong>12</strong><span>source surfaces</span></div>
+        <div><strong>{meta.publishedCount}</strong><span>ranked events</span></div>
+        <div><strong>{meta.organizerCount}</strong><span>organizer nodes</span></div>
+        <div><strong>{meta.pagesVisited}</strong><span>pages per sweep</span></div>
         <div><strong>2×</strong><span>daily refresh</span></div>
-        <p>LAST SWEEP<br /><b>JUL 30 · 6:00 PM PT</b></p>
+        <p>LAST SWEEP<br /><b>{lastSweepLabel}</b></p>
       </section>
 
       <section className="content-grid" id="events">
@@ -285,7 +211,7 @@ export default function Home() {
               <article className="event-card" key={event.id}>
                 <div className="rank">{String(index + 1).padStart(2, "0")}</div>
                 <div className="event-date">
-                  <b>{event.date}</b>
+                  <b>{event.dateLabel}</b>
                   <span>{event.dateDetail}</span>
                 </div>
                 <div className="event-main">
@@ -293,15 +219,26 @@ export default function Home() {
                     <StatusDot status={event.status} />
                     <span>{event.area}</span>
                     <span>{event.prize}</span>
+                    {event.going ? <span>{event.going} going</span> : null}
                   </div>
                   <h3><a href={event.url} target="_blank" rel="noreferrer">{event.title}</a></h3>
-                  <p>By <b>{event.organizer}</b> · {event.place}</p>
+                  <p>
+                    By <b>{event.organizer}</b>
+                    {" · "}
+                    {[event.venue, event.city].filter(Boolean).join(" · ") ||
+                      "Location on Luma"}
+                  </p>
                   <div className="tags">
                     {event.tags.map((tag) => <span key={tag}>{tag}</span>)}
                   </div>
                   <details>
                     <summary>Why this score</summary>
-                    <p>{event.why} Confirmed across {event.sourceCount} source{event.sourceCount > 1 ? "s" : ""}; {event.confidence}% classification confidence.</p>
+                    <p>
+                      {event.why} Confidence {event.scores.confidence} · builder
+                      value {event.scores.builderValue} · accessibility{" "}
+                      {event.scores.accessibility} · freshness{" "}
+                      {event.scores.freshness}. Found via {sourceLabel(event.discoveredVia)}.
+                    </p>
                   </details>
                 </div>
                 <div className="score" aria-label={`${event.score} relevance score`}>
@@ -331,16 +268,16 @@ export default function Home() {
               <b>SF</b>
             </div>
             <ul className="source-list">
-              <li><span className="source-index">A</span><div><b>Luma surfaces</b><small>Explore, categories, calendar pages</small></div><strong>04</strong></li>
-              <li><span className="source-index">B</span><div><b>Organizer graph</b><small>Hosts, co-hosts, presented-by</small></div><strong>31</strong></li>
-              <li><span className="source-index">C</span><div><b>Open-web index</b><small>Queries, variants, date windows</small></div><strong>06</strong></li>
-              <li><span className="source-index">D</span><div><b>Known collections</b><small>Used as seeds, never truth</small></div><strong>02</strong></li>
+              <li><span className="source-index">A</span><div><b>Luma surfaces</b><small>Explore, categories, calendar pages</small></div><strong>{String(meta.seedCount).padStart(2, "0")}</strong></li>
+              <li><span className="source-index">B</span><div><b>Organizer graph</b><small>Hosts, co-hosts, presented-by</small></div><strong>{String(meta.organizerCount).padStart(2, "0")}</strong></li>
+              <li><span className="source-index">C</span><div><b>Open-web index</b><small>Queries, variants, date windows</small></div><strong>—</strong></li>
+              <li><span className="source-index">D</span><div><b>Discovery paths</b><small>Distinct surfaces that yielded events</small></div><strong>{String(meta.sourceCount).padStart(2, "0")}</strong></li>
             </ul>
           </div>
 
           <div className="aside-card next-sweep">
             <span>NEXT SWEEP</span>
-            <strong>08:00 PM</strong>
+            <strong>{nextSweepLabel}</strong>
             <p>Morning + evening, America/Los_Angeles</p>
             <div><i /> Discovery healthy</div>
           </div>

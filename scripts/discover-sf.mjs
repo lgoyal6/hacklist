@@ -155,7 +155,7 @@ try {
           title,
           discoveredVia: current.via,
           ...score,
-          evidence: result.bodyText.slice(0, 1200),
+          evidence: result.bodyText.slice(0, 2000),
           checkedAt: new Date().toISOString(),
         };
         const existing = candidates.get(eventKey);

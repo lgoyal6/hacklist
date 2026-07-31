@@ -297,6 +297,8 @@ a { color: inherit; }
 .status-approval { background: #ffdb70; }
 .status-waitlist { background: white; }
 .status-sold-out { color: var(--muted); border-color: var(--muted); }
+.status-closed { color: var(--muted); border-color: var(--muted); }
+.status-check-page { background: white; color: var(--muted); }
 .event-main h3 {
   margin: 10px 0 6px;
   font-size: clamp(20px, 2.2vw, 31px);
