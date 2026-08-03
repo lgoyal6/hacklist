@@ -39,6 +39,7 @@ test("events.json only contains upcoming, fully-normalized events", () => {
   for (const event of eventsData.events) {
     assert.match(event.url, /^https:\/\//);
     assert.ok(["luma", "external"].includes(event.platform));
+    assert.ok(["hackathon", "adjacent"].includes(event.category));
     assert.ok(!ids.has(event.id), `duplicate event id: ${event.id}`);
     ids.add(event.id);
     assert.ok(event.title.length > 3);
@@ -61,7 +62,7 @@ test("server-renders the ranked event board", async () => {
   const html = await response.text();
   assert.match(html, /HACKLIST/);
   assert.match(html, /SF signal board/);
-  assert.match(html, /ranked events/);
+  assert.match(html, /hackathons/);
   // The top-ranked event from the generated data must appear on the board.
   assert.ok(
     html.includes(eventsData.events[0].url),

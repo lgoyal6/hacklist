@@ -3,6 +3,7 @@ import discovery from "../../data/events.json";
 type FeedEvent = {
   id: string;
   url: string;
+  category: "hackathon" | "adjacent";
   title: string;
   organizer: string;
   venue: string | null;
@@ -93,7 +94,12 @@ function buildCalendar(): string {
 
   for (const event of events) {
     const location = [event.venue, event.city].filter(Boolean).join(", ");
+    const adjacent = event.category === "adjacent";
+    // A calendar row has no room for a badge, so say it in the title. A
+    // subscriber should never mistake a pitch night for a hackathon.
+    const summary = adjacent ? `[Adjacent] ${event.title}` : event.title;
     const description =
+      (adjacent ? "Adjacent event, not a hackathon. " : "") +
       `${event.why} Hosted by ${event.organizer}. ` +
       `Registration: ${event.status}. Details: ${event.url}`;
     lines.push(
@@ -102,7 +108,8 @@ function buildCalendar(): string {
       `DTSTAMP:${stamp}`,
       `DTSTART;TZID=America/Los_Angeles:${icsLocal(event.start as string)}`,
       `DTEND;TZID=America/Los_Angeles:${icsLocal(event.end as string)}`,
-      `SUMMARY:${escapeText(event.title)}`,
+      `SUMMARY:${escapeText(summary)}`,
+      `CATEGORIES:${adjacent ? "ADJACENT" : "HACKATHON"}`,
       ...(location ? [`LOCATION:${escapeText(location)}`] : []),
       `DESCRIPTION:${escapeText(description)}`,
       `URL:${event.url}`,

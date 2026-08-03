@@ -7,6 +7,8 @@ type EventRecord = {
   id: string;
   url: string;
   platform: "luma" | "external";
+  category: "hackathon" | "adjacent";
+  adjacentReason: string | null;
   title: string;
   organizer: string;
   venue: string | null;
@@ -45,6 +47,8 @@ type Meta = {
   sourceCount: number;
   seedCount: number;
   externalCount: number;
+  hackathonCount: number;
+  adjacentCount: number;
 };
 
 const meta = discovery.meta as Meta;
@@ -70,7 +74,15 @@ const sweepHour = Number(
 );
 const nextSweepLabel = sweepHour >= 8 && sweepHour < 20 ? "08:00 PM" : "08:00 AM";
 
-const filters = ["All", "Open now", "AI", "SF proper", "Cash prizes"];
+const filters = [
+  "Hackathons",
+  "All",
+  "Open now",
+  "AI",
+  "SF proper",
+  "Cash prizes",
+  "Adjacent",
+];
 
 function sourceLabel(via: string) {
   try {
@@ -90,7 +102,7 @@ function StatusDot({ status }: { status: string }) {
 }
 
 export default function Home() {
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState("Hackathons");
   const [sort, setSort] = useState<"relevance" | "date">("relevance");
   const [query, setQuery] = useState("");
 
@@ -104,6 +116,8 @@ export default function Home() {
           .includes(normalized);
       const matchesFilter =
         filter === "All" ||
+        (filter === "Hackathons" && event.category === "hackathon") ||
+        (filter === "Adjacent" && event.category === "adjacent") ||
         (filter === "Open now" && ["Open", "Approval"].includes(event.status)) ||
         (filter === "AI" &&
           (event.tags.some((tag) => /ai|agent/i.test(tag)) ||
@@ -152,7 +166,8 @@ export default function Home() {
       </section>
 
       <section className="signal-strip" aria-label="Coverage summary">
-        <div><strong>{meta.publishedCount}</strong><span>ranked events</span></div>
+        <div><strong>{meta.hackathonCount}</strong><span>hackathons</span></div>
+        <div><strong>{meta.adjacentCount}</strong><span>adjacent events</span></div>
         <div><strong>{meta.organizerCount}</strong><span>organizer nodes</span></div>
         <div><strong>{meta.pagesVisited}</strong><span>pages per sweep</span></div>
         <div><strong>2×</strong><span>daily refresh</span></div>
@@ -219,6 +234,9 @@ export default function Home() {
                 <div className="event-main">
                   <div className="event-meta">
                     <StatusDot status={event.status} />
+                    {event.category === "adjacent" && (
+                      <span className="adjacent-badge">Adjacent</span>
+                    )}
                     <span>{event.area}</span>
                     <span>{event.prize}</span>
                     {event.going ? <span>{event.going} going</span> : null}
@@ -236,6 +254,10 @@ export default function Home() {
                   <details>
                     <summary>Why this score</summary>
                     <p>
+                      {event.category === "adjacent" && (
+                        <><b>Adjacent, not a hackathon</b>
+                        {event.adjacentReason ? ` — ${event.adjacentReason}. ` : ". "}</>
+                      )}
                       {event.why} Confidence {event.scores.confidence} · builder
                       value {event.scores.builderValue} · accessibility{" "}
                       {event.scores.accessibility} · freshness{" "}

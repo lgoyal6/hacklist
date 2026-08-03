@@ -276,14 +276,17 @@ function recordCandidate(candidate) {
   const preferred =
     candidate.relevance > existing.relevance ? candidate : existing;
   const fallback = preferred === candidate ? existing : candidate;
+  // Whichever record saw more of the page decides the category and supplies the
+  // evidence: a visited page knows things a listing blurb cannot.
+  const richer =
+    preferred.evidence.length >= fallback.evidence.length ? preferred : fallback;
   candidates.set(key, {
     ...preferred,
+    category: richer.category ?? preferred.category ?? "hackathon",
+    heldBecause: richer.heldBecause ?? null,
     structuredEvent:
       preferred.structuredEvent ?? fallback.structuredEvent ?? null,
-    evidence:
-      preferred.evidence.length >= fallback.evidence.length
-        ? preferred.evidence
-        : fallback.evidence,
+    evidence: richer.evidence,
   });
 }
 
@@ -354,9 +357,10 @@ try {
       const isEventCandidate =
         baseQualifies && !formatMismatch && !weakCompetition;
 
-      const record = () => ({
+      const record = (category) => ({
         url,
         title,
+        category,
         discoveredVia: current.via,
         ...score,
         evidence: result.bodyText.slice(0, 2000),
@@ -364,16 +368,17 @@ try {
       });
 
       if (isEventCandidate) {
-        recordCandidate(record());
+        recordCandidate(record("hackathon"));
       } else if (baseQualifies) {
-        // Looked like a local build event but failed a format check. Surface it
-        // for a human instead of dropping it silently.
-        review.set(url, {
-          ...record(),
-          heldBecause: formatMismatch
-            ? "title names a non-hackathon format"
-            : "no competition or submission evidence",
-        });
+        // A local build-adjacent event: pitch night, demo day, robot night.
+        // Published as its own category rather than dropped, so coverage stays
+        // broad while the hackathon ranking stays honest about what it is.
+        const adjacent = record("adjacent");
+        adjacent.heldBecause = formatMismatch
+          ? "title names a non-hackathon format"
+          : "no competition or submission evidence";
+        recordCandidate(adjacent);
+        review.set(url, adjacent);
       }
 
       const sourceLocal = locationPattern.test(
@@ -435,6 +440,7 @@ try {
         const structuredRecord = {
           url: eventUrl,
           title: structuredEvent.name,
+          category: "hackathon",
           discoveredVia: url,
           ...structuredScore,
           evidence: evidence.slice(0, 2000),
@@ -448,32 +454,43 @@ try {
           negativeTitlePattern.test(structuredEvent.name) &&
           !structuredDirectTitleTerm
         ) {
-          review.set(eventUrl, {
+          const adjacent = {
             ...structuredRecord,
+            category: "adjacent",
             heldBecause: "title names a non-hackathon format",
-          });
+          };
+          recordCandidate(adjacent);
+          review.set(eventUrl, adjacent);
           continue;
         }
         if (
           !structuredScore.signals.competitionEvidence &&
           !structuredDirectTitleTerm
         ) {
-          review.set(eventUrl, {
+          const adjacent = {
             ...structuredRecord,
+            category: "adjacent",
             heldBecause: "no competition or submission evidence",
-          });
+          };
+          recordCandidate(adjacent);
+          review.set(eventUrl, adjacent);
           continue;
         }
         recordCandidate(structuredRecord);
 
-        if (!isLumaUrl(eventUrl) && current.depth < config.maxGraphDepth) {
-          queue.unshift({
-            url: eventUrl,
-            depth: current.depth + 1,
-            via: url,
-            allowExternal: true,
-          });
-        }
+        // Listing metadata carries no registration status, venue or prize
+        // detail, so anything we intend to publish gets its real page fetched.
+        // recordCandidate keeps the richer evidence, so the visit upgrades this
+        // record rather than competing with it. Queued at max depth: worth
+        // visiting however deep the listing was found, but never expanded
+        // further, so this cannot widen the crawl.
+        queue.unshift({
+          url: eventUrl,
+          depth: config.maxGraphDepth,
+          via: url,
+          allowExternal: !isLumaUrl(eventUrl),
+          spa: !isLumaUrl(eventUrl),
+        });
       }
 
       if (current.depth >= config.maxGraphDepth) continue;

@@ -461,3 +461,13 @@ footer > a { justify-self: end; color: var(--acid); text-decoration: none; font:
   * { scroll-behavior: auto !important; }
   .sweep { animation: none; }
 }
+
+/* Adjacent events are listed but must never read as hackathons. */
+.adjacent-badge {
+  font: 800 9px monospace;
+  text-transform: uppercase;
+  padding: 5px 7px;
+  border: 1px dashed var(--muted);
+  color: var(--muted);
+}
+.event-meta > span.adjacent-badge::before { content: ""; }

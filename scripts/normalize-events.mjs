@@ -588,6 +588,11 @@ for (const candidate of discovery.candidates) {
     url: candidate.url,
     platform:
       new URL(candidate.url).hostname === "luma.com" ? "luma" : "external",
+    // "hackathon" is the real thing; "adjacent" is a build-adjacent event
+    // (pitch night, demo day, robot night) that is worth listing but should
+    // never be presented as a hackathon.
+    category: candidate.category === "adjacent" ? "adjacent" : "hackathon",
+    adjacentReason: candidate.category === "adjacent" ? candidate.heldBecause ?? null : null,
     title: candidate.title,
     organizer: parseCandidateOrganizer(candidate, lines),
     venue: location.venue,
@@ -616,8 +621,14 @@ for (const candidate of discovery.candidates) {
   });
 }
 
+// Hackathons rank above adjacent events regardless of score: the board's
+// promise is a hackathon index, and an adjacent event should never outrank a
+// real one just because it scored well on accessibility.
 events.sort(
-  (a, b) => b.score - a.score || (a.start ?? "9999").localeCompare(b.start ?? "9999"),
+  (a, b) =>
+    (a.category === b.category ? 0 : a.category === "hackathon" ? -1 : 1) ||
+    b.score - a.score ||
+    (a.start ?? "9999").localeCompare(b.start ?? "9999"),
 );
 
 const output = {
@@ -628,6 +639,8 @@ const output = {
     pagesVisited: discovery.sweep.pagesVisited,
     candidatesFound: discovery.sweep.candidatesFound,
     publishedCount: events.length,
+    hackathonCount: events.filter((event) => event.category === "hackathon").length,
+    adjacentCount: events.filter((event) => event.category === "adjacent").length,
     organizerCount: new Set(events.map((e) => e.organizer)).size,
     sourceCount: new Set(events.map((e) => e.discoveredVia)).size,
     seedCount: config.seedUrls.length,
