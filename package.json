@@ -17,7 +17,8 @@
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate",
-    "discover:search": "node scripts/discover-search.mjs"
+    "discover:search": "node scripts/discover-search.mjs",
+    "luma:tags": "node scripts/luma-tag-events.mjs"
   },
   "dependencies": {
     "@lightpanda/browser": "^1.2.0",

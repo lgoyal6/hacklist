@@ -73,4 +73,8 @@ echo "--- luma calendar sync"
 "$NODE" scripts/luma-sync-ui.mjs --name "$CAL_NAME" $HEADLESS_FLAG || \
   echo "    sync did not complete; queue state preserved" >&2
 
+echo "--- luma event tags"
+"$NODE" scripts/luma-tag-events.mjs --name "$CAL_NAME" $HEADLESS_FLAG || \
+  echo "    tagging did not complete; already-applied tags are recorded" >&2
+
 echo "=== $(date '+%Y-%m-%d %H:%M:%S') local passes done"
