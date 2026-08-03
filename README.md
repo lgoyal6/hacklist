@@ -1,7 +1,8 @@
 # Hacklist SF
 
-Every public Luma hackathon in the SF Bay Area — discovered automatically,
-ranked by signal, and published as a subscribable calendar.
+Public hackathons in the SF Bay Area — including externally hosted events
+linked from Luma calendars — discovered automatically, ranked by signal, and
+published as a subscribable calendar.
 
 - **Site:** https://hacklist-sf.modern-renaissance-artifacts.workers.dev
 - **Calendar feed:** https://hacklist-sf.modern-renaissance-artifacts.workers.dev/calendar.ics
@@ -9,10 +10,12 @@ ranked by signal, and published as a subscribable calendar.
 
 ## How it works
 
-1. `scripts/discover-sf.mjs` sweeps Luma with a headless browser
+1. `scripts/discover-sf.mjs` sweeps public Luma surfaces with a headless browser
    (Lightpanda + Playwright), starting from seed pages in
-   `config/discovery.json` and expanding through event, organizer and
-   co-host links. Raw candidates land in `data/discovery-output.json`.
+   `config/discovery.json` and expanding through event, organizer and co-host
+   links. It also reads Schema.org event lists embedded in public calendar
+   pages, follows direct external event links, and preserves their structured
+   dates and locations. Raw candidates land in `data/discovery-output.json`.
 2. `scripts/normalize-events.mjs` parses each candidate's page evidence into
    a structured record (dates, venue, city, status, prizes, tags), scores it
    (40% hackathon confidence, 25% builder value, 20% accessibility,
@@ -22,6 +25,31 @@ ranked by signal, and published as a subscribable calendar.
    are both generated from `data/events.json`.
 
 See `PROTOTYPE.md` for the full product spec.
+
+## Local passes (never run in CI)
+
+Two steps need a signed-in Luma session, so they run on your machine against a
+dedicated Chrome profile in `.local-browser-profile/` (gitignored). The session
+never leaves this machine and is never placed in GitHub Actions.
+
+```bash
+npm run discover:personalized   # collect events Luma recommends to you
+npm run luma:queue              # show what's pending for the Luma calendar
+npm run luma:sync -- --calendar https://luma.com/<slug> --dry-run
+npm run luma:sync -- --calendar https://luma.com/<slug>
+```
+
+The first run opens Chrome and waits for you to sign in by hand; later runs
+reuse the profile. Personalized discovery writes only public event URLs to
+`data/personalized-seeds.json`, which the anonymous crawler then classifies
+like any other find — being recommended is not evidence of anything.
+
+`luma:sync` drives Luma's supported **Add Event** admin UI (paste an event URL)
+on a free calendar, so no Luma Plus subscription is required. It processes the
+whole pending batch, marks an event synced only after seeing it on the
+calendar, and stops without losing queue state if it hits a CAPTCHA, a
+sign-out, or a UI it does not recognize. `data/luma-ledger.json` tracks what
+has been added; `npm run luma:queue` prints a paste-by-hand fallback list.
 
 ## Automation
 

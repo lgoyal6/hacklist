@@ -8,14 +8,49 @@ pretending they are all inside San Francisco proper.
 
 ## Discovery model
 
-The crawler starts with Luma city/category pages and known calendars, then
-expands through event pages, presenting calendars, organizers and co-hosts.
-Known collections are seeds, not authoritative inventories.
+The crawler starts with public Luma city/category pages and known calendars,
+then expands through event pages, presenting calendars, organizers and
+co-hosts. It reads the Schema.org event lists exposed by calendar pages and
+follows direct off-Luma event links, so an externally hosted hackathon curated
+on Luma is still eligible. Known collections are seeds, not authoritative
+inventories.
 
 Candidate generation is deliberately broad. Publication requires page-level
 evidence of building plus a competitive or submission format. This is how names
 such as "Pizza Agent Challenge" can qualify while ordinary pitch nights and
 meetups are excluded.
+
+Curated hackathon boards elsewhere on the web (`externalIndexUrls`) are treated
+as inventories rather than as pages to classify: their Luma links are followed
+even when the event name uses a word our vocabulary does not know, but each
+linked event is still classified on its own page. These boards are
+client-rendered, so they get a longer settle window than Luma pages.
+
+Known gap: events a board hosts on its *own* pages rather than linking to Luma
+are currently missed. Crawling those generically cost roughly 25 seconds per
+page and pushed the sweep past its time budget in exchange for a single extra
+event, so the right fix is a small per-board extractor that reads the listings
+straight from the board's rendered index, not a slower generic crawl.
+
+Every sweep is bounded by both a page budget and `maxSweepMinutes`. A sweep that
+runs out of time stops and publishes what it has, recording
+`stoppedOnTimeBudget` and the unvisited queue length, because a partial refresh
+beats a scheduler-killed run that publishes nothing.
+
+A title naming a non-hackathon format — conference, summit, meet-up — only
+publishes when the title also names a hackathon format, which keeps
+"AI Infra Summit Hackathon" while rejecting "MITAI Conference". Events that
+look local and build-shaped but fail a format check are written to
+`data/review-queue.json` instead of being dropped, so tightening a rule never
+silently loses an event.
+
+### Personalized and authenticated passes
+
+`scripts/discover-personalized.mjs` runs locally against a dedicated,
+gitignored Chrome profile to collect the events Luma recommends to the signed-in
+user, writing public event URLs to `data/personalized-seeds.json` for the
+anonymous crawler to classify. The authenticated session is deliberately kept
+off CI. Nothing bypasses CAPTCHAs or touches Luma's internal endpoints.
 
 ## Ranking
 
@@ -31,8 +66,9 @@ hackathon can be low relevance when it is far away, closed or already past.
 
 `npm run discover:sf` runs two stages:
 
-1. `scripts/discover-sf.mjs` sweeps Luma with Lightpanda + Playwright and
-   writes raw candidates to `data/discovery-output.json`.
+1. `scripts/discover-sf.mjs` sweeps public Luma and directly linked external
+   event pages with Lightpanda + Playwright, extracts page text plus structured
+   event metadata, and writes raw candidates to `data/discovery-output.json`.
 2. `scripts/normalize-events.mjs` parses each candidate's page evidence into a
    structured record — start/end datetimes (timezone-aware, with
    weekday-checked year inference), venue, city, area bucket, organizer,
@@ -55,6 +91,18 @@ The GitHub Actions workflow fires at every UTC hour that can correspond to
 the schedule is exact across daylight-saving transitions. Each run sweeps,
 normalizes, commits refreshed data, and (when `CLOUDFLARE_API_TOKEN` is set as
 a repository secret) redeploys the site and ICS feed with `vinext deploy`.
+
+## Publishing to a Luma calendar
+
+Two paths exist, and the free one is the default:
+
+- **Free (`scripts/luma-sync-ui.mjs`)** drives Luma's supported Add Event admin
+  UI from the local signed-in profile, pasting an event URL exactly as a human
+  would. Works on a free calendar. `data/luma-ledger.json` records what has been
+  added; an event is only marked synced once it is visible on the calendar, and
+  failures stay pending so they retry.
+- **Paid (`scripts/sync-luma-calendar.mjs`)** uses the official API, which needs
+  Luma Plus. Fully unattended, so it can run in CI.
 
 When `LUMA_API_KEY` is set (a calendar-scoped key from a Luma Plus calendar),
 each run also submits newly discovered events to that Luma calendar via
