@@ -74,4 +74,27 @@ Installed $LABEL
 The sync is idempotent, so an extra run costs nothing. If the session signs
 out or Luma shows a CAPTCHA it stops without losing queue state, and the log
 will say so — re-run it by hand and sign in when that happens.
+
+Sleep: launchd does not skip a missed run. If the Mac is asleep at 8:30 the job
+fires the next time it wakes, and several missed firings collapse into one. So
+nothing is lost — it just lands late.
+
+To make a run happen on time even from sleep, schedule a wake (needs sudo):
+
+    sudo pmset repeat wakeorpoweron MTWRFSU 08:25:00
+
+Read this first: 'pmset repeat' holds ONE repeating wake, so that command
+REPLACES whatever repeat is already set. Check before running it —
+
+    pmset -g sched
+
+— because if a wake is already scheduled you would be trading it away, and one
+repeat cannot cover both 8:25am and 8:25pm. To add a wake without touching the
+existing repeat, schedule one-off events instead:
+
+    sudo pmset schedule wakeorpoweron "MM/dd/yy 20:25:00"
+
+Scheduled wake needs the Mac on power; on battery, Apple Silicon Macs often
+will not wake. The GitHub half of the pipeline (sweep, rank, deploy) is
+unaffected by any of this and runs whether this Mac is on or not.
 EOF

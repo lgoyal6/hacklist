@@ -16,6 +16,14 @@ cd "$REPO"
 CAL_NAME="${LUMA_CALENDAR_NAME:-HackList SF}"
 export PATH="$(dirname "$(command -v node)"):/usr/local/bin:/opt/homebrew/bin:$PATH"
 
+# Hold sleep off for the duration. Without this the Mac can doze mid-run and
+# leave the browser half-finished; the sync is idempotent so it would recover,
+# but there is no reason to make it recover from something avoidable.
+if command -v caffeinate >/dev/null && [ -z "${HACKLIST_CAFFEINATED:-}" ]; then
+  export HACKLIST_CAFFEINATED=1
+  exec caffeinate -i -m "$0" "$@"
+fi
+
 echo "=== $(date '+%Y-%m-%d %H:%M:%S') local passes starting"
 
 echo "--- personalized discovery"
