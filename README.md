@@ -33,16 +33,26 @@ dedicated Chrome profile in `.local-browser-profile/` (gitignored). The session
 never leaves this machine and is never placed in GitHub Actions.
 
 ```bash
-npm run discover:personalized   # collect events Luma recommends to you
-npm run luma:queue              # show what's pending for the Luma calendar
-npm run luma:sync -- --calendar https://luma.com/<slug> --dry-run
-npm run luma:sync -- --calendar https://luma.com/<slug>
+bash scripts/install-luma-schedule.sh   # run both passes twice daily (installed)
+bash scripts/local-passes.sh            # or run them now, by hand
+
+npm run discover:personalized           # just the personalized pass
+npm run luma:queue                      # what's pending for the Luma calendar
+npm run luma:sync -- --name "HackList SF"
 ```
+
+`scripts/local-passes.sh` is what the schedule runs: personalized discovery
+(which commits and pushes its seeds so the next GitHub sweep crawls them),
+then the calendar sync. Neither step can abort the other, and the log lands in
+`logs/local-passes.log`.
 
 The first run opens Chrome and waits for you to sign in by hand; later runs
 reuse the profile. Personalized discovery writes only public event URLs to
 `data/personalized-seeds.json`, which the anonymous crawler then classifies
-like any other find — being recommended is not evidence of anything.
+like any other find — being recommended is not evidence of anything. It also
+stores each card's title, which the sweep uses to visit hackathon-looking
+events before general ones, so a feed of 141 mostly-unrelated events cannot
+crowd out the ones worth having.
 
 `luma:sync` drives Luma's supported **Add Event** admin UI (paste an event URL)
 on a free calendar, so no Luma Plus subscription is required. It processes the

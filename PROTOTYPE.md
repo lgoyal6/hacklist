@@ -37,6 +37,13 @@ runs out of time stops and publishes what it has, recording
 `stoppedOnTimeBudget` and the unvisited queue length, because a partial refresh
 beats a scheduler-killed run that publishes nothing.
 
+Measured cost is about a second per page: 117 pages takes roughly two minutes.
+The budgets (320 pages, 15 minutes) therefore sit far above what a sweep
+actually needs, and the CI job allows 30 minutes so even a full-length sweep
+still reaches the deploy step. Should the seed lists ever outgrow the budget,
+the per-run caps rotate rather than truncate, so coverage completes across runs
+instead of silently losing the tail.
+
 A title naming a non-hackathon format — conference, summit, meet-up — only
 publishes when the title also names a hackathon format, which keeps
 "AI Infra Summit Hackathon" while rejecting "MITAI Conference". Events that
