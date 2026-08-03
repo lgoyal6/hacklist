@@ -11,10 +11,17 @@ const config = JSON.parse(
 
 const escapePattern = (value) =>
   value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const candidatePattern = new RegExp(
+const vocabularyPattern = new RegExp(
   `\\b(${config.candidateTerms.map(escapePattern).join("|")})\\b`,
   "i",
 );
+// Organisers invent a new "-a-thon" every week (dog-a-thon, make-a-thon,
+// print-a-thon), so match the shape rather than trying to list them. The
+// separator before "a" is required so this does not fire on "marathon".
+const athonPattern = /\b[a-z]{3,}[-\s]a[-\s]?thon\b/i;
+const candidatePattern = {
+  test: (text) => vocabularyPattern.test(text) || athonPattern.test(text),
+};
 const buildPattern =
   /\b(build|ship|prototype|code|hack|create|make|implement|develop)\w*\b/i;
 const competitionPattern =
@@ -57,10 +64,16 @@ function isLumaUrl(url) {
 }
 
 // Curated hackathon boards we trust as inventories rather than as pages to
-// classify. Their Luma links are followed even when the link text uses a name
-// our candidate vocabulary would not recognize.
-function isExternalIndexUrl(url) {
-  return (config.externalIndexUrls ?? []).includes(url);
+// classify. Every event they list is visited and classified on its own page,
+// because a listing's summary metadata is far too thin to judge from: the
+// "Dog-a-thon" reads as an unknown word in a JSON-LD blob and as an obvious
+// hackathon on its own page.
+function isCuratedIndex(url) {
+  return (config.curatedIndexUrls ?? []).includes(url);
+}
+
+function needsSlowRender(url) {
+  return (config.slowRenderUrls ?? []).includes(url);
 }
 
 function eventKey(title) {
@@ -298,14 +311,16 @@ try {
     visited.add(url);
     if (!isLumaUrl(url)) externalPagesVisited += 1;
 
-    const isIndexSource = isExternalIndexUrl(url);
+    const isIndexSource = isCuratedIndex(url);
     try {
       // Curated boards are client-rendered apps; they need real settle time
       // before their event links exist in the DOM.
       const result = await extractPage(
         page,
         url,
-        isIndexSource ? { settleMs: 3_500, timeoutMs: 25_000 } : {},
+        needsSlowRender(url) || current.spa
+          ? { settleMs: 3_500, timeoutMs: 25_000 }
+          : {},
       );
       const title = result.title.replace(/\s*[·|]\s*Luma\s*$/i, "").trim();
       const score = scorePage(title, result.bodyText);
@@ -388,6 +403,25 @@ try {
         );
         const isPastStructuredEvent =
           Number.isFinite(endTime) && endTime < Date.now();
+
+        // A curated hackathon board has already done human filtering, so visit
+        // everything it lists and let the full page decide. Judging these from
+        // listing metadata alone is what previously lost real hackathons whose
+        // names our vocabulary did not know.
+        if (
+          isIndexSource &&
+          !isPastStructuredEvent &&
+          current.depth < config.maxGraphDepth
+        ) {
+          queue.unshift({
+            url: eventUrl,
+            depth: current.depth + 1,
+            via: url,
+            allowExternal: !isLumaUrl(eventUrl),
+            spa: !isLumaUrl(eventUrl),
+          });
+        }
+
         if (
           structuredScore.confidence < 54 ||
           !structuredLocal ||

@@ -18,12 +18,18 @@
     "https://luma.com/cerebralvalley_",
     "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON"
   ],
-  "externalIndexUrls": [
-    "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON"
-  ],
   "areas": {
-    "SF": ["san francisco", "sf", "daly city", "south san francisco"],
-    "North Bay": ["sausalito", "san rafael", "novato"],
+    "SF": [
+      "san francisco",
+      "sf",
+      "daly city",
+      "south san francisco"
+    ],
+    "North Bay": [
+      "sausalito",
+      "san rafael",
+      "novato"
+    ],
     "East Bay": [
       "oakland",
       "berkeley",
@@ -116,5 +122,12 @@
     "startup weekend",
     "capture the flag",
     "ctf"
+  ],
+  "curatedIndexUrls": [
+    "https://luma.com/hackathon_collections",
+    "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON"
+  ],
+  "slowRenderUrls": [
+    "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON"
   ]
 }
