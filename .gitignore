@@ -40,3 +40,6 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# local signed-in browser profile (never commit session state)
+/.local-browser-profile/

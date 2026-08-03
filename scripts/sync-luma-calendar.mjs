@@ -33,6 +33,19 @@ try {
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const isoDuration = (start, end) => {
+  let seconds = Math.max(
+    60,
+    Math.round((new Date(end).getTime() - new Date(start).getTime()) / 1000),
+  );
+  const days = Math.floor(seconds / 86400);
+  seconds -= days * 86400;
+  const hours = Math.floor(seconds / 3600);
+  seconds -= hours * 3600;
+  const minutes = Math.floor(seconds / 60);
+  const time = `${hours ? `${hours}H` : ""}${minutes ? `${minutes}M` : ""}`;
+  return `P${days ? `${days}D` : ""}${time ? `T${time}` : ""}`;
+};
 let added = 0;
 let failed = 0;
 
@@ -40,31 +53,50 @@ for (const event of events) {
   const slug = event.id;
   if (synced.has(slug)) continue;
 
-  const lookupResponse = await fetch(
-    `${API}/v1/entities/lookup?slug=${encodeURIComponent(slug)}`,
-    { headers },
-  );
-  if (!lookupResponse.ok) {
-    console.warn(
-      `lookup failed for ${slug}: ${lookupResponse.status} ${await lookupResponse.text()}`,
+  let body;
+  if (event.platform === "external") {
+    if (!event.start || !event.end) {
+      console.warn(`external event ${slug} has no complete schedule; skipping.`);
+      failed += 1;
+      continue;
+    }
+    body = {
+      platform: "external",
+      url: event.url,
+      name: event.title,
+      start_at: event.start,
+      duration_interval: isoDuration(event.start, event.end),
+      timezone: event.timezone,
+      geo_address_json: null,
+      host: event.organizer,
+    };
+  } else {
+    const lookupResponse = await fetch(
+      `${API}/v1/entities/lookup?slug=${encodeURIComponent(slug)}`,
+      { headers },
     );
-    failed += 1;
-    continue;
-  }
-  const { entity } = await lookupResponse.json();
-  if (entity?.type !== "event" || !entity.event?.id) {
-    console.warn(`slug ${slug} did not resolve to an event; skipping.`);
-    failed += 1;
-    continue;
-  }
+    if (!lookupResponse.ok) {
+      console.warn(
+        `lookup failed for ${slug}: ${lookupResponse.status} ${await lookupResponse.text()}`,
+      );
+      failed += 1;
+      continue;
+    }
+    const { entity } = await lookupResponse.json();
+    if (entity?.type !== "event" || !entity.event?.id) {
+      console.warn(`slug ${slug} did not resolve to an event; skipping.`);
+      failed += 1;
+      continue;
+    }
 
-  const eventId = entity.event.id;
-  const body = {
-    platform: "luma",
-    ...(eventId.startsWith("evt-")
-      ? { event_api_id: eventId }
-      : { event_id: eventId }),
-  };
+    const eventId = entity.event.id;
+    body = {
+      platform: "luma",
+      ...(eventId.startsWith("evt-")
+        ? { event_api_id: eventId }
+        : { event_id: eventId }),
+    };
+  }
   const addResponse = await fetch(`${API}/v1/calendars/events/add`, {
     method: "POST",
     headers,

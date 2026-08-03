@@ -11,6 +11,9 @@
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "discover:sf": "node scripts/discover-sf.mjs && node scripts/normalize-events.mjs",
     "normalize": "node scripts/normalize-events.mjs",
+    "discover:personalized": "node scripts/discover-personalized.mjs",
+    "luma:queue": "node scripts/luma-sync-ui.mjs --queue",
+    "luma:sync": "node scripts/luma-sync-ui.mjs",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"
