@@ -52,12 +52,34 @@ jobs:
       - name: Sync events to Luma calendar (needs LUMA_API_KEY)
         if: env.LUMA_API_KEY != ''
         run: node scripts/sync-luma-calendar.mjs
+      # Committed by hand rather than via git-auto-commit-action so the push
+      # can rebase and retry: if another sweep (or a local push) lands while
+      # this one is crawling, a plain push is rejected as non-fast-forward and
+      # the whole run fails with fresh data already in hand.
       - name: Commit refreshed data
         id: commit
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "data: refresh SF hackathon discovery"
-          file_pattern: "data/**"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+            echo "changes_detected=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "data: refresh SF hackathon discovery"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              echo "changes_detected=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt); rebasing onto origin/main."
+            git pull --rebase --autostash origin main
+          done
+          echo "Could not push after 3 attempts." >&2
+          exit 1
+      # Deploy on its own merits: the site should reflect the sweep even when a
+      # concurrent run already committed identical data.
       - name: Deploy site + calendar feed (needs CLOUDFLARE_API_TOKEN)
-        if: env.CLOUDFLARE_API_TOKEN != '' && (steps.commit.outputs.changes_detected == 'true' || github.event_name == 'workflow_dispatch')
+        if: env.CLOUDFLARE_API_TOKEN != ''
         run: npx vinext deploy
