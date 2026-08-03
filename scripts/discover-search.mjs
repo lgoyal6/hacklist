@@ -23,20 +23,27 @@ const config = JSON.parse(
 );
 const outputPath = resolve(root, "data/search-seeds.json");
 
-const braveKey = process.env.BRAVE_API_KEY;
-const maxQueries = config.searchMaxQueries ?? 10;
-// DuckDuckGo throttles hard: 6s between queries still lost 7 of 8. Spacing
-// them further is the only lever without a key.
-const delayMs = braveKey ? 1_200 : Number(process.env.SEARCH_DELAY_MS ?? 18_000);
+// Any one of these works; pick whichever you can sign up for. Serper and
+// Tavily take no card, Brave now bills new accounts, and DuckDuckGo needs no
+// key but throttles a repeat caller to nothing.
+const provider = process.env.SERPER_API_KEY
+  ? "serper"
+  : process.env.TAVILY_API_KEY
+    ? "tavily"
+    : process.env.BRAVE_API_KEY
+      ? "brave"
+      : "duckduckgo-html";
+const hasKey = provider !== "duckduckgo-html";
+const delayMs = hasKey ? 1_200 : Number(process.env.SEARCH_DELAY_MS ?? 18_000);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Luma paths that are surfaces, not events.
 const NON_EVENT_PATH =
   /^(discover|home|signin|signup|create|pricing|help|settings|user|explore|about|terms|privacy|sf|nyc|la|app|calendar|hackathon_collections|maps?|embed)$/i;
 
-function buildQueries() {
+function allQueries() {
   if (Array.isArray(config.searchQueries) && config.searchQueries.length) {
-    return config.searchQueries.slice(0, maxQueries);
+    return config.searchQueries;
   }
   const year = new Date().getFullYear();
   return [
@@ -48,7 +55,25 @@ function buildQueries() {
     `luma "hackathon" oakland OR berkeley OR "palo alto" ${year}`,
     `luma.com hackathon "san jose" OR "santa clara" OR sunnyvale ${year}`,
     `"hackathon" san francisco ${year} register lu.ma`,
-  ].slice(0, maxQueries);
+  ];
+}
+
+/**
+ * Run only a few queries per sweep and rotate which ones. Firing the whole list
+ * at once is what got the keyless endpoint blocked, and it burns a metered quota
+ * for no reason: the job runs twice a day, so the full list is covered every few
+ * runs anyway.
+ */
+function buildQueries() {
+  const all = allQueries();
+  const perRun = Math.min(
+    config.searchQueriesPerRun ?? (hasKey ? 8 : 2),
+    all.length,
+  );
+  // A stateless rotation that advances every 12 hours, matching the schedule.
+  const slot = Math.floor(Date.now() / (12 * 3_600 * 1_000));
+  const start = ((slot * perRun) % all.length + all.length) % all.length;
+  return Array.from({ length: perRun }, (_, i) => all[(start + i) % all.length]);
 }
 
 /** Pull absolute URLs out of DuckDuckGo's redirect-wrapped results. */
@@ -84,6 +109,40 @@ async function searchDuckDuckGo(query) {
   if (!response.ok) return { urls: [], error: `HTTP ${response.status}` };
   const html = await response.text();
   return { urls: urlsFromDuckDuckGo(html), throttled: false };
+}
+
+async function searchSerper(query) {
+  const response = await fetch("https://google.serper.dev/search", {
+    method: "POST",
+    headers: {
+      "x-api-key": process.env.SERPER_API_KEY,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ q: query, num: 20 }),
+  });
+  if (!response.ok) return { urls: [], error: `HTTP ${response.status}` };
+  const body = await response.json();
+  return {
+    urls: [...(body.organic ?? []), ...(body.topStories ?? [])]
+      .map((result) => result.link)
+      .filter(Boolean),
+  };
+}
+
+async function searchTavily(query) {
+  const response = await fetch("https://api.tavily.com/search", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${process.env.TAVILY_API_KEY}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ query, max_results: 20, search_depth: "basic" }),
+  });
+  if (!response.ok) return { urls: [], error: `HTTP ${response.status}` };
+  const body = await response.json();
+  return {
+    urls: (body.results ?? []).map((result) => result.url).filter(Boolean),
+  };
 }
 
 async function searchBrave(query) {
@@ -128,7 +187,14 @@ for (const [index, query] of queries.entries()) {
   if (index > 0) await sleep(delayMs);
   let result;
   try {
-    result = braveKey ? await searchBrave(query) : await searchDuckDuckGo(query);
+    result =
+      provider === "serper"
+        ? await searchSerper(query)
+        : provider === "tavily"
+          ? await searchTavily(query)
+          : provider === "brave"
+            ? await searchBrave(query)
+            : await searchDuckDuckGo(query);
   } catch (error) {
     problems.push({ query, error: String(error).slice(0, 120) });
     continue;
@@ -188,7 +254,7 @@ await writeFile(
   `${JSON.stringify(
     {
       collectedAt: new Date().toISOString(),
-      provider: braveKey ? "brave" : "duckduckgo-html",
+      provider,
       queriesRun: queries.length,
       throttledQueries: throttled,
       problems,
@@ -207,9 +273,9 @@ console.log(
     (problems.length ? `, ${problems.length} problem(s)` : "") +
     `.\nWrote ${outputPath}`,
 );
-if (!braveKey && throttled >= Math.ceil(queries.length / 2)) {
+if (!hasKey && throttled >= Math.ceil(queries.length / 2)) {
   console.warn(
-    "Most queries were rate-limited. Set BRAVE_API_KEY for reliable search, " +
-      "especially in CI where the IP is shared.",
+    "Queries were rate-limited. For reliable search set one of " +
+      "SERPER_API_KEY or TAVILY_API_KEY (both free, no card) or BRAVE_API_KEY.",
   );
 }

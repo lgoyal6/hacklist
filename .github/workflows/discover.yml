@@ -40,9 +40,11 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: "96011880ddcfd82df7004a95257baf66"
       LUMA_API_KEY: ${{ secrets.LUMA_API_KEY }}
-      # Optional. Without it, search discovery falls back to DuckDuckGo's HTML
-      # endpoint, which rate-limits shared CI addresses hard and will mostly
-      # return nothing. The sweep still runs either way.
+      # All optional. Search discovery works without any of them by rotating a
+      # couple of queries per run through DuckDuckGo, which stays under its
+      # rate limit; a key just allows more queries per sweep.
+      SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+      TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
       BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
     steps:
       - uses: actions/checkout@v4

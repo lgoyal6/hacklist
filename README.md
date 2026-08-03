@@ -59,11 +59,15 @@ asks a search engine instead and writes event URLs to
 `data/search-seeds.json`, which the crawler then visits and classifies like any
 other find — a search hit is not evidence.
 
-It uses the Brave Search API when `BRAVE_API_KEY` is set and DuckDuckGo's public
-HTML endpoint otherwise. DuckDuckGo rate-limits hard (expect most queries to
-return nothing after the first few, and effectively all of them from a shared CI
-address), so Brave's free tier is worth the five minutes it takes to get a key.
-Search never blocks the sweep: a run with no search results still publishes.
+**No API key is required.** Firing the whole query list at once is what got the
+keyless endpoint blocked, so each run takes only `searchQueriesPerRun` queries
+and rotates which ones, advancing every 12 hours to match the schedule. The full
+list is therefore covered every few runs with no throttling.
+
+Set any one of `SERPER_API_KEY`, `TAVILY_API_KEY` or `BRAVE_API_KEY` to run more
+queries per sweep and skip the rate limit entirely. Serper and Tavily have free
+tiers that take no credit card; Brave now bills new accounts. Search never
+blocks the sweep: a run with no search results still publishes.
 
 Note that search engines mostly index the archive, so many hits are events that
 have already happened. Those are rejected by the past-event filter, and stale
