@@ -3,13 +3,43 @@ name: SF hackathon discovery
 on:
   workflow_dispatch:
   schedule:
-    # Roughly 8am and 8pm Pacific; adjust by one hour around DST if desired.
-    - cron: "0 3,15 * * *"
+    # Fires at every UTC hour that can be 8am or 8pm Pacific across PST/PDT;
+    # the gate job below keeps only the runs where it actually is.
+    - cron: "0 3,4,15,16 * * *"
+
+concurrency:
+  group: discover
+  cancel-in-progress: false
+
+permissions:
+  contents: write
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+    steps:
+      - name: Only proceed at 8am/8pm Pacific (or manual dispatch)
+        id: check
+        run: |
+          hour=$(TZ=America/Los_Angeles date +%H)
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "$hour" = "08" ] || [ "$hour" = "20" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping: $hour:00 Pacific is not a sweep slot."
+          fi
+
   discover:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: "96011880ddcfd82df7004a95257baf66"
+      LUMA_API_KEY: ${{ secrets.LUMA_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -17,8 +47,17 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run discover:sf
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Sweep Luma and normalize events
+        run: npm run discover:sf
+      - name: Sync events to Luma calendar (needs LUMA_API_KEY)
+        if: env.LUMA_API_KEY != ''
+        run: node scripts/sync-luma-calendar.mjs
+      - name: Commit refreshed data
+        id: commit
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "data: refresh SF hackathon discovery"
           file_pattern: "data/**"
+      - name: Deploy site + calendar feed (needs CLOUDFLARE_API_TOKEN)
+        if: env.CLOUDFLARE_API_TOKEN != '' && (steps.commit.outputs.changes_detected == 'true' || github.event_name == 'workflow_dispatch')
+        run: npx vinext deploy

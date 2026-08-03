@@ -50,9 +50,16 @@ parsed stay on the board marked "TBC" but are excluded from the ICS feed.
 
 ## Refresh
 
-The included workflow runs at 03:00 and 15:00 UTC, roughly 8am and 8pm Pacific.
-The production version should use a timezone-aware scheduler to handle daylight
-saving transitions exactly.
+The GitHub Actions workflow fires at every UTC hour that can correspond to
+8am/8pm Pacific and a gate job keeps only the runs where it actually is, so
+the schedule is exact across daylight-saving transitions. Each run sweeps,
+normalizes, commits refreshed data, and (when `CLOUDFLARE_API_TOKEN` is set as
+a repository secret) redeploys the site and ICS feed with `vinext deploy`.
+
+When `LUMA_API_KEY` is set (a calendar-scoped key from a Luma Plus calendar),
+each run also submits newly discovered events to that Luma calendar via
+`POST /v1/calendars/events/add`, so the list is followable on Luma itself.
+`data/luma-sync.json` tracks which events have already been submitted.
 
 ## Next city
 
