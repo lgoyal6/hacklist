@@ -51,6 +51,25 @@ calendar, and stops without losing queue state if it hits a CAPTCHA, a
 sign-out, or a UI it does not recognize. `data/luma-ledger.json` tracks what
 has been added; `npm run luma:queue` prints a paste-by-hand fallback list.
 
+## Search discovery
+
+Everything else reaches events by crawling outward from calendars we already
+know, so a hackathon nobody curates stays invisible. `npm run discover:search`
+asks a search engine instead and writes event URLs to
+`data/search-seeds.json`, which the crawler then visits and classifies like any
+other find — a search hit is not evidence.
+
+It uses the Brave Search API when `BRAVE_API_KEY` is set and DuckDuckGo's public
+HTML endpoint otherwise. DuckDuckGo rate-limits hard (expect most queries to
+return nothing after the first few, and effectively all of them from a shared CI
+address), so Brave's free tier is worth the five minutes it takes to get a key.
+Search never blocks the sweep: a run with no search results still publishes.
+
+Note that search engines mostly index the archive, so many hits are events that
+have already happened. Those are rejected by the past-event filter, and stale
+seeds are pruned after `searchSeedRetentionDays` so they stop costing crawl
+budget.
+
 ## Automation
 
 `.github/workflows/discover.yml` runs the whole loop at exactly 8am and 8pm

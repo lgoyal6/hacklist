@@ -241,6 +241,19 @@ try {
   // Optional input; absent until the local pass has run.
 }
 
+// Event URLs from web search (scripts/discover-search.mjs). These reach events
+// no calendar we follow links to, which is the whole point, but a search hit is
+// not evidence: each one is classified on its own page like anything else.
+let searchSeeds = [];
+try {
+  const searched = JSON.parse(
+    await readFile(resolve(root, "data/search-seeds.json"), "utf8"),
+  );
+  searchSeeds = (searched.urls ?? []).map((entry) => entry.url);
+} catch {
+  // Optional input; absent until search discovery has run.
+}
+
 const queue = [
   ...config.seedUrls.map((url) => ({
     url,
@@ -252,6 +265,12 @@ const queue = [
     url,
     depth: 1, // already an event page; do not expand a graph from it
     via: "personalized",
+    allowExternal: false,
+  })),
+  ...searchSeeds.map((url) => ({
+    url,
+    depth: config.maxGraphDepth, // visit and classify, never expand
+    via: "search",
     allowExternal: false,
   })),
 ];
@@ -556,6 +575,7 @@ const output = {
     city: config.city,
     startedFrom: config.seedUrls.length,
     personalizedSeeds: personalizedSeeds.length,
+    searchSeeds: searchSeeds.length,
     pagesVisited: visited.size,
     externalPagesVisited,
     structuredEventsFound,

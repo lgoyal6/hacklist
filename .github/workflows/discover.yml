@@ -40,6 +40,10 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: "96011880ddcfd82df7004a95257baf66"
       LUMA_API_KEY: ${{ secrets.LUMA_API_KEY }}
+      # Optional. Without it, search discovery falls back to DuckDuckGo's HTML
+      # endpoint, which rate-limits shared CI addresses hard and will mostly
+      # return nothing. The sweep still runs either way.
+      BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -49,6 +53,10 @@ jobs:
       - run: npm ci
       - name: Sweep Luma and normalize events
         run: npm run discover:sf
+        env:
+          # Search discovery sleeps between queries; keep it modest in CI so it
+          # cannot eat the job's time budget.
+          SEARCH_DELAY_MS: "8000"
       - name: Sync events to Luma calendar (needs LUMA_API_KEY)
         if: env.LUMA_API_KEY != ''
         run: node scripts/sync-luma-calendar.mjs
