@@ -33,37 +33,19 @@ const calendarFromArg =
       ? calendarArg.replace(/\/$/, "")
       : `https://luma.com/${calendarArg.replace(/^\/+/, "")}`
     : null;
+const nameArg = args[args.indexOf("--name") + 1];
+const calendarName =
+  args.includes("--name") && nameArg && !nameArg.startsWith("--")
+    ? nameArg
+    : "Hacklist SF";
 
 const { events } = await readEvents();
 const ledger = await readLedger();
-const calendarUrl = calendarFromArg ?? ledger.calendar;
 const pending = pendingEvents(events, ledger);
 
 if (queueOnly) {
   console.log(formatQueueReport(pending, ledger));
   process.exit(0);
-}
-
-if (!calendarUrl) {
-  console.error(
-    [
-      "",
-      "  No Hacklist SF calendar configured yet.",
-      "  ------------------------------------------------------",
-      "  One-time setup on Luma (free, no Luma Plus needed):",
-      "    1. Open https://luma.com/create/calendar",
-      '    2. Name it "Hacklist SF" and create it.',
-      "    3. Copy its URL (e.g. https://luma.com/hacklist-sf).",
-      "",
-      "  Then run:",
-      "    node scripts/luma-sync-ui.mjs --calendar https://luma.com/<slug>",
-      "",
-      "  To see what would be added first:",
-      "    node scripts/luma-sync-ui.mjs --queue",
-      "",
-    ].join("\n"),
-  );
-  process.exit(1);
 }
 
 if (!pending.length) {
@@ -72,11 +54,51 @@ if (!pending.length) {
 }
 
 console.log(
-  `${pending.length} pending event${pending.length === 1 ? "" : "s"} for ${calendarUrl}` +
+  `${pending.length} pending event${pending.length === 1 ? "" : "s"}` +
     `${dryRun ? " (dry run — nothing will be submitted)" : ""}\n`,
 );
 
-const manageUrl = `${calendarUrl}/manage`;
+/**
+ * Find the calendar's admin page. Luma's admin URL shape is not something to
+ * guess at, so the signed-in Calendars list is the source of truth: match the
+ * calendar by name and take the link Luma itself provides.
+ */
+async function resolveCalendarUrl(page) {
+  const known = calendarFromArg ?? ledger.calendar;
+  if (known) return known;
+
+  const wanted = calendarName.toLowerCase().replace(/[^a-z0-9]+/g, "");
+  for (const listing of [
+    "https://luma.com/calendars",
+    "https://luma.com/home",
+  ]) {
+    try {
+      await page.goto(listing, { waitUntil: "domcontentloaded" });
+    } catch {
+      continue;
+    }
+    await page.waitForTimeout(2_500);
+    const href = await page.evaluate((wanted) => {
+      const normalize = (value) =>
+        (value ?? "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+      for (const anchor of document.querySelectorAll("a[href]")) {
+        if (!normalize(anchor.textContent).includes(wanted)) continue;
+        try {
+          const url = new URL(anchor.getAttribute("href"), location.href);
+          if (["luma.com", "lu.ma"].includes(url.hostname)) {
+            return `https://luma.com${url.pathname}`.replace(/\/$/, "");
+          }
+        } catch {
+          // keep looking
+        }
+      }
+      return null;
+    }, wanted);
+    if (href) return href;
+  }
+  return null;
+}
+
 const context = await launchLocalBrowser({ headless });
 let stopReason = null;
 let added = 0;
@@ -161,8 +183,8 @@ async function confirmSubmission(page) {
  */
 async function verifyOnCalendar(page, event) {
   try {
-    await page.goto(manageUrl, { waitUntil: "domcontentloaded" });
-    await page.waitForTimeout(2_000);
+    await page.goto(adminUrl, { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2_500);
     const slug = new URL(event.url).pathname.replace(/^\/+/, "");
     return await page.evaluate(
       ({ slug, title }) => {
@@ -182,8 +204,62 @@ async function verifyOnCalendar(page, event) {
   }
 }
 
+let adminUrl = null;
+
 try {
   const page = await ensureSignedIn(context);
+
+  const calendarUrl = await resolveCalendarUrl(page);
+  if (!calendarUrl) {
+    console.error(
+      [
+        "",
+        `  Could not find a calendar named "${calendarName}" on this account.`,
+        "  ------------------------------------------------------",
+        "  Either create it at https://luma.com/create/calendar, or point at it",
+        "  directly:",
+        "    npm run luma:sync -- --calendar https://luma.com/<slug>",
+        "  If it exists under a different name:",
+        `    npm run luma:sync -- --name "Your Calendar Name"`,
+        "",
+      ].join("\n"),
+    );
+    await context.close();
+    process.exit(1);
+  }
+
+  // Luma's admin surface has moved around; find the page that actually offers
+  // Add Event rather than assuming a URL shape.
+  const shapes = [
+    `${calendarUrl}/manage`,
+    calendarUrl,
+    `${calendarUrl}/manage/events`,
+  ];
+  for (const shape of shapes) {
+    try {
+      await page.goto(shape, { waitUntil: "domcontentloaded" });
+    } catch {
+      continue;
+    }
+    await page.waitForTimeout(2_500);
+    const hasControl = await page.evaluate(() =>
+      /add event|submit event/i.test(document.body?.innerText ?? ""),
+    );
+    if (hasControl) {
+      adminUrl = shape;
+      break;
+    }
+  }
+  if (!adminUrl) {
+    console.error(
+      `\n  Found the calendar at ${calendarUrl} but no Add Event control on it.` +
+        `\n  Send me that page and I'll adjust the selectors.\n`,
+    );
+    await context.close();
+    process.exit(1);
+  }
+  console.log(`Calendar admin: ${adminUrl}\n`);
+  ledger.calendar = calendarUrl;
 
   for (const event of pending) {
     if (stopReason) break;
@@ -195,8 +271,8 @@ try {
     }
 
     try {
-      await page.goto(manageUrl, { waitUntil: "domcontentloaded" });
-      await page.waitForTimeout(2_000);
+      await page.goto(adminUrl, { waitUntil: "domcontentloaded" });
+      await page.waitForTimeout(2_500);
 
       stopReason = await needsHumanAttention(page);
       if (stopReason) break;
@@ -243,10 +319,9 @@ try {
   }
 } finally {
   await context.close();
-  if (!dryRun) {
-    ledger.calendar = calendarUrl;
-    await writeLedger(ledger);
-  }
+  // The resolved calendar is worth remembering even after a dry run, so the
+  // next invocation skips discovery.
+  await writeLedger(ledger);
 }
 
 if (dryRun) {
