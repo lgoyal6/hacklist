@@ -337,8 +337,12 @@ try {
         ? locationPattern.test(featuredPlace)
         : locationPattern.test(result.bodyText.slice(0, 700));
       score.signals.sfBayAreaEvidence = localHeaderEvidence;
+      // Luma's own browse surfaces are inventories, never events. Match the
+       // path as well as the title: "AI Events in San Francisco" reads like an
+       // event name but is a directory page.
       const looksLikeCollection =
-        /events calendar|tech events in|popular events in|events$/i.test(title);
+        /events?\s+(calendar|in|near)\b|popular events|events$/i.test(title) ||
+        new URL(url).pathname.startsWith("/discover");
       const looksLikeProfile = new URL(url).pathname.startsWith("/user/");
       // A hackathon term in the title is the strongest single signal, because
       // body text routinely mentions other events' hackathons.
