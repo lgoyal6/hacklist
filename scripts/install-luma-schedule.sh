@@ -14,7 +14,7 @@ set -euo pipefail
 LABEL="com.hacklist.local-passes"
 PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-NODE_BIN="$(command -v node)"
+# local-passes.sh resolves node itself, so nothing here depends on the version.
 CAL_NAME="${LUMA_CALENDAR_NAME:-HackList SF}"
 
 if [[ "${1:-}" == "--uninstall" ]]; then
@@ -41,7 +41,7 @@ cat > "$PLIST" <<PLIST_EOF
   <key>EnvironmentVariables</key>
   <dict>
     <key>LUMA_CALENDAR_NAME</key><string>$CAL_NAME</string>
-    <key>PATH</key><string>$(dirname "$NODE_BIN"):/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/homebrew/bin</string>
+    <key>PATH</key><string>/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/homebrew/bin</string>
   </dict>
   <key>WorkingDirectory</key><string>$REPO</string>
   <key>StandardOutPath</key><string>$REPO/logs/local-passes.log</string>

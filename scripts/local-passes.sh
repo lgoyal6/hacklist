@@ -14,7 +14,23 @@ set -uo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO"
 CAL_NAME="${LUMA_CALENDAR_NAME:-HackList SF}"
-export PATH="$(dirname "$(command -v node)"):/usr/local/bin:/opt/homebrew/bin:$PATH"
+
+# Resolve node at run time rather than trusting a path captured at install
+# time. A node upgrade renames the nvm directory, which silently broke this job
+# once already; launchd also starts with a minimal PATH that has no nvm in it.
+find_node() {
+  if command -v node >/dev/null 2>&1; then command -v node; return; fi
+  for candidate in /opt/homebrew/bin/node /usr/local/bin/node; do
+    [ -x "$candidate" ] && { echo "$candidate"; return; }
+  done
+  ls -1d "$HOME"/.nvm/versions/node/*/bin/node 2>/dev/null | sort -V | tail -1
+}
+NODE="$(find_node)"
+if [ -z "$NODE" ] || [ ! -x "$NODE" ]; then
+  echo "=== $(date '+%Y-%m-%d %H:%M:%S') cannot find node; aborting" >&2
+  exit 1
+fi
+export PATH="$(dirname "$NODE"):$PATH"
 
 # Hold sleep off for the duration. Without this the Mac can doze mid-run and
 # leave the browser half-finished; the sync is idempotent so it would recover,
@@ -26,8 +42,15 @@ fi
 
 echo "=== $(date '+%Y-%m-%d %H:%M:%S') local passes starting"
 
+# Headless on the schedule: this fires when the lid opens, and a Chrome window
+# seizing the screen at that moment is obnoxious. Both scripts detect when a
+# human is genuinely needed (sign-out, CAPTCHA) and stop with state intact, so
+# you re-run them headed only then.
+HEADLESS_FLAG="--headless"
+[ "${HACKLIST_HEADED:-0}" = "1" ] && HEADLESS_FLAG=""
+
 echo "--- personalized discovery"
-if node scripts/discover-personalized.mjs; then
+if "$NODE" scripts/discover-personalized.mjs $HEADLESS_FLAG; then
   if ! git diff --quiet -- data/personalized-seeds.json; then
     git add data/personalized-seeds.json
     git -c user.name="hacklist-local" \
@@ -47,7 +70,7 @@ else
 fi
 
 echo "--- luma calendar sync"
-node scripts/luma-sync-ui.mjs --name "$CAL_NAME" || \
+"$NODE" scripts/luma-sync-ui.mjs --name "$CAL_NAME" $HEADLESS_FLAG || \
   echo "    sync did not complete; queue state preserved" >&2
 
 echo "=== $(date '+%Y-%m-%d %H:%M:%S') local passes done"

@@ -32,7 +32,7 @@ const negativePattern =
 // publishable when the title also names a hackathon format, so
 // "AI Infra Summit Hackathon" survives while "MITAI Conference" does not.
 const negativeTitlePattern =
-  /\b(meet[-\s]?ups?|conference|summit|webinar|expo|mixer|happy hour|fireside|panel|screening|dinner|networking|workshop|office hours|pitch night|demo night|launch party|party|social|talk|talks|showcase|open house)\b/i;
+  /\b(meet[-\s]?ups?|conference|summit|webinar|expo|mixer|happy hour|fireside|panel|screening|dinner|networking|workshop|office hours|pitch night|demo night|launch party|party|social|talk|talks|showcase|open house|salons?|series|roundtable|symposium|forum|town hall|book club|concert|film)\b/i;
 const locationPattern = new RegExp(
   `\\b(${config.placeTerms.map(escapePattern).join("|")})\\b`,
   "i",
@@ -74,6 +74,18 @@ function isCuratedIndex(url) {
 
 function needsSlowRender(url) {
   return (config.slowRenderUrls ?? []).includes(url);
+}
+
+/**
+ * Pages that list many events and load them as you scroll. Reading one without
+ * scrolling sees only the first screenful: the signed-in pass found 141 events
+ * across these surfaces while the sweep was seeing a fraction of that, and 135
+ * of those needed no login at all.
+ */
+function isBrowseSurface(url) {
+  return (
+    isCuratedIndex(url) || new URL(url).pathname.startsWith("/discover")
+  );
 }
 
 function eventKey(title) {
@@ -132,7 +144,11 @@ function scorePage(title, text) {
   return { confidence, relevance, signals };
 }
 
-async function extractPage(page, url, { settleMs = 350, timeoutMs = 12_000 } = {}) {
+async function extractPage(
+  page,
+  url,
+  { settleMs = 350, timeoutMs = 12_000, scrollPasses = 0 } = {},
+) {
   try {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: timeoutMs });
   } catch (error) {
@@ -143,6 +159,10 @@ async function extractPage(page, url, { settleMs = 350, timeoutMs = 12_000 } = {
     if (!/timed?\s?out|timeout/i.test(String(error))) throw error;
   }
   await page.waitForTimeout(settleMs);
+  for (let pass = 0; pass < scrollPasses; pass++) {
+    await page.evaluate(() => window.scrollBy(0, window.innerHeight * 2));
+    await page.waitForTimeout(700);
+  }
 
   return page.evaluate(() => {
     const links = [...document.querySelectorAll("a[href]")].map((link) => {
@@ -373,8 +393,10 @@ try {
         page,
         url,
         needsSlowRender(url) || current.spa
-          ? { settleMs: 3_500, timeoutMs: 25_000 }
-          : {},
+          ? { settleMs: 3_500, timeoutMs: 25_000, scrollPasses: 6 }
+          : isBrowseSurface(url)
+            ? { settleMs: 1_200, timeoutMs: 20_000, scrollPasses: 6 }
+            : {},
       );
       const title = result.title.replace(/\s*[·|]\s*Luma\s*$/i, "").trim();
       const score = scorePage(title, result.bodyText);
@@ -566,16 +588,26 @@ try {
         // waste both page budget and wall-clock.
         if (new URL(next).pathname.startsWith("/user/")) continue;
         const curatedLink = isIndexSource && isLumaUrl(next);
+        // A browse surface is an inventory: take every event permalink on it,
+        // not just the ones whose link text happens to use a word we know.
+        // These go behind everything else, so they use leftover budget only.
+        const browseListing =
+          isBrowseSurface(url) &&
+          isLumaUrl(next) &&
+          /^\/[a-z0-9][a-z0-9._-]{2,}$/i.test(new URL(next).pathname) &&
+          !isBrowseSurface(next);
         const genericNavigation =
           /^(discover events?|sign in|pricing|help|get the app|report event|contact the host|tech|ai|crypto|san francisco)$/i.test(
             link.text,
           );
         const graphLink =
           isEventCandidate && link.text.length > 1 && !genericNavigation;
-        if (directCandidateLink || graphLink || curatedLink) {
+        if (directCandidateLink || graphLink || curatedLink || browseListing) {
           const item = {
             url: next,
-            depth: current.depth + 1,
+            // A browse listing is a leaf: classify it, never crawl outward from
+            // it, or one directory page would pull in the whole site.
+            depth: browseListing ? config.maxGraphDepth : current.depth + 1,
             via: url,
             allowExternal: !isLumaUrl(next),
           };
