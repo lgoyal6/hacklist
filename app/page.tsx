@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import discovery from "../data/events.json";
 
 type EventRecord = {
@@ -74,6 +74,20 @@ const sweepHour = Number(
 );
 const nextSweepLabel = sweepHour >= 8 && sweepHour < 20 ? "08:00 PM" : "08:00 AM";
 
+/** The origin never changes within a page load, so there is nothing to watch. */
+const subscribeToNothing = () => () => {};
+
+/** Coarse time buckets, so a long list stays scannable when sorted by date. */
+function timeBucket(start: string | null): string {
+  if (!start) return "Date to be confirmed";
+  const days = (new Date(start).getTime() - Date.now()) / 86_400_000;
+  if (days < 0) return "Happening now";
+  if (days <= 7) return "This week";
+  if (days <= 14) return "Next week";
+  if (days <= 31) return "This month";
+  return "Later";
+}
+
 const filters = [
   "Hackathons",
   "All",
@@ -103,6 +117,7 @@ function StatusDot({ status }: { status: string }) {
 
 export default function Home() {
   const [filter, setFilter] = useState("Hackathons");
+  const [copied, setCopied] = useState(false);
   const [sort, setSort] = useState<"relevance" | "date">("relevance");
   const [query, setQuery] = useState("");
 
@@ -133,6 +148,28 @@ export default function Home() {
     );
   }, [filter, query, sort]);
 
+  // The server has no location, so this is read as an external value with an
+  // explicit server snapshot: reading `window` during render would produce
+  // different markup on each side and break hydration.
+  const origin = useSyncExternalStore(
+    subscribeToNothing,
+    () => window.location.origin,
+    () => "",
+  );
+  const feedUrl = origin ? `${origin}/calendar.ics` : "/calendar.ics";
+  const webcalUrl = feedUrl.replace(/^https?:/, "webcal:");
+  const googleUrl = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcalUrl)}`;
+
+  const copyFeed = async () => {
+    try {
+      await navigator.clipboard.writeText(feedUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    } catch {
+      setCopied(false);
+    }
+  };
+
   return (
     <main>
       <header className="site-header">
@@ -142,11 +179,12 @@ export default function Home() {
         </a>
         <nav aria-label="Primary navigation">
           <a href="#events">Discover</a>
+          <a href="#subscribe">Subscribe</a>
           <a href="#coverage">Coverage</a>
           <a href="#method">Method</a>
         </nav>
-        <a className="calendar-button" href="/calendar.ics">
-          <span>＋</span> Add SF calendar
+        <a className="calendar-button" href="#subscribe">
+          <span>＋</span> Subscribe
         </a>
       </header>
 
@@ -172,6 +210,39 @@ export default function Home() {
         <div><strong>{meta.pagesVisited}</strong><span>pages per sweep</span></div>
         <div><strong>2×</strong><span>daily refresh</span></div>
         <p>LAST SWEEP<br /><b>{lastSweepLabel}</b></p>
+      </section>
+
+      <section className="subscribe" id="subscribe">
+        <div className="subscribe-copy">
+          <span className="section-number">◎</span>
+          <h2>Put it in your calendar</h2>
+          <p>
+            {meta.hackathonCount} hackathons, refreshed twice a day. Subscribe
+            once and new ones appear on their own — no checking back.
+          </p>
+        </div>
+        <div className="subscribe-actions">
+          <div className="feed-url">
+            <code>{feedUrl || "/calendar.ics"}</code>
+            <button onClick={copyFeed} aria-label="Copy calendar feed URL">
+              {copied ? "Copied ✓" : "Copy"}
+            </button>
+          </div>
+          <div className="feed-buttons">
+            {origin && (
+              <>
+                <a href={googleUrl} target="_blank" rel="noreferrer">Google Calendar</a>
+                <a href={webcalUrl}>Apple Calendar</a>
+              </>
+            )}
+            <a href="/calendar.ics" download>Download .ics</a>
+          </div>
+          <small>
+            Outlook, Notion and everything else: paste the URL above into
+            &ldquo;subscribe from web&rdquo;. Adjacent events are prefixed
+            [Adjacent] so they never read as hackathons.
+          </small>
+        </div>
       </section>
 
       <section className="content-grid" id="events">
@@ -224,8 +295,15 @@ export default function Home() {
           </div>
 
           <div className="event-list">
-            {visibleEvents.map((event, index) => (
-              <article className="event-card" key={event.id}>
+            {visibleEvents.map((event, index) => {
+              const bucket = timeBucket(event.start);
+              const showBucket =
+                sort === "date" &&
+                bucket !== timeBucket(visibleEvents[index - 1]?.start ?? null);
+              return (
+              <div key={event.id}>
+              {showBucket && <h3 className="bucket-heading">{bucket}</h3>}
+              <article className="event-card">
                 <div className="rank">{String(index + 1).padStart(2, "0")}</div>
                 <div className="event-date">
                   <b>{event.dateLabel}</b>
@@ -270,7 +348,9 @@ export default function Home() {
                   <span>RELEVANCE</span>
                 </div>
               </article>
-            ))}
+              </div>
+              );
+            })}
             {visibleEvents.length === 0 && (
               <div className="empty">No events match this view. Try clearing the filter.</div>
             )}

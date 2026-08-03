@@ -471,3 +471,79 @@ footer > a { justify-self: end; color: var(--acid); text-decoration: none; font:
   color: var(--muted);
 }
 .event-meta > span.adjacent-badge::before { content: ""; }
+
+/* --- Subscribe: the feed is the product, so the URL is the hero action --- */
+.subscribe {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 3vw;
+  align-items: center;
+  padding: 64px 4vw;
+  border-bottom: 1px solid var(--ink);
+  background: var(--acid);
+}
+.subscribe-copy { display: flex; flex-direction: column; gap: 12px; }
+.subscribe-copy h2 {
+  margin: 0;
+  font-size: clamp(28px, 3.4vw, 46px);
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+.subscribe-copy p { margin: 0; max-width: 44ch; font-size: 15px; line-height: 1.45; }
+.subscribe-copy .section-number { background: var(--ink); width: 30px; height: 30px; }
+.subscribe-actions { display: flex; flex-direction: column; gap: 12px; }
+.feed-url {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 6px 6px 6px 14px;
+}
+.feed-url code {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  font: 12px monospace;
+}
+.feed-url button {
+  flex-shrink: 0;
+  border: 0;
+  background: var(--ink);
+  color: white;
+  padding: 11px 16px;
+  font: 800 11px monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+.feed-url button:hover { background: var(--orange); }
+.feed-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+.feed-buttons a {
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 11px 15px;
+  text-decoration: none;
+  font: 800 11px monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.feed-buttons a:hover { background: var(--ink); color: var(--paper); }
+.subscribe-actions small { font: 10px/1.6 monospace; max-width: 62ch; }
+
+/* --- Date buckets group a long list without hiding anything --- */
+.bucket-heading {
+  margin: 34px 0 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--ink);
+  font: 800 11px monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.bucket-heading:first-child { margin-top: 0; }
+
+@media (max-width: 900px) {
+  .subscribe { grid-template-columns: 1fr; padding: 44px 4vw; }
+}
