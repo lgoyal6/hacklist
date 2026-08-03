@@ -35,7 +35,9 @@ jobs:
     needs: gate
     if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # The sweep's own budget is 15 minutes (config maxSweepMinutes); this must
+    # stay comfortably above it so a full-length sweep still gets to deploy.
+    timeout-minutes: 30
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: "96011880ddcfd82df7004a95257baf66"
