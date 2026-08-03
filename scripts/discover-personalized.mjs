@@ -56,10 +56,11 @@ try {
     }
 
     const urls = await eventUrlsFromPage(page);
-    for (const url of urls) {
-      const surfaces = found.get(url) ?? [];
-      if (!surfaces.includes(surface.label)) surfaces.push(surface.label);
-      found.set(url, surfaces);
+    for (const { url, text } of urls) {
+      const entry = found.get(url) ?? { surfaces: [], text: "" };
+      if (!entry.surfaces.includes(surface.label)) entry.surfaces.push(surface.label);
+      if ((text ?? "").length > entry.text.length) entry.text = text ?? "";
+      found.set(url, entry);
     }
     console.log(`  ${surface.label}: ${urls.length} event links`);
   }
@@ -85,10 +86,11 @@ try {
 
 const merged = new Map();
 for (const entry of previous.urls ?? []) merged.set(entry.url, entry);
-for (const [url, surfaces] of found) {
+for (const [url, entry] of found) {
   merged.set(url, {
     url,
-    surfaces,
+    surfaces: entry.surfaces,
+    text: entry.text.slice(0, 180),
     lastSeenAt: new Date().toISOString(),
   });
 }

@@ -1,6 +1,8 @@
 #!/bin/bash
-# Installs a launchd job that runs the Luma calendar sync twice a day, shortly
-# after the GitHub sweeps land fresh data (8:30am and 8:30pm Pacific).
+# Installs a launchd job that runs both signed-in local passes twice a day,
+# shortly after the GitHub sweeps land fresh data (8:30am and 8:30pm Pacific):
+# personalized discovery (pushes new seeds for the next sweep to crawl) and the
+# Luma calendar sync.
 #
 # This runs locally on purpose: the sync needs a signed-in Luma session, which
 # must never be placed in CI. The Mac has to be awake and logged in; launchd
@@ -9,7 +11,7 @@
 # Usage:  bash scripts/install-luma-schedule.sh [--uninstall]
 set -euo pipefail
 
-LABEL="com.hacklist.luma-sync"
+LABEL="com.hacklist.local-passes"
 PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 NODE_BIN="$(command -v node)"
@@ -33,14 +35,17 @@ cat > "$PLIST" <<PLIST_EOF
   <key>Label</key><string>$LABEL</string>
   <key>ProgramArguments</key>
   <array>
-    <string>$NODE_BIN</string>
-    <string>$REPO/scripts/luma-sync-ui.mjs</string>
-    <string>--name</string>
-    <string>$CAL_NAME</string>
+    <string>/bin/bash</string>
+    <string>$REPO/scripts/local-passes.sh</string>
   </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>LUMA_CALENDAR_NAME</key><string>$CAL_NAME</string>
+    <key>PATH</key><string>$(dirname "$NODE_BIN"):/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/homebrew/bin</string>
+  </dict>
   <key>WorkingDirectory</key><string>$REPO</string>
-  <key>StandardOutPath</key><string>$REPO/logs/luma-sync.log</string>
-  <key>StandardErrorPath</key><string>$REPO/logs/luma-sync.log</string>
+  <key>StandardOutPath</key><string>$REPO/logs/local-passes.log</string>
+  <key>StandardErrorPath</key><string>$REPO/logs/local-passes.log</string>
   <key>StartCalendarInterval</key>
   <array>
     <dict><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
@@ -58,8 +63,9 @@ cat <<EOF
 
 Installed $LABEL
   Runs:     8:30am and 8:30pm (this Mac's local time), when awake
+  Does:     personalized discovery (pushes seeds) + Luma calendar sync
   Calendar: $CAL_NAME
-  Log:      $REPO/logs/luma-sync.log
+  Log:      $REPO/logs/local-passes.log
 
   Run now:      launchctl kickstart -p gui/$(id -u)/$LABEL
   Check status: launchctl print gui/$(id -u)/$LABEL | head -20

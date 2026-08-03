@@ -136,7 +136,10 @@ export async function ensureSignedIn(context, { timeoutMs = 300_000 } = {}) {
 
 export function eventUrlsFromPage(page) {
   return page.evaluate(() => {
-    const urls = new Set();
+    // Capture the card's text with the link. The sweep uses it to visit
+    // hackathon-looking events first, so a personalized feed full of general
+    // meetups cannot crowd out the events we actually want.
+    const urls = new Map();
     for (const anchor of document.querySelectorAll("a[href]")) {
       const href = anchor.getAttribute("href") ?? "";
       let resolved;
@@ -156,8 +159,17 @@ export function eventUrlsFromPage(page) {
       ) {
         continue;
       }
-      urls.add(`https://luma.com/${path}`);
+      const url = `https://luma.com/${path}`;
+      const own = (anchor.textContent || "").replace(/\s+/g, " ").trim();
+      const nearby = (anchor.closest("li,article,div")?.textContent || "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 180);
+      const text = own.length > 3 ? own : nearby;
+      if (!urls.has(url) || (text && text.length > urls.get(url).length)) {
+        urls.set(url, text);
+      }
     }
-    return [...urls];
+    return [...urls].map(([url, text]) => ({ url, text }));
   });
 }

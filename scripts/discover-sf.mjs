@@ -236,9 +236,25 @@ try {
   const personalized = JSON.parse(
     await readFile(resolve(root, "data/personalized-seeds.json"), "utf8"),
   );
-  personalizedSeeds = (personalized.urls ?? []).map((entry) => entry.url);
+  // Keep the card text: a personalized feed is mostly general events, so the
+  // ones whose names look like hackathons are visited first and the rest fill
+  // whatever budget is left over.
+  personalizedSeeds = (personalized.urls ?? []).map((entry) => ({
+    url: entry.url,
+    promising: candidatePattern.test(
+      `${entry.text ?? ""} ${entry.url.replace(/[^a-z0-9]+/gi, " ")}`,
+    ),
+  }));
 } catch {
   // Optional input; absent until the local pass has run.
+}
+
+/** Take `size` items, advancing the window every 12 hours to match the schedule. */
+function rotateSlice(items, size) {
+  if (items.length <= size) return items;
+  const slot = Math.floor(Date.now() / (12 * 3_600 * 1_000));
+  const start = ((slot * size) % items.length + items.length) % items.length;
+  return Array.from({ length: size }, (_, i) => items[(start + i) % items.length]);
 }
 
 // Event URLs from web search (scripts/discover-search.mjs). These reach events
@@ -261,16 +277,32 @@ const queue = [
     via: "seed",
     allowExternal: !["luma.com", "lu.ma"].includes(new URL(url).hostname),
   })),
-  ...personalizedSeeds.map((url) => ({
-    url,
-    depth: 1, // already an event page; do not expand a graph from it
-    via: "personalized",
-    allowExternal: false,
-  })),
+  // Promising ones ahead of the anonymous seeds, the remainder behind them.
+  ...personalizedSeeds
+    .filter((entry) => entry.promising)
+    .map((entry) => ({
+      url: entry.url,
+      depth: 1, // already an event page; do not expand a graph from it
+      via: "personalized",
+      allowExternal: false,
+    })),
   ...searchSeeds.map((url) => ({
     url,
     depth: config.maxGraphDepth, // visit and classify, never expand
     via: "search",
+    allowExternal: false,
+  })),
+  // The rest of the personalized feed is mostly general events, and visiting
+  // all of it every sweep would cost more time than it is worth. Take a slice
+  // per run and rotate, so everything is covered over a couple of days while
+  // any single sweep stays inside its budget.
+  ...rotateSlice(
+    personalizedSeeds.filter((entry) => !entry.promising),
+    config.personalizedPerRun ?? 40,
+  ).map((entry) => ({
+    url: entry.url,
+    depth: config.maxGraphDepth,
+    via: "personalized",
     allowExternal: false,
   })),
 ];
@@ -575,6 +607,7 @@ const output = {
     city: config.city,
     startedFrom: config.seedUrls.length,
     personalizedSeeds: personalizedSeeds.length,
+    personalizedPromising: personalizedSeeds.filter((e) => e.promising).length,
     searchSeeds: searchSeeds.length,
     pagesVisited: visited.size,
     externalPagesVisited,
