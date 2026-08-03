@@ -98,9 +98,23 @@ Two paths exist, and the free one is the default:
 
 - **Free (`scripts/luma-sync-ui.mjs`)** drives Luma's supported Add Event admin
   UI from the local signed-in profile, pasting an event URL exactly as a human
-  would. Works on a free calendar. `data/luma-ledger.json` records what has been
-  added; an event is only marked synced once it is visible on the calendar, and
-  failures stay pending so they retry.
+  would. Works on a free calendar. The flow is three steps: Add Event → Add
+  Existing Luma Event → paste the URL, stage it, confirm.
+
+  Truth about what is on the calendar comes from reading the event rows' own
+  links while scrolling in small steps, because the list is virtualized and
+  reading it after one long scroll sees only the last screenful. Page text and
+  HTML are deliberately not searched for slugs — hydration payloads and the
+  modal's "Suggested Events" mention slugs that are not on the calendar.
+
+  `data/luma-ledger.json` is reconciled against the calendar in both directions
+  on every run, so an event that is present but unrecorded gets adopted and a
+  record whose event is missing becomes pending again. That makes the sync
+  idempotent and self-healing rather than dependent on a trustworthy ledger.
+
+  External (non-Luma) events need Luma's separate Add External Event form, which
+  asks for name, date, timezone and location rather than a URL, so they are
+  reported for manual entry instead of being half-filled by guesswork.
 - **Paid (`scripts/sync-luma-calendar.mjs`)** uses the official API, which needs
   Luma Plus. Fully unattended, so it can run in CI.
 
