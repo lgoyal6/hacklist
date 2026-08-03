@@ -6,6 +6,7 @@ import discovery from "../data/events.json";
 type EventRecord = {
   id: string;
   url: string;
+  platform: "luma" | "external";
   title: string;
   organizer: string;
   venue: string | null;
@@ -43,6 +44,7 @@ type Meta = {
   organizerCount: number;
   sourceCount: number;
   seedCount: number;
+  externalCount: number;
 };
 
 const meta = discovery.meta as Meta;
@@ -73,7 +75,7 @@ const filters = ["All", "Open now", "AI", "SF proper", "Cash prizes"];
 function sourceLabel(via: string) {
   try {
     const url = new URL(via);
-    return `luma.com${url.pathname}`;
+    return `${url.hostname}${url.pathname}`;
   } catch {
     return via;
   }
@@ -226,7 +228,7 @@ export default function Home() {
                     By <b>{event.organizer}</b>
                     {" · "}
                     {[event.venue, event.city].filter(Boolean).join(" · ") ||
-                      "Location on Luma"}
+                      "Location on event page"}
                   </p>
                   <div className="tags">
                     {event.tags.map((tag) => <span key={tag}>{tag}</span>)}
@@ -270,7 +272,7 @@ export default function Home() {
             <ul className="source-list">
               <li><span className="source-index">A</span><div><b>Luma surfaces</b><small>Explore, categories, calendar pages</small></div><strong>{String(meta.seedCount).padStart(2, "0")}</strong></li>
               <li><span className="source-index">B</span><div><b>Organizer graph</b><small>Hosts, co-hosts, presented-by</small></div><strong>{String(meta.organizerCount).padStart(2, "0")}</strong></li>
-              <li><span className="source-index">C</span><div><b>Open-web index</b><small>Queries, variants, date windows</small></div><strong>—</strong></li>
+              <li><span className="source-index">C</span><div><b>External listings</b><small>Off-Luma events linked by public sources</small></div><strong>{String(meta.externalCount).padStart(2, "0")}</strong></li>
               <li><span className="source-index">D</span><div><b>Discovery paths</b><small>Distinct surfaces that yielded events</small></div><strong>{String(meta.sourceCount).padStart(2, "0")}</strong></li>
             </ul>
           </div>

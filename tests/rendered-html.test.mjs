@@ -35,8 +35,12 @@ test("events.json only contains upcoming, fully-normalized events", () => {
     dated.length >= eventsData.events.length * 0.8,
     "most events should have parsed dates — check the evidence time format",
   );
+  const ids = new Set();
   for (const event of eventsData.events) {
-    assert.match(event.url, /^https:\/\/luma\.com\//);
+    assert.match(event.url, /^https:\/\//);
+    assert.ok(["luma", "external"].includes(event.platform));
+    assert.ok(!ids.has(event.id), `duplicate event id: ${event.id}`);
+    ids.add(event.id);
     assert.ok(event.title.length > 3);
     assert.ok(event.organizer.length > 0);
     assert.ok(event.score >= 0 && event.score <= 100);

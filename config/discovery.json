@@ -2,9 +2,11 @@
   "city": "San Francisco",
   "timezone": "America/Los_Angeles",
   "radiusMiles": 55,
-  "maxPagesPerSweep": 24,
+  "maxPagesPerSweep": 72,
+  "maxSweepMinutes": 12,
   "maxGraphDepth": 2,
   "seedUrls": [
+    "https://luma.com/discover/sf",
     "https://luma.com/discover/sf/tech",
     "https://luma.com/hackathon_collections",
     "https://luma.com/genai-sf",
@@ -12,18 +14,47 @@
     "https://luma.com/nvidia-events",
     "https://luma.com/lablab.ai",
     "https://luma.com/betauniversity",
-    "https://luma.com/frontiertower"
+    "https://luma.com/frontiertower",
+    "https://luma.com/cerebralvalley_",
+    "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON"
+  ],
+  "externalIndexUrls": [
+    "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON"
   ],
   "areas": {
     "SF": ["san francisco", "sf", "daly city", "south san francisco"],
-    "East Bay": ["oakland", "berkeley"],
-    "Peninsula": ["san mateo", "redwood city", "palo alto", "menlo park"],
+    "North Bay": ["sausalito", "san rafael", "novato"],
+    "East Bay": [
+      "oakland",
+      "berkeley",
+      "alameda",
+      "emeryville",
+      "richmond",
+      "walnut creek",
+      "concord",
+      "hayward",
+      "fremont",
+      "pleasanton"
+    ],
+    "Peninsula": [
+      "san bruno",
+      "millbrae",
+      "burlingame",
+      "san mateo",
+      "redwood city",
+      "palo alto",
+      "stanford",
+      "menlo park"
+    ],
     "South Bay": [
       "mountain view",
       "sunnyvale",
       "santa clara",
       "san jose",
-      "milpitas"
+      "milpitas",
+      "cupertino",
+      "campbell",
+      "los gatos"
     ]
   },
   "placeTerms": [
@@ -31,17 +62,35 @@
     "sf",
     "oakland",
     "berkeley",
+    "alameda",
+    "emeryville",
+    "richmond",
+    "walnut creek",
+    "concord",
+    "hayward",
+    "fremont",
+    "pleasanton",
+    "sausalito",
+    "san rafael",
+    "novato",
     "daly city",
     "south san francisco",
+    "san bruno",
+    "millbrae",
+    "burlingame",
     "san mateo",
     "redwood city",
     "palo alto",
+    "stanford",
     "menlo park",
     "mountain view",
     "sunnyvale",
     "santa clara",
     "san jose",
-    "milpitas"
+    "milpitas",
+    "cupertino",
+    "campbell",
+    "los gatos"
   ],
   "candidateTerms": [
     "hackathon",

@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -12,6 +13,9 @@ const discovery = JSON.parse(
 
 const timezone = config.timezone;
 const sweepTime = new Date(discovery.sweep.completedAt).getTime();
+const configuredLocalCities = new Set(
+  Object.values(config.areas ?? {}).flat(),
+);
 
 const WEEKDAYS = [
   "Sunday",
@@ -212,6 +216,20 @@ function parseSchedule(lines) {
   return null;
 }
 
+function parseStructuredSchedule(structuredEvent) {
+  if (!structuredEvent?.startDate || !structuredEvent?.endDate) return null;
+  const startUtc = Date.parse(structuredEvent.startDate);
+  const endUtc = Date.parse(structuredEvent.endDate);
+  if (
+    !Number.isFinite(startUtc) ||
+    !Number.isFinite(endUtc) ||
+    endUtc <= startUtc
+  ) {
+    return null;
+  }
+  return { startUtc, endUtc, timeLineIndex: -1 };
+}
+
 function parseLocation(lines, timeLineIndex) {
   const registrationIndex = lines.indexOf("Registration", timeLineIndex);
   const stop =
@@ -260,6 +278,42 @@ function parseLocation(lines, timeLineIndex) {
   return { venue, city };
 }
 
+function parseStructuredLocation(structuredEvent, evidence) {
+  const location = structuredEvent?.location ?? {};
+  let city = location.city || null;
+  if (!city) {
+    const placePattern = new RegExp(
+      `\\b(${config.placeTerms
+        .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+        .join("|")})\\b`,
+      "i",
+    );
+    const match = evidence.match(placePattern);
+    if (match) {
+      city = match[1]
+        .split(" ")
+        .map((word) => word[0].toUpperCase() + word.slice(1))
+        .join(" ");
+    }
+  }
+  const rawVenue = location.name || null;
+  let venue =
+    rawVenue && !/^(online|virtual)( event)?$/i.test(rawVenue)
+      ? rawVenue
+      : null;
+  if (venue && city) {
+    const escapedCity = city.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    if (new RegExp(`^${escapedCity}(?:,\\s*[^,]+)?$`, "i").test(venue)) {
+      venue = null;
+    } else {
+      venue =
+        venue.replace(new RegExp(`,?\\s*${escapedCity}\\s*$`, "i"), "").trim() ||
+        null;
+    }
+  }
+  return { venue, city };
+}
+
 function areaForCity(city) {
   if (!city) return "Bay Area";
   const lower = city.toLowerCase();
@@ -279,6 +333,20 @@ function parseOrganizer(lines) {
     return lines[hostedIndex + 1];
   }
   return "Unknown organizer";
+}
+
+function parseCandidateOrganizer(candidate, lines) {
+  const structured = candidate.structuredEvent?.organizers?.[0];
+  if (structured) return structured;
+  const parsed = parseOrganizer(lines);
+  if (parsed !== "Unknown organizer") return parsed;
+  try {
+    const hostname = new URL(candidate.url).hostname.replace(/^www\./, "");
+    if (hostname === "x.ai") return "xAI";
+    return hostname;
+  } catch {
+    return parsed;
+  }
 }
 
 function parseStatus(lines) {
@@ -302,6 +370,41 @@ function parseStatus(lines) {
     return "Approval";
   }
   return "Check page";
+}
+
+function parseCandidateStatus(candidate, lines) {
+  const evidence = candidate.evidence;
+  if (
+    /applications? closed|application deadline.*(?:passed|closed)/i.test(
+      evidence,
+    )
+  ) {
+    return "Closed";
+  }
+  if (/schema\.org\/SoldOut/i.test(
+    candidate.structuredEvent?.offerAvailability ?? "",
+  )) {
+    return "Sold out";
+  }
+  const parsed = parseStatus(lines);
+  if (parsed !== "Check page") return parsed;
+  if (/applications? open|apply to attend/i.test(evidence)) return "Approval";
+  if (/register|registration open/i.test(evidence)) return "Open";
+  return parsed;
+}
+
+function stableEventId(url) {
+  const parsed = new URL(url);
+  if (parsed.hostname === "luma.com") return parsed.pathname.slice(1);
+  const host = parsed.hostname
+    .replace(/^www\./, "")
+    .replace(/[^a-z0-9]+/gi, "-");
+  const path = parsed.pathname
+    .replace(/^\/+|\/+$/g, "")
+    .replace(/[^a-z0-9]+/gi, "-");
+  const readable = `${host}-${path}`.replace(/-+/g, "-").slice(0, 54);
+  const hash = createHash("sha256").update(url).digest("hex").slice(0, 8);
+  return `external-${readable || "event"}-${hash}`;
 }
 
 function parsePrize(title, evidence) {
@@ -358,7 +461,7 @@ function shortTime(utcMs) {
 }
 
 function describeSchedule(schedule) {
-  if (!schedule) return { dateLabel: "TBC", dateDetail: "Date on Luma" };
+  if (!schedule) return { dateLabel: "TBC", dateDetail: "Date on event page" };
   const start = zoneParts(schedule.startUtc, timezone);
   const end = zoneParts(schedule.endUtc, timezone);
   const dateLabel = `${MONTH_ABBREVS[start.month - 1].toUpperCase()} ${String(start.day).padStart(2, "0")}`;
@@ -454,14 +557,19 @@ for (const candidate of discovery.candidates) {
     .map((line) => line.replace(/​/g, "").trim())
     .filter(Boolean);
 
-  const schedule = parseSchedule(lines);
+  const schedule =
+    parseStructuredSchedule(candidate.structuredEvent) ?? parseSchedule(lines);
   if (schedule && schedule.endUtc < sweepTime) continue; // second-layer past filter
+  const structuredCity = candidate.structuredEvent?.location?.city?.toLowerCase();
+  if (structuredCity && !configuredLocalCities.has(structuredCity)) continue;
 
-  const location = schedule
-    ? parseLocation(lines, schedule.timeLineIndex)
-    : { venue: null, city: null };
+  const location = candidate.structuredEvent
+    ? parseStructuredLocation(candidate.structuredEvent, candidate.evidence)
+    : schedule
+      ? parseLocation(lines, schedule.timeLineIndex)
+      : { venue: null, city: null };
   const area = areaForCity(location.city);
-  const status = parseStatus(lines);
+  const status = parseCandidateStatus(candidate, lines);
   const prize = parsePrize(candidate.title, candidate.evidence);
   const { dateLabel, dateDetail } = describeSchedule(schedule);
 
@@ -476,10 +584,12 @@ for (const candidate of discovery.candidates) {
   );
 
   events.push({
-    id: new URL(candidate.url).pathname.slice(1),
+    id: stableEventId(candidate.url),
     url: candidate.url,
+    platform:
+      new URL(candidate.url).hostname === "luma.com" ? "luma" : "external",
     title: candidate.title,
-    organizer: parseOrganizer(lines),
+    organizer: parseCandidateOrganizer(candidate, lines),
     venue: location.venue,
     city: location.city,
     area,
@@ -521,6 +631,8 @@ const output = {
     organizerCount: new Set(events.map((e) => e.organizer)).size,
     sourceCount: new Set(events.map((e) => e.discoveredVia)).size,
     seedCount: config.seedUrls.length,
+    externalCount: events.filter((event) => event.platform === "external")
+      .length,
   },
   events,
 };
@@ -529,8 +641,10 @@ const output = {
 
 const historyDir = resolve(root, "data/history");
 await mkdir(historyDir, { recursive: true });
+const stamp = discovery.sweep.completedAt.replace(/[:.]/g, "-");
+const currentHistoryName = `sweep-${stamp}.json`;
 const previousSnapshots = (await readdir(historyDir))
-  .filter((name) => name.endsWith(".json"))
+  .filter((name) => name.endsWith(".json") && name !== currentHistoryName)
   .sort();
 
 let previous = null;
@@ -573,9 +687,8 @@ const changes = {
     }),
 };
 
-const stamp = discovery.sweep.completedAt.replace(/[:.]/g, "-");
 await writeFile(
-  resolve(historyDir, `sweep-${stamp}.json`),
+  resolve(historyDir, currentHistoryName),
   `${JSON.stringify(output, null, 2)}\n`,
 );
 await writeFile(
