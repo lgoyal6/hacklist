@@ -30,6 +30,11 @@ async function render(path) {
 test("events.json only contains upcoming, fully-normalized events", () => {
   const sweepTime = new Date(eventsData.meta.sweepCompletedAt).getTime();
   assert.ok(eventsData.events.length > 0, "expected at least one event");
+  const dated = eventsData.events.filter((e) => e.start && e.end);
+  assert.ok(
+    dated.length >= eventsData.events.length * 0.8,
+    "most events should have parsed dates — check the evidence time format",
+  );
   for (const event of eventsData.events) {
     assert.match(event.url, /^https:\/\/luma\.com\//);
     assert.ok(event.title.length > 3);

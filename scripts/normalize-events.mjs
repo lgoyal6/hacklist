@@ -135,8 +135,10 @@ function parseTime(hourStr, minuteStr, meridiem) {
 const DATE_LINE = new RegExp(
   `^(${WEEKDAYS.join("|")}), (${MONTHS.join("|")}) (\\d{1,2})(?:, (\\d{4}))?$`,
 );
+// Luma renders times event-local; when the viewer's timezone differs it
+// appends a label ("9:00 AM - 7:00 PM PDT"), so allow an optional suffix.
 const TIME_LINE = new RegExp(
-  `^(\\d{1,2}):(\\d{2}) (AM|PM) - (?:(${MONTH_ABBREVS.join("|")}) (\\d{1,2}), )?(\\d{1,2}):(\\d{2}) (AM|PM)$`,
+  `^(\\d{1,2}):(\\d{2}) (AM|PM) - (?:(${MONTH_ABBREVS.join("|")}) (\\d{1,2}), )?(\\d{1,2}):(\\d{2}) (AM|PM)(?: [A-Z]{2,5})?$`,
 );
 
 function inferYear(weekdayName, monthIndex, day, explicitYear) {
