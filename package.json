@@ -19,7 +19,8 @@
     "db:generate": "drizzle-kit generate",
     "discover:search": "node scripts/discover-search.mjs",
     "luma:tags": "node scripts/luma-tag-events.mjs",
-    "cover": "node scripts/make-cover.mjs"
+    "cover": "node scripts/make-cover.mjs",
+    "avatar": "node scripts/make-avatar.mjs"
   },
   "dependencies": {
     "@lightpanda/browser": "^1.2.0",
