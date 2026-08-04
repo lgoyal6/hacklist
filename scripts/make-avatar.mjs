@@ -1,56 +1,68 @@
-// Calendar avatar. Luma renders it around 40-64px, so this has to be a mark
-// with one idea in it: a dither field with a bright cell ring and a single
-// accent cell. At small sizes you read "square + coloured dot"; up close the
-// grain matches the site's background.
+// Calendar avatar: the Golden Gate as pixel art.
+//
+// Drawn on a deliberately coarse 12x12 grid. Luma shows this around 40-64px, so
+// each cell has to land on roughly 4 real pixels — any finer and the towers turn
+// to mush, which is exactly what killed the earlier dither mark.
+//
+// Usage: node scripts/make-avatar.mjs
 import { writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright-core";
 import { root } from "./lib/local-browser.mjs";
 
-const SIZE = 512; // rendered at 2x below
+const SIZE = 480;
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
-// 9x9 field. 2 = accent cell, 1 = bright cell, 0 = faint dot.
-// A pixel H rather than a plain ring: same dither language, but it carries the
-// name instead of reading like any generic app icon. Two verticals and a
-// crossbar survive being shrunk to 40px.
-const MARKS = {
-  h: [
-    [0, 1, 1, 0, 0, 1, 1, 0],
-    [0, 1, 1, 0, 0, 1, 1, 0],
-    [0, 1, 1, 0, 0, 1, 1, 0],
-    [0, 1, 1, 1, 1, 1, 1, 0],
-    [0, 1, 1, 1, 1, 1, 1, 0],
-    [0, 1, 1, 0, 0, 1, 1, 0],
-    [0, 1, 1, 0, 0, 1, 1, 0],
-    [0, 1, 1, 0, 0, 1, 1, 2],
-  ],
-};
-const RING = MARKS.h;
+// One tower, not the whole span. The Golden Gate's identity is the tapering
+// twin-upright tower and the cable sweeping away from it; two tiny towers on a
+// coarse grid just read as a fence. Cropping to one tower buys the scale to
+// show both, and it survives 48px.
+// o = structure, ~ = bay, . = sky
+const ART = [
+  ".............",
+  ".....o.o.....",
+  ".....ooo.....",
+  ".....o.o.....",
+  "..o..ooo..o..",
+  ".o...o.o...o.",
+  "o....o.o....o",
+  "ooooooooooooo",
+  ".....o.o.....",
+  ".....o.o.....",
+  ".~~~~~~~~~~~.",
+  ".~~~~~~~~~~~.",
+  ".............",
+];
 
-const cell = SIZE / 8;
-const cells = RING.flatMap((row, y) =>
-  row.map((kind, x) => {
-    const cx = x * cell + cell / 2;
-    const cy = y * cell + cell / 2;
-    if (kind === 0) {
-      return `<circle cx="${cx}" cy="${cy}" r="${cell * 0.055}" fill="#f6f4ec" opacity="0.09"/>`;
-    }
-    const fill = kind === 2 ? "#c2521f" : "#f6f4ec";
-    const size = cell * (kind === 2 ? 0.62 : 0.92);
-    return `<rect x="${cx - size / 2}" y="${cy - size / 2}" width="${size}" height="${size}" fill="${fill}"/>`;
+const GRID = ART.length;
+const cell = SIZE / GRID;
+// International orange, the bridge's actual colour.
+const ORANGE = "#c0362c";
+const ORANGE_LIT = "#d9502f";
+const BAY = "#1d2a33";
+
+const rects = ART.flatMap((row, y) =>
+  [...row].map((glyph, x) => {
+    if (glyph === ".") return "";
+    const fill =
+      glyph === "~" ? BAY : y <= 2 ? ORANGE_LIT : ORANGE;
+    // Full-bleed cells: pixel art wants hard edges, not gaps.
+    return `<rect x="${x * cell}" y="${y * cell}" width="${cell + 0.5}" height="${cell + 0.5}" fill="${fill}"/>`;
   }),
 ).join("");
 
 const html = `<!doctype html><meta charset="utf-8"><style>
   *{margin:0;box-sizing:border-box}
   html,body{width:${SIZE}px;height:${SIZE}px}
-  body{position:relative;overflow:hidden;background:
-    repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px),
-    radial-gradient(90% 70% at 22% 8%, #2b291f 0%, transparent 60%),
-    linear-gradient(150deg,#232118 0%,#191813 55%,#12110d 100%);}
-  svg{position:absolute;inset:0}
-</style><body><svg width="${SIZE}" height="${SIZE}" viewBox="0 0 ${SIZE} ${SIZE}">${cells}</svg></body>`;
+  body{
+    position:relative;overflow:hidden;
+    /* Dusk sky, and the site's scanline grain over the top. */
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 3px),
+      linear-gradient(178deg,#2c2a3a 0%,#3b3547 34%,#5b4348 62%,#7a4c38 100%);
+  }
+  svg{position:absolute;inset:0;shape-rendering:crispEdges}
+</style><body><svg width="${SIZE}" height="${SIZE}" viewBox="0 0 ${SIZE} ${SIZE}">${rects}</svg></body>`;
 
 const htmlPath = resolve(root, "public/avatar.html");
 await writeFile(htmlPath, html);
@@ -62,16 +74,17 @@ try {
   });
   await page.goto(`file://${htmlPath}`, { waitUntil: "load" });
   await page.waitForTimeout(400);
-  const variant = "h";
-  const out = resolve(root, `public/calendar-avatar-${variant}.png`);
-  await page.screenshot({ path: out });
-  // A 48px copy, to check it survives the size Luma actually shows.
+  await page.screenshot({ path: resolve(root, "public/calendar-avatar.png") });
+
+  // The proof that matters: what a 48px list item actually shows.
   const small = await browser.newPage({ viewport: { width: 48, height: 48 } });
   await small.goto(`file://${htmlPath}`, { waitUntil: "load" });
-  await small.addStyleTag({ content: `html,body{width:48px;height:48px}svg{width:48px;height:48px}` });
+  await small.addStyleTag({
+    content: "html,body{width:48px;height:48px}svg{width:48px;height:48px}",
+  });
   await small.waitForTimeout(300);
-  await small.screenshot({ path: resolve(root, `public/avatar-48-${variant}.png`) });
-  console.log(`Wrote ${out} at ${SIZE * 2}x${SIZE * 2}, plus a 48px proof`);
+  await small.screenshot({ path: resolve(root, "public/avatar-48.png") });
+  console.log(`Wrote public/calendar-avatar.png at ${SIZE * 2}px, plus a 48px proof`);
 } finally {
   await browser.close();
 }
