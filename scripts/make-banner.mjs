@@ -20,29 +20,35 @@ const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 // Upright and compact. The previous pass stretched the torso horizontally and
 // the result read as a cat; the real dino stands tall, with the head high over a
 // short thick neck, a stubby tail off the back, and both legs straight down.
+// Traced from the real sprite. Earlier passes got three things wrong: the head
+// is proportionally large with a muzzle jutting right, the tail is short, thick
+// and angled up off the back rather than a long stepped wedge, and the legs are
+// thin with a clear gap between them.
+// Traced from the real sprite: large head with a muzzle jutting right, a SHORT
+// thick neck sitting the head close over the body, a modest triangular tail off
+// the back, and thin legs with a clear gap. Earlier passes stretched the neck
+// and ballooned the tail, which read as a swan and then as two body masses.
 const DINO = [
-  "..............#######",
-  "..............#######",
-  "..............##.####",
-  "..............#######",
-  "..............#######",
-  "..............####...",
-  "..............######.",
-  "..........#########..",
-  "#.........########...",
-  "##........########...",
-  "###.......########...",
-  ".####....#########...",
-  "..###############....",
-  "...##############....",
-  "....#############....",
-  ".....###########.....",
-  ".....##########......",
-  ".....####...####.....",
-  ".....###.....###.....",
-  ".....###.....###.....",
-  ".....###.....####....",
-  "....#####....#####...",
+  "..............######",
+  "..............######",
+  "..............#.####",
+  "..............######",
+  "..............#####.",
+  "..........#########.",
+  "..........######....",
+  "..#.......######....",
+  ".###......######....",
+  ".####...#######.....",
+  ".###############....",
+  "..##############....",
+  "..#############.....",
+  "...###########......",
+  "...##########.......",
+  "....###...###.......",
+  "....##.....##.......",
+  "....##.....##.......",
+  "....##.....###......",
+  "...####....###......",
 ];
 
 const CACTUS = [
