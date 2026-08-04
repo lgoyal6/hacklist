@@ -141,7 +141,9 @@ export default function Home() {
         </div>
         <div className="subscribe-actions">
           <div className="feed">
-            <code>{feedUrl}</code>
+            <code title={feedUrl}>
+              {origin ? `${origin.replace(/^https?:\/\//, "")}/calendar.ics` : "/calendar.ics"}
+            </code>
             <button onClick={copyFeed} aria-label="Copy calendar link">
               {copied ? "Copied" : "Copy link"}
             </button>

@@ -21,12 +21,41 @@
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  /* Layered from front to back: fine vertical scanlines and a dot dither give
+     the page a screen-like grain, over a slow warm-to-cool gradient. Kept at a
+     few percent opacity so it reads as texture and never as decoration. */
+  background:
+    /* Scanlines and a dot dither, strong enough to actually read as pixel
+       grain. Earlier values were so faint they were invisible on a real
+       screen. */
+    repeating-linear-gradient(
+      90deg,
+      rgba(25, 24, 19, 0.055) 0 1px,
+      transparent 1px 3px
+    ),
+    radial-gradient(rgba(25, 24, 19, 0.09) 0.7px, transparent 0.8px) 0 0 / 5px 5px,
+    /* Warm bloom top-left, cool fall-off bottom-right: a real tonal range
+       rather than two near-identical creams. */
+    radial-gradient(
+      95% 70% at 8% -8%,
+      rgba(154, 52, 18, 0.1) 0%,
+      transparent 60%
+    ),
+    linear-gradient(
+      165deg,
+      #fefdfb 0%,
+      #f6f4ec 26%,
+      #eae9de 55%,
+      #dfe1d8 78%,
+      #d6dad1 100%
+    );
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 h1, h2, h3, h4 { margin: 0; font-weight: 400; }
 p { margin: 0; }
@@ -34,7 +63,7 @@ a { color: inherit; }
 button, input { font: inherit; color: inherit; }
 
 main {
-  max-width: 1060px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 clamp(20px, 5vw, 56px);
 }
@@ -84,10 +113,10 @@ main {
 }
 .lede h1 {
   font-family: var(--serif);
-  font-size: clamp(38px, 6vw, 64px);
+  font-size: clamp(38px, 5.4vw, 76px);
   line-height: 1.06;
   letter-spacing: -0.025em;
-  max-width: 22ch;
+  max-width: 26ch;
 }
 .lede h1 em { font-style: italic; color: var(--ink-soft); }
 .deck {
@@ -112,11 +141,17 @@ main {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
   gap: clamp(20px, 4vw, 52px);
   align-items: center;
-  padding: 30px 32px;
-  background: var(--paper-sunk);
+  padding: 34px 38px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(2px);
   border: 1px solid var(--rule);
 }
-.subscribe h2 { font-family: var(--serif); font-size: 22px; letter-spacing: -0.015em; }
+.subscribe h2 {
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  overflow-wrap: break-word;
+}
 .subscribe-copy p {
   margin-top: 8px;
   font-size: 14px;
@@ -124,24 +159,35 @@ main {
   color: var(--ink-soft);
   max-width: 42ch;
 }
-.subscribe-actions { display: flex; flex-direction: column; gap: 12px; }
+.subscribe-copy { min-width: 0; }
+.subscribe-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
 .feed {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--paper);
+  min-width: 0;
+  max-width: 100%;
+  background: rgba(255, 255, 255, 0.85);
   border: 1px solid var(--rule-firm);
   padding: 5px 5px 5px 13px;
 }
 .feed code {
-  flex: 1;
+  flex: 1 1 0;
   min-width: 0;
-  overflow-x: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--ink-soft);
+  scrollbar-width: none;
 }
+.feed code::-webkit-scrollbar { display: none; }
 .feed button {
   flex-shrink: 0;
   border: 0;
@@ -240,8 +286,8 @@ main {
 
 .event {
   display: grid;
-  grid-template-columns: 92px minmax(0, 1fr) 132px;
-  gap: 26px;
+  grid-template-columns: 104px minmax(0, 1fr) 150px;
+  gap: 34px;
   padding: 26px 0;
   border-bottom: 1px solid var(--rule);
 }
@@ -355,15 +401,47 @@ footer a {
 footer a:hover { color: var(--accent); }
 
 @media (max-width: 760px) {
-  .subscribe { grid-template-columns: 1fr; }
-  .event { grid-template-columns: 74px minmax(0, 1fr); }
+  .subscribe { grid-template-columns: 1fr; padding: 24px 20px; }
+  .event { grid-template-columns: 68px minmax(0, 1fr); gap: 18px; padding: 22px 0; }
   .event-side {
     grid-column: 2;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     text-align: left;
-    padding-top: 4px;
+    padding-top: 8px;
+    gap: 12px;
     flex-wrap: wrap;
   }
+  .event-note { display: none; }
+  .listing-head { align-items: stretch; flex-direction: column; gap: 12px; }
+  .search input { width: 100%; }
+  /* A scroll strip beats a wrapped pile of filters on a narrow screen. */
+  .views {
+    gap: 18px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    padding-bottom: 10px;
+  }
+  .views::-webkit-scrollbar { display: none; }
+  .views button { flex-shrink: 0; }
+  .views .count { flex-shrink: 0; margin-left: 8px; }
+  footer { flex-direction: column; gap: 12px; }
+  footer a { margin-left: 0; }
+}
+
+@media (max-width: 520px) {
+  .masthead { gap: 12px; padding: 18px 0 14px; }
+  /* The nameplate and the one action are what matter at this width. */
+  .masthead-meta { display: none; }
+  .wordmark { font-size: 21px; }
+  .lede { padding: 40px 0 32px; }
+  .lede h1 { font-size: 33px; letter-spacing: -0.02em; }
+  .deck { font-size: 15.5px; margin-top: 20px; }
+  .feed { flex-direction: column; align-items: stretch; gap: 8px; padding: 10px; }
+  .feed code { font-size: 11px; }
+  .feed button { width: 100%; padding: 11px; }
+  .event time b { font-size: 12px; }
+  .event-body h4 { font-size: 18px; }
 }
