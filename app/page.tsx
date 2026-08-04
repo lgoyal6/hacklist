@@ -94,8 +94,8 @@ const filters = [
   "Open now",
   "AI",
   "SF proper",
-  "Cash prizes",
-  "Adjacent",
+  "Prizes",
+  "Tech events",
 ];
 
 function sourceLabel(via: string) {
@@ -132,13 +132,13 @@ export default function Home() {
       const matchesFilter =
         filter === "All" ||
         (filter === "Hackathons" && event.category === "hackathon") ||
-        (filter === "Adjacent" && event.category === "adjacent") ||
+        (filter === "Tech events" && event.category === "adjacent") ||
         (filter === "Open now" && ["Open", "Approval"].includes(event.status)) ||
         (filter === "AI" &&
           (event.tags.some((tag) => /ai|agent/i.test(tag)) ||
             /\bai\b/i.test(event.title))) ||
         (filter === "SF proper" && event.area === "SF") ||
-        (filter === "Cash prizes" && event.prize.includes("$"));
+        (filter === "Prizes" && event.prize.includes("$"));
       return matchesQuery && matchesFilter;
     });
     return [...list].sort((a, b) =>
@@ -205,7 +205,7 @@ export default function Home() {
 
       <section className="signal-strip" aria-label="Coverage summary">
         <div><strong>{meta.hackathonCount}</strong><span>hackathons</span></div>
-        <div><strong>{meta.adjacentCount}</strong><span>adjacent events</span></div>
+        <div><strong>{meta.adjacentCount}</strong><span>tech events</span></div>
         <div><strong>{meta.organizerCount}</strong><span>organizer nodes</span></div>
         <div><strong>{meta.pagesVisited}</strong><span>pages per sweep</span></div>
         <div><strong>2×</strong><span>daily refresh</span></div>
@@ -239,8 +239,8 @@ export default function Home() {
           </div>
           <small>
             Outlook, Notion and everything else: paste the URL above into
-            &ldquo;subscribe from web&rdquo;. Adjacent events are prefixed
-            [Adjacent] so they never read as hackathons.
+            &ldquo;subscribe from web&rdquo;. Tech events are prefixed
+            [Tech Event] so they never read as hackathons.
           </small>
         </div>
       </section>
@@ -313,7 +313,7 @@ export default function Home() {
                   <div className="event-meta">
                     <StatusDot status={event.status} />
                     {event.category === "adjacent" && (
-                      <span className="adjacent-badge">Adjacent</span>
+                      <span className="adjacent-badge">Tech event</span>
                     )}
                     <span>{event.area}</span>
                     <span>{event.prize}</span>
@@ -333,7 +333,7 @@ export default function Home() {
                     <summary>Why this score</summary>
                     <p>
                       {event.category === "adjacent" && (
-                        <><b>Adjacent, not a hackathon</b>
+                        <><b>A tech event, not a hackathon</b>
                         {event.adjacentReason ? ` — ${event.adjacentReason}. ` : ". "}</>
                       )}
                       {event.why} Confidence {event.scores.confidence} · builder

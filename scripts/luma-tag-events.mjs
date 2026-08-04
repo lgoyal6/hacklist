@@ -6,10 +6,14 @@
 // reads as a filter rather than as noise:
 //
 //   Hackathon    — the real thing
-//   Adjacent     — pitch night, demo day, robot night: worth listing, not a hackathon
+//   Tech Events  — summit, meetup, conference, build night: listed, not a hackathon
 //   SF           — in the city
 //   Bay Area     — everywhere else inside the radius
-//   Cash Prizes  — money on the line, not just credits or swag
+//   Prizes       — a prize pool with a figure attached
+//
+// Deliberately "Prizes" and not "Cash Prizes": of the six events that qualify,
+// only three actually say cash. One is "$5k in OpenAI Credits" and two just say
+// "prizes", so the stronger label would have been wrong on half of them.
 //
 // Tags must exist before they can be applied. The "Add new tag" field in the
 // per-event popover looks like it creates them but silently does not — verified
@@ -38,9 +42,9 @@ const calendarName =
     : "HackList SF";
 
 function desiredTags(event) {
-  const tags = [event.category === "adjacent" ? "Adjacent" : "Hackathon"];
+  const tags = [event.category === "adjacent" ? "Tech Events" : "Hackathon"];
   tags.push(event.area === "SF" ? "SF" : "Bay Area");
-  if (/\$/.test(event.prize ?? "")) tags.push("Cash Prizes");
+  if (/\$/.test(event.prize ?? "")) tags.push("Prizes");
   return tags;
 }
 
@@ -82,7 +86,13 @@ try {
 } catch {
   // first run
 }
-const isApplied = (slug, tag) => (tagState.applied[slug] ?? []).includes(tag);
+// Failures are held only for this run. Recording them as applied would mean a
+// transient problem permanently skips that tag, which is how six "Prizes" tags
+// went missing after the tag itself failed to be created.
+const failedThisRun = new Set();
+const isApplied = (slug, tag) =>
+  (tagState.applied[slug] ?? []).includes(tag) ||
+  failedThisRun.has(`${slug}|${tag}`);
 const markApplied = (slug, tag) => {
   tagState.applied[slug] = [...new Set([...(tagState.applied[slug] ?? []), tag])];
 };
@@ -138,13 +148,19 @@ async function ensureTagsExist(page, names) {
   for (const name of names) {
     await page.goto(settingsUrl, { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3_000);
-    const eventTagsBlock = await page.evaluate(() => {
+    // Parse the existing names exactly. A substring test is not good enough:
+    // "Cash Prizes" contains "Prizes", so checking for the latter reported it as
+    // already created and the tag was never made.
+    const existing = await page.evaluate(() => {
       const text = (document.body.innerText || "").replace(/\s+/g, " ");
       const start = text.search(/Event Tags/i);
       const end = text.search(/Member Tags/i);
-      return start >= 0 ? text.slice(start, end > start ? end : start + 400) : "";
+      const block = start >= 0 ? text.slice(start, end > start ? end : start + 500) : "";
+      return [...block.matchAll(/([A-Za-z][A-Za-z&'\- ]*?)\s+\d+\s+Events?\b/g)].map(
+        (match) => match[1].trim(),
+      );
     });
-    if (new RegExp(`(^|[^a-z])${name}([^a-z]|$)`, "i").test(eventTagsBlock)) continue;
+    if (existing.some((tag) => tag.toLowerCase() === name.toLowerCase())) continue;
     try {
       await page.getByRole("button", { name: "Create" }).first().click({ timeout: 6_000 });
       await page.waitForTimeout(2_000);
@@ -240,7 +256,7 @@ try {
           `${target.title.slice(0, 28)} / ${target.tag}: ${String(error).slice(0, 80)}`,
         );
         skipped += 1;
-        markApplied(target.row.slug, target.tag); // do not spin on it
+        failedThisRun.add(`${target.row.slug}|${target.tag}`); // retry next run
         await page.keyboard.press("Escape").catch(() => {});
       }
     }
