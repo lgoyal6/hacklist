@@ -13,30 +13,36 @@ const HEIGHT = 420;
 const CELL = 10;
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
+// Reconstructed from the actual sprite's signature features, which the first
+// pass missed: a flat-topped blocky head with the eye as a single hole, a lower
+// jaw that juts forward under a gap, the little arm off the chest, a stepped
+// wedge tail, and two legs of different lengths mid-stride.
+// Upright and compact. The previous pass stretched the torso horizontally and
+// the result read as a cat; the real dino stands tall, with the head high over a
+// short thick neck, a stubby tail off the back, and both legs straight down.
 const DINO = [
-  "..............######",
-  ".............#######",
-  ".............###.###",
-  ".............#######",
-  ".............####...",
-  "............######..",
-  "#...........######..",
-  "##.........#######..",
-  "###.......########..",
-  "####.....#########..",
-  "#####...##########..",
-  "######.###########..",
-  ".##################.",
-  "..################..",
-  "...##############...",
-  "....############....",
-  ".....##########.....",
-  "......#########.....",
-  "......####.####.....",
-  "......###...###.....",
-  "......##.....##.....",
-  "......#.......#.....",
-  ".....###.....###....",
+  "..............#######",
+  "..............#######",
+  "..............##.####",
+  "..............#######",
+  "..............#######",
+  "..............####...",
+  "..............######.",
+  "..........#########..",
+  "#.........########...",
+  "##........########...",
+  "###.......########...",
+  ".####....#########...",
+  "..###############....",
+  "...##############....",
+  "....#############....",
+  ".....###########.....",
+  ".....##########......",
+  ".....####...####.....",
+  ".....###.....###.....",
+  ".....###.....###.....",
+  ".....###.....####....",
+  "....#####....#####...",
 ];
 
 const CACTUS = [
@@ -78,7 +84,7 @@ const place = (sprite, ox, oy, fill = INK) => {
 };
 
 // The dino stands on the ground line, mid-stride.
-place(DINO, 12, GROUND_ROW - DINO.length);
+place(DINO, 11, GROUND_ROW - DINO.length);
 // Cacti ahead of it, at the game's uneven spacing.
 place(CACTUS, 58, GROUND_ROW - CACTUS.length);
 place(CACTUS, 96, GROUND_ROW - CACTUS.length);
