@@ -95,7 +95,11 @@ test("serves an ICS feed with one VEVENT per dated event", async () => {
   assert.match(ics, /BEGIN:VTIMEZONE/);
   assert.match(ics, /X-WR-CALNAME:Hacklist SF/);
 
-  const datedEvents = eventsData.events.filter((e) => e.start && e.end);
+  // Events whose time we do not trust are deliberately withheld from the feed
+  // rather than dropped into a subscriber's calendar at the wrong hour.
+  const datedEvents = eventsData.events.filter(
+    (e) => e.start && e.end && !e.timeUnverified,
+  );
   const vevents = ics.match(/BEGIN:VEVENT/g) ?? [];
   assert.equal(vevents.length, datedEvents.length);
   // Unfold folded lines before checking content.

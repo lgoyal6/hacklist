@@ -142,8 +142,19 @@ const DATE_LINE = new RegExp(
 // Luma renders times event-local; when the viewer's timezone differs it
 // appends a label ("9:00 AM - 7:00 PM PDT"), so allow an optional suffix.
 const TIME_LINE = new RegExp(
-  `^(\\d{1,2}):(\\d{2}) (AM|PM) - (?:(${MONTH_ABBREVS.join("|")}) (\\d{1,2}), )?(\\d{1,2}):(\\d{2}) (AM|PM)(?: [A-Z]{2,5})?$`,
+  `^(\\d{1,2}):(\\d{2}) (AM|PM) - (?:(${MONTH_ABBREVS.join("|")}) (\\d{1,2}), )?(\\d{1,2}):(\\d{2}) (AM|PM)(?: ([A-Z]{2,5}))?$`,
 );
+
+// Luma prints the event's own timezone when it differs from the viewer's. That
+// label used to be matched and thrown away, so a "2:30 AM CDT" start was read as
+// 2:30 Pacific. Offsets are in minutes from UTC.
+const ZONE_OFFSETS = {
+  PST: -480, PDT: -420,
+  MST: -420, MDT: -360,
+  CST: -360, CDT: -300,
+  EST: -300, EDT: -240,
+  UTC: 0, GMT: 0,
+};
 
 function inferYear(weekdayName, monthIndex, day, explicitYear) {
   if (explicitYear) return explicitYear;
@@ -192,21 +203,28 @@ function parseSchedule(lines) {
     let endYear = year;
     if (endMonthIndex < monthIndex) endYear += 1;
 
-    const startUtc = localToUtc(
+    // If the page named a zone, read the clock time in that zone rather than
+    // assuming the calendar's own.
+    const labelled = timeMatch[9];
+    const zoneOffset = labelled ? ZONE_OFFSETS[labelled] : undefined;
+    const inZone = (y, mo, d, h, mi) =>
+      zoneOffset === undefined
+        ? localToUtc(y, mo, d, h, mi, timezone)
+        : Date.UTC(y, mo - 1, d, h, mi) - zoneOffset * 60_000;
+
+    const startUtc = inZone(
       year,
       monthIndex + 1,
       day,
       startTime.hour,
       startTime.minute,
-      timezone,
     );
-    let endUtc = localToUtc(
+    let endUtc = inZone(
       endYear,
       endMonthIndex + 1,
       endDay,
       endTime.hour,
       endTime.minute,
-      timezone,
     );
     // Same-day listings ending after midnight ("9:00 PM - 1:00 AM").
     if (endUtc <= startUtc) endUtc += 24 * 3600 * 1000;
@@ -576,7 +594,22 @@ for (const candidate of discovery.candidates) {
   const area = areaForCity(location.city);
   const status = parseCandidateStatus(candidate, lines);
   const prize = parsePrize(candidate.title, candidate.evidence);
-  const { dateLabel, dateDetail } = describeSchedule(schedule);
+  // Organisers sometimes set an event's timezone wrong, which yields a
+  // technically-correct conversion that is obvious nonsense: a hackathon
+  // "starting 12:30am and lasting an hour". Publishing a precise time we do not
+  // believe is worse than admitting we do not know it.
+  const startHour = schedule
+    ? zoneParts(schedule.startUtc, timezone).hour
+    : null;
+  const hours = schedule ? (schedule.endUtc - schedule.startUtc) / 3600000 : null;
+  const timeUnverified = Boolean(
+    schedule && ((startHour !== null && startHour < 6) || hours < 1.5),
+  );
+
+  const described = describeSchedule(schedule);
+  const dateLabel = described.dateLabel;
+  const dateDetail = timeUnverified ? "Time on event page" : described.dateDetail;
+
 
   const builderValue = scoreBuilderValue(schedule, prize, candidate.evidence);
   const accessibility = scoreAccessibility(status, area);
@@ -608,6 +641,7 @@ for (const candidate of discovery.candidates) {
     timezone,
     dateLabel,
     dateDetail,
+    timeUnverified,
     status,
     prize: prize.label,
     tags: parseTags(lines, candidate.title, candidate.evidence),

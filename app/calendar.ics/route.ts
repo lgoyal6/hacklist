@@ -4,6 +4,7 @@ type FeedEvent = {
   id: string;
   url: string;
   category: "hackathon" | "adjacent";
+  timeUnverified?: boolean;
   title: string;
   organizer: string;
   venue: string | null;
@@ -76,8 +77,10 @@ const timezoneBlock = [
 ];
 
 function buildCalendar(): string {
+  // An event whose time we do not trust is left out rather than dropped into a
+  // subscriber's calendar at the wrong hour.
   const events = (discovery.events as FeedEvent[]).filter(
-    (event) => event.start && event.end,
+    (event) => event.start && event.end && !event.timeUnverified,
   );
   const stamp = icsUtcStamp(discovery.meta.sweepCompletedAt);
 
