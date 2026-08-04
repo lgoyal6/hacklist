@@ -7,7 +7,7 @@ import { writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright-core";
 import { root } from "./lib/local-browser.mjs";
-import { CACTUSSMALL, DINO } from "./lib/dino-sprites.mjs";
+import { CACTUSSMALL, CLOUD, DINO } from "./lib/dino-sprites.mjs";
 
 const SIZE = 500;
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -51,13 +51,6 @@ const MOON = [
   ".###....",
   "..####..",
 ];
-const CLOUD = [
-  "..####..",
-  ".######.",
-  "########",
-  "..####..",
-];
-
 // Stars, as the game draws them: single cells, denser high in the frame.
 for (let y = 1; y < GROUND - 8; y++) {
   for (let x = 0; x < cols; x++) {
@@ -68,9 +61,8 @@ for (let y = 1; y < GROUND - 8; y++) {
 }
 
 place(MOON, cols - 16, 6, INK);
-place(CLOUD, 8, 12, DIM);
-place(CLOUD, 30, 22, DIM);
-place(CLOUD, 58, 9, DIM);
+place(CLOUD, 3, 5, DIM);
+place(CLOUD, 49, 20, DIM);
 
 // The dino, and a cactus ahead of it on the same ground line.
 const dinoW = DINO[0].length;

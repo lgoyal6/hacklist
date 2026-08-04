@@ -7,7 +7,7 @@ import { writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright-core";
 import { root } from "./lib/local-browser.mjs";
-import { CACTUSSMALL, DINO } from "./lib/dino-sprites.mjs";
+import { CACTUSSMALL, CLOUD, DINO } from "./lib/dino-sprites.mjs";
 
 const WIDTH = 1600;
 const HEIGHT = 420;
@@ -22,13 +22,6 @@ const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 // the result read as a cat; the real dino stands tall, with the head high over a
 // short thick neck, a stubby tail off the back, and both legs straight down.
 const CACTUS = CACTUSSMALL;
-
-const CLOUD = [
-  "..####..",
-  ".######.",
-  "########",
-  "..####..",
-];
 
 const cols = Math.ceil(WIDTH / CELL);
 const rows = Math.ceil(HEIGHT / CELL);
@@ -55,9 +48,9 @@ place(CACTUS, 96, GROUND_ROW - CACTUS.length);
 place(CACTUS, 96, GROUND_ROW - CACTUS.length);
 place(CACTUS, 210, GROUND_ROW - CACTUS.length);
 // Clouds drifting at two heights.
-place(CLOUD, 70, 5, INK_DIM);
-place(CLOUD, 150, 12, INK_DIM);
-place(CLOUD, 215, 6, INK_DIM);
+place(CLOUD, 62, 4, INK_DIM);
+place(CLOUD, 140, 11, INK_DIM);
+place(CLOUD, 205, 5, INK_DIM);
 
 // Ground: a solid line with the game's scattered pebbles under it.
 for (let x = 0; x < cols; x++) {

@@ -16,6 +16,9 @@ const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const FRAMES = {
   dino: { x: 848, y: 2, w: 44, h: 47 },
   cactusSmall: { x: 228, y: 2, w: 17, h: 35 },
+  // The cloud is drawn in light grey, so it needs an alpha-only test; the dark
+  // ink threshold used for the dino and cactus discards it entirely.
+  cloud: { x: 86, y: 2, w: 46, h: 14, anyInk: true },
 };
 
 const cachePath = resolve(root, "scripts/lib/offline-sprite.png");
@@ -54,7 +57,10 @@ try {
           for (let x = 0; x < f.w; x++) {
             const i = (y * f.w + x) * 4;
             // The sheet is dark ink on transparent; treat any inked pixel as on.
-            row += data[i + 3] > 40 && data[i] < 200 ? "#" : ".";
+            const inked = f.anyInk
+              ? data[i + 3] > 40
+              : data[i + 3] > 40 && data[i] < 200;
+            row += inked ? "#" : ".";
           }
           rows.push(row);
         }
