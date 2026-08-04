@@ -7,10 +7,11 @@ import { writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright-core";
 import { root } from "./lib/local-browser.mjs";
+import { CACTUSSMALL, DINO } from "./lib/dino-sprites.mjs";
 
 const WIDTH = 1600;
 const HEIGHT = 420;
-const CELL = 10;
+const CELL = 6; // real sprite is 44x43 cells; this fits it in the banner
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 // Reconstructed from the actual sprite's signature features, which the first
@@ -20,49 +21,7 @@ const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 // Upright and compact. The previous pass stretched the torso horizontally and
 // the result read as a cat; the real dino stands tall, with the head high over a
 // short thick neck, a stubby tail off the back, and both legs straight down.
-// Traced from the real sprite. Earlier passes got three things wrong: the head
-// is proportionally large with a muzzle jutting right, the tail is short, thick
-// and angled up off the back rather than a long stepped wedge, and the legs are
-// thin with a clear gap between them.
-// Traced from the real sprite: large head with a muzzle jutting right, a SHORT
-// thick neck sitting the head close over the body, a modest triangular tail off
-// the back, and thin legs with a clear gap. Earlier passes stretched the neck
-// and ballooned the tail, which read as a swan and then as two body masses.
-const DINO = [
-  "..............######",
-  "..............######",
-  "..............#.####",
-  "..............######",
-  "..............#####.",
-  "..........#########.",
-  "..........######....",
-  "..#.......######....",
-  ".###......######....",
-  ".####...#######.....",
-  ".###############....",
-  "..##############....",
-  "..#############.....",
-  "...###########......",
-  "...##########.......",
-  "....###...###.......",
-  "....##.....##.......",
-  "....##.....##.......",
-  "....##.....###......",
-  "...####....###......",
-];
-
-const CACTUS = [
-  "..#..",
-  "..#..",
-  "#.#..",
-  "#.#.#",
-  "#.#.#",
-  "###.#",
-  "..###",
-  "..#..",
-  "..#..",
-  "..#..",
-];
+const CACTUS = CACTUSSMALL;
 
 const CLOUD = [
   "..####..",
@@ -73,7 +32,7 @@ const CLOUD = [
 
 const cols = Math.ceil(WIDTH / CELL);
 const rows = Math.ceil(HEIGHT / CELL);
-const GROUND_ROW = rows - 8;
+const GROUND_ROW = rows - 10;
 const INK = "#f2e9e4";
 const INK_DIM = "rgba(242,233,228,.45)";
 
@@ -90,15 +49,15 @@ const place = (sprite, ox, oy, fill = INK) => {
 };
 
 // The dino stands on the ground line, mid-stride.
-place(DINO, 11, GROUND_ROW - DINO.length);
+place(DINO, 14, GROUND_ROW - DINO.length);
 // Cacti ahead of it, at the game's uneven spacing.
-place(CACTUS, 58, GROUND_ROW - CACTUS.length);
 place(CACTUS, 96, GROUND_ROW - CACTUS.length);
-place(CACTUS, 132, GROUND_ROW - CACTUS.length);
+place(CACTUS, 96, GROUND_ROW - CACTUS.length);
+place(CACTUS, 210, GROUND_ROW - CACTUS.length);
 // Clouds drifting at two heights.
-place(CLOUD, 44, 4, INK_DIM);
-place(CLOUD, 88, 9, INK_DIM);
-place(CLOUD, 124, 3, INK_DIM);
+place(CLOUD, 70, 5, INK_DIM);
+place(CLOUD, 150, 12, INK_DIM);
+place(CLOUD, 215, 6, INK_DIM);
 
 // Ground: a solid line with the game's scattered pebbles under it.
 for (let x = 0; x < cols; x++) {
