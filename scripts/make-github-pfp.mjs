@@ -41,41 +41,23 @@ const place = (sprite, ox, oy, fill = INK) =>
     }),
   );
 
-// Crescent moon: a filled block with a bite taken out of its upper right.
-const MOON = [
-  "..####..",
-  ".###....",
-  "####....",
-  "####....",
-  "####....",
-  ".###....",
-  "..####..",
-];
-// Stars, as the game draws them: single cells, denser high in the frame.
-for (let y = 1; y < GROUND - 8; y++) {
-  for (let x = 0; x < cols; x++) {
-    if (rand() < 0.01 + (1 - y / GROUND) * 0.016) {
-      cellAt(x, y, rand() > 0.45 ? INK : DIM);
-    }
-  }
-}
-
-place(MOON, cols - 16, 6, INK);
-place(CLOUD, 3, 5, DIM);
-place(CLOUD, 49, 20, DIM);
+// One cloud, kept high and clear of the dino.
+place(CLOUD, 26, 8, DIM);
 
 // The dino, and a cactus ahead of it on the same ground line.
 const dinoW = DINO[0].length;
 const ox = Math.round((cols - dinoW) / 2) - 8;
 const oy = GROUND - DINO.length;
 place(DINO, ox, oy);
-place(CACTUSSMALL, ox + dinoW + 14, GROUND - CACTUSSMALL.length);
+// A clump of three, the way the game groups small cacti.
+const cactusBase = ox + dinoW + 4;
+[0, 11, 22].forEach((offset) =>
+  place(CACTUSSMALL, cactusBase + offset, GROUND - CACTUSSMALL.length),
+);
 
 // Ground line plus the game's scattered pebbles.
 for (let x = 0; x < cols; x++) {
   cellAt(x, GROUND, INK);
-  if ((x * 7 + 2) % 9 === 0) cellAt(x, GROUND + 3, DIM);
-  if ((x * 5 + 4) % 13 === 0) cellAt(x, GROUND + 6, DIM);
 }
 
 const html = `<!doctype html><meta charset="utf-8"><style>
