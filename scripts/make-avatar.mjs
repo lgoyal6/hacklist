@@ -14,10 +14,12 @@ const SIZE = 480;
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 // One tower, not the whole span. The Golden Gate's identity is the tapering
-// twin-upright tower and the cable sweeping away from it; two tiny towers on a
-// coarse grid just read as a fence. Cropping to one tower buys the scale to
-// show both, and it survives 48px.
-// o = structure, ~ = bay, . = sky
+// twin-upright tower and the cable sweeping away from it.
+//
+// No water band: a solid dark row across the bottom read as a black box rather
+// than as the bay. Fog under the deck does the job instead, and it is drawn
+// with the sky gradient rather than as cells.
+// o = structure, . = sky
 const ART = [
   ".............",
   ".....o.o.....",
@@ -29,8 +31,8 @@ const ART = [
   "ooooooooooooo",
   ".....o.o.....",
   ".....o.o.....",
-  ".~~~~~~~~~~~.",
-  ".~~~~~~~~~~~.",
+  ".....o.o.....",
+  ".............",
   ".............",
 ];
 
@@ -39,13 +41,12 @@ const cell = SIZE / GRID;
 // International orange, the bridge's actual colour.
 const ORANGE = "#c0362c";
 const ORANGE_LIT = "#d9502f";
-const BAY = "#1d2a33";
 
 const rects = ART.flatMap((row, y) =>
   [...row].map((glyph, x) => {
-    if (glyph === ".") return "";
+    if (glyph !== "o") return "";
     const fill =
-      glyph === "~" ? BAY : y <= 2 ? ORANGE_LIT : ORANGE;
+      y <= 2 ? ORANGE_LIT : ORANGE;
     // Full-bleed cells: pixel art wants hard edges, not gaps.
     return `<rect x="${x * cell}" y="${y * cell}" width="${cell + 0.5}" height="${cell + 0.5}" fill="${fill}"/>`;
   }),
@@ -59,7 +60,7 @@ const html = `<!doctype html><meta charset="utf-8"><style>
     /* Dusk sky, and the site's scanline grain over the top. */
     background:
       repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 3px),
-      linear-gradient(178deg,#2c2a3a 0%,#3b3547 34%,#5b4348 62%,#7a4c38 100%);
+      linear-gradient(178deg,#2b2937 0%,#3a3446 30%,#5c4448 58%,#8a6a58 82%,#b59a86 100%);
   }
   svg{position:absolute;inset:0;shape-rendering:crispEdges}
 </style><body><svg width="${SIZE}" height="${SIZE}" viewBox="0 0 ${SIZE} ${SIZE}">${rects}</svg></body>`;
