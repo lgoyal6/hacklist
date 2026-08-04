@@ -290,6 +290,26 @@ try {
   // Optional input; absent until search discovery has run.
 }
 
+// Event URLs pulled out of public LinkedIn posts and articles
+// (scripts/discover-linkedin.mjs). These reach hackathons that were announced
+// to a network and never indexed as an event page, which search discovery
+// cannot see. A LinkedIn mention is not evidence either: same classifier.
+let linkedinSeeds = [];
+try {
+  const linkedin = JSON.parse(
+    await readFile(resolve(root, "data/linkedin-seeds.json"), "utf8"),
+  );
+  // `promising` means the words around the link named a hackathon format. A
+  // weekly events digest links dozens of unrelated events, so the ones that
+  // read like hackathons are visited before the remainder.
+  linkedinSeeds = (linkedin.urls ?? []).map((entry) => ({
+    url: entry.url,
+    promising: entry.promising === true,
+  }));
+} catch {
+  // Optional input; absent until LinkedIn discovery has run.
+}
+
 const queue = [
   ...config.seedUrls.map((url) => ({
     url,
@@ -306,12 +326,35 @@ const queue = [
       via: "personalized",
       allowExternal: false,
     })),
+  // LinkedIn finds that read like hackathons, ahead of the anonymous seeds.
+  // Unlike every other seed source these are not all Luma URLs: a post links
+  // straight to Devpost or an organizer's own page just as often.
+  ...linkedinSeeds
+    .filter((entry) => entry.promising)
+    .map((entry) => ({
+      url: entry.url,
+      depth: config.maxGraphDepth, // visit and classify, never expand
+      via: "linkedin",
+      allowExternal: !["luma.com", "lu.ma"].includes(
+        new URL(entry.url).hostname,
+      ),
+    })),
   ...searchSeeds.map((url) => ({
     url,
     depth: config.maxGraphDepth, // visit and classify, never expand
     via: "search",
     allowExternal: false,
   })),
+  ...linkedinSeeds
+    .filter((entry) => !entry.promising)
+    .map((entry) => ({
+      url: entry.url,
+      depth: config.maxGraphDepth,
+      via: "linkedin",
+      allowExternal: !["luma.com", "lu.ma"].includes(
+        new URL(entry.url).hostname,
+      ),
+    })),
   // The rest of the personalized feed is mostly general events, and visiting
   // all of it every sweep would cost more time than it is worth. Take a slice
   // per run and rotate, so everything is covered over a couple of days while
@@ -645,6 +688,8 @@ const output = {
     personalizedSeeds: personalizedSeeds.length,
     personalizedPromising: personalizedSeeds.filter((e) => e.promising).length,
     searchSeeds: searchSeeds.length,
+    linkedinSeeds: linkedinSeeds.length,
+    linkedinPromising: linkedinSeeds.filter((e) => e.promising).length,
     pagesVisited: visited.size,
     externalPagesVisited,
     structuredEventsFound,

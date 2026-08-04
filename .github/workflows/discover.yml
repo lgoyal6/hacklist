@@ -42,9 +42,13 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: "96011880ddcfd82df7004a95257baf66"
       LUMA_API_KEY: ${{ secrets.LUMA_API_KEY }}
-      # All optional. Search discovery works without any of them by rotating a
-      # couple of queries per run through DuckDuckGo, which stays under its
-      # rate limit; a key just allows more queries per sweep.
+      # All optional, and shared by search and LinkedIn discovery. Both work
+      # without any of them by rotating a couple of queries per run through
+      # DuckDuckGo, which stays under its rate limit; a key just allows more
+      # queries per sweep. LinkedIn discovery also has a paid per-call search
+      # fallback, but it runs through the `zero` CLI, which is deliberately not
+      # installed here — no CI job should be able to spend money. That leg runs
+      # on the local schedule instead (scripts/local-passes.sh).
       SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
       TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
       BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
@@ -58,8 +62,8 @@ jobs:
       - name: Sweep Luma and normalize events
         run: npm run discover:sf
         env:
-          # Search discovery sleeps between queries; keep it modest in CI so it
-          # cannot eat the job's time budget.
+          # Search and LinkedIn discovery both sleep between queries; keep it
+          # modest in CI so they cannot eat the job's time budget.
           SEARCH_DELAY_MS: "8000"
       - name: Sync events to Luma calendar (needs LUMA_API_KEY)
         if: env.LUMA_API_KEY != ''

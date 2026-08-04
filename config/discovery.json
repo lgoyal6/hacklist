@@ -135,5 +135,31 @@
   "searchSeedRetentionDays": 21,
   "searchSeedCap": 60,
   "searchQueriesPerRun": 2,
-  "personalizedPerRun": 200
+  "personalizedPerRun": 200,
+  "linkedinQueries": [
+    "hackathon san francisco 2026 lu.ma",
+    "hackathon \"bay area\" 2026 register luma",
+    "\"ai hackathon\" san francisco open registration",
+    "buildathon OR makeathon san francisco 2026 sign up",
+    "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
+    "weekly bay area ai events hackathon 2026",
+    "hackathon sponsors judges san francisco apply luma",
+    "\"we are hosting\" hackathon san francisco 2026"
+  ],
+  "linkedinQueriesPerRun": 3,
+  "linkedinPagesPerRun": 12,
+  "linkedinShortLinksPerPage": 8,
+  "linkedinSeedRetentionDays": 21,
+  "linkedinSeedCap": 60,
+  "linkedinMaxPaidQueriesPerRun": 2,
+  "linkedinMaxPayPerQuery": 0.02,
+  "ycEventsPerRun": 25,
+  "linkedinEventHosts": [
+    "devpost.com",
+    "partiful.com",
+    "lablab.ai",
+    "cerebralvalley.ai",
+    "hackathon.com",
+    "eventbrite.com"
+  ]
 }

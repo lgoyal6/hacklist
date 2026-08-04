@@ -11,6 +11,27 @@ const discovery = JSON.parse(
   await readFile(resolve(root, "data/discovery-output.json"), "utf8"),
 );
 
+// Y Combinator runs its hackathons on its own client-rendered events site, which
+// the headless sweep cannot read, so scripts/discover-yc.mjs collects them
+// separately in the same candidate shape. They are merged here and then scored,
+// filtered and published on exactly the same terms as everything else.
+let ycCandidates = [];
+try {
+  const yc = JSON.parse(
+    await readFile(resolve(root, "data/yc-candidates.json"), "utf8"),
+  );
+  ycCandidates = yc.candidates ?? [];
+} catch {
+  // Optional input; absent until YC discovery has run.
+}
+// A URL found by both sources is one event. The sweep's own record wins, since
+// it is the one built from a rendered page.
+const sweptUrls = new Set(discovery.candidates.map((candidate) => candidate.url));
+const allCandidates = [
+  ...discovery.candidates,
+  ...ycCandidates.filter((candidate) => !sweptUrls.has(candidate.url)),
+];
+
 const timezone = config.timezone;
 const sweepTime = new Date(discovery.sweep.completedAt).getTime();
 const configuredLocalCities = new Set(
@@ -574,7 +595,7 @@ function scoreFreshness(schedule) {
 // --- normalize each candidate ---
 
 const events = [];
-for (const candidate of discovery.candidates) {
+for (const candidate of allCandidates) {
   const lines = candidate.evidence
     .split("\n")
     .map((line) => line.replace(/​/g, "").trim())
@@ -753,7 +774,7 @@ await writeFile(
 );
 
 console.log(
-  `Normalized ${events.length}/${discovery.candidates.length} candidates ` +
+  `Normalized ${events.length}/${allCandidates.length} candidates ` +
     `(+${changes.added.length} added, ~${changes.updated.length} updated, ` +
     `-${changes.removed.length} removed vs previous sweep).`,
 );

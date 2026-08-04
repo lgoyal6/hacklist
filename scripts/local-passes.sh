@@ -49,24 +49,36 @@ echo "=== $(date '+%Y-%m-%d %H:%M:%S') local passes starting"
 HEADLESS_FLAG="--headless"
 [ "${HACKLIST_HEADED:-0}" = "1" ] && HEADLESS_FLAG=""
 
+# LinkedIn discovery runs here rather than only in CI for one reason: its paid
+# search fallback goes through the `zero` CLI, which is signed in on this
+# machine and absent in GitHub Actions. In CI the keyless search endpoint is
+# usually throttled to nothing, so without this pass the LinkedIn leg would
+# quietly find nothing most days. Costs a fraction of a cent per run, and only
+# when the free provider came back empty.
+echo "--- linkedin discovery"
+"$NODE" scripts/discover-linkedin.mjs || \
+  echo "    linkedin pass failed; continuing" >&2
+
 echo "--- personalized discovery"
-if "$NODE" scripts/discover-personalized.mjs $HEADLESS_FLAG; then
-  if ! git diff --quiet -- data/personalized-seeds.json; then
-    git add data/personalized-seeds.json
-    git -c user.name="hacklist-local" \
-        -c user.email="local@hacklist.invalid" \
-        commit -q -m "data: refresh personalized Luma seeds"
-    # Rebase before pushing: a scheduled sweep may have committed in between.
-    for attempt in 1 2 3; do
-      git push -q origin HEAD:main && { echo "    pushed seeds"; break; }
-      echo "    push rejected (attempt $attempt), rebasing"
-      git pull --rebase --autostash -q origin main || break
-    done
-  else
-    echo "    no seed changes"
-  fi
-else
+"$NODE" scripts/discover-personalized.mjs $HEADLESS_FLAG || \
   echo "    personalized pass failed; continuing to sync" >&2
+
+# Both passes only write seed files, which the next GitHub sweep crawls and
+# classifies. Committed together so one push covers whichever of them changed.
+SEED_FILES=(data/personalized-seeds.json data/linkedin-seeds.json)
+if ! git diff --quiet -- "${SEED_FILES[@]}"; then
+  git add "${SEED_FILES[@]}"
+  git -c user.name="hacklist-local" \
+      -c user.email="local@hacklist.invalid" \
+      commit -q -m "data: refresh personalized and LinkedIn seeds"
+  # Rebase before pushing: a scheduled sweep may have committed in between.
+  for attempt in 1 2 3; do
+    git push -q origin HEAD:main && { echo "    pushed seeds"; break; }
+    echo "    push rejected (attempt $attempt), rebasing"
+    git pull --rebase --autostash -q origin main || break
+  done
+else
+  echo "    no seed changes"
 fi
 
 echo "--- luma calendar sync"
