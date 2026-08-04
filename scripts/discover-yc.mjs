@@ -76,10 +76,15 @@ function inertiaProps(html) {
   }
 }
 
+// Bounded like every other unattended network call in the pipeline: a socket
+// that never answers must not hang a scheduled job.
+const FETCH_TIMEOUT_MS = Number(process.env.YC_FETCH_TIMEOUT_MS ?? 20_000);
+
 async function fetchProps(url) {
   const response = await fetch(url, {
     headers: { "user-agent": UA, "accept-language": "en-US,en;q=0.9" },
     redirect: "follow",
+    signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
   });
   if (!response.ok) return { error: `HTTP ${response.status}` };
   const props = inertiaProps(await response.text());

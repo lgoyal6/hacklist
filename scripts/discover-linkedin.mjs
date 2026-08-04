@@ -29,7 +29,9 @@
 // sweep with no LinkedIn results is worth strictly more than a sweep that did
 // not run.
 import { execFile } from "node:child_process";
+import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
+import { homedir } from "node:os";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
@@ -45,6 +47,19 @@ const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
   "(KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Every network call is bounded. This pass runs unattended on a schedule, and a
+// single socket that never answers would otherwise hang the job indefinitely —
+// one link shortener that stopped responding stalled a test run for ten minutes.
+const FETCH_TIMEOUT_MS = Number(process.env.LINKEDIN_FETCH_TIMEOUT_MS ?? 20_000);
+function timed(init = {}) {
+  return { ...init, signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) };
+}
+// Belt and braces: even with every call bounded, a long enough queue of slow
+// pages could outlast the schedule's next firing. Reading stops at the deadline
+// and reports the shortfall rather than running on.
+const readDeadline =
+  Date.now() + Number(process.env.LINKEDIN_MAX_MINUTES ?? 6) * 60_000;
 
 // The Zero capability that runs the LinkedIn search leg. Priced per call at
 // roughly a third of a cent; the slug is what `zero fetch --capability` wants.
@@ -122,7 +137,7 @@ function scopeToLinkedIn(query) {
 async function searchDuckDuckGo(query) {
   const response = await fetch(
     `https://html.duckduckgo.com/html/?q=${encodeURIComponent(scopeToLinkedIn(query))}`,
-    { headers: { "user-agent": UA, "accept-language": "en-US,en;q=0.9" } },
+    timed({ headers: { "user-agent": UA, "accept-language": "en-US,en;q=0.9" } }),
   );
   // 202 is DuckDuckGo's soft rate-limit response: accepted, deliberately empty.
   if (response.status === 202) return { results: [], throttled: true };
@@ -140,14 +155,17 @@ async function searchDuckDuckGo(query) {
 }
 
 async function searchSerper(query) {
-  const response = await fetch("https://google.serper.dev/search", {
-    method: "POST",
-    headers: {
-      "x-api-key": process.env.SERPER_API_KEY,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({ q: scopeToLinkedIn(query), num: 20 }),
-  });
+  const response = await fetch(
+    "https://google.serper.dev/search",
+    timed({
+      method: "POST",
+      headers: {
+        "x-api-key": process.env.SERPER_API_KEY,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ q: scopeToLinkedIn(query), num: 20 }),
+    }),
+  );
   if (!response.ok) return { results: [], error: `HTTP ${response.status}` };
   const body = await response.json();
   return {
@@ -161,18 +179,21 @@ async function searchSerper(query) {
 }
 
 async function searchTavily(query) {
-  const response = await fetch("https://api.tavily.com/search", {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${process.env.TAVILY_API_KEY}`,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      query: scopeToLinkedIn(query),
-      max_results: 20,
-      search_depth: "basic",
+  const response = await fetch(
+    "https://api.tavily.com/search",
+    timed({
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${process.env.TAVILY_API_KEY}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        query: scopeToLinkedIn(query),
+        max_results: 20,
+        search_depth: "basic",
+      }),
     }),
-  });
+  );
   if (!response.ok) return { results: [], error: `HTTP ${response.status}` };
   const body = await response.json();
   return {
@@ -188,12 +209,12 @@ async function searchTavily(query) {
 async function searchBrave(query) {
   const response = await fetch(
     `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(scopeToLinkedIn(query))}&count=20`,
-    {
+    timed({
       headers: {
         accept: "application/json",
         "x-subscription-token": process.env.BRAVE_API_KEY,
       },
-    },
+    }),
   );
   if (!response.ok) return { results: [], error: `HTTP ${response.status}` };
   const body = await response.json();
@@ -207,9 +228,20 @@ async function searchBrave(query) {
   };
 }
 
-/** Where the `zero` CLI lives, or null when it is not installed here. */
+/**
+ * Where the `zero` CLI lives.
+ *
+ * Resolved by path rather than by trusting $PATH, because the schedule this
+ * pass runs on is launchd, which starts with a minimal PATH that has no
+ * ~/.zero in it. Trusting PATH here would mean the paid fallback worked in a
+ * terminal and silently did nothing twice a day — the same trap that broke
+ * node resolution in scripts/local-passes.sh once already.
+ */
 function zeroBinary() {
-  return process.env.ZERO_RUNNER || "zero";
+  if (process.env.ZERO_RUNNER) return process.env.ZERO_RUNNER;
+  const wellKnown = resolve(homedir(), ".zero/runtime/bin/zero");
+  if (existsSync(wellKnown)) return wellKnown;
+  return "zero"; // let PATH try; absence is handled as a recorded problem
 }
 
 /**
@@ -388,11 +420,10 @@ function collectYcUrls(source, into) {
  */
 async function resolveShortLink(url) {
   try {
-    const response = await fetch(url, {
-      method: "GET",
-      redirect: "manual",
-      headers: { "user-agent": UA },
-    });
+    const response = await fetch(
+      url,
+      timed({ method: "GET", redirect: "manual", headers: { "user-agent": UA } }),
+    );
     const location = response.headers.get("location");
     if (location) return location;
     // lnkd.in serves an interstitial for some links; the target is in the body.
@@ -408,10 +439,13 @@ async function resolveShortLink(url) {
 }
 
 async function readLinkedInPage(url) {
-  const response = await fetch(url, {
-    headers: { "user-agent": UA, "accept-language": "en-US,en;q=0.9" },
-    redirect: "follow",
-  });
+  const response = await fetch(
+    url,
+    timed({
+      headers: { "user-agent": UA, "accept-language": "en-US,en;q=0.9" },
+      redirect: "follow",
+    }),
+  );
   if (!response.ok) return { error: `HTTP ${response.status}` };
   const html = await response.text();
   const events = eventUrlsWithContext(html);
@@ -570,7 +604,16 @@ const toRead = ordered.slice(0, config.linkedinPagesPerRun ?? 12);
 const foundEvents = new Map(fromSnippets);
 let pagesRead = 0;
 
+let readStoppedOnTime = false;
 for (const [index, entry] of toRead.entries()) {
+  if (Date.now() > readDeadline) {
+    readStoppedOnTime = true;
+    problems.push({
+      stage: "read",
+      error: `time budget reached with ${toRead.length - index} page(s) unread`,
+    });
+    break;
+  }
   if (index > 0) await sleep(Number(process.env.LINKEDIN_PAGE_DELAY_MS ?? 1_500));
   let result;
   try {
@@ -646,6 +689,7 @@ await writeFile(
       queriesRun: queries.length,
       pagesFound: pages.size,
       pagesRead,
+      readStoppedOnTimeBudget: readStoppedOnTime,
       paidSpendUsd: Number(paidSpend.toFixed(6)),
       problems,
       note:
@@ -675,6 +719,7 @@ console.log(
     (linkedinEvents.size ? `, ${linkedinEvents.size} LinkedIn-hosted event(s) noted` : "") +
     (ycEventUrls.size ? `, ${ycEventUrls.size} YC event(s) handed to discover-yc` : "") +
     (paidSpend > 0 ? `, $${paidSpend.toFixed(4)} spent` : "") +
+    (readStoppedOnTime ? ", stopped on time budget" : "") +
     (problems.length ? `, ${problems.length} problem(s)` : "") +
     `.\nWrote ${outputPath}`,
 );

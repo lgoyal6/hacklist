@@ -1,18 +1,29 @@
 {
-  "collectedAt": "2026-08-04T20:51:28.520Z",
+  "collectedAt": "2026-08-04T21:55:55.192Z",
   "searchProviders": [
     "duckduckgo-html",
     "zero"
   ],
   "queriesRun": 3,
-  "pagesFound": 17,
-  "pagesRead": 12,
-  "paidSpendUsd": 0.006,
+  "pagesFound": 0,
+  "pagesRead": 0,
+  "readStoppedOnTimeBudget": false,
+  "paidSpendUsd": 0.003,
   "problems": [
     {
       "stage": "search",
       "query": "\"ai hackathon\" san francisco open registration",
       "error": "HTTP 403"
+    },
+    {
+      "stage": "paid-search",
+      "query": "hackathon \"bay area\" 2026 register luma",
+      "error": "zero HTTP 502"
+    },
+    {
+      "stage": "paid-search",
+      "query": "\"ai hackathon\" san francisco open registration",
+      "error": "zero: no JSON envelope"
     }
   ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
