@@ -313,8 +313,31 @@ main {
   line-height: 1.24;
   letter-spacing: -0.015em;
 }
-.event-body h4 a { text-decoration: none; }
-.event-body h4 a:hover { color: var(--accent); }
+/* Visibly a link. Stripping the underline made every title read as plain text,
+   so nobody could tell the listing went anywhere. */
+.event-body h4 a {
+  text-decoration: underline;
+  text-decoration-color: var(--rule-firm);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.12s ease, text-decoration-color 0.12s ease;
+}
+.event-body h4 a:hover,
+.event-body h4 a:focus-visible {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+.event-body h4 a::after {
+  content: "↗";
+  display: inline-block;
+  margin-left: 7px;
+  font-family: var(--sans);
+  font-size: 0.62em;
+  vertical-align: 0.28em;
+  color: var(--ink-faint);
+  text-decoration: none;
+}
+.event-body h4 a:hover::after { color: var(--accent); }
 .event-where { margin-top: 7px; font-size: 13px; color: var(--ink-soft); }
 .event-note {
   margin-top: 9px;

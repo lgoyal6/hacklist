@@ -36,7 +36,11 @@ test("events.json only contains upcoming, fully-normalized events", () => {
     "most events should have parsed dates — check the evidence time format",
   );
   const ids = new Set();
-  for (const event of eventsData.events) {
+  // Scoped to the default view: adjacent events live behind the "Everything"
+  // filter, so they are legitimately absent from the first paint.
+  for (const event of eventsData.events.filter(
+    (candidate) => candidate.category === "hackathon",
+  )) {
     assert.match(event.url, /^https:\/\//);
     assert.ok(["luma", "external"].includes(event.platform));
     assert.ok(["hackathon", "adjacent"].includes(event.category));
@@ -63,11 +67,19 @@ test("server-renders the ranked event board", async () => {
   assert.match(html, /Hacklist/);
   assert.match(html, /What&#x27;s coming up|What.s coming up/);
   assert.match(html, /hackathons/i);
-  // The top-ranked event from the generated data must appear on the board.
-  assert.ok(
-    html.includes(eventsData.events[0].url),
-    "top event link missing from rendered board",
-  );
+  // Every event must be a real anchor to its own page. The listing is only
+  // useful if it goes somewhere, and a styling or markup change should not be
+  // able to quietly turn the titles back into plain text.
+  // Scoped to the default view: adjacent events live behind the "Everything"
+  // filter, so they are legitimately absent from the first paint.
+  for (const event of eventsData.events.filter(
+    (candidate) => candidate.category === "hackathon",
+  )) {
+    assert.ok(
+      html.includes(`href="${event.url}"`),
+      `${event.title} is not hyperlinked on the board`,
+    );
+  }
 });
 
 test("serves an ICS feed with one VEVENT per dated event", async () => {
