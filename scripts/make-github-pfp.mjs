@@ -7,7 +7,7 @@ import { writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright-core";
 import { root } from "./lib/local-browser.mjs";
-import { DINO } from "./lib/dino-sprites.mjs";
+import { CACTUSSMALL, DINO } from "./lib/dino-sprites.mjs";
 
 const SIZE = 500;
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -34,25 +34,50 @@ const cellAt = (x, y, fill) =>
   rects.push(
     `<rect x="${x * CELL}" y="${y * CELL}" width="${CELL}" height="${CELL}" fill="${fill}"/>`,
   );
+const place = (sprite, ox, oy, fill = INK) =>
+  sprite.forEach((row, y) =>
+    [...row].forEach((glyph, x) => {
+      if (glyph === "#") cellAt(ox + x, oy + y, fill);
+    }),
+  );
+
+// Crescent moon: a filled block with a bite taken out of its upper right.
+const MOON = [
+  "..####..",
+  ".###....",
+  "####....",
+  "####....",
+  "####....",
+  ".###....",
+  "..####..",
+];
+const CLOUD = [
+  "..####..",
+  ".######.",
+  "########",
+  "..####..",
+];
 
 // Stars, as the game draws them: single cells, denser high in the frame.
 for (let y = 1; y < GROUND - 8; y++) {
   for (let x = 0; x < cols; x++) {
-    if (rand() < 0.012 + (1 - y / GROUND) * 0.02) {
+    if (rand() < 0.01 + (1 - y / GROUND) * 0.016) {
       cellAt(x, y, rand() > 0.45 ? INK : DIM);
     }
   }
 }
 
-// The dino, centred and standing on the ground line.
+place(MOON, cols - 16, 6, INK);
+place(CLOUD, 8, 12, DIM);
+place(CLOUD, 30, 22, DIM);
+place(CLOUD, 58, 9, DIM);
+
+// The dino, and a cactus ahead of it on the same ground line.
 const dinoW = DINO[0].length;
-const ox = Math.round((cols - dinoW) / 2);
+const ox = Math.round((cols - dinoW) / 2) - 8;
 const oy = GROUND - DINO.length;
-DINO.forEach((row, y) =>
-  [...row].forEach((glyph, x) => {
-    if (glyph === "#") cellAt(ox + x, oy + y, INK);
-  }),
-);
+place(DINO, ox, oy);
+place(CACTUSSMALL, ox + dinoW + 14, GROUND - CACTUSSMALL.length);
 
 // Ground line plus the game's scattered pebbles.
 for (let x = 0; x < cols; x++) {

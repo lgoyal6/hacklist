@@ -1,67 +1,39 @@
-// Calendar avatar: the Golden Gate as pixel art.
+// Calendar avatar: just the dino, on the banner's dark red.
 //
-// Drawn on a deliberately coarse 12x12 grid. Luma shows this around 40-64px, so
-// each cell has to land on roughly 4 real pixels — any finer and the towers turn
-// to mush, which is exactly what killed the earlier dither mark.
-//
-// Usage: node scripts/make-avatar.mjs
+// Plain on purpose. The bridge version had a fog gradient and a tapering tower
+// competing for attention in a 48px square and read as mud. One shape, one
+// colour, and it matches the banner so the pair reads as a set.
 import { writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright-core";
 import { root } from "./lib/local-browser.mjs";
+import { DINO } from "./lib/dino-sprites.mjs";
 
 const SIZE = 480;
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const INK = "#f2e9e4";
 
-// One tower, not the whole span. The Golden Gate's identity is the tapering
-// twin-upright tower and the cable sweeping away from it.
-//
-// No water band: a solid dark row across the bottom read as a black box rather
-// than as the bay. Fog under the deck does the job instead, and it is drawn
-// with the sky gradient rather than as cells.
-// o = structure, . = sky
-const ART = [
-  ".............",
-  ".....o.o.....",
-  ".....ooo.....",
-  ".....o.o.....",
-  "..o..ooo..o..",
-  ".o...o.o...o.",
-  "o....o.o....o",
-  "ooooooooooooo",
-  ".....o.o.....",
-  ".....o.o.....",
-  ".....o.o.....",
-  ".............",
-  ".............",
-];
+// Fit the sprite to the frame with an even margin, so nothing is cropped.
+const SPRITE_W = DINO[0].length;
+const SPRITE_H = DINO.length;
+const CELL = Math.floor((SIZE * 0.72) / Math.max(SPRITE_W, SPRITE_H));
+const ox = Math.round((SIZE - SPRITE_W * CELL) / 2);
+const oy = Math.round((SIZE - SPRITE_H * CELL) / 2);
 
-const GRID = ART.length;
-const cell = SIZE / GRID;
-// International orange, the bridge's actual colour.
-const ORANGE = "#c0362c";
-const ORANGE_LIT = "#d9502f";
-
-const rects = ART.flatMap((row, y) =>
-  [...row].map((glyph, x) => {
-    if (glyph !== "o") return "";
-    const fill =
-      y <= 2 ? ORANGE_LIT : ORANGE;
-    // Full-bleed cells: pixel art wants hard edges, not gaps.
-    return `<rect x="${x * cell}" y="${y * cell}" width="${cell + 0.5}" height="${cell + 0.5}" fill="${fill}"/>`;
-  }),
+const rects = DINO.flatMap((row, y) =>
+  [...row].map((glyph, x) =>
+    glyph === "#"
+      ? `<rect x="${ox + x * CELL}" y="${oy + y * CELL}" width="${CELL + 0.5}" height="${CELL + 0.5}" fill="${INK}"/>`
+      : "",
+  ),
 ).join("");
 
 const html = `<!doctype html><meta charset="utf-8"><style>
   *{margin:0;box-sizing:border-box}
   html,body{width:${SIZE}px;height:${SIZE}px}
-  body{
-    position:relative;overflow:hidden;
-    /* Dusk sky, and the site's scanline grain over the top. */
-    background:
-      repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 3px),
-      linear-gradient(178deg,#2b2937 0%,#3a3446 30%,#5c4448 58%,#8a6a58 82%,#b59a86 100%);
-  }
+  body{position:relative;overflow:hidden;background:
+    radial-gradient(90% 90% at 50% 30%, #5c1213 0%, transparent 65%),
+    linear-gradient(160deg,#4a0f10 0%,#380c0d 55%,#2a0809 100%);}
   svg{position:absolute;inset:0;shape-rendering:crispEdges}
 </style><body><svg width="${SIZE}" height="${SIZE}" viewBox="0 0 ${SIZE} ${SIZE}">${rects}</svg></body>`;
 
@@ -76,13 +48,9 @@ try {
   await page.goto(`file://${htmlPath}`, { waitUntil: "load" });
   await page.waitForTimeout(400);
   await page.screenshot({ path: resolve(root, "public/calendar-avatar.png") });
-
-  // The proof that matters: what a 48px list item actually shows.
   const small = await browser.newPage({ viewport: { width: 48, height: 48 } });
   await small.goto(`file://${htmlPath}`, { waitUntil: "load" });
-  await small.addStyleTag({
-    content: "html,body{width:48px;height:48px}svg{width:48px;height:48px}",
-  });
+  await small.addStyleTag({ content: "html,body{width:48px;height:48px}svg{width:48px;height:48px}" });
   await small.waitForTimeout(300);
   await small.screenshot({ path: resolve(root, "public/avatar-48.png") });
   console.log(`Wrote public/calendar-avatar.png at ${SIZE * 2}px, plus a 48px proof`);
