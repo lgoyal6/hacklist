@@ -60,9 +60,9 @@ test("server-renders the ranked event board", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /HACKLIST/);
-  assert.match(html, /SF signal board/);
-  assert.match(html, /hackathons/);
+  assert.match(html, /Hacklist/);
+  assert.match(html, /What&#x27;s coming up|What.s coming up/);
+  assert.match(html, /hackathons/i);
   // The top-ranked event from the generated data must appear on the board.
   assert.ok(
     html.includes(eventsData.events[0].url),
