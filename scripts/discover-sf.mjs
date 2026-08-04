@@ -440,7 +440,11 @@ try {
         category,
         discoveredVia: current.via,
         ...score,
-        evidence: result.bodyText.slice(0, 2000),
+        // Event pages run 3-6.5k characters and organisers put the prize list
+        // near the bottom, so a 2k cap was cutting off the very details the
+        // normalizer looks for: Better Days' $500/$300/$250 prizes were all
+        // past the old limit.
+        evidence: result.bodyText.slice(0, 8000),
         checkedAt: new Date().toISOString(),
       });
 
@@ -520,7 +524,7 @@ try {
           category: "hackathon",
           discoveredVia: url,
           ...structuredScore,
-          evidence: evidence.slice(0, 2000),
+          evidence: evidence.slice(0, 8000),
           structuredEvent,
           checkedAt: new Date().toISOString(),
         };

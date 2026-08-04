@@ -420,7 +420,12 @@ function parsePrize(title, evidence) {
       };
     }
   }
-  if (/priz|bount/i.test(`${title}\n${evidence}`)) {
+  const haystack = `${title}\n${evidence}`;
+  // "Prize pool: TBA" is a different fact from silence, and worth saying so.
+  if (/priz\w*\s*(pool)?\s*[:\-]?\s*(tba|tbd|to be announced|coming soon)/i.test(haystack)) {
+    return { amount: null, label: "Prizes TBA" };
+  }
+  if (/priz|bount/i.test(haystack)) {
     return { amount: null, label: "Prizes listed" };
   }
   return { amount: null, label: "Not listed" };
