@@ -92,7 +92,8 @@ dedicated Chrome profile in `.local-browser-profile/` (gitignored). The session
 never leaves this machine and is never placed in GitHub Actions.
 
 ```bash
-bash scripts/install-luma-schedule.sh   # run both passes twice daily (installed)
+bash scripts/install-luma-schedule.sh   # run the local passes at 8:30pm (installed)
+bash scripts/install-wake-schedule.sh   # let them fire with the lid shut (sudo, once)
 bash scripts/local-passes.sh            # or run them now, by hand
 
 npm run discover:personalized           # just the personalized pass
@@ -100,10 +101,21 @@ npm run luma:queue                      # what's pending for the Luma calendar
 npm run luma:sync -- --name "HackList SF"
 ```
 
-`scripts/local-passes.sh` is what the schedule runs: personalized discovery
-(which commits and pushes its seeds so the next GitHub sweep crawls them),
-then the calendar sync. Neither step can abort the other, and the log lands in
-`logs/local-passes.log`.
+`scripts/local-passes.sh` is what the schedule runs, once a day at 8:30pm:
+LinkedIn and personalized discovery (which commit and push their seeds so the
+next GitHub sweep crawls them), then the calendar sync and the tagging pass. No
+step can abort another, and the log lands in `logs/local-passes.log`.
+
+Once a day rather than twice: the sync is idempotent and the calendar only
+changes when the board does, so the second run mostly re-confirmed the first.
+Evening because the 8pm sweep finishes just before it — the sync publishes that
+sweep, and the seeds it pushes are waiting for the 8am one to crawl.
+
+launchd does not skip a missed run, so a sleeping Mac means the pass lands late
+rather than never. `scripts/install-wake-schedule.sh` makes it land on time: it
+sets a repeating wake one minute before the run and grants a narrow sudoers rule
+so each run can re-arm the next. Worth knowing that a scheduled wake is far more
+reliable on power than on battery.
 
 The first run opens Chrome and waits for you to sign in by hand; later runs
 reuse the profile. Personalized discovery writes only public event URLs to

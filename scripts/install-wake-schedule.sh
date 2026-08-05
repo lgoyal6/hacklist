@@ -17,10 +17,11 @@
 #
 #   1. The wake lands one minute before the job instead of 35 minutes before, so
 #      the machine is still awake when launchd fires and caffeinate can take over.
-#   2. `pmset repeat` allows only one wake time per day, and there are two runs, so
-#      scripts/local-passes.sh arms the *next* wake at the end of every run. That
-#      needs `pmset schedule` without a password prompt, which is what the sudoers
-#      rule below grants — narrowly, for that one command.
+#   2. scripts/local-passes.sh re-arms tomorrow's wake at the end of every run, so
+#      the schedule survives anything else clearing the repeat (`pmset repeat`
+#      holds only one, so any other user of it wins). That needs `pmset schedule`
+#      without a password prompt, which is what the sudoers rule below grants —
+#      narrowly, for that one command.
 #
 # Run this once. It needs your password (it edits /etc/sudoers.d and arms a wake).
 set -euo pipefail
@@ -62,11 +63,11 @@ if sudo -n /usr/bin/pmset -g sched >/dev/null 2>&1; then
   echo "note: pmset -g sched needs no sudo, so that was not a real check"
 fi
 
-# Drop the old, mistimed repeat wake and set one that lands just before the
-# morning run. The evening one is armed by local-passes.sh after each run.
+# Drop the old, mistimed 7:55am repeat and set one that lands just before the
+# single 8:30pm run.
 sudo pmset repeat cancel || true
-sudo pmset repeat wakeorpoweron MTWRFSU 08:29:00
-echo "Set a daily repeating wake at 08:29 (one minute before the 08:30 pass)."
+sudo pmset repeat wakeorpoweron MTWRFSU 20:29:00
+echo "Set a daily repeating wake at 20:29 (one minute before the 20:30 pass)."
 
 # Arm tonight's wake immediately rather than waiting for the next run to do it.
 bash "$REPO/scripts/arm-next-wake.sh" || true
@@ -77,4 +78,4 @@ pmset -g sched
 echo
 echo "Real-world test: shut the lid and leave it. Tomorrow, check that"
 echo "  grep 'local passes starting' logs/local-passes.log"
-echo "shows runs at ~08:30 and ~20:30 rather than whenever you opened it."
+echo "shows a run at ~20:30 rather than whenever you next opened the lid."

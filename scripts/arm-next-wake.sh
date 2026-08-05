@@ -1,19 +1,18 @@
 #!/bin/bash
 # Arm a one-off wake one minute before the next scheduled local pass.
 #
-# `pmset repeat` holds exactly one wake time per day and there are two passes, so
-# the repeating wake covers the morning and this covers whichever run is next.
-# Called at the end of every run by scripts/local-passes.sh, which makes the chain
-# self-sustaining: each pass arms the following one.
+# The repeating wake set by install-wake-schedule.sh already covers the single
+# daily run, so this is belt and braces: each run re-arms tomorrow's, so the
+# schedule survives the repeating wake being cleared by anything else that calls
+# `pmset repeat` (it holds only one, so any other user of it wins).
 #
 # Needs the sudoers rule from scripts/install-wake-schedule.sh. Without it this
 # exits quietly rather than hanging on a password prompt that nobody will answer
 # — a scheduled job blocking on stdin is worse than a missing wake.
 set -uo pipefail
 
-# Keep in step with the StartCalendarInterval entries in the launchd plist.
-MORNING="08:30"
-EVENING="20:30"
+# Keep in step with the StartCalendarInterval entry in the launchd plist.
+RUN_AT="20:30"
 LEAD_SECONDS=60
 
 if ! sudo -n /usr/bin/pmset schedule cancelall >/dev/null 2>&1; then
@@ -24,7 +23,7 @@ fi
 # Whichever of the two run times comes next, minus the lead.
 now_epoch=$(date +%s)
 next_epoch=""
-for hhmm in "$MORNING" "$EVENING"; do
+for hhmm in "$RUN_AT"; do
   for day_offset in 0 1; do
     # Shift the day first, then parse the result. Passing -v to the parsing call
     # as well applies the offset twice, which silently puts "tomorrow" two days
