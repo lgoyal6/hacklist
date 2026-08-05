@@ -1,9 +1,18 @@
 {
-  "collectedAt": "2026-08-05T03:59:39.852Z",
-  "provider": "duckduckgo-html",
+  "collectedAt": "2026-08-05T05:47:04.614Z",
+  "provider": "brightdata",
   "queriesRun": 2,
   "throttledQueries": 0,
-  "problems": [],
+  "problems": [
+    {
+      "query": "site:luma.com hackathon san francisco 2026",
+      "error": "brightdata HTTP 400: {\"error\":\"Request validation failed\",\"error_code\":\"validation\",\"details\":[{\"message\":\"\\\"zone\\\" is not allowed to be empt"
+    },
+    {
+      "query": "site:lu.ma hackathon san francisco 2026",
+      "error": "brightdata HTTP 400: {\"error\":\"Request validation failed\",\"error_code\":\"validation\",\"details\":[{\"message\":\"\\\"zone\\\" is not allowed to be empt"
+    }
+  ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
     {
