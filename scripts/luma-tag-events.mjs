@@ -50,16 +50,34 @@ function desiredTags(event) {
 
 const { events } = await readEvents();
 const ledger = await readLedger();
-const wanted = new Map(); // slug -> {title, tags}
-for (const event of events) {
+/**
+ * Key an event the way its calendar row can be recognised: by Luma slug when it
+ * has one, and by its title when it does not.
+ *
+ * External events — Devpost, Y Combinator, x.ai — have no Luma slug, and were
+ * skipped outright here. That is why the calendar's own "Hackathon" tag counted
+ * 19 while 34 hackathons were on it: the untagged remainder was every external
+ * event, invisible to the tag filter people actually browse by.
+ */
+const titleKey = (title) =>
+  `title:${String(title).replace(/[^a-z0-9]/gi, "").toLowerCase()}`;
+function eventKey(event) {
   try {
     const url = new URL(event.url);
-    if (url.hostname !== "luma.com") continue;
-    const slug = url.pathname.replace(/^\/+|\/+$/g, "");
-    if (slug) wanted.set(slug, { title: event.title, tags: desiredTags(event) });
+    if (url.hostname === "luma.com") {
+      const slug = url.pathname.replace(/^\/+|\/+$/g, "");
+      if (slug) return slug;
+    }
   } catch {
-    // skip unparseable
+    // fall through to the title
   }
+  return event.title ? titleKey(event.title) : null;
+}
+
+const wanted = new Map(); // key -> {title, tags}
+for (const event of events) {
+  const key = eventKey(event);
+  if (key) wanted.set(key, { title: event.title, tags: desiredTags(event) });
 }
 
 const adminUrl = ledger.calendar
@@ -97,6 +115,30 @@ const markApplied = (slug, tag) => {
   tagState.applied[slug] = [...new Set([...(tagState.applied[slug] ?? []), tag])];
 };
 
+/**
+ * Which wanted event a calendar row belongs to. A Luma row is identified by its
+ * permalink; an external row has none, so it is matched on its title appearing in
+ * the row text. Requires a decent length so a short title cannot match several
+ * rows at once.
+ */
+function resolveWanted(row) {
+  if (row.slug && wanted.has(row.slug)) {
+    return { ...wanted.get(row.slug), key: row.slug };
+  }
+  const rowKey = titleKey(row.rowText);
+  let best = null;
+  for (const [key, value] of wanted) {
+    if (!key.startsWith("title:")) continue;
+    const bare = key.slice("title:".length);
+    if (bare.length >= 12 && rowKey.includes(bare)) {
+      // Prefer the longest match, so one title that is a prefix of another does
+      // not win over the more specific one.
+      if (!best || bare.length > best.bare.length) best = { key, value, bare };
+    }
+  }
+  return best ? { ...best.value, key: best.key } : null;
+}
+
 const context = await launchLocalBrowser({ headless });
 let applied = 0;
 let skipped = 0;
@@ -132,11 +174,8 @@ async function readRows(page) {
           break;
         }
       }
-      rows.push({
-        index,
-        slug,
-        rowText: (node?.innerText ?? "").replace(/\s+/g, " ").trim().slice(0, 400),
-      });
+      const rowText = (node?.innerText ?? "").replace(/\s+/g, " ").trim().slice(0, 400);
+      rows.push({ index, slug, rowText });
     });
     return rows;
   });
@@ -198,17 +237,17 @@ try {
       const rows = await readRows(page);
       const target = rows
         .map((row) => {
-          const want = row.slug ? wanted.get(row.slug) : null;
+          const want = resolveWanted(row);
           if (!want) return null;
-          const tag = want.tags.find((t) => !isApplied(row.slug, t));
-          return tag ? { row, tag, title: want.title } : null;
+          const tag = want.tags.find((t) => !isApplied(want.key, t));
+          return tag ? { row, tag, title: want.title, key: want.key } : null;
         })
         .find(Boolean);
       if (!target) break;
 
       if (dryRun) {
         console.log(`  would tag "${target.tag}" -> ${target.title.slice(0, 46)}`);
-        markApplied(target.row.slug, target.tag);
+        markApplied(target.key, target.tag);
         continue;
       }
 
@@ -248,7 +287,7 @@ try {
         await page.waitForTimeout(2_000);
         await page.keyboard.press("Escape");
         await page.waitForTimeout(900);
-        markApplied(target.row.slug, target.tag);
+        markApplied(target.key, target.tag);
         applied += 1;
         console.log(`  tagged "${target.tag}" -> ${target.title.slice(0, 46)}`);
       } catch (error) {
@@ -256,7 +295,7 @@ try {
           `${target.title.slice(0, 28)} / ${target.tag}: ${String(error).slice(0, 80)}`,
         );
         skipped += 1;
-        failedThisRun.add(`${target.row.slug}|${target.tag}`); // retry next run
+        failedThisRun.add(`${target.key}|${target.tag}`); // retry next run
         await page.keyboard.press("Escape").catch(() => {});
       }
     }
