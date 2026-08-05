@@ -79,9 +79,21 @@ blocks the board from updating; it just turns the run red. Sources that depend o
 a residential IP warn instead of failing, because they are expected to come back
 empty from a datacenter.
 
-`npm test` covers the published output plus the date arithmetic most likely to
-publish something wrong: Devpost's date-only ranges, and Y Combinator's
-placeholder timestamps.
+Tests come in two kinds, and only one of them gates a deploy.
+
+`npm run test:artifact` asks whether the thing about to be published is correct —
+the rendered board, the ICS feed, the date arithmetic most likely to publish
+something wrong (Devpost's date-only ranges, Y Combinator's placeholder
+timestamps), the duplicate-collapsing rules and the calendar sync's decisions. 46
+tests, three seconds, and CI runs it between the commit and the deploy.
+
+`npm run test:browser` drives the real Add-External-Event form filler against a
+local fixture that reproduces the behaviours which actually broke: a date field
+that mis-parses its own display format, out-of-year dates shown differently, a
+picker overlay that swallows clicks, an Escape key that closes the whole dialog,
+and time fields Luma refills server-side. It needs Chrome and takes a minute and a
+half, and it runs *after* the deploy — a flaky browser must not be able to
+withhold a correct board.
 
 See `PROTOTYPE.md` for the full product spec.
 
@@ -273,7 +285,9 @@ npm run discover:devpost   # just the Devpost pass
 npm run discover:linkedin  # just the LinkedIn pass
 npm run normalize          # re-normalize existing discovery output only
 npm run check:sources      # are all the sources still working?
-npm test                   # build + board/ICS/discovery tests
+npm test                   # everything, including the browser-driven form test
+npm run test:artifact      # the deploy gate: is the published artifact correct?
+npm run test:browser       # drives the Luma form filler against a local fixture
 npx vinext deploy          # manual deploy to Cloudflare Workers
 ```
 

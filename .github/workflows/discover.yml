@@ -131,15 +131,18 @@ jobs:
           exit 1
       # Validate the artifact BEFORE promoting it. Until now the only check ran
       # after the deploy, so a board that was wrong-but-not-collapsed shipped and
-      # we found out afterwards. The test suite already builds the site, renders
-      # the board and parses the ICS feed — it was simply never run in CI. If it
-      # fails the job stops here, nothing is promoted, and the live site keeps
-      # serving the last version that passed.
+      # we found out afterwards. If this fails the job stops here, nothing is
+      # promoted, and the live site keeps serving the last version that passed.
+      #
+      # Deliberately test:artifact and not the whole suite. This gate answers one
+      # question — is the thing we are about to publish correct — and the browser
+      # tests that drive Luma's form answer a different one. A flaky Chrome in a
+      # sync test must not be able to stop the site from updating.
       #
       # The data commit above stays: it is the record of what the sweep found, and
       # is worth keeping even when the render of it is broken.
       - name: Validate the built board and feed
-        run: npm test
+        run: npm run test:artifact
       # Deploy on its own merits: the site should reflect the sweep even when a
       # concurrent run already committed identical data.
       - name: Deploy site + calendar feed (needs CLOUDFLARE_API_TOKEN)
@@ -176,6 +179,14 @@ jobs:
             git push origin HEAD:main && exit 0
             git pull --rebase --autostash origin main
           done
+      # The rest of the suite, after the deploy: it exercises the form-filling
+      # driver against a local fixture, which is worth knowing about but is not a
+      # reason to withhold a correct board.
+      - name: Test the Luma form driver
+        continue-on-error: true
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: npm run test:browser
       - name: Check source health
         id: health
         # pipefail matters: without it the step takes tee's exit status and a

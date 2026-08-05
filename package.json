@@ -28,7 +28,9 @@
     "discover:luma-api": "node scripts/discover-luma-api.mjs",
     "discover:devpost": "node scripts/discover-devpost.mjs",
     "check:sources": "node scripts/check-sources.mjs",
-    "luma:export-session": "node scripts/export-luma-session.mjs"
+    "luma:export-session": "node scripts/export-luma-session.mjs",
+    "test:artifact": "npm run build && node --test tests/rendered-html.test.mjs tests/discovery.test.mjs tests/dedupe.test.mjs tests/calendar-sync.test.mjs",
+    "test:browser": "node --test tests/luma-external-form.test.mjs"
   },
   "dependencies": {
     "@lightpanda/browser": "^1.2.0",

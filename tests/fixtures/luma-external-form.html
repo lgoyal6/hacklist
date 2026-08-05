@@ -1,0 +1,117 @@
+<!doctype html>
+<!--
+  A stand-in for Luma's "Add External Event" form.
+
+  Not a pretty mock: it reproduces the behaviours that actually broke things, so a
+  test driving the real filling code fails the way production failed.
+
+    * The date input is a text field that parses what you type and then RE-DISPLAYS
+      it in Luma's own format ("Sun, Aug 23" in the current year, "1/25/2027"
+      otherwise). Typing the displayed format back in is mis-parsed, exactly as the
+      real field does — that bug put an event three weeks early.
+    * Clicking the date field opens an overlay that swallows later clicks, so the
+      driver has to be keyboard-only and must dismiss it by moving focus. Escape
+      closes the whole dialog here too, so using it is fatal.
+    * The second date input mirrors the first and is not focusable.
+    * Time inputs are prefilled 18:00 and 19:00 and can be cleared.
+    * Submit is disabled while "Parsing URL…" is showing.
+-->
+<title>Add External Event (fixture)</title>
+<style>
+  body { font-family: system-ui; padding: 1rem; }
+  #picker { position: fixed; inset: 0; background: rgba(0,0,0,.35); display: none; z-index: 9; }
+  label { display: block; margin: .6rem 0 .15rem; font-size: .8rem; }
+  input { padding: .35rem; width: 22rem; }
+</style>
+
+<div id="dialog">
+  <form id="form" onsubmit="return false">
+    <label>Event Page URL *</label>
+    <input type="url" name="url" required placeholder="https://eventbrite.com/e/some-event" />
+    <div id="parsing" hidden>Parsing URL…</div>
+
+    <label>Event Name *</label>
+    <input type="text" name="name" required placeholder="Happy Hour Drinks" />
+
+    <label>Event Location</label>
+    <input type="text" placeholder="What’s the address?" />
+
+    <label>Host</label>
+    <input type="text" name="host" placeholder="Friends of the City" />
+
+    <label>Event Time</label>
+    <input type="text" id="d0" class="dt-input card-date" />
+    <input type="text" id="d1" class="dt-input card-date" tabindex="-1" />
+    <input type="time" id="t0" value="18:00" placeholder="HH:MM" />
+    <input type="time" id="t1" value="19:00" placeholder="HH:MM" />
+
+    <div style="margin-top:1rem">
+      <button type="submit" id="submit" disabled><div class="label">Add Event</div></button>
+    </div>
+  </form>
+</div>
+<div id="picker"></div>
+
+<script>
+  // What the test reads back to see what the driver actually achieved.
+  window.__state = { submitted: false, rawDateTyped: null };
+
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const DAYS = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const d0 = document.getElementById("d0");
+  const d1 = document.getElementById("d1");
+  const picker = document.getElementById("picker");
+  const submit = document.getElementById("submit");
+  const parsing = document.getElementById("parsing");
+  const thisYear = new Date().getFullYear();
+
+  const display = (y, m, d) => {
+    const wd = DAYS[new Date(Date.UTC(y, m, d)).getUTCDay()];
+    // Luma's own two formats: in-year is verbose, out-of-year is numeric.
+    return y === thisYear ? `${wd}, ${MONTHS[m]} ${d}` : `${m + 1}/${d}/${y}`;
+  };
+  const setDates = (y, m, d) => {
+    d0.value = display(y, m, d);
+    d1.value = d0.value; // the end field mirrors the start, as Luma's does
+  };
+  // Default to today, like the real form.
+  const now = new Date();
+  setDates(now.getFullYear(), now.getMonth(), now.getDate());
+
+  // Parse what was typed. ISO and "MMM D, YYYY" resolve properly; the displayed
+  // "Ddd, MMM D" form is mis-parsed the way Luma mis-parses it — it reads only the
+  // first digit of the day.
+  d0.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+    const raw = d0.value.trim();
+    window.__state.rawDateTyped = raw;
+    let match;
+    if ((match = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/))) {
+      setDates(+match[1], +match[2] - 1, +match[3]);
+    } else if ((match = raw.match(/^([A-Za-z]{3})[a-z]* (\d{1,2}), (\d{4})$/))) {
+      setDates(+match[3], MONTHS.indexOf(match[1]), +match[2]);
+    } else if ((match = raw.match(/^([A-Za-z]{3}), ([A-Za-z]{3}) (\d)/))) {
+      // The bug: only the first digit of the day survives.
+      setDates(thisYear, MONTHS.indexOf(match[2]), +match[3]);
+    }
+    // else: leave whatever was there, like an unparsed entry
+  });
+
+  // Clicking the date field opens an overlay that eats subsequent clicks.
+  d0.addEventListener("focus", () => { picker.style.display = "block"; });
+  // Moving focus elsewhere closes it. Escape kills the whole dialog.
+  for (const el of document.querySelectorAll('input[name], input[type=time]')) {
+    el.addEventListener("focus", () => { picker.style.display = "none"; });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") document.getElementById("dialog").remove();
+  });
+
+  // Submit stays disabled until the URL has been "parsed".
+  document.querySelector('input[name=url]').addEventListener("input", () => {
+    parsing.hidden = false;
+    submit.disabled = true;
+    setTimeout(() => { parsing.hidden = true; submit.disabled = false; }, 400);
+  });
+  submit.addEventListener("click", () => { window.__state.submitted = true; });
+</script>
