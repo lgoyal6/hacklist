@@ -140,5 +140,17 @@ test("serves an ICS feed with one VEVENT per dated event", async () => {
       Number(end) > Number(start),
       `${event.title} all-day DTEND ${end} must be after DTSTART ${start}`,
     );
+    // A submission period of weeks must not block out weeks of a calendar.
+    const toUtc = (stamp) =>
+      Date.UTC(
+        Number(stamp.slice(0, 4)),
+        Number(stamp.slice(4, 6)) - 1,
+        Number(stamp.slice(6, 8)),
+      );
+    const days = Math.round((toUtc(end) - toUtc(start)) / 86400000);
+    assert.ok(
+      days <= 3,
+      `${event.title} occupies ${days} all-day slots; long spans must collapse to the first day`,
+    );
   }
 });

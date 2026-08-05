@@ -28,11 +28,25 @@ function icsDate(iso: string): string {
  * 26th must say the 27th. Pure calendar arithmetic on the date parts — no
  * timezone is involved in "the day after".
  */
-function icsDateExclusive(iso: string): string {
+function icsDateExclusive(iso: string, addDays = 1): string {
   const [year, month, day] = iso.slice(0, 10).split("-").map(Number);
-  const next = new Date(Date.UTC(year, month - 1, day + 1));
+  const next = new Date(Date.UTC(year, month - 1, day + addDays));
   return next.toISOString().slice(0, 10).replace(/-/g, "");
 }
+
+function daysBetween(startIso: string, endIso: string): number {
+  const toUtc = (iso: string) => {
+    const [y, m, d] = iso.slice(0, 10).split("-").map(Number);
+    return Date.UTC(y, m - 1, d);
+  };
+  return Math.round((toUtc(endIso) - toUtc(startIso)) / 86400000);
+}
+
+// Devpost reports a *submission period*, which can run for weeks. Blocking out
+// three weeks of a subscriber's calendar for a one-day hackathon is worse than
+// useless, so a long all-day span collapses to its first day and the full range
+// moves into the description. Genuine multi-day hackathons are short.
+const MAX_ALL_DAY_SPAN = 3;
 
 function escapeText(value: string): string {
   return value
@@ -121,15 +135,26 @@ function buildCalendar(): string {
     // No end, or a time we do not believe, means the hour is unknown but the day
     // is not. Say so in the description so a subscriber knows to check.
     const allDay = !event.end || event.timeUnverified === true;
+    const span = allDay
+      ? daysBetween(event.start as string, (event.end ?? event.start) as string) + 1
+      : 0;
+    const longSpan = allDay && span > MAX_ALL_DAY_SPAN;
     const description =
       (adjacent ? "A tech event, not a hackathon. " : "") +
       (allDay ? "Start time is on the event page. " : "") +
+      (longSpan
+        ? `Runs ${(event.start as string).slice(0, 10)} to ${(event.end as string).slice(0, 10)}; shown on the first day. `
+        : "") +
       `${event.why} Hosted by ${event.organizer}. ` +
       `Registration: ${event.status}. Details: ${event.url}`;
     const when = allDay
       ? [
           `DTSTART;VALUE=DATE:${icsDate(event.start as string)}`,
-          `DTEND;VALUE=DATE:${icsDateExclusive((event.end ?? event.start) as string)}`,
+          `DTEND;VALUE=DATE:${
+            longSpan
+              ? icsDateExclusive(event.start as string)
+              : icsDateExclusive((event.end ?? event.start) as string)
+          }`,
         ]
       : [
           `DTSTART;TZID=America/Los_Angeles:${icsLocal(event.start as string)}`,
