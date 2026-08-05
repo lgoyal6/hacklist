@@ -1,14 +1,16 @@
 #!/bin/bash
-# The two passes that need a signed-in browser, run together on a schedule.
+# The passes that can only run from this machine, once a day at 8:30pm.
 #
-# 1. Personalized discovery: collects the events Luma shows this account, then
-#    commits and pushes them so the next GitHub sweep crawls and classifies
-#    them. Only public event URLs are written; the session never leaves here.
-# 2. Luma calendar sync: adds newly published events to the HackList SF
-#    calendar through Luma's own admin UI.
+# Two different reasons they are here rather than in CI:
+#   * They need a signed-in Luma session — personalized discovery, the calendar
+#     sync, the tagging pass — and that session must never reach CI.
+#   * Or they need a residential Bay Area IP: Luma's discover feed is
+#     geolocated, and search engines block datacenter addresses outright.
 #
-# Neither step is allowed to abort the other, and a failure here never leaves
-# bad state: discovery output is merged, and the sync is idempotent.
+# No step can abort another, and a failure never leaves bad state: discovery
+# output is merged rather than replaced, the sync is idempotent, and both the
+# Luma feed pull and the normalizer refuse to overwrite good data with a
+# collapsed run.
 set -uo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -49,12 +51,15 @@ echo "=== $(date '+%Y-%m-%d %H:%M:%S') local passes starting"
 HEADLESS_FLAG="--headless"
 [ "${HACKLIST_HEADED:-0}" = "1" ] && HEADLESS_FLAG=""
 
-# LinkedIn discovery runs here rather than only in CI for one reason: its paid
-# search fallback goes through the `zero` CLI, which is signed in on this
-# machine and absent in GitHub Actions. In CI the keyless search endpoint is
-# usually throttled to nothing, so without this pass the LinkedIn leg would
-# quietly find nothing most days. Costs a fraction of a cent per run, and only
-# when the free provider came back empty.
+# Luma's discover feed is geolocated, so this only works from here — from a
+# datacenter it returns a couple of events and a 200. It refuses to overwrite a
+# good pull with a collapsed one, so a bad run leaves the last good file alone.
+echo "--- luma discover feed"
+"$NODE" scripts/discover-luma-api.mjs || \
+  echo "    luma api pass failed; previous pull kept" >&2
+
+# LinkedIn runs here as well as in CI because search engines answer a residential
+# address and block a datacenter one, so this is where it actually finds anything.
 echo "--- linkedin discovery"
 "$NODE" scripts/discover-linkedin.mjs || \
   echo "    linkedin pass failed; continuing" >&2
@@ -65,12 +70,14 @@ echo "--- personalized discovery"
 
 # Both passes only write seed files, which the next GitHub sweep crawls and
 # classifies. Committed together so one push covers whichever of them changed.
-SEED_FILES=(data/personalized-seeds.json data/linkedin-seeds.json)
+# luma-api.json rides along: the GitHub sweep reads its calendar seeds, and the
+# normalizer its candidates and enrichment, but only this machine can produce it.
+SEED_FILES=(data/personalized-seeds.json data/linkedin-seeds.json data/luma-api.json)
 if ! git diff --quiet -- "${SEED_FILES[@]}"; then
   git add "${SEED_FILES[@]}"
   git -c user.name="hacklist-local" \
       -c user.email="local@hacklist.invalid" \
-      commit -q -m "data: refresh personalized and LinkedIn seeds"
+      commit -q -m "data: refresh local discovery seeds and Luma feed"
   # Rebase before pushing: a scheduled sweep may have committed in between.
   for attempt in 1 2 3; do
     git push -q origin HEAD:main && { echo "    pushed seeds"; break; }
@@ -89,8 +96,8 @@ echo "--- luma event tags"
 "$NODE" scripts/luma-tag-events.mjs --name "$CAL_NAME" $HEADLESS_FLAG || \
   echo "    tagging did not complete; already-applied tags are recorded" >&2
 
-# Arm the wake for the next run before exiting, so the chain sustains itself with
-# the lid shut. `pmset repeat` only holds one wake time and there are two runs.
+# Re-arm tomorrow's wake so the schedule survives the repeating wake being
+# cleared by anything else that calls `pmset repeat` (it holds only one).
 # Silently skipped when the sudoers rule is not installed.
 echo "--- next wake"
 bash "$REPO/scripts/arm-next-wake.sh" || true

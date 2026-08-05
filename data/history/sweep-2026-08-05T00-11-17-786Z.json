@@ -10,7 +10,7 @@
     "adjacentCount": 5,
     "organizerCount": 31,
     "sourceCount": 15,
-    "seedCount": 15,
+    "seedCount": 16,
     "externalCount": 7
   },
   "events": [
@@ -71,7 +71,7 @@
       "tags": [
         "AI"
       ],
-      "going": 77,
+      "going": 79,
       "why": "10-hour build with judging, demos, team formation, a submission deadline; $500 cash.",
       "score": 93,
       "confidence": 94,
@@ -215,7 +215,7 @@
         "Agents",
         "Token economy"
       ],
-      "going": 449,
+      "going": 448,
       "why": "9-hour build with demos, team formation, a submission deadline; prizes listed.",
       "score": 90,
       "confidence": 94,
@@ -320,7 +320,7 @@
       "tags": [
         "AI"
       ],
-      "going": 101,
+      "going": 105,
       "why": "11-hour build with demos, team formation, a submission deadline.",
       "score": 88,
       "confidence": 94,
@@ -532,7 +532,7 @@
         "Tech",
         "Data"
       ],
-      "going": 96,
+      "going": 99,
       "why": "7-hour build with judging, demos, team formation; prizes listed.",
       "score": 86,
       "confidence": 94,
@@ -709,7 +709,7 @@
       "tags": [
         "AI"
       ],
-      "going": 139,
+      "going": 147,
       "why": "4-hour build with a submission deadline; prizes listed.",
       "score": 84,
       "confidence": 94,
@@ -1259,7 +1259,7 @@
         "Arts & Culture",
         "Tech"
       ],
-      "going": 66,
+      "going": 68,
       "why": "4-hour build with judging, team formation.",
       "score": 89,
       "confidence": 94,
@@ -1271,42 +1271,6 @@
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
       "checkedAt": "2026-08-05T00:09:33.215Z"
-    },
-    {
-      "id": "kgddqkx2",
-      "url": "https://luma.com/kgddqkx2",
-      "platform": "luma",
-      "category": "adjacent",
-      "adjacentReason": "title names a non-hackathon format",
-      "title": "AI & Mobile meet-up by Software Mansion",
-      "organizer": "Software Mansion events",
-      "venue": null,
-      "city": "San Francisco",
-      "area": "SF",
-      "start": "2026-08-04T18:30:00-07:00",
-      "end": "2026-08-04T21:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 04",
-      "dateDetail": "Tue · 6:30pm–9pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "AI",
-        "Agents"
-      ],
-      "going": 0,
-      "why": "3-hour build with team formation.",
-      "score": 86,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 55,
-        "accessibility": 100,
-        "freshness": 100
-      },
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-08-05T00:05:19.783Z"
     },
     {
       "id": "3t95uj7s",
@@ -1342,6 +1306,42 @@
       },
       "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
       "checkedAt": "2026-08-05T00:05:17.431Z"
+    },
+    {
+      "id": "kgddqkx2",
+      "url": "https://luma.com/kgddqkx2",
+      "platform": "luma",
+      "category": "adjacent",
+      "adjacentReason": "title names a non-hackathon format",
+      "title": "AI & Mobile meet-up by Software Mansion",
+      "organizer": "Software Mansion events",
+      "venue": null,
+      "city": "San Francisco",
+      "area": "SF",
+      "start": "2026-08-04T18:30:00-07:00",
+      "end": "2026-08-04T21:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 04",
+      "dateDetail": "Tue · 6:30pm–9pm",
+      "timeUnverified": false,
+      "status": "Waitlist",
+      "prize": "Not listed",
+      "tags": [
+        "AI",
+        "Agents"
+      ],
+      "going": 0,
+      "why": "3-hour build with team formation.",
+      "score": 77,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 55,
+        "accessibility": 53,
+        "freshness": 100
+      },
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "checkedAt": "2026-08-05T00:05:19.783Z"
     },
     {
       "id": "278ujx64",

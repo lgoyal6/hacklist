@@ -36,7 +36,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 
-import { serpResults } from "./lib/serp.mjs";
+import { brightDataSearch } from "./lib/serp.mjs";
 
 const execFileAsync = promisify(execFile);
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -214,40 +214,11 @@ async function searchTavily(query) {
 }
 
 /**
- * Bright Data's SERP API, via the unified /request endpoint. Appending
- * `brd_json=1` to the Google URL makes it return parsed results rather than HTML,
- * so there is no markup to scrape.
- *
- * Needs a Web Unlocker / SERP zone; name it in BRIGHTDATA_SERP_ZONE. Untested
- * here for want of an account — it is wired, documented and inert until the key
- * is set, and a wrong response shape is recorded as a problem like any other.
+ * Bright Data's SERP API, scoped to LinkedIn. Everything awkward about the
+ * endpoint lives in brightDataSearch() in lib/serp.mjs.
  */
 async function searchBrightData(query) {
-  const target = new URL("https://www.google.com/search");
-  target.searchParams.set("q", scopeToLinkedIn(query));
-  target.searchParams.set("num", "20");
-  target.searchParams.set("brd_json", "1");
-  const response = await fetch(
-    "https://api.brightdata.com/request",
-    timed({
-      method: "POST",
-      headers: {
-        authorization: `Bearer ${process.env.BRIGHTDATA_API_KEY}`,
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        zone: process.env.BRIGHTDATA_SERP_ZONE ?? "serp_api",
-        url: target.toString(),
-        format: "raw",
-      }),
-    }),
-  );
-  if (!response.ok) return { results: [], error: `HTTP ${response.status}` };
-  const results = serpResults(await response.text());
-  if (!results.length) {
-    return { results: [], error: "brightdata: no results in JSON or HTML response" };
-  }
-  return { results };
+  return brightDataSearch(scopeToLinkedIn(query));
 }
 
 async function searchBrave(query) {

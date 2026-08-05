@@ -17,7 +17,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { serpResults } from "./lib/serp.mjs";
+import { brightDataSearch } from "./lib/serp.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
@@ -153,34 +153,13 @@ async function searchTavily(query) {
 }
 
 /**
- * Bright Data's SERP API via the unified /request endpoint; `brd_json=1` makes
- * Google return parsed results instead of HTML. Needs a Web Unlocker / SERP zone
- * named in BRIGHTDATA_SERP_ZONE. Wired and documented but untested for want of an
- * account — inert until BRIGHTDATA_API_KEY is set, and a bad response shape is
- * reported as a problem rather than throwing.
+ * Bright Data's SERP API. Everything awkward about it lives in
+ * brightDataSearch() in lib/serp.mjs — required fields, the retry a transient
+ * upstream failure needs, and the cooldown that retry has to respect.
  */
 async function searchBrightData(query) {
-  const target = new URL("https://www.google.com/search");
-  target.searchParams.set("q", query);
-  target.searchParams.set("num", "20");
-  target.searchParams.set("brd_json", "1");
-  const response = await fetch("https://api.brightdata.com/request", {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${process.env.BRIGHTDATA_API_KEY}`,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      zone: process.env.BRIGHTDATA_SERP_ZONE ?? "serp_api",
-      url: target.toString(),
-      format: "raw",
-    }),
-  });
-  if (!response.ok) return { urls: [], error: `HTTP ${response.status}` };
-  const results = serpResults(await response.text());
-  if (!results.length) {
-    return { urls: [], error: "brightdata: no results in JSON or HTML response" };
-  }
+  const { results, error } = await brightDataSearch(query);
+  if (error) return { urls: [], error };
   return { urls: results.map((result) => result.link) };
 }
 

@@ -11,9 +11,14 @@
 // Dropping either source would cost coverage, so both run.
 //
 // No key, no session, no browser. `api.lu.ma/discover/get-paginated-events`
-// takes a place id and a cursor and answers 200 to an anonymous caller — which
-// also means it works from a datacenter IP, unlike every search engine this
-// pipeline has tried.
+// takes a place id and a cursor and answers 200 to an anonymous caller.
+//
+// It does NOT work from a datacenter, which is why this runs on the local
+// schedule rather than in CI. The feed is IP-geolocated: asked for the SF place
+// from a residential Bay Area address it returns ~900 upcoming events, and from a
+// GitHub Actions runner it returns two — with a 200 and no error, so nothing
+// looks wrong. That silently overwrote a good pull once and cost the board seven
+// hackathons, hence the floor check before writing.
 //
 // Three outputs, all in data/luma-api.json:
 //   * candidates      — hackathon-shaped events, in the sweep's candidate shape
@@ -274,6 +279,32 @@ for (const record of byUrl.values()) {
 
 candidates.sort((a, b) => b.relevance - a.relevance);
 const fresh = candidates.filter((candidate) => !sweptUrls.has(candidate.url));
+
+// Luma's discover feed is IP-geolocated to the place you ask about, so this pass
+// only works from a Bay Area address. Run from a datacenter it returns a couple
+// of events and no error at all — which once overwrote a 897-event pull with 2
+// and cost the board seven hackathons before anyone noticed. So a collapse never
+// replaces a good file: the previous one stands and this exits non-zero.
+let previousUnique = 0;
+try {
+  const before = JSON.parse(await readFile(outputPath, "utf8"));
+  previousUnique = before.uniqueEvents ?? 0;
+} catch {
+  // first run
+}
+const floor = Math.max(
+  config.lumaApiMinEvents ?? 100,
+  Math.ceil(previousUnique * 0.5),
+);
+if (previousUnique > 0 && byUrl.size < floor) {
+  console.error(
+    `Refusing to overwrite: pulled ${byUrl.size} event(s) against ${previousUnique} ` +
+      `last time (floor ${floor}). Luma's discover feed is geolocated — from ` +
+      "outside the Bay Area it answers 200 with almost nothing. Keeping the " +
+      "previous pull.",
+  );
+  process.exit(1);
+}
 
 await writeFile(
   outputPath,

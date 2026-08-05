@@ -1,33 +1,26 @@
 {
-  "collectedAt": "2026-08-05T02:48:10.631Z",
+  "collectedAt": "2026-08-05T03:58:37.723Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 0,
-  "pagesRead": 0,
+  "pagesFound": 20,
+  "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
   "problems": [
     {
       "stage": "search",
       "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
-      "error": "HTTP 400"
-    },
-    {
-      "stage": "search",
-      "query": "weekly bay area ai events hackathon 2026",
-      "error": "HTTP 400"
-    },
-    {
-      "stage": "search",
-      "query": "hackathon sponsors judges san francisco apply luma",
-      "error": "HTTP 400"
+      "error": "brightdata expect_body"
     }
   ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
-  "ycEventUrls": [],
+  "ycEventUrls": [
+    "https://events.ycombinator.com/deepmind-march26",
+    "https://events.ycombinator.com/bio-ai-hackathon"
+  ],
   "urls": [
     {
       "url": "https://luma.com/hqz8wi79",
@@ -58,18 +51,130 @@
       "lastSeenAt": "2026-08-04T20:51:28.520Z"
     },
     {
+      "url": "https://luma.com/rgk6ln4e.",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/posts/troy-gwdn_ive-started-going-to-hackathons-every-single-activity-7458893560977862656-2Ixu",
+      "context": "Broadening Horizons at SF Hackathons Every hackathon is an opportunity to broaden your horizons, Apply on Luma: https://luma.com/rgk6ln4e. I was judge at a hackathon. This is for ...",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/HackBio",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/posts/aneesav_hackathon-ai-biotech-activity-7441829245028368384-mv6b",
+      "context": "BioSolutions Hackathon in SF: Collaboration for Real- ... Hackathon in SF: Collaboration for Real-World Problem Solving. Apply to build → https://luma.com/HackBio Proud to be building alongside ...",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/hh-future-ai-news-theatlantic-infactory",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "- Feb 8, 2026 Report this article Charles Guo Charles Guo Published Jan 31, 2026 + Follow Saturday, January 31 Morning Building Future AI News with The Atlantic & Infactory (8:30 AM) East Palo Alto - Hacks/Hackers hands-on innovation day exploring AI in news https://lu.ma/hh-future-ai-news-theatlant",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/8g6lrxsl",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "ic & Infactory (8:30 AM) East Palo Alto - Hacks/Hackers hands-on innovation day exploring AI in news https://lu.ma/hh-future-ai-news-theatlantic-infactory MiniMax Multimodal Stack Hackathon (9:00 AM) San Francisco - B.E.L.L.E hosted, $1,000+ prizes, free food https://lu.ma/8g6lrxsl Get Funded @Promp",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/nocpgiou",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "tory MiniMax Multimodal Stack Hackathon (9:00 AM) San Francisco - B.E.L.L.E hosted, $1,000+ prizes, free food https://lu.ma/8g6lrxsl Get Funded @Prompt Driven Development Hackathon (9:00 AM) 400 Hamilton Ave, Palo Alto - With Toolhouse, 500 Global, ElevenLabs https://lu.ma/nocpgiou Physical AI Hack ",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/8ca2z1rr",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "://lu.ma/8g6lrxsl Get Funded @Prompt Driven Development Hackathon (9:00 AM) 400 Hamilton Ave, Palo Alto - With Toolhouse, 500 Global, ElevenLabs https://lu.ma/nocpgiou Physical AI Hack 2026 (9:00 AM) Founders, Inc. SF Lab - Hands-on hackathon with real robots https://lu.ma/8ca2z1rr WeaveHacks 3: Sel",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/weavehacks3",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "venLabs https://lu.ma/nocpgiou Physical AI Hack 2026 (9:00 AM) Founders, Inc. SF Lab - Hands-on hackathon with real robots https://lu.ma/8ca2z1rr WeaveHacks 3: Self-Improving Agents (9:00 AM) Weights & Biases SF office - Two-day hackathon (runs through Feb 1) https://lu.ma/weavehacks3 Scrappy AI Fou",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/rs04siso",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "ots https://lu.ma/8ca2z1rr WeaveHacks 3: Self-Improving Agents (9:00 AM) Weights & Biases SF office - Two-day hackathon (runs through Feb 1) https://lu.ma/weavehacks3 Scrappy AI Founders Go Dirt-Biking (10:00 AM) Los Gatos - 12 Scrappy Founders outdoor meetup https://lu.ma/rs04siso Afternoon Sardine",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/gu8aes78",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "u.ma/s5lheg3r AI Coding with Qoder (1:30 PM) Palo Alto - Introducing AI-native coding era https://lu.ma/qoderaicoding Where AI Meets Creativity - Creators x Builders Mixer (4:30 PM) Los Altos Hills - Hillside residence gathering for AI creators and filmmakers https://lu.ma/gu8aes78 Sunday, February ",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/y8k57glv",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "Builders Mixer (4:30 PM) Los Altos Hills - Hillside residence gathering for AI creators and filmmakers https://lu.ma/gu8aes78 Sunday, February 1 Stanford x DeepMind Hackathon (10:00 AM - 6:00 PM) Stanford - Build with Google Gemini, win up to $5M seed funding https://lu.ma/y8k57glv Monday, February ",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/0nsdp7jv",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "d Hackathon (10:00 AM - 6:00 PM) Stanford - Build with Google Gemini, win up to $5M seed funding https://lu.ma/y8k57glv Monday, February 3 Evening Scrappy AI Founders Play Pickleball (4:30 PM) San Francisco - Invite-only pickleball for AI founders & investors https://lu.ma/0nsdp7jv Neural Nets & Nig",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/wi0vt7h6",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "eyond the Prompt: Mastering AI Collaboration (6:00 PM) 5 Palo Alto Square - Shift from command-and-control to improvisation https://lu.ma/5ccq20wd 130th SF Hardware Meetup @ Rivian (6:00 PM) San Francisco - Climate tech and energy topics, bring physical demos https://lu.ma/wi0vt7h6 Thursday, Februar",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/intercomai",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "(6:00 PM) San Francisco - Climate tech and energy topics, bring physical demos https://lu.ma/wi0vt7h6 Thursday, February 6 Day Continual Learning Hackathon (9:30 AM) San Francisco - $50k+ prizes, integrations with You.com , Intercom, Lovable, Google DeepMind https://lu.ma/intercomai Evening The Slic",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/slicelab",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "ng Hackathon (9:30 AM) San Francisco - $50k+ prizes, integrations with You.com , Intercom, Lovable, Google DeepMind https://lu.ma/intercomai Evening The Slice Lab by Sentry & Vercel (5:00 PM) Joyride Pizza Yerba Buena Gardens - Super Bowl week VIP pizza party https://lu.ma/slicelab AI Events AI Even",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/rgk6ln4e",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/posts/troy-gwdn_ive-started-going-to-hackathons-every-single-activity-7458893560977862656-2Ixu",
+      "context": "“𝘔𝘢𝘭𝘢𝘺𝘴𝘪𝘢 𝘩𝘢𝘴 𝘵𝘢𝘭𝘦𝘯𝘵, 𝘣𝘶𝘵 𝘸𝘦 𝘯𝘦𝘦𝘥 𝘮𝘰𝘳𝘦 𝘱𝘭𝘢𝘵𝘧𝘰𝘳𝘮𝘴” - this is one of those platforms. 𝐑𝐞𝐠𝐢𝐬𝐭𝐫𝐚𝐭𝐢𝐨𝐧𝐬 𝐚𝐫𝐞 𝐧𝐨𝐰 𝐨𝐩𝐞𝐧. 🌐 𝐄𝐯𝐞𝐧𝐭 𝐰𝐞𝐛𝐬𝐢𝐭𝐞: http://codexhackathon.my/ 📝 𝐀𝐩𝐩𝐥𝐲 𝐨𝐧 𝐋𝐮𝐦𝐚: https://luma.com/rgk6ln4e #Malaysia #AI #",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/hackbio",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/posts/aneesav_hackathon-ai-biotech-activity-7441829245028368384-mv6b",
+      "context": "pecially excited about creating a space where learning is hands-on, curiosity is encouraged and people can engage directly with the realities of building in this space. If you’ve been looking for a way to move from thinking to doing, this is it. RSVP on Luma: https://luma.com/hackbio . _______ #ai #",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
       "url": "https://luma.com/q3jx5f55",
       "promising": false,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-18-26-2026-bay-area-charles-guo-mituc",
       "context": "lo Alto, California - Host: Luma - Details available on the RSVP page. 6:00 PM PT - Operational AI: Real-Time Analytics in Production - 2360 3rd St, San Francisco, CA 94107, USA, CA - Host: San Francisco Bay Area ClickHouse® Meetup - \\Please register on Luma: https://luma.com/q3jx5f55 Description AI",
-      "lastSeenAt": "2026-08-05T00:02:05.227Z"
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
     },
     {
       "url": "https://luma.com/artgallery",
       "promising": false,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-july-30-aug-7-2026-bay-area-charles-guo-tmz9c",
+      "sourcePage": "https://www.linkedin.com/pulse/ai-events-july-10-18-2026-bay-area-charles-guo-hzktc",
       "context": "Events July 17 - July 25 2026 Bay Area Special call out to the event I am helping organizing The AI Summit @ Stanford Check out the list of exciting speakers,… AI Events July 14 - July 22 Bay Area Jul 14, 2026 AI Events July 14 - July 22 Bay Area Event Hight: https://luma.com/artgallery At Startup W",
-      "lastSeenAt": "2026-08-05T00:02:05.227Z"
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
     },
     {
       "url": "https://luma.com/clickh-2crf",
@@ -84,6 +189,160 @@
       "sourcePage": "https://www.linkedin.com/posts/activity-7486324888119517185-kam0",
       "context": "oper ecosystem directly with San Francisco’s top technical talent, creators, and founders. 📅 Date & Time: Saturday, August 1, 2026 | 1:30 PM – 4:00 PM (GMT-7) 📍 Location: 180 Lytton Ave, Palo Alto, CA 94301 🎟️ Admission: Free entry with Luma registration ( https://luma.com/ch1xw5jf ) 💻 Format: H",
       "lastSeenAt": "2026-08-05T00:02:05.227Z"
+    },
+    {
+      "url": "https://luma.com/s5lheg3r",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "ough Feb 1) https://lu.ma/weavehacks3 Scrappy AI Founders Go Dirt-Biking (10:00 AM) Los Gatos - 12 Scrappy Founders outdoor meetup https://lu.ma/rs04siso Afternoon Sardines in SF: 50 Person Hide & Seek (1:00 PM) Yerba Buena Gardens - Large-scale game downtown https://lu.ma/s5lheg3r AI Coding with Qo",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/qoderaicoding",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "Scrappy Founders outdoor meetup https://lu.ma/rs04siso Afternoon Sardines in SF: 50 Person Hide & Seek (1:00 PM) Yerba Buena Gardens - Large-scale game downtown https://lu.ma/s5lheg3r AI Coding with Qoder (1:30 PM) Palo Alto - Introducing AI-native coding era https://lu.ma/qoderaicoding Where AI Mee",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/neuralnetsandnightcaps",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "57glv Monday, February 3 Evening Scrappy AI Founders Play Pickleball (4:30 PM) San Francisco - Invite-only pickleball for AI founders & investors https://lu.ma/0nsdp7jv Neural Nets & Nightcaps (5:00 PM) San Francisco - NEAR AI, Phala, AI Collective happy hour https://lu.ma/neuralnetsandnightcaps Sof",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/jw2nuuqt",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "rs https://lu.ma/0nsdp7jv Neural Nets & Nightcaps (5:00 PM) San Francisco - NEAR AI, Phala, AI Collective happy hour https://lu.ma/neuralnetsandnightcaps Software Teardown: Agents for the Real World (5:00 PM) San Francisco - Focus on building usable AI agents https://lu.ma/jw2nuuqt AI for Science Se",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/february-ai-for-science-sf-event",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": ".ma/neuralnetsandnightcaps Software Teardown: Agents for the Real World (5:00 PM) San Francisco - Focus on building usable AI agents https://lu.ma/jw2nuuqt AI for Science Series: SF (5:30 PM) San Francisco - Pillar VC event, 3 cities/12 speakers/450+ builders https://lu.ma/february-ai-for-science-sf",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/wfje78ws",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "lu.ma/jw2nuuqt AI for Science Series: SF (5:30 PM) San Francisco - Pillar VC event, 3 cities/12 speakers/450+ builders https://lu.ma/february-ai-for-science-sf-event Cloudflare IRL (5:30 PM) 930 Alabama St, SF - With PlanetScale & Replicate, demos/food/drinks https://lu.ma/wfje78ws AI & Geopolitics ",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/algvm853",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "https://lu.ma/february-ai-for-science-sf-event Cloudflare IRL (5:30 PM) 930 Alabama St, SF - With PlanetScale & Replicate, demos/food/drinks https://lu.ma/wfje78ws AI & Geopolitics (6:30 PM) San Francisco - Power, security, and strategic landscape discussion https://lu.ma/algvm853 Tuesday, February ",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/wwwbfcgy",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "s https://lu.ma/wfje78ws AI & Geopolitics (6:30 PM) San Francisco - Power, security, and strategic landscape discussion https://lu.ma/algvm853 Tuesday, February 4 Morning Coffeeflare (8:00 AM) Sightglass Coffee, SF - Casual hang with Cloudflare developer team https://lu.ma/wwwbfcgy Founder Breakfast",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/6e4dc3yh",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "s://lu.ma/algvm853 Tuesday, February 4 Morning Coffeeflare (8:00 AM) Sightglass Coffee, SF - Casual hang with Cloudflare developer team https://lu.ma/wwwbfcgy Founder Breakfast (9:00 AM) San Francisco - Curated for Seed-Series B founders (B2B SaaS & AI focus) https://lu.ma/6e4dc3yh Afternoon/Evening",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/0exwq1w5",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "Founder Breakfast (9:00 AM) San Francisco - Curated for Seed-Series B founders (B2B SaaS & AI focus) https://lu.ma/6e4dc3yh Afternoon/Evening MCP Compositional Architecture Workshop (1:00 PM) San Francisco - Build production-ready Model Context Protocol tools https://lu.ma/0exwq1w5 The Boring (yet I",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/BoringYetImportantStuff",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "g MCP Compositional Architecture Workshop (1:00 PM) San Francisco - Build production-ready Model Context Protocol tools https://lu.ma/0exwq1w5 The Boring (yet Important!) Stuff for Startups (5:30 PM) TBD location - Visas, hiring, compliance, accounting, taxes https://lu.ma/BoringYetImportantStuff Ro",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/8rdw6gga",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "ff for Startups (5:30 PM) TBD location - Visas, hiring, compliance, accounting, taxes https://lu.ma/BoringYetImportantStuff Rocket & Twill: Vibe Shift - Builders Behind the Models (5:30 PM) 1481 Folsom St, SF - Where foundation models meet product imagination https://lu.ma/8rdw6gga 🧠 The AI Collect",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/irl_podcast",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "ift - Builders Behind the Models (5:30 PM) 1481 Folsom St, SF - Where foundation models meet product imagination https://lu.ma/8rdw6gga 🧠 The AI Collective: Collective Intelligence Live Podcast (5:00 PM) San Francisco - Episode 1 recorded live, 300 attendees https://lu.ma/irl_podcast SF AI Engineer",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/jus5th81",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "The AI Collective: Collective Intelligence Live Podcast (5:00 PM) San Francisco - Episode 1 recorded live, 300 attendees https://lu.ma/irl_podcast SF AI Engineers: February Meetup (6:00 PM) 40 Boardman Pl, SF - With Tesla, Distributional, Eventual presenting https://lu.ma/jus5th81 Global Builders Sa",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/6re61lly",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "s://lu.ma/irl_podcast SF AI Engineers: February Meetup (6:00 PM) 40 Boardman Pl, SF - With Tesla, Distributional, Eventual presenting https://lu.ma/jus5th81 Global Builders Salon (6:00 PM) San Francisco - HAC.ai mixer for first-gen builders/founders/engineers https://lu.ma/6re61lly Wednesday, Februa",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/5k0e0qtp",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "uilders Salon (6:00 PM) San Francisco - HAC.ai mixer for first-gen builders/founders/engineers https://lu.ma/6re61lly Wednesday, February 5 Day ✶ Fractal Alignment ✶ (10:00 AM) San Francisco - One-day immersion for founders with Wojciech Zaremba, Emmett Shear https://lu.ma/5k0e0qtp Evening Low Laten",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/w3f57i9m",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "actal Alignment ✶ (10:00 AM) San Francisco - One-day immersion for founders with Wojciech Zaremba, Emmett Shear https://lu.ma/5k0e0qtp Evening Low Latency Club: Workflow & Voice AI (5:30 PM) San Francisco - Telnyx, Temporal, Rime - Production-grade AI systems https://lu.ma/w3f57i9m Dust x Anthropic:",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/9pwe3lr6",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "tp Evening Low Latency Club: Workflow & Voice AI (5:30 PM) San Francisco - Telnyx, Temporal, Rime - Production-grade AI systems https://lu.ma/w3f57i9m Dust x Anthropic: It's called having Skills (6:00 PM) San Francisco - Demos on modular AI agent capabilities https://lu.ma/9pwe3lr6 Beyond the Prompt",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/5ccq20wd",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
+      "context": "9m Dust x Anthropic: It's called having Skills (6:00 PM) San Francisco - Demos on modular AI agent capabilities https://lu.ma/9pwe3lr6 Beyond the Prompt: Mastering AI Collaboration (6:00 PM) 5 Palo Alto Square - Shift from command-and-control to improvisation https://lu.ma/5ccq20wd 130th SF Hardware",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/f13dwefh",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/posts/marianebekker_sf-ai-vibe-coding-hackathon-luma-activity-7372707343802777600-lopf",
+      "context": "ave of AI agents — from coding copilots to real-world impact tools. The energy is already building, and I can’t wait to see what these teams create in just one day. 🚀 👉 Join me at 6:00 PM at 501 Folsom St, San Francisco for the final presentations + awards: https://luma.com/f13dwefh The top 10 tea",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/meofrw3d",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/posts/robert-a-brennan_ai-agents-hackathon-gtc-2025-edition-1-activity-7308492376237326337-9NyB",
+      "context": "Learning Jobs Games Sign in Join now Robert Brennan’s Post Robert Brennan 1y Report this post Can't wait for this! Saroop Bharwani 1y Edited 15 hours left to register. Compete for $50k+ in prizes and network with leading sponsors and judges in San Francisco: https://lu.ma/meofrw3d 📅 Saturday, March",
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
+    },
+    {
+      "url": "https://luma.com/hackbio.",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/posts/aneesav_hackathon-ai-biotech-activity-7441829245028368384-mv6b",
+      "context": null,
+      "lastSeenAt": "2026-08-05T03:58:37.723Z"
     }
   ]
 }

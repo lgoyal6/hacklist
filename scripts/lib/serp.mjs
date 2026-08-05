@@ -57,3 +57,77 @@ export function serpResults(text) {
   // HTML zone: links only, no snippets.
   return linksFromSerpHtml(text).map((link) => ({ link, text: "" }));
 }
+
+const BRIGHTDATA_ENDPOINT = "https://api.brightdata.com/request";
+
+/**
+ * One search through Bright Data's SERP API.
+ *
+ * Details that cost live debugging to establish, all against a real zone:
+ *
+ *   * `format` is required in the body; omitting it is a 400.
+ *   * Do NOT put brd_json in the URL. The zone carries its own data_format
+ *     ("parsed_light" for a Light JSON zone), and specifying it again makes
+ *     Bright Data answer 200 with an empty body and x-brd-error-code:
+ *     expect_body — a success status with nothing in it.
+ *   * A first attempt fails with expect_body/502 often enough to matter: Bright
+ *     Data's own fetch of Google comes back empty. The retry succeeds. Without
+ *     retrying, the whole leg loses queries to a transient upstream blip.
+ *   * After a failed query Bright Data imposes a ~15s cooldown on that exact
+ *     query and answers 429 failed_query_rejected inside it, so the retry has to
+ *     wait it out rather than fire immediately.
+ *   * /status reporting can_make_requests:false is not a signal — it checks
+ *     proxy credentials this path does not use.
+ */
+export async function brightDataSearch(query, options = {}) {
+  const {
+    zone = process.env.BRIGHTDATA_SERP_ZONE ?? "serp_api",
+    apiKey = process.env.BRIGHTDATA_API_KEY,
+    timeoutMs = 60_000,
+    cooldownMs = Number(process.env.BRIGHTDATA_COOLDOWN_MS ?? 17_000),
+    attempts = 2,
+    fetchImpl = fetch,
+    sleep = (ms) => new Promise((r) => setTimeout(r, ms)),
+  } = options;
+
+  const target = new URL("https://www.google.com/search");
+  target.searchParams.set("q", query);
+  target.searchParams.set("num", "20");
+
+  let lastError = "no attempt made";
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    if (attempt > 1) await sleep(cooldownMs);
+    let response;
+    try {
+      response = await fetchImpl(BRIGHTDATA_ENDPOINT, {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${apiKey}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ zone, url: target.toString(), format: "raw" }),
+        signal: AbortSignal.timeout(timeoutMs),
+      });
+    } catch (error) {
+      lastError = `brightdata: ${String(error).slice(0, 90)}`;
+      continue;
+    }
+    // Bright Data reports upstream trouble in headers while still answering 200.
+    const brdError = response.headers.get("x-brd-error-code");
+    const text = await response.text().catch(() => "");
+    if (!response.ok) {
+      lastError = `brightdata HTTP ${response.status}${text ? `: ${text.slice(0, 120)}` : ""}`;
+      continue;
+    }
+    if (brdError || !text.trim()) {
+      lastError = `brightdata ${brdError ?? "empty body"}${
+        text ? `: ${text.slice(0, 100)}` : ""
+      }`;
+      continue;
+    }
+    const results = serpResults(text);
+    if (results.length) return { results };
+    lastError = "brightdata: response parsed to no results";
+  }
+  return { results: [], error: lastError };
+}
