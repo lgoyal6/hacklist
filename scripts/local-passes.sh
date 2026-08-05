@@ -89,6 +89,18 @@ echo "--- personalized discovery"
 # luma-api.json rides along: the GitHub sweep reads its calendar seeds, and the
 # normalizer its candidates and enrichment, but only this machine can produce it.
 SEED_FILES=(data/personalized-seeds.json data/linkedin-seeds.json data/luma-api.json)
+# Validate before committing. A conflicted file once reached CI this way: the
+# markers made it invalid JSON, and every reader treats a parse failure as "file
+# absent", so a whole sweep ran without its calendar seeds and enrichment and
+# nothing said a word.
+for f in "${SEED_FILES[@]}"; do
+  [ -f "$f" ] || continue
+  if ! "$NODE" -e "JSON.parse(require('node:fs').readFileSync('$f','utf8'))" 2>/dev/null; then
+    echo "    REFUSING to commit: $f is not valid JSON (conflict markers?)" >&2
+    exit 1
+  fi
+done
+
 if ! git diff --quiet -- "${SEED_FILES[@]}"; then
   git add "${SEED_FILES[@]}"
   git -c user.name="hacklist-local" \

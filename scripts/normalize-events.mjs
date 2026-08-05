@@ -15,12 +15,29 @@ const discovery = JSON.parse(
 // render: Y Combinator's own events site, Luma's public discover API, and
 // Devpost. Each writes the same candidate shape; they are merged here and then
 // scored, filtered and published on exactly the same terms as everything else.
+/**
+ * Read one optional candidate file.
+ *
+ * A file that is not there yet is normal and silent. A file that is there and
+ * will not parse is a different thing entirely and gets said out loud: that is
+ * how a conflicted luma-api.json once cost a sweep its calendar seeds and
+ * enrichment without a single line of output.
+ */
 async function readCandidates(file) {
+  let raw;
   try {
-    const parsed = JSON.parse(await readFile(resolve(root, file), "utf8"));
-    return parsed.candidates ?? [];
+    raw = await readFile(resolve(root, file), "utf8");
   } catch {
     return []; // optional input; absent until that pass has run
+  }
+  try {
+    return JSON.parse(raw).candidates ?? [];
+  } catch (error) {
+    console.warn(
+      `WARNING: ${file} exists but is not valid JSON (${String(error).slice(0, 80)}) — ` +
+        "ignoring it, which means this run is missing whatever it held.",
+    );
+    return [];
   }
 }
 const apiCandidates = [
@@ -46,12 +63,17 @@ for (const candidate of apiCandidates) {
 // API wins: "9 Going" parsed out of rendered text is a guess, guest_count is not.
 let lumaEnrichment = {};
 try {
-  const lumaApi = JSON.parse(
-    await readFile(resolve(root, "data/luma-api.json"), "utf8"),
-  );
-  lumaEnrichment = lumaApi.enrichment ?? {};
+  const raw = await readFile(resolve(root, "data/luma-api.json"), "utf8");
+  try {
+    lumaEnrichment = JSON.parse(raw).enrichment ?? {};
+  } catch (error) {
+    console.warn(
+      `WARNING: data/luma-api.json is not valid JSON (${String(error).slice(0, 80)}) — ` +
+        "publishing without its times, guest counts and registration state.",
+    );
+  }
 } catch {
-  // Optional input.
+  // Optional input; absent until the API pass has run.
 }
 
 const timezone = config.timezone;
