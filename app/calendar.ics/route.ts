@@ -18,6 +18,22 @@ type FeedEvent = {
 
 const encoder = new TextEncoder();
 
+/** "2026-09-26T00:00:00-07:00" -> "20260926". The offset is already local. */
+function icsDate(iso: string): string {
+  return iso.slice(0, 10).replace(/-/g, "");
+}
+
+/**
+ * All-day DTEND is exclusive (RFC 5545 §3.6.1), so a one-day event ending on the
+ * 26th must say the 27th. Pure calendar arithmetic on the date parts — no
+ * timezone is involved in "the day after".
+ */
+function icsDateExclusive(iso: string): string {
+  const [year, month, day] = iso.slice(0, 10).split("-").map(Number);
+  const next = new Date(Date.UTC(year, month - 1, day + 1));
+  return next.toISOString().slice(0, 10).replace(/-/g, "");
+}
+
 function escapeText(value: string): string {
   return value
     .replace(/\\/g, "\\\\")
@@ -77,11 +93,12 @@ const timezoneBlock = [
 ];
 
 function buildCalendar(): string {
-  // An event whose time we do not trust is left out rather than dropped into a
-  // subscriber's calendar at the wrong hour.
-  const events = (discovery.events as FeedEvent[]).filter(
-    (event) => event.start && event.end && !event.timeUnverified,
-  );
+  // Anything with a date goes in the feed. An event whose *time* we do not trust
+  // goes in as an all-day entry rather than being withheld: the day is solid —
+  // Devpost publishes submission dates and no clock times at all — and an all-day
+  // row claims no hour, so it cannot land a subscriber in the wrong place. Only
+  // an event with no date at all has nowhere to go.
+  const events = (discovery.events as FeedEvent[]).filter((event) => event.start);
   const stamp = icsUtcStamp(discovery.meta.sweepCompletedAt);
 
   const lines = [
@@ -101,16 +118,28 @@ function buildCalendar(): string {
     // A calendar row has no room for a badge, so say it in the title. A
     // subscriber should never mistake a pitch night for a hackathon.
     const summary = adjacent ? `[Tech Event] ${event.title}` : event.title;
+    // No end, or a time we do not believe, means the hour is unknown but the day
+    // is not. Say so in the description so a subscriber knows to check.
+    const allDay = !event.end || event.timeUnverified === true;
     const description =
       (adjacent ? "A tech event, not a hackathon. " : "") +
+      (allDay ? "Start time is on the event page. " : "") +
       `${event.why} Hosted by ${event.organizer}. ` +
       `Registration: ${event.status}. Details: ${event.url}`;
+    const when = allDay
+      ? [
+          `DTSTART;VALUE=DATE:${icsDate(event.start as string)}`,
+          `DTEND;VALUE=DATE:${icsDateExclusive((event.end ?? event.start) as string)}`,
+        ]
+      : [
+          `DTSTART;TZID=America/Los_Angeles:${icsLocal(event.start as string)}`,
+          `DTEND;TZID=America/Los_Angeles:${icsLocal(event.end as string)}`,
+        ];
     lines.push(
       "BEGIN:VEVENT",
       `UID:${event.id}@hacklist-sf`,
       `DTSTAMP:${stamp}`,
-      `DTSTART;TZID=America/Los_Angeles:${icsLocal(event.start as string)}`,
-      `DTEND;TZID=America/Los_Angeles:${icsLocal(event.end as string)}`,
+      ...when,
       `SUMMARY:${escapeText(summary)}`,
       `CATEGORIES:${adjacent ? "TECH-EVENT" : "HACKATHON"}`,
       ...(location ? [`LOCATION:${escapeText(location)}`] : []),

@@ -95,11 +95,10 @@ test("serves an ICS feed with one VEVENT per dated event", async () => {
   assert.match(ics, /BEGIN:VTIMEZONE/);
   assert.match(ics, /X-WR-CALNAME:Hacklist SF/);
 
-  // Events whose time we do not trust are deliberately withheld from the feed
-  // rather than dropped into a subscriber's calendar at the wrong hour.
-  const datedEvents = eventsData.events.filter(
-    (e) => e.start && e.end && !e.timeUnverified,
-  );
+  // Every event with a date is in the feed. Ones whose time we do not trust go in
+  // as all-day entries rather than being withheld — the day is solid, and an
+  // all-day row claims no hour.
+  const datedEvents = eventsData.events.filter((e) => e.start);
   const vevents = ics.match(/BEGIN:VEVENT/g) ?? [];
   assert.equal(vevents.length, datedEvents.length);
   // Unfold folded lines before checking content.
@@ -111,4 +110,35 @@ test("serves an ICS feed with one VEVENT per dated event", async () => {
     );
   }
   assert.match(unfolded, /DTSTART;TZID=America\/Los_Angeles:\d{8}T\d{6}/);
+
+  // An event whose hour we do not believe must appear as an all-day entry, never
+  // with an invented clock time. Devpost publishes dates and no times at all, so
+  // this is the normal case for that source rather than an edge case.
+  const unverified = eventsData.events.filter(
+    (event) => event.start && (!event.end || event.timeUnverified === true),
+  );
+  for (const event of unverified) {
+    const vevent = unfolded
+      .split("BEGIN:VEVENT")
+      .find((block) => block.includes(`UID:${event.id}@hacklist-sf`));
+    assert.ok(vevent, `missing VEVENT for ${event.title}`);
+    assert.match(
+      vevent,
+      /DTSTART;VALUE=DATE:\d{8}/,
+      `${event.title} has an unverified time and must be an all-day entry`,
+    );
+    assert.doesNotMatch(
+      vevent,
+      /DTSTART;TZID=/,
+      `${event.title} must not claim a clock time`,
+    );
+    // All-day DTEND is exclusive, so it must be strictly after DTSTART.
+    const start = vevent.match(/DTSTART;VALUE=DATE:(\d{8})/)?.[1];
+    const end = vevent.match(/DTEND;VALUE=DATE:(\d{8})/)?.[1];
+    assert.ok(start && end, `${event.title} needs both all-day bounds`);
+    assert.ok(
+      Number(end) > Number(start),
+      `${event.title} all-day DTEND ${end} must be after DTSTART ${start}`,
+    );
+  }
 });
