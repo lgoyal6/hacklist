@@ -17,6 +17,22 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO"
 CAL_NAME="${LUMA_CALENDAR_NAME:-HackList SF}"
 
+# Credentials for the passes that want one, read from a gitignored .env.
+#
+# launchd hands this job a fixed, minimal environment, so anything the scheduled
+# run needs has to come from somewhere on disk. A plist would work but stores
+# secrets in plaintext in ~/Library, which is a worse place for them than a
+# gitignored file inside the repo that only this script reads. Without it the
+# search passes fall back to the keyless provider, which works from a residential
+# address but finds a fraction as much.
+if [ -f "$REPO/.env" ]; then
+  set -a
+  # shellcheck disable=SC1091
+  . "$REPO/.env"
+  set +a
+  echo "    loaded .env"
+fi
+
 # Resolve node at run time rather than trusting a path captured at install
 # time. A node upgrade renames the nvm directory, which silently broke this job
 # once already; launchd also starts with a minimal PATH that has no nvm in it.

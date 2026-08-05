@@ -22,11 +22,21 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       run: ${{ steps.check.outputs.run }}
+      slot: ${{ steps.check.outputs.slot }}
     steps:
       - name: Only proceed at 8am/8pm Pacific (or manual dispatch)
         id: check
         run: |
           hour=$(TZ=America/Los_Angeles date +%H)
+          # The slot decides whether the metered search legs run: they cost real
+          # requests and seeds barely change within a day, while the sweep itself
+          # is worth running twice. Manual dispatch counts as morning so a
+          # hand-triggered run exercises everything.
+          if [ "$hour" = "20" ] && [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "slot=evening" >> "$GITHUB_OUTPUT"
+          else
+            echo "slot=morning" >> "$GITHUB_OUTPUT"
+          fi
           if [ "${{ github.event_name }}" != "schedule" ] || [ "$hour" = "08" ] || [ "$hour" = "20" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
@@ -49,11 +59,12 @@ jobs:
       # them load-bearing: the direct APIs (Luma, YC, Devpost) carry the board
       # and need no key at all.
       #
-      # Worth knowing before adding one: search engines block datacenter IPs, and
-      # this is a datacenter, so the keyless path returns nothing here no matter
-      # how politely it asks. Bright Data is the only entry below that fixes
-      # that, because unblocking is what it sells; the others are still blocked
-      # whatever their quota says. Free tier, no card. See the README.
+      # Worth knowing before adding one: the KEYLESS path returns nothing here.
+      # DuckDuckGo's HTML endpoint does bot detection and this is a datacenter, so
+      # it answers 403 or an empty page however politely it asks. That is specific
+      # to scraping a search engine's own page — Serper and Tavily are APIs built
+      # for server use and work fine from here, as does Bright Data. Any of the
+      # keyed entries below fixes CI; the keyless fallback cannot.
       #
       # LinkedIn's paid per-call fallback is deliberately unreachable here — it
       # runs through the `zero` CLI, which is not installed on this runner, so no
@@ -77,6 +88,11 @@ jobs:
           # Search and LinkedIn discovery both sleep between queries; keep it
           # modest in CI so they cannot eat the job's time budget.
           SEARCH_DELAY_MS: "8000"
+          # Metered: every query is a Bright Data request. Run them on the morning
+          # sweep only — the seeds they produce are a slowly-changing input, and
+          # the evening sweep crawls whatever the morning found. Halves the spend
+          # for no loss of board freshness, since the sweep still runs twice.
+          RUN_SEARCH_LEGS: ${{ needs.gate.outputs.slot == 'morning' }}
       - name: Sync events to Luma calendar (needs LUMA_API_KEY)
         if: env.LUMA_API_KEY != ''
         run: node scripts/sync-luma-calendar.mjs

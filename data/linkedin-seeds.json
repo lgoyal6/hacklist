@@ -1,26 +1,17 @@
 {
-  "collectedAt": "2026-08-05T03:58:37.723Z",
+  "collectedAt": "2026-08-05T04:00:16.660Z",
   "searchProviders": [
-    "brightdata"
+    "duckduckgo-html"
   ],
   "queriesRun": 3,
-  "pagesFound": 20,
-  "pagesRead": 12,
+  "pagesFound": 0,
+  "pagesRead": 0,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [
-    {
-      "stage": "search",
-      "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
-      "error": "brightdata expect_body"
-    }
-  ],
+  "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
-  "ycEventUrls": [
-    "https://events.ycombinator.com/deepmind-march26",
-    "https://events.ycombinator.com/bio-ai-hackathon"
-  ],
+  "ycEventUrls": [],
   "urls": [
     {
       "url": "https://luma.com/hqz8wi79",

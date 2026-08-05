@@ -19,6 +19,14 @@ import { fileURLToPath } from "node:url";
 
 import { brightDataSearch } from "./lib/serp.mjs";
 
+// Metered legs can be switched off for a given run. Set by the workflow so the
+// evening sweep skips them: every query is a paid request, seeds change slowly,
+// and the sweep still crawls what the morning found.
+if (process.env.RUN_SEARCH_LEGS === "false") {
+  console.log("RUN_SEARCH_LEGS=false — skipping this pass, previous seeds stand.");
+  process.exit(0);
+}
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
   await readFile(resolve(root, "config/discovery.json"), "utf8"),
