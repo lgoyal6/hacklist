@@ -1,19 +1,18 @@
 // Applies tags to events on the HackList SF Luma calendar so visitors can
 // filter there the way they can on the site.
 //
-// The tag set is deliberately small. Tags are only worth having if they answer
-// a question someone actually asks, and five chips is already the limit of what
-// reads as a filter rather than as noise:
+// The tag set is deliberately small. Tags are only worth having if they answer a
+// question someone actually asks, and they only work as a filter if each one
+// meaningfully divides the calendar:
 //
 //   Hackathon    — the real thing
 //   Tech Events  — summit, meetup, conference, build night: listed, not a hackathon
 //   SF           — in the city
 //   Bay Area     — everywhere else inside the radius
-//   Prizes       — a prize pool with a figure attached
 //
-// Deliberately "Prizes" and not "Cash Prizes": of the six events that qualify,
-// only three actually say cash. One is "$5k in OpenAI Credits" and two just say
-// "prizes", so the stronger label would have been wrong on half of them.
+// A "Prizes" tag was here and has been removed: nearly every hackathon has
+// prizes, so it split almost nothing while costing a chip people had to read
+// past. The prize is still parsed and still shown on the board.
 //
 // Tags must exist before they can be applied. The "Add new tag" field in the
 // per-event popover looks like it creates them but silently does not — verified
@@ -41,10 +40,18 @@ const calendarName =
     ? nameArg
     : "HackList SF";
 
+/**
+ * The tags a calendar row should carry.
+ *
+ * Format and area only. A "Prizes" tag used to be added whenever the prize text
+ * mentioned a dollar amount, and it was dropped: nearly every hackathon has
+ * prizes, so the tag divided the calendar almost not at all while adding a filter
+ * people had to read past. The prize itself is still parsed and still shown on
+ * the board — it is a useful detail, just not a useful axis to filter on.
+ */
 function desiredTags(event) {
   const tags = [event.category === "adjacent" ? "Tech Events" : "Hackathon"];
   tags.push(event.area === "SF" ? "SF" : "Bay Area");
-  if (/\$/.test(event.prize ?? "")) tags.push("Prizes");
   return tags;
 }
 
@@ -105,8 +112,8 @@ try {
   // first run
 }
 // Failures are held only for this run. Recording them as applied would mean a
-// transient problem permanently skips that tag, which is how six "Prizes" tags
-// went missing after the tag itself failed to be created.
+// transient problem permanently skips that tag, which is how six tags once went
+// missing after the tag itself failed to be created.
 const failedThisRun = new Set();
 const isApplied = (slug, tag) =>
   (tagState.applied[slug] ?? []).includes(tag) ||
@@ -187,9 +194,10 @@ async function ensureTagsExist(page, names) {
   for (const name of names) {
     await page.goto(settingsUrl, { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3_000);
-    // Parse the existing names exactly. A substring test is not good enough:
-    // "Cash Prizes" contains "Prizes", so checking for the latter reported it as
-    // already created and the tag was never made.
+    // Parse the existing names exactly. A substring test is not good enough —
+    // one tag's name containing another's reports the shorter as already created
+    // and it never gets made. That bit us for real when the set included both
+    // "Prizes" and "Cash Prizes".
     const existing = await page.evaluate(() => {
       const text = (document.body.innerText || "").replace(/\s+/g, " ");
       const start = text.search(/Event Tags/i);

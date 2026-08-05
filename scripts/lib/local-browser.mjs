@@ -9,6 +9,7 @@
 //     Cookies and storage stay on this machine; nothing session-related is
 //     ever written into the repo or into CI.
 //   * Only Luma's own public/admin web UI is driven. No internal endpoints.
+import { existsSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -17,17 +18,85 @@ import { chromium } from "playwright-core";
 export const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 export const profileDir = resolve(root, ".local-browser-profile");
 
-const CHROME_MAC = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const CHROME_CANDIDATES = [
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "/usr/bin/google-chrome",
+  "/usr/bin/google-chrome-stable",
+  "/usr/bin/chromium",
+  "/usr/bin/chromium-browser",
+];
 
 /**
- * Launch the dedicated persistent profile. Headed by default: the whole point
- * is that a human can complete sign-in and the occasional CAPTCHA.
+ * Where Chrome is. playwright-core ships no browser of its own, so this has to
+ * be found rather than assumed — the path differs between this Mac and a CI
+ * runner. CHROME_PATH wins when set.
+ */
+function chromeExecutable() {
+  if (process.env.CHROME_PATH) return process.env.CHROME_PATH;
+  for (const candidate of CHROME_CANDIDATES) {
+    if (existsSync(candidate)) return candidate;
+  }
+  return CHROME_CANDIDATES[0]; // let Playwright report the real error
+}
+
+/**
+ * The session cookies that carry a Luma login, if they have been supplied.
+ *
+ * Set LUMA_SESSION_COOKIES to the JSON array that scripts/export-luma-session.mjs
+ * prints, and the passes that need a signed-in browser will run anywhere — CI
+ * included — instead of only on the machine holding the profile.
+ *
+ * Only the two cookies that constitute the session are carried. Cloudflare's
+ * (__cf_bm, cf_clearance) are deliberately left behind: they are short-lived and
+ * bound to the IP and user agent that earned them, so replaying them from a
+ * datacenter is worse than letting that runner earn its own.
+ */
+function suppliedCookies() {
+  const raw = process.env.LUMA_SESSION_COOKIES;
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) && parsed.length ? parsed : null;
+  } catch {
+    console.warn("LUMA_SESSION_COOKIES is set but is not valid JSON — ignoring it.");
+    return null;
+  }
+}
+
+/**
+ * Launch a browser with a Luma session.
+ *
+ * Two modes. Given LUMA_SESSION_COOKIES it launches a throwaway browser and
+ * injects them, which is what lets this run somewhere that has no profile.
+ * Otherwise it opens the dedicated persistent profile, headed by default, so a
+ * human can complete sign-in and the occasional CAPTCHA.
  */
 export async function launchLocalBrowser({ headless = false } = {}) {
+  const cookies = suppliedCookies();
+  if (cookies) {
+    const browser = await chromium.launch({
+      headless: true, // nobody is watching wherever this is running
+      executablePath: chromeExecutable(),
+      args: ["--disable-blink-features=AutomationControlled"],
+    });
+    const context = await browser.newContext({
+      viewport: { width: 1280, height: 900 },
+    });
+    await context.addCookies(cookies);
+    context.setDefaultTimeout(30_000);
+    // Closing the context alone would leak the browser process.
+    const close = context.close.bind(context);
+    context.close = async () => {
+      await close().catch(() => {});
+      await browser.close().catch(() => {});
+    };
+    return context;
+  }
+
   await mkdir(profileDir, { recursive: true });
   const context = await chromium.launchPersistentContext(profileDir, {
     headless,
-    executablePath: CHROME_MAC,
+    executablePath: chromeExecutable(),
     viewport: { width: 1280, height: 900 },
     args: ["--disable-blink-features=AutomationControlled"],
   });
@@ -86,6 +155,17 @@ export async function needsHumanAttention(page) {
 export async function ensureSignedIn(context, { timeoutMs = 300_000 } = {}) {
   const page = context.pages()[0] ?? (await context.newPage());
   if (await isSignedIn(page)) return page;
+
+  // Running on supplied cookies means nobody is at a keyboard. Waiting five
+  // minutes for a sign-in that cannot happen would just burn the job's budget
+  // and then fail anyway, so say what is wrong and fail immediately.
+  if (process.env.LUMA_SESSION_COOKIES) {
+    throw new Error(
+      "LUMA_SESSION_COOKIES did not produce a signed-in session. The cookies " +
+        "have probably been revoked or expired — re-export them with " +
+        "`npm run luma:export-session` and update the secret.",
+    );
+  }
 
   console.log(
     [

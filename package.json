@@ -27,7 +27,8 @@
     "sprites": "node scripts/extract-dino-sprite.mjs",
     "discover:luma-api": "node scripts/discover-luma-api.mjs",
     "discover:devpost": "node scripts/discover-devpost.mjs",
-    "check:sources": "node scripts/check-sources.mjs"
+    "check:sources": "node scripts/check-sources.mjs",
+    "luma:export-session": "node scripts/export-luma-session.mjs"
   },
   "dependencies": {
     "@lightpanda/browser": "^1.2.0",
