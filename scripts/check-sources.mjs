@@ -222,15 +222,30 @@ if (!ledger.__missing && !board.__missing) {
   // two entries went live seven hours off because Luma reads a typed time in the
   // browser's timezone and the runner was UTC. The sync verifies what it just
   // wrote; this catches anything already wrong, whenever it got that way.
+  /**
+   * Read the calendar, confirming a disagreement before believing it.
+   *
+   * Luma's feed is eventually consistent, and this runs immediately after the
+   * mirror step has written to it — so a single read inside that window reports
+   * entries that were just deleted or not yet updated. That produced a red run
+   * with nothing wrong, and a gate that cries wolf is worse than no gate, because
+   * the next real failure gets ignored. So a mismatch has to survive a second
+   * read a few seconds later before it counts.
+   */
+  const readCalendar = async (calendarId) => {
+    const response = await fetch(
+      `https://api.lu.ma/calendar/get-items?calendar_api_id=${calendarId}&pagination_limit=100`,
+      { headers: { accept: "application/json" }, signal: AbortSignal.timeout(20_000) },
+    );
+    if (!response.ok) return null;
+    return response.json();
+  };
+
   try {
     const calendarId = (ledger.calendar ?? "").match(/cal-[A-Za-z0-9]+/)?.[0];
     if (calendarId) {
-      const response = await fetch(
-        `https://api.lu.ma/calendar/get-items?calendar_api_id=${calendarId}&pagination_limit=100`,
-        { headers: { accept: "application/json" }, signal: AbortSignal.timeout(20_000) },
-      );
-      if (response.ok) {
-        const body = await response.json();
+      const body = await readCalendar(calendarId);
+      if (body) {
         const key = (text) => String(text).replace(/[^a-z0-9]/gi, "").toLowerCase();
         // Only entries we typed the time into are ours to police. A Luma-hosted
         // event shows the organiser's own start, which we neither set nor can
@@ -260,6 +275,39 @@ if (!ledger.__missing && !board.__missing) {
             wrong.push(
               `${event.title.slice(0, 40)} (calendar ${new Date(at).toLocaleString("en-US", { timeZone: config.timezone })}, board ${new Date(event.start).toLocaleString("en-US", { timeZone: config.timezone })})`,
             );
+          }
+        }
+        if (wrong.length) {
+          // Confirm against a second read before calling it a failure.
+          await new Promise((r) => setTimeout(r, 6_000));
+          const recheck = await readCalendar(calendarId).catch(() => null);
+          if (recheck) {
+            const still = new Map();
+            for (const entry of recheck.entries ?? []) {
+              const name = key(entry.event?.name ?? "");
+              if (name && /^https?:/.test(entry.event?.url ?? "")) {
+                still.set(name, entry.event?.start_at ?? null);
+              }
+            }
+            const confirmed = wrong.filter((line) => {
+              const event = events.find((candidate) =>
+                line.startsWith(candidate.title.slice(0, 40)),
+              );
+              if (!event?.start) return false;
+              let at = still.get(key(event.title));
+              if (!at) {
+                for (const [name, value] of still) {
+                  if (name.startsWith(key(event.title)) || key(event.title).startsWith(name)) {
+                    at = value;
+                    break;
+                  }
+                }
+              }
+              // Gone from the calendar, or now agreeing: not a failure.
+              return at && Math.abs(Date.parse(at) - Date.parse(event.start)) >= 60_000;
+            });
+            wrong.length = 0;
+            wrong.push(...confirmed);
           }
         }
         if (wrong.length) {
