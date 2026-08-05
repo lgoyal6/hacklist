@@ -13,6 +13,9 @@ concurrency:
 
 permissions:
   contents: write
+  # The failure notifier below files an issue, which is what actually reaches a
+  # phone. Without this it silently cannot.
+  issues: write
 
 jobs:
   gate:
@@ -114,4 +117,37 @@ jobs:
       # to web search. This step is the alarm: it never blocks the board from
       # updating, it just turns the run red so a dead source is visible.
       - name: Check source health
-        run: npm run check:sources
+        id: health
+        # pipefail matters: without it the step takes tee's exit status and a
+        # failing health check would report success, which is the exact bug this
+        # check exists to catch.
+        run: |
+          set -o pipefail
+          npm run check:sources 2>&1 | tee /tmp/health.txt
+      # A red run only helps if someone finds out. GitHub's own workflow-failure
+      # email depends on per-account settings and, for scheduled runs, on who last
+      # touched the workflow file — too conditional to rely on. An issue is
+      # unconditional: it emails, it pushes to the GitHub mobile app, and it
+      # leaves a record that persists after the run logs age out.
+      #
+      # One issue, reused. A fresh issue twice a day for the same broken source
+      # would train you to ignore it, so a run appends a comment to the open one
+      # and only files a new one when none is open.
+      - name: Report a red run
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set +e
+          detail=$(tail -40 /tmp/health.txt 2>/dev/null)
+          [ -z "$detail" ] && detail="The run failed before the health check — see the run log. A refused publish (collapsed board) looks like this."
+          body=$(printf 'The discovery pipeline failed.\n\nRun: %s\n\n```\n%s\n```\n\nThe live board is unaffected: a collapsed sweep is refused before publishing, and the health check runs after the deploy.\n' "$RUN_URL" "$detail")
+          existing=$(gh issue list --state open --label pipeline-red --limit 1 --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh label create pipeline-red --color b60205 --description "Discovery pipeline failed" 2>/dev/null
+            gh issue create --title "Discovery pipeline is red" --label pipeline-red --body "$body"
+          fi
+          exit 0

@@ -89,4 +89,10 @@ echo "--- luma event tags"
 "$NODE" scripts/luma-tag-events.mjs --name "$CAL_NAME" $HEADLESS_FLAG || \
   echo "    tagging did not complete; already-applied tags are recorded" >&2
 
+# Arm the wake for the next run before exiting, so the chain sustains itself with
+# the lid shut. `pmset repeat` only holds one wake time and there are two runs.
+# Silently skipped when the sudoers rule is not installed.
+echo "--- next wake"
+bash "$REPO/scripts/arm-next-wake.sh" || true
+
 echo "=== $(date '+%Y-%m-%d %H:%M:%S') local passes done"
