@@ -1,9 +1,18 @@
 {
-  "collectedAt": "2026-08-05T00:03:13.897Z",
-  "provider": "duckduckgo-html",
+  "collectedAt": "2026-08-05T02:48:07.953Z",
+  "provider": "brightdata",
   "queriesRun": 2,
-  "throttledQueries": 1,
-  "problems": [],
+  "throttledQueries": 0,
+  "problems": [
+    {
+      "query": "site:luma.com hackathon san francisco 2026",
+      "error": "HTTP 400"
+    },
+    {
+      "query": "site:lu.ma hackathon san francisco 2026",
+      "error": "HTTP 400"
+    }
+  ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
     {

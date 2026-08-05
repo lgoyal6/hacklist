@@ -1,14 +1,30 @@
 {
-  "collectedAt": "2026-08-05T00:03:50.494Z",
+  "collectedAt": "2026-08-05T02:48:10.631Z",
   "searchProviders": [
-    "duckduckgo-html"
+    "brightdata"
   ],
   "queriesRun": 3,
   "pagesFound": 0,
   "pagesRead": 0,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
+      "error": "HTTP 400"
+    },
+    {
+      "stage": "search",
+      "query": "weekly bay area ai events hackathon 2026",
+      "error": "HTTP 400"
+    },
+    {
+      "stage": "search",
+      "query": "hackathon sponsors judges san francisco apply luma",
+      "error": "HTTP 400"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
