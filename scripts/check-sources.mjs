@@ -186,6 +186,42 @@ if (!linkedin.__missing) {
   notes.push(`linkedin: ${urls.length} seeds, ${linkedin.pagesRead ?? 0} pages read, $${linkedin.paidSpendUsd ?? 0}`);
 }
 
+// --- is the published Luma calendar keeping up with the board? -------------
+//
+// The board and the Luma calendar are different products, and the calendar is
+// the one people follow. It is filled by a local, browser-driven pass, so it
+// always trails a little — but it can also trail permanently and silently:
+// external events (Devpost, Y Combinator, x.ai) cannot be added by the current
+// automation at all, and that share grew when those sources were added. Worth
+// reporting every run rather than discovering it by counting rows by hand.
+const ledger = await readJson("data/luma-ledger.json");
+if (!ledger.__missing && !board.__missing) {
+  const synced = new Set(
+    Object.values(ledger.synced ?? {}).map((entry) => entry.url),
+  );
+  const events = board.events ?? [];
+  const pending = events.filter((event) => !synced.has(event.url));
+  const manual = pending.filter((event) => event.platform !== "luma");
+  notes.push(
+    `luma calendar: ${events.length - pending.length}/${events.length} synced, ` +
+      `${pending.length} pending (${manual.length} need the external-event form by hand)`,
+  );
+  if (manual.length >= 5) {
+    warnings.push(
+      `luma calendar: ${manual.length} external event(s) can never be synced automatically — ` +
+        "the sync only handles Luma URLs (npm run luma:queue lists them)",
+    );
+  }
+  // Distinguish "trailing" from "stopped". The local pass runs twice a day, so a
+  // large Luma-URL backlog means it has not run, not that it is slow.
+  const autoPending = pending.length - manual.length;
+  if (autoPending >= 10) {
+    warnings.push(
+      `luma calendar: ${autoPending} Luma event(s) queued but not synced — the local pass may not be running`,
+    );
+  }
+}
+
 // --- report ---------------------------------------------------------------
 
 for (const note of notes) console.log(`  ${note}`);

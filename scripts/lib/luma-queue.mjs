@@ -78,11 +78,20 @@ export function formatQueueReport(pending, ledger) {
   if (!pending.length) {
     return `All ${Object.keys(ledger.synced).length} published events are on the calendar. Nothing pending.`;
   }
+  // Split by why an event is waiting, because the two halves need different
+  // things. A Luma event is just waiting its turn and the next run adds it. An
+  // external one will never be added by the current automation at all: Luma's
+  // "Add External Event" is a whole event form, not a URL paste, so the sync
+  // skips it. Lumping them together hid that, and it stopped being a rounding
+  // error once Devpost and Y Combinator became sources.
+  const auto = pending.filter((event) => event.platform === "luma");
+  const manual = pending.filter((event) => event.platform !== "luma");
+
   const lines = [
-    `${pending.length} event${pending.length === 1 ? "" : "s"} pending for the Hacklist SF Luma calendar:`,
+    `${pending.length} event${pending.length === 1 ? "" : "s"} pending for the Hacklist SF Luma calendar.`,
     "",
   ];
-  for (const event of pending) {
+  const describe = (event) => {
     const failure = ledger.failures[event.id];
     lines.push(`  ${event.dateLabel.padEnd(7)}${event.title}`);
     lines.push(`  ${" ".repeat(7)}${event.url}`);
@@ -92,7 +101,24 @@ export function formatQueueReport(pending, ledger) {
       );
     }
     lines.push("");
+  };
+
+  if (auto.length) {
+    lines.push(`${auto.length} will be added automatically by the next sync:`, "");
+    auto.forEach(describe);
   }
-  lines.push("Add each URL via the calendar's Add Event button on Luma.");
+  if (manual.length) {
+    lines.push(
+      `${manual.length} cannot be added automatically — these are not Luma events,`,
+      "and Luma's Add External Event form needs name/date/timezone/location typed in:",
+      "",
+    );
+    manual.forEach(describe);
+  }
+  lines.push(
+    auto.length
+      ? "Luma URLs go in via the calendar's Add Event button; the rest need Add External Event."
+      : "These need the calendar's Add External Event form.",
+  );
   return lines.join("\n");
 }
