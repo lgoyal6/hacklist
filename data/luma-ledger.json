@@ -1,6 +1,6 @@
 {
   "calendar": "https://luma.com/calendar/manage/cal-LHMcppIqcJ4kHZt",
-  "updatedAt": "2026-08-05T06:10:35.470Z",
+  "updatedAt": "2026-08-05T06:49:55.493Z",
   "synced": {
     "0m4kvzm8": {
       "url": "https://luma.com/0m4kvzm8",
@@ -97,6 +97,18 @@
       "title": "SF Enterprise HACKATHON",
       "syncedAt": "2026-08-03T19:12:36.166Z",
       "method": "luma-ui"
+    },
+    "external-builder-aws-com-content-3DHuKfNfvfFa1nNBHnCY6NsXCdY-wo-8bd61586": {
+      "url": "https://builder.aws.com/content/3DHuKfNfvfFa1nNBHnCY6NsXCdY/women-in-ai-hackathon-at-the-aws-builder-loft-san-francisco",
+      "title": "Women in AI Hackathon at the AWS Builder Loft, San Francisco | AWS Builder Center",
+      "syncedAt": "2026-08-05T06:49:55.143Z",
+      "method": "luma-ui-external"
+    },
+    "external-builder-aws-com-content-3F9VvpwSG4MIIbEqL5gHtCaN4Qw-ge-57af92d9": {
+      "url": "https://builder.aws.com/content/3F9VvpwSG4MIIbEqL5gHtCaN4Qw/generative-ai-short-film-hackathon",
+      "title": "Generative AI Short Film Hackathon | AWS Builder Center",
+      "syncedAt": "2026-08-05T06:49:55.143Z",
+      "method": "luma-ui-external"
     },
     "external-events-ycombinator-com-thefasthackathon-0a9aaa26": {
       "url": "https://events.ycombinator.com/thefasthackathon",
@@ -229,23 +241,9 @@
     "external-api-cloud-ai-hackathon-2026-devpost-com--4a825940": {
       "url": "https://api-cloud-ai-hackathon-2026.devpost.com",
       "title": "DevNetwork [API + Cloud + AI] Hackathon 2026",
-      "lastAttemptAt": "2026-08-05T06:06:46.583Z",
-      "attempts": 1,
+      "lastAttemptAt": "2026-08-05T06:46:01.219Z",
+      "attempts": 2,
       "message": "no stated start time, and Luma forces one on external events — left off the calendar rather than published at a made-up 7pm (set syncTimeUnknownExternals to override)"
-    },
-    "external-builder-aws-com-content-3DHuKfNfvfFa1nNBHnCY6NsXCdY-wo-8bd61586": {
-      "url": "https://builder.aws.com/content/3DHuKfNfvfFa1nNBHnCY6NsXCdY/women-in-ai-hackathon-at-the-aws-builder-loft-san-francisco",
-      "title": "Women in AI Hackathon at the AWS Builder Loft, San Francisco | AWS Builder Center",
-      "lastAttemptAt": "2026-08-05T06:05:01.323Z",
-      "attempts": 1,
-      "message": "date did not take: wanted Fri, Aug 21 or 8/21/2026, field shows Wed, Aug 5"
-    },
-    "external-builder-aws-com-content-3F9VvpwSG4MIIbEqL5gHtCaN4Qw-ge-57af92d9": {
-      "url": "https://builder.aws.com/content/3F9VvpwSG4MIIbEqL5gHtCaN4Qw/generative-ai-short-film-hackathon",
-      "title": "Generative AI Short Film Hackathon | AWS Builder Center",
-      "lastAttemptAt": "2026-08-05T06:07:58.791Z",
-      "attempts": 1,
-      "message": "date did not take: wanted Tue, Oct 20 or 10/20/2026, field shows Wed, Aug 5"
     },
     "external-builder-aws-com-content-3FSmDcUErZ2vqZLApWoIrKhKsyn-da-471a73c2": {
       "url": "https://builder.aws.com/content/3FSmDcUErZ2vqZLApWoIrKhKsyn/data-and-ai-hackathon-8-hour-hackathon-at-aws-builder-loft-san-francisco",
@@ -271,29 +269,29 @@
     "external-cerebralvalley-ai-e-openenv-hackathon-sf-36552ca2": {
       "url": "https://cerebralvalley.ai/e/openenv-hackathon-sf",
       "title": "OpenEnv Hackathon SF",
-      "lastAttemptAt": "2026-08-05T06:09:05.077Z",
-      "attempts": 3,
+      "lastAttemptAt": "2026-08-05T06:48:24.958Z",
+      "attempts": 4,
       "message": "no stated start time, and Luma forces one on external events — left off the calendar rather than published at a made-up 7pm (set syncTimeUnknownExternals to override)"
     },
     "external-developerweek-2027-hackathon-devpost-com--4f1df228": {
       "url": "https://developerweek-2027-hackathon.devpost.com",
       "title": "DeveloperWeek 2027 Hackathon",
-      "lastAttemptAt": "2026-08-05T06:08:31.769Z",
-      "attempts": 1,
+      "lastAttemptAt": "2026-08-05T06:47:51.805Z",
+      "attempts": 2,
       "message": "no stated start time, and Luma forces one on external events — left off the calendar rather than published at a made-up 7pm (set syncTimeUnknownExternals to override)"
     },
     "external-futureforge-hacks-devpost-com--d3eb7a35": {
       "url": "https://futureforge-hacks.devpost.com",
       "title": "FutureForge Hacks",
-      "lastAttemptAt": "2026-08-05T06:10:11.887Z",
-      "attempts": 1,
+      "lastAttemptAt": "2026-08-05T06:49:30.912Z",
+      "attempts": 2,
       "message": "no stated start time, and Luma forces one on external events — left off the calendar rather than published at a made-up 7pm (set syncTimeUnknownExternals to override)"
     },
     "external-showerhacks-devpost-com--17486452": {
       "url": "https://showerhacks.devpost.com",
       "title": "Shower Hacks",
-      "lastAttemptAt": "2026-08-05T06:09:38.762Z",
-      "attempts": 1,
+      "lastAttemptAt": "2026-08-05T06:48:57.881Z",
+      "attempts": 2,
       "message": "no stated start time, and Luma forces one on external events — left off the calendar rather than published at a made-up 7pm (set syncTimeUnknownExternals to override)"
     }
   }
