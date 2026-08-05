@@ -206,8 +206,23 @@ export default function Home() {
                     </h4>
                     <p className="event-where">
                       {event.organizer}
-                      {event.venue || event.city ? " · " : ""}
-                      {[event.venue, event.city].filter(Boolean).join(", ")}
+                      {event.venue || event.city ? (
+                        <>
+                          {" · "}
+                          {[event.venue, event.city].filter(Boolean).join(", ")}
+                        </>
+                      ) : (
+                        // Many hosts only reveal the address after you register,
+                        // so there is often genuinely nothing to print. Say so and
+                        // send people to the page that will tell them, rather than
+                        // leaving a blank where a location should be.
+                        <>
+                          {" · "}
+                          <a href={event.url} target="_blank" rel="noreferrer">
+                            location on event page
+                          </a>
+                        </>
+                      )}
                     </p>
                     <p className="event-note">{event.why}</p>
                   </div>

@@ -122,6 +122,17 @@ jobs:
           done
           echo "Could not push after 3 attempts." >&2
           exit 1
+      # Validate the artifact BEFORE promoting it. Until now the only check ran
+      # after the deploy, so a board that was wrong-but-not-collapsed shipped and
+      # we found out afterwards. The test suite already builds the site, renders
+      # the board and parses the ICS feed — it was simply never run in CI. If it
+      # fails the job stops here, nothing is promoted, and the live site keeps
+      # serving the last version that passed.
+      #
+      # The data commit above stays: it is the record of what the sweep found, and
+      # is worth keeping even when the render of it is broken.
+      - name: Validate the built board and feed
+        run: npm test
       # Deploy on its own merits: the site should reflect the sweep even when a
       # concurrent run already committed identical data.
       - name: Deploy site + calendar feed (needs CLOUDFLARE_API_TOKEN)

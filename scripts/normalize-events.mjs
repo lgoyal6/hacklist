@@ -679,6 +679,32 @@ function enrichCandidate(candidate) {
   };
 }
 
+// What the last good snapshot knew about each event's location, for the gap-fill
+// below. Read before the loop because the diff's own previousByUrl is built after.
+const previousByUrlForVenue = new Map();
+try {
+  const snapshots = (await readdir(resolve(root, "data/history")))
+    .filter((name) => name.endsWith(".json"))
+    .sort();
+  for (const name of snapshots.slice(-3)) {
+    const snapshot = JSON.parse(
+      await readFile(resolve(root, "data/history", name), "utf8"),
+    );
+    for (const event of snapshot.events ?? []) {
+      const held = previousByUrlForVenue.get(event.url);
+      // Prefer the richest record seen: a venue beats no venue.
+      if (!held || (!held.venue && event.venue)) {
+        previousByUrlForVenue.set(event.url, {
+          venue: event.venue ?? null,
+          city: event.city ?? null,
+        });
+      }
+    }
+  }
+} catch {
+  // No history yet.
+}
+
 const events = [];
 for (const rawCandidate of allCandidates) {
   const candidate = enrichCandidate(rawCandidate);
@@ -698,11 +724,23 @@ for (const rawCandidate of allCandidates) {
   const structuredCity = candidate.structuredEvent?.location?.city?.toLowerCase();
   if (structuredCity && !configuredLocalCities.has(structuredCity)) continue;
 
-  const location = candidate.structuredEvent
+  let location = candidate.structuredEvent
     ? parseStructuredLocation(candidate.structuredEvent, candidate.evidence)
     : schedule
       ? parseLocation(lines, schedule.timeLineIndex)
       : { venue: null, city: null };
+  // Keep the best venue any pass has ever found for this event. Sources disagree
+  // about how much they know — Luma's API gives a neighbourhood, a rendered page
+  // gives a street address, Devpost sometimes gives only a region — and a sweep
+  // that happens to read the thinner one should not erase what a richer one
+  // already established. Only fills gaps; never overwrites a fresh value.
+  const remembered = previousByUrlForVenue.get(candidate.url);
+  if (remembered) {
+    location = {
+      venue: location.venue ?? remembered.venue ?? null,
+      city: location.city ?? remembered.city ?? null,
+    };
+  }
   const area = areaForCity(location.city);
   // Luma reports registration state as a field; that beats reading the page.
   const status = candidate.lumaFacts?.status ?? parseCandidateStatus(candidate, lines);

@@ -17,6 +17,11 @@ import {
   writeLedger,
 } from "./lib/luma-queue.mjs";
 import {
+  eventSlug,
+  isOnCalendar,
+  reconcile,
+} from "./lib/calendar-match.mjs";
+import {
   ensureSignedIn,
   launchLocalBrowser,
   needsHumanAttention,
@@ -465,16 +470,6 @@ async function confirmSubmission(page) {
   }
 }
 
-function eventSlug(event) {
-  try {
-    const url = new URL(event.url);
-    if (url.hostname !== "luma.com") return null;
-    return url.pathname.replace(/^\/+|\/+$/g, "") || null;
-  } catch {
-    return null;
-  }
-}
-
 /**
  * The set of event slugs actually listed on the calendar — ground truth.
  *
@@ -543,54 +538,11 @@ async function harvestCalendarSlugs(page) {
   return { slugs, titles };
 }
 
-/** Loose title match — Luma trims and re-cases, so compare on letters only. */
-function titleOnCalendar(titles, title) {
-  const key = (text) => text.replace(/[^a-z0-9]/gi, "").toLowerCase();
-  const wanted = key(title);
-  if (!wanted) return false;
-  for (const candidate of titles) {
-    const seen = key(candidate);
-    // A calendar row often shows the title verbatim; allow either to contain the
-    // other so a truncated row still counts, but require real length so short
-    // fragments cannot match everything.
-    if (seen === wanted) return true;
-    if (wanted.length >= 18 && (seen.includes(wanted) || wanted.includes(seen)) && seen.length >= 18) {
-      return true;
-    }
-  }
-  return false;
-}
-
-/** Is this event on the calendar, by slug for Luma events and title otherwise? */
-function isOnCalendar(event, state) {
-  const slug = eventSlug(event);
-  if (slug) return state.slugs.has(slug);
-  return titleOnCalendar(state.titles, event.title);
-}
-
 /**
  * Make the ledger agree with the calendar, in both directions: adopt events
  * that are present but unrecorded, and un-sync records whose event is not
  * actually there so they become pending again instead of being skipped forever.
  */
-function reconcile(ledger, allEvents, state) {
-  let adopted = 0;
-  let cleared = 0;
-  for (const event of allEvents) {
-    // External events are matched by title; before that was possible they were
-    // skipped here, which is why a manually-added one was never adopted.
-    const present = isOnCalendar(event, state);
-    if (present && !ledger.synced[event.id]) {
-      markSynced(ledger, event, eventSlug(event) ? "luma-ui" : "luma-ui-external");
-      adopted += 1;
-    } else if (!present && ledger.synced[event.id]) {
-      delete ledger.synced[event.id];
-      cleared += 1;
-    }
-  }
-  return { adopted, cleared };
-}
-
 let adminUrl = null;
 
 try {
@@ -661,7 +613,7 @@ try {
   const onCalendar = await harvestCalendarSlugs(page);
   const { adopted, cleared } = force
     ? { adopted: 0, cleared: 0 }
-    : reconcile(ledger, events, onCalendar);
+    : reconcile(ledger, events, onCalendar, { markSynced });
   if (adopted || cleared) {
     console.log(
       `Reconciled with the calendar: ${adopted} already there, ` +
