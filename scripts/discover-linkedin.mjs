@@ -220,6 +220,34 @@ async function searchTavily(query) {
  * here for want of an account — it is wired, documented and inert until the key
  * is set, and a wrong response shape is recorded as a problem like any other.
  */
+/**
+ * Pull result links out of a Google SERP's HTML.
+ *
+ * Needed because the zone type decides the response format: a SERP API zone
+ * honours brd_json=1 and returns parsed JSON, while a Web Unlocker zone returns
+ * the page itself. Rejecting HTML as "not JSON" would make the whole leg silently
+ * useless on a perfectly good account, so both are handled.
+ */
+function linksFromSerpHtml(html) {
+  const found = [];
+  // Google wraps real results in /url?q=<target>&...; the rest are its own chrome.
+  for (const match of html.matchAll(/\/url\?q=([^&"'<>]+)/g)) {
+    try {
+      const decoded = decodeURIComponent(match[1]);
+      if (/^https?:\/\//.test(decoded)) found.push(decoded);
+    } catch {
+      // skip malformed
+    }
+  }
+  // Newer markup links directly; keep absolute hrefs that are not Google's own.
+  for (const match of html.matchAll(/href="(https?:\/\/[^"]+)"/g)) {
+    if (!/^https?:\/\/(?:[a-z0-9-]+\.)*(?:google|gstatic|googleusercontent|youtube)\./i.test(match[1])) {
+      found.push(match[1]);
+    }
+  }
+  return [...new Set(found)];
+}
+
 async function searchBrightData(query) {
   const target = new URL("https://www.google.com/search");
   target.searchParams.set("q", scopeToLinkedIn(query));
@@ -242,24 +270,30 @@ async function searchBrightData(query) {
   );
   if (!response.ok) return { results: [], error: `HTTP ${response.status}` };
   const text = await response.text();
-  let body;
+  let body = null;
   try {
     body = JSON.parse(text);
   } catch {
-    return { results: [], error: "brightdata: response was not JSON" };
+    // Not a SERP-API zone; fall through to reading the page.
   }
-  const organic = body.organic ?? body.results?.organic ?? [];
-  if (!Array.isArray(organic)) {
-    return { results: [], error: "brightdata: no organic array in response" };
+  const organic = body?.organic ?? body?.results?.organic ?? null;
+  if (Array.isArray(organic)) {
+    return {
+      results: organic
+        .filter((result) => result.link ?? result.url)
+        .map((result) => ({
+          link: result.link ?? result.url,
+          text: `${result.title ?? ""} ${result.description ?? result.snippet ?? ""}`,
+        })),
+    };
   }
-  return {
-    results: organic
-      .filter((result) => result.link ?? result.url)
-      .map((result) => ({
-        link: result.link ?? result.url,
-        text: `${result.title ?? ""} ${result.description ?? result.snippet ?? ""}`,
-      })),
-  };
+  // HTML zone: no snippets to harvest, just the links. The page fetch that
+  // follows is what actually reads each one, so nothing is lost but a shortcut.
+  const links = linksFromSerpHtml(text);
+  if (!links.length) {
+    return { results: [], error: "brightdata: no results in JSON or HTML response" };
+  }
+  return { results: links.map((link) => ({ link, text: "" })) };
 }
 
 async function searchBrave(query) {
