@@ -1,31 +1,14 @@
 {
-  "collectedAt": "2026-08-04T21:55:55.192Z",
+  "collectedAt": "2026-08-05T00:03:50.494Z",
   "searchProviders": [
-    "duckduckgo-html",
-    "zero"
+    "duckduckgo-html"
   ],
   "queriesRun": 3,
   "pagesFound": 0,
   "pagesRead": 0,
   "readStoppedOnTimeBudget": false,
-  "paidSpendUsd": 0.003,
-  "problems": [
-    {
-      "stage": "search",
-      "query": "\"ai hackathon\" san francisco open registration",
-      "error": "HTTP 403"
-    },
-    {
-      "stage": "paid-search",
-      "query": "hackathon \"bay area\" 2026 register luma",
-      "error": "zero HTTP 502"
-    },
-    {
-      "stage": "paid-search",
-      "query": "\"ai hackathon\" san francisco open registration",
-      "error": "zero: no JSON envelope"
-    }
-  ],
+  "paidSpendUsd": 0,
+  "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -63,14 +46,14 @@
       "promising": false,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-18-26-2026-bay-area-charles-guo-mituc",
       "context": "lo Alto, California - Host: Luma - Details available on the RSVP page. 6:00 PM PT - Operational AI: Real-Time Analytics in Production - 2360 3rd St, San Francisco, CA 94107, USA, CA - Host: San Francisco Bay Area ClickHouse® Meetup - \\Please register on Luma: https://luma.com/q3jx5f55 Description AI",
-      "lastSeenAt": "2026-08-04T20:51:28.520Z"
+      "lastSeenAt": "2026-08-05T00:02:05.227Z"
     },
     {
       "url": "https://luma.com/artgallery",
       "promising": false,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-18-26-2026-bay-area-charles-guo-mituc",
+      "sourcePage": "https://www.linkedin.com/pulse/ai-events-july-30-aug-7-2026-bay-area-charles-guo-tmz9c",
       "context": "Events July 17 - July 25 2026 Bay Area Special call out to the event I am helping organizing The AI Summit @ Stanford Check out the list of exciting speakers,… AI Events July 14 - July 22 Bay Area Jul 14, 2026 AI Events July 14 - July 22 Bay Area Event Hight: https://luma.com/artgallery At Startup W",
-      "lastSeenAt": "2026-08-04T20:51:28.520Z"
+      "lastSeenAt": "2026-08-05T00:02:05.227Z"
     },
     {
       "url": "https://luma.com/clickh-2crf",
@@ -78,6 +61,13 @@
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "al researchers, computational scientists, and research engineers for sh... 5:30 PM PT - AI Demo Night - CANOPY Jackson Square, 595 Pacific Avenue, 4th Floor, San Francisco, CA - Host: ClickHouse Bay Area and Silicon Valley Meetup Group - Register here please: https://luma.com/clickh-2crf Skip the sl",
       "lastSeenAt": "2026-08-04T20:51:28.520Z"
+    },
+    {
+      "url": "https://luma.com/ch1xw5jf",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/posts/activity-7486324888119517185-kam0",
+      "context": "oper ecosystem directly with San Francisco’s top technical talent, creators, and founders. 📅 Date & Time: Saturday, August 1, 2026 | 1:30 PM – 4:00 PM (GMT-7) 📍 Location: 180 Lytton Ave, Palo Alto, CA 94301 🎟️ Admission: Free entry with Luma registration ( https://luma.com/ch1xw5jf ) 💻 Format: H",
+      "lastSeenAt": "2026-08-05T00:02:05.227Z"
     }
   ]
 }

@@ -11,26 +11,48 @@ const discovery = JSON.parse(
   await readFile(resolve(root, "data/discovery-output.json"), "utf8"),
 );
 
-// Y Combinator runs its hackathons on its own client-rendered events site, which
-// the headless sweep cannot read, so scripts/discover-yc.mjs collects them
-// separately in the same candidate shape. They are merged here and then scored,
-// filtered and published on exactly the same terms as everything else.
-let ycCandidates = [];
-try {
-  const yc = JSON.parse(
-    await readFile(resolve(root, "data/yc-candidates.json"), "utf8"),
-  );
-  ycCandidates = yc.candidates ?? [];
-} catch {
-  // Optional input; absent until YC discovery has run.
+// Sources that arrive as structured data rather than as a page the sweep could
+// render: Y Combinator's own events site, Luma's public discover API, and
+// Devpost. Each writes the same candidate shape; they are merged here and then
+// scored, filtered and published on exactly the same terms as everything else.
+async function readCandidates(file) {
+  try {
+    const parsed = JSON.parse(await readFile(resolve(root, file), "utf8"));
+    return parsed.candidates ?? [];
+  } catch {
+    return []; // optional input; absent until that pass has run
+  }
 }
-// A URL found by both sources is one event. The sweep's own record wins, since
-// it is the one built from a rendered page.
-const sweptUrls = new Set(discovery.candidates.map((candidate) => candidate.url));
-const allCandidates = [
-  ...discovery.candidates,
-  ...ycCandidates.filter((candidate) => !sweptUrls.has(candidate.url)),
+const apiCandidates = [
+  ...(await readCandidates("data/yc-candidates.json")),
+  ...(await readCandidates("data/luma-api.json")),
+  ...(await readCandidates("data/devpost-candidates.json")),
 ];
+
+// A URL found by more than one source is one event. The sweep's own record wins,
+// since it is the one built from a rendered page; among the API sources the first
+// to claim a URL keeps it.
+const sweptUrls = new Set(discovery.candidates.map((candidate) => candidate.url));
+const claimed = new Set(sweptUrls);
+const allCandidates = [...discovery.candidates];
+for (const candidate of apiCandidates) {
+  if (claimed.has(candidate.url)) continue;
+  claimed.add(candidate.url);
+  allCandidates.push(candidate);
+}
+
+// Luma's API reports exact times, guest counts and registration state for events
+// the sweep could only read off a page. Where the API and the page disagree the
+// API wins: "9 Going" parsed out of rendered text is a guess, guest_count is not.
+let lumaEnrichment = {};
+try {
+  const lumaApi = JSON.parse(
+    await readFile(resolve(root, "data/luma-api.json"), "utf8"),
+  );
+  lumaEnrichment = lumaApi.enrichment ?? {};
+} catch {
+  // Optional input.
+}
 
 const timezone = config.timezone;
 const sweepTime = new Date(discovery.sweep.completedAt).getTime();
@@ -420,11 +442,13 @@ function parseCandidateStatus(candidate, lines) {
   ) {
     return "Closed";
   }
-  if (/schema\.org\/SoldOut/i.test(
-    candidate.structuredEvent?.offerAvailability ?? "",
-  )) {
-    return "Sold out";
-  }
+  const availability = candidate.structuredEvent?.offerAvailability ?? "";
+  if (/schema\.org\/SoldOut/i.test(availability)) return "Sold out";
+  // The API-shaped sources report availability as a bare enum rather than a
+  // schema.org URL. Trust it: a source that says registration is open is a
+  // better witness than a regex over prose.
+  if (availability === "SoldOut") return "Sold out";
+  if (availability === "InStock") return "Open";
   const parsed = parseStatus(lines);
   if (parsed !== "Check page") return parsed;
   if (/applications? open|apply to attend/i.test(evidence)) return "Approval";
@@ -594,8 +618,48 @@ function scoreFreshness(schedule) {
 
 // --- normalize each candidate ---
 
+/**
+ * Fold Luma's API facts into a candidate the sweep built by reading a page.
+ *
+ * Only fills what the API actually knows, and only where it is the better
+ * witness: exact start/end (the page prints a rendered local time that has to be
+ * re-parsed), guest count, registration state, city and organizer. Anything the
+ * candidate already states from a structured source is left alone.
+ */
+function enrichCandidate(candidate) {
+  const facts = lumaEnrichment[candidate.url];
+  if (!facts) return candidate;
+  const structured = candidate.structuredEvent ?? {
+    url: candidate.url,
+    name: candidate.title,
+  };
+  const location = structured.location ?? {};
+  return {
+    ...candidate,
+    lumaFacts: facts,
+    structuredEvent: {
+      ...structured,
+      startDate: facts.startDate ?? structured.startDate ?? null,
+      endDate: facts.endDate ?? structured.endDate ?? null,
+      timeSource: structured.timeSource ?? "luma-api",
+      organizers:
+        structured.organizers?.length
+          ? structured.organizers
+          : [facts.organizer].filter(Boolean),
+      location: {
+        ...location,
+        city: location.city ?? facts.city ?? null,
+        name: location.name ?? facts.venue ?? null,
+        region: location.region ?? "CA",
+      },
+      going: facts.going ?? structured.going ?? null,
+    },
+  };
+}
+
 const events = [];
-for (const candidate of allCandidates) {
+for (const rawCandidate of allCandidates) {
+  const candidate = enrichCandidate(rawCandidate);
   const lines = candidate.evidence
     .split("\n")
     .map((line) => line.replace(/​/g, "").trim())
@@ -603,7 +667,12 @@ for (const candidate of allCandidates) {
 
   const schedule =
     parseStructuredSchedule(candidate.structuredEvent) ?? parseSchedule(lines);
-  if (schedule && schedule.endUtc < sweepTime) continue; // second-layer past filter
+  // Second-layer past filter, against the later of the sweep's clock and now.
+  // Using the sweep's alone publishes events that ended between the crawl and
+  // the write — which is any event that finished while a sweep was running, and
+  // every event that ended since, whenever `npm run normalize` is re-run on its
+  // own against an older sweep.
+  if (schedule && schedule.endUtc < Math.max(sweepTime, Date.now())) continue;
   const structuredCity = candidate.structuredEvent?.location?.city?.toLowerCase();
   if (structuredCity && !configuredLocalCities.has(structuredCity)) continue;
 
@@ -613,7 +682,8 @@ for (const candidate of allCandidates) {
       ? parseLocation(lines, schedule.timeLineIndex)
       : { venue: null, city: null };
   const area = areaForCity(location.city);
-  const status = parseCandidateStatus(candidate, lines);
+  // Luma reports registration state as a field; that beats reading the page.
+  const status = candidate.lumaFacts?.status ?? parseCandidateStatus(candidate, lines);
   const prize = parsePrize(candidate.title, candidate.evidence);
   // Organisers sometimes set an event's timezone wrong, which yields a
   // technically-correct conversion that is obvious nonsense: a hackathon
@@ -666,7 +736,7 @@ for (const candidate of allCandidates) {
     status,
     prize: prize.label,
     tags: parseTags(lines, candidate.title, candidate.evidence),
-    going: parseGoing(lines),
+    going: candidate.structuredEvent?.going ?? parseGoing(lines),
     why: buildWhy(schedule, prize, candidate.evidence),
     score,
     confidence: candidate.confidence,
@@ -759,6 +829,58 @@ const changes = {
       return { url: event.url, title: event.title, fields };
     }),
 };
+
+// A published board is more valuable than a fresh one. Every discovery pass is
+// built to survive its own failures, but nothing was stopping their *combined*
+// failure from being written out as the truth: a network outage mid-run once
+// left every source with zero results, and this script cheerfully replaced 29
+// events with none — deleting the board and reporting success.
+//
+// So the write is now conditional. A collapse relative to the last good sweep is
+// treated as a pipeline failure, not as news about the world: the previous
+// events.json stays exactly where it is, nothing is snapshotted, and the run
+// exits non-zero so it is visible. Legitimate shrinkage is gradual; sources do
+// not all lose their events at once.
+// Compare against the last snapshot that actually had events, not simply the
+// last one. A single empty snapshot — from a run that collapsed before this
+// guard existed, or one written by hand — would otherwise set the baseline to
+// zero and quietly disable the breaker for every run after it.
+let baselineCount = 0;
+for (const name of [...previousSnapshots].reverse()) {
+  try {
+    const snapshot = JSON.parse(await readFile(resolve(historyDir, name), "utf8"));
+    const count = snapshot.events?.length ?? 0;
+    if (count > 0) {
+      baselineCount = count;
+      break;
+    }
+  } catch {
+    // A snapshot we cannot read is not a baseline; keep looking back.
+  }
+}
+const previousCount = baselineCount;
+const floor = Number(config.minPublishedEvents ?? 12);
+const collapseRatio = Number(config.collapseRatio ?? 0.5);
+const collapsed =
+  previousCount > 0 &&
+  events.length < Math.max(floor, Math.ceil(previousCount * collapseRatio));
+
+if (collapsed) {
+  const sourceCounts = {
+    sweep: discovery.candidates.length,
+    api: apiCandidates.length,
+  };
+  console.error(
+    `Refusing to publish: ${events.length} event(s) normalized against ` +
+      `${previousCount} in the last good sweep, which is below the ` +
+      `${Math.max(floor, Math.ceil(previousCount * collapseRatio))} floor.\n` +
+      `Candidates in: ${JSON.stringify(sourceCounts)}.\n` +
+      "data/events.json is untouched and the board keeps serving the last good " +
+      "data. This is a pipeline failure, not a quiet week — check whether the " +
+      "sources could reach the network.",
+  );
+  process.exit(1);
+}
 
 await writeFile(
   resolve(historyDir, currentHistoryName),

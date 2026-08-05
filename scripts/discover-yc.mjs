@@ -23,6 +23,8 @@ import { readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { isSuspectSchedule, recoverTimeRange } from "./lib/event-dates.mjs";
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
   await readFile(resolve(root, "config/discovery.json"), "utf8"),
@@ -92,70 +94,6 @@ async function fetchProps(url) {
   return { props };
 }
 
-// --- timezone arithmetic ---------------------------------------------------
-// The normalizer owns its own copy of this; duplicating a dozen lines beats
-// exporting from a script that runs top-level work on import.
-
-function zoneOffsetMinutes(utcMs, timeZone) {
-  const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone,
-    hour12: false,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  }).formatToParts(new Date(utcMs));
-  const get = (type) => Number(parts.find((part) => part.type === type)?.value);
-  const asUtc = Date.UTC(
-    get("year"),
-    get("month") - 1,
-    get("day"),
-    get("hour") % 24,
-    get("minute"),
-    get("second"),
-  );
-  return (asUtc - utcMs) / 60_000;
-}
-
-function localToUtc(year, month, day, hour, minute, timeZone) {
-  const guess = Date.UTC(year, month - 1, day, hour, minute);
-  const offset = zoneOffsetMinutes(guess, timeZone);
-  const corrected = guess - offset * 60_000;
-  // One more pass settles the DST-boundary case.
-  return corrected - (zoneOffsetMinutes(corrected, timeZone) - offset) * 60_000;
-}
-
-function zoneParts(utcMs, timeZone) {
-  const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone,
-    hour12: false,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-  }).formatToParts(new Date(utcMs));
-  const get = (type) => Number(parts.find((part) => part.type === type)?.value);
-  return {
-    year: get("year"),
-    month: get("month"),
-    day: get("day"),
-    hour: get("hour") % 24,
-    minute: get("minute"),
-  };
-}
-
-const TIME_RANGE =
-  /\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s*(?:-|–|—|to|until|till)\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/i;
-
-function toHour24(hourStr, meridiem) {
-  let hour = Number(hourStr) % 12;
-  if (/pm/i.test(meridiem)) hour += 12;
-  return hour;
-}
-
 /**
  * YC's own start/end timestamps are frequently a placeholder: an organizer
  * enters a date and the record lands at local midnight with a three-hour
@@ -174,51 +112,25 @@ function resolveSchedule(meetup) {
   const endUtc = Date.parse(meetup.ends_at ?? "");
   if (!Number.isFinite(startUtc)) return null;
 
-  const start = zoneParts(startUtc, timeZone);
-  const hours = Number.isFinite(endUtc) ? (endUtc - startUtc) / 3_600_000 : null;
-  const suspect = start.hour < 6 || (hours !== null && hours < 1.5);
-  if (!suspect) {
-    return {
-      startDate: new Date(startUtc).toISOString(),
-      endDate: Number.isFinite(endUtc) ? new Date(endUtc).toISOString() : null,
-      timeSource: "yc",
-      timeZone,
-    };
-  }
-
-  const range = (meetup.description ?? "").match(TIME_RANGE);
-  if (!range) {
-    return {
-      startDate: new Date(startUtc).toISOString(),
-      endDate: Number.isFinite(endUtc) ? new Date(endUtc).toISOString() : null,
-      timeSource: "yc-unverified",
-      timeZone,
-    };
-  }
-  const startHour = toHour24(range[1], range[3]);
-  const endHour = toHour24(range[4], range[6]);
-  const correctedStart = localToUtc(
-    start.year,
-    start.month,
-    start.day,
-    startHour,
-    Number(range[2] ?? 0),
+  const asStored = {
+    startDate: new Date(startUtc).toISOString(),
+    endDate: Number.isFinite(endUtc) ? new Date(endUtc).toISOString() : null,
     timeZone,
-  );
-  let correctedEnd = localToUtc(
-    start.year,
-    start.month,
-    start.day,
-    endHour,
-    Number(range[5] ?? 0),
-    timeZone,
-  );
-  if (correctedEnd <= correctedStart) correctedEnd += 24 * 3_600_000;
+  };
+  if (!isSuspectSchedule(startUtc, endUtc, timeZone)) {
+    return { ...asStored, timeSource: "yc" };
+  }
+  const recovered = recoverTimeRange(meetup.description, startUtc, timeZone);
+  if (!recovered) {
+    // Nothing better to go on; the normalizer suppresses the time.
+    return { ...asStored, timeSource: "yc-unverified" };
+  }
   return {
-    startDate: new Date(correctedStart).toISOString(),
-    endDate: new Date(correctedEnd).toISOString(),
+    startDate: new Date(recovered.startUtc).toISOString(),
+    endDate: new Date(recovered.endUtc).toISOString(),
     timeSource: "description",
     timeZone,
+    statedAs: recovered.matched,
   };
 }
 
@@ -286,9 +198,7 @@ function buildEvidence(meetup, schedule, city, organizer) {
     organizer,
     meetup.friendly_name || meetup.title,
     meetup.formatted_start_date ? `${meetup.formatted_start_date}` : null,
-    schedule?.timeSource === "description" && meetup.description?.match(TIME_RANGE)
-      ? meetup.description.match(TIME_RANGE)[0]
-      : null,
+    schedule?.timeSource === "description" ? schedule.statedAs : null,
     city ? `${city}, CA` : null,
     meetup.capacity ? `Capacity ${meetup.capacity}` : null,
     meetup.cancelled ? "Cancelled" : null,

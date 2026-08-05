@@ -119,6 +119,11 @@ function buildQueries() {
 }
 
 function pickFreeProvider() {
+  // Bright Data first when configured: its whole purpose is unblocking, so it is
+  // the only provider here that reliably returns results from a datacenter IP —
+  // which is what GitHub Actions is. Free tier is 5,000 credits a month with no
+  // card, and this pass needs a few hundred.
+  if (process.env.BRIGHTDATA_API_KEY) return "brightdata";
   if (process.env.SERPER_API_KEY) return "serper";
   if (process.env.TAVILY_API_KEY) return "tavily";
   if (process.env.BRAVE_API_KEY) return "brave";
@@ -202,6 +207,57 @@ async function searchTavily(query) {
       .map((result) => ({
         link: result.url,
         text: `${result.title ?? ""} ${result.content ?? ""}`,
+      })),
+  };
+}
+
+/**
+ * Bright Data's SERP API, via the unified /request endpoint. Appending
+ * `brd_json=1` to the Google URL makes it return parsed results rather than HTML,
+ * so there is no markup to scrape.
+ *
+ * Needs a Web Unlocker / SERP zone; name it in BRIGHTDATA_SERP_ZONE. Untested
+ * here for want of an account — it is wired, documented and inert until the key
+ * is set, and a wrong response shape is recorded as a problem like any other.
+ */
+async function searchBrightData(query) {
+  const target = new URL("https://www.google.com/search");
+  target.searchParams.set("q", scopeToLinkedIn(query));
+  target.searchParams.set("num", "20");
+  target.searchParams.set("brd_json", "1");
+  const response = await fetch(
+    "https://api.brightdata.com/request",
+    timed({
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${process.env.BRIGHTDATA_API_KEY}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        zone: process.env.BRIGHTDATA_SERP_ZONE ?? "serp_api",
+        url: target.toString(),
+        format: "raw",
+      }),
+    }),
+  );
+  if (!response.ok) return { results: [], error: `HTTP ${response.status}` };
+  const text = await response.text();
+  let body;
+  try {
+    body = JSON.parse(text);
+  } catch {
+    return { results: [], error: "brightdata: response was not JSON" };
+  }
+  const organic = body.organic ?? body.results?.organic ?? [];
+  if (!Array.isArray(organic)) {
+    return { results: [], error: "brightdata: no organic array in response" };
+  }
+  return {
+    results: organic
+      .filter((result) => result.link ?? result.url)
+      .map((result) => ({
+        link: result.link ?? result.url,
+        text: `${result.title ?? ""} ${result.description ?? result.snippet ?? ""}`,
       })),
   };
 }
@@ -481,6 +537,8 @@ let paidSpend = 0;
 
 async function runSearch(provider, query) {
   switch (provider) {
+    case "brightdata":
+      return searchBrightData(query);
     case "serper":
       return searchSerper(query);
     case "tavily":

@@ -290,6 +290,23 @@ try {
   // Optional input; absent until search discovery has run.
 }
 
+// Calendars that Luma's public API saw hosting a hackathon
+// (scripts/discover-luma-api.mjs). The feed reaches events on calendars nobody
+// seeded, and the calendar behind one hackathon usually runs more — so the
+// crawl's reach grows from what the API found, without anyone editing config.
+let apiCalendarSeeds = [];
+try {
+  const lumaApi = JSON.parse(
+    await readFile(resolve(root, "data/luma-api.json"), "utf8"),
+  );
+  const configured = new Set(config.seedUrls);
+  apiCalendarSeeds = (lumaApi.calendarSeeds ?? [])
+    .map((slug) => `https://luma.com/${slug}`)
+    .filter((url) => !configured.has(url));
+} catch {
+  // Optional input; absent until the API pass has run.
+}
+
 // Event URLs pulled out of public LinkedIn posts and articles
 // (scripts/discover-linkedin.mjs). These reach hackathons that were announced
 // to a network and never indexed as an event page, which search discovery
@@ -317,6 +334,11 @@ const queue = [
     via: "seed",
     allowExternal: !["luma.com", "lu.ma"].includes(new URL(url).hostname),
   })),
+  // Calendars the API found hosting a hackathon. Crawled like any other seed,
+  // but capped per run so a growing list cannot crowd out the configured ones.
+  ...rotateSlice(apiCalendarSeeds, config.apiCalendarSeedsPerRun ?? 12).map(
+    (url) => ({ url, depth: 1, via: "luma-api-calendar", allowExternal: false }),
+  ),
   // Promising ones ahead of the anonymous seeds, the remainder behind them.
   ...personalizedSeeds
     .filter((entry) => entry.promising)
@@ -688,6 +710,7 @@ const output = {
     personalizedSeeds: personalizedSeeds.length,
     personalizedPromising: personalizedSeeds.filter((e) => e.promising).length,
     searchSeeds: searchSeeds.length,
+    apiCalendarSeeds: apiCalendarSeeds.length,
     linkedinSeeds: linkedinSeeds.length,
     linkedinPromising: linkedinSeeds.filter((e) => e.promising).length,
     pagesVisited: visited.size,

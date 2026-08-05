@@ -10,21 +10,78 @@ published as a subscribable calendar.
 
 ## How it works
 
-1. `scripts/discover-sf.mjs` sweeps public Luma surfaces with a headless browser
-   (Lightpanda + Playwright), starting from seed pages in
-   `config/discovery.json` and expanding through event, organizer and co-host
-   links. It also reads Schema.org event lists embedded in public calendar
-   pages, follows direct external event links, and preserves their structured
-   dates and locations. Raw candidates land in `data/discovery-output.json`.
-2. `scripts/discover-yc.mjs` reads Y Combinator's own events site, which hosts
-   a steady stream of Bay Area hackathons that never appear on Luma at all.
-3. `scripts/normalize-events.mjs` parses each candidate's page evidence into
-   a structured record (dates, venue, city, status, prizes, tags), scores it
-   (40% hackathon confidence, 25% builder value, 20% accessibility,
-   15% freshness) and writes `data/events.json`. Every sweep is snapshotted
-   to `data/history/` and diffed into `data/changes.json`.
-4. The site (`app/page.tsx`) and the ICS feed (`app/calendar.ics/route.ts`)
-   are both generated from `data/events.json`.
+Seven sources feed one classifier. None of them costs anything, and none needs an
+API key.
+
+**Direct APIs — keyless, structured, and they work from any IP.** These are the
+reliable core.
+
+1. `scripts/discover-luma-api.mjs` reads Luma's public discover feed
+   (`api.lu.ma/discover/get-paginated-events`) — around 900 upcoming Bay Area
+   events in 19 requests and ten seconds. It also hands back exact times, guest
+   counts and registration state for events the other passes found by reading a
+   page, and reports which calendars it saw hosting a hackathon so the crawl can
+   seed itself.
+2. `scripts/discover-yc.mjs` reads Y Combinator's own events site, which hosts a
+   steady stream of Bay Area hackathons that never appear on Luma.
+3. `scripts/discover-devpost.mjs` reads Devpost's public hackathon API.
+
+**Crawl — reaches what no feed indexes.**
+
+4. `scripts/discover-sf.mjs` sweeps public Luma surfaces with a headless browser
+   (Lightpanda + Playwright), starting from the seeds in `config/discovery.json`
+   plus whatever calendars the API pass discovered, and expanding through event,
+   organizer and co-host links. It reads Schema.org event lists embedded in
+   public calendar pages and follows direct external event links. Raw candidates
+   land in `data/discovery-output.json`.
+
+**Best-effort — extras that depend on a residential IP.**
+
+5. `scripts/discover-search.mjs` asks a search engine for events no calendar
+   links to.
+6. `scripts/discover-linkedin.mjs` reads public LinkedIn posts and articles for
+   hackathons announced to a network rather than published to a calendar.
+7. `scripts/discover-personalized.mjs` collects the events Luma recommends a
+   signed-in account (local only; see below).
+
+**Then:** `scripts/normalize-events.mjs` parses each candidate into a structured
+record (dates, venue, city, status, prizes, tags), scores it (40% hackathon
+confidence, 25% builder value, 20% accessibility, 15% freshness) and writes
+`data/events.json`. Every sweep is snapshotted to `data/history/` and diffed into
+`data/changes.json`. The site (`app/page.tsx`) and the ICS feed
+(`app/calendar.ics/route.ts`) are generated from `data/events.json`.
+
+Why the Luma API and the Luma crawl both run, rather than the API replacing the
+crawl: they find different things, measured rather than assumed. The API surfaced
+4 hackathons the crawl had missed; the crawl had 8 the API's feed never returned,
+because they live on organizer calendars the feed does not surface. Dropping
+either would cost coverage.
+
+## Reliability
+
+Every discovery pass is built never to fail — a throttled search or a dead
+endpoint writes an empty file and exits 0, because a partial sweep beats no
+sweep. That design has two failure modes, and both are now covered.
+
+**It can publish nothing.** A network outage mid-run once left every source with
+zero results and the normalizer replaced the whole board with an empty list,
+reporting success. It now refuses: a collapse to below `collapseRatio` of the
+last good sweep (or below `minPublishedEvents`) leaves `data/events.json`
+untouched and exits non-zero. The board keeps serving the last good data and the
+run goes red.
+
+**It can go quiet without telling anyone.** `npm run check:sources` reads what
+each pass wrote and fails when the shape of the output says a source is broken
+rather than merely quiet — an empty Luma feed, a YC index with no events, a sweep
+that visited almost no pages, a board below its floor, or any pass whose output
+has gone stale. It runs last in CI, *after* the deploy, so a broken source never
+blocks the board from updating; it just turns the run red. Sources that depend on
+a residential IP warn instead of failing, because they are expected to come back
+empty from a datacenter.
+
+`npm test` covers the published output plus the date arithmetic most likely to
+publish something wrong: Devpost's date-only ranges, and Y Combinator's
+placeholder timestamps.
 
 See `PROTOTYPE.md` for the full product spec.
 
@@ -76,10 +133,24 @@ keyless endpoint blocked, so each run takes only `searchQueriesPerRun` queries
 and rotates which ones, advancing every 12 hours to match the schedule. The full
 list is therefore covered every few runs with no throttling.
 
-Set any one of `SERPER_API_KEY`, `TAVILY_API_KEY` or `BRAVE_API_KEY` to run more
-queries per sweep and skip the rate limit entirely. Serper and Tavily have free
-tiers that take no credit card; Brave now bills new accounts. Search never
-blocks the sweep: a run with no search results still publishes.
+### Making search work in CI
+
+Search engines block datacenter IPs, and GitHub Actions is a datacenter. That is
+why the keyless path returns 403 or an empty page from CI however politely it
+asks — it is not a rate limit you can wait out. The direct APIs carry the board
+precisely so this does not matter, but if you want the search legs working in CI
+too, set one of these (in provider precedence order):
+
+- `BRIGHTDATA_API_KEY` (+ optional `BRIGHTDATA_SERP_ZONE`, default `serp_api`) —
+  the one that actually solves the datacenter problem, since unblocking is what
+  the product is for. Free tier is 5,000 credits/month, no credit card, and both
+  search passes together spend a few hundred. **Wired but untested** — there is no
+  account behind it here, so treat the first run as the real test; a wrong
+  response shape is recorded in `problems` rather than thrown.
+- `SERPER_API_KEY` or `TAVILY_API_KEY` — free tiers, no card.
+- `BRAVE_API_KEY` — Brave now bills new accounts.
+
+Search never blocks the sweep: a run with no search results still publishes.
 
 Note that search engines mostly index the archive, so many hits are events that
 have already happened. Those are rejected by the past-event filter, and stale
@@ -95,15 +166,11 @@ the author's own first comment. `npm run discover:linkedin` goes after those and
 writes `data/linkedin-seeds.json`, which the crawler visits and classifies like
 any other find.
 
-Two stages, and only the first can cost anything:
+Two stages, and by default neither costs anything:
 
 1. **Search** for LinkedIn pages about Bay Area hackathons, using whichever
    provider is available (`SERPER_API_KEY`, `TAVILY_API_KEY`, `BRAVE_API_KEY`,
-   else keyless DuckDuckGo). When the free provider comes back empty — which
-   the keyless one usually does — it escalates to a per-call LinkedIn search
-   over [Zero](https://www.zero.xyz) (x402, no signup, ~$0.003 a query), capped
-   at `linkedinMaxPaidQueriesPerRun`. That is about $0.36/month at two runs a
-   day, and it only spends when the free path found nothing.
+   else keyless DuckDuckGo).
 2. **Read** each of those pages over plain HTTPS, free and keyless. LinkedIn
    serves post bodies, article bodies and top comments to an anonymous reader,
    so no login, cookie or session is involved — and none is stored.
@@ -113,12 +180,33 @@ are hackathons, so each extracted link keeps the words around it: links whose
 context names a hackathon format are marked `promising` and crawled first, and
 the cap trims the filler rather than the finds.
 
-The paid leg needs the `zero` CLI signed in, which is true on the local machine
-and deliberately untrue in GitHub Actions — no CI job should be able to spend
-money. That is why LinkedIn discovery is in `scripts/local-passes.sh` as well as
-in the sweep. Override the provider choice with
-`LINKEDIN_SEARCH_PROVIDER=zero|serper|tavily|brave|duckduckgo-html`, or set
-`LINKEDIN_PAID_QUERIES=0` to disable paid escalation entirely.
+There is an optional paid escalation — a per-call LinkedIn search over
+[Zero](https://www.zero.xyz) (x402, no signup, ~$0.003 a query) — for when the
+free provider comes back empty. **It is off by default** (`linkedinMaxPaidQueriesPerRun: 0`),
+because the board is meant to cost nothing, and because that capability answered
+502 on roughly a third of calls and charged for them anyway. Turn it on by
+raising that config value or setting `LINKEDIN_PAID_QUERIES=n`; `check:sources`
+warns if anything was ever spent. Override the provider choice with
+`LINKEDIN_SEARCH_PROVIDER=zero|serper|tavily|brave|duckduckgo-html`.
+
+Note that search engines block datacenter IPs, so both this pass and
+`discover:search` are expected to return nothing from GitHub Actions and to work
+from the local schedule. That is why they are extras rather than load-bearing:
+the direct APIs above carry the board.
+
+## Devpost discovery
+
+`npm run discover:devpost` reads `devpost.com/api/hackathons` — public, keyless,
+paginated. Coverage is narrower than the volume suggests and honestly so: of ~80
+upcoming in-person hackathons worldwide only a handful are Bay Area, and Devpost's
+location field is free text an organizer typed. Sometimes it is a city, sometimes
+a region ("Bay Area"), sometimes only a venue ("AWS Builder Loft"). Venue-only
+strings cannot be placed without guessing, so they are skipped and listed in
+`skipped.unplaceable` rather than assigned to a city we made up.
+
+Devpost publishes submission-period dates and no clock times, so its events are
+date-only: the span runs local midnight to end-of-day, which trips the "time we
+do not believe" guard and prints the date without a time.
 
 ## Y Combinator discovery
 
@@ -146,7 +234,13 @@ is suppressed by the normalizer rather than published.
 ## Automation
 
 `.github/workflows/discover.yml` runs the whole loop at exactly 8am and 8pm
-Pacific (DST-aware): sweep → normalize → commit data → deploy.
+Pacific (DST-aware): all sources → normalize → commit data → deploy → check
+source health.
+
+The health check runs last, deliberately after the deploy: a broken source should
+never stop the board from updating, it should just make the run red. A collapse is
+handled earlier and differently — the normalizer refuses to publish it at all, so
+the commit and deploy steps never run and the live board keeps its last good data.
 
 Repository secrets:
 
@@ -160,12 +254,15 @@ Repository secrets:
 
 ```bash
 npm run dev                # local development
-npm run discover:sf        # search + LinkedIn + sweep + YC + normalize
-npm run discover:linkedin  # just the LinkedIn pass
+npm run discover:sf        # every source, then normalize
+npm run discover:luma-api  # just Luma's public discover feed
 npm run discover:yc        # just the Y Combinator pass
+npm run discover:devpost   # just the Devpost pass
+npm run discover:linkedin  # just the LinkedIn pass
 npm run normalize          # re-normalize existing discovery output only
-npm test             # build + data/board/ICS tests
-npx vinext deploy    # manual deploy to Cloudflare Workers
+npm run check:sources      # are all the sources still working?
+npm test                   # build + board/ICS/discovery tests
+npx vinext deploy          # manual deploy to Cloudflare Workers
 ```
 
 ## Guardrails

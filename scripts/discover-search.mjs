@@ -26,13 +26,18 @@ const outputPath = resolve(root, "data/search-seeds.json");
 // Any one of these works; pick whichever you can sign up for. Serper and
 // Tavily take no card, Brave now bills new accounts, and DuckDuckGo needs no
 // key but throttles a repeat caller to nothing.
-const provider = process.env.SERPER_API_KEY
-  ? "serper"
-  : process.env.TAVILY_API_KEY
-    ? "tavily"
-    : process.env.BRAVE_API_KEY
-      ? "brave"
-      : "duckduckgo-html";
+// Bright Data first when configured: it is the only one of these that reliably
+// answers from a datacenter IP, which is what CI runs on. Free tier is 5,000
+// credits a month with no card; this pass spends a few hundred.
+const provider = process.env.BRIGHTDATA_API_KEY
+  ? "brightdata"
+  : process.env.SERPER_API_KEY
+    ? "serper"
+    : process.env.TAVILY_API_KEY
+      ? "tavily"
+      : process.env.BRAVE_API_KEY
+        ? "brave"
+        : "duckduckgo-html";
 const hasKey = provider !== "duckduckgo-html";
 const delayMs = hasKey ? 1_200 : Number(process.env.SEARCH_DELAY_MS ?? 18_000);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -145,13 +150,52 @@ async function searchTavily(query) {
   };
 }
 
+/**
+ * Bright Data's SERP API via the unified /request endpoint; `brd_json=1` makes
+ * Google return parsed results instead of HTML. Needs a Web Unlocker / SERP zone
+ * named in BRIGHTDATA_SERP_ZONE. Wired and documented but untested for want of an
+ * account — inert until BRIGHTDATA_API_KEY is set, and a bad response shape is
+ * reported as a problem rather than throwing.
+ */
+async function searchBrightData(query) {
+  const target = new URL("https://www.google.com/search");
+  target.searchParams.set("q", query);
+  target.searchParams.set("num", "20");
+  target.searchParams.set("brd_json", "1");
+  const response = await fetch("https://api.brightdata.com/request", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${process.env.BRIGHTDATA_API_KEY}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      zone: process.env.BRIGHTDATA_SERP_ZONE ?? "serp_api",
+      url: target.toString(),
+      format: "raw",
+    }),
+  });
+  if (!response.ok) return { urls: [], error: `HTTP ${response.status}` };
+  const text = await response.text();
+  let body;
+  try {
+    body = JSON.parse(text);
+  } catch {
+    return { urls: [], error: "brightdata: response was not JSON" };
+  }
+  const organic = body.organic ?? body.results?.organic ?? [];
+  if (!Array.isArray(organic)) {
+    return { urls: [], error: "brightdata: no organic array in response" };
+  }
+  return { urls: organic.map((result) => result.link ?? result.url).filter(Boolean) };
+}
+
 async function searchBrave(query) {
   const response = await fetch(
     `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(query)}&count=20`,
     {
       headers: {
         accept: "application/json",
-        "x-subscription-token": braveKey,
+        "x-subscription-token": process.env.BRAVE_API_KEY,
       },
     },
   );
@@ -188,7 +232,9 @@ for (const [index, query] of queries.entries()) {
   let result;
   try {
     result =
-      provider === "serper"
+      provider === "brightdata"
+        ? await searchBrightData(query)
+        : provider === "serper"
         ? await searchSerper(query)
         : provider === "tavily"
           ? await searchTavily(query)

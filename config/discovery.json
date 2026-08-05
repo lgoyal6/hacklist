@@ -18,7 +18,9 @@
     "https://luma.com/cerebralvalley_",
     "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
     "https://luma.com/discover/sf/ai",
-    "https://luma.com/hackathons"
+    "https://luma.com/hackathons",
+    "https://luma.com/sf-builders-collective",
+    "https://luma.com/thecomputecollective"
   ],
   "areas": {
     "SF": [
@@ -151,7 +153,7 @@
   "linkedinShortLinksPerPage": 8,
   "linkedinSeedRetentionDays": 21,
   "linkedinSeedCap": 60,
-  "linkedinMaxPaidQueriesPerRun": 2,
+  "linkedinMaxPaidQueriesPerRun": 0,
   "linkedinMaxPayPerQuery": 0.02,
   "ycEventsPerRun": 25,
   "linkedinEventHosts": [
@@ -161,5 +163,11 @@
     "cerebralvalley.ai",
     "hackathon.com",
     "eventbrite.com"
-  ]
+  ],
+  "lumaPlaceId": "discplace-BDj7GNbGlsF7Cka",
+  "lumaApiMaxEvents": 1200,
+  "apiCalendarSeedsPerRun": 12,
+  "devpostMaxPages": 12,
+  "minPublishedEvents": 12,
+  "collapseRatio": 0.5
 }
