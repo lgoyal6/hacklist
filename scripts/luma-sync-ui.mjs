@@ -376,9 +376,31 @@ try {
       continue;
     }
 
-    // Luma's "Add External Event" path is a full event form (name, date,
-    // timezone, location) rather than a URL paste, so it is left to a human
-    // instead of half-filled by guesswork.
+    // Luma's "Add External Event" path is a full event form rather than a URL
+    // paste, so it is left to a human instead of half-filled by guesswork.
+    //
+    // That reasoning is now weaker than it was: the API-shaped sources give us
+    // every field this form wants as structured data, and external events are a
+    // third of the board since Devpost and Y Combinator were added, so the
+    // by-hand backlog only grows. The form was inspected read-only on
+    // 2026-08-04; in DOM order it is:
+    //
+    //   1 input[type=url][name=url]    REQUIRED  ph "https://eventbrite.com/e/some-event"
+    //   2 input[type=text][name=name]  REQUIRED  ph "Happy Hour Drinks"
+    //   3 input[type=text]             optional  ph "What’s the address?"
+    //   4 input[type=text][name=host]  optional  ph "Friends of the City"
+    //   5 input[type=text]             start date, e.g. "Tue, Aug 4"; a
+    //                                  "GMT-07:00" zone control sits beside it
+    //   6 input[type=text]             end date, same format
+    //   7 input[type=time]             start time, 24h, prefilled "18:00"
+    //   8 input[type=time]             end time, 24h, prefilled "19:00"
+    //
+    // The two time inputs are NOT required, which is the part that matters: a
+    // Devpost event has a trustworthy date and no clock time, and leaving those
+    // blank is how it gets added without inventing one. Whether Luma accepts
+    // them cleared, and whether field 5 is typeable or opens a picker, still
+    // needs a live attempt — and a wrong attempt creates a publicly visible
+    // event on the calendar, so it is not something to guess at unattended.
     if (event.platform !== "luma") {
       markFailed(
         ledger,
