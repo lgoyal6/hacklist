@@ -20,7 +20,14 @@ import {
   ensureSignedIn,
   launchLocalBrowser,
   needsHumanAttention,
+  root,
 } from "./lib/local-browser.mjs";
+import { readFile } from "node:fs/promises";
+import { resolve } from "node:path";
+
+const config = JSON.parse(
+  await readFile(resolve(root, "config/discovery.json"), "utf8"),
+);
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
@@ -242,6 +249,22 @@ async function fillExternalEvent(page, event) {
   // field we control: the name. A subscriber sees the right date and is told the
   // time is not ours to assert, instead of being quietly sent at 7pm.
   const timeKnown = event.timeUnverified !== true && Boolean(event.start);
+  // Luma forces a clock time on external events — no all-day option, and it
+  // substitutes 19:00 server-side even when the field is cleared. For an event
+  // whose time nobody stated, that is a made-up 7pm on a public calendar. The
+  // board and the ICS feed can both say "date known, time unknown" honestly;
+  // Luma cannot, so by default these are left off it rather than published with
+  // a fabricated hour. Set syncTimeUnknownExternals to true to add them anyway,
+  // in which case the name carries the retraction.
+  if (!timeKnown && config.syncTimeUnknownExternals !== true) {
+    return {
+      ok: false,
+      why:
+        "no stated start time, and Luma forces one on external events — left off " +
+        "the calendar rather than published at a made-up 7pm " +
+        "(set syncTimeUnknownExternals to override)",
+    };
+  }
   const displayTitle = timeKnown
     ? event.title
     : `${event.title} (start time on event page)`;
