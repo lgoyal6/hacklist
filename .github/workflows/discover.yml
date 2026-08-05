@@ -70,6 +70,13 @@ jobs:
       # runs through the `zero` CLI, which is not installed on this runner, so no
       # CI job can spend money. That leg runs on the local schedule instead
       # (scripts/local-passes.sh), and is off by default there too.
+      # Lets the Luma calendar sync and the tagging pass run here instead of only
+      # on one Mac. This is a real credential — whoever holds it can act as that
+      # account on Luma, not merely on one calendar — so it lives in an encrypted
+      # secret and nothing ever prints it. Re-export with
+      # `npm run luma:export-session | gh secret set LUMA_SESSION_COOKIES`;
+      # luma.auth-session-key currently runs to September 2027.
+      LUMA_SESSION_COOKIES: ${{ secrets.LUMA_SESSION_COOKIES }}
       BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
       BRIGHTDATA_SERP_ZONE: ${{ secrets.BRIGHTDATA_SERP_ZONE }}
       SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
@@ -143,6 +150,32 @@ jobs:
       # publishing yesterday's answer in silence — which is exactly what happened
       # to web search. This step is the alarm: it never blocks the board from
       # updating, it just turns the run red so a dead source is visible.
+      # Mirror the board onto the Luma calendar. Runs here only when the session
+      # secret is present; otherwise it stays a local-only pass as before.
+      #
+      # After the deploy on purpose. The site and the feed are the product and
+      # must not wait on a browser driving somebody else's admin UI, and this step
+      # is allowed to fail without taking the run down — the sync is idempotent and
+      # loses no queue state, so the next run simply picks up where it stopped.
+      - name: Mirror the board onto the Luma calendar
+        if: env.LUMA_SESSION_COOKIES != ''
+        continue-on-error: true
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: |
+          node scripts/luma-sync-ui.mjs --headless --name "HackList SF"
+          node scripts/luma-tag-events.mjs --headless --name "HackList SF"
+      - name: Commit the sync ledger
+        if: env.LUMA_SESSION_COOKIES != ''
+        continue-on-error: true
+        run: |
+          git add data/luma-ledger.json data/luma-tags.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data: refresh Luma calendar sync state"
+          for attempt in 1 2 3; do
+            git push origin HEAD:main && exit 0
+            git pull --rebase --autostash origin main
+          done
       - name: Check source health
         id: health
         # pipefail matters: without it the step takes tee's exit status and a
