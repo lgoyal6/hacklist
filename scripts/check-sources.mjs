@@ -218,6 +218,63 @@ if (!ledger.__missing && !board.__missing) {
     `luma calendar: ${events.length - pending.length}/${events.length} synced, ` +
       `${pending.length} pending (${manual.length} need the external-event form by hand)`,
   );
+  // Does the calendar show the times the board says? Presence is not correctness:
+  // two entries went live seven hours off because Luma reads a typed time in the
+  // browser's timezone and the runner was UTC. The sync verifies what it just
+  // wrote; this catches anything already wrong, whenever it got that way.
+  try {
+    const calendarId = (ledger.calendar ?? "").match(/cal-[A-Za-z0-9]+/)?.[0];
+    if (calendarId) {
+      const response = await fetch(
+        `https://api.lu.ma/calendar/get-items?calendar_api_id=${calendarId}&pagination_limit=100`,
+        { headers: { accept: "application/json" }, signal: AbortSignal.timeout(20_000) },
+      );
+      if (response.ok) {
+        const body = await response.json();
+        const key = (text) => String(text).replace(/[^a-z0-9]/gi, "").toLowerCase();
+        // Only entries we typed the time into are ours to police. A Luma-hosted
+        // event shows the organiser's own start, which we neither set nor can
+        // change — and the board may legitimately differ from it, since a
+        // duplicate merge can recover a better time from the organiser's own
+        // page than the Luma listing carries. Those are not drift.
+        const stored = new Map();
+        for (const entry of body.entries ?? []) {
+          const name = key(entry.event?.name ?? "");
+          const isExternal = /^https?:/.test(entry.event?.url ?? "");
+          if (name && isExternal) stored.set(name, entry.event?.start_at ?? null);
+        }
+        const wrong = [];
+        for (const event of events) {
+          if (!event.start) continue;
+          let at = stored.get(key(event.title));
+          if (!at) {
+            for (const [name, value] of stored) {
+              if (name.startsWith(key(event.title)) || key(event.title).startsWith(name)) {
+                at = value;
+                break;
+              }
+            }
+          }
+          if (!at) continue;
+          if (Math.abs(Date.parse(at) - Date.parse(event.start)) >= 60_000) {
+            wrong.push(
+              `${event.title.slice(0, 40)} (calendar ${new Date(at).toLocaleString("en-US", { timeZone: config.timezone })}, board ${new Date(event.start).toLocaleString("en-US", { timeZone: config.timezone })})`,
+            );
+          }
+        }
+        if (wrong.length) {
+          failures.push(
+            `luma calendar: ${wrong.length} external entr${wrong.length === 1 ? "y" : "ies"} ` +
+              "show a time we did not intend — Luma cannot edit an external event, " +
+              `so these need deleting by hand and the next sync re-adds them: ${wrong.slice(0, 4).join("; ")}`,
+          );
+        }
+      }
+    }
+  } catch {
+    // The read-back is a check, not a dependency.
+  }
+
   if (manual.length >= 5) {
     warnings.push(
       `luma calendar: ${manual.length} external event(s) can never be synced automatically — ` +

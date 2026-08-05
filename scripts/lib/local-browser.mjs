@@ -18,6 +18,10 @@ import { chromium } from "playwright-core";
 export const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 export const profileDir = resolve(root, ".local-browser-profile");
 
+// The board's timezone. Every browser this launches is pinned to it so that a
+// time typed into a Luma form means the same thing wherever the code runs.
+const BOARD_TIMEZONE = process.env.BOARD_TIMEZONE ?? "America/Los_Angeles";
+
 const CHROME_CANDIDATES = [
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
   "/usr/bin/google-chrome",
@@ -81,6 +85,12 @@ export async function launchLocalBrowser({ headless = false } = {}) {
     });
     const context = await browser.newContext({
       viewport: { width: 1280, height: 900 },
+      // Pin the zone. Luma's forms render and interpret times in the browser's
+      // timezone, and a GitHub runner is UTC — so a 9am Pacific start typed into
+      // the form was read as 9am UTC and stored as 2am Pacific, a silent
+      // seven-hour shift that never showed up in local testing.
+      timezoneId: BOARD_TIMEZONE,
+      locale: "en-US",
     });
     await context.addCookies(cookies);
     context.setDefaultTimeout(30_000);
@@ -98,6 +108,10 @@ export async function launchLocalBrowser({ headless = false } = {}) {
     headless,
     executablePath: chromeExecutable(),
     viewport: { width: 1280, height: 900 },
+    // Same reason as above, and it also keeps a run on this Mac identical to a
+    // run anywhere else rather than accidentally correct.
+    timezoneId: BOARD_TIMEZONE,
+    locale: "en-US",
     args: ["--disable-blink-features=AutomationControlled"],
   });
   context.setDefaultTimeout(30_000);

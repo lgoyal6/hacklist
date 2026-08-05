@@ -123,6 +123,7 @@ async function resolveCalendarUrl(page) {
 
 const context = await launchLocalBrowser({ headless });
 let stopReason = null;
+let timeMismatches = 0;
 let added = 0;
 let failed = 0;
 
@@ -778,7 +779,65 @@ try {
     console.log("\nConfirming against the calendar...");
     await page.waitForTimeout(5_000);
     const finalState = await harvestCalendarSlugs(page);
+    // Verify what actually landed, not merely that something did.
+    //
+    // The sync used to confirm presence and stop there, which let two events go
+    // live seven hours off: Luma reads a typed time in the browser's timezone, the
+    // runner was UTC, and a 9am start became 2am. Presence was correct and the
+    // data was wrong. Luma's public calendar feed reports the stored start, so it
+    // can simply be read back and compared.
+    let storedStarts = new Map();
+    try {
+      const calendarId = (ledger.calendar ?? "").match(/cal-[A-Za-z0-9]+/)?.[0];
+      if (calendarId) {
+        const response = await fetch(
+          `https://api.lu.ma/calendar/get-items?calendar_api_id=${calendarId}&pagination_limit=100`,
+          { headers: { accept: "application/json" }, signal: AbortSignal.timeout(20_000) },
+        );
+        if (response.ok) {
+          const body = await response.json();
+          for (const entry of body.entries ?? []) {
+            const name = (entry.event?.name ?? "").replace(/[^a-z0-9]/gi, "").toLowerCase();
+            if (name) storedStarts.set(name, entry.event?.start_at ?? null);
+          }
+        }
+      }
+    } catch {
+      // Read-back is a check, not a requirement; a failure here must not undo a
+      // sync that worked.
+    }
+    const sameMinute = (a, b) =>
+      Number.isFinite(Date.parse(a)) &&
+      Number.isFinite(Date.parse(b)) &&
+      Math.abs(Date.parse(a) - Date.parse(b)) < 60_000;
+
     for (const event of queue) {
+      if (event.start && storedStarts.size) {
+        const key = (text) => String(text).replace(/[^a-z0-9]/gi, "").toLowerCase();
+        let stored = storedStarts.get(key(event.title));
+        if (!stored) {
+          // The name may carry the "(start time on event page)" suffix.
+          for (const [name, value] of storedStarts) {
+            if (name.startsWith(key(event.title)) || key(event.title).startsWith(name)) {
+              stored = value;
+              break;
+            }
+          }
+        }
+        if (stored && !sameMinute(stored, event.start)) {
+          const shown = new Date(stored).toLocaleString("en-US", {
+            timeZone: event.timezone ?? "America/Los_Angeles",
+          });
+          const wanted = new Date(event.start).toLocaleString("en-US", {
+            timeZone: event.timezone ?? "America/Los_Angeles",
+          });
+          console.warn(
+            `  WRONG TIME on calendar: ${event.title.slice(0, 44)} — ` +
+              `stored ${shown}, board says ${wanted}. Needs deleting and re-adding.`,
+          );
+          timeMismatches += 1;
+        }
+      }
       if (isOnCalendar(event, finalState)) {
         if (!ledger.synced[event.id]) added += 1;
         markSynced(
@@ -808,8 +867,17 @@ if (dryRun) {
 
 console.log(
   `\nLuma UI sync: ${added} added, ${failed} failed, ` +
-    `${pendingEvents(events, ledger).length} still pending.`,
+    `${pendingEvents(events, ledger).length} still pending` +
+    (timeMismatches ? `, ${timeMismatches} with the WRONG TIME on the calendar` : "") +
+    ".",
 );
+if (timeMismatches) {
+  console.error(
+    `${timeMismatches} calendar entr${timeMismatches === 1 ? "y" : "ies"} do not ` +
+      "match the board's time. Luma cannot edit an external event, so these have " +
+      "to be deleted by hand; the next sync will re-add them correctly.",
+  );
+}
 
 if (stopReason === "captcha") {
   console.error(
