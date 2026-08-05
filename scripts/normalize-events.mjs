@@ -3,6 +3,8 @@ import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { isSameEvent, mergeDuplicate } from "./lib/dedupe.mjs";
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
   await readFile(resolve(root, "config/discovery.json"), "utf8"),
@@ -705,8 +707,71 @@ try {
   // No history yet.
 }
 
+// --- collapse the same event found under two different URLs -----------------
+
+function dayOf(candidate) {
+  const iso = candidate.structuredEvent?.startDate;
+  if (!iso) return null;
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: config.timezone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date(iso));
+}
+
+// Resolve the host and the place the way the published event will. Reading
+// structuredEvent alone is not enough: a candidate the crawler built from a
+// rendered page often has no structured block, and its organiser comes from the
+// "Hosted By" line in the page text. Comparing only the structured field left
+// those blank, so two records of one event looked like two events.
+const evidenceLinesOf = (candidate) =>
+  String(candidate.evidence ?? "")
+    .split("\n")
+    .map((line) => line.replace(/​/g, "").trim())
+    .filter(Boolean);
+
+const organizerOf = (candidate) => {
+  const name = parseCandidateOrganizer(candidate, evidenceLinesOf(candidate));
+  if (!name || name === "Unknown organizer") return "";
+  return name.replace(/[^a-z0-9]/gi, "").toLowerCase();
+};
+
+// Places compare by area, not by city string: one source says "SF" and another
+// "San Francisco" for the same place, and a raw compare treats them as different.
+const areaOf = (candidate) => {
+  const structured = candidate.structuredEvent?.location?.city;
+  if (structured) return areaForCity(structured);
+  const placePattern = new RegExp(
+    `\\b(${config.placeTerms
+      .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+      .join("|")})\\b`,
+    "i",
+  );
+  const match = String(candidate.evidence ?? "").match(placePattern);
+  return match ? areaForCity(match[1]) : "";
+};
+
+const resolvers = { day: dayOf, organizer: organizerOf, area: areaOf };
+const deduped = [];
+for (const candidate of allCandidates) {
+  let mergedAny = false;
+  for (const [index, kept] of deduped.entries()) {
+    const why = isSameEvent(candidate, kept, resolvers);
+    if (!why) continue;
+    deduped[index] = mergeDuplicate(kept, candidate, config.timezone);
+    mergedAny = true;
+    console.log(
+      `  merged duplicate (${why}): "${candidate.title.slice(0, 36)}" + ` +
+        `"${kept.title.slice(0, 36)}" -> ${deduped[index].url}`,
+    );
+    break;
+  }
+  if (!mergedAny) deduped.push(candidate);
+}
+
 const events = [];
-for (const rawCandidate of allCandidates) {
+for (const rawCandidate of deduped) {
   const candidate = enrichCandidate(rawCandidate);
   const lines = candidate.evidence
     .split("\n")
@@ -956,7 +1021,7 @@ await writeFile(
 );
 
 console.log(
-  `Normalized ${events.length}/${allCandidates.length} candidates ` +
+  `Normalized ${events.length}/${deduped.length} candidates ` +
     `(+${changes.added.length} added, ~${changes.updated.length} updated, ` +
     `-${changes.removed.length} removed vs previous sweep).`,
 );

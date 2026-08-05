@@ -352,7 +352,11 @@ async function fillExternalEvent(page, event) {
   await dateField.click();
   await page.waitForTimeout(600);
   // Keyboard only from here: the picker this opened intercepts further clicks.
-  await page.keyboard.press("Meta+a");
+  // ControlOrMeta, not Meta: this ran on a Mac during development and Meta+a is
+  // macOS select-all. On the Linux runner it does nothing, so the typed date
+  // appended to the default instead of replacing it and every date silently came
+  // out as today — which is exactly how five events failed the first CI run.
+  await page.keyboard.press("ControlOrMeta+a");
   await page.keyboard.type(asIso(startIso), { delay: 40 });
   await page.waitForTimeout(400);
   await page.keyboard.press("Enter");
