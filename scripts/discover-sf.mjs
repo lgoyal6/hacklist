@@ -83,8 +83,14 @@ function needsSlowRender(url) {
  * of those needed no login at all.
  */
 function isBrowseSurface(url) {
+  const path = new URL(url).pathname;
   return (
-    isCuratedIndex(url) || new URL(url).pathname.startsWith("/discover")
+    isCuratedIndex(url) ||
+    path.startsWith("/discover") ||
+    // A calendar's own page is the same kind of surface: a virtualized list that
+    // renders a screenful and loads the rest as you scroll. Read without
+    // scrolling it reports a calendar as nearly empty.
+    path.startsWith("/calendar/")
   );
 }
 
