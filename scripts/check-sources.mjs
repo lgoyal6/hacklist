@@ -88,16 +88,28 @@ if (board.__missing) {
   notes.push(`board: ${events.length} events, ${new Set(events.map((e) => e.organizer)).size} organizers`);
 }
 
-// --- required sources: keyless APIs that work from any IP ------------------
+// --- the keyless API sources -----------------------------------------------
 //
-// These have no excuse for returning nothing. They need no key, no session and
-// no residential IP, so an empty result means the endpoint changed shape or went
-// away — exactly the failure the silent design would otherwise hide.
+// Y Combinator and Devpost answer anyone from anywhere, so they have no excuse
+// for returning nothing: an empty result means the endpoint changed shape or went
+// away, which is exactly the failure the silent design would otherwise hide.
+//
+// Luma's discover feed is the exception and is treated more gently. It is
+// geolocated to the place you ask about, so a datacenter run genuinely cannot
+// refresh it — measured: ~890 events from a Bay Area address, 2 from a GitHub
+// runner, both with a 200 and no error.
 
 const lumaApi = await readJson("data/luma-api.json");
 if (lumaApi.__missing) {
   failures.push(`luma-api.json unreadable: ${lumaApi.__missing}`);
-} else if (checkFreshness("luma-api", lumaApi.collectedAt, { required: true })) {
+} else if (
+  // Not "required": this feed is geolocated, so a run from a datacenter may not
+  // be able to refresh it at all, and the board publishes perfectly well on a
+  // slightly stale copy — it loses guest counts and registration state, not
+  // events. Staleness warns; a changed endpoint shape below still fails.
+  checkFreshness("luma-api", lumaApi.collectedAt, { required: false }) ||
+  (lumaApi.uniqueEvents ?? 0) > 0
+) {
   if ((lumaApi.uniqueEvents ?? 0) < 100) {
     failures.push(
       `luma-api: only ${lumaApi.uniqueEvents ?? 0} events from the discover feed (expected hundreds) — the endpoint or its shape changed`,
