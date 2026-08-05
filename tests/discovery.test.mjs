@@ -14,6 +14,7 @@ import {
   parseDevpostDates,
   recoverTimeRange,
 } from "../scripts/lib/event-dates.mjs";
+import { linksFromSerpHtml, serpResults } from "../scripts/lib/serp.mjs";
 import {
   buildPatterns,
   localCitySet,
@@ -229,4 +230,49 @@ test("no published event is placed in a city outside the configured areas", () =
       `${event.title} is placed in ${event.city}, which is not a configured local city`,
     );
   }
+});
+
+// --- reading a search response ---------------------------------------------
+// Bright Data's response shape depends on which zone the account has, and the
+// search leg is worthless if it only understands one of them.
+
+test("a SERP-API JSON response yields links and snippets", () => {
+  const body = JSON.stringify({
+    organic: [
+      { link: "https://luma.com/abc123", title: "AI Hackathon", description: "SF, prizes" },
+      { url: "https://luma.com/def456", title: "Buildathon" },
+    ],
+  });
+  const results = serpResults(body);
+  assert.equal(results.length, 2);
+  assert.equal(results[0].link, "https://luma.com/abc123");
+  assert.match(results[0].text, /AI Hackathon/);
+  assert.equal(results[1].link, "https://luma.com/def456", "must accept url as well as link");
+});
+
+test("a Web Unlocker HTML response still yields links", () => {
+  const html = `
+    <a href="https://www.google.com/search?q=next">Next</a>
+    <a href="/url?q=https%3A%2F%2Fluma.com%2Fhack1&amp;sa=U">Hack One</a>
+    <a href="https://luma.com/hack2">Hack Two</a>
+    <img src="https://www.gstatic.com/x.png">
+    <a href="https://fonts.googleapis.com/css">font</a>`;
+  const results = serpResults(html);
+  const links = results.map((r) => r.link);
+  assert.ok(links.includes("https://luma.com/hack1"), "should decode /url?q= wrappers");
+  assert.ok(links.includes("https://luma.com/hack2"), "should keep direct hrefs");
+  // Google's own domains are chrome, not results.
+  assert.ok(!links.some((l) => /google|gstatic/.test(l)), `leaked Google links: ${links}`);
+});
+
+test("an empty or junk search response yields nothing rather than throwing", () => {
+  for (const input of ["", "not json at all", "<html><body>no results</body></html>", "{}"]) {
+    assert.deepEqual(serpResults(input), [], `should be empty for ${JSON.stringify(input.slice(0, 20))}`);
+  }
+});
+
+test("SERP link extraction does not duplicate a link found both ways", () => {
+  const html = `<a href="/url?q=https%3A%2F%2Fluma.com%2Fsame">a</a><a href="https://luma.com/same">b</a>`;
+  const links = linksFromSerpHtml(html);
+  assert.equal(links.filter((l) => l === "https://luma.com/same").length, 1);
 });
