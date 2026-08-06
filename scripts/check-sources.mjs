@@ -18,6 +18,7 @@
 import { readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { isMisconfiguration } from "./lib/source-health.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
@@ -172,30 +173,73 @@ if (discovery.__missing) {
   );
 }
 
-// --- best-effort sources: warn, never fail ---------------------------------
+// --- best-effort sources: mostly warn -------------------------------------
 //
 // Web search and LinkedIn depend on engines that block datacenter IPs, so in CI
 // they are expected to come back empty. They are extras; the board does not rest
 // on them. A warning is the right volume — enough to notice a long dry spell,
 // not enough to cry wolf twice a day.
+//
+// With one exception, which is why this section was rewritten. Being blocked and
+// being misconfigured produce the same visible result — no seeds — but only one
+// of them ever fixes itself. This used to test `urls`, which is the CUMULATIVE
+// tracked total and so is never empty once the source has ever worked, and it
+// never read `problems` at all. So it printed "search: 24 seeds via brightdata"
+// as a healthy note for four days while every single query came back
+// 400 `"zone" is not allowed to be empty`. Read the problems, and say which kind
+// they are.
+
+/**
+ * Judge one query-based seed pass from what it recorded.
+ *
+ * A 400 or 401 quotes the credential or the request body back at you: somebody
+ * configured this and configured it wrong, and no amount of waiting helps. That
+ * is a regression and it fails the run — after publishing, like everything here,
+ * so a broken extra never withholds the board. A 403, a timeout or an empty
+ * result is the engine refusing this address, which is the ordinary CI condition
+ * and stays a warning.
+ */
+function reviewSeedPass(label, data, extra = "") {
+  const problems = data.problems ?? [];
+  const queriesRun = data.queriesRun ?? 0;
+  const tracked = (data.urls ?? []).length;
+  const describe = (problem) => String(problem?.error ?? problem).slice(0, 120);
+
+  const misconfigured = problems.filter(isMisconfiguration);
+
+  if (misconfigured.length) {
+    failures.push(
+      `${label}: ${misconfigured.length}/${queriesRun || problems.length} quer${
+        (queriesRun || problems.length) === 1 ? "y" : "ies"
+      } rejected as misconfigured rather than blocked — ${describe(misconfigured[0])}`,
+    );
+  } else if (queriesRun && problems.length >= queriesRun) {
+    warnings.push(
+      `${label}: all ${queriesRun} quer${queriesRun === 1 ? "y" : "ies"} failed — ${describe(problems[0])}`,
+    );
+  } else if (!tracked) {
+    warnings.push(`${label}: no seeds tracked (engines block datacenter IPs; expected in CI)`);
+  }
+
+  notes.push(
+    `${label}: ${tracked} seeds tracked, ${queriesRun} quer${queriesRun === 1 ? "y" : "ies"} run, ` +
+      `${problems.length} problem(s)${extra}`,
+  );
+}
 
 const search = await readJson("data/search-seeds.json");
 if (!search.__missing) {
-  const urls = search.urls ?? [];
-  if (!urls.length) warnings.push("search: no seeds tracked (engines block datacenter IPs; expected in CI)");
-  notes.push(`search: ${urls.length} seeds via ${search.provider ?? "?"}`);
+  reviewSeedPass("search", search, ` via ${search.provider ?? "?"}`);
 }
 
 const linkedin = await readJson("data/linkedin-seeds.json");
 if (!linkedin.__missing) {
-  const urls = linkedin.urls ?? [];
-  if (!urls.length) warnings.push("linkedin: no seeds tracked");
+  reviewSeedPass("linkedin", linkedin, `, ${linkedin.pagesRead ?? 0} pages read`);
   if ((linkedin.paidSpendUsd ?? 0) > 0) {
     // The board is meant to cost nothing. If this fires, something re-enabled
     // paid search.
     warnings.push(`linkedin: spent $${linkedin.paidSpendUsd} — paid search should be off`);
   }
-  notes.push(`linkedin: ${urls.length} seeds, ${linkedin.pagesRead ?? 0} pages read, $${linkedin.paidSpendUsd ?? 0}`);
 }
 
 // --- is the published Luma calendar keeping up with the board? -------------

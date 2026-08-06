@@ -15,6 +15,7 @@ import {
   recoverTimeRange,
 } from "../scripts/lib/event-dates.mjs";
 import { brightDataSearch, linksFromSerpHtml, serpResults } from "../scripts/lib/serp.mjs";
+import { isMisconfiguration } from "../scripts/lib/source-health.mjs";
 import {
   buildPatterns,
   localCitySet,
@@ -303,6 +304,37 @@ test("a blank BRIGHTDATA_SERP_ZONE falls back rather than being sent as empty", 
     if (previous === undefined) delete process.env.BRIGHTDATA_SERP_ZONE;
     else process.env.BRIGHTDATA_SERP_ZONE = previous;
   }
+});
+
+test("a misconfigured search leg is told apart from a blocked one", () => {
+  // The health gate fails on the first kind and only warns on the second. It
+  // used to do neither: it read the cumulative seed count instead of the
+  // recorded problems, so four days of 400 `"zone" is not allowed to be empty`
+  // were reported as "search: 24 seeds via brightdata".
+  for (const error of [
+    "brightdata HTTP 401: Auth method is not supported",
+    "brightdata HTTP 400: Request validation failed",
+    '"zone" is not allowed to be empty',
+  ]) {
+    assert.ok(isMisconfiguration({ error }), `should fail the run: ${error}`);
+  }
+
+  // Blocked, throttled, or merely unlucky — expected on a CI runner, and it
+  // fixes itself. Failing on these would cry wolf twice a day.
+  for (const error of [
+    "HTTP 403",
+    "brightdata expect_body: empty body",
+    "brightdata HTTP 429 failed_query_rejected",
+    "brightdata: AbortError timeout",
+    "HTTP 502",
+  ]) {
+    assert.ok(!isMisconfiguration({ error }), `should only warn: ${error}`);
+  }
+
+  // Both file shapes, plus nothing at all.
+  assert.ok(isMisconfiguration("brightdata HTTP 401: Auth method is not supported"));
+  assert.ok(!isMisconfiguration(undefined));
+  assert.ok(!isMisconfiguration({}));
 });
 
 test("an empty or junk search response yields nothing rather than throwing", () => {
