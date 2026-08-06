@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-08-05T10:29:28.751Z",
+  "collectedAt": "2026-08-06T03:31:10.276Z",
   "searchProviders": [
     "brightdata"
   ],
@@ -11,18 +11,18 @@
   "problems": [
     {
       "stage": "search",
+      "query": "\"ai hackathon\" san francisco open registration",
+      "error": "brightdata HTTP 401: Auth method is not supported"
+    },
+    {
+      "stage": "search",
+      "query": "buildathon OR makeathon san francisco 2026 sign up",
+      "error": "brightdata HTTP 401: Auth method is not supported"
+    },
+    {
+      "stage": "search",
       "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
-      "error": "brightdata HTTP 400: {\"error\":\"Request validation failed\",\"error_code\":\"validation\",\"details\":[{\"message\":\"\\\"zone\\\" is not allowed to be empt"
-    },
-    {
-      "stage": "search",
-      "query": "weekly bay area ai events hackathon 2026",
-      "error": "brightdata HTTP 400: {\"error\":\"Request validation failed\",\"error_code\":\"validation\",\"details\":[{\"message\":\"\\\"zone\\\" is not allowed to be empt"
-    },
-    {
-      "stage": "search",
-      "query": "hackathon sponsors judges san francisco apply luma",
-      "error": "brightdata HTTP 400: {\"error\":\"Request validation failed\",\"error_code\":\"validation\",\"details\":[{\"message\":\"\\\"zone\\\" is not allowed to be empt"
+      "error": "brightdata HTTP 401: Auth method is not supported"
     }
   ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
