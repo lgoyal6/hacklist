@@ -1,16 +1,16 @@
 {
-  "collectedAt": "2026-08-06T03:30:15.504Z",
+  "collectedAt": "2026-08-06T21:42:49.354Z",
   "source": "https://api.lu.ma/discover/get-paginated-events",
   "placeId": "discplace-BDj7GNbGlsF7Cka",
-  "entriesPulled": 903,
-  "requests": 19,
-  "uniqueEvents": 903,
-  "hackathonCandidates": 19,
-  "notAlreadySwept": 3,
+  "entriesPulled": 847,
+  "requests": 18,
+  "uniqueEvents": 847,
+  "hackathonCandidates": 21,
+  "notAlreadySwept": 5,
   "skipped": {
     "past": 0,
     "nonLocal": 0,
-    "notHackathon": 884
+    "notHackathon": 826
   },
   "problems": [],
   "note": "Luma's public discover feed, read anonymously. Same candidate shape as the sweep, merged by scripts/normalize-events.mjs. `enrichment` carries exact times, guest counts and registration state for events the sweep found by reading a page; `calendarSeeds` are calendars seen hosting a hackathon, crawled by the next sweep.",
@@ -26,7 +26,8 @@
     "mistral.ai",
     "sf-hackersquad",
     "tatianasf",
-    "wemakedevs"
+    "wemakedevs",
+    "you-know-for-search"
   ],
   "enrichment": {
     "https://luma.com/o0id5abn": {
@@ -47,19 +48,8 @@
       "city": "Menlo Park",
       "venue": null,
       "organizer": "Beta University Events",
-      "going": 580,
+      "going": 591,
       "status": "Open",
-      "locationType": "offline"
-    },
-    "https://luma.com/jjq9vnym": {
-      "startDate": "2026-08-07T17:00:00.000Z",
-      "endDate": "2026-08-09T00:00:00.000Z",
-      "timezone": "America/Los_Angeles",
-      "city": "Oakland",
-      "venue": "Northgate - Waverly",
-      "organizer": "Hack the Hood Community",
-      "going": 99,
-      "status": null,
       "locationType": "offline"
     },
     "https://luma.com/1x8zdbv6": {
@@ -69,7 +59,7 @@
       "city": "San Francisco",
       "venue": "Mission District",
       "organizer": "Apollo Innovation Commons Calendar",
-      "going": 74,
+      "going": 76,
       "status": "Open",
       "locationType": "offline"
     },
@@ -91,7 +81,7 @@
       "city": "San Francisco",
       "venue": "Mission District",
       "organizer": "Personal",
-      "going": 12,
+      "going": 18,
       "status": "Open",
       "locationType": "offline"
     },
@@ -102,7 +92,7 @@
       "city": "San Francisco",
       "venue": "Financial District",
       "organizer": "[SF] HackerSquad",
-      "going": 119,
+      "going": 122,
       "status": "Open",
       "locationType": "offline"
     },
@@ -139,6 +129,17 @@
       "status": "Open",
       "locationType": "offline"
     },
+    "https://luma.com/ws7x9u9q": {
+      "startDate": "2026-08-15T17:00:00.000Z",
+      "endDate": "2026-08-16T01:00:00.000Z",
+      "timezone": "America/Los_Angeles",
+      "city": "San Francisco",
+      "venue": "Rincon Hill",
+      "organizer": "Corgi",
+      "going": 3,
+      "status": "Open",
+      "locationType": "offline"
+    },
     "https://luma.com/278ujx64": {
       "startDate": "2026-08-19T01:00:00.000Z",
       "endDate": "2026-08-19T04:00:00.000Z",
@@ -150,6 +151,17 @@
       "status": "Open",
       "locationType": "offline"
     },
+    "https://luma.com/mastra-hack": {
+      "startDate": "2026-08-20T00:00:00.000Z",
+      "endDate": "2026-08-20T04:00:00.000Z",
+      "timezone": "America/Los_Angeles",
+      "city": "San Francisco",
+      "venue": "Yerba Buena",
+      "organizer": "You Know, for Search",
+      "going": 31,
+      "status": "Open",
+      "locationType": "offline"
+    },
     "https://luma.com/0m4kvzm8": {
       "startDate": "2026-08-20T16:00:00.000Z",
       "endDate": "2026-08-21T01:00:00.000Z",
@@ -158,6 +170,17 @@
       "venue": "Financial District",
       "organizer": "Devnovate",
       "going": 20,
+      "status": "Open",
+      "locationType": "offline"
+    },
+    "https://luma.com/mistral-summer-vibe-hackathon-sf": {
+      "startDate": "2026-08-22T15:30:00.000Z",
+      "endDate": "2026-08-23T03:00:00.000Z",
+      "timezone": "America/Los_Angeles",
+      "city": "San Francisco",
+      "venue": "Financial District",
+      "organizer": "Mistral AI Events",
+      "going": 0,
       "status": "Open",
       "locationType": "offline"
     },
@@ -179,7 +202,7 @@
       "city": "San Francisco",
       "venue": "South Beach",
       "organizer": "Bright Data",
-      "going": 132,
+      "going": 155,
       "status": "Open",
       "locationType": "offline"
     },
@@ -190,18 +213,7 @@
       "city": "San Francisco",
       "venue": "China Basin",
       "organizer": "Apify Events",
-      "going": 105,
-      "status": "Open",
-      "locationType": "offline"
-    },
-    "https://luma.com/mistral-summer-vibe-hackathon-sf": {
-      "startDate": "2026-08-23T15:30:00.000Z",
-      "endDate": "2026-08-24T03:00:00.000Z",
-      "timezone": "America/Los_Angeles",
-      "city": "San Francisco",
-      "venue": "Financial District",
-      "organizer": "Mistral AI Events",
-      "going": 0,
+      "going": 107,
       "status": "Open",
       "locationType": "offline"
     },
@@ -212,7 +224,7 @@
       "city": "San Francisco",
       "venue": "South Beach",
       "organizer": "WeMakeDevs",
-      "going": 170,
+      "going": 185,
       "status": "Open",
       "locationType": "offline"
     },
@@ -223,7 +235,7 @@
       "city": "San Francisco",
       "venue": "Japantown",
       "organizer": "ClickHouse Events",
-      "going": 90,
+      "going": 102,
       "status": "Open",
       "locationType": "offline"
     },
@@ -245,7 +257,7 @@
       "city": "San Francisco",
       "venue": "Northern Waterfront",
       "organizer": "TatianaSF",
-      "going": 305,
+      "going": 310,
       "status": "Open",
       "locationType": "offline"
     },
@@ -278,7 +290,7 @@
       "city": "San Francisco",
       "venue": "Yerba Buena",
       "organizer": "PAI Palooza Presents - Build with AI Native Studio - 2026",
-      "going": 115,
+      "going": 116,
       "status": "Open",
       "locationType": "offline"
     },
@@ -289,7 +301,7 @@
       "city": "San Francisco",
       "venue": "Financial District",
       "organizer": "BondHaus",
-      "going": 8,
+      "going": 10,
       "status": "Open",
       "locationType": "offline"
     },
@@ -321,7 +333,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Hosted By\nLeverage\nAlphaSignal's Pizza Agent Challenge ($2,500 Cash Prize)\nSan Francisco, CA\nFinancial District\n0 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-06T03:30:15.499Z",
+      "checkedAt": "2026-08-06T21:42:49.351Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/o0id5abn",
@@ -357,7 +369,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Hosted By\nMongoDB\nThe Persistent Context Sprint Hackathon | Live at MongoDB .Local Build Fest\nSan Francisco, CA\nMission Bay\n0 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-06T03:30:15.500Z",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/3ck0cd9g",
@@ -393,7 +405,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Hosted By\nEvents\nFestiverse 2026: The World’s Biggest Festival Hackathon ($300K+ in Prizes)\nSan Francisco, CA\nEmbarcadero\n64 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-06T03:30:15.502Z",
+      "checkedAt": "2026-08-06T21:42:49.354Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/lsa8mrp7",
@@ -416,7 +428,7 @@
     },
     {
       "url": "https://luma.com/beta-fdnw",
-      "title": "Snowflake X Beta Fund Agent & Token Economy Hackathon",
+      "title": "Snowflake X Beta Fund X Evermind Agent & Token Economy Hackathon",
       "category": "hackathon",
       "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
       "confidence": 62,
@@ -428,12 +440,12 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nBeta University Events\nSnowflake X Beta Fund Agent & Token Economy Hackathon\nMenlo Park, CA\n580 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-06T03:30:15.499Z",
+      "evidence": "Hosted By\nBeta University Events\nSnowflake X Beta Fund X Evermind Agent & Token Economy Hackathon\nMenlo Park, CA\n591 Going\nRegistration Open\nRegister to See Address",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/beta-fdnw",
-        "name": "Snowflake X Beta Fund Agent & Token Economy Hackathon",
+        "name": "Snowflake X Beta Fund X Evermind Agent & Token Economy Hackathon",
         "description": null,
         "startDate": "2026-08-07T16:00:00.000Z",
         "endDate": "2026-08-08T01:00:00.000Z",
@@ -447,7 +459,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 580
+        "going": 591
       }
     },
     {
@@ -464,8 +476,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nPersonal\nintergenerational hackathon\nSan Francisco, CA\nMission District\n12 Going\nRegistration Open",
-      "checkedAt": "2026-08-06T03:30:15.500Z",
+      "evidence": "Hosted By\nPersonal\nintergenerational hackathon\nSan Francisco, CA\nMission District\n18 Going\nRegistration Open",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/zp2yzp59",
@@ -483,7 +495,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 12
+        "going": 18
       }
     },
     {
@@ -500,8 +512,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\n[SF] HackerSquad\nBiopharma Hack Day at AWS\nSan Francisco, CA\nFinancial District\n119 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-06T03:30:15.500Z",
+      "evidence": "Hosted By\n[SF] HackerSquad\nBiopharma Hack Day at AWS\nSan Francisco, CA\nFinancial District\n122 Going\nRegistration Open\nRegister to See Address",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/pharma-hack-day-aws-builder-loft-aug13-2026",
@@ -519,7 +531,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 119
+        "going": 122
       }
     },
     {
@@ -537,7 +549,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Hosted By\nImbue Events\nPunk Software Hack Night: NO CLAUDE ALLOWED\nSan Francisco, CA\nCivic Center\n50 Going\nRegistration Waitlist\nRegister to See Address",
-      "checkedAt": "2026-08-06T03:30:15.500Z",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/1i8a3dby",
@@ -573,7 +585,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Hosted By\nDevnovate\nSF Enterprise HACKATHON\nSan Francisco, CA\nFinancial District\n0 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-06T03:30:15.500Z",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/ev9ndfke",
@@ -595,6 +607,78 @@
       }
     },
     {
+      "url": "https://luma.com/ws7x9u9q",
+      "title": "Corgi x OpenSwarm x EF Hackathon",
+      "category": "hackathon",
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "confidence": 62,
+      "relevance": 68,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Hosted By\nCorgi\nCorgi x OpenSwarm x EF Hackathon\nSan Francisco, CA\nRincon Hill\n3 Going\nRegistration Open\nRegister to See Address",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://luma.com/ws7x9u9q",
+        "name": "Corgi x OpenSwarm x EF Hackathon",
+        "description": null,
+        "startDate": "2026-08-15T17:00:00.000Z",
+        "endDate": "2026-08-16T01:00:00.000Z",
+        "timeSource": "luma-api",
+        "organizers": [
+          "Corgi"
+        ],
+        "location": {
+          "name": "Rincon Hill",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "offerAvailability": "InStock",
+        "going": 3
+      }
+    },
+    {
+      "url": "https://luma.com/mastra-hack",
+      "title": "Agent Memory Hack Night | Mastra x Elasticsearch",
+      "category": "hackathon",
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "confidence": 62,
+      "relevance": 68,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Hosted By\nYou Know, for Search\nAgent Memory Hack Night | Mastra x Elasticsearch\nSan Francisco, CA\nYerba Buena\n31 Going\nRegistration Open",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://luma.com/mastra-hack",
+        "name": "Agent Memory Hack Night | Mastra x Elasticsearch",
+        "description": null,
+        "startDate": "2026-08-20T00:00:00.000Z",
+        "endDate": "2026-08-20T04:00:00.000Z",
+        "timeSource": "luma-api",
+        "organizers": [
+          "You Know, for Search"
+        ],
+        "location": {
+          "name": "Yerba Buena",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "offerAvailability": "InStock",
+        "going": 31
+      }
+    },
+    {
       "url": "https://luma.com/0m4kvzm8",
       "title": "Agentic AI Hackathon 2 .0",
       "category": "hackathon",
@@ -609,7 +693,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Hosted By\nDevnovate\nAgentic AI Hackathon 2 .0\nSan Francisco, CA\nFinancial District\n20 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-06T03:30:15.500Z",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/0m4kvzm8",
@@ -631,6 +715,42 @@
       }
     },
     {
+      "url": "https://luma.com/mistral-summer-vibe-hackathon-sf",
+      "title": "Mistral Vibe Hackathon",
+      "category": "hackathon",
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "confidence": 62,
+      "relevance": 68,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Hosted By\nMistral AI Events\nMistral Vibe Hackathon\nSan Francisco, CA\nFinancial District\n0 Going\nRegistration Open\nRegister to See Address",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://luma.com/mistral-summer-vibe-hackathon-sf",
+        "name": "Mistral Vibe Hackathon",
+        "description": null,
+        "startDate": "2026-08-22T15:30:00.000Z",
+        "endDate": "2026-08-23T03:00:00.000Z",
+        "timeSource": "luma-api",
+        "organizers": [
+          "Mistral AI Events"
+        ],
+        "location": {
+          "name": "Financial District",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "offerAvailability": "InStock",
+        "going": 0
+      }
+    },
+    {
       "url": "https://luma.com/zero-downtime",
       "title": "Zero Downtime Hackathon | Win an NVIDIA DGX Spark AI Supercomputer",
       "category": "hackathon",
@@ -644,8 +764,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nBright Data\nZero Downtime Hackathon | Win an NVIDIA DGX Spark AI Supercomputer\nSan Francisco, CA\nSouth Beach\n132 Going\nRegistration Open",
-      "checkedAt": "2026-08-06T03:30:15.500Z",
+      "evidence": "Hosted By\nBright Data\nZero Downtime Hackathon | Win an NVIDIA DGX Spark AI Supercomputer\nSan Francisco, CA\nSouth Beach\n155 Going\nRegistration Open",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/zero-downtime",
@@ -663,7 +783,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 132
+        "going": 155
       }
     },
     {
@@ -680,8 +800,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nApify Events\nAntlerVC / Apify / Bolt / N8N Hackathon\nSan Francisco, CA\nChina Basin\n105 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-06T03:30:15.500Z",
+      "evidence": "Hosted By\nApify Events\nAntlerVC / Apify / Bolt / N8N Hackathon\nSan Francisco, CA\nChina Basin\n107 Going\nRegistration Open\nRegister to See Address",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/apify-v8vw",
@@ -699,43 +819,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 105
-      }
-    },
-    {
-      "url": "https://luma.com/mistral-summer-vibe-hackathon-sf",
-      "title": "Mistral Vibe Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "confidence": 62,
-      "relevance": 68,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Hosted By\nMistral AI Events\nMistral Vibe Hackathon\nSan Francisco, CA\nFinancial District\n0 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-06T03:30:15.500Z",
-      "heldBecause": null,
-      "structuredEvent": {
-        "url": "https://luma.com/mistral-summer-vibe-hackathon-sf",
-        "name": "Mistral Vibe Hackathon",
-        "description": null,
-        "startDate": "2026-08-23T15:30:00.000Z",
-        "endDate": "2026-08-24T03:00:00.000Z",
-        "timeSource": "luma-api",
-        "organizers": [
-          "Mistral AI Events"
-        ],
-        "location": {
-          "name": "Financial District",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "offerAvailability": "InStock",
-        "going": 0
+        "going": 107
       }
     },
     {
@@ -752,8 +836,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nWeMakeDevs\nROAST MY PR CTF - Win a Mac Mini!\nSan Francisco, CA\nSouth Beach\n170 Going\nRegistration Open",
-      "checkedAt": "2026-08-06T03:30:15.501Z",
+      "evidence": "Hosted By\nWeMakeDevs\nROAST MY PR CTF - Win a Mac Mini!\nSan Francisco, CA\nSouth Beach\n185 Going\nRegistration Open",
+      "checkedAt": "2026-08-06T21:42:49.352Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/roastpr",
@@ -771,7 +855,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 170
+        "going": 185
       }
     },
     {
@@ -788,8 +872,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nClickHouse Events\nBetter Days: A Hackathon — San Francisco\nSan Francisco, CA\nJapantown\n90 Going\nRegistration Open",
-      "checkedAt": "2026-08-06T03:30:15.501Z",
+      "evidence": "Hosted By\nClickHouse Events\nBetter Days: A Hackathon — San Francisco\nSan Francisco, CA\nJapantown\n102 Going\nRegistration Open",
+      "checkedAt": "2026-08-06T21:42:49.353Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/clickh-sie8",
@@ -807,7 +891,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 90
+        "going": 102
       }
     },
     {
@@ -825,7 +909,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Hosted By\nPersonal\nVeterans Innovation Hackathon\nMountain View, CA\n22 Going\nRegistration Open",
-      "checkedAt": "2026-08-06T03:30:15.501Z",
+      "checkedAt": "2026-08-06T21:42:49.353Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/Innovation4Veterans",
@@ -860,8 +944,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nTatianaSF\nAI Hackathon: Sales Copilot AI\nSan Francisco, CA\nNorthern Waterfront\n305 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-06T03:30:15.502Z",
+      "evidence": "Hosted By\nTatianaSF\nAI Hackathon: Sales Copilot AI\nSan Francisco, CA\nNorthern Waterfront\n310 Going\nRegistration Open\nRegister to See Address",
+      "checkedAt": "2026-08-06T21:42:49.353Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/qzct3ybt",
@@ -879,7 +963,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 305
+        "going": 310
       }
     },
     {
@@ -896,8 +980,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nBondHaus\nUniversal Celebration Hackathon\nSan Francisco, CA\nFinancial District\n8 Going\nRegistration Open",
-      "checkedAt": "2026-08-06T03:30:15.502Z",
+      "evidence": "Hosted By\nBondHaus\nUniversal Celebration Hackathon\nSan Francisco, CA\nFinancial District\n10 Going\nRegistration Open",
+      "checkedAt": "2026-08-06T21:42:49.353Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/m9h5vo7a",
@@ -915,7 +999,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 8
+        "going": 10
       }
     },
     {
@@ -933,7 +1017,7 @@
         "negativeTitleEvidence": true
       },
       "evidence": "Hosted By\nMantisGrid AI\nMantisGrid AI Hackathon & Summit 2026\nPalo Alto, CA\nFairmeadow\n0 Going\nRegistration Open",
-      "checkedAt": "2026-08-06T03:30:15.502Z",
+      "checkedAt": "2026-08-06T21:42:49.353Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/d6g5mb9o",
@@ -969,7 +1053,7 @@
         "negativeTitleEvidence": true
       },
       "evidence": "Hosted By\n[SF] HackerSquad\nThe AI Conference Hack Day 2026\nSan Francisco, CA\nMission Bay\n0 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-06T03:30:15.502Z",
+      "checkedAt": "2026-08-06T21:42:49.353Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/ai-conference-hack-day-2026",

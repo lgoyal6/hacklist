@@ -1,16 +1,16 @@
 {
-  "collectedAt": "2026-08-05T10:28:35.050Z",
+  "collectedAt": "2026-08-06T21:41:45.716Z",
   "provider": "brightdata",
   "queriesRun": 2,
   "throttledQueries": 0,
   "problems": [
     {
-      "query": "site:luma.com hackathon san francisco 2026",
-      "error": "brightdata HTTP 400: {\"error\":\"Request validation failed\",\"error_code\":\"validation\",\"details\":[{\"message\":\"\\\"zone\\\" is not allowed to be empt"
+      "query": "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026",
+      "error": "brightdata HTTP 401: Auth method is not supported"
     },
     {
-      "query": "site:lu.ma hackathon san francisco 2026",
-      "error": "brightdata HTTP 400: {\"error\":\"Request validation failed\",\"error_code\":\"validation\",\"details\":[{\"message\":\"\\\"zone\\\" is not allowed to be empt"
+      "query": "\"hackathon\" san francisco 2026 register lu.ma",
+      "error": "brightdata HTTP 401: Auth method is not supported"
     }
   ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",

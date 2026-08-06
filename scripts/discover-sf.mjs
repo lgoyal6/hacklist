@@ -250,7 +250,40 @@ const host = "127.0.0.1";
 // A previous interrupted sweep must not block the next one on a fixed port.
 const port = 10_000 + Math.floor(Math.random() * 20_000);
 const processHandle = await lightpanda.serve({ host, port });
-const browser = await chromium.connectOverCDP(`ws://${host}:${port}`);
+
+/**
+ * Connect to the CDP server, waiting for it to actually accept connections.
+ *
+ * lightpanda.serve() resolves on the child's "spawn" event plus a hard-coded
+ * 250ms — it never checks that the port is listening. Spawn only means the
+ * process was created, so under any load the socket is not up yet and a
+ * straight connect dies on ECONNREFUSED, taking the whole sweep with it before
+ * a single page is read. Seen on a warm binary immediately after the API and
+ * search legs, and a shared CI runner has less headroom than this Mac, not
+ * more. So: poll until it answers.
+ */
+async function connectToLightpanda(endpoint, { attempts = 40, waitMs = 250 } = {}) {
+  let lastError;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      return await chromium.connectOverCDP(endpoint);
+    } catch (error) {
+      lastError = error;
+      if (processHandle?.exitCode !== null && processHandle?.exitCode !== undefined) {
+        throw new Error(
+          `Lightpanda exited with code ${processHandle.exitCode} before accepting a connection`,
+        );
+      }
+      await new Promise((resolve) => setTimeout(resolve, waitMs));
+    }
+  }
+  throw new Error(
+    `Lightpanda's CDP server never accepted a connection on ${endpoint} ` +
+      `after ${attempts} attempts: ${lastError?.message ?? "unknown error"}`,
+  );
+}
+
+const browser = await connectToLightpanda(`ws://${host}:${port}`);
 const context = await browser.newContext();
 const page = await context.newPage();
 
