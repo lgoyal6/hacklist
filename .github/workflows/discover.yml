@@ -3,13 +3,17 @@ name: SF hackathon discovery
 on:
   workflow_dispatch:
   schedule:
-    # Fires at every UTC hour that can be 8am or 8pm Pacific across PST/PDT;
-    # the gate job below keeps only the runs where it actually is.
-    - cron: "0 3,4,15,16 * * *"
-
-concurrency:
-  group: discover
-  cancel-in-progress: false
+    # Every UTC hour that can be 8am or 8pm Pacific across PST/PDT; the gate job
+    # below keeps only the two that match the timezone currently in effect.
+    #
+    # These MUST stay four separate entries rather than one "0 3,4,15,16 * * *".
+    # The gate identifies a run by github.event.schedule, which reports the cron
+    # entry verbatim — a combined entry reports the same string for all four
+    # fires and the gate could not tell 8am from 8pm.
+    - cron: "0 3 * * *"    # 8pm PDT
+    - cron: "0 4 * * *"    # 8pm PST
+    - cron: "0 15 * * *"   # 8am PDT
+    - cron: "0 16 * * *"   # 8am PST
 
 permissions:
   contents: write
@@ -26,28 +30,61 @@ jobs:
     steps:
       - name: Only proceed at 8am/8pm Pacific (or manual dispatch)
         id: check
+        env:
+          # Which cron entry fired, verbatim (e.g. "0 15 * * *"). Empty for
+          # workflow_dispatch.
+          FIRED_CRON: ${{ github.event.schedule }}
         run: |
-          hour=$(TZ=America/Los_Angeles date +%H)
+          # Decide from WHICH cron fired, never from the clock at execution time.
+          # GitHub delivers scheduled runs late — routinely 50 to 110 minutes on
+          # this repo — so an execution-time hour check misses a one-hour window
+          # every time. It did: every scheduled run between Aug 3 and Aug 6 2026
+          # skipped, and the only sweeps that ever ran were dispatched by hand.
+          #
+          # The cron entry that fired is fixed at schedule time, so a late run
+          # still knows which slot it is for.
+          zone=$(TZ=America/Los_Angeles date +%Z)
+          case "$zone" in
+            PDT) morning="0 15 * * *"; evening="0 3 * * *"  ;;  # UTC-7
+            *)   morning="0 16 * * *"; evening="0 4 * * *"  ;;  # PST, UTC-8
+          esac
+
           # The slot decides whether the metered search legs run: they cost real
           # requests and seeds barely change within a day, while the sweep itself
           # is worth running twice. Manual dispatch counts as morning so a
           # hand-triggered run exercises everything.
-          if [ "$hour" = "20" ] && [ "${{ github.event_name }}" = "schedule" ]; then
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "slot=morning" >> "$GITHUB_OUTPUT"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "Manual dispatch: running the full sweep."
+          elif [ "$FIRED_CRON" = "$morning" ]; then
+            echo "slot=morning" >> "$GITHUB_OUTPUT"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "Morning sweep ($zone): cron '$FIRED_CRON'."
+          elif [ "$FIRED_CRON" = "$evening" ]; then
             echo "slot=evening" >> "$GITHUB_OUTPUT"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "Evening sweep ($zone): cron '$FIRED_CRON'."
           else
             echo "slot=morning" >> "$GITHUB_OUTPUT"
-          fi
-          if [ "${{ github.event_name }}" != "schedule" ] || [ "$hour" = "08" ] || [ "$hour" = "20" ]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          else
             echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "Skipping: $hour:00 Pacific is not a sweep slot."
+            echo "Skipping: cron '$FIRED_CRON' is the other timezone's slot (currently $zone)."
           fi
 
   discover:
     needs: gate
     if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
+    # Scoped to this job rather than the whole workflow. Two of the four crons
+    # are always the other timezone's and skip in about 15 seconds, but a
+    # workflow-level group still enrols them — and GitHub cancels an older
+    # PENDING run when a newer one joins the group. With the fires arriving
+    # 50-110 minutes late they bunch together, so a skip-run could displace a
+    # real sweep that was queued behind it. A skipped job never enters a
+    # job-level group, so only actual sweeps serialise here.
+    concurrency:
+      group: discover
+      cancel-in-progress: false
     # The sweep's own budget is 15 minutes (config maxSweepMinutes); this must
     # stay comfortably above it so a full-length sweep still gets to deploy.
     timeout-minutes: 30

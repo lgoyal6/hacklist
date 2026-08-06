@@ -127,12 +127,16 @@ let stopReason = null;
 let timeMismatches = 0;
 let added = 0;
 let failed = 0;
+// Consecutive events whose Add Event chooser would not open. Reset by any
+// success, so this counts a genuinely changed UI rather than a bad minute.
+let chooserMisses = 0;
+const CHOOSER_MISS_LIMIT = 3;
 
 // Luma's admin flow is three steps, not one: "Add Event" opens a chooser
 // (Create New / Add Existing Luma Event / Add External Event), the chosen mode
 // opens a modal with a URL field, and the URL must be staged before the modal's
 // own Add Event button becomes usable.
-async function openAddEvent(page, mode = "luma") {
+async function openAddEventOnce(page, mode) {
   // Match on accessible name, not visible text: once the calendar has events
   // the roomy empty-state button is replaced by a plus icon whose only label is
   // an aria-label.
@@ -156,7 +160,6 @@ async function openAddEvent(page, mode = "luma") {
     }
   }
   if (!opened) return false;
-  await page.waitForTimeout(1_800);
 
   // The chooser is expected but not required: if a future layout opens the URL
   // modal directly, carry on and let the URL field decide.
@@ -164,18 +167,51 @@ async function openAddEvent(page, mode = "luma") {
     mode === "external" ? /add external event/i : /add existing luma event/i;
   try {
     const chooser = page.getByText(wanted).first();
-    if (await chooser.isVisible({ timeout: 2_500 })) {
-      await chooser.click();
-      await page.waitForTimeout(2_000);
-    } else if (mode === "external") {
+    // Wait for the option to appear rather than sleeping a fixed 1.8s and then
+    // allowing it only 2.5s more. The chooser renders as a popover a moment
+    // after the click, and on a slow response those two fixed windows expire
+    // before it lands — which is how a healthy UI got reported as changed.
+    await chooser.waitFor({ state: "visible", timeout: 15_000 });
+    await chooser.click();
+    // Confirm the click actually switched panes instead of trusting a sleep.
+    // Both modes land on a URL field; external's is the one that matters, since
+    // pasting a Devpost link into the Luma-URL modal is the failure this guards.
+    const field =
+      mode === "external"
+        ? page.locator('input[type="url"][name="url"]')
+        : page.locator('input[type="url"]');
+    await field.first().waitFor({ state: "visible", timeout: 10_000 });
+    return true;
+  } catch {
+    if (mode === "external") {
       // The external path has no fallback: without the chooser we would be
       // filling the Luma-URL modal with a Devpost link.
       return false;
     }
-  } catch {
-    if (mode === "external") return false;
+    return true;
   }
-  return true;
+}
+
+/**
+ * Open the Add Event flow in the requested mode, retrying the whole sequence.
+ *
+ * Retried because the failure this used to report as "the UI changed" was a
+ * timing flake: the chooser is a popover, and a single slow render was enough
+ * to fail the lookup, stop the entire queue, and leave every later event
+ * unattempted. Reloading and asking again clears it.
+ */
+async function openAddEvent(page, mode = "luma", attempts = 3) {
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    if (await openAddEventOnce(page, mode)) return true;
+    if (attempt < attempts) {
+      console.warn(
+        `  Add Event chooser did not open (attempt ${attempt}/${attempts}); reloading.`,
+      );
+      await page.goto(adminUrl, { waitUntil: "domcontentloaded" }).catch(() => {});
+      await page.waitForTimeout(2_500 * attempt);
+    }
+  }
+  return false;
 }
 
 /**
@@ -417,6 +453,22 @@ try {
         `${cleared} previously recorded but missing.\n`,
     );
   }
+
+  // Drop failure records for events that have since left the board — usually
+  // because the sweep merged an external listing into its Luma-native twin.
+  // They can never be retried (nothing queues them) and never resolve, so they
+  // sit in the count forever. That matters because the failure count is the
+  // health signal: three dead entries made every run report "8 failed" whether
+  // the sync was working or not. Only `failures` is pruned; a `synced` record is
+  // what prevents a re-add, so it is kept even when the event drops off.
+  const onBoard = new Set(events.map((event) => event.id));
+  const stale = Object.keys(ledger.failures).filter((id) => !onBoard.has(id));
+  for (const id of stale) delete ledger.failures[id];
+  if (stale.length) {
+    console.log(
+      `Cleared ${stale.length} failure record(s) for events no longer on the board.\n`,
+    );
+  }
   let queue = dryRun ? pending : pendingEvents(events, ledger);
   if (force && onlyUrl) queue = events.filter((event) => event.url === onlyUrl);
   if (onlyUrl) {
@@ -461,8 +513,6 @@ try {
       if (stopReason) break;
 
       if (!(await openAddEvent(page, external ? "external" : "luma"))) {
-        // Not fatal for this event alone, but it means the UI does not look
-        // the way we expect — stop rather than thrash the whole queue.
         markFailed(
           ledger,
           event,
@@ -471,9 +521,21 @@ try {
             : "Add Event control not found on manage page",
         );
         failed += 1;
-        stopReason = "ui-mismatch";
-        break;
+        chooserMisses += 1;
+        console.warn(`  skipped: ${label} — Add Event chooser did not open`);
+        // Only a run of consecutive misses means the UI actually changed. A
+        // single one is a timing flake, and treating it as fatal is what froze
+        // this queue: the loop stopped on the first miss, so every event behind
+        // it went unattempted for days and their own stale failures were never
+        // retried. Give up only once it is clearly not the network.
+        if (chooserMisses >= CHOOSER_MISS_LIMIT) {
+          stopReason = "ui-mismatch";
+          break;
+        }
+        continue;
       }
+      // A success means the UI is fine and any earlier miss really was a flake.
+      chooserMisses = 0;
 
       if (external) {
         const filled = await fillExternalEvent(page, event, {
@@ -683,7 +745,7 @@ if (stopReason === "captcha") {
 } else if (stopReason === "ui-mismatch") {
   console.error(
     [
-      "Stopped: Luma's Add Event UI did not match what this script expects.",
+      `Stopped: Luma's Add Event UI did not match what this script expects, on ${CHOOSER_MISS_LIMIT} events in a row.`,
       "Nothing was lost — every unsynced event stays pending.",
       "Run with --queue to get the paste-by-hand list.",
     ].join("\n"),
