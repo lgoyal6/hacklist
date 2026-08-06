@@ -81,7 +81,13 @@ const BRIGHTDATA_ENDPOINT = "https://api.brightdata.com/request";
  */
 export async function brightDataSearch(query, options = {}) {
   const {
-    zone = process.env.BRIGHTDATA_SERP_ZONE ?? "serp_api",
+    // `||`, not `??`. An unset GitHub secret does not arrive as undefined — the
+    // workflow interpolates `${{ secrets.X }}` to an EMPTY STRING, which `??`
+    // happily passes straight through. BRIGHTDATA_SERP_ZONE has never been set
+    // as a secret, so every CI sweep since 2026-08-04 sent zone:"" and got back
+    // 400 `"zone" is not allowed to be empty`, losing the whole search leg in
+    // silence — the pass exits 0 by design, so the sweep just carried on.
+    zone: zoneOption,
     apiKey = process.env.BRIGHTDATA_API_KEY,
     timeoutMs = 60_000,
     cooldownMs = Number(process.env.BRIGHTDATA_COOLDOWN_MS ?? 17_000),
@@ -89,6 +95,9 @@ export async function brightDataSearch(query, options = {}) {
     fetchImpl = fetch,
     sleep = (ms) => new Promise((r) => setTimeout(r, ms)),
   } = options;
+  // Blank is absent, wherever it came from: an unset secret, an empty line in
+  // .env, or an explicitly-passed "".
+  const zone = zoneOption || process.env.BRIGHTDATA_SERP_ZONE || "serp_api";
 
   const target = new URL("https://www.google.com/search");
   target.searchParams.set("q", query);

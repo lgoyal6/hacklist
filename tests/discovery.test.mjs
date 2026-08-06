@@ -14,7 +14,7 @@ import {
   parseDevpostDates,
   recoverTimeRange,
 } from "../scripts/lib/event-dates.mjs";
-import { linksFromSerpHtml, serpResults } from "../scripts/lib/serp.mjs";
+import { brightDataSearch, linksFromSerpHtml, serpResults } from "../scripts/lib/serp.mjs";
 import {
   buildPatterns,
   localCitySet,
@@ -263,6 +263,46 @@ test("a Web Unlocker HTML response still yields links", () => {
   assert.ok(links.includes("https://luma.com/hack2"), "should keep direct hrefs");
   // Google's own domains are chrome, not results.
   assert.ok(!links.some((l) => /google|gstatic/.test(l)), `leaked Google links: ${links}`);
+});
+
+test("a blank BRIGHTDATA_SERP_ZONE falls back rather than being sent as empty", async () => {
+  // An unset GitHub secret interpolates to "", not undefined, so `??` let it
+  // through and every CI sweep sent zone:"" and got 400 `"zone" is not allowed
+  // to be empty`. The search leg exits 0 by design, so this failed in silence.
+  const sent = [];
+  const fetchImpl = async (_url, init) => {
+    sent.push(JSON.parse(init.body));
+    return {
+      ok: true,
+      headers: { get: () => null },
+      text: async () => JSON.stringify({ organic: [] }),
+    };
+  };
+
+  const previous = process.env.BRIGHTDATA_SERP_ZONE;
+  try {
+    process.env.BRIGHTDATA_SERP_ZONE = "";
+    await brightDataSearch("hackathon sf", { apiKey: "test", fetchImpl, attempts: 1 });
+    assert.equal(sent[0].zone, "serp_api", "blank env zone must fall back to the default");
+
+    process.env.BRIGHTDATA_SERP_ZONE = "my_zone";
+    await brightDataSearch("hackathon sf", { apiKey: "test", fetchImpl, attempts: 1 });
+    assert.equal(sent[1].zone, "my_zone", "a real env zone must still win");
+
+    await brightDataSearch("hackathon sf", {
+      apiKey: "test",
+      fetchImpl,
+      attempts: 1,
+      zone: "explicit_zone",
+    });
+    assert.equal(sent[2].zone, "explicit_zone", "an explicit zone must still win");
+
+    await brightDataSearch("hackathon sf", { apiKey: "test", fetchImpl, attempts: 1, zone: "" });
+    assert.equal(sent[3].zone, "my_zone", "an explicitly blank zone is absent, not empty");
+  } finally {
+    if (previous === undefined) delete process.env.BRIGHTDATA_SERP_ZONE;
+    else process.env.BRIGHTDATA_SERP_ZONE = previous;
+  }
 });
 
 test("an empty or junk search response yields nothing rather than throwing", () => {
