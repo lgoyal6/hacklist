@@ -205,6 +205,32 @@ function reviewSeedPass(label, data, extra = "") {
   const tracked = (data.urls ?? []).length;
   const describe = (problem) => String(problem?.error ?? problem).slice(0, 120);
 
+  // Judge only what THIS sweep produced. These legs are metered, so the evening
+  // sweep skips them on purpose (RUN_SEARCH_LEGS=false) and the pass exits
+  // without touching its file — leaving a record of some earlier run on disk.
+  // Reading that as current reports problems that may already be fixed, and did:
+  // the first run after the Bright Data key was replaced went red over 401s from
+  // the day before, while the leg that actually ran reported no problems at all.
+  //
+  // The window is generous because it only has to separate "written minutes ago
+  // during this sweep" from "written on a previous run hours or days ago".
+  const collectedAt = Date.parse(data.collectedAt ?? "");
+  const sweptAt = Date.parse(board?.meta?.sweepCompletedAt ?? "");
+  const STALE_WINDOW_MS = 2 * 3_600_000;
+  const ranThisSweep =
+    !Number.isFinite(collectedAt) ||
+    !Number.isFinite(sweptAt) ||
+    sweptAt - collectedAt < STALE_WINDOW_MS;
+
+  if (!ranThisSweep) {
+    const age = ((Date.now() - collectedAt) / 3_600_000).toFixed(0);
+    notes.push(
+      `${label}: not run this sweep — ${tracked} seeds from ${age}h ago stand` +
+        `${problems.length ? `, with ${problems.length} problem(s) from that run` : ""}${extra}`,
+    );
+    return;
+  }
+
   const misconfigured = problems.filter(isMisconfiguration);
 
   if (misconfigured.length) {

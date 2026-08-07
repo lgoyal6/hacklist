@@ -60,15 +60,22 @@ jobs:
           # deliver at least one fire per half-day, and any of them will do.
           MIN_GAP_HOURS=8
 
+          # A hand-triggered run counts as morning so it exercises everything,
+          # metered search legs included. Deciding the slot from the clock alone
+          # broke that: a dispatch at 14:11 Pacific read as evening, both search
+          # legs were skipped, and the run then went red on the previous day's
+          # stale seed problems. The slot is about which sweep of the day this is,
+          # and a dispatch is not one of the two.
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "slot=morning" >> "$GITHUB_OUTPUT"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "Manual dispatch: sweeping regardless of the last run, as the morning slot."
+            exit 0
+          fi
+
           slot=morning
           [ "$(TZ=America/Los_Angeles date +%H)" -ge 14 ] && slot=evening
           echo "slot=$slot" >> "$GITHUB_OUTPUT"
-
-          if [ "${{ github.event_name }}" != "schedule" ]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Manual dispatch: sweeping regardless of the last run."
-            exit 0
-          fi
 
           last=$(node -e "
             try {
