@@ -3,13 +3,15 @@ name: SF hackathon discovery
 on:
   workflow_dispatch:
   schedule:
-    # Every UTC hour that can be 8am or 8pm Pacific across PST/PDT; the gate job
-    # below keeps only the two that match the timezone currently in effect.
+    # Every UTC hour that can be 8am or 8pm Pacific across PST/PDT. These are
+    # only a supply of chances to run: the gate decides from how long it has been
+    # since the last real sweep, so it does not matter which of them fires, how
+    # late it arrives, or whether GitHub is still running an older registered
+    # schedule. Extra fires are cheap — a suppressed one costs about 15 seconds.
     #
-    # These MUST stay four separate entries rather than one "0 3,4,15,16 * * *".
-    # The gate identifies a run by github.event.schedule, which reports the cron
-    # entry verbatim — a combined entry reports the same string for all four
-    # fires and the gate could not tell 8am from 8pm.
+    # Split into four rather than "0 3,4,15,16 * * *" only because separate
+    # entries read more clearly and make github.event.schedule useful in the log.
+    # Nothing branches on it.
     - cron: "0 3 * * *"    # 8pm PDT
     - cron: "0 4 * * *"    # 8pm PST
     - cron: "0 15 * * *"   # 8am PDT
@@ -28,47 +30,68 @@ jobs:
       run: ${{ steps.check.outputs.run }}
       slot: ${{ steps.check.outputs.slot }}
     steps:
-      - name: Only proceed at 8am/8pm Pacific (or manual dispatch)
+      - uses: actions/checkout@v4
+      - name: Sweep twice a day, however late the trigger arrives
         id: check
         env:
-          # Which cron entry fired, verbatim (e.g. "0 15 * * *"). Empty for
-          # workflow_dispatch.
+          # Only for the log — nothing branches on it any more. See below.
           FIRED_CRON: ${{ github.event.schedule }}
         run: |
-          # Decide from WHICH cron fired, never from the clock at execution time.
-          # GitHub delivers scheduled runs late — routinely 50 to 110 minutes on
-          # this repo — so an execution-time hour check misses a one-hour window
-          # every time. It did: every scheduled run between Aug 3 and Aug 6 2026
-          # skipped, and the only sweeps that ever ran were dispatched by hand.
+          # Gate on WHEN WE LAST ACTUALLY SWEPT, not on the trigger.
           #
-          # The cron entry that fired is fixed at schedule time, so a late run
-          # still knows which slot it is for.
-          zone=$(TZ=America/Los_Angeles date +%Z)
-          case "$zone" in
-            PDT) morning="0 15 * * *"; evening="0 3 * * *"  ;;  # UTC-7
-            *)   morning="0 16 * * *"; evening="0 4 * * *"  ;;  # PST, UTC-8
-          esac
+          # Two earlier designs both failed, for opposite reasons:
+          #
+          #   1. Matching the Pacific hour at execution time. GitHub delivers
+          #      these runs 50-110 minutes late, so a one-hour window is missed
+          #      every time. Every scheduled run from Aug 3-6 2026 skipped.
+          #   2. Matching github.event.schedule against the cron that fired.
+          #      Correct on paper and delay-proof, but it assumes GitHub's
+          #      REGISTERED schedule matches this file. It does not: the four
+          #      separate entries below were pushed on Aug 6 and a day later
+          #      GitHub was still firing the old combined "0 3,4,15,16 * * *",
+          #      which matches no branch, so everything skipped again.
+          #
+          # Both tried to infer intent from the trigger. The trigger is not
+          # trustworthy — its timing drifts and its identity lags the file. What
+          # is trustworthy is the record of what we did: the sweep stamps
+          # meta.sweepCompletedAt into data/events.json and commits it.
+          #
+          # So: run unless we already swept recently. The crons only have to
+          # deliver at least one fire per half-day, and any of them will do.
+          MIN_GAP_HOURS=8
 
-          # The slot decides whether the metered search legs run: they cost real
-          # requests and seeds barely change within a day, while the sweep itself
-          # is worth running twice. Manual dispatch counts as morning so a
-          # hand-triggered run exercises everything.
+          slot=morning
+          [ "$(TZ=America/Los_Angeles date +%H)" -ge 14 ] && slot=evening
+          echo "slot=$slot" >> "$GITHUB_OUTPUT"
+
           if [ "${{ github.event_name }}" != "schedule" ]; then
-            echo "slot=morning" >> "$GITHUB_OUTPUT"
             echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Manual dispatch: running the full sweep."
-          elif [ "$FIRED_CRON" = "$morning" ]; then
-            echo "slot=morning" >> "$GITHUB_OUTPUT"
+            echo "Manual dispatch: sweeping regardless of the last run."
+            exit 0
+          fi
+
+          last=$(node -e "
+            try {
+              const m = require('./data/events.json').meta ?? {};
+              const t = Date.parse(m.sweepCompletedAt ?? '');
+              process.stdout.write(Number.isFinite(t) ? String(t) : '0');
+            } catch { process.stdout.write('0'); }
+          ")
+          now=$(date +%s000)
+          gap_hours=$(( (now - last) / 3600000 ))
+
+          # A missing or unreadable stamp reads as "never swept", which runs. That
+          # is the right way round: the cost of an extra sweep is a few minutes,
+          # the cost of skipping is a stale board nobody is told about.
+          if [ "$last" = "0" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Morning sweep ($zone): cron '$FIRED_CRON'."
-          elif [ "$FIRED_CRON" = "$evening" ]; then
-            echo "slot=evening" >> "$GITHUB_OUTPUT"
+            echo "No usable sweepCompletedAt in data/events.json — sweeping ($slot)."
+          elif [ "$gap_hours" -ge "$MIN_GAP_HOURS" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Evening sweep ($zone): cron '$FIRED_CRON'."
+            echo "Last sweep ${gap_hours}h ago (>= ${MIN_GAP_HOURS}h) — sweeping ($slot). Trigger: '${FIRED_CRON:-dispatch}'."
           else
-            echo "slot=morning" >> "$GITHUB_OUTPUT"
             echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "Skipping: cron '$FIRED_CRON' is the other timezone's slot (currently $zone)."
+            echo "Skipping: last sweep only ${gap_hours}h ago (< ${MIN_GAP_HOURS}h). Trigger: '${FIRED_CRON:-dispatch}'."
           fi
 
   discover:
