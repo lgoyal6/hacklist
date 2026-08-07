@@ -30,7 +30,7 @@ jobs:
       run: ${{ steps.check.outputs.run }}
       slot: ${{ steps.check.outputs.slot }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Sweep twice a day, however late the trigger arrives
         id: check
         env:
@@ -143,7 +143,7 @@ jobs:
       TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
       BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
         with:
           node-version: 22
