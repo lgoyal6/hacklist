@@ -1,18 +1,9 @@
 {
-  "collectedAt": "2026-08-06T21:41:45.716Z",
+  "collectedAt": "2026-08-08T15:18:35.621Z",
   "provider": "brightdata",
   "queriesRun": 2,
   "throttledQueries": 0,
-  "problems": [
-    {
-      "query": "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026",
-      "error": "brightdata HTTP 401: Auth method is not supported"
-    },
-    {
-      "query": "\"hackathon\" san francisco 2026 register lu.ma",
-      "error": "brightdata HTTP 401: Auth method is not supported"
-    }
-  ],
+  "problems": [],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
     {
@@ -25,9 +16,9 @@
     {
       "url": "https://luma.com/8ca2z1rr",
       "queries": [
-        "site:luma.com hackathon san francisco 2026"
+        "\"hackathon\" san francisco 2026 register lu.ma"
       ],
-      "lastSeenAt": "2026-08-05T03:59:39.843Z"
+      "lastSeenAt": "2026-08-08T15:18:35.614Z"
     },
     {
       "url": "https://luma.com/9t4bxc8x",
@@ -123,6 +114,13 @@
       "lastSeenAt": "2026-08-05T03:57:26.936Z"
     },
     {
+      "url": "https://luma.com/intercomai",
+      "queries": [
+        "\"hackathon\" san francisco 2026 register lu.ma"
+      ],
+      "lastSeenAt": "2026-08-08T15:18:35.614Z"
+    },
+    {
       "url": "https://luma.com/iu9svaun",
       "queries": [
         "site:luma.com hackathon san francisco 2026"
@@ -142,6 +140,13 @@
         "site:luma.com hackathon \"bay area\" 2026"
       ],
       "lastSeenAt": "2026-08-03T22:15:29.834Z"
+    },
+    {
+      "url": "https://luma.com/jv444zph",
+      "queries": [
+        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
+      ],
+      "lastSeenAt": "2026-08-08T15:18:35.614Z"
     },
     {
       "url": "https://luma.com/oss4ai",
@@ -184,6 +189,13 @@
         "site:luma.com hackathon san francisco 2026"
       ],
       "lastSeenAt": "2026-08-05T03:57:26.936Z"
+    },
+    {
+      "url": "https://luma.com/zsaa3r3d",
+      "queries": [
+        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
+      ],
+      "lastSeenAt": "2026-08-08T15:18:35.614Z"
     }
   ]
 }
