@@ -1,17 +1,19 @@
 {
-  "collectedAt": "2026-08-09T15:21:51.930Z",
+  "collectedAt": "2026-08-10T15:49:40.123Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 27,
+  "pagesFound": 30,
   "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
   "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
-  "ycEventUrls": [],
+  "ycEventUrls": [
+    "https://events.ycombinator.com/hud-frontier-june-26"
+  ],
   "urls": [
     {
       "url": "https://luma.com/hqz8wi79",
@@ -45,15 +47,15 @@
       "url": "https://luma.com/rgk6ln4e.",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/troy-gwdn_ive-started-going-to-hackathons-every-single-activity-7458893560977862656-2Ixu",
-      "context": "Broadening Horizons at SF Hackathons Every hackathon is an opportunity to broaden your horizons, Apply on Luma: https://luma.com/rgk6ln4e. I was judge at a hackathon. This is for ...",
-      "lastSeenAt": "2026-08-08T03:35:45.667Z"
+      "context": "Broadening Horizons at SF Hackathons Every hackathon is an opportunity to broaden your horizons, Apply on Luma: https://luma.com/rgk6ln4e. I was judge at a hackathon. Founders ...",
+      "lastSeenAt": "2026-08-10T15:49:40.123Z"
     },
     {
       "url": "https://luma.com/HackBio",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/aneesav_hackathon-ai-biotech-activity-7441829245028368384-mv6b",
-      "context": "BioSolutions Hackathon in SF: Collaboration for Real- ... Hackathon in SF: Collaboration for Real-World Problem Solving. Apply to build → https://luma.com/HackBio Proud to be building alongside ...",
-      "lastSeenAt": "2026-08-08T03:35:45.667Z"
+      "context": "BioSolutions Hackathon in SF: Collaboration for Real- ... 2026 BioSolutions Hackathon — coming to San Francisco, 📅June 27–28. Apply to build → https://luma.com/HackBio Proud to be building alongside ...",
+      "lastSeenAt": "2026-08-10T15:49:40.123Z"
     },
     {
       "url": "https://luma.com/hh-future-ai-news-theatlantic-infactory",
