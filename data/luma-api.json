@@ -1,16 +1,16 @@
 {
-  "collectedAt": "2026-08-10T04:24:19.458Z",
+  "collectedAt": "2026-08-11T04:13:12.136Z",
   "source": "https://api.lu.ma/discover/get-paginated-events",
   "placeId": "discplace-BDj7GNbGlsF7Cka",
-  "entriesPulled": 618,
-  "requests": 13,
-  "uniqueEvents": 618,
-  "hackathonCandidates": 15,
+  "entriesPulled": 658,
+  "requests": 14,
+  "uniqueEvents": 658,
+  "hackathonCandidates": 14,
   "notAlreadySwept": 0,
   "skipped": {
     "past": 0,
     "nonLocal": 0,
-    "notHackathon": 603
+    "notHackathon": 644
   },
   "problems": [],
   "note": "Luma's public discover feed, read anonymously. Same candidate shape as the sweep, merged by scripts/normalize-events.mjs. `enrichment` carries exact times, guest counts and registration state for events the sweep found by reading a page; `calendarSeeds` are calendars seen hosting a hackathon, crawled by the next sweep.",
@@ -28,17 +28,6 @@
     "you-know-for-search"
   ],
   "enrichment": {
-    "https://luma.com/zp2yzp59": {
-      "startDate": "2026-08-10T02:00:00.000Z",
-      "endDate": "2026-08-10T04:30:00.000Z",
-      "timezone": "America/Los_Angeles",
-      "city": "San Francisco",
-      "venue": "Mission District",
-      "organizer": "Personal",
-      "going": 32,
-      "status": "Open",
-      "locationType": "offline"
-    },
     "https://luma.com/69bmmktv": {
       "startDate": "2026-08-13T01:00:00.000Z",
       "endDate": "2026-08-13T04:00:00.000Z",
@@ -68,19 +57,8 @@
       "city": "San Francisco",
       "venue": "Civic Center",
       "organizer": "Imbue Events",
-      "going": 50,
+      "going": 52,
       "status": "Waitlist",
-      "locationType": "offline"
-    },
-    "https://luma.com/ws7x9u9q": {
-      "startDate": "2026-08-15T17:00:00.000Z",
-      "endDate": "2026-08-16T01:00:00.000Z",
-      "timezone": "America/Los_Angeles",
-      "city": "San Francisco",
-      "venue": "Rincon Hill",
-      "organizer": "Corgi",
-      "going": 5,
-      "status": "Open",
       "locationType": "offline"
     },
     "https://luma.com/5gcp8iv8": {
@@ -90,7 +68,7 @@
       "city": "San Francisco",
       "venue": "Mission District",
       "organizer": "Flower Computer Company",
-      "going": 12,
+      "going": 18,
       "status": "Open",
       "locationType": "offline"
     },
@@ -101,7 +79,7 @@
       "city": "San Francisco",
       "venue": "Yerba Buena",
       "organizer": "Nebius Community",
-      "going": 109,
+      "going": 117,
       "status": "Open",
       "locationType": "offline"
     },
@@ -112,7 +90,7 @@
       "city": "San Francisco",
       "venue": "Yerba Buena",
       "organizer": "You Know, for Search",
-      "going": 60,
+      "going": 66,
       "status": "Open",
       "locationType": "offline"
     },
@@ -134,7 +112,7 @@
       "city": "San Francisco",
       "venue": "South Beach",
       "organizer": "Bright Data",
-      "going": 210,
+      "going": 261,
       "status": "Open",
       "locationType": "offline"
     },
@@ -145,7 +123,7 @@
       "city": "San Francisco",
       "venue": "China Basin",
       "organizer": "Apify Events",
-      "going": 109,
+      "going": 111,
       "status": "Open",
       "locationType": "offline"
     },
@@ -156,7 +134,7 @@
       "city": "San Francisco",
       "venue": "South Beach",
       "organizer": "WeMakeDevs",
-      "going": 241,
+      "going": 252,
       "status": "Open",
       "locationType": "offline"
     },
@@ -167,7 +145,7 @@
       "city": "San Francisco",
       "venue": "Japantown",
       "organizer": "ClickHouse Events",
-      "going": 132,
+      "going": 140,
       "status": "Open",
       "locationType": "offline"
     },
@@ -178,7 +156,18 @@
       "city": "Mountain View",
       "venue": null,
       "organizer": "Personal",
-      "going": 23,
+      "going": 25,
+      "status": "Open",
+      "locationType": "offline"
+    },
+    "https://luma.com/agent-harness": {
+      "startDate": "2026-08-29T16:00:00.000Z",
+      "endDate": "2026-08-30T01:00:00.000Z",
+      "timezone": "America/Los_Angeles",
+      "city": "San Francisco",
+      "venue": "South Beach",
+      "organizer": "WeMakeDevs",
+      "going": 132,
       "status": "Open",
       "locationType": "offline"
     },
@@ -189,7 +178,7 @@
       "city": "San Francisco",
       "venue": "Mission District",
       "organizer": "Rally SF",
-      "going": 28,
+      "going": 30,
       "status": "Open",
       "locationType": "offline"
     },
@@ -222,7 +211,7 @@
       "city": "San Francisco",
       "venue": "Yerba Buena",
       "organizer": "PAI Palooza Presents - Build with AI Native Studio - 2026",
-      "going": 128,
+      "going": 132,
       "status": "Open",
       "locationType": "offline"
     }
@@ -243,7 +232,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Hosted By\nMongoDB\nThe Persistent Context Sprint Hackathon | Live at MongoDB .Local Build Fest\nSan Francisco, CA\nMission Bay\n0 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-10T04:24:19.455Z",
+      "checkedAt": "2026-08-11T04:13:12.134Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/3ck0cd9g",
@@ -265,44 +254,8 @@
       }
     },
     {
-      "url": "https://luma.com/zp2yzp59",
-      "title": "intergenerational hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "confidence": 62,
-      "relevance": 68,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Hosted By\nPersonal\nintergenerational hackathon\nSan Francisco, CA\nMission District\n32 Going\nRegistration Open",
-      "checkedAt": "2026-08-10T04:24:19.453Z",
-      "heldBecause": null,
-      "structuredEvent": {
-        "url": "https://luma.com/zp2yzp59",
-        "name": "intergenerational hackathon",
-        "description": null,
-        "startDate": "2026-08-10T02:00:00.000Z",
-        "endDate": "2026-08-10T04:30:00.000Z",
-        "timeSource": "luma-api",
-        "organizers": [
-          "Personal"
-        ],
-        "location": {
-          "name": "Mission District",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "offerAvailability": "InStock",
-        "going": 32
-      }
-    },
-    {
       "url": "https://luma.com/69bmmktv",
-      "title": "aura harness hackathon",
+      "title": "aura+omp harness hackathon",
       "category": "hackathon",
       "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
       "confidence": 62,
@@ -314,12 +267,12 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nelide\naura harness hackathon\nSan Francisco, CA\nSouth Beach\n0 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-10T04:24:19.455Z",
+      "evidence": "Hosted By\nelide\naura+omp harness hackathon\nSan Francisco, CA\nSouth Beach\n0 Going\nRegistration Open\nRegister to See Address",
+      "checkedAt": "2026-08-11T04:13:12.133Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/69bmmktv",
-        "name": "aura harness hackathon",
+        "name": "aura+omp harness hackathon",
         "description": null,
         "startDate": "2026-08-13T01:00:00.000Z",
         "endDate": "2026-08-13T04:00:00.000Z",
@@ -350,8 +303,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nImbue Events\nPunk Software Hack Night: NO CLAUDE ALLOWED\nSan Francisco, CA\nCivic Center\n50 Going\nRegistration Waitlist\nRegister to See Address",
-      "checkedAt": "2026-08-10T04:24:19.455Z",
+      "evidence": "Hosted By\nImbue Events\nPunk Software Hack Night: NO CLAUDE ALLOWED\nSan Francisco, CA\nCivic Center\n52 Going\nRegistration Waitlist\nRegister to See Address",
+      "checkedAt": "2026-08-11T04:13:12.134Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/1i8a3dby",
@@ -369,43 +322,7 @@
           "region": "CA"
         },
         "offerAvailability": null,
-        "going": 50
-      }
-    },
-    {
-      "url": "https://luma.com/ws7x9u9q",
-      "title": "Corgi x OpenSwarm x EF Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "confidence": 62,
-      "relevance": 68,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Hosted By\nCorgi\nCorgi x OpenSwarm x EF Hackathon\nSan Francisco, CA\nRincon Hill\n5 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-10T04:24:19.455Z",
-      "heldBecause": null,
-      "structuredEvent": {
-        "url": "https://luma.com/ws7x9u9q",
-        "name": "Corgi x OpenSwarm x EF Hackathon",
-        "description": null,
-        "startDate": "2026-08-15T17:00:00.000Z",
-        "endDate": "2026-08-16T01:00:00.000Z",
-        "timeSource": "luma-api",
-        "organizers": [
-          "Corgi"
-        ],
-        "location": {
-          "name": "Rincon Hill",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "offerAvailability": "InStock",
-        "going": 5
+        "going": 52
       }
     },
     {
@@ -422,8 +339,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nNebius Community\nThe Physical AI Sprint Hackathon\nSan Francisco, CA\nYerba Buena\n109 Going\nRegistration Open",
-      "checkedAt": "2026-08-10T04:24:19.455Z",
+      "evidence": "Hosted By\nNebius Community\nThe Physical AI Sprint Hackathon\nSan Francisco, CA\nYerba Buena\n117 Going\nRegistration Open",
+      "checkedAt": "2026-08-11T04:13:12.134Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/nkknxvrz",
@@ -441,7 +358,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 109
+        "going": 117
       }
     },
     {
@@ -458,8 +375,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nYou Know, for Search\nAgent Memory Hack Night | Mastra x Elasticsearch\nSan Francisco, CA\nYerba Buena\n60 Going\nRegistration Open",
-      "checkedAt": "2026-08-10T04:24:19.455Z",
+      "evidence": "Hosted By\nYou Know, for Search\nAgent Memory Hack Night | Mastra x Elasticsearch\nSan Francisco, CA\nYerba Buena\n66 Going\nRegistration Open",
+      "checkedAt": "2026-08-11T04:13:12.134Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/mastra-hack",
@@ -477,7 +394,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 60
+        "going": 66
       }
     },
     {
@@ -495,7 +412,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Hosted By\nDevnovate\nAgentic AI Hackathon 2 .0\nSan Francisco, CA\nFinancial District\n20 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-10T04:24:19.455Z",
+      "checkedAt": "2026-08-11T04:13:12.134Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/0m4kvzm8",
@@ -530,8 +447,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nBright Data\nZero Downtime Hackathon | Win an NVIDIA DGX Spark AI Supercomputer\nSan Francisco, CA\nSouth Beach\n210 Going\nRegistration Open",
-      "checkedAt": "2026-08-10T04:24:19.455Z",
+      "evidence": "Hosted By\nBright Data\nZero Downtime Hackathon | Win an NVIDIA DGX Spark AI Supercomputer\nSan Francisco, CA\nSouth Beach\n261 Going\nRegistration Open",
+      "checkedAt": "2026-08-11T04:13:12.134Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/zero-downtime",
@@ -549,43 +466,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 210
-      }
-    },
-    {
-      "url": "https://luma.com/apify-v8vw",
-      "title": "AntlerVC / Apify / Bolt / N8N Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "confidence": 62,
-      "relevance": 68,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Hosted By\nApify Events\nAntlerVC / Apify / Bolt / N8N Hackathon\nSan Francisco, CA\nChina Basin\n109 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-10T04:24:19.455Z",
-      "heldBecause": null,
-      "structuredEvent": {
-        "url": "https://luma.com/apify-v8vw",
-        "name": "AntlerVC / Apify / Bolt / N8N Hackathon",
-        "description": null,
-        "startDate": "2026-08-22T17:00:00.000Z",
-        "endDate": "2026-08-23T00:00:00.000Z",
-        "timeSource": "luma-api",
-        "organizers": [
-          "Apify Events"
-        ],
-        "location": {
-          "name": "China Basin",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "offerAvailability": "InStock",
-        "going": 109
+        "going": 261
       }
     },
     {
@@ -602,8 +483,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nWeMakeDevs\nROAST MY PR CTF - Win a Mac Mini!\nSan Francisco, CA\nSouth Beach\n241 Going\nRegistration Open",
-      "checkedAt": "2026-08-10T04:24:19.455Z",
+      "evidence": "Hosted By\nWeMakeDevs\nROAST MY PR CTF - Win a Mac Mini!\nSan Francisco, CA\nSouth Beach\n252 Going\nRegistration Open",
+      "checkedAt": "2026-08-11T04:13:12.134Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/roastpr",
@@ -621,7 +502,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 241
+        "going": 252
       }
     },
     {
@@ -638,8 +519,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nClickHouse Events\nBetter Days: A Hackathon — San Francisco\nSan Francisco, CA\nJapantown\n132 Going\nRegistration Open",
-      "checkedAt": "2026-08-10T04:24:19.456Z",
+      "evidence": "Hosted By\nClickHouse Events\nBetter Days: A Hackathon — San Francisco\nSan Francisco, CA\nJapantown\n140 Going\nRegistration Open",
+      "checkedAt": "2026-08-11T04:13:12.135Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/clickh-sie8",
@@ -657,7 +538,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 132
+        "going": 140
       }
     },
     {
@@ -674,8 +555,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nPersonal\nVeterans Innovation Hackathon\nMountain View, CA\n23 Going\nRegistration Open",
-      "checkedAt": "2026-08-10T04:24:19.456Z",
+      "evidence": "Hosted By\nPersonal\nVeterans Innovation Hackathon\nMountain View, CA\n25 Going\nRegistration Open",
+      "checkedAt": "2026-08-11T04:13:12.135Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/Innovation4Veterans",
@@ -693,7 +574,79 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 23
+        "going": 25
+      }
+    },
+    {
+      "url": "https://luma.com/agent-harness",
+      "title": "Agent Harness Hackathon | Win an NVIDIA DGX Spark AI Supercomputer",
+      "category": "hackathon",
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "confidence": 62,
+      "relevance": 68,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Hosted By\nWeMakeDevs\nAgent Harness Hackathon | Win an NVIDIA DGX Spark AI Supercomputer\nSan Francisco, CA\nSouth Beach\n132 Going\nRegistration Open",
+      "checkedAt": "2026-08-11T04:13:12.135Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://luma.com/agent-harness",
+        "name": "Agent Harness Hackathon | Win an NVIDIA DGX Spark AI Supercomputer",
+        "description": null,
+        "startDate": "2026-08-29T16:00:00.000Z",
+        "endDate": "2026-08-30T01:00:00.000Z",
+        "timeSource": "luma-api",
+        "organizers": [
+          "WeMakeDevs"
+        ],
+        "location": {
+          "name": "South Beach",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "offerAvailability": "InStock",
+        "going": 132
+      }
+    },
+    {
+      "url": "https://luma.com/apify-v8vw",
+      "title": "VC pitch night + hackathon",
+      "category": "hackathon",
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "confidence": 32,
+      "relevance": 49,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": true
+      },
+      "evidence": "Hosted By\nApify Events\nVC pitch night + hackathon\nSan Francisco, CA\nChina Basin\n111 Going\nRegistration Open\nRegister to See Address",
+      "checkedAt": "2026-08-11T04:13:12.134Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://luma.com/apify-v8vw",
+        "name": "VC pitch night + hackathon",
+        "description": null,
+        "startDate": "2026-08-22T17:00:00.000Z",
+        "endDate": "2026-08-23T00:00:00.000Z",
+        "timeSource": "luma-api",
+        "organizers": [
+          "Apify Events"
+        ],
+        "location": {
+          "name": "China Basin",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "offerAvailability": "InStock",
+        "going": 111
       }
     },
     {
@@ -711,7 +664,7 @@
         "negativeTitleEvidence": true
       },
       "evidence": "Hosted By\nMantisGrid AI\nMantisGrid AI Hackathon & Summit 2026\nPalo Alto, CA\nFairmeadow\n0 Going\nRegistration Open",
-      "checkedAt": "2026-08-10T04:24:19.457Z",
+      "checkedAt": "2026-08-11T04:13:12.135Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/d6g5mb9o",
@@ -747,7 +700,7 @@
         "negativeTitleEvidence": true
       },
       "evidence": "Hosted By\n[SF] HackerSquad\nThe AI Conference Hack Day 2026\nSan Francisco, CA\nMission Bay\n0 Going\nRegistration Open\nRegister to See Address",
-      "checkedAt": "2026-08-10T04:24:19.457Z",
+      "checkedAt": "2026-08-11T04:13:12.135Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/ai-conference-hack-day-2026",

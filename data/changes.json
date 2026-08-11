@@ -1,28 +1,57 @@
 {
-  "comparedTo": "2026-08-10T04:37:14.564Z",
-  "sweepCompletedAt": "2026-08-10T16:05:05.856Z",
+  "comparedTo": "2026-08-10T16:05:05.856Z",
+  "sweepCompletedAt": "2026-08-11T04:28:28.136Z",
   "added": [
-    "https://luma.com/agent-harness"
+    "https://builder.aws.com/content/3HkClK0ZVDp5VarKYtCDQKhRZ5s/frontier-build-night-recursive-self-improving-agents-hands-on-hackathon-at-aws-builder-loft-san-francisco-aug-25",
+    "https://luma.com/burningtoken"
   ],
-  "removed": [],
+  "removed": [
+    "https://luma.com/ws7x9u9q",
+    "https://luma.com/ckpqzfae",
+    "https://builder.aws.com/content/3F9VvpwSG4MIIbEqL5gHtCaN4Qw/generative-ai-short-film-hackathon"
+  ],
   "updated": [
     {
-      "url": "https://luma.com/apify-v8vw",
-      "title": "VC pitch night + hackathon",
+      "url": "https://luma.com/d7vavxhk",
+      "title": "Zero-Human Company Hackathon by Terac",
       "fields": {
-        "title": {
-          "from": "AntlerVC / Apify / Bolt / N8N Hackathon",
-          "to": "VC pitch night + hackathon"
+        "start": {
+          "from": "2026-08-15T09:00:00-07:00",
+          "to": "2026-08-15T08:30:00-07:00"
+        },
+        "end": {
+          "from": "2026-08-15T21:00:00-07:00",
+          "to": "2026-08-15T20:30:00-07:00"
         }
       }
     },
     {
-      "url": "https://luma.com/m9h5vo7a",
-      "title": "Universal Celebration Hackathon",
+      "url": "https://luma.com/rklrsomo",
+      "title": "AI Valley x Pet Zen Dog-a-thon",
       "fields": {
         "prize": {
-          "from": "Prizes listed",
-          "to": "Not listed"
+          "from": "$10K+ prizes",
+          "to": "$2,500 prizes"
+        }
+      }
+    },
+    {
+      "url": "https://api-cloud-ai-hackathon-2026.devpost.com",
+      "title": "DevNetwork [API + Cloud + AI] Hackathon 2026",
+      "fields": {
+        "prize": {
+          "from": "$40,500 prizes",
+          "to": "$44,500 prizes"
+        }
+      }
+    },
+    {
+      "url": "https://luma.com/69bmmktv",
+      "title": "aura+omp harness hackathon",
+      "fields": {
+        "title": {
+          "from": "aura harness hackathon",
+          "to": "aura+omp harness hackathon"
         }
       }
     }
