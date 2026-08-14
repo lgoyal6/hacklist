@@ -101,6 +101,27 @@ for f in "${SEED_FILES[@]}"; do
   fi
 done
 
+# Refuse to commit into a repo where commits cannot reach origin. A failed
+# rebase below once left this repo mid-rebase on a detached HEAD, and because
+# nothing checked, the next four nightly runs committed onto that detached HEAD
+# and reported success. Six days of seed collection sat unpushed and unnoticed;
+# personalized-seeds.json only exists here, so nothing else could recover it.
+if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+  echo "    REFUSING to commit: a rebase is in progress. Finish it or run" >&2
+  echo "    'git rebase --abort', then check for commits stranded off main." >&2
+  exit 1
+fi
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+if [ "$BRANCH" != "main" ]; then
+  if [ "$BRANCH" = "HEAD" ]; then
+    echo "    REFUSING to commit: HEAD is detached at $(git rev-parse --short HEAD)." >&2
+  else
+    echo "    REFUSING to commit: HEAD is on branch $BRANCH, not main." >&2
+  fi
+  echo "    Commits made here would not reach origin. Check for stranded ones." >&2
+  exit 1
+fi
+
 if ! git diff --quiet -- "${SEED_FILES[@]}"; then
   git add "${SEED_FILES[@]}"
   git -c user.name="hacklist-local" \
@@ -110,7 +131,15 @@ if ! git diff --quiet -- "${SEED_FILES[@]}"; then
   for attempt in 1 2 3; do
     git push -q origin HEAD:main && { echo "    pushed seeds"; break; }
     echo "    push rejected (attempt $attempt), rebasing"
-    git pull --rebase --autostash -q origin main || break
+    # Unwind a rebase that stops on a conflict. Leaving it in progress is what
+    # stranded the commits: the repo stays on a detached HEAD, and every later
+    # run commits there instead of main. Aborting keeps the commit on main so
+    # the next run can retry it against a fresher origin.
+    if ! git pull --rebase --autostash -q origin main; then
+      echo "    rebase failed; aborting it, seeds stay committed for next run" >&2
+      git rebase --abort 2>/dev/null || true
+      break
+    fi
   done
 else
   echo "    no seed changes"
