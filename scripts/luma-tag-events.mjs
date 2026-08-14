@@ -118,8 +118,13 @@ const failedThisRun = new Set();
 const isApplied = (slug, tag) =>
   (tagState.applied[slug] ?? []).includes(tag) ||
   failedThisRun.has(`${slug}|${tag}`);
+// Progress within this run, kept apart from the persisted ledger. The loop
+// re-reads the rows after every tag, and Luma does not repaint the new pill
+// immediately, so without a run-local marker the same row is picked again.
+const appliedThisRun = new Set();
 const markApplied = (slug, tag) => {
   tagState.applied[slug] = [...new Set([...(tagState.applied[slug] ?? []), tag])];
+  appliedThisRun.add(`${slug}|${tag}`);
 };
 
 /**
@@ -182,7 +187,13 @@ async function readRows(page) {
         }
       }
       const rowText = (node?.innerText ?? "").replace(/\s+/g, " ").trim().slice(0, 400);
-      rows.push({ index, slug, rowText });
+      // The tags already on this row, read from the pills rather than from
+      // rowText: a title like "Zero Downtime Hackathon" contains a tag name and
+      // a substring test would call it tagged when it is not.
+      const tags = [...(node?.querySelectorAll(".pill-label") ?? [])]
+        .map((pill) => (pill.innerText || "").replace(/\s+/g, " ").trim())
+        .filter((name) => name && !/^add tag$/i.test(name));
+      rows.push({ index, slug, rowText, tags });
     });
     return rows;
   });
@@ -247,7 +258,25 @@ try {
         .map((row) => {
           const want = resolveWanted(row);
           if (!want) return null;
-          const tag = want.tags.find((t) => !isApplied(want.key, t));
+          // The row is the truth; the ledger is only a cache, and it was wrong
+          // in both directions. A tag the ledger had forgotten is still on the
+          // event, and Luma omits an applied tag from the picker — so retrying
+          // one can never succeed: the picker offers only `Create "<name>"`, the
+          // lookup falls through to another row's pill of the same name, and the
+          // click times out. That is four events failing every run. Conversely a
+          // tag the ledger claims is applied may be gone, because deleting and
+          // re-adding an entry drops its tags while the record survives, and
+          // trusting the ledger meant never putting them back.
+          const onRow = new Set((row.tags ?? []).map((t) => t.toLowerCase()));
+          for (const t of want.tags) {
+            if (onRow.has(t.toLowerCase())) markApplied(want.key, t);
+          }
+          const tag = want.tags.find(
+            (t) =>
+              !onRow.has(t.toLowerCase()) &&
+              !appliedThisRun.has(`${want.key}|${t}`) &&
+              !failedThisRun.has(`${want.key}|${t}`),
+          );
           return tag ? { row, tag, title: want.title, key: want.key } : null;
         })
         .find(Boolean);
