@@ -1,14 +1,30 @@
 {
-  "collectedAt": "2026-08-14T15:41:50.491Z",
+  "collectedAt": "2026-08-15T04:03:57.138Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 30,
-  "pagesRead": 12,
+  "pagesFound": 0,
+  "pagesRead": 0,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon san francisco 2026 lu.ma",
+      "error": "brightdata: TypeError: fetch failed"
+    },
+    {
+      "stage": "search",
+      "query": "hackathon \"bay area\" 2026 register luma",
+      "error": "brightdata: TypeError: fetch failed"
+    },
+    {
+      "stage": "search",
+      "query": "\"ai hackathon\" san francisco open registration",
+      "error": "brightdata: TypeError: fetch failed"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
