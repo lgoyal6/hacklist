@@ -1,30 +1,14 @@
 {
-  "collectedAt": "2026-08-15T04:03:57.138Z",
+  "collectedAt": "2026-08-16T03:30:52.258Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 0,
-  "pagesRead": 0,
+  "pagesFound": 28,
+  "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [
-    {
-      "stage": "search",
-      "query": "hackathon san francisco 2026 lu.ma",
-      "error": "brightdata: TypeError: fetch failed"
-    },
-    {
-      "stage": "search",
-      "query": "hackathon \"bay area\" 2026 register luma",
-      "error": "brightdata: TypeError: fetch failed"
-    },
-    {
-      "stage": "search",
-      "query": "\"ai hackathon\" san francisco open registration",
-      "error": "brightdata: TypeError: fetch failed"
-    }
-  ],
+  "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -61,15 +45,15 @@
       "url": "https://luma.com/rgk6ln4e.",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/troy-gwdn_ive-started-going-to-hackathons-every-single-activity-7458893560977862656-2Ixu",
-      "context": "Broadening Horizons at SF Hackathons Every hackathon is an opportunity to broaden your horizons, Apply on Luma: https://luma.com/rgk6ln4e. I was judge at a hackathon. This is for ...",
-      "lastSeenAt": "2026-08-14T15:41:50.491Z"
+      "context": "Broadening Horizons at SF Hackathons Every hackathon is an opportunity to broaden your horizons, Apply on Luma: https://luma.com/rgk6ln4e. I was judge at a hackathon. Founders ...",
+      "lastSeenAt": "2026-08-16T03:30:52.258Z"
     },
     {
       "url": "https://luma.com/HackBio",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/aneesav_hackathon-ai-biotech-activity-7441829245028368384-mv6b",
-      "context": "BioSolutions Hackathon in SF: Collaboration for Real- ... Hackathon in SF: Collaboration for Real-World Problem Solving. Apply to build → https://luma.com/HackBio Proud to be building alongside ...",
-      "lastSeenAt": "2026-08-14T15:41:50.491Z"
+      "context": "BioSolutions Hackathon in SF: Collaboration for Real ... 2026 BioSolutions Hackathon — coming to San Francisco, 📅June 27–28. Apply to build → https://luma.com/HackBio Proud to be building alongside ...",
+      "lastSeenAt": "2026-08-16T03:30:52.258Z"
     },
     {
       "url": "https://luma.com/hh-future-ai-news-theatlantic-infactory",
@@ -139,7 +123,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-charles-guo-s81hc",
       "context": "AI Events FRIDAY, February 6 ; 9:30 AM - Continual Learning Hackathon San Francisco, CA (Register to See Address) https://lu.ma/intercomai ; 10:00 AM ...Read more",
-      "lastSeenAt": "2026-08-13T15:49:08.212Z"
+      "lastSeenAt": "2026-08-16T03:30:52.258Z"
     },
     {
       "url": "https://luma.com/slicelab",
@@ -153,21 +137,21 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/troy-gwdn_ive-started-going-to-hackathons-every-single-activity-7458893560977862656-2Ixu",
       "context": "“𝘔𝘢𝘭𝘢𝘺𝘴𝘪𝘢 𝘩𝘢𝘴 𝘵𝘢𝘭𝘦𝘯𝘵, 𝘣𝘶𝘵 𝘸𝘦 𝘯𝘦𝘦𝘥 𝘮𝘰𝘳𝘦 𝘱𝘭𝘢𝘵𝘧𝘰𝘳𝘮𝘴” - this is one of those platforms. 𝐑𝐞𝐠𝐢𝐬𝐭𝐫𝐚𝐭𝐢𝐨𝐧𝐬 𝐚𝐫𝐞 𝐧𝐨𝐰 𝐨𝐩𝐞𝐧. 🌐 𝐄𝐯𝐞𝐧𝐭 𝐰𝐞𝐛𝐬𝐢𝐭𝐞: http://codexhackathon.my/ 📝 𝐀𝐩𝐩𝐥𝐲 𝐨𝐧 𝐋𝐮𝐦𝐚: https://luma.com/rgk6ln4e #Malaysia #AI #",
-      "lastSeenAt": "2026-08-08T03:35:45.667Z"
+      "lastSeenAt": "2026-08-16T03:30:52.258Z"
     },
     {
       "url": "https://luma.com/hackbio",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/aneesav_hackathon-ai-biotech-activity-7441829245028368384-mv6b",
       "context": "pecially excited about creating a space where learning is hands-on, curiosity is encouraged and people can engage directly with the realities of building in this space. If you’ve been looking for a way to move from thinking to doing, this is it. RSVP on Luma: https://luma.com/hackbio . _______ #ai #",
-      "lastSeenAt": "2026-08-08T03:35:45.667Z"
+      "lastSeenAt": "2026-08-16T03:30:52.258Z"
     },
     {
       "url": "https://luma.com/nkknxvrz",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/michaeljcalvey_the-physical-ai-sprint-hackathon-luma-activity-7490123373633708032-yx2y",
       "context": "The Physical AI Sprint Hackathon · Luma | Michael C. We'll be training robots to complete real-world tasks in simulation, August 17th in San Francisco, Sign up here: https://luma.com/nkknxvrz",
-      "lastSeenAt": "2026-08-13T15:49:08.212Z"
+      "lastSeenAt": "2026-08-16T03:30:52.258Z"
     },
     {
       "url": "https://luma.com/arc-commerce-",
@@ -222,8 +206,8 @@
       "url": "https://luma.com/sk000djt",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-april-311-2026-charles-guo-nyiqc",
-      "context": "e right moment to plug into the energy of the ecosystem, this is it. What makes this stretch of events especially exciting is the sheer range of opportunities. You can test your skills in builder-focused competitions like Hackathon: Who is the Agent Master? ( https://lu.ma/sk000djt ), explore long-h",
-      "lastSeenAt": "2026-08-13T15:49:08.212Z"
+      "context": "Bay Area AI Events — April 3–11, 2026 8:30 AM — Hackathon: Who is the Agent Master? | Entrepreneurs First, SF | https://lu.ma/sk000djt ; 11:00 AM — Scout Athletic Club (April) | San ...Read more",
+      "lastSeenAt": "2026-08-16T03:30:52.258Z"
     },
     {
       "url": "https://luma.com/human-enhancement-hackathon",
