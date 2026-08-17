@@ -1,7 +1,7 @@
 {
-  "collectedAt": "2026-08-16T15:23:31.868Z",
+  "collectedAt": "2026-08-17T03:54:40.754Z",
   "source": "https://devpost.com/api/hackathons",
-  "seen": 93,
+  "seen": 90,
   "candidates": [
     {
       "url": "https://api-cloud-ai-hackathon-2026.devpost.com",
@@ -17,8 +17,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nDevNetwork\nDevNetwork [API + Cloud + AI] Hackathon 2026\nSanta Clara, CA\nSanta Clara Convention Center and Online\nPrizes $45,500\n641 Going\nRegistration Upcoming\nThemes: IoT, Low/No Code, Machine Learning/AI\nSubmission period\nAug 17 - Sep 03, 2026",
-      "checkedAt": "2026-08-16T15:23:31.868Z",
+      "evidence": "Hosted By\nDevNetwork\nDevNetwork [API + Cloud + AI] Hackathon 2026\nSanta Clara, CA\nSanta Clara Convention Center and Online\nPrizes $45,500\n657 Going\nRegistration Upcoming\nThemes: IoT, Low/No Code, Machine Learning/AI\nSubmission period\nAug 17 - Sep 03, 2026",
+      "checkedAt": "2026-08-17T03:54:40.754Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://api-cloud-ai-hackathon-2026.devpost.com",
@@ -36,7 +36,7 @@
           "region": "CA"
         },
         "offerAvailability": null,
-        "going": 641
+        "going": 657
       }
     },
     {
@@ -53,8 +53,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nDevNetwork\nDeveloperWeek 2027 Hackathon\nSanta Clara, CA\nSanta Clara Convention Center + Online\n31 Going\nRegistration Upcoming\nThemes: Enterprise, IoT, Machine Learning/AI\nSubmission period\nJan 25 - Feb 11, 2027",
-      "checkedAt": "2026-08-16T15:23:31.867Z",
+      "evidence": "Hosted By\nDevNetwork\nDeveloperWeek 2027 Hackathon\nSanta Clara, CA\nSanta Clara Convention Center + Online\n32 Going\nRegistration Upcoming\nThemes: Enterprise, IoT, Machine Learning/AI\nSubmission period\nJan 25 - Feb 11, 2027",
+      "checkedAt": "2026-08-17T03:54:40.753Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://developerweek-2027-hackathon.devpost.com",
@@ -72,7 +72,43 @@
           "region": "CA"
         },
         "offerAvailability": null,
-        "going": 31
+        "going": 32
+      }
+    },
+    {
+      "url": "https://the-cad-challenge-2026.devpost.com",
+      "title": "The CAD Challenge 2026",
+      "category": "hackathon",
+      "discoveredVia": "https://devpost.com/api/hackathons",
+      "confidence": 52,
+      "relevance": 54,
+      "signals": {
+        "directHackathonTerm": false,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Hosted By\nThe CAD Challenge\nThe CAD Challenge 2026\nBerkeley, CA\nUniversity of California, Berkeley\nPrizes $350\n4 Going\nRegistration Upcoming\nThemes: Beginner Friendly, Design\nSubmission period\nSep 12 - 14, 2026",
+      "checkedAt": "2026-08-17T03:54:40.751Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://the-cad-challenge-2026.devpost.com",
+        "name": "The CAD Challenge 2026",
+        "description": null,
+        "startDate": "2026-09-12T07:00:00.000Z",
+        "endDate": "2026-09-15T06:59:00.000Z",
+        "timeSource": "devpost-date-only",
+        "organizers": [
+          "The CAD Challenge"
+        ],
+        "location": {
+          "name": "University of California, Berkeley",
+          "city": "Berkeley",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": 4
       }
     },
     {
@@ -90,7 +126,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Hosted By\nFuture Forge\nFutureForge Hacks\nPleasanton, CA\nPleasanton, CA\n4 Going\nRegistration Upcoming\nThemes: Education, Machine Learning/AI, Social Good\nSubmission period\nNov 21, 2026",
-      "checkedAt": "2026-08-16T15:23:31.866Z",
+      "checkedAt": "2026-08-17T03:54:40.753Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://futureforge-hacks.devpost.com",
@@ -125,8 +161,8 @@
         "sfBayAreaEvidence": false,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nShower Hacks\nShower Hacks\nBay Area\nBay Area\nPrizes $9,750\n27 Going\nRegistration Upcoming\nThemes: Open Ended, Lifehacks, Social Good\nSubmission period\nSep 26 - 27, 2026",
-      "checkedAt": "2026-08-16T15:23:31.868Z",
+      "evidence": "Hosted By\nShower Hacks\nShower Hacks\nBay Area\nBay Area\nPrizes $9,750\n28 Going\nRegistration Upcoming\nThemes: Open Ended, Lifehacks, Social Good\nSubmission period\nSep 26 - 27, 2026",
+      "checkedAt": "2026-08-17T03:54:40.754Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://showerhacks.devpost.com",
@@ -144,12 +180,12 @@
           "region": "CA"
         },
         "offerAvailability": null,
-        "going": 27
+        "going": 28
       }
     }
   ],
   "skipped": {
-    "notLocal": 85,
+    "notLocal": 81,
     "unplaceable": [
       {
         "title": "Dublin Hacx",
