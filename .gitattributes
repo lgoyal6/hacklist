@@ -1,0 +1,13 @@
+# The generated data files with two writers (the GitHub sweep and the nightly
+# local pass) are reconciled by union rather than text-merged. See the header
+# of scripts/merge-seeds.mjs for why, and scripts/install-merge-driver.sh for
+# the config half that this file cannot carry.
+#
+# A checkout that has not run the installer falls back to the built-in text
+# merge with a warning, which is exactly today's behaviour, so this is safe to
+# commit on its own.
+data/linkedin-seeds.json     merge=hacklist-union
+data/personalized-seeds.json merge=hacklist-union
+data/luma-api.json           merge=hacklist-union
+data/luma-ledger.json        merge=hacklist-union
+data/luma-tags.json          merge=hacklist-union

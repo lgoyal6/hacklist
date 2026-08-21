@@ -179,6 +179,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # The rebase below reconciles files the local pass also writes; union
+          # them instead of text-merging them. See scripts/merge-seeds.mjs.
+          bash scripts/install-merge-driver.sh
           git add data
           if git diff --cached --quiet; then
             echo "No data changes to commit."

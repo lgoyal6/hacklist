@@ -127,6 +127,11 @@ if ! git diff --quiet -- "${SEED_FILES[@]}"; then
   git -c user.name="hacklist-local" \
       -c user.email="local@hacklist.invalid" \
       commit -q -m "data: refresh local discovery seeds and Luma feed"
+  # Teach git to union these files rather than text-merge them. Without this the
+  # rebase below conflicts on data/linkedin-seeds.json every time a sweep landed
+  # first, because CI writes that file too, which is what stranded five nights
+  # of seeds. See scripts/merge-seeds.mjs.
+  bash "$REPO/scripts/install-merge-driver.sh"
   # Rebase before pushing: a scheduled sweep may have committed in between.
   for attempt in 1 2 3; do
     git push -q origin HEAD:main && { echo "    pushed seeds"; break; }
@@ -143,6 +148,19 @@ if ! git diff --quiet -- "${SEED_FILES[@]}"; then
   done
 else
   echo "    no seed changes"
+fi
+
+# Whether or not this run committed, say plainly when commits are not on origin.
+# The stranded-seeds incident ran for five nights unnoticed because the only
+# evidence was a rebase error midway down a long log and a CI staleness warning
+# that is deliberately not fatal (luma-api is geolocated, so CI cannot refresh
+# it and must not go red for that). Nothing said "the seeds are not published".
+git fetch -q origin 2>/dev/null || true
+UNPUSHED="$(git rev-list --count origin/main..HEAD 2>/dev/null || echo 0)"
+if [ "${UNPUSHED:-0}" -gt 0 ]; then
+  echo "    WARNING: $UNPUSHED commit(s) here have never reached origin, so the" >&2
+  echo "    seeds collected on this Mac are not in the published board." >&2
+  echo "    Inspect with: git -C $REPO log --oneline origin/main..HEAD" >&2
 fi
 
 echo "--- luma calendar sync"
