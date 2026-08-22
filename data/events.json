@@ -5,15 +5,51 @@
     "sweepCompletedAt": "2026-08-22T23:29:53.308Z",
     "pagesVisited": 842,
     "candidatesFound": 46,
-    "publishedCount": 52,
-    "hackathonCount": 48,
+    "publishedCount": 59,
+    "hackathonCount": 55,
     "adjacentCount": 4,
-    "organizerCount": 45,
+    "organizerCount": 52,
     "sourceCount": 19,
     "seedCount": 19,
     "externalCount": 8
   },
   "events": [
+    {
+      "id": "zero-downtime",
+      "url": "https://luma.com/zero-downtime",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Zero Downtime Hackathon | Win an NVIDIA DGX Spark AI Supercomputer",
+      "organizer": "Bright Data",
+      "venue": "Bright Data",
+      "city": "San Francisco",
+      "area": "SF",
+      "start": "2026-08-22T09:00:00-07:00",
+      "end": "2026-08-22T18:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 22",
+      "dateDetail": "Sat · 9am–6pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "$50 prizes",
+      "tags": [
+        "AI",
+        "Data"
+      ],
+      "going": 439,
+      "why": "9-hour build with judging, demos, a submission deadline; $50 prizes.",
+      "score": 95,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 93,
+        "accessibility": 100,
+        "freshness": 96
+      },
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "checkedAt": "2026-08-22T23:11:08.032Z"
+    },
     {
       "id": "agent-harness",
       "url": "https://luma.com/agent-harness",
@@ -38,7 +74,7 @@
         "Agents",
         "Data"
       ],
-      "going": 471,
+      "going": 474,
       "why": "9-hour build with judging, team formation; $50 prizes.",
       "score": 95,
       "confidence": 94,
@@ -85,41 +121,6 @@
       },
       "discoveredVia": "https://luma.com/discover/sf/ai",
       "checkedAt": "2026-08-22T23:11:44.669Z"
-    },
-    {
-      "id": "mistral-summer-vibe-hackathon-sf",
-      "url": "https://luma.com/mistral-summer-vibe-hackathon-sf",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Mistral Vibe Hackathon",
-      "organizer": "Mistral Events",
-      "venue": null,
-      "city": "San Francisco",
-      "area": "SF",
-      "start": "2026-08-22T08:30:00-07:00",
-      "end": "2026-08-22T20:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 22",
-      "dateDetail": "Sat · 8:30am–8pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "$3,000 prizes",
-      "tags": [
-        "AI"
-      ],
-      "going": 299,
-      "why": "12-hour build with judging, team formation; $3,000 prizes.",
-      "score": 94,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 88,
-        "accessibility": 100,
-        "freshness": 96
-      },
-      "discoveredVia": "https://luma.com/discover/sf",
-      "checkedAt": "2026-08-22T23:10:37.112Z"
     },
     {
       "id": "company-in-a-day",
@@ -510,42 +511,6 @@
       "checkedAt": "2026-08-22T23:12:05.005Z"
     },
     {
-      "id": "agentnativebuildershackathon",
-      "url": "https://luma.com/agentnativebuildershackathon",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Agent Native Builders Hackathon @ Cloudflare HQ",
-      "organizer": "Immersive Commons",
-      "venue": "Cloudflare",
-      "city": "San Francisco",
-      "area": "SF",
-      "start": "2026-08-26T09:00:00-07:00",
-      "end": "2026-08-27T20:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 26",
-      "dateDetail": "Wed–Thu · 2 days",
-      "timeUnverified": false,
-      "status": "Approval",
-      "prize": "$500 cash",
-      "tags": [
-        "AI",
-        "Agents"
-      ],
-      "going": null,
-      "why": "2-day build with demos, team formation; $500 cash.",
-      "score": 89,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 85,
-        "accessibility": 82,
-        "freshness": 92
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-22T23:11:47.007Z"
-    },
-    {
       "id": "beta-khbp",
       "url": "https://luma.com/beta-khbp",
       "platform": "luma",
@@ -568,7 +533,7 @@
         "AI",
         "Agents"
       ],
-      "going": 150,
+      "going": 151,
       "why": "8-hour build with demos, team formation; prizes listed.",
       "score": 89,
       "confidence": 94,
@@ -759,6 +724,41 @@
       "checkedAt": "2026-08-22T23:12:04.794Z"
     },
     {
+      "id": "roastpr",
+      "url": "https://luma.com/roastpr",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "ROAST MY PR - Win a Mac Mini!",
+      "organizer": "WeMakeDevs",
+      "venue": "GitHub",
+      "city": "San Francisco",
+      "area": "SF",
+      "start": "2026-08-26T17:00:00-07:00",
+      "end": "2026-08-26T21:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 26",
+      "dateDetail": "Wed · 5pm–9pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Prizes listed",
+      "tags": [
+        "AI"
+      ],
+      "going": 443,
+      "why": "4-hour build with a submission deadline; prizes listed.",
+      "score": 87,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 63,
+        "accessibility": 100,
+        "freshness": 92
+      },
+      "discoveredVia": "https://luma.com/discover/sf",
+      "checkedAt": "2026-08-22T23:47:54.183Z"
+    },
+    {
       "id": "clickh-sie8",
       "url": "https://luma.com/clickh-sie8",
       "platform": "luma",
@@ -780,7 +780,7 @@
       "tags": [
         "AI"
       ],
-      "going": 363,
+      "going": 362,
       "why": "10-hour build with judging, demos, team formation, a submission deadline; $500 cash.",
       "score": 87,
       "confidence": 94,
@@ -866,42 +866,6 @@
       },
       "discoveredVia": "https://luma.com/frontiertower",
       "checkedAt": "2026-08-22T23:11:23.528Z"
-    },
-    {
-      "id": "zero-downtime",
-      "url": "https://luma.com/zero-downtime",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Zero Downtime Hackathon | Win an NVIDIA DGX Spark AI Supercomputer",
-      "organizer": "Bright Data",
-      "venue": "Bright Data",
-      "city": "San Francisco",
-      "area": "SF",
-      "start": "2026-08-22T09:00:00-07:00",
-      "end": "2026-08-22T18:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 22",
-      "dateDetail": "Sat · 9am–6pm",
-      "timeUnverified": false,
-      "status": "Waitlist",
-      "prize": "$50 prizes",
-      "tags": [
-        "AI",
-        "Data"
-      ],
-      "going": 435,
-      "why": "9-hour build with judging, demos, a submission deadline; $50 prizes.",
-      "score": 86,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 93,
-        "accessibility": 53,
-        "freshness": 96
-      },
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "checkedAt": "2026-08-22T23:11:08.032Z"
     },
     {
       "id": "openmodelhack",
@@ -1009,6 +973,41 @@
       },
       "discoveredVia": "https://luma.com/sf-builders-collective",
       "checkedAt": "2026-08-22T23:11:53.574Z"
+    },
+    {
+      "id": "mistral-summer-vibe-hackathon-sf",
+      "url": "https://luma.com/mistral-summer-vibe-hackathon-sf",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Mistral Vibe Hackathon",
+      "organizer": "Mistral Events",
+      "venue": null,
+      "city": "San Francisco",
+      "area": "SF",
+      "start": "2026-08-22T08:30:00-07:00",
+      "end": "2026-08-22T20:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 22",
+      "dateDetail": "Sat · 8:30am–8pm",
+      "timeUnverified": false,
+      "status": "Waitlist",
+      "prize": "$3,000 prizes",
+      "tags": [
+        "AI"
+      ],
+      "going": 300,
+      "why": "12-hour build with judging, team formation; $3,000 prizes.",
+      "score": 85,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 88,
+        "accessibility": 53,
+        "freshness": 96
+      },
+      "discoveredVia": "https://luma.com/discover/sf",
+      "checkedAt": "2026-08-22T23:10:37.112Z"
     },
     {
       "id": "rklrsomo",
@@ -1221,6 +1220,42 @@
       "checkedAt": "2026-08-22T23:11:53.818Z"
     },
     {
+      "id": "agentnativebuildershackathon",
+      "url": "https://luma.com/agentnativebuildershackathon",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Agent Native Builders Hackathon @ Cloudflare HQ",
+      "organizer": "Immersive Commons",
+      "venue": "Cloudflare",
+      "city": "San Francisco",
+      "area": "SF",
+      "start": "2026-08-26T09:00:00-07:00",
+      "end": "2026-08-27T20:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 26",
+      "dateDetail": "Wed–Thu · 2 days",
+      "timeUnverified": false,
+      "status": "Waitlist",
+      "prize": "$500 cash",
+      "tags": [
+        "AI",
+        "Agents"
+      ],
+      "going": 0,
+      "why": "2-day build with demos, team formation; $500 cash.",
+      "score": 83,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 85,
+        "accessibility": 53,
+        "freshness": 92
+      },
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "checkedAt": "2026-08-22T23:11:47.007Z"
+    },
+    {
       "id": "e9z9vuxz",
       "url": "https://luma.com/e9z9vuxz",
       "platform": "luma",
@@ -1254,6 +1289,39 @@
       },
       "discoveredVia": "https://luma.com/hackathon_collections",
       "checkedAt": "2026-08-22T23:11:04.852Z"
+    },
+    {
+      "id": "99857qk9",
+      "url": "https://luma.com/99857qk9",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Showerhacks",
+      "organizer": "Showerhacks",
+      "venue": "Entrepreneurs First",
+      "city": "San Francisco",
+      "area": "SF",
+      "start": "2026-09-26T10:00:00-07:00",
+      "end": "2026-09-26T23:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 26",
+      "dateDetail": "Sat · 10am–11pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [],
+      "going": 120,
+      "why": "13-hour build with team formation.",
+      "score": 82,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 65,
+        "accessibility": 100,
+        "freshness": 55
+      },
+      "discoveredVia": "https://luma.com/99857qk9",
+      "checkedAt": "2026-08-22T23:12:12.454Z"
     },
     {
       "id": "7ndhdy7n",
@@ -1466,37 +1534,74 @@
       "checkedAt": "2026-08-22T21:14:30.109Z"
     },
     {
-      "id": "99857qk9",
-      "url": "https://luma.com/99857qk9",
+      "id": "spp2",
+      "url": "https://luma.com/spp2",
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Showerhacks",
-      "organizer": "Showerhacks",
-      "venue": "Entrepreneurs First",
+      "title": "Side-Project Party II",
+      "organizer": "jazz.tools events",
+      "venue": null,
       "city": "San Francisco",
       "area": "SF",
-      "start": "2026-09-26T10:00:00-07:00",
-      "end": "2026-09-26T23:00:00-07:00",
+      "start": "2026-08-27T16:00:00-07:00",
+      "end": "2026-08-27T21:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 26",
-      "dateDetail": "Sat · 10am–11pm",
+      "dateLabel": "AUG 27",
+      "dateDetail": "Thu · 4pm–9pm",
       "timeUnverified": false,
-      "status": "Check page",
+      "status": "Approval",
       "prize": "Not listed",
-      "tags": [],
-      "going": null,
-      "why": "13-hour build with team formation.",
-      "score": 76,
-      "confidence": 94,
+      "tags": [
+        "Tech"
+      ],
+      "going": 54,
+      "why": "5-hour build.",
+      "score": 75,
+      "confidence": 78,
       "scores": {
-        "confidence": 94,
-        "builderValue": 65,
-        "accessibility": 68,
-        "freshness": 55
+        "confidence": 78,
+        "builderValue": 55,
+        "accessibility": 82,
+        "freshness": 92
       },
-      "discoveredVia": "https://luma.com/99857qk9",
-      "checkedAt": "2026-08-22T23:12:12.454Z"
+      "discoveredVia": "https://luma.com/discover/sf",
+      "checkedAt": "2026-08-22T23:47:58.906Z"
+    },
+    {
+      "id": "0nkmbhav",
+      "url": "https://luma.com/0nkmbhav",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "August Tech Rooftop Mixer",
+      "organizer": "Founders & Friends",
+      "venue": null,
+      "city": "San Francisco",
+      "area": "SF",
+      "start": "2026-08-28T18:00:00-07:00",
+      "end": "2026-08-28T21:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 28",
+      "dateDetail": "Fri · 6pm–9pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "Not listed",
+      "tags": [
+        "Tech"
+      ],
+      "going": 296,
+      "why": "3-hour build.",
+      "score": 75,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 55,
+        "accessibility": 82,
+        "freshness": 92
+      },
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "checkedAt": "2026-08-22T23:47:58.164Z"
     },
     {
       "id": "AIHardware",
@@ -1530,6 +1635,146 @@
       },
       "discoveredVia": "https://luma.com/AIHardware",
       "checkedAt": "2026-08-22T23:12:14.555Z"
+    },
+    {
+      "id": "weared-ek8q",
+      "url": "https://luma.com/weared-ek8q",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "WeAreDevelopers Day - Chili con Coding",
+      "organizer": "WeAreDevelopers",
+      "venue": "135 Main St",
+      "city": "San Francisco",
+      "area": "SF",
+      "start": "2026-08-24T17:00:00-07:00",
+      "end": "2026-08-24T21:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 24",
+      "dateDetail": "Mon · 5pm–9pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "Tech"
+      ],
+      "going": 150,
+      "why": "4-hour build with team formation.",
+      "score": 72,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 55,
+        "accessibility": 100,
+        "freshness": 92
+      },
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "checkedAt": "2026-08-22T23:47:56.814Z"
+    },
+    {
+      "id": "3bd9nnuh",
+      "url": "https://luma.com/3bd9nnuh",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Majulah Abroad (SF): A Student Panel + Mixer on Navigating Life & Career Overseas",
+      "organizer": "Majulah Abroad",
+      "venue": null,
+      "city": "San Francisco",
+      "area": "SF",
+      "start": "2026-08-27T18:30:00-07:00",
+      "end": "2026-08-27T20:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 27",
+      "dateDetail": "Thu · 6:30pm–8:30pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "Not listed",
+      "tags": [
+        "Tech"
+      ],
+      "going": 75,
+      "why": "2-hour build.",
+      "score": 70,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 61,
+        "accessibility": 82,
+        "freshness": 92
+      },
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "checkedAt": "2026-08-22T23:47:58.433Z"
+    },
+    {
+      "id": "llamalounge26",
+      "url": "https://luma.com/llamalounge26",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Llama Lounge 26: The AI Startup Event Series @ Microsoft",
+      "organizer": "Llama Lounge: The AI Startup Series",
+      "venue": "Microsoft",
+      "city": "Mountain View",
+      "area": "South Bay",
+      "start": "2026-09-10T17:00:00-07:00",
+      "end": "2026-09-10T20:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 10",
+      "dateDetail": "Thu · 5pm–8:30pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "Not listed",
+      "tags": [
+        "AI"
+      ],
+      "going": 488,
+      "why": "4-hour build with demos, team formation.",
+      "score": 70,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 55,
+        "accessibility": 74,
+        "freshness": 70
+      },
+      "discoveredVia": "https://luma.com/discover/sf",
+      "checkedAt": "2026-08-22T23:47:58.646Z"
+    },
+    {
+      "id": "3x24sk2k",
+      "url": "https://luma.com/3x24sk2k",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Tech Makers Goes West - Robotics and Beyond Pitch Night and Drinks",
+      "organizer": "Tech Makers",
+      "venue": null,
+      "city": "San Francisco",
+      "area": "SF",
+      "start": "2026-08-28T17:30:00-07:00",
+      "end": "2026-08-28T20:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 28",
+      "dateDetail": "Fri · 5:30pm–8:30pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "Not listed",
+      "tags": [
+        "Tech"
+      ],
+      "going": 25,
+      "why": "3-hour build with demos.",
+      "score": 69,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 55,
+        "accessibility": 82,
+        "freshness": 92
+      },
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "checkedAt": "2026-08-22T23:47:57.891Z"
     },
     {
       "id": "external-futureforge-hacks-devpost-com--d3eb7a35",
@@ -1757,7 +2002,7 @@
       "tags": [
         "AI"
       ],
-      "going": 357,
+      "going": 358,
       "why": "3-hour build with demos, team formation; prizes listed.",
       "score": 87,
       "confidence": 94,

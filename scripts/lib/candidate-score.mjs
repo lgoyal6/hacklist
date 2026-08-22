@@ -53,6 +53,17 @@ export function buildPatterns(config) {
     build: /\b(build|prototype|ship|demo|project|team up|submission)\b/i,
     competition:
       /\b(prize|prizes|judg(?:e|es|ing)|winner|leaderboard|award|bounty|track)\b/i,
+    // Two different jobs, and conflating them cost a real event. The confidence
+    // penalty uses the short list, because these words in a name mean the event
+    // is that format: "AI Infra Summit" is a summit. The long list below is a
+    // format gate a caller applies separately, and it is deliberately broad
+    // enough to include ordinary words -- which is why it must not drive the
+    // score. "The Next Interface Hackathon: Rethink how we talk to AI" was
+    // penalised 30 points for the verb "talk" and released from the board at 48
+    // against a bar of 54, while the sweep scored the same page 78 because it
+    // only ever applied the short list to the score.
+    negative:
+      /\b(meetup|happy hour|fireside|conference|screening|dinner|networking|workshop)\b/i,
     negativeTitle:
       /\b(meet[-\s]?ups?|conference|summit|webinar|expo|mixer|happy hour|fireside|panel|screening|dinner|networking|workshop|office hours|pitch night|demo night|launch party|party|social|talk|talks|showcase|open house|salons?|series|roundtable|symposium|forum|town hall|book club|concert|film)\b/i,
   };
@@ -84,7 +95,7 @@ export function scoreCandidate(title, evidence, patterns) {
     patterns.candidate.test(combined) || patterns.titleFormat.test(title ?? "");
   const builds = patterns.build.test(combined);
   const competes = patterns.competition.test(combined);
-  const negative = patterns.negativeTitle.test(title);
+  const negative = (patterns.negative ?? patterns.negativeTitle).test(title);
   const local = patterns.place.test(combined);
 
   let confidence = direct ? 62 : 20;
