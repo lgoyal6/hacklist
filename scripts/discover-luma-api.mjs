@@ -33,6 +33,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { createPacer, fetchPage } from "./lib/page-http.mjs";
 import {
   buildPatterns,
   localCitySet,
@@ -57,6 +58,8 @@ const FETCH_TIMEOUT_MS = Number(process.env.LUMA_API_TIMEOUT_MS ?? 20_000);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const patterns = buildPatterns(config);
+// Luma answers a rate limit with a 200 and no content, so pace the page reads.
+const paceLuma = createPacer(Number(process.env.LUMA_HTTP_INTERVAL_MS ?? 250));
 const localCities = localCitySet(config);
 
 async function getJson(path, params) {
@@ -302,58 +305,6 @@ for (const record of byUrl.values()) {
 // calendar slug to its api_id, /calendar/get-items lists what is on it, and an
 // event page's own JSON-LD carries the description the title cannot supply. No
 // browser is involved, so a rendering failure cannot hide an event.
-const LD_JSON = /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi;
-
-async function getText(url) {
-  const response = await fetch(url, {
-    headers: { "user-agent": UA, accept: "text/html" },
-    signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
-  });
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  return response.text();
-}
-
-/**
- * The page's visible text, which is what the crawl actually scores.
- *
- * Not the same thing as the JSON-LD description: Luma's structured description
- * is a shortened rendition, and "Himalaya Robotics Hack" says "hackathon" ten
- * times on the page and not once in its JSON-LD. Scoring the structured field
- * alone put it at 52 against a threshold of 54 -- the event was rejected over
- * text that was right there in the response.
- */
-function visibleText(html) {
-  return html
-    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, " ")
-    .replace(/<[^>]+>/g, "\n")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&#x27;|&apos;/g, "'")
-    .replace(/&quot;/g, '"')
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/[ \t]+/g, " ")
-    .replace(/\n{2,}/g, "\n")
-    .trim();
-}
-
-/** The Event object out of a Luma event page's JSON-LD, or null. */
-function eventFromHtml(html) {
-  for (const [, block] of html.matchAll(LD_JSON)) {
-    let parsed;
-    try {
-      parsed = JSON.parse(block);
-    } catch {
-      continue; // malformed block; the page may carry more than one
-    }
-    const types = Array.isArray(parsed?.["@type"])
-      ? parsed["@type"]
-      : [parsed?.["@type"]];
-    if (types.includes("Event")) return parsed;
-  }
-  return null;
-}
-
 /** Luma calendar slugs worth enumerating: the configured seeds plus the feed's. */
 function calendarSlugsToRead() {
   const slugs = new Set(calendarSeeds);
@@ -407,25 +358,22 @@ for (const slug of calendarSlugsToRead().slice(
     const endMs = Date.parse(event.end_at || event.start_at || "");
     if (Number.isFinite(endMs) && endMs < now) continue;
 
-    let structured;
-    let pageText = "";
+    // The same reader the sweep uses for Luma pages, so an event found here is
+    // scored against the same text it would have been scored against there.
+    let page;
     try {
-      const html = await getText(url);
-      structured = eventFromHtml(html);
-      pageText = visibleText(html);
+      await paceLuma();
+      page = await fetchPage(url, { timeoutMs: FETCH_TIMEOUT_MS });
       calendarPass.pagesRead += 1;
     } catch (error) {
       calendarPass.problems.push({ url, error: String(error).slice(0, 120) });
       continue;
     }
+    const structured = page.structuredEvents[0] ?? null;
+    const pageText = page.bodyText;
     if (!structured) continue;
 
-    const address = structured.location?.address;
-    const location = {
-      name: structured.location?.name ?? null,
-      city: (typeof address === "object" && address?.addressLocality) || null,
-      region: (typeof address === "object" && address?.addressRegion) || null,
-    };
+    const location = structured.location ?? { name: null, city: null, region: null };
     // Same locality rule as everywhere else, and for the same reason: a
     // description that name-drops the Bay Area is not an address.
     if (namesNonLocalRegion(location)) continue;
@@ -472,10 +420,7 @@ for (const slug of calendarSlugsToRead().slice(
         timeSource: "luma-calendar-items",
         organizers: entry.calendar?.name ? [entry.calendar.name] : [],
         location,
-        offerAvailability:
-          (Array.isArray(structured.offers) ? structured.offers : [structured.offers])
-            .map((offer) => offer?.availability)
-            .find(Boolean) ?? null,
+        offerAvailability: structured.offerAvailability ?? null,
         going: typeof entry.guest_count === "number" ? entry.guest_count : null,
       },
     });

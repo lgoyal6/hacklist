@@ -4,7 +4,12 @@ import { fileURLToPath } from "node:url";
 import { lightpanda } from "@lightpanda/browser";
 import { chromium } from "playwright-core";
 
-import { namesNonLocalRegion } from "./lib/candidate-score.mjs";
+import {
+  buildPatterns,
+  namesHackathonFormat,
+  namesNonLocalRegion,
+} from "./lib/candidate-score.mjs";
+import { createPacer, fetchPage, isThrottled } from "./lib/page-http.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
@@ -13,17 +18,14 @@ const config = JSON.parse(
 
 const escapePattern = (value) =>
   value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const vocabularyPattern = new RegExp(
-  `\\b(${config.candidateTerms.map(escapePattern).join("|")})\\b`,
-  "i",
-);
-// Organisers invent a new "-a-thon" every week (dog-a-thon, make-a-thon,
-// print-a-thon), so match the shape rather than trying to list them. The
-// separator before "a" is required so this does not fire on "marathon".
-const athonPattern = /\b[a-z]{3,}[-\s]a[-\s]?thon\b/i;
-const candidatePattern = {
-  test: (text) => vocabularyPattern.test(text) || athonPattern.test(text),
-};
+// One definition of "this names a hackathon", shared with every other pass.
+// These used to be separate regexes that had drifted apart -- this one required
+// word boundaries and the shared one did not -- so the same page scored 52 here
+// and 94 in the API pass, and whether an event reached the board depended on
+// which pass happened to find it.
+const patterns = buildPatterns(config);
+const candidatePattern = patterns.candidate;
+const namesFormat = (text) => namesHackathonFormat(text, patterns);
 const buildPattern =
   /\b(build|ship|prototype|code|hack|create|make|implement|develop)\w*\b/i;
 const competitionPattern =
@@ -35,6 +37,19 @@ const negativePattern =
 // "AI Infra Summit Hackathon" survives while "MITAI Conference" does not.
 const negativeTitlePattern =
   /\b(meet[-\s]?ups?|conference|summit|webinar|expo|mixer|happy hour|fireside|panel|screening|dinner|networking|workshop|office hours|pitch night|demo night|launch party|party|social|talk|talks|showcase|open house|salons?|series|roundtable|symposium|forum|town hall|book club|concert|film)\b/i;
+// The confidence a candidate needs to be published, and the band below it that
+// gets recorded instead of dropped. A local, build-shaped event that lands just
+// under the bar is the most expensive thing this sweep can do silently: the
+// Himalaya Robotics hackathon scored 52 against the bar of 54 and vanished
+// leaving no candidate, no held entry and no log line, which is why finding it
+// took a debugging session rather than a glance at the review queue.
+const CONFIDENCE_BAR = 54;
+// Scores are quantised (20, 36, 52 ...), so this floor keeps the events that
+// missed on exactly one signal and drops the ones that missed on two. The first
+// sweep with this instrumentation recorded 30 of each, and only the 52s were
+// worth reading.
+const NEAR_MISS_FLOOR = 45;
+
 const locationPattern = new RegExp(
   `\\b(${config.placeTerms.map(escapePattern).join("|")})\\b`,
   "i",
@@ -119,7 +134,7 @@ function structuredEvidence(event) {
 
 function scorePage(title, text) {
   const combined = `${title}\n${text}`;
-  const direct = candidatePattern.test(combined);
+  const direct = candidatePattern.test(combined) || patterns.titleFormat.test(title);
   const builds = buildPattern.test(combined);
   const competes = competitionPattern.test(combined);
   const negative = negativePattern.test(title);
@@ -302,7 +317,7 @@ try {
   // whatever budget is left over.
   personalizedSeeds = (personalized.urls ?? []).map((entry) => ({
     url: entry.url,
-    promising: candidatePattern.test(
+    promising: namesFormat(
       `${entry.text ?? ""} ${entry.url.replace(/[^a-z0-9]+/gi, " ")}`,
     ),
   }));
@@ -435,9 +450,49 @@ const queue = [
 const visited = new Set();
 const candidates = new Map();
 const review = new Map();
+const nearMisses = new Map();
 const errors = [];
 let structuredEventsFound = 0;
 let externalPagesVisited = 0;
+let pagesReadOverHttp = 0;
+let httpFailures = 0;
+let httpThrottled = 0;
+// Luma answers a rate limit with a 200, so the only defence is not to earn one.
+const paceLuma = createPacer(
+  Number(process.env.LUMA_HTTP_INTERVAL_MS ?? 250),
+);
+
+/**
+ * A local, build-shaped event that scored just under the bar.
+ *
+ * These used to disappear without trace: no candidate, no held entry, no log
+ * line, nothing to distinguish "we looked and it was not a hackathon" from "we
+ * looked and got two points short". Recording them makes the sweep say which
+ * signal it failed to find, so the next miss is a glance at review-queue.json
+ * rather than an investigation.
+ */
+function recordNearMiss({ url, title, readFrom, via, score }) {
+  const existing = nearMisses.get(url);
+  if (existing && existing.confidence >= score.confidence) return;
+  nearMisses.set(url, {
+    url,
+    title,
+    readFrom,
+    via,
+    confidence: score.confidence,
+    relevance: score.relevance,
+    short: CONFIDENCE_BAR - score.confidence,
+    // Naming what was absent is the point: a hackathon whose page never uses a
+    // word in candidateTerms fails on exactly one signal, and that is a
+    // vocabulary gap rather than a judgement about the event.
+    missing: [
+      score.signals.directHackathonTerm ? null : "no term from candidateTerms",
+      score.signals.buildEvidence ? null : "no build language",
+      score.signals.competitionEvidence ? null : "no prize, judging or submission language",
+      score.signals.negativeTitleEvidence ? "title names a non-hackathon format" : null,
+    ].filter(Boolean),
+  });
+}
 
 function recordCandidate(candidate) {
   const titleKey = eventKey(candidate.title);
@@ -495,20 +550,68 @@ try {
     try {
       // Curated boards are client-rendered apps; they need real settle time
       // before their event links exist in the DOM.
-      const result = await extractPage(
-        page,
-        url,
-        needsSlowRender(url) || current.spa
-          ? { settleMs: 3_500, timeoutMs: 25_000, scrollPasses: 6 }
-          : isBrowseSurface(url)
-            ? { settleMs: 1_200, timeoutMs: 20_000, scrollPasses: 6 }
-            : {},
-      );
+      // Luma serves a complete document to a plain GET: same visible text, same
+      // anchors, same JSON-LD as the browser produces, in a third of the time
+      // (measured over 12 pages: 161-740ms against 850-1540ms). The browser adds
+      // nothing here and the sweep is short of page budget, not of correctness,
+      // so Luma pages are read over HTTP and the browser keeps the surfaces that
+      // genuinely need script execution -- the scroll-loaded browse and calendar
+      // listings, and the client-rendered boards. A failure falls back rather
+      // than losing the page.
+      let result = null;
+      if (
+        isLumaUrl(url) &&
+        !isBrowseSurface(url) &&
+        !needsSlowRender(url) &&
+        !current.spa
+      ) {
+        try {
+          await paceLuma();
+          result = await fetchPage(url, { timeoutMs: 15_000 });
+          pagesReadOverHttp += 1;
+        } catch (error) {
+          // Count every failure, not just the disguised ones. Counting only the
+          // 200-with-a-rate-limit-page meant a sweep where a third of reads got
+          // an honest 429 still reported "0 refusals" and looked healthy while
+          // it collapsed from 47 candidates to 17.
+          httpFailures += 1;
+          if (isThrottled(error)) {
+            httpThrottled += 1;
+            paceLuma.backOff();
+          }
+          result = null; // fall back to the browser below
+        }
+      }
+      if (!result) {
+        result = await extractPage(
+          page,
+          url,
+          needsSlowRender(url) || current.spa
+            ? { settleMs: 3_500, timeoutMs: 25_000, scrollPasses: 6 }
+            : isBrowseSurface(url)
+              ? { settleMs: 1_200, timeoutMs: 20_000, scrollPasses: 6 }
+              : {},
+        );
+      }
       const title = result.title.replace(/\s*[·|]\s*Luma\s*$/i, "").trim();
       const score = scorePage(title, result.bodyText);
-      const isPastEvent = /\bPast Event\b|ended \d+ days ago|\b\d+ Went\b/i.test(
-        result.bodyText.slice(0, 1100),
-      );
+      // A page's own JSON-LD is a better statement of when it happened than the
+      // words on it, and it has to be consulted here rather than only in the
+      // structured loop below. That loop skips a past event -- correctly -- but
+      // the page-level record has already been kept by then, and it carries no
+      // date, so the event is published as "TBC" instead of being dropped. That
+      // is how a hackathon that ran in March was still on an August board.
+      const ownStructuredEvent =
+        result.structuredEvents.find(
+          (event) => canonicalize(event.url, url, true) === url,
+        ) ?? null;
+      const ownEnd = ownStructuredEvent
+        ? Date.parse(ownStructuredEvent.endDate || ownStructuredEvent.startDate || "")
+        : Number.NaN;
+      const isPastEvent =
+        /\bPast Event\b|ended \d+ days ago|\b\d+ Went\b/i.test(
+          result.bodyText.slice(0, 1100),
+        ) || (Number.isFinite(ownEnd) && ownEnd < Date.now());
       const featuredPlace = result.bodyText
         .slice(0, 700)
         .match(/Featured in\s+([^\n]+)/i)?.[1];
@@ -525,13 +628,13 @@ try {
       const looksLikeProfile = new URL(url).pathname.startsWith("/user/");
       // A hackathon term in the title is the strongest single signal, because
       // body text routinely mentions other events' hackathons.
-      const directTitleTerm = candidatePattern.test(title);
+      const directTitleTerm = namesFormat(title);
       const formatMismatch =
         negativeTitlePattern.test(title) && !directTitleTerm;
       const weakCompetition =
         !score.signals.competitionEvidence && !directTitleTerm;
       const baseQualifies =
-        score.confidence >= 54 &&
+        score.confidence >= CONFIDENCE_BAR &&
         localHeaderEvidence &&
         !looksLikeCollection &&
         !looksLikeProfile &&
@@ -566,6 +669,17 @@ try {
           : "no competition or submission evidence";
         recordCandidate(adjacent);
         review.set(url, adjacent);
+      } else if (
+        localHeaderEvidence &&
+        !looksLikeCollection &&
+        !looksLikeProfile &&
+        !isIndexSource &&
+        !isPastEvent &&
+        score.confidence >= NEAR_MISS_FLOOR
+      ) {
+        // Local and plausible, but under the bar: the only path that used to
+        // drop a page in total silence.
+        recordNearMiss({ url, title, readFrom: "page", via: current.via, score });
       }
 
       const sourceLocal = locationPattern.test(
@@ -632,10 +746,23 @@ try {
         }
 
         if (
-          structuredScore.confidence < 54 ||
+          structuredScore.confidence < CONFIDENCE_BAR ||
           !structuredLocal ||
           isPastStructuredEvent
         ) {
+          if (
+            structuredLocal &&
+            !isPastStructuredEvent &&
+            structuredScore.confidence >= NEAR_MISS_FLOOR
+          ) {
+            recordNearMiss({
+              url: eventUrl,
+              title: structuredEvent.name,
+              readFrom: "listing",
+              via: url,
+              score: structuredScore,
+            });
+          }
           continue;
         }
         // Structured listings get the same format gate as visited pages;
@@ -651,9 +778,7 @@ try {
           structuredEvent,
           checkedAt: new Date().toISOString(),
         };
-        const structuredDirectTitleTerm = candidatePattern.test(
-          structuredEvent.name,
-        );
+        const structuredDirectTitleTerm = namesFormat(structuredEvent.name);
         if (
           negativeTitlePattern.test(structuredEvent.name) &&
           !structuredDirectTitleTerm
@@ -700,7 +825,8 @@ try {
       if (current.depth >= config.maxGraphDepth) continue;
       if (!isLumaUrl(url) && !isIndexSource) continue;
       for (const link of result.links) {
-        const directCandidateLink = candidatePattern.test(link.text);
+        // A card's link text is its name, so it gets the name vocabulary.
+        const directCandidateLink = namesFormat(link.text);
         // Index sources are followed for their Luma links only. Crawling a
         // board's own client-rendered event pages costs ~25s each and blew the
         // sweep past its CI budget for one extra event, so those are left to a
@@ -772,10 +898,15 @@ const output = {
     linkedinSeeds: linkedinSeeds.length,
     linkedinPromising: linkedinSeeds.filter((e) => e.promising).length,
     pagesVisited: visited.size,
+    pagesReadOverHttp,
+    httpFailures,
+    httpThrottled,
+    httpPacingMs: paceLuma.interval(),
     externalPagesVisited,
     structuredEventsFound,
     candidatesFound: candidates.size,
     heldForReview: review.size,
+    nearMisses: nearMisses.size,
     stoppedOnTimeBudget: stoppedOnTime,
     queueRemaining: queue.length,
     completedAt: new Date().toISOString(),
@@ -798,6 +929,11 @@ await writeFile(
     {
       sweepCompletedAt: output.sweep.completedAt,
       note: "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
+      nearMissNote:
+        `Local events that scored under the ${CONFIDENCE_BAR} confidence bar rather than ` +
+        "failing a format check, with the signal each one lacked. A page whose only " +
+        "missing signal is a candidateTerms match is usually a hackathon this " +
+        "vocabulary has no word for.",
       held: [...review.values()]
         // A page that qualified through any path is published, not held.
         .filter(
@@ -814,6 +950,16 @@ await writeFile(
           relevance,
           confidence,
         })),
+      // Closest first: the smallest gap is the likeliest real miss.
+      nearMisses: [...nearMisses.values()]
+        .filter(
+          (entry) =>
+            ![...candidates.values()].some(
+              (candidate) => candidate.url === entry.url,
+            ),
+        )
+        .sort((a, b) => a.short - b.short || b.relevance - a.relevance)
+        .slice(0, 60),
     },
     null,
     2,
@@ -822,8 +968,39 @@ await writeFile(
 
 console.log(
   `SF sweep complete: ${output.sweep.pagesVisited} pages, ` +
-    `${output.sweep.candidatesFound} candidates, ${review.size} held for review.`,
+    `${output.sweep.candidatesFound} candidates, ${review.size} held for review, ` +
+    `${nearMisses.size} near miss(es), ${pagesReadOverHttp} read over HTTP` +
+    (httpFailures ? `, ${httpFailures} HTTP failure(s)` : "") +
+    (httpThrottled ? ` (${httpThrottled} throttled)` : "") +
+    `.`,
 );
+// A sweep run while throttled is not a sweep, it is a smaller board with no
+// error to show for it. Say so loudly enough that its output is not trusted.
+if (httpThrottled > 0) {
+  console.warn(
+    `Luma throttled ${httpThrottled} read(s); pacing ended at ` +
+      `${paceLuma.interval()}ms. Coverage this sweep is degraded and its ` +
+      "candidate count is not comparable to an unthrottled run. Wait for the " +
+      "limit to clear before trusting this output, or raise " +
+      "LUMA_HTTP_INTERVAL_MS.",
+  );
+}
+// Printed rather than merely written, because the whole point is that these
+// stop being invisible. The closest few are the ones worth a human's glance.
+for (const entry of [...nearMisses.values()]
+  .filter(
+    (near) =>
+      ![...candidates.values()].some(
+        (candidate) => candidate.url === near.url,
+      ),
+  )
+  .sort((a, b) => a.short - b.short)
+  .slice(0, 5)) {
+  console.log(
+    `  near miss (${entry.confidence}, ${entry.short} short, from ${entry.readFrom}): ` +
+      `"${entry.title.slice(0, 48)}" — ${entry.missing.join("; ")}`,
+  );
+}
 if (stoppedOnTime) {
   console.warn(
     `Stopped on the ${config.maxSweepMinutes ?? 12}-minute time budget with ` +

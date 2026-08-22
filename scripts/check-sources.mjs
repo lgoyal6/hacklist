@@ -168,6 +168,16 @@ if (discovery.__missing) {
   if ((discovery.sweep?.candidatesFound ?? 0) === 0) {
     failures.push("sweep: zero candidates from a full crawl");
   }
+  // A throttled sweep is the quiet failure this file exists to catch: it exits
+  // 0, writes a well-formed file, and reports a smaller board with no error. One
+  // such run fell from 47 candidates to 17 while every counter looked fine.
+  const throttled = discovery.sweep?.httpThrottled ?? 0;
+  if (throttled > 0) {
+    failures.push(
+      `sweep: ${throttled} page read(s) were rate-limited, so coverage is ` +
+        "degraded and the candidate count understates what is out there",
+    );
+  }
   notes.push(
     `sweep: ${visited} pages, ${discovery.sweep?.candidatesFound ?? 0} candidates${discovery.sweep?.stoppedOnTimeBudget ? " (hit time budget)" : ""}`,
   );

@@ -11,12 +11,41 @@ export function escapeTerm(term) {
   return term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
+// Organisers invent a new "-a-thon" every week (dog-a-thon, make-a-thon,
+// print-a-thon), so match the shape rather than trying to list them. The
+// separator before "a" is required so this does not fire on "marathon".
+const ATHON = /\b[a-z]{3,}[-\s]a[-\s]?thon\b/i;
+
+// "Hack" on its own is a format word in a name -- "Himalaya Robotics Hack",
+// "Open Model Hack", "Mango Hacks" -- but not in body text, where "hack" is a
+// verb and "hacks" is a listicle. So it is matched against names only, via
+// namesHackathonFormat, and never folded into the vocabulary used on page text.
+//
+// Kept honest by measurement rather than taste: across the 949 events in Luma's
+// SF feed it admits five names the vocabulary misses, four of them real
+// hackathons (Open Model Hack, Mango Hacks, FutureForge Hacks, Recursive Self
+// Improvement Hack) and one that is not (Hack The Bot And Build Your Career).
+const STANDALONE_HACK = /\bhacks?\b/i;
+
 export function buildPatterns(config) {
+  // Word boundaries, plus an optional plural. The boundaries matter: without
+  // them "hackathonic" and any substring counts. The plural matters too --
+  // "Hackathons, all around the world" is a calendar's own description of
+  // itself, and a scorer that could not see it read a real hackathon as a
+  // 52 against a bar of 54.
+  const vocabulary = new RegExp(
+    `\\b(${config.candidateTerms.map(escapeTerm).join("|")})s?\\b`,
+    "i",
+  );
   return {
-    candidate: new RegExp(
-      `(${config.candidateTerms.map(escapeTerm).join("|")})`,
-      "i",
-    ),
+    // An object rather than a RegExp because two shapes have to agree here, and
+    // every caller only ever asks `.test()`. One definition, so a confidence of
+    // 78 means the same thing whichever pass produced it.
+    candidate: {
+      source: vocabulary.source,
+      test: (text) => vocabulary.test(text) || ATHON.test(text),
+    },
+    titleFormat: STANDALONE_HACK,
     place: new RegExp(
       `\\b(${config.placeTerms.map(escapeTerm).join("|")})\\b`,
       "i",
@@ -38,9 +67,21 @@ export function localCitySet(config) {
   );
 }
 
+/**
+ * Does this name say "hackathon", in any of the ways organisers write it?
+ *
+ * Names get a wider vocabulary than body text, because a name is a claim about
+ * the format and a passing mention is not.
+ */
+export function namesHackathonFormat(name, patterns) {
+  const text = name ?? "";
+  return patterns.candidate.test(text) || patterns.titleFormat.test(text);
+}
+
 export function scoreCandidate(title, evidence, patterns) {
   const combined = `${title}\n${evidence}`;
-  const direct = patterns.candidate.test(combined);
+  const direct =
+    patterns.candidate.test(combined) || patterns.titleFormat.test(title ?? "");
   const builds = patterns.build.test(combined);
   const competes = patterns.competition.test(combined);
   const negative = patterns.negativeTitle.test(title);
