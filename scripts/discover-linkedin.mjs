@@ -36,6 +36,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 
+import { buildPatterns } from "./lib/candidate-score.mjs";
 import { brightDataSearch } from "./lib/serp.mjs";
 
 const execFileAsync = promisify(execFile);
@@ -92,10 +93,9 @@ const LINKEDIN_EVENT = /^\/events\/[^/]+\/?$/i;
 const NON_EVENT_PATH =
   /^(discover|home|signin|signup|create|pricing|help|settings|user|explore|about|terms|privacy|sf|nyc|la|app|calendar|hackathon_collections|maps?|embed)$/i;
 
-const candidatePattern = new RegExp(
-  `(${config.candidateTerms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`,
-  "i",
-);
+// Shared with every other pass; see scripts/lib/candidate-score.mjs.
+const patterns = buildPatterns(config);
+const candidatePattern = patterns.candidate;
 
 function allQueries() {
   if (

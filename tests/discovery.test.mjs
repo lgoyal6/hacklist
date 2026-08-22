@@ -14,11 +14,20 @@ import {
   parseDevpostDates,
   recoverTimeRange,
 } from "../scripts/lib/event-dates.mjs";
+import {
+  createPacer,
+  isThrottled,
+  linksFromHtml,
+  looksLikeRefusal,
+  structuredEventsFromHtml,
+  visibleText,
+} from "../scripts/lib/page-http.mjs";
 import { brightDataSearch, linksFromSerpHtml, serpResults } from "../scripts/lib/serp.mjs";
 import { isMisconfiguration } from "../scripts/lib/source-health.mjs";
 import {
   buildPatterns,
   localCitySet,
+  namesHackathonFormat,
   namesNonLocalRegion,
   resolveCity,
   scoreCandidate,
@@ -305,6 +314,207 @@ test("no published event is placed in a city outside the configured areas", () =
       `${event.title} is placed in ${event.city}, which is not a configured local city`,
     );
   }
+});
+
+// --- one vocabulary, shared by every pass -----------------------------------
+// These were four separate regexes that had drifted: the sweep required word
+// boundaries and the shared scorer did not, so the same page scored 52 in one
+// and 94 in the other and reaching the board depended on which pass found it.
+
+test("the vocabulary matches plurals but still respects word boundaries", () => {
+  // A calendar describing itself as running "Hackathons" is the text that a
+  // boundary-only pattern could not see.
+  assert.equal(patterns.candidate.test("Hackathons, all around the world."), true);
+  assert.equal(patterns.candidate.test("a hackathon for you"), true);
+  // Boundaries still hold, which is the reason the sweep had them.
+  assert.equal(patterns.candidate.test("hackathonic nonsense"), false);
+  assert.equal(patterns.candidate.test("running a marathon"), false);
+  // The "-a-thon" shape, with its required separator.
+  assert.equal(patterns.candidate.test("AI Valley Dog-a-thon"), true);
+});
+
+test('a standalone "hack" is a format word in a name and not in prose', () => {
+  for (const name of [
+    "Himalaya Robotics Hack",
+    "Open Model Hack - Gradient x Google Deepmind",
+    "Mango Hacks",
+    "FutureForge Hacks",
+  ]) {
+    assert.equal(namesHackathonFormat(name, patterns), true, name);
+  }
+  // Not a format claim: a possessive, a compound, and a verb in body text.
+  for (const name of ["Hacker's Book Club", "Showerhacks", "HackwithSF"]) {
+    assert.equal(namesHackathonFormat(name, patterns), false, name);
+  }
+  // Body text is judged by the narrower vocabulary, so prose using "hack" as a
+  // verb cannot manufacture a hackathon.
+  assert.equal(patterns.candidate.test("you can hack on anything"), false);
+  assert.equal(patterns.candidate.test("growth hacks for founders"), false);
+});
+
+test("a hackathon named without the word scores over the publishing bar", () => {
+  // The exact regression: this page never says "hackathon", and scored 52
+  // against a bar of 54 while its own name said Hack.
+  const scored = scoreCandidate(
+    "Himalaya Robotics Hack",
+    [
+      "San Francisco, CA",
+      "Over two days, teams will tackle the real engineering problems of",
+      "extreme-conditions robotics. Prizes awarded by our judges.",
+    ].join("\n"),
+    patterns,
+  );
+  assert.equal(scored.signals.directHackathonTerm, true);
+  assert.ok(
+    scored.confidence >= 54,
+    `confidence ${scored.confidence} is still under the bar`,
+  );
+});
+
+// --- reading a Luma page without a browser ---------------------------------
+// Both the sweep and the calendar pass now read Luma over HTTP, so these two
+// gotchas are load-bearing: a page's own hydration JSON must not become
+// evidence, and an event card's title lives in an attribute rather than in text.
+
+test("script and style content is not visible text", () => {
+  const html = `<html><body>
+    <h1>Himalaya Robotics Hack</h1>
+    <script id="__NEXT_DATA__" type="application/json">
+      {"description":"a hackathon hackathon hackathon","tracking":"hackathon"}
+    </script>
+    <style>.hackathon { color: red }</style>
+    <p>Two days of robotics.</p>
+  </body></html>`;
+  const text = visibleText(html);
+  assert.match(text, /Himalaya Robotics Hack/);
+  assert.match(text, /Two days of robotics\./);
+  // __NEXT_DATA__ is a hundred kilobytes of JSON on a real Luma page and would
+  // match anything the classifier looks for.
+  assert.ok(
+    !/hackathon/i.test(text),
+    `hydration JSON leaked into visible text: ${text}`,
+  );
+});
+
+test("entities are decoded rather than left as markup", () => {
+  assert.equal(visibleText("<p>Ben &amp; Co &#39;26 &nbsp;build</p>").trim(), "Ben & Co '26 build");
+});
+
+test("an event card's title is read from aria-label when its text is blank", () => {
+  // Luma's real markup: the anchor's only child is a non-breaking space.
+  const html =
+    '<a aria-label="Agent Forge AI Hackathon Seoul" class="event-link" href="/agentforgeseoul">&nbsp;</a>' +
+    '<a href="/other">Plain text link</a>';
+  const links = linksFromHtml(html);
+  assert.deepEqual(
+    links.map((link) => [link.href, link.text]),
+    [
+      ["/agentforgeseoul", "Agent Forge AI Hackathon Seoul"],
+      ["/other", "Plain text link"],
+    ],
+  );
+});
+
+test("JSON-LD events are found through an ItemList and keep their address", () => {
+  const html = `<script type="application/ld+json">${JSON.stringify({
+    "@type": "ItemList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        item: {
+          "@type": "Event",
+          "@id": "https://luma.com/qa11srwr",
+          name: "Himalaya Robotics Hack",
+          startDate: "2026-08-29T09:00:00.000-07:00",
+          location: {
+            "@type": "Place",
+            name: "San Francisco",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "San Francisco",
+              addressRegion: "California",
+            },
+          },
+          offers: [{ "@type": "Offer", availability: "https://schema.org/InStock" }],
+        },
+      },
+    ],
+  })}</script>`;
+  const events = structuredEventsFromHtml(html);
+  assert.equal(events.length, 1);
+  assert.equal(events[0].name, "Himalaya Robotics Hack");
+  assert.equal(events[0].url, "https://luma.com/qa11srwr");
+  assert.deepEqual(events[0].location, {
+    name: "San Francisco",
+    city: "San Francisco",
+    region: "California",
+  });
+  assert.equal(events[0].offerAvailability, "https://schema.org/InStock");
+});
+
+test("a rate limit served as 200 is a failure, not an empty page", () => {
+  // Luma's real behaviour: HTTP 200, 34KB of well-formed HTML, no JSON-LD. Read
+  // as content it silently costs a page its dates, which is how four real
+  // hackathons reached the board with no start time at all.
+  assert.ok(
+    looksLikeRefusal({
+      title: "Rate Limit Hit · Luma",
+      bodyText: "Rate Limit Hit",
+      structuredEvents: [],
+    }),
+  );
+  // A challenge page whose title gives nothing away still says so in its body.
+  assert.ok(
+    looksLikeRefusal({
+      title: "Luma",
+      bodyText: "Just a moment while we verify you are human",
+      structuredEvents: [],
+    }),
+  );
+  // A real event page is never mistaken for one, even if its copy happens to
+  // mention limits.
+  assert.equal(
+    looksLikeRefusal({
+      title: "HackwithSF · Luma",
+      bodyText: "Spots are limited. Too many requests to attend.",
+      structuredEvents: [{ name: "HackwithSF" }],
+    }),
+    null,
+  );
+});
+
+test("throttling is recognised whether it is disguised or honest", () => {
+  // Both shapes are real: Luma sends a 200 with a rate-limit page under light
+  // pressure and an honest 429 under heavy pressure. Counting only the first is
+  // what let a sweep report zero refusals while a third of its reads failed.
+  assert.equal(isThrottled(new Error("refused: Rate Limit Hit · Luma")), true);
+  assert.equal(isThrottled(new Error("HTTP 429")), true);
+  assert.equal(isThrottled(new Error("HTTP 503")), true);
+  assert.equal(isThrottled(new Error("HTTP 404")), false);
+  assert.equal(isThrottled(new Error("not HTML (application/pdf)")), false);
+});
+
+test("the pacer slows down when it is told it is being throttled", () => {
+  const pace = createPacer(100, { maxIntervalMs: 800 });
+  assert.equal(pace.interval(), 100);
+  assert.equal(pace.backOff(), 200);
+  assert.equal(pace.backOff(), 400);
+  assert.equal(pace.backOff(), 800);
+  // Capped, so a bad run cannot stall the sweep entirely.
+  assert.equal(pace.backOff(), 800);
+});
+
+test("a malformed JSON-LD block does not lose a good one beside it", () => {
+  const html =
+    '<script type="application/ld+json">{ not json }</script>' +
+    `<script type="application/ld+json">${JSON.stringify({
+      "@type": "Event",
+      name: "HackwithSF",
+      url: "https://luma.com/tt7dtxvf",
+    })}</script>`;
+  const events = structuredEventsFromHtml(html);
+  assert.equal(events.length, 1);
+  assert.equal(events[0].name, "HackwithSF");
 });
 
 // --- reading a search response ---------------------------------------------

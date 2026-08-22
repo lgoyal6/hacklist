@@ -23,6 +23,10 @@ import { readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import {
+  buildPatterns,
+  namesHackathonFormat,
+} from "./lib/candidate-score.mjs";
 import { isSuspectSchedule, recoverTimeRange } from "./lib/event-dates.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -41,10 +45,10 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 function escapeTerm(term) {
   return term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
-const candidatePattern = new RegExp(
-  `(${config.candidateTerms.map(escapeTerm).join("|")})`,
-  "i",
-);
+// Shared with every other pass, so "is this a hackathon" cannot mean one thing
+// here and another in the sweep.
+const patterns = buildPatterns(config);
+const candidatePattern = patterns.candidate;
 const placePattern = new RegExp(
   `\\b(${config.placeTerms.map(escapeTerm).join("|")})\\b`,
   "i",
@@ -210,7 +214,8 @@ function buildEvidence(meetup, schedule, city, organizer) {
 
 function score(title, evidence) {
   const combined = `${title}\n${evidence}`;
-  const direct = candidatePattern.test(combined);
+  const direct =
+    candidatePattern.test(combined) || patterns.titleFormat.test(title ?? "");
   const builds = buildPattern.test(combined);
   const competes = competitionPattern.test(combined);
   const negative = negativeTitlePattern.test(title);
@@ -277,7 +282,7 @@ const listed = index.props?.events ?? [];
 const shortlist = listed.filter((event) => {
   const label = event.event_type_label ?? "";
   const looksLikeHackathon =
-    /hackathon/i.test(label) || candidatePattern.test(event.title ?? "");
+    /hackathon/i.test(label) || namesHackathonFormat(event.title, patterns);
   if (!looksLikeHackathon) return false;
   const place = `${event.city ?? ""} ${event.public_location ?? ""}`;
   return placePattern.test(place);
@@ -315,7 +320,8 @@ for (const [position, slug] of slugs.entries()) {
 
   const title = (meetup.title || meetup.friendly_name || "").trim();
   const isHackathon =
-    /hackathon/i.test(meetup.event_type ?? "") || candidatePattern.test(title);
+    /hackathon/i.test(meetup.event_type ?? "") ||
+    namesHackathonFormat(title, patterns);
   if (!isHackathon) {
     skipped.push({ slug, title, why: "not a hackathon" });
     continue;
