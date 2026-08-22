@@ -36,6 +36,7 @@ import { fileURLToPath } from "node:url";
 import {
   buildPatterns,
   localCitySet,
+  namesNonLocalRegion,
   resolveCity,
   scoreCandidate,
 } from "./lib/candidate-score.mjs";
@@ -200,6 +201,7 @@ try {
 
 const now = Date.now();
 const candidates = [];
+const claimedByPass = new Set();
 const enrichment = {};
 const calendarSeeds = new Set();
 const skipped = { past: 0, nonLocal: 0, notHackathon: 0 };
@@ -223,6 +225,15 @@ for (const record of byUrl.values()) {
       status: record.status,
       locationType: record.locationType,
     };
+  }
+
+  // A calendar hosting anything that says "hack" is a calendar worth crawling,
+  // even when the title alone cannot carry it to publication. The feed gives no
+  // page text, so "HackwithSF" scores as a non-event here -- but the crawl reads
+  // the page, and it only reads pages on calendars it knows about. Seeding on
+  // the looser signal is free: a seed is a place to look, not a claim.
+  if (!isPast && record.calendarSlug && /hack/i.test(record.title)) {
+    calendarSeeds.add(record.calendarSlug);
   }
 
   if (!isHackathon) {
@@ -277,6 +288,205 @@ for (const record of byUrl.values()) {
   });
 }
 
+// ---------------------------------------------------------------------------
+// Seeded calendars, read over plain HTTP
+// ---------------------------------------------------------------------------
+// The crawl's only way to enumerate a Luma calendar is to render its page, and
+// Lightpanda cannot render all of them: luma.com/IterateHacks times out and then
+// wedges the browser outright, so its hackathon was invisible to every pass
+// while the calendar sat in the seed list being "crawled". extractPage swallows
+// a timeout by design -- a slow page is not a dead page -- which makes that
+// failure completely silent: no candidate, no error, nothing to notice.
+//
+// Luma answers the same questions over keyless HTTP, so this asks. /url maps a
+// calendar slug to its api_id, /calendar/get-items lists what is on it, and an
+// event page's own JSON-LD carries the description the title cannot supply. No
+// browser is involved, so a rendering failure cannot hide an event.
+const LD_JSON = /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi;
+
+async function getText(url) {
+  const response = await fetch(url, {
+    headers: { "user-agent": UA, accept: "text/html" },
+    signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+  });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  return response.text();
+}
+
+/**
+ * The page's visible text, which is what the crawl actually scores.
+ *
+ * Not the same thing as the JSON-LD description: Luma's structured description
+ * is a shortened rendition, and "Himalaya Robotics Hack" says "hackathon" ten
+ * times on the page and not once in its JSON-LD. Scoring the structured field
+ * alone put it at 52 against a threshold of 54 -- the event was rejected over
+ * text that was right there in the response.
+ */
+function visibleText(html) {
+  return html
+    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, " ")
+    .replace(/<[^>]+>/g, "\n")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&#x27;|&apos;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n{2,}/g, "\n")
+    .trim();
+}
+
+/** The Event object out of a Luma event page's JSON-LD, or null. */
+function eventFromHtml(html) {
+  for (const [, block] of html.matchAll(LD_JSON)) {
+    let parsed;
+    try {
+      parsed = JSON.parse(block);
+    } catch {
+      continue; // malformed block; the page may carry more than one
+    }
+    const types = Array.isArray(parsed?.["@type"])
+      ? parsed["@type"]
+      : [parsed?.["@type"]];
+    if (types.includes("Event")) return parsed;
+  }
+  return null;
+}
+
+/** Luma calendar slugs worth enumerating: the configured seeds plus the feed's. */
+function calendarSlugsToRead() {
+  const slugs = new Set(calendarSeeds);
+  for (const seed of config.seedUrls ?? []) {
+    let parsed;
+    try {
+      parsed = new URL(seed);
+    } catch {
+      continue;
+    }
+    if (!["luma.com", "lu.ma"].includes(parsed.hostname)) continue;
+    const path = parsed.pathname.replace(/^\/+|\/+$/g, "");
+    // A single path segment is a calendar or an event; /calendar/<id> is neither
+    // a slug this endpoint takes nor something /url resolves.
+    if (path && !path.includes("/")) slugs.add(path);
+  }
+  return [...slugs];
+}
+
+const calendarPass = { calendarsRead: 0, itemsSeen: 0, pagesRead: 0, added: 0, problems: [] };
+for (const slug of calendarSlugsToRead().slice(
+  0,
+  config.lumaCalendarsPerRun ?? 24,
+)) {
+  let items = [];
+  try {
+    const resolved = await getJson("/url", { url: slug });
+    const calendarId = resolved?.data?.calendar?.api_id ?? resolved?.data?.api_id;
+    if (resolved?.kind !== "calendar" || !calendarId) continue;
+    const listing = await getJson("/calendar/get-items", {
+      calendar_api_id: calendarId,
+      pagination_limit: 50,
+      period: "future",
+    });
+    items = listing?.entries ?? [];
+    calendarPass.calendarsRead += 1;
+  } catch (error) {
+    calendarPass.problems.push({ slug, error: String(error).slice(0, 120) });
+    continue;
+  }
+
+  for (const entry of items) {
+    const event = entry.event ?? {};
+    if (!event.url || !event.name) continue;
+    calendarPass.itemsSeen += 1;
+    const url = `https://luma.com/${event.url}`;
+    if (byUrl.has(url) || sweptUrls.has(url) || claimedByPass.has(url)) continue;
+    // The same loose signal the crawl uses to decide a page is worth reading:
+    // a name that says "hack" cannot be dismissed from its title alone.
+    if (!patterns.candidate.test(event.name) && !/hack/i.test(event.name)) continue;
+    const endMs = Date.parse(event.end_at || event.start_at || "");
+    if (Number.isFinite(endMs) && endMs < now) continue;
+
+    let structured;
+    let pageText = "";
+    try {
+      const html = await getText(url);
+      structured = eventFromHtml(html);
+      pageText = visibleText(html);
+      calendarPass.pagesRead += 1;
+    } catch (error) {
+      calendarPass.problems.push({ url, error: String(error).slice(0, 120) });
+      continue;
+    }
+    if (!structured) continue;
+
+    const address = structured.location?.address;
+    const location = {
+      name: structured.location?.name ?? null,
+      city: (typeof address === "object" && address?.addressLocality) || null,
+      region: (typeof address === "object" && address?.addressRegion) || null,
+    };
+    // Same locality rule as everywhere else, and for the same reason: a
+    // description that name-drops the Bay Area is not an address.
+    if (namesNonLocalRegion(location)) continue;
+    const city = resolveCity(
+      `${location.city ?? ""}, ${location.name ?? ""}, ${location.region ?? ""}`,
+      config,
+      localCities,
+      patterns,
+    );
+    if (!city) continue;
+
+    const evidence = [
+      structured.name,
+      location.name,
+      city ? `${city}, CA` : null,
+      pageText || structured.description || null,
+    ]
+      .filter(Boolean)
+      .join("\n");
+    const scored = scoreCandidate(structured.name, evidence, patterns);
+    // The crawl's own bar for publishing a page it read. Below it the event is
+    // not dismissed, it is simply not evidence enough on its own.
+    if (scored.confidence < 54) continue;
+
+    claimedByPass.add(url);
+    calendarPass.added += 1;
+    candidates.push({
+      url,
+      title: String(structured.name).trim(),
+      category: "hackathon",
+      discoveredVia: `${API}/calendar/get-items`,
+      confidence: scored.confidence,
+      relevance: scored.relevance,
+      signals: scored.signals,
+      evidence: evidence.slice(0, 8_000),
+      checkedAt: new Date().toISOString(),
+      heldBecause: null,
+      structuredEvent: {
+        url,
+        name: structured.name,
+        description: structured.description ?? null,
+        startDate: structured.startDate ?? event.start_at ?? null,
+        endDate: structured.endDate ?? event.end_at ?? null,
+        timeSource: "luma-calendar-items",
+        organizers: entry.calendar?.name ? [entry.calendar.name] : [],
+        location,
+        offerAvailability:
+          (Array.isArray(structured.offers) ? structured.offers : [structured.offers])
+            .map((offer) => offer?.availability)
+            .find(Boolean) ?? null,
+        going: typeof entry.guest_count === "number" ? entry.guest_count : null,
+      },
+    });
+  }
+}
+console.log(
+  `  Calendar pass: ${calendarPass.calendarsRead} calendar(s), ` +
+    `${calendarPass.itemsSeen} listed, ${calendarPass.pagesRead} page(s) read, ` +
+    `${calendarPass.added} candidate(s) the feed and sweep both missed.`,
+);
+
 candidates.sort((a, b) => b.relevance - a.relevance);
 const fresh = candidates.filter((candidate) => !sweptUrls.has(candidate.url));
 
@@ -317,6 +527,7 @@ await writeFile(
       requests: pulled.requests,
       uniqueEvents: byUrl.size,
       hackathonCandidates: candidates.length,
+      calendarPass,
       notAlreadySwept: fresh.length,
       skipped,
       problems,

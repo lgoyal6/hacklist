@@ -3,6 +3,7 @@ import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { namesNonLocalRegion } from "./lib/candidate-score.mjs";
 import { isSameEvent, mergeDuplicate } from "./lib/dedupe.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -786,8 +787,16 @@ for (const rawCandidate of deduped) {
   // every event that ended since, whenever `npm run normalize` is re-run on its
   // own against an older sweep.
   if (schedule && schedule.endUtc < Math.max(sweepTime, Date.now())) continue;
-  const structuredCity = candidate.structuredEvent?.location?.city?.toLowerCase();
+  const structuredLocation = candidate.structuredEvent?.location;
+  const structuredCity = structuredLocation?.city?.toLowerCase();
   if (structuredCity && !configuredLocalCities.has(structuredCity)) continue;
+  // An event's own structured location is where it says it is, and it outranks
+  // anything else on the page. A host blurb naming the cities its community
+  // spans -- "Singapore, Tokyo, Seoul, and San Francisco Bay Area" -- is not a
+  // location, but the city fallback below reads the whole page and cannot tell
+  // the difference, which is how a Seoul hackathon reached the board as an SF
+  // one. A region the event named itself ends it here, before that guess runs.
+  if (namesNonLocalRegion(structuredLocation)) continue;
 
   let location = candidate.structuredEvent
     ? parseStructuredLocation(candidate.structuredEvent, candidate.evidence)
