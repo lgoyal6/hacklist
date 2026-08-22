@@ -308,9 +308,12 @@ if (!linkedin.__missing) {
 // The board and the Luma calendar are different products, and the calendar is
 // the one people follow. It is filled by a local, browser-driven pass, so it
 // always trails a little — but it can also trail permanently and silently:
-// external events (Devpost, Y Combinator, x.ai) cannot be added by the current
-// automation at all, and that share grew when those sources were added. Worth
-// reporting every run rather than discovering it by counting rows by hand.
+// some events are declined on purpose. Luma's external-event form forces a clock
+// time (no all-day option, and it substitutes 19:00 server-side even when the
+// field is cleared), so a date-only source like Devpost cannot go on the calendar
+// without asserting a time nobody stated. Those are reported as declined rather
+// than pending, because they will never resolve on their own and counting them
+// as work outstanding makes the number meaningless.
 const ledger = await readJson("data/luma-ledger.json");
 if (!ledger.__missing && !board.__missing) {
   const synced = new Set(
@@ -318,10 +321,17 @@ if (!ledger.__missing && !board.__missing) {
   );
   const events = board.events ?? [];
   const pending = events.filter((event) => !synced.has(event.url));
-  const manual = pending.filter((event) => event.platform !== "luma");
+  // The same rule the sync applies, so this agrees with what it actually does.
+  const declined = pending.filter(
+    (event) =>
+      event.platform !== "luma" &&
+      (event.timeUnverified === true || !event.start),
+  );
+  const queued = pending.length - declined.length;
   notes.push(
     `luma calendar: ${events.length - pending.length}/${events.length} synced, ` +
-      `${pending.length} pending (${manual.length} need the external-event form by hand)`,
+      `${queued} queued` +
+      (declined.length ? `, ${declined.length} declined (no stated start time)` : ""),
   );
   // Does the calendar show the times the board says? Presence is not correctness:
   // two entries went live seven hours off because Luma reads a typed time in the
@@ -428,15 +438,19 @@ if (!ledger.__missing && !board.__missing) {
     // The read-back is a check, not a dependency.
   }
 
-  if (manual.length >= 5) {
+  if (declined.length >= 5) {
     warnings.push(
-      `luma calendar: ${manual.length} external event(s) can never be synced automatically — ` +
-        "the sync only handles Luma URLs (npm run luma:queue lists them)",
+      `luma calendar: ${declined.length} external event(s) declined for having no ` +
+        "stated start time, which Luma's form would publish as 7pm. They are on " +
+        "the site and the ICS feed, just not the Luma calendar; set " +
+        "syncTimeUnknownExternals to add them with the title carrying the caveat",
     );
   }
   // Distinguish "trailing" from "stopped". The local pass runs twice a day, so a
   // large Luma-URL backlog means it has not run, not that it is slow.
-  const autoPending = pending.length - manual.length;
+  const autoPending = pending.filter(
+    (event) => event.platform === "luma",
+  ).length;
   if (autoPending >= 10) {
     warnings.push(
       `luma calendar: ${autoPending} Luma event(s) queued but not synced — the local pass may not be running`,
