@@ -1,5 +1,44 @@
 {
-  "sweepCompletedAt": "2026-08-22T04:57:28.710Z",
+  "sweepCompletedAt": "2026-08-22T15:27:26.536Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
-  "held": []
+  "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
+  "held": [],
+  "nearMisses": [
+    {
+      "url": "https://luma.com/4nox507e",
+      "title": "Is it time to leave the Tech industry? | Hybrid Gathering | Oakland, CA & Zoom",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/5fjduqpg",
+      "title": "Female Founders Coffee Chat",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/9c3mtnvj",
+      "title": "Agents & Bagels: Weekly meet up for agent builders",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    }
+  ]
 }
