@@ -20,6 +20,31 @@
 //     rather than published at a made-up hour.
 import { isSuspectSchedule } from "./event-dates.mjs";
 
+/**
+ * Can this external event be added truthfully, under the current policy?
+ *
+ * Split out of the fill so the queue can ask before opening a form. Discovering
+ * it mid-form meant every declined event was recorded as a failure and retried
+ * forever: five of them had accumulated 10 to 38 attempts each, opening five
+ * forms a night to reach the same conclusion, and permanently occupying the
+ * failure count that is supposed to signal something is broken.
+ *
+ * A decline is a policy outcome, not a failure, and asking up front also means
+ * flipping syncTimeUnknownExternals takes effect immediately rather than having
+ * to invalidate stored state.
+ */
+export function canFillExternal(event, { syncTimeUnknownExternals = false } = {}) {
+  const timeKnown = event.timeUnverified !== true && Boolean(event.start);
+  if (timeKnown || syncTimeUnknownExternals === true) return { ok: true };
+  return {
+    ok: false,
+    why:
+      "no stated start time, and Luma forces one on external events — left off " +
+      "the calendar rather than published at a made-up 7pm " +
+      "(set syncTimeUnknownExternals to override)",
+  };
+}
+
 export async function fillExternalEvent(page, event, options = {}) {
   const { timezone = "America/Los_Angeles", syncTimeUnknownExternals = false } = options;
   const urlField = page.locator('input[type="url"][name="url"]').first();
@@ -61,15 +86,10 @@ export async function fillExternalEvent(page, event, options = {}) {
   // Luma cannot, so by default these are left off it rather than published with
   // a fabricated hour. Set syncTimeUnknownExternals to true to add them anyway,
   // in which case the name carries the retraction.
-  if (!timeKnown && syncTimeUnknownExternals !== true) {
-    return {
-      ok: false,
-      why:
-        "no stated start time, and Luma forces one on external events — left off " +
-        "the calendar rather than published at a made-up 7pm " +
-        "(set syncTimeUnknownExternals to override)",
-    };
-  }
+  // Still checked here: the fill must stay correct on its own, since it is also
+  // driven directly by tests. The queue asks first so this is normally moot.
+  const allowed = canFillExternal(event, { syncTimeUnknownExternals });
+  if (!allowed.ok) return allowed;
   const displayTitle = timeKnown
     ? event.title
     : `${event.title} (start time on event page)`;

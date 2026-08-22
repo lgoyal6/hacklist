@@ -16,7 +16,10 @@ import {
   readLedger,
   writeLedger,
 } from "./lib/luma-queue.mjs";
-import { fillExternalEvent } from "./lib/luma-external-form.mjs";
+import {
+  canFillExternal,
+  fillExternalEvent,
+} from "./lib/luma-external-form.mjs";
 import {
   eventSlug,
   isOnCalendar,
@@ -127,6 +130,7 @@ let stopReason = null;
 let timeMismatches = 0;
 let added = 0;
 let failed = 0;
+const declined = [];
 // Consecutive events whose Add Event chooser would not open. Reset by any
 // success, so this counts a genuinely changed UI rather than a bad minute.
 let chooserMisses = 0;
@@ -481,6 +485,20 @@ try {
     if (stopReason) break;
     const label = `${event.dateLabel} ${event.title.slice(0, 48)}`;
 
+    // Asked before the form is opened, so an event we will not publish costs
+    // nothing and is not filed as a failure. Whatever failure record it earned
+    // under the old behaviour is dropped, since it was never a failure.
+    if (event.platform !== "luma") {
+      const allowed = canFillExternal(event, {
+        syncTimeUnknownExternals: config.syncTimeUnknownExternals === true,
+      });
+      if (!allowed.ok) {
+        declined.push({ event, why: allowed.why });
+        delete ledger.failures[event.id];
+        continue;
+      }
+    }
+
     if (dryRun) {
       console.log(`  would add: ${label}\n            ${event.url}`);
       continue;
@@ -722,8 +740,21 @@ if (dryRun) {
   process.exit(0);
 }
 
+// Declines are reported apart from failures: one is a decision, the other is
+// something broken, and counting them together is what made "8 failed" mean
+// nothing for weeks.
+if (declined.length) {
+  console.log(
+    `\n${declined.length} event(s) not offered to the calendar by policy:`,
+  );
+  for (const { event, why } of declined) {
+    console.log(`  ${event.dateLabel} ${event.title.slice(0, 52)}`);
+    console.log(`    ${why}`);
+  }
+}
 console.log(
   `\nLuma UI sync: ${added} added, ${failed} failed, ` +
+    (declined.length ? `${declined.length} declined by policy, ` : "") +
     `${pendingEvents(events, ledger).length} still pending` +
     (timeMismatches ? `, ${timeMismatches} with the WRONG TIME on the calendar` : "") +
     ".",

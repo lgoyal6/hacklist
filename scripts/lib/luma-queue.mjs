@@ -85,7 +85,16 @@ export function formatQueueReport(pending, ledger) {
   // skips it. Lumping them together hid that, and it stopped being a rounding
   // error once Devpost and Y Combinator became sources.
   const auto = pending.filter((event) => event.platform === "luma");
-  const manual = pending.filter((event) => event.platform !== "luma");
+  const manual = pending.filter(
+    (event) =>
+      event.platform !== "luma" &&
+      !(event.timeUnverified === true || !event.start),
+  );
+  const declined = pending.filter(
+    (event) =>
+      event.platform !== "luma" &&
+      (event.timeUnverified === true || !event.start),
+  );
 
   const lines = [
     `${pending.length} event${pending.length === 1 ? "" : "s"} pending for the Hacklist SF Luma calendar.`,
@@ -95,7 +104,17 @@ export function formatQueueReport(pending, ledger) {
     const failure = ledger.failures[event.id];
     lines.push(`  ${event.dateLabel.padEnd(7)}${event.title}`);
     lines.push(`  ${" ".repeat(7)}${event.url}`);
-    if (failure) {
+    // A policy decline is not a failed attempt, and printing it as "failed 36x"
+    // reads as something broken that needs chasing.
+    const declinedForTime =
+      event.platform !== "luma" &&
+      (event.timeUnverified === true || !event.start);
+    if (declinedForTime) {
+      lines.push(
+        `  ${" ".repeat(7)}declined: no stated start time, which Luma's external ` +
+          "form would publish as 7pm",
+      );
+    } else if (failure) {
       lines.push(
         `  ${" ".repeat(7)}last attempt failed (${failure.attempts}x): ${failure.message}`,
       );
@@ -109,11 +128,20 @@ export function formatQueueReport(pending, ledger) {
   }
   if (manual.length) {
     lines.push(
-      `${manual.length} cannot be added automatically — these are not Luma events,`,
-      "and Luma's Add External Event form needs name/date/timezone/location typed in:",
+      `${manual.length} will be added through Luma's Add External Event form:`,
       "",
     );
     manual.forEach(describe);
+  }
+  if (declined.length) {
+    lines.push(
+      `${declined.length} declined on purpose: no source stated a start time, and`,
+      "Luma's external-event form has no all-day option and fills in 7pm. These are",
+      "on the site and in the ICS feed. Set syncTimeUnknownExternals to add them",
+      "anyway, with the title carrying the caveat:",
+      "",
+    );
+    declined.forEach(describe);
   }
   lines.push(
     auto.length
