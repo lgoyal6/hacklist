@@ -9,7 +9,7 @@
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
     "build": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
-    "discover:sf": "(node scripts/discover-search.mjs || true) && (node scripts/discover-linkedin.mjs || true) && (node scripts/discover-luma-api.mjs || true) && node scripts/discover-sf.mjs && (node scripts/discover-yc.mjs || true) && (node scripts/discover-devpost.mjs || true) && node scripts/normalize-events.mjs",
+    "discover:sf": "(node scripts/discover-search.mjs || true) && (node scripts/discover-linkedin.mjs || true) && (node scripts/discover-luma-api.mjs || true) && node scripts/discover-sf.mjs && (node scripts/discover-yc.mjs || true) && (node scripts/discover-devpost.mjs || true) && (node scripts/discover-mlh.mjs || true) && node scripts/normalize-events.mjs",
     "discover:linkedin": "node scripts/discover-linkedin.mjs",
     "discover:yc": "node scripts/discover-yc.mjs",
     "normalize": "node scripts/normalize-events.mjs",
@@ -30,7 +30,8 @@
     "check:sources": "node scripts/check-sources.mjs",
     "luma:export-session": "node scripts/export-luma-session.mjs",
     "test:artifact": "npm run build && node --test tests/rendered-html.test.mjs tests/discovery.test.mjs tests/dedupe.test.mjs tests/calendar-sync.test.mjs",
-    "test:browser": "node --test tests/luma-external-form.test.mjs"
+    "test:browser": "node --test tests/luma-external-form.test.mjs",
+    "discover:mlh": "node scripts/discover-mlh.mjs"
   },
   "dependencies": {
     "@lightpanda/browser": "^1.2.0",

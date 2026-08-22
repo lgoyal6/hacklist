@@ -1,0 +1,65 @@
+{
+  "collectedAt": "2026-08-22T23:08:19.279Z",
+  "source": "https://www.mlh.com/seasons",
+  "seasons": [
+    2026,
+    2027
+  ],
+  "eventsSeen": 326,
+  "skipped": {
+    "past": 261,
+    "online": 2,
+    "notLocal": 60,
+    "notHackathon": 0,
+    "unplaceable": [
+      {
+        "name": "LA Hacks AI Hackathon 2026",
+        "location": "Los Angeles, CA, US, Los Angeles, CA"
+      },
+      {
+        "name": "LA Hacks 27",
+        "location": "Los Angeles, California, US, Los Angeles, California"
+      }
+    ]
+  },
+  "problems": [],
+  "note": "Major League Hacking's season calendar, read anonymously from the JSON the season page embeds. Real timestamps and a structured venueAddress, so locality is decided on stated fields. Sees further ahead than any calendar source because student hackathons are announced a semester out.",
+  "candidates": [
+    {
+      "url": "https://sfhacks.io",
+      "title": "SF Hacks",
+      "category": "hackathon",
+      "discoveredVia": "https://www.mlh.com/seasons",
+      "confidence": 62,
+      "relevance": 60,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "SF Hacks \nSan Francisco, CA, US, San Francisco, CA\nFEB 19 - 21\nhackathon\nhttps://sfhacks.io",
+      "checkedAt": "2026-08-22T23:08:19.274Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://sfhacks.io",
+        "name": "SF Hacks ",
+        "description": null,
+        "startDate": "2027-02-19T17:00:00.000Z",
+        "endDate": "2027-02-21T21:00:00.000Z",
+        "timeSource": "mlh",
+        "organizers": [
+          "Major League Hacking"
+        ],
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    }
+  ]
+}

@@ -184,7 +184,7 @@ if (discovery.__missing) {
   // path after a few refusals and finishes on the browser, so a run that gave up
   // early is fine; a run still being refused without having given up is
   // misconfigured, and a run well under its page budget lost real coverage.
-  const gaveUp = Boolean(discovery.sweep?.httpGaveUp);
+  const gaveUp = (discovery.sweep?.httpPauses ?? 0) > 0;
   const collapsed = budget > 0 && visited < budget * 0.6;
   if (throttled > 0 && !gaveUp) {
     failures.push(

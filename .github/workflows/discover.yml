@@ -115,15 +115,18 @@ jobs:
     concurrency:
       group: discover
       cancel-in-progress: false
-    # The sweep's own budget is 15 minutes (config maxSweepMinutes); this must
-    # stay comfortably above it so a full-length sweep still gets to deploy.
-    timeout-minutes: 30
+    # The sweep's own budget is config maxSweepMinutes, now 20 rather than the 15
+    # this was first sized against, and the search and LinkedIn legs run on both
+    # slots rather than one. This has to stay comfortably above the sum, because
+    # the deploy is the last thing in the job and a timeout means the board does
+    # not ship at all.
+    timeout-minutes: 40
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: "96011880ddcfd82df7004a95257baf66"
       LUMA_API_KEY: ${{ secrets.LUMA_API_KEY }}
       # All optional, all shared by the search and LinkedIn passes, and none of
-      # them load-bearing: the direct APIs (Luma, YC, Devpost) carry the board
+      # them load-bearing: the direct APIs (Luma, YC, Devpost, MLH) carry the board
       # and need no key at all.
       #
       # Worth knowing before adding one: the KEYLESS path returns nothing here.
@@ -162,11 +165,14 @@ jobs:
           # Search and LinkedIn discovery both sleep between queries; keep it
           # modest in CI so they cannot eat the job's time budget.
           SEARCH_DELAY_MS: "8000"
-          # Metered: every query is a Bright Data request. Run them on the morning
-          # sweep only — the seeds they produce are a slowly-changing input, and
-          # the evening sweep crawls whatever the morning found. Halves the spend
-          # for no loss of board freshness, since the sweep still runs twice.
-          RUN_SEARCH_LEGS: ${{ needs.gate.outputs.slot == 'morning' }}
+          # Metered: every query is a Bright Data request. Ran on the morning
+          # sweep only for a while, on the reasoning that the seeds are a
+          # slowly-changing input. They are not that slow: search is the only
+          # source that reaches events no calendar we follow links to, and a seed
+          # found at 8am is a day stale by the evening crawl. Both slots now, at
+          # four queries each rather than two, which is eight Bright Data
+          # requests a day.
+          RUN_SEARCH_LEGS: "true"
       - name: Sync events to Luma calendar (needs LUMA_API_KEY)
         if: env.LUMA_API_KEY != ''
         run: node scripts/sync-luma-calendar.mjs
