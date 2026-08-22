@@ -457,10 +457,17 @@ let externalPagesVisited = 0;
 let pagesReadOverHttp = 0;
 let httpFailures = 0;
 let httpThrottled = 0;
-// Luma answers a rate limit with a 200, so the only defence is not to earn one.
-const paceLuma = createPacer(
-  Number(process.env.LUMA_HTTP_INTERVAL_MS ?? 250),
-);
+// Luma answers a rate limit with a 200, so the first defence is not to earn one.
+//
+// The backoff cap is deliberately low. A throttled read is not a lost page: it
+// throws, and the browser reads it instead, so correctness never depended on
+// slowing down. Backing off hard therefore buys nothing and costs throughput,
+// which is not theoretical -- a 4s cap left one sweep managing 319 pages inside
+// its 15 minutes where an unthrottled run did 500, so the guard against bad
+// data had quietly become a bigger coverage problem than the throttling.
+const paceLuma = createPacer(Number(process.env.LUMA_HTTP_INTERVAL_MS ?? 250), {
+  maxIntervalMs: Number(process.env.LUMA_HTTP_MAX_INTERVAL_MS ?? 1_000),
+});
 
 /**
  * A local, build-shaped event that scored just under the bar.
@@ -526,8 +533,8 @@ function recordCandidate(candidate) {
 // stretch a sweep past the scheduler's timeout, which would kill the run and
 // publish nothing at all. Stopping early with partial results is strictly
 // better, and the shortfall is reported below.
-const sweepDeadline =
-  Date.now() + (config.maxSweepMinutes ?? 12) * 60_000;
+const sweepStartedAt = Date.now();
+const sweepDeadline = sweepStartedAt + (config.maxSweepMinutes ?? 12) * 60_000;
 let stoppedOnTime = false;
 
 try {
@@ -908,6 +915,16 @@ const output = {
     heldForReview: review.size,
     nearMisses: nearMisses.size,
     stoppedOnTimeBudget: stoppedOnTime,
+    // Which budget actually bound the sweep. Without this the page cap could
+    // only ever be tuned by guesswork: every run so far stopped on pages with
+    // time to spare, and nothing recorded how much.
+    elapsedSeconds: Math.round((Date.now() - sweepStartedAt) / 1000),
+    secondsPerPage:
+      visited > 0
+        ? Math.round(((Date.now() - sweepStartedAt) / visited) * 100) / 100
+        : null,
+    pageBudget: config.maxPagesPerSweep,
+    timeBudgetSeconds: (config.maxSweepMinutes ?? 12) * 60,
     queueRemaining: queue.length,
     completedAt: new Date().toISOString(),
   },
@@ -1005,5 +1022,17 @@ if (stoppedOnTime) {
   console.warn(
     `Stopped on the ${config.maxSweepMinutes ?? 12}-minute time budget with ` +
       `${queue.length} page(s) unvisited. Coverage this sweep is partial.`,
+  );
+} else if (output.sweep.pagesVisited >= (config.maxPagesPerSweep ?? 0)) {
+  // Say which budget bound the run, so raising the right one is a decision
+  // rather than a guess.
+  const spare =
+    output.sweep.timeBudgetSeconds - output.sweep.elapsedSeconds;
+  console.log(
+    `Stopped on the ${config.maxPagesPerSweep}-page budget after ` +
+      `${output.sweep.elapsedSeconds}s (${output.sweep.secondsPerPage}s/page), ` +
+      `with ${spare}s of the time budget unused and ${queue.length} page(s) ` +
+      `still queued. Roughly ${Math.floor(spare / (output.sweep.secondsPerPage || 1))} ` +
+      "more page(s) would have fit.",
   );
 }
