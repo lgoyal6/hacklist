@@ -4,6 +4,8 @@ import { fileURLToPath } from "node:url";
 import { lightpanda } from "@lightpanda/browser";
 import { chromium } from "playwright-core";
 
+import { namesNonLocalRegion } from "./lib/candidate-score.mjs";
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
   await readFile(resolve(root, "config/discovery.json"), "utf8"),
@@ -584,9 +586,17 @@ try {
         ]
           .filter(Boolean)
           .join(", ");
-        const structuredLocal = structuredEvent.location?.city
-          ? locationPattern.test(structuredPlace)
-          : locationPattern.test(evidence) || (localIndexSource && sourceLocal);
+        // A region the listing names itself settles the question: the AI
+        // Builders calendar hosts the same hackathon format in Seoul, Tokyo and
+        // SF, and the Seoul one carries a host blurb that names the Bay Area.
+        // Reading place terms out of that text says local about an event whose
+        // own address says South Korea.
+        const structuredLocal = namesNonLocalRegion(structuredEvent.location)
+          ? false
+          : structuredEvent.location?.city
+            ? locationPattern.test(structuredPlace)
+            : locationPattern.test(evidence) ||
+              (localIndexSource && sourceLocal);
         structuredScore.signals.sfBayAreaEvidence = structuredLocal;
         const endTime = Date.parse(
           structuredEvent.endDate || structuredEvent.startDate || "",
@@ -594,12 +604,21 @@ try {
         const isPastStructuredEvent =
           Number.isFinite(endTime) && endTime < Date.now();
 
+        // A name we cannot score is not a name we can dismiss. "HackwithSF" and
+        // "Himalaya Robotics Hack" are hackathons our vocabulary has no term
+        // for, and the word "hackathon" appears only on their pages -- so the
+        // listing scores ~20, the page is never fetched, and both were missed
+        // while their calendars were being crawled. Any name that says "hack"
+        // at all now earns the one page visit that can settle it. It is a
+        // narrow widening: 8 of the 949 events in Luma's SF feed qualify.
+        const looseHackTitle = /hack/i.test(structuredEvent.name);
+
         // A curated hackathon board has already done human filtering, so visit
         // everything it lists and let the full page decide. Judging these from
         // listing metadata alone is what previously lost real hackathons whose
         // names our vocabulary did not know.
         if (
-          isIndexSource &&
+          (isIndexSource || (looseHackTitle && structuredLocal)) &&
           !isPastStructuredEvent &&
           current.depth < config.maxGraphDepth
         ) {

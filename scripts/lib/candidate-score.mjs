@@ -74,6 +74,27 @@ export function scoreCandidate(title, evidence, patterns) {
 }
 
 /**
+ * Whether a structured location names a region the board does not serve.
+ *
+ * schema.org's addressRegion is the event's own statement of where it is, and it
+ * outranks any place term read out of page text. A host blurb listing the cities
+ * a community spans -- "Singapore, Tokyo, Seoul, and San Francisco Bay Area" --
+ * reads as local to a text scan while the address underneath says South Korea,
+ * which is how a Seoul hackathon was once published as an SF one. Every source
+ * that reports a region at all reports California for a Bay Area event, so a
+ * region that is not California is a statement that the event is elsewhere.
+ *
+ * An absent region is not evidence either way: "Online Event", "TBD - South Bay"
+ * and a bare venue name all arrive without one, so those are left to the
+ * caller's other checks rather than being refused here.
+ */
+export function namesNonLocalRegion(location) {
+  const region = location?.region?.trim();
+  if (!region) return false;
+  return !/^(CA|California)$/i.test(region);
+}
+
+/**
  * Resolve a long-hand location string to one of the configured city names.
  * "San Francisco, California, United States" -> "San Francisco".
  */

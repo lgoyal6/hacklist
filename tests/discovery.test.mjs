@@ -19,6 +19,7 @@ import { isMisconfiguration } from "../scripts/lib/source-health.mjs";
 import {
   buildPatterns,
   localCitySet,
+  namesNonLocalRegion,
   resolveCity,
   scoreCandidate,
 } from "../scripts/lib/candidate-score.mjs";
@@ -198,6 +199,24 @@ test("copy that states no time range recovers nothing rather than inventing one"
 const board = JSON.parse(
   await readFile(new URL("../data/events.json", import.meta.url), "utf8"),
 );
+// Every pass that can put something on the board, so a published event can be
+// checked against the listing it came from.
+const candidateFiles = await Promise.all(
+  [
+    "discovery-output.json",
+    "luma-api.json",
+    "yc-candidates.json",
+    "devpost-candidates.json",
+  ].map(async (name) => {
+    try {
+      return JSON.parse(
+        await readFile(new URL(`../data/${name}`, import.meta.url), "utf8"),
+      );
+    } catch {
+      return {}; // optional input; absent until that pass has run
+    }
+  }),
+);
 
 test("every published event has a time we are willing to stand behind", () => {
   for (const event of board.events) {
@@ -219,6 +238,61 @@ test("every published event has a time we are willing to stand behind", () => {
         `${event.title} must not print a time it does not believe`,
       );
     }
+  }
+});
+
+test("an event's own region outranks place terms found in its page text", () => {
+  // The Seoul case, exactly as it arrived: schema.org said South Korea while the
+  // host blurb said "Singapore, Tokyo, Seoul, and San Francisco Bay Area", and
+  // the blurb won. The region has to be able to end that argument.
+  assert.equal(
+    namesNonLocalRegion({ name: "Seoul, South Korea", city: null, region: "Seoul" }),
+    true,
+  );
+  assert.equal(namesNonLocalRegion({ city: "New York", region: "NY" }), true);
+
+  // Both spellings the sources actually use for the metro we serve.
+  assert.equal(
+    namesNonLocalRegion({ city: "San Francisco", region: "California" }),
+    false,
+  );
+  assert.equal(namesNonLocalRegion({ city: "Oakland", region: "CA" }), false);
+  assert.equal(namesNonLocalRegion({ region: " CA " }), false);
+
+  // No region is not a claim about anywhere. Refusing these would drop online
+  // hackathons and every listing that names only a venue.
+  for (const location of [
+    null,
+    undefined,
+    { name: "Online Event", city: null, region: null },
+    { name: "TBD - South Bay", city: null, region: null },
+    { name: "Frontier Tower @ 14th Floor", city: null, region: null },
+  ]) {
+    assert.equal(namesNonLocalRegion(location), false, JSON.stringify(location));
+  }
+});
+
+test("no published event came from a listing that named a foreign region", () => {
+  // The city on a published event can be a guess; the region on the candidate
+  // behind it is the source's own words. Checking the published city alone is
+  // what let a Seoul hackathon through -- it was published as "San Francisco".
+  const locations = new Map();
+  for (const file of candidateFiles) {
+    for (const candidate of file.candidates ?? []) {
+      const location = candidate.structuredEvent?.location;
+      if (location && !locations.has(candidate.url)) {
+        locations.set(candidate.url, location);
+      }
+    }
+  }
+  for (const event of board.events) {
+    const location = locations.get(event.url);
+    if (!location) continue; // no structured location to check it against
+    assert.ok(
+      !namesNonLocalRegion(location),
+      `${event.title} is published in ${event.city} but its listing says ` +
+        `region ${location.region}`,
+    );
   }
 });
 
