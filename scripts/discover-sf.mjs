@@ -937,9 +937,11 @@ const output = {
     // only ever be tuned by guesswork: every run so far stopped on pages with
     // time to spare, and nothing recorded how much.
     elapsedSeconds: Math.round((Date.now() - sweepStartedAt) / 1000),
+    // visited is a Set: comparing it to 0 is always false, which silently made
+    // this null on the one run it was added to inform.
     secondsPerPage:
-      visited > 0
-        ? Math.round(((Date.now() - sweepStartedAt) / visited) * 100) / 100
+      visited.size > 0
+        ? Math.round(((Date.now() - sweepStartedAt) / visited.size) * 10) / 10000
         : null,
     pageBudget: config.maxPagesPerSweep,
     timeBudgetSeconds: (config.maxSweepMinutes ?? 12) * 60,
