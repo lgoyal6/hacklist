@@ -172,10 +172,24 @@ if (discovery.__missing) {
   // 0, writes a well-formed file, and reports a smaller board with no error. One
   // such run fell from 47 candidates to 17 while every counter looked fine.
   const throttled = discovery.sweep?.httpThrottled ?? 0;
-  if (throttled > 0) {
+  const budget = discovery.sweep?.pageBudget ?? 0;
+  // Throttling only matters if it cost the sweep something. The crawl gives up
+  // on the fast path once Luma refuses and finishes on the browser, so a run can
+  // be throttled early and still get everywhere. Failing on the throttle alone
+  // would cry wolf on exactly the runs the fallback handled correctly.
+  const fellShort =
+    Boolean(discovery.sweep?.stoppedOnTimeBudget) ||
+    (budget > 0 && visited < budget * 0.6);
+  if (throttled > 0 && fellShort) {
     failures.push(
-      `sweep: ${throttled} page read(s) were rate-limited, so coverage is ` +
-        "degraded and the candidate count understates what is out there",
+      `sweep: ${throttled} page read(s) were rate-limited and the sweep fell ` +
+        `short at ${visited} of ${budget || "?"} pages, so coverage is degraded ` +
+        "and the candidate count understates what is out there",
+    );
+  } else if (throttled > 0) {
+    warnings.push(
+      `sweep: ${throttled} read(s) rate-limited, but it still reached ` +
+        `${visited} pages, so the browser fallback covered it`,
     );
   }
   notes.push(
