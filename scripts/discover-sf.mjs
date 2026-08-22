@@ -457,6 +457,8 @@ let externalPagesVisited = 0;
 let pagesReadOverHttp = 0;
 let httpFailures = 0;
 let httpThrottled = 0;
+let httpGaveUp = false;
+const HTTP_GIVE_UP_AFTER = Number(process.env.LUMA_HTTP_GIVE_UP_AFTER ?? 8);
 // Luma answers a rate limit with a 200, so the first defence is not to earn one.
 //
 // The backoff cap is deliberately low. A throttled read is not a lost page: it
@@ -567,6 +569,7 @@ try {
       // than losing the page.
       let result = null;
       if (
+        !httpGaveUp &&
         isLumaUrl(url) &&
         !isBrowseSurface(url) &&
         !needsSlowRender(url) &&
@@ -585,6 +588,20 @@ try {
           if (isThrottled(error)) {
             httpThrottled += 1;
             paceLuma.backOff();
+            // Once Luma is refusing, HTTP has stopped being an optimisation and
+            // become a tax: a throttled page pays for the rejected request, then
+            // the pacing wait, and then the browser read it needed all along.
+            // That is what took a throttled sweep to 314 pages where the
+            // browser alone had managed 500, in CI as well as locally. So give
+            // up on the fast path for the rest of the run and let the sweep be
+            // an ordinary browser sweep rather than a crippled hybrid.
+            if (httpThrottled >= HTTP_GIVE_UP_AFTER) {
+              httpGaveUp = true;
+              console.warn(
+                `Luma refused ${httpThrottled} read(s); using the browser for ` +
+                  "the rest of this sweep.",
+              );
+            }
           }
           result = null; // fall back to the browser below
         }
@@ -908,6 +925,7 @@ const output = {
     pagesReadOverHttp,
     httpFailures,
     httpThrottled,
+    httpGaveUp,
     httpPacingMs: paceLuma.interval(),
     externalPagesVisited,
     structuredEventsFound,
@@ -995,11 +1013,9 @@ console.log(
 // error to show for it. Say so loudly enough that its output is not trusted.
 if (httpThrottled > 0) {
   console.warn(
-    `Luma throttled ${httpThrottled} read(s); pacing ended at ` +
-      `${paceLuma.interval()}ms. Coverage this sweep is degraded and its ` +
-      "candidate count is not comparable to an unthrottled run. Wait for the " +
-      "limit to clear before trusting this output, or raise " +
-      "LUMA_HTTP_INTERVAL_MS.",
+    `Luma throttled ${httpThrottled} read(s)` +
+      (httpGaveUp ? ", so the browser read the rest" : "") +
+      `. ${stoppedOnTime ? "This sweep also ran out of time, so its coverage is degraded and its candidate count is not comparable to a clean run." : "Coverage looks intact; the fast path simply stopped being used."}`,
   );
 }
 // Printed rather than merely written, because the whole point is that these
