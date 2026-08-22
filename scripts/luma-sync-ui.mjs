@@ -70,12 +70,20 @@ const ledger = await readLedger();
 const pending = pendingEvents(events, ledger);
 
 if (queueOnly) {
-  console.log(formatQueueReport(pending, ledger));
+  console.log(
+    formatQueueReport(pending, ledger, {
+      syncTimeUnknownExternals: config.syncTimeUnknownExternals === true,
+    }),
+  );
   process.exit(0);
 }
 
 if (!pending.length) {
-  console.log(formatQueueReport(pending, ledger));
+  console.log(
+    formatQueueReport(pending, ledger, {
+      syncTimeUnknownExternals: config.syncTimeUnknownExternals === true,
+    }),
+  );
   process.exit(0);
 }
 

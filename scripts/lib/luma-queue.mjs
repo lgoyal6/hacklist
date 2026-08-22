@@ -74,7 +74,7 @@ export function markFailed(ledger, event, message) {
  * Human-readable fallback: if the automation cannot run, this is the list to
  * paste into Luma's Add Event box by hand.
  */
-export function formatQueueReport(pending, ledger) {
+export function formatQueueReport(pending, ledger, { syncTimeUnknownExternals = false } = {}) {
   if (!pending.length) {
     return `All ${Object.keys(ledger.synced).length} published events are on the calendar. Nothing pending.`;
   }
@@ -88,13 +88,18 @@ export function formatQueueReport(pending, ledger) {
   const manual = pending.filter(
     (event) =>
       event.platform !== "luma" &&
-      !(event.timeUnverified === true || !event.start),
+      (syncTimeUnknownExternals ||
+        !(event.timeUnverified === true || !event.start)),
   );
-  const declined = pending.filter(
-    (event) =>
-      event.platform !== "luma" &&
-      (event.timeUnverified === true || !event.start),
-  );
+  // Nothing is declined once the override is on: they go in with the caveat in
+  // the title instead.
+  const declined = syncTimeUnknownExternals
+    ? []
+    : pending.filter(
+        (event) =>
+          event.platform !== "luma" &&
+          (event.timeUnverified === true || !event.start),
+      );
 
   const lines = [
     `${pending.length} event${pending.length === 1 ? "" : "s"} pending for the Hacklist SF Luma calendar.`,
@@ -107,6 +112,7 @@ export function formatQueueReport(pending, ledger) {
     // A policy decline is not a failed attempt, and printing it as "failed 36x"
     // reads as something broken that needs chasing.
     const declinedForTime =
+      !syncTimeUnknownExternals &&
       event.platform !== "luma" &&
       (event.timeUnverified === true || !event.start);
     if (declinedForTime) {

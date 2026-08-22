@@ -322,11 +322,15 @@ if (!ledger.__missing && !board.__missing) {
   const events = board.events ?? [];
   const pending = events.filter((event) => !synced.has(event.url));
   // The same rule the sync applies, so this agrees with what it actually does.
-  const declined = pending.filter(
-    (event) =>
-      event.platform !== "luma" &&
-      (event.timeUnverified === true || !event.start),
-  );
+  // Respects the override, or this reports declines the sync no longer makes.
+  const declined =
+    config.syncTimeUnknownExternals === true
+      ? []
+      : pending.filter(
+          (event) =>
+            event.platform !== "luma" &&
+            (event.timeUnverified === true || !event.start),
+        );
   const queued = pending.length - declined.length;
   notes.push(
     `luma calendar: ${events.length - pending.length}/${events.length} synced, ` +
