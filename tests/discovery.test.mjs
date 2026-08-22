@@ -352,6 +352,31 @@ test('a standalone "hack" is a format word in a name and not in prose', () => {
   assert.equal(patterns.candidate.test("growth hacks for founders"), false);
 });
 
+test("the score penalty knows a format word from an ordinary one", () => {
+  // The long list is a format gate and is broad enough to contain plain verbs.
+  // Driving the score with it cost a real event: this title lost 30 points for
+  // the word "talk" and was released from the board at 48 against a bar of 54,
+  // while the sweep scored the same page 78.
+  const talky = scoreCandidate(
+    "The Next Interface Hackathon: Rethink how we talk to AI",
+    "San Francisco, CA\nBuild an agent, demo it, prizes for the top three.",
+    patterns,
+  );
+  assert.equal(talky.signals.negativeTitleEvidence, false);
+  assert.ok(talky.confidence >= 54, `confidence ${talky.confidence}`);
+
+  // A name that really does state a non-hackathon format still pays.
+  const conf = scoreCandidate(
+    "MITAI Conference 2026: Age of Agency",
+    "San Francisco, CA\nTalks and panels on agentic AI.",
+    patterns,
+  );
+  assert.equal(conf.signals.negativeTitleEvidence, true);
+
+  // The broad list is still available to callers that gate on format.
+  assert.equal(patterns.negativeTitle.test("An Evening of Talks"), true);
+});
+
 test("a hackathon named without the word scores over the publishing bar", () => {
   // The exact regression: this page never says "hackathon", and scored 52
   // against a bar of 54 while its own name said Hack.

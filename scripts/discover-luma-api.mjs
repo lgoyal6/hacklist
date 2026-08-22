@@ -324,6 +324,95 @@ function calendarSlugsToRead() {
   return [...slugs];
 }
 
+// The bar a page has to clear to be published, the same one the sweep uses.
+const CONFIDENCE_BAR = 54;
+
+/**
+ * Build a candidate by reading a Luma event page, or say why not.
+ *
+ * Shared by the calendar pass and the retention pass so an event is judged on
+ * the same terms however it was reached, and against the same text the sweep
+ * would have scored.
+ */
+async function candidateFromEventPage(
+  url,
+  { discoveredVia, organizers = [], going = null, allowUnplacedCity = false },
+) {
+  let page;
+  try {
+    await paceLuma();
+    page = await fetchPage(url, { timeoutMs: FETCH_TIMEOUT_MS });
+  } catch (error) {
+    return { ok: false, why: String(error).slice(0, 120) };
+  }
+  const structured = page.structuredEvents[0] ?? null;
+  if (!structured) return { ok: false, why: "no event markup on the page" };
+  const location = structured.location ?? { name: null, city: null, region: null };
+  // Same locality rule as everywhere else, and for the same reason: a
+  // description that name-drops the Bay Area is not an address.
+  if (namesNonLocalRegion(location)) {
+    return { ok: false, why: `region ${location.region}` };
+  }
+  const city = resolveCity(
+    `${location.city ?? ""}, ${location.name ?? ""}, ${location.region ?? ""}`,
+    config,
+    localCities,
+    patterns,
+  );
+  // A first sighting has to name a place it recognises. A re-check does not:
+  // "Online Event" and "TBD - South Bay" resolve to no city, and refusing them
+  // here would mean retention quietly protected everything except the online
+  // hackathons and the ones whose venue is not announced yet. The region check
+  // above still applies, so this cannot carry an event that has moved away.
+  if (!city && !allowUnplacedCity) {
+    return { ok: false, why: "no city could be resolved" };
+  }
+  const endMs = Date.parse(structured.endDate || structured.startDate || "");
+  if (Number.isFinite(endMs) && endMs < Date.now()) {
+    return { ok: false, why: "already ended" };
+  }
+
+  const evidence = [
+    structured.name,
+    location.name,
+    city ? `${city}, CA` : null,
+    page.bodyText || structured.description || null,
+  ]
+    .filter(Boolean)
+    .join("\n");
+  const scored = scoreCandidate(structured.name, evidence, patterns);
+  if (scored.confidence < CONFIDENCE_BAR) {
+    return { ok: false, why: `confidence ${scored.confidence}` };
+  }
+  return {
+    ok: true,
+    candidate: {
+      url,
+      title: String(structured.name).trim(),
+      category: "hackathon",
+      discoveredVia,
+      confidence: scored.confidence,
+      relevance: scored.relevance,
+      signals: scored.signals,
+      evidence: evidence.slice(0, 8_000),
+      checkedAt: new Date().toISOString(),
+      heldBecause: null,
+      structuredEvent: {
+        url,
+        name: structured.name,
+        description: structured.description ?? null,
+        startDate: structured.startDate ?? null,
+        endDate: structured.endDate ?? null,
+        timeSource: "luma-page",
+        organizers,
+        location,
+        offerAvailability: structured.offerAvailability ?? null,
+        going,
+      },
+    },
+  };
+}
+
 const calendarPass = { calendarsRead: 0, itemsSeen: 0, pagesRead: 0, added: 0, problems: [] };
 for (const slug of calendarSlugsToRead().slice(
   0,
@@ -358,72 +447,21 @@ for (const slug of calendarSlugsToRead().slice(
     const endMs = Date.parse(event.end_at || event.start_at || "");
     if (Number.isFinite(endMs) && endMs < now) continue;
 
-    // The same reader the sweep uses for Luma pages, so an event found here is
-    // scored against the same text it would have been scored against there.
-    let page;
-    try {
-      await paceLuma();
-      page = await fetchPage(url, { timeoutMs: FETCH_TIMEOUT_MS });
-      calendarPass.pagesRead += 1;
-    } catch (error) {
-      calendarPass.problems.push({ url, error: String(error).slice(0, 120) });
+    const built = await candidateFromEventPage(url, {
+      discoveredVia: `${API}/calendar/get-items`,
+      organizers: entry.calendar?.name ? [entry.calendar.name] : [],
+      going: typeof entry.guest_count === "number" ? entry.guest_count : null,
+    });
+    calendarPass.pagesRead += 1;
+    if (!built.ok) {
+      if (!/confidence|no city|region /.test(built.why)) {
+        calendarPass.problems.push({ url, error: built.why });
+      }
       continue;
     }
-    const structured = page.structuredEvents[0] ?? null;
-    const pageText = page.bodyText;
-    if (!structured) continue;
-
-    const location = structured.location ?? { name: null, city: null, region: null };
-    // Same locality rule as everywhere else, and for the same reason: a
-    // description that name-drops the Bay Area is not an address.
-    if (namesNonLocalRegion(location)) continue;
-    const city = resolveCity(
-      `${location.city ?? ""}, ${location.name ?? ""}, ${location.region ?? ""}`,
-      config,
-      localCities,
-      patterns,
-    );
-    if (!city) continue;
-
-    const evidence = [
-      structured.name,
-      location.name,
-      city ? `${city}, CA` : null,
-      pageText || structured.description || null,
-    ]
-      .filter(Boolean)
-      .join("\n");
-    const scored = scoreCandidate(structured.name, evidence, patterns);
-    // The crawl's own bar for publishing a page it read. Below it the event is
-    // not dismissed, it is simply not evidence enough on its own.
-    if (scored.confidence < 54) continue;
-
     claimedByPass.add(url);
     calendarPass.added += 1;
-    candidates.push({
-      url,
-      title: String(structured.name).trim(),
-      category: "hackathon",
-      discoveredVia: `${API}/calendar/get-items`,
-      confidence: scored.confidence,
-      relevance: scored.relevance,
-      signals: scored.signals,
-      evidence: evidence.slice(0, 8_000),
-      checkedAt: new Date().toISOString(),
-      heldBecause: null,
-      structuredEvent: {
-        url,
-        name: structured.name,
-        description: structured.description ?? null,
-        startDate: structured.startDate ?? event.start_at ?? null,
-        endDate: structured.endDate ?? event.end_at ?? null,
-        timeSource: "luma-calendar-items",
-        organizers: entry.calendar?.name ? [entry.calendar.name] : [],
-        location,
-        offerAvailability: structured.offerAvailability ?? null,
-        going: typeof entry.guest_count === "number" ? entry.guest_count : null,
-      },
-    });
+    candidates.push(built.candidate);
   }
 }
 console.log(
@@ -431,6 +469,71 @@ console.log(
     `${calendarPass.itemsSeen} listed, ${calendarPass.pagesRead} page(s) read, ` +
     `${calendarPass.added} candidate(s) the feed and sweep both missed.`,
 );
+
+// ---------------------------------------------------------------------------
+// Retention: the board is its own frontier
+// ---------------------------------------------------------------------------
+// The board is rebuilt from nothing every run, so an event stays on it only if
+// some source finds it again. Luma's browse surfaces are infinite-scroll lists
+// that server-render no events at all, so one visit sees one slice of them.
+// ROAST MY PR and WeAreDevelopers Day were both published on one sweep, both
+// still live and upcoming in San Francisco, and both gone from the next, because
+// that run's scroll did not list them. Budget was not the problem: the sweep had
+// drained its queue with pages to spare.
+//
+// So anything the board already published, still in the future, gets its page
+// read again here and stays if it still checks out. Keyless, no browser, no page
+// budget. An event now leaves the board when it has ended, moved, or stopped
+// looking like a hackathon, rather than because a list scrolled differently.
+//
+// Deliberately only Luma events. The other sources are APIs that are re-read in
+// full every run, so they do not flicker; re-reading them here would be cost
+// without a cause.
+const retention = { upcoming: 0, checked: 0, carried: 0, released: [] };
+try {
+  const board = JSON.parse(
+    await readFile(resolve(root, "data/events.json"), "utf8"),
+  );
+  const upcoming = (board.events ?? []).filter((event) => {
+    if (event.platform !== "luma") return false;
+    const end = Date.parse(event.end ?? event.start ?? "");
+    return Number.isFinite(end) && end >= now;
+  });
+  retention.upcoming = upcoming.length;
+  // Skip only what has actually been emitted, not merely what the feed saw.
+  // byUrl holds every event in the discover feed, and the feed drops anything
+  // whose title misses the vocabulary -- which is precisely the class that needs
+  // retaining. Both events this pass was written for, ROAST MY PR and
+  // WeAreDevelopers Day, are in the feed and discarded by it on their names.
+  const emitted = new Set(candidates.map((candidate) => candidate.url));
+  for (const event of upcoming.slice(0, config.retentionPerRun ?? 80)) {
+    if (emitted.has(event.url) || claimedByPass.has(event.url)) continue;
+    retention.checked += 1;
+    const built = await candidateFromEventPage(event.url, {
+      discoveredVia: event.discoveredVia ?? `${API}/url`,
+      organizers: event.organizer ? [event.organizer] : [],
+      going: typeof event.going === "number" ? event.going : null,
+      allowUnplacedCity: true,
+    });
+    if (!built.ok) {
+      retention.released.push({ title: event.title.slice(0, 48), why: built.why });
+      continue;
+    }
+    claimedByPass.add(event.url);
+    retention.carried += 1;
+    candidates.push(built.candidate);
+  }
+} catch {
+  // No previous board yet; nothing to retain.
+}
+console.log(
+  `  Retention: ${retention.carried} of ${retention.checked} previously ` +
+    `published event(s) carried forward (${retention.upcoming} upcoming on the ` +
+    `last board, ${retention.released.length} released).`,
+);
+for (const gone of retention.released.slice(0, 6)) {
+  console.log(`    released "${gone.title}" — ${gone.why}`);
+}
 
 candidates.sort((a, b) => b.relevance - a.relevance);
 const fresh = candidates.filter((candidate) => !sweptUrls.has(candidate.url));
@@ -473,6 +576,7 @@ await writeFile(
       uniqueEvents: byUrl.size,
       hackathonCandidates: candidates.length,
       calendarPass,
+      retention,
       notAlreadySwept: fresh.length,
       skipped,
       problems,
