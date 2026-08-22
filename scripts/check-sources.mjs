@@ -177,19 +177,30 @@ if (discovery.__missing) {
   // on the fast path once Luma refuses and finishes on the browser, so a run can
   // be throttled early and still get everywhere. Failing on the throttle alone
   // would cry wolf on exactly the runs the fallback handled correctly.
-  const fellShort =
-    Boolean(discovery.sweep?.stoppedOnTimeBudget) ||
-    (budget > 0 && visited < budget * 0.6);
-  if (throttled > 0 && fellShort) {
+  // Not "did it stop on time" -- with the page cap above what fifteen minutes
+  // affords, stopping on time is the normal, healthy outcome, and keying the
+  // failure to it turned the best sweep yet (562 pages, 50 candidates) red.
+  // What matters is whether throttling was absorbed. The crawl abandons the HTTP
+  // path after a few refusals and finishes on the browser, so a run that gave up
+  // early is fine; a run still being refused without having given up is
+  // misconfigured, and a run well under its page budget lost real coverage.
+  const gaveUp = Boolean(discovery.sweep?.httpGaveUp);
+  const collapsed = budget > 0 && visited < budget * 0.6;
+  if (throttled > 0 && !gaveUp) {
     failures.push(
-      `sweep: ${throttled} page read(s) were rate-limited and the sweep fell ` +
-        `short at ${visited} of ${budget || "?"} pages, so coverage is degraded ` +
-        "and the candidate count understates what is out there",
+      `sweep: ${throttled} read(s) rate-limited and the HTTP path was never ` +
+        "abandoned, so every refusal cost a wasted request and a pacing wait " +
+        "on top of the browser read (check LUMA_HTTP_GIVE_UP_AFTER)",
+    );
+  } else if (collapsed) {
+    failures.push(
+      `sweep: only ${visited} of ${budget} pages visited, so coverage is ` +
+        "degraded and the candidate count understates what is out there",
     );
   } else if (throttled > 0) {
     warnings.push(
-      `sweep: ${throttled} read(s) rate-limited, but it still reached ` +
-        `${visited} pages, so the browser fallback covered it`,
+      `sweep: ${throttled} read(s) rate-limited, absorbed by the browser ` +
+        `fallback after ${visited} pages`,
     );
   }
   notes.push(
