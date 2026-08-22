@@ -457,8 +457,18 @@ let externalPagesVisited = 0;
 let pagesReadOverHttp = 0;
 let httpFailures = 0;
 let httpThrottled = 0;
-let httpGaveUp = false;
+// Giving up on the fast path was right; giving up permanently was not. Luma's
+// limit is a window, not a ban: the last sweep read 96 of 750 pages over HTTP,
+// tripped after 8 refusals, and then spent the remaining 654 pages on the
+// browser at roughly twice the cost per page, long after the window had passed.
+// So the pause is timed, and doubles each time it is re-earned.
 const HTTP_GIVE_UP_AFTER = Number(process.env.LUMA_HTTP_GIVE_UP_AFTER ?? 8);
+const HTTP_PAUSE_MS = Number(process.env.LUMA_HTTP_PAUSE_MS ?? 120_000);
+const HTTP_PAUSE_MAX_MS = Number(process.env.LUMA_HTTP_PAUSE_MAX_MS ?? 600_000);
+let httpPausedUntil = 0;
+let httpPauseMs = HTTP_PAUSE_MS;
+let httpThrottledSincePause = 0;
+let httpPauses = 0;
 // Luma answers a rate limit with a 200, so the first defence is not to earn one.
 //
 // The backoff cap is deliberately low. A throttled read is not a lost page: it
@@ -568,8 +578,14 @@ try {
       // listings, and the client-rendered boards. A failure falls back rather
       // than losing the page.
       let result = null;
+      if (Date.now() >= httpPausedUntil && httpPausedUntil > 0) {
+        // Window should have passed; try again and see.
+        httpPausedUntil = 0;
+        httpThrottledSincePause = 0;
+        console.log("  resuming HTTP reads after the pause");
+      }
       if (
-        !httpGaveUp &&
+        httpPausedUntil === 0 &&
         isLumaUrl(url) &&
         !isBrowseSurface(url) &&
         !needsSlowRender(url) &&
@@ -595,12 +611,20 @@ try {
             // browser alone had managed 500, in CI as well as locally. So give
             // up on the fast path for the rest of the run and let the sweep be
             // an ordinary browser sweep rather than a crippled hybrid.
-            if (httpThrottled >= HTTP_GIVE_UP_AFTER) {
-              httpGaveUp = true;
+            httpThrottledSincePause += 1;
+            if (httpThrottledSincePause >= HTTP_GIVE_UP_AFTER) {
+              httpPausedUntil = Date.now() + httpPauseMs;
+              httpPauses += 1;
               console.warn(
-                `Luma refused ${httpThrottled} read(s); using the browser for ` +
-                  "the rest of this sweep.",
+                `Luma refused ${httpThrottledSincePause} read(s); pausing HTTP ` +
+                  `for ${Math.round(httpPauseMs / 1000)}s and using the browser ` +
+                  "meanwhile.",
               );
+              httpPauseMs = Math.min(HTTP_PAUSE_MAX_MS, httpPauseMs * 2);
+              // The pacer is reset with the pause: it grew while being refused,
+              // and carrying a 1s interval into a fresh window just makes the
+              // fast path slow for no reason.
+              paceLuma.reset();
             }
           }
           result = null; // fall back to the browser below
@@ -925,7 +949,8 @@ const output = {
     pagesReadOverHttp,
     httpFailures,
     httpThrottled,
-    httpGaveUp,
+    httpPauses,
+    httpPausedAtEnd: httpPausedUntil > Date.now(),
     httpPacingMs: paceLuma.interval(),
     externalPagesVisited,
     structuredEventsFound,
@@ -1016,7 +1041,7 @@ console.log(
 if (httpThrottled > 0) {
   console.warn(
     `Luma throttled ${httpThrottled} read(s)` +
-      (httpGaveUp ? ", so the browser read the rest" : "") +
+      (httpPauses ? `, pausing the fast path ${httpPauses} time(s)` : "") +
       `. ${stoppedOnTime ? "This sweep also ran out of time, so its coverage is degraded and its candidate count is not comparable to a clean run." : "Coverage looks intact; the fast path simply stopped being used."}`,
   );
 }

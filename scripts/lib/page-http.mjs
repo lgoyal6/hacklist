@@ -255,6 +255,12 @@ export function createPacer(minIntervalMs, { maxIntervalMs = 4_000 } = {}) {
     return interval;
   };
   pace.interval = () => interval;
+  // Called when a pause ends: the grown interval was earned inside a rate-limit
+  // window and means nothing in the next one.
+  pace.reset = () => {
+    interval = minIntervalMs;
+    return interval;
+  };
   return pace;
 }
 
