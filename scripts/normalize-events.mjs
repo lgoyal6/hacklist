@@ -787,6 +787,15 @@ for (const rawCandidate of deduped) {
   // every event that ended since, whenever `npm run normalize` is re-run on its
   // own against an older sweep.
   if (schedule && schedule.endUtc < Math.max(sweepTime, Date.now())) continue;
+  // An event whose date could not be read at all is not published. It cannot be
+  // checked against the filter above, so it never leaves the board once it is on
+  // it, and it carries no VEVENT so subscribers never see it either. Both of the
+  // events this removed on the run it was written had already happened: re:AGENT
+  // on August 15 and Night Hack on July 24, both still listed on August 22,
+  // because neither page carries JSON-LD and a date read off the page text was
+  // never recovered. "TBC" was not honesty about a future event, it was a stale
+  // one hiding.
+  if (!schedule) continue;
   const structuredLocation = candidate.structuredEvent?.location;
   const structuredCity = structuredLocation?.city?.toLowerCase();
   if (structuredCity && !configuredLocalCities.has(structuredCity)) continue;
