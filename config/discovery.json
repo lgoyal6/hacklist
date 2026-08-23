@@ -27,6 +27,20 @@
     "https://luma.com/IterateHacks",
     "https://luma.com/devnovate"
   ],
+  "regions": {
+    "bay-area": {
+      "label": "Bay Area",
+      "timezone": "America/Los_Angeles",
+      "states": ["CA", "California"],
+      "areas": {
+        "SF": ["san francisco", "sf", "daly city", "south san francisco"],
+        "North Bay": ["sausalito", "san rafael", "novato"],
+        "East Bay": ["oakland", "berkeley", "alameda", "emeryville", "richmond", "walnut creek", "concord", "san ramon", "livermore", "hayward", "fremont", "pleasanton"],
+        "Peninsula": ["san bruno", "millbrae", "burlingame", "san mateo", "redwood city", "palo alto", "stanford", "menlo park"],
+        "South Bay": ["mountain view", "sunnyvale", "santa clara", "san jose", "milpitas", "cupertino", "campbell", "los gatos"]
+      }
+    }
+  },
   "areas": {
     "SF": [
       "san francisco",

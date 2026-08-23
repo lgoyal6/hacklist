@@ -28,7 +28,8 @@ import {
   buildPatterns,
   localCitySet,
   namesHackathonFormat,
-  namesNonLocalRegion,
+  namesUnservedRegion,
+  resolveRegion,
   resolveCity,
   scoreCandidate,
 } from "../scripts/lib/candidate-score.mjs";
@@ -250,23 +251,37 @@ test("every published event has a time we are willing to stand behind", () => {
   }
 });
 
+test("a location resolves to the region that actually serves its city", () => {
+  // The state cannot decide this. Southern California is California, so once
+  // there is more than one Californian region a state test says nothing, and the
+  // old check passed Los Angeles as local to the Bay Area board.
+  assert.equal(resolveRegion({ city: "San Francisco", region: "CA" }, config), "bay-area");
+  assert.equal(resolveRegion({ city: "Oakland", region: "California" }, config), "bay-area");
+  assert.equal(resolveRegion({ city: "Los Angeles", region: "CA" }, config), null);
+  assert.equal(resolveRegion({ city: "New York", region: "NY" }, config), null);
+  // A state is not a place. Assigning "CA, USA" to whichever region asked first
+  // would be a guess, so it resolves to nothing and the caller decides.
+  assert.equal(resolveRegion({ city: null, region: "CA" }, config), null);
+  assert.equal(resolveRegion(null, config), null);
+});
+
 test("an event's own region outranks place terms found in its page text", () => {
   // The Seoul case, exactly as it arrived: schema.org said South Korea while the
   // host blurb said "Singapore, Tokyo, Seoul, and San Francisco Bay Area", and
   // the blurb won. The region has to be able to end that argument.
   assert.equal(
-    namesNonLocalRegion({ name: "Seoul, South Korea", city: null, region: "Seoul" }),
+    namesUnservedRegion({ name: "Seoul, South Korea", city: null, region: "Seoul" }, config),
     true,
   );
-  assert.equal(namesNonLocalRegion({ city: "New York", region: "NY" }), true);
+  assert.equal(namesUnservedRegion({ city: "New York", region: "NY" }, config), true);
 
   // Both spellings the sources actually use for the metro we serve.
   assert.equal(
-    namesNonLocalRegion({ city: "San Francisco", region: "California" }),
+    namesUnservedRegion({ city: "San Francisco", region: "California" }, config),
     false,
   );
-  assert.equal(namesNonLocalRegion({ city: "Oakland", region: "CA" }), false);
-  assert.equal(namesNonLocalRegion({ region: " CA " }), false);
+  assert.equal(namesUnservedRegion({ city: "Oakland", region: "CA" }, config), false);
+  assert.equal(namesUnservedRegion({ region: " CA " }, config), false);
 
   // No region is not a claim about anywhere. Refusing these would drop online
   // hackathons and every listing that names only a venue.
@@ -277,7 +292,7 @@ test("an event's own region outranks place terms found in its page text", () => 
     { name: "TBD - South Bay", city: null, region: null },
     { name: "Frontier Tower @ 14th Floor", city: null, region: null },
   ]) {
-    assert.equal(namesNonLocalRegion(location), false, JSON.stringify(location));
+    assert.equal(namesUnservedRegion(location, config), false, JSON.stringify(location));
   }
 });
 
@@ -298,7 +313,7 @@ test("no published event came from a listing that named a foreign region", () =>
     const location = locations.get(event.url);
     if (!location) continue; // no structured location to check it against
     assert.ok(
-      !namesNonLocalRegion(location),
+      !namesUnservedRegion(location, config),
       `${event.title} is published in ${event.city} but its listing says ` +
         `region ${location.region}`,
     );

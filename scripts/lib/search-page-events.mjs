@@ -18,7 +18,7 @@
 // rather than published as a hackathon.
 import {
   namesHackathonFormat,
-  namesNonLocalRegion,
+  namesUnservedRegion,
   resolveCity,
   scoreCandidate,
 } from "./candidate-score.mjs";
@@ -109,7 +109,7 @@ export async function searchPageCandidates({
       skipped.online += 1;
       continue;
     }
-    if (namesNonLocalRegion(event.location)) {
+    if (namesUnservedRegion(event.location, config)) {
       skipped.notLocal += 1;
       continue;
     }

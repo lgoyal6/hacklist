@@ -126,24 +126,72 @@ export function scoreCandidate(title, evidence, patterns) {
 }
 
 /**
- * Whether a structured location names a region the board does not serve.
+ * The configured regions, whatever shape the config is in.
  *
- * schema.org's addressRegion is the event's own statement of where it is, and it
- * outranks any place term read out of page text. A host blurb listing the cities
- * a community spans -- "Singapore, Tokyo, Seoul, and San Francisco Bay Area" --
- * reads as local to a text scan while the address underneath says South Korea,
- * which is how a Seoul hackathon was once published as an SF one. Every source
- * that reports a region at all reports California for a Bay Area event, so a
- * region that is not California is a statement that the event is elsewhere.
- *
- * An absent region is not evidence either way: "Online Event", "TBD - South Bay"
- * and a bare venue name all arrive without one, so those are left to the
- * caller's other checks rather than being refused here.
+ * A config without a `regions` block is one region, named by its `city`, so this
+ * refactor did not have to change every source at once.
  */
-export function namesNonLocalRegion(location) {
-  const region = location?.region?.trim();
-  if (!region) return false;
-  return !/^(CA|California)$/i.test(region);
+export function regionsOf(config) {
+  if (config.regions && Object.keys(config.regions).length) return config.regions;
+  return {
+    default: {
+      label: config.city ?? "local",
+      timezone: config.timezone,
+      states: ["CA", "California"],
+      areas: config.areas ?? {},
+    },
+  };
+}
+
+/** Every city the board serves, across every region, lowercased. */
+export function servedCities(config) {
+  const cities = new Set();
+  for (const region of Object.values(regionsOf(config))) {
+    for (const list of Object.values(region.areas ?? {})) {
+      for (const city of list) cities.add(String(city).toLowerCase());
+    }
+  }
+  return cities;
+}
+
+/**
+ * Which region does this location belong to, if any?
+ *
+ * Decided on the city, because the state cannot decide it: the Bay Area and
+ * Southern California are both California, so the moment there is more than one
+ * California region a state test says nothing. A location whose city is not
+ * recognised resolves to null even when its state is one we serve, which is the
+ * right answer rather than a gap: "CA, USA" names a state and not a place, and
+ * assigning it to whichever region asked first would be a guess.
+ */
+export function resolveRegion(location, config) {
+  const city = String(location?.city ?? "").trim().toLowerCase();
+  if (!city) return null;
+  for (const [key, region] of Object.entries(regionsOf(config))) {
+    for (const list of Object.values(region.areas ?? {})) {
+      if (list.some((known) => String(known).toLowerCase() === city)) return key;
+    }
+  }
+  return null;
+}
+
+/**
+ * Does the location state a region that no configured region covers?
+ *
+ * This is the Seoul check, generalised. It refuses a stated region that belongs
+ * to none of the boards rather than one that is not California, so adding a
+ * region outside California is data rather than a code change. An absent region
+ * is not evidence either way and is left to the caller.
+ */
+export function namesUnservedRegion(location, config) {
+  const stated = String(location?.region ?? "").trim();
+  if (!stated) return false;
+  for (const region of Object.values(regionsOf(config))) {
+    for (const state of region.states ?? []) {
+      if (String(state).toLowerCase() === stated.toLowerCase()) return false;
+    }
+  }
+  return true;
 }
 
 /**

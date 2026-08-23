@@ -37,7 +37,7 @@ import { createPacer, fetchPage } from "./lib/page-http.mjs";
 import {
   buildPatterns,
   localCitySet,
-  namesNonLocalRegion,
+  namesUnservedRegion,
   resolveCity,
   scoreCandidate,
 } from "./lib/candidate-score.mjs";
@@ -350,7 +350,7 @@ async function candidateFromEventPage(
   const location = structured.location ?? { name: null, city: null, region: null };
   // Same locality rule as everywhere else, and for the same reason: a
   // description that name-drops the Bay Area is not an address.
-  if (namesNonLocalRegion(location)) {
+  if (namesUnservedRegion(location, config)) {
     return { ok: false, why: `region ${location.region}` };
   }
   const city = resolveCity(
