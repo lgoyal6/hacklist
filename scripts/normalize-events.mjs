@@ -48,6 +48,8 @@ const apiCandidates = [
   ...(await readCandidates("data/luma-api.json")),
   ...(await readCandidates("data/devpost-candidates.json")),
   ...(await readCandidates("data/mlh-candidates.json")),
+  ...(await readCandidates("data/eventbrite-candidates.json")),
+  ...(await readCandidates("data/meetup-candidates.json")),
 ];
 
 // A URL found by more than one source is one event. The sweep's own record wins,
