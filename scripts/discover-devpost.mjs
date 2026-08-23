@@ -30,6 +30,7 @@ import {
   scoreCandidate,
 } from "./lib/candidate-score.mjs";
 import { parseDevpostDates } from "./lib/event-dates.mjs";
+import { createPacer, DEFAULT_UA } from "./lib/page-http.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
@@ -120,6 +121,55 @@ async function pull(label, baseUrl, maxPages) {
   }
 }
 
+const pacePage = createPacer(400);
+const LD_JSON = /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi;
+const MIDNIGHT_IN_OWN_OFFSET = /T00:00:00(?:\.\d+)?(?:Z|[+-]\d{2}:?\d{2})$/;
+
+/**
+ * The start and end a hackathon's own page states, or null if it states none.
+ *
+ * Devpost's JSON-LD carries a real timestamp where the API carries only a date.
+ * The offsets are Eastern, which is fine: an instant is an instant, and the
+ * normalizer renders it in the board's zone. What is not fine is midnight in
+ * that offset, which means no time was given rather than "starts at midnight".
+ */
+async function statedSchedule(pageUrl) {
+  let html;
+  try {
+    await pacePage();
+    const response = await fetch(pageUrl, {
+      headers: { "user-agent": DEFAULT_UA, accept: "text/html" },
+      redirect: "follow",
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!response.ok) return null;
+    html = await response.text();
+  } catch {
+    return null; // the API's dates still stand
+  }
+  for (const [, block] of html.matchAll(LD_JSON)) {
+    let parsed;
+    try {
+      parsed = JSON.parse(block);
+    } catch {
+      continue;
+    }
+    const types = Array.isArray(parsed?.["@type"])
+      ? parsed["@type"]
+      : [parsed?.["@type"]];
+    if (!types.includes("Event") || !parsed.startDate) continue;
+    if (MIDNIGHT_IN_OWN_OFFSET.test(String(parsed.startDate))) return null;
+    const startUtc = Date.parse(parsed.startDate);
+    const endUtc = Date.parse(parsed.endDate ?? parsed.startDate);
+    if (!Number.isFinite(startUtc)) return null;
+    return {
+      startUtc,
+      endUtc: Number.isFinite(endUtc) && endUtc > startUtc ? endUtc : startUtc,
+    };
+  }
+  return null;
+}
+
 const OPEN = "status[]=upcoming&status[]=open";
 const queries = [
   // Every open in-person hackathon worldwide, filtered to the Bay below. This is
@@ -156,7 +206,21 @@ for (const hackathon of seen.values()) {
     skipped.inviteOnly += 1;
     continue;
   }
-  const dates = parseDevpostDates(hackathon.submission_period_dates, timezone);
+  let dates = parseDevpostDates(hackathon.submission_period_dates, timezone);
+  // Devpost's API publishes dates and no clock times, so everything from it
+  // arrived as an all-day entry and could not go on the Luma calendar at all:
+  // Luma's external-event form has no all-day option and stamps a time of its
+  // own, so four real hackathons were showing 6:00 PM against a board that said
+  // it did not know. The hackathon's own page does carry a time, in its JSON-LD,
+  // and reading it turned three of those four into real starts at 10:00 AM.
+  //
+  // Midnight in the page's own offset is Devpost's way of saying no time was
+  // given, and must not be converted: the CAD Challenge stores 00:00-04:00, and
+  // treating that as an instant moves the event to 9:00 PM the previous day.
+  const stated = await statedSchedule(hackathon.url);
+  if (stated) {
+    dates = { ...dates, startUtc: stated.startUtc, endUtc: stated.endUtc };
+  }
   if (!dates) {
     skipped.undated += 1;
     continue;
@@ -214,7 +278,7 @@ for (const hackathon of seen.values()) {
       endDate: new Date(dates.endUtc).toISOString(),
       // Devpost publishes no clock time; the normalizer suppresses the midnight
       // placeholder rather than printing a time nobody stated.
-      timeSource: "devpost-date-only",
+      timeSource: stated ? "devpost-page" : "devpost-date-only",
       organizers: [organizer],
       location: { name: city ? locationText : null, city, region: "CA" },
       offerAvailability: hackathon.open_state === "open" ? "InStock" : null,
