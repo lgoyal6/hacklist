@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-08-23T10:57:18.018Z",
+  "collectedAt": "2026-08-23T15:26:38.861Z",
   "source": "eventbrite",
   "queries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
@@ -7,150 +7,26 @@
     "https://www.eventbrite.com/d/ca--san-jose/hackathon/"
   ],
   "skipped": {
-    "past": 7,
+    "past": 0,
     "online": 0,
-    "notLocal": 1,
-    "notHackathon": 44,
+    "notLocal": 0,
+    "notHackathon": 0,
     "recurring": 0
   },
-  "problems": [],
-  "note": "Eventbrite search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
-  "candidates": [
+  "problems": [
     {
-      "url": "https://www.eventbrite.com/e/ai-infra-summit-hackathon-tickets-1995458152049",
-      "title": "AI Infra Summit Hackathon",
-      "category": "hackathon",
-      "heldBecause": null,
-      "discoveredVia": "eventbrite",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "AI Infra Summit Hackathon\nSanta Clara Convention Center\nSanta Clara, CA\nJoin us for an AI Hackathon in Santa Clara at AI Infra Summit. Build AI infrastructure, compute & physical AI solutions.",
-      "checkedAt": "2026-08-23T10:57:16.447Z",
-      "structuredEvent": {
-        "url": "https://www.eventbrite.com/e/ai-infra-summit-hackathon-tickets-1995458152049",
-        "name": "AI Infra Summit Hackathon",
-        "description": "Join us for an AI Hackathon in Santa Clara at AI Infra Summit. Build AI infrastructure, compute & physical AI solutions.",
-        "startDate": "2026-09-15T07:00:00.000Z",
-        "endDate": "2026-09-18T06:59:00.000Z",
-        "timeSource": "eventbrite",
-        "organizers": [],
-        "location": {
-          "name": "Santa Clara Convention Center",
-          "city": "Santa Clara",
-          "region": "CA"
-        },
-        "offerAvailability": null,
-        "going": null
-      }
+      "query": "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
+      "error": "Error: HTTP 405"
     },
     {
-      "url": "https://www.eventbrite.com/e/2026-student-robotics-hackathon-tickets-1994480873984",
-      "title": "2026 Student Robotics Hackathon",
-      "category": "hackathon",
-      "heldBecause": null,
-      "discoveredVia": "eventbrite",
-      "confidence": 62,
-      "relevance": 60,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "2026 Student Robotics Hackathon\nAfrican American Art & Culture Complex\nSan Francisco, CA\nRobots. Gadgets. Panels. Vendors. All of this and more will be present during the 2026 Student Robotics Hackathon!",
-      "checkedAt": "2026-08-23T10:57:14.777Z",
-      "structuredEvent": {
-        "url": "https://www.eventbrite.com/e/2026-student-robotics-hackathon-tickets-1994480873984",
-        "name": "2026 Student Robotics Hackathon",
-        "description": "Robots. Gadgets. Panels. Vendors. All of this and more will be present during the 2026 Student Robotics Hackathon!",
-        "startDate": "2026-09-26T07:00:00.000Z",
-        "endDate": "2026-09-27T06:59:00.000Z",
-        "timeSource": "eventbrite",
-        "organizers": [],
-        "location": {
-          "name": "African American Art & Culture Complex",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "offerAvailability": null,
-        "going": null
-      }
+      "query": "https://www.eventbrite.com/d/ca--oakland/hackathon/",
+      "error": "Error: HTTP 405"
     },
     {
-      "url": "https://www.eventbrite.com/e/a-beautiful-oakland-a-civic-tech-idea-a-thon-tickets-1996656041970",
-      "title": "A Beautiful Oakland: A Civic Tech Idea-A-Thon",
-      "category": "hackathon",
-      "heldBecause": null,
-      "discoveredVia": "eventbrite",
-      "confidence": 62,
-      "relevance": 60,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "A Beautiful Oakland: A Civic Tech Idea-A-Thon\nMills College at Northeastern University\nOakland, CA\nPresented by Northeastern University Oakland and OpenOakland",
-      "checkedAt": "2026-08-23T10:57:16.446Z",
-      "structuredEvent": {
-        "url": "https://www.eventbrite.com/e/a-beautiful-oakland-a-civic-tech-idea-a-thon-tickets-1996656041970",
-        "name": "A Beautiful Oakland: A Civic Tech Idea-A-Thon",
-        "description": "Presented by Northeastern University Oakland and OpenOakland",
-        "startDate": "2026-09-29T07:00:00.000Z",
-        "endDate": "2026-09-30T06:59:00.000Z",
-        "timeSource": "eventbrite",
-        "organizers": [],
-        "location": {
-          "name": "Mills College at Northeastern University",
-          "city": "Oakland",
-          "region": "CA"
-        },
-        "offerAvailability": null,
-        "going": null
-      }
-    },
-    {
-      "url": "https://www.eventbrite.com/e/developerweek-2027-hackathon-registration-1992072331970",
-      "title": "DeveloperWeek 2027 Hackathon",
-      "category": "hackathon",
-      "heldBecause": null,
-      "discoveredVia": "eventbrite",
-      "confidence": 62,
-      "relevance": 60,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "DeveloperWeek 2027 Hackathon\nSanta Clara Convention Center\nSanta Clara, CA\nJoin the nation's largest challenge-driven hackathon @ DeveloperWeek 2027!",
-      "checkedAt": "2026-08-23T10:57:16.447Z",
-      "structuredEvent": {
-        "url": "https://www.eventbrite.com/e/developerweek-2027-hackathon-registration-1992072331970",
-        "name": "DeveloperWeek 2027 Hackathon",
-        "description": "Join the nation's largest challenge-driven hackathon @ DeveloperWeek 2027!",
-        "startDate": "2027-01-25T08:00:00.000Z",
-        "endDate": "2027-02-12T07:59:00.000Z",
-        "timeSource": "eventbrite",
-        "organizers": [],
-        "location": {
-          "name": "Santa Clara Convention Center",
-          "city": "Santa Clara",
-          "region": "CA"
-        },
-        "offerAvailability": null,
-        "going": null
-      }
+      "query": "https://www.eventbrite.com/d/ca--san-jose/hackathon/",
+      "error": "Error: HTTP 405"
     }
-  ]
+  ],
+  "note": "Eventbrite search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
+  "candidates": []
 }

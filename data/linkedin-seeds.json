@@ -1,20 +1,14 @@
 {
-  "collectedAt": "2026-08-23T03:31:50.559Z",
+  "collectedAt": "2026-08-23T15:12:28.180Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 17,
+  "pagesFound": 20,
   "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [
-    {
-      "stage": "search",
-      "query": "hackathon \"bay area\" 2026 register luma",
-      "error": "brightdata expect_body"
-    }
-  ],
+  "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
