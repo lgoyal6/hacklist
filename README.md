@@ -288,7 +288,7 @@ npm run check:sources      # are all the sources still working?
 npm test                   # everything, including the browser-driven form test
 npm run test:artifact      # the deploy gate: is the published artifact correct?
 npm run test:browser       # drives the Luma form filler against a local fixture
-npx vinext deploy          # manual deploy to Cloudflare Workers
+npm run deploy             # build, then deploy to Cloudflare Workers
 ```
 
 ## Guardrails

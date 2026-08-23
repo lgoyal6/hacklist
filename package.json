@@ -31,7 +31,8 @@
     "luma:export-session": "node scripts/export-luma-session.mjs",
     "test:artifact": "npm run build && node --test tests/rendered-html.test.mjs tests/discovery.test.mjs tests/dedupe.test.mjs tests/calendar-sync.test.mjs",
     "test:browser": "node --test tests/luma-external-form.test.mjs",
-    "discover:mlh": "node scripts/discover-mlh.mjs"
+    "discover:mlh": "node scripts/discover-mlh.mjs",
+    "deploy": "npm run build && WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext deploy"
   },
   "dependencies": {
     "@lightpanda/browser": "^1.2.0",
