@@ -3,7 +3,10 @@ import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { namesNonLocalRegion } from "./lib/candidate-score.mjs";
+import {
+  namesUnservedRegion,
+  resolveRegion,
+} from "./lib/candidate-score.mjs";
 import { isSameEvent, mergeDuplicate } from "./lib/dedupe.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -84,9 +87,6 @@ try {
 
 const timezone = config.timezone;
 const sweepTime = new Date(discovery.sweep.completedAt).getTime();
-const configuredLocalCities = new Set(
-  Object.values(config.areas ?? {}).flat(),
-);
 
 const WEEKDAYS = [
   "Sunday",
@@ -801,14 +801,20 @@ for (const rawCandidate of deduped) {
   if (!schedule) continue;
   const structuredLocation = candidate.structuredEvent?.location;
   const structuredCity = structuredLocation?.city?.toLowerCase();
-  if (structuredCity && !configuredLocalCities.has(structuredCity)) continue;
+  // Which board does this belong to? Decided on the city, because the state
+  // cannot decide it: the Bay Area and Southern California are both California,
+  // so a state test says nothing once there is more than one region. A named city
+  // that belongs to no region is not ours; an unnamed one is left to the checks
+  // below, which is what keeps online events and unannounced venues publishable.
+  const eventRegion = resolveRegion(structuredLocation, config);
+  if (structuredCity && !eventRegion) continue;
   // An event's own structured location is where it says it is, and it outranks
   // anything else on the page. A host blurb naming the cities its community
   // spans -- "Singapore, Tokyo, Seoul, and San Francisco Bay Area" -- is not a
   // location, but the city fallback below reads the whole page and cannot tell
   // the difference, which is how a Seoul hackathon reached the board as an SF
   // one. A region the event named itself ends it here, before that guess runs.
-  if (namesNonLocalRegion(structuredLocation)) continue;
+  if (namesUnservedRegion(structuredLocation, config)) continue;
 
   let location = candidate.structuredEvent
     ? parseStructuredLocation(candidate.structuredEvent, candidate.evidence)

@@ -7,7 +7,7 @@ import { chromium } from "playwright-core";
 import {
   buildPatterns,
   namesHackathonFormat,
-  namesNonLocalRegion,
+  namesUnservedRegion,
 } from "./lib/candidate-score.mjs";
 import { createPacer, fetchPage, isThrottled } from "./lib/page-http.mjs";
 
@@ -762,7 +762,7 @@ try {
         // SF, and the Seoul one carries a host blurb that names the Bay Area.
         // Reading place terms out of that text says local about an event whose
         // own address says South Korea.
-        const structuredLocal = namesNonLocalRegion(structuredEvent.location)
+        const structuredLocal = namesUnservedRegion(structuredEvent.location, config)
           ? false
           : structuredEvent.location?.city
             ? locationPattern.test(structuredPlace)
