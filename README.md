@@ -1,7 +1,7 @@
 # Hacklist SF
 
-Public hackathons in the SF Bay Area — including externally hosted events
-linked from Luma calendars — discovered automatically, ranked by signal, and
+Public hackathons in the SF Bay Area - including externally hosted events
+linked from Luma calendars - discovered automatically, ranked by signal, and
 published as a subscribable calendar.
 
 - **Site:** https://hacklist-sf.modern-renaissance-artifacts.workers.dev
@@ -13,11 +13,11 @@ published as a subscribable calendar.
 Seven sources feed one classifier. None of them costs anything, and none needs an
 API key.
 
-**Direct APIs — keyless, structured, and they work from any IP.** These are the
+**Direct APIs - keyless, structured, and they work from any IP.** These are the
 reliable core.
 
 1. `scripts/discover-luma-api.mjs` reads Luma's public discover feed
-   (`api.lu.ma/discover/get-paginated-events`) — around 900 upcoming Bay Area
+   (`api.lu.ma/discover/get-paginated-events`) - around 900 upcoming Bay Area
    events in 19 requests and ten seconds. It also hands back exact times, guest
    counts and registration state for events the other passes found by reading a
    page, and reports which calendars it saw hosting a hackathon so the crawl can
@@ -26,7 +26,7 @@ reliable core.
    steady stream of Bay Area hackathons that never appear on Luma.
 3. `scripts/discover-devpost.mjs` reads Devpost's public hackathon API.
 
-**Crawl — reaches what no feed indexes.**
+**Crawl - reaches what no feed indexes.**
 
 4. `scripts/discover-sf.mjs` sweeps public Luma surfaces with a headless browser
    (Lightpanda + Playwright), starting from the seeds in `config/discovery.json`
@@ -35,7 +35,7 @@ reliable core.
    public calendar pages and follows direct external event links. Raw candidates
    land in `data/discovery-output.json`.
 
-**Best-effort — extras that depend on a residential IP.**
+**Best-effort - extras that depend on a residential IP.**
 
 5. `scripts/discover-search.mjs` asks a search engine for events no calendar
    links to.
@@ -59,7 +59,7 @@ either would cost coverage.
 
 ## Reliability
 
-Every discovery pass is built never to fail — a throttled search or a dead
+Every discovery pass is built never to fail - a throttled search or a dead
 endpoint writes an empty file and exits 0, because a partial sweep beats no
 sweep. That design has two failure modes, and both are now covered.
 
@@ -72,7 +72,7 @@ run goes red.
 
 **It can go quiet without telling anyone.** `npm run check:sources` reads what
 each pass wrote and fails when the shape of the output says a source is broken
-rather than merely quiet — an empty Luma feed, a YC index with no events, a sweep
+rather than merely quiet - an empty Luma feed, a YC index with no events, a sweep
 that visited almost no pages, a board below its floor, or any pass whose output
 has gone stale. It runs last in CI, *after* the deploy, so a broken source never
 blocks the board from updating; it just turns the run red. Sources that depend on
@@ -81,7 +81,7 @@ empty from a datacenter.
 
 Tests come in two kinds, and only one of them gates a deploy.
 
-`npm run test:artifact` asks whether the thing about to be published is correct —
+`npm run test:artifact` asks whether the thing about to be published is correct  - 
 the rendered board, the ICS feed, the date arithmetic most likely to publish
 something wrong (Devpost's date-only ranges, Y Combinator's placeholder
 timestamps), the duplicate-collapsing rules and the calendar sync's decisions. 46
@@ -92,7 +92,7 @@ local fixture that reproduces the behaviours which actually broke: a date field
 that mis-parses its own display format, out-of-year dates shown differently, a
 picker overlay that swallows clicks, an Escape key that closes the whole dialog,
 and time fields Luma refills server-side. It needs Chrome and takes a minute and a
-half, and it runs *after* the deploy — a flaky browser must not be able to
+half, and it runs *after* the deploy - a flaky browser must not be able to
 withhold a correct board.
 
 See `PROTOTYPE.md` for the full product spec.
@@ -120,7 +120,7 @@ step can abort another, and the log lands in `logs/local-passes.log`.
 
 Once a day rather than twice: the sync is idempotent and the calendar only
 changes when the board does, so the second run mostly re-confirmed the first.
-Evening because the 8pm sweep finishes just before it — the sync publishes that
+Evening because the 8pm sweep finishes just before it - the sync publishes that
 sweep, and the seeds it pushes are waiting for the 8am one to crawl.
 
 launchd does not skip a missed run, so a sleeping Mac means the pass lands late
@@ -132,7 +132,7 @@ reliable on power than on battery.
 The first run opens Chrome and waits for you to sign in by hand; later runs
 reuse the profile. Personalized discovery writes only public event URLs to
 `data/personalized-seeds.json`, which the anonymous crawler then classifies
-like any other find — being recommended is not evidence of anything. It also
+like any other find - being recommended is not evidence of anything. It also
 stores each card's title, which the sweep uses to visit hackathon-looking
 events before general ones, so a feed of 141 mostly-unrelated events cannot
 crowd out the ones worth having.
@@ -150,7 +150,7 @@ Everything else reaches events by crawling outward from calendars we already
 know, so a hackathon nobody curates stays invisible. `npm run discover:search`
 asks a search engine instead and writes event URLs to
 `data/search-seeds.json`, which the crawler then visits and classifies like any
-other find — a search hit is not evidence.
+other find - a search hit is not evidence.
 
 **No API key is required.** Firing the whole query list at once is what got the
 keyless endpoint blocked, so each run takes only `searchQueriesPerRun` queries
@@ -161,18 +161,18 @@ list is therefore covered every few runs with no throttling.
 
 Search engines block datacenter IPs, and GitHub Actions is a datacenter. That is
 why the keyless path returns 403 or an empty page from CI however politely it
-asks — it is not a rate limit you can wait out. The direct APIs carry the board
+asks - it is not a rate limit you can wait out. The direct APIs carry the board
 precisely so this does not matter, but if you want the search legs working in CI
 too, set one of these (in provider precedence order):
 
-- `BRIGHTDATA_API_KEY` (+ optional `BRIGHTDATA_SERP_ZONE`, default `serp_api`) —
+- `BRIGHTDATA_API_KEY` (+ optional `BRIGHTDATA_SERP_ZONE`, default `serp_api`)  - 
   the one that actually solves the datacenter problem, since unblocking is what
   the product is for. Free tier is 5,000 credits/month, no credit card, and both
-  search passes together spend a few hundred. **Wired but untested** — there is no
+  search passes together spend a few hundred. **Wired but untested** - there is no
   account behind it here, so treat the first run as the real test; a wrong
   response shape is recorded in `problems` rather than thrown.
-- `SERPER_API_KEY` or `TAVILY_API_KEY` — free tiers, no card.
-- `BRAVE_API_KEY` — Brave now bills new accounts.
+- `SERPER_API_KEY` or `TAVILY_API_KEY` - free tiers, no card.
+- `BRAVE_API_KEY` - Brave now bills new accounts.
 
 Search never blocks the sweep: a run with no search results still publishes.
 
@@ -184,8 +184,8 @@ budget.
 ## LinkedIn discovery
 
 Search discovery can only find an event once a search engine has indexed its
-registration page. A lot of Bay Area hackathons are announced first — sometimes
-only — as a LinkedIn post, and the registration link sits in the post body or in
+registration page. A lot of Bay Area hackathons are announced first - sometimes
+only - as a LinkedIn post, and the registration link sits in the post body or in
 the author's own first comment. `npm run discover:linkedin` goes after those and
 writes `data/linkedin-seeds.json`, which the crawler visits and classifies like
 any other find.
@@ -197,15 +197,15 @@ Two stages, and by default neither costs anything:
    else keyless DuckDuckGo).
 2. **Read** each of those pages over plain HTTPS, free and keyless. LinkedIn
    serves post bodies, article bodies and top comments to an anonymous reader,
-   so no login, cookie or session is involved — and none is stored.
+   so no login, cookie or session is involved - and none is stored.
 
 A weekly "Bay Area AI events" digest can carry fifty Luma links of which three
 are hackathons, so each extracted link keeps the words around it: links whose
 context names a hackathon format are marked `promising` and crawled first, and
 the cap trims the filler rather than the finds.
 
-There is an optional paid escalation — a per-call LinkedIn search over
-[Zero](https://www.zero.xyz) (x402, no signup, ~$0.003 a query) — for when the
+There is an optional paid escalation - a per-call LinkedIn search over
+[Zero](https://www.zero.xyz) (x402, no signup, ~$0.003 a query) - for when the
 free provider comes back empty. **It is off by default** (`linkedinMaxPaidQueriesPerRun: 0`),
 because the board is meant to cost nothing, and because that capability answered
 502 on roughly a third of calls and charged for them anyway. Turn it on by
@@ -220,7 +220,7 @@ the direct APIs above carry the board.
 
 ## Devpost discovery
 
-`npm run discover:devpost` reads `devpost.com/api/hackathons` — public, keyless,
+`npm run discover:devpost` reads `devpost.com/api/hackathons` - public, keyless,
 paginated. Coverage is narrower than the volume suggests and honestly so: of ~80
 upcoming in-person hackathons worldwide only a handful are Bay Area, and Devpost's
 location field is free text an organizer typed. Sometimes it is a city, sometimes
@@ -235,14 +235,14 @@ do not believe" guard and prints the date without a time.
 ## Y Combinator discovery
 
 YC runs a lot of Bay Area hackathons on its own events site and never puts them
-on Luma, so the rest of the pipeline was blind to them — the sweep crawls
+on Luma, so the rest of the pipeline was blind to them - the sweep crawls
 outward from Luma calendars, and search discovery only accepts Luma permalinks.
 That is how Greptile's second Fast Hackathon (at YC, 23 Aug 2026) stayed off the
 board while it was open for applications.
 
 `npm run discover:yc` fixes that. `events.ycombinator.com` is a client-rendered
-Inertia app — fetching it plainly gets an empty shell, which is why the headless
-sweep cannot read it either — but Inertia ships its props in a `data-page`
+Inertia app - fetching it plainly gets an empty shell, which is why the headless
+sweep cannot read it either - but Inertia ships its props in a `data-page`
 attribute, so the events arrive as clean structured JSON. No browser, no key, no
 third-party scraper. Output is `data/yc-candidates.json` in the same candidate
 shape the sweep writes, merged by the normalizer and scored on the same terms.
@@ -263,14 +263,14 @@ source health.
 
 The health check runs last, deliberately after the deploy: a broken source should
 never stop the board from updating, it should just make the run red. A collapse is
-handled earlier and differently — the normalizer refuses to publish it at all, so
+handled earlier and differently - the normalizer refuses to publish it at all, so
 the commit and deploy steps never run and the live board keeps its last good data.
 
 Repository secrets:
 
-- `CLOUDFLARE_API_TOKEN` — enables the deploy step (Workers Scripts: Edit
+- `CLOUDFLARE_API_TOKEN` - enables the deploy step (Workers Scripts: Edit
   permission). Without it, runs still refresh the committed data.
-- `LUMA_API_KEY` (optional) — calendar-scoped key from a Luma Plus calendar;
+- `LUMA_API_KEY` (optional) - calendar-scoped key from a Luma Plus calendar;
   enables `scripts/sync-luma-calendar.mjs`, which submits each discovered
   event to that Luma calendar so people can follow Hacklist SF on Luma too.
 
@@ -298,7 +298,7 @@ not collect attendee information, and rate-limits itself to a small page
 budget per sweep.
 
 The LinkedIn pass holds to the same line. It reads only what LinkedIn serves an
-anonymous reader, stores no login or cookie, and keeps nothing about people —
+anonymous reader, stores no login or cookie, and keeps nothing about people  - 
 what it extracts from a post is event URLs and the words around them. Paid
 LinkedIn capabilities that return attendee, liker or commenter lists exist and
 are not used.

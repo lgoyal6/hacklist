@@ -44,7 +44,7 @@ still reaches the deploy step. Should the seed lists ever outgrow the budget,
 the per-run caps rotate rather than truncate, so coverage completes across runs
 instead of silently losing the tail.
 
-A title naming a non-hackathon format — conference, summit, meet-up — only
+A title naming a non-hackathon format - conference, summit, meet-up - only
 publishes when the title also names a hackathon format, which keeps
 "AI Infra Summit Hackathon" while rejecting "MITAI Conference". Events that
 look local and build-shaped but fail a format check are written to
@@ -77,9 +77,9 @@ hackathon can be low relevance when it is far away, closed or already past.
    event pages with Lightpanda + Playwright, extracts page text plus structured
    event metadata, and writes raw candidates to `data/discovery-output.json`.
 2. `scripts/normalize-events.mjs` parses each candidate's page evidence into a
-   structured record — start/end datetimes (timezone-aware, with
+   structured record - start/end datetimes (timezone-aware, with
    weekday-checked year inference), venue, city, area bucket, organizer,
-   registration status, prize text, tags and attendance — then scores it with
+   registration status, prize text, tags and attendance - then scores it with
    the weights below and writes `data/events.json`.
 
 The normalizer also snapshots every sweep to `data/history/` and diffs against
@@ -111,7 +111,7 @@ Two paths exist, and the free one is the default:
   Truth about what is on the calendar comes from reading the event rows' own
   links while scrolling in small steps, because the list is virtualized and
   reading it after one long scroll sees only the last screenful. Page text and
-  HTML are deliberately not searched for slugs — hydration payloads and the
+  HTML are deliberately not searched for slugs - hydration payloads and the
   modal's "Suggested Events" mention slugs that are not on the calendar.
 
   `data/luma-ledger.json` is reconciled against the calendar in both directions
