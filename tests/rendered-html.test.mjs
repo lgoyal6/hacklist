@@ -58,6 +58,12 @@ test("events.json only contains upcoming, fully-normalized events", () => {
   }
 });
 
+/** Has this event not finished yet, as the site and feed judge it per request? */
+function isUpcoming(event) {
+  const over = Date.parse(event.end ?? event.start ?? "");
+  return !Number.isFinite(over) || over >= Date.now();
+}
+
 test("server-renders the ranked event board", async () => {
   const response = await render("/");
   assert.equal(response.status, 200);
@@ -72,12 +78,23 @@ test("server-renders the ranked event board", async () => {
   // able to quietly turn the titles back into plain text.
   // Scoped to the default view: adjacent events live behind the "Everything"
   // filter, so they are legitimately absent from the first paint.
+  // Still upcoming, because the board is a twice-daily snapshot and the page
+  // filters out anything that has finished since it was written.
   for (const event of eventsData.events.filter(
-    (candidate) => candidate.category === "hackathon",
+    (candidate) => candidate.category === "hackathon" && isUpcoming(candidate),
   )) {
     assert.ok(
       html.includes(`href="${event.url}"`),
       `${event.title} is not hyperlinked on the board`,
+    );
+  }
+  // And an event that has finished must not still be listed.
+  for (const event of eventsData.events.filter(
+    (candidate) => !isUpcoming(candidate),
+  )) {
+    assert.ok(
+      !html.includes(`href="${event.url}"`),
+      `${event.title} has ended but is still on the board`,
     );
   }
 });
@@ -95,10 +112,13 @@ test("serves an ICS feed with one VEVENT per dated event", async () => {
   assert.match(ics, /BEGIN:VTIMEZONE/);
   assert.match(ics, /X-WR-CALNAME:Hacklist SF/);
 
-  // Every event with a date is in the feed. Ones whose time we do not trust go in
-  // as all-day entries rather than being withheld — the day is solid, and an
-  // all-day row claims no hour.
-  const datedEvents = eventsData.events.filter((e) => e.start);
+  // Every event with a date that has not yet finished is in the feed. Ones whose
+  // time we do not trust go in as all-day entries rather than being withheld:
+  // the day is solid, and an all-day row claims no hour. Ones that have ended are
+  // filtered per request, because the file is written twice a day and events
+  // finish continuously; one build published a hackathon that ended sixteen
+  // minutes after the sweep wrote it.
+  const datedEvents = eventsData.events.filter((e) => e.start && isUpcoming(e));
   const vevents = ics.match(/BEGIN:VEVENT/g) ?? [];
   assert.equal(vevents.length, datedEvents.length);
   // Unfold folded lines before checking content.

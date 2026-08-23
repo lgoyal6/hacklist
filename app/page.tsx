@@ -89,9 +89,20 @@ export default function Home() {
     }
   };
 
+  // The board is a twice-daily snapshot, so it always carries events that have
+  // finished since it was written. Read once on mount rather than during render,
+  // which keeps the render pure and still drops an event when it is over rather
+  // than when the next sweep runs.
+  const [asOf] = useState(() => Date.now());
+
   const visible = useMemo(() => {
     const needle = query.trim().toLowerCase();
     return events
+      .filter((event) => {
+        const over = Date.parse(event.end ?? event.start ?? "");
+        if (Number.isFinite(over) && over < asOf) return false;
+        return true;
+      })
       .filter((event) => {
         const haystack = `${event.title} ${event.organizer} ${event.tags.join(" ")} ${event.city ?? ""}`;
         if (needle && !haystack.toLowerCase().includes(needle)) return false;
@@ -103,7 +114,7 @@ export default function Home() {
         return true;
       })
       .sort((a, b) => (a.start ?? "9999").localeCompare(b.start ?? "9999"));
-  }, [query, view]);
+  }, [query, view, asOf]);
 
   return (
     <main>

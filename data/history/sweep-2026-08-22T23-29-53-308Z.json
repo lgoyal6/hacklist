@@ -5,51 +5,15 @@
     "sweepCompletedAt": "2026-08-22T23:29:53.308Z",
     "pagesVisited": 842,
     "candidatesFound": 46,
-    "publishedCount": 59,
-    "hackathonCount": 55,
+    "publishedCount": 56,
+    "hackathonCount": 52,
     "adjacentCount": 4,
-    "organizerCount": 52,
-    "sourceCount": 19,
+    "organizerCount": 51,
+    "sourceCount": 18,
     "seedCount": 19,
     "externalCount": 8
   },
   "events": [
-    {
-      "id": "zero-downtime",
-      "url": "https://luma.com/zero-downtime",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Zero Downtime Hackathon | Win an NVIDIA DGX Spark AI Supercomputer",
-      "organizer": "Bright Data",
-      "venue": "Bright Data",
-      "city": "San Francisco",
-      "area": "SF",
-      "start": "2026-08-22T09:00:00-07:00",
-      "end": "2026-08-22T18:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 22",
-      "dateDetail": "Sat · 9am–6pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "$50 prizes",
-      "tags": [
-        "AI",
-        "Data"
-      ],
-      "going": 439,
-      "why": "9-hour build with judging, demos, a submission deadline; $50 prizes.",
-      "score": 95,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 93,
-        "accessibility": 100,
-        "freshness": 96
-      },
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "checkedAt": "2026-08-22T23:11:08.032Z"
-    },
     {
       "id": "agent-harness",
       "url": "https://luma.com/agent-harness",
@@ -74,7 +38,7 @@
         "Agents",
         "Data"
       ],
-      "going": 474,
+      "going": 477,
       "why": "9-hour build with judging, team formation; $50 prizes.",
       "score": 95,
       "confidence": 94,
@@ -123,21 +87,21 @@
       "checkedAt": "2026-08-22T23:11:44.669Z"
     },
     {
-      "id": "company-in-a-day",
-      "url": "https://luma.com/company-in-a-day",
+      "id": "agentnativebuildershackathon",
+      "url": "https://luma.com/agentnativebuildershackathon",
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Company-in-a-Day: Build & Run a Startup With a Team of AI Agents (Venture Week SF Hackathon)",
-      "organizer": "Frontier Tower SF",
-      "venue": "Frontier Tower @ 14th Floor: Full Floor 995 Market Street, San Francisco",
-      "city": "SF",
+      "title": "Agent Native Builders Hackathon @ Cloudflare HQ",
+      "organizer": "Immersive Commons",
+      "venue": "Cloudflare",
+      "city": "San Francisco",
       "area": "SF",
-      "start": "2026-08-22T10:00:00-07:00",
-      "end": "2026-08-22T17:00:00-07:00",
+      "start": "2026-08-26T09:00:00-07:00",
+      "end": "2026-08-27T20:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 22",
-      "dateDetail": "Sat · 10am–5pm",
+      "dateLabel": "AUG 26",
+      "dateDetail": "Wed–Thu · 2 days",
       "timeUnverified": false,
       "status": "Open",
       "prize": "$500 cash",
@@ -145,18 +109,18 @@
         "AI",
         "Agents"
       ],
-      "going": 90,
-      "why": "7-hour build with judging, demos, team formation; $500 cash.",
-      "score": 92,
+      "going": 0,
+      "why": "2-day build with demos, team formation; $500 cash.",
+      "score": 93,
       "confidence": 94,
       "scores": {
         "confidence": 94,
-        "builderValue": 78,
+        "builderValue": 85,
         "accessibility": 100,
-        "freshness": 96
+        "freshness": 92
       },
-      "discoveredVia": "https://luma.com/genai-sf",
-      "checkedAt": "2026-08-22T23:11:17.398Z"
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "checkedAt": "2026-08-22T23:11:47.007Z"
     },
     {
       "id": "qzct3ybt",
@@ -756,7 +720,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://luma.com/discover/sf",
-      "checkedAt": "2026-08-22T23:47:54.183Z"
+      "checkedAt": "2026-08-23T01:08:08.096Z"
     },
     {
       "id": "clickh-sie8",
@@ -1220,42 +1184,6 @@
       "checkedAt": "2026-08-22T23:11:53.818Z"
     },
     {
-      "id": "agentnativebuildershackathon",
-      "url": "https://luma.com/agentnativebuildershackathon",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Agent Native Builders Hackathon @ Cloudflare HQ",
-      "organizer": "Immersive Commons",
-      "venue": "Cloudflare",
-      "city": "San Francisco",
-      "area": "SF",
-      "start": "2026-08-26T09:00:00-07:00",
-      "end": "2026-08-27T20:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 26",
-      "dateDetail": "Wed–Thu · 2 days",
-      "timeUnverified": false,
-      "status": "Waitlist",
-      "prize": "$500 cash",
-      "tags": [
-        "AI",
-        "Agents"
-      ],
-      "going": 0,
-      "why": "2-day build with demos, team formation; $500 cash.",
-      "score": 83,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 85,
-        "accessibility": 53,
-        "freshness": 92
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-22T23:11:47.007Z"
-    },
-    {
       "id": "e9z9vuxz",
       "url": "https://luma.com/e9z9vuxz",
       "platform": "luma",
@@ -1391,42 +1319,6 @@
       },
       "discoveredVia": "https://luma.com/techequity-ai",
       "checkedAt": "2026-08-22T23:12:12.997Z"
-    },
-    {
-      "id": "apify-v8vw",
-      "url": "https://luma.com/apify-v8vw",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "VC pitch night + hackathon",
-      "organizer": "Apify Events",
-      "venue": null,
-      "city": "San Francisco",
-      "area": "SF",
-      "start": "2026-08-22T10:00:00-07:00",
-      "end": "2026-08-22T17:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 22",
-      "dateDetail": "Sat · 10am–5pm",
-      "timeUnverified": false,
-      "status": "Waitlist",
-      "prize": "Prizes listed",
-      "tags": [
-        "Tech",
-        "Data"
-      ],
-      "going": 188,
-      "why": "7-hour build with judging, demos, team formation; prizes listed.",
-      "score": 80,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 71,
-        "accessibility": 53,
-        "freshness": 96
-      },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-22T23:10:56.505Z"
     },
     {
       "id": "pnf1qf3g",
@@ -1566,7 +1458,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://luma.com/discover/sf",
-      "checkedAt": "2026-08-22T23:47:58.906Z"
+      "checkedAt": "2026-08-23T01:08:10.891Z"
     },
     {
       "id": "0nkmbhav",
@@ -1601,7 +1493,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-22T23:47:58.164Z"
+      "checkedAt": "2026-08-23T01:08:11.111Z"
     },
     {
       "id": "AIHardware",
@@ -1669,7 +1561,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-22T23:47:56.814Z"
+      "checkedAt": "2026-08-23T01:08:11.742Z"
     },
     {
       "id": "3bd9nnuh",
@@ -1704,7 +1596,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-22T23:47:58.433Z"
+      "checkedAt": "2026-08-23T01:08:11.917Z"
     },
     {
       "id": "llamalounge26",
@@ -1739,7 +1631,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://luma.com/discover/sf",
-      "checkedAt": "2026-08-22T23:47:58.646Z"
+      "checkedAt": "2026-08-23T01:08:12.268Z"
     },
     {
       "id": "3x24sk2k",
@@ -1774,7 +1666,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-22T23:47:57.891Z"
+      "checkedAt": "2026-08-23T01:08:12.538Z"
     },
     {
       "id": "external-futureforge-hacks-devpost-com--d3eb7a35",
@@ -2002,7 +1894,7 @@
       "tags": [
         "AI"
       ],
-      "going": 358,
+      "going": 359,
       "why": "3-hour build with demos, team formation; prizes listed.",
       "score": 87,
       "confidence": 94,

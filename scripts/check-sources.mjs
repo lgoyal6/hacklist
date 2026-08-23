@@ -77,11 +77,30 @@ if (board.__missing) {
     );
   }
   const now = Date.now();
+  // An event that ended after the sweep wrote the file is not a defect: the board
+  // is a snapshot and events finish continuously. One run failed for a hackathon
+  // that ended sixteen minutes after the sweep completed. The site and the feed
+  // now filter those per request, so only an event the normalizer itself should
+  // have dropped counts against the build.
+  const writtenAt = Date.parse(board.meta?.sweepCompletedAt ?? "") || now;
   const past = events.filter(
-    (event) => Date.parse(event.end ?? event.start ?? "") < now,
+    (event) => Date.parse(event.end ?? event.start ?? "") < writtenAt,
   );
+  const endedSince = events.filter((event) => {
+    const over = Date.parse(event.end ?? event.start ?? "");
+    return over >= writtenAt && over < now;
+  });
+  if (endedSince.length) {
+    notes.push(
+      `board: ${endedSince.length} event(s) ended since the sweep, filtered at ` +
+        "request time by the site and feed",
+    );
+  }
   if (past.length) {
-    failures.push(`events.json contains ${past.length} event(s) that already ended`);
+    failures.push(
+      `events.json contains ${past.length} event(s) that had already ended when ` +
+        "it was written",
+    );
   }
   const undated = events.filter((event) => !event.start);
   if (undated.length) warnings.push(`${undated.length} event(s) published without a start`);
@@ -167,6 +186,31 @@ if (discovery.__missing) {
   }
   if ((discovery.sweep?.candidatesFound ?? 0) === 0) {
     failures.push("sweep: zero candidates from a full crawl");
+  }
+  // Only failing at zero let a real collapse through: one run crawled 731 pages
+  // and produced 8 candidates against 46 from the same code an hour earlier, and
+  // the health check called it fine because 8 is not 0.
+  //
+  // A hard floor would cry wolf instead, because a low count is expected from a
+  // datacenter: Luma's discover surfaces are geolocated, and CI legitimately
+  // sees a fraction of what a Bay Area address does. So the floor applies only
+  // when the feed was healthy, which is the case where a thin crawl means
+  // something is broken rather than something is remote.
+  const found = discovery.sweep?.candidatesFound ?? 0;
+  const geolocatedOut = lumaApi.feedCollapsed === true;
+  const candidateFloor = config.minSweepCandidates ?? 20;
+  if (found > 0 && found < candidateFloor && !geolocatedOut) {
+    failures.push(
+      `sweep: ${found} candidate(s) from ${visited} pages, under the floor of ` +
+        `${candidateFloor}, and the discover feed was healthy, so this is a ` +
+        "crawl problem rather than a geolocation one",
+    );
+  } else if (found > 0 && found < candidateFloor) {
+    warnings.push(
+      `sweep: ${found} candidate(s) from ${visited} pages, expected from an ` +
+        "address the discover feed does not serve; the board is carried by " +
+        "retention and the keyless sources",
+    );
   }
   // A throttled sweep is the quiet failure this file exists to catch: it exits
   // 0, writes a well-formed file, and reports a smaller board with no error. One

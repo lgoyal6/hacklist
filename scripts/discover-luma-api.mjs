@@ -544,9 +544,10 @@ const fresh = candidates.filter((candidate) => !sweptUrls.has(candidate.url));
 // and cost the board seven hackathons before anyone noticed. So a collapse never
 // replaces a good file: the previous one stands and this exits non-zero.
 let previousUnique = 0;
+let previous = null;
 try {
-  const before = JSON.parse(await readFile(outputPath, "utf8"));
-  previousUnique = before.uniqueEvents ?? 0;
+  previous = JSON.parse(await readFile(outputPath, "utf8"));
+  previousUnique = previous.uniqueEvents ?? 0;
 } catch {
   // first run
 }
@@ -554,14 +555,29 @@ const floor = Math.max(
   config.lumaApiMinEvents ?? 100,
   Math.ceil(previousUnique * 0.5),
 );
-if (previousUnique > 0 && byUrl.size < floor) {
-  console.error(
-    `Refusing to overwrite: pulled ${byUrl.size} event(s) against ${previousUnique} ` +
-      `last time (floor ${floor}). Luma's discover feed is geolocated — from ` +
-      "outside the Bay Area it answers 200 with almost nothing. Keeping the " +
-      "previous pull.",
+const feedCollapsed = previousUnique > 0 && byUrl.size < floor;
+if (feedCollapsed) {
+  // The feed is geolocated: from outside the Bay Area it answers 200 with almost
+  // nothing, so its own numbers are kept from the previous pull rather than
+  // overwritten. But the calendar and retention passes above are not geolocated,
+  // and exiting here threw their work away: CI reused a file frozen at the last
+  // local run, so retention never ran where it was needed most, and CI's own
+  // crawl contributed 8 candidates against 46 locally while the board survived
+  // only on carried-over state.
+  //
+  // So the feed's fields are preserved and this run's fresh calendar and
+  // retention candidates are merged in beside them.
+  const kept = (previous?.candidates ?? []).filter(
+    (candidate) => !claimedByPass.has(candidate.url),
   );
-  process.exit(1);
+  candidates.push(...kept);
+  candidates.sort((a, b) => b.relevance - a.relevance);
+  console.warn(
+    `Feed pulled ${byUrl.size} event(s) against ${previousUnique} last time ` +
+      `(floor ${floor}), which is what a datacenter address sees. Keeping the ` +
+      `feed's own numbers from the previous pull and merging this run's ` +
+      `${claimedByPass.size} calendar and retention candidate(s) into it.`,
+  );
 }
 
 await writeFile(
@@ -571,9 +587,12 @@ await writeFile(
       collectedAt: new Date().toISOString(),
       source: `${API}/discover/get-paginated-events`,
       placeId: PLACE_ID,
-      entriesPulled: pulled.entries.length,
+      feedCollapsed,
+      entriesPulled: feedCollapsed
+        ? previous?.entriesPulled ?? pulled.entries.length
+        : pulled.entries.length,
       requests: pulled.requests,
-      uniqueEvents: byUrl.size,
+      uniqueEvents: feedCollapsed ? previousUnique : byUrl.size,
       hackathonCandidates: candidates.length,
       calendarPass,
       retention,
@@ -586,8 +605,12 @@ await writeFile(
         "exact times, guest counts and registration state for events the sweep " +
         "found by reading a page; `calendarSeeds` are calendars seen hosting a " +
         "hackathon, crawled by the next sweep.",
-      calendarSeeds: [...calendarSeeds].sort(),
-      enrichment,
+      // Both are feed-derived, so a collapsed pull keeps the previous ones: the
+      // crawl's seed list must not shrink because a datacenter asked.
+      calendarSeeds: feedCollapsed
+        ? previous?.calendarSeeds ?? [...calendarSeeds].sort()
+        : [...calendarSeeds].sort(),
+      enrichment: feedCollapsed ? previous?.enrichment ?? enrichment : enrichment,
       candidates,
     },
     null,
