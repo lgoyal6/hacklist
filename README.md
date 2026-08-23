@@ -97,6 +97,28 @@ withhold a correct board.
 
 See `PROTOTYPE.md` for the full product spec.
 
+## Is another metro worth a region?
+
+`npm run measure:regions` counts hackathons starting in the next 60 days across
+seven metros, asking Luma, Eventbrite, Meetup, Devpost and MLH separately and
+then deduping. Read-only, keyless, and it writes nothing.
+
+It reports per source on purpose. The first attempt at this question asked only
+Luma, which is an SF company whose home market adopted it first, so it flattered
+San Francisco and said little about anywhere else. Splitting by source is what
+tells you whether a metro's count is real or is one platform's popularity in one
+city: New York's six are spread across four sources, while Seattle's three are
+all recurring hack nights on Meetup.
+
+It counts titles rather than pages, so it is an upper bound. The board's own
+classifier reads the page and rejects most of what this admits: "Weekly
+Write-a-thon" matches the `-a-thon` shape and is not a hackathon. Treat the
+numbers as a ranking, not an inventory, and read the named results underneath.
+
+As of August 2026, per 60 days and quality-adjusted by hand: Bay Area 8-12,
+SoCal 3-4 (which is only visible if Los Angeles and San Diego are counted as one
+region), New York 2-3, Austin 2, Seattle and Boston 0.
+
 ## Local passes (never run in CI)
 
 Two steps need a signed-in Luma session, so they run on your machine against a
