@@ -103,6 +103,15 @@ function isBrowseSurface(url) {
   const path = new URL(url).pathname;
   return (
     isCuratedIndex(url) ||
+    // A city page is the same kind of surface as /discover, and strictly better.
+    // /discover renders nothing server-side and fetches from Luma's discover API,
+    // which is IP-geolocated and ignores the place it is asked for: a fabricated
+    // place id returns San Francisco. So from a datacenter those pages are close
+    // to empty, and one CI sweep crawled 731 pages for 8 candidates against 46
+    // from the same code on a residential address. luma.com/<city> serves real
+    // city-specific events in its own HTML, from any address, which is also the
+    // only reason another region is reachable at all.
+    (config.citySurfaces ?? []).includes(url.replace(/\/$/, "")) ||
     path.startsWith("/discover") ||
     // A calendar's own page is the same kind of surface: a virtualized list that
     // renders a screenful and loads the rest as you scroll. Read without
