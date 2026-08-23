@@ -221,9 +221,18 @@ jobs:
         run: npm run test:artifact
       # Deploy on its own merits: the site should reflect the sweep even when a
       # concurrent run already committed identical data.
+      #
+      # `npm run deploy` and not `vinext deploy`, because the latter ships
+      # whatever is already in dist. This job happens to build during the test
+      # step above, so it was correct by accident; deploying by hand was not, and
+      # shipped a Worker whose HTML asked for /assets/page-CHDNf3Bh.js while the
+      # uploaded assets were page-LedHCZM5.js. Every one of those returned 404,
+      # so the page could not hydrate: the server-rendered list still showed but
+      # search and every filter were dead. The extra build costs a few seconds
+      # and removes the whole class.
       - name: Deploy site + calendar feed (needs CLOUDFLARE_API_TOKEN)
         if: env.CLOUDFLARE_API_TOKEN != ''
-        run: npx vinext deploy
+        run: npm run deploy
       # Last, and deliberately after the deploy. Every discovery pass is built to
       # exit 0 whatever happens, so a source can die and the pipeline keeps
       # publishing yesterday's answer in silence — which is exactly what happened
