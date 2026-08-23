@@ -112,7 +112,16 @@ function buildCalendar(): string {
   // Devpost publishes submission dates and no clock times at all — and an all-day
   // row claims no hour, so it cannot land a subscriber in the wrong place. Only
   // an event with no date at all has nowhere to go.
-  const events = (discovery.events as FeedEvent[]).filter((event) => event.start);
+  // Filtered per request, not per build. The board is rebuilt twice a day, so
+  // between sweeps it will always contain events that have since finished: one
+  // run published a hackathon that ended sixteen minutes after the sweep wrote
+  // the file. A feed is read continuously and can simply not serve them.
+  const asOf = Date.now();
+  const events = (discovery.events as FeedEvent[]).filter((event) => {
+    if (!event.start) return false;
+    const over = Date.parse(event.end ?? event.start);
+    return !Number.isFinite(over) || over >= asOf;
+  });
   const stamp = icsUtcStamp(discovery.meta.sweepCompletedAt);
 
   const lines = [
