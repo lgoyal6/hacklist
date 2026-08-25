@@ -136,7 +136,7 @@ Tests come in two kinds, and only one of them gates a deploy.
 `npm run test:artifact` asks whether the thing about to be published is correct  - 
 the rendered board, the ICS feed, the date arithmetic most likely to publish
 something wrong (Devpost's date-only ranges, Y Combinator's placeholder
-timestamps), the duplicate-collapsing rules and the calendar sync's decisions. 46
+timestamps), the duplicate-collapsing rules and the calendar sync's decisions. 63
 tests, three seconds, and CI runs it between the commit and the deploy.
 
 `npm run test:browser` drives the real Add-External-Event form filler against a

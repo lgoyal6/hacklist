@@ -20,7 +20,7 @@ evidence of building plus a competitive or submission format. This is how names
 such as "Pizza Agent Challenge" can qualify while ordinary pitch nights and
 meetups are excluded.
 
-Curated hackathon boards elsewhere on the web (`externalIndexUrls`) are treated
+Curated hackathon boards elsewhere on the web (`curatedIndexUrls`) are treated
 as inventories rather than as pages to classify: their Luma links are followed
 even when the event name uses a word our vocabulary does not know, but each
 linked event is still classified on its own page. These boards are
