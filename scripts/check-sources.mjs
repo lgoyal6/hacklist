@@ -114,10 +114,13 @@ if (board.__missing) {
 // for returning nothing: an empty result means the endpoint changed shape or went
 // away, which is exactly the failure the silent design would otherwise hide.
 //
-// Luma's discover feed is the exception and is treated more gently. It is
-// geolocated to the place you ask about, so a datacenter run genuinely cannot
-// refresh it — measured: ~890 events from a Bay Area address, 2 from a GitHub
-// runner, both with a 200 and no error.
+// Luma's discover feed is the exception and is treated more gently. Its rich
+// pull is the one for wherever the caller is, so a datacenter run genuinely
+// cannot refresh it — measured: ~890 events from a Bay Area address, 2 from a
+// GitHub runner, both with a 200 and no error. The per-region place feeds it
+// pulls alongside that one do answer from anywhere, and they are checked
+// separately below, because a total the Bay Area dominates cannot say that a
+// region went quiet.
 
 const lumaApi = await readJson("data/luma-api.json");
 if (lumaApi.__missing) {
@@ -138,8 +141,24 @@ if (lumaApi.__missing) {
   if ((lumaApi.hackathonCandidates ?? 0) === 0) {
     failures.push("luma-api: zero hackathon candidates from a feed that normally has a dozen");
   }
+  // A place feed that returns nothing at all is a wrong or retired place id
+  // rather than a quiet week. San Diego's is small — single figures — but a
+  // place that exists always answers with something.
+  for (const feed of lumaApi.feeds ?? []) {
+    if (!feed.region) continue; // the geolocated pull; its size is the caller's
+    if ((feed.entries ?? 0) === 0) {
+      warnings.push(
+        `luma-api: the ${feed.region} place feed (${feed.placeId}) returned no ` +
+          "events at all — check the place id against luma.com's city page",
+      );
+    }
+  }
   notes.push(
-    `luma-api: ${lumaApi.uniqueEvents} events, ${lumaApi.hackathonCandidates} hackathons, ${(lumaApi.calendarSeeds ?? []).length} calendar seeds`,
+    `luma-api: ${lumaApi.uniqueEvents} events, ${lumaApi.hackathonCandidates} hackathons, ${(lumaApi.calendarSeeds ?? []).length} calendar seeds` +
+      (lumaApi.feeds ?? [])
+        .filter((feed) => feed.region)
+        .map((feed) => `, ${feed.region} ${feed.entries}`)
+        .join(""),
   );
 }
 

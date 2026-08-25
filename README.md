@@ -17,11 +17,23 @@ API key.
 reliable core.
 
 1. `scripts/discover-luma-api.mjs` reads Luma's public discover feed
-   (`api.lu.ma/discover/get-paginated-events`) - around 900 upcoming Bay Area
-   events in 19 requests and ten seconds. It also hands back exact times, guest
-   counts and registration state for events the other passes found by reading a
-   page, and reports which calendars it saw hosting a hackathon so the crawl can
-   seed itself.
+   (`api.lu.ma/discover/get-paginated-events`) twice over: once with no place
+   asked for, which returns whatever metro Luma geolocates the caller to - around
+   900 upcoming Bay Area events in 19 requests and ten seconds from a residential
+   address here - and once per region by `discover_place_api_id`, which returns
+   that place's own discover slice from any address (86 for San Francisco, 6 for
+   San Diego). It also hands back exact times, guest counts and registration state
+   for events the other passes found by reading a page, and reports which
+   calendars it saw hosting a hackathon so the crawl can seed itself.
+
+   The parameter name is worth knowing about. This pass spent its whole life
+   sending `place_api_id`, which the endpoint accepts and ignores: it answers with
+   the caller's geolocated place instead. From here that still looked like San
+   Francisco, so nothing appeared broken, and from a datacenter it was the
+   datacenter's city - which is what "the feed is geolocated" was really
+   describing. Measured directly: asking for San Diego with `place_api_id`
+   returns San Francisco events, and with `discover_place_api_id` returns San
+   Diego ones.
 2. `scripts/discover-yc.mjs` reads Y Combinator's own events site, which hosts a
    steady stream of Bay Area hackathons that never appear on Luma.
 3. `scripts/discover-devpost.mjs` reads Devpost's public hackathon API.

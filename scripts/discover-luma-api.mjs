@@ -38,6 +38,7 @@ import {
   buildPatterns,
   localCitySet,
   namesUnservedRegion,
+  regionsOf,
   resolveCity,
   scoreCandidate,
 } from "./lib/candidate-score.mjs";
@@ -52,8 +53,27 @@ const UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
   "(KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 const API = "https://api.lu.ma";
-// The SF discover place aggregates the whole metro, not just the city.
-const PLACE_ID = config.lumaPlaceId ?? "discplace-BDj7GNbGlsF7Cka";
+// Two kinds of pull, because they return genuinely different things.
+//
+// Asking for no place at all gets the feed Luma builds for wherever it thinks
+// the caller is: 889 upcoming events from a Bay Area address, and a datacenter's
+// own city from CI. Asking for a place by api_id gets that place's curated
+// discover slice: 86 for San Francisco, 6 for San Diego, from any address.
+//
+// The rich one is the reason the board sees as much as it does, and the scoped
+// ones are the only way to see a region the caller is not sitting in. Measured,
+// not assumed: the same call with a place asked for and without it returns 86
+// and 889 events, and the two overlap only partly.
+const FEEDS = [
+  { region: null, label: "Nearby", placeId: null },
+  ...Object.entries(regionsOf(config))
+    .filter(([, region]) => region.lumaPlaceId)
+    .map(([key, region]) => ({
+      region: key,
+      label: region.label,
+      placeId: region.lumaPlaceId,
+    })),
+];
 const FETCH_TIMEOUT_MS = Number(process.env.LUMA_API_TIMEOUT_MS ?? 20_000);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -75,16 +95,26 @@ async function getJson(path, params) {
   return response.json();
 }
 
-/** Walk the cursor until the feed runs out or the cap is hit. */
-async function pullFeed(max) {
+/**
+ * Walk the cursor until the feed runs out or the cap is hit.
+ *
+ * The parameter is `discover_place_api_id`, and the name matters more than a
+ * name usually does. This pass spent its whole life sending `place_api_id`,
+ * which the endpoint accepts and ignores: it answers with whatever place it
+ * geolocates the caller to. That is what "the feed is geolocated, so it only
+ * works from a Bay Area address" was describing -- from this Mac the wrong
+ * parameter still returned San Francisco, so nothing looked broken, and from a
+ * datacenter it returned that datacenter's events. Measured directly: asking for
+ * San Diego with `place_api_id` returns San Francisco events, and with
+ * `discover_place_api_id` returns San Diego ones.
+ */
+async function pullFeed(placeId, max) {
   const entries = [];
   let cursor = null;
   let requests = 0;
   while (entries.length < max) {
-    const params = {
-      place_api_id: PLACE_ID,
-      pagination_limit: Math.min(50, max - entries.length),
-    };
+    const params = { pagination_limit: Math.min(50, max - entries.length) };
+    if (placeId) params.discover_place_api_id = placeId;
     if (cursor) params.pagination_cursor = cursor;
     const data = await getJson("/discover/get-paginated-events", params);
     requests += 1;
@@ -169,21 +199,49 @@ function normalize(entry) {
 // ---------------------------------------------------------------------------
 
 const problems = [];
-let pulled = { entries: [], requests: 0 };
+const pulled = { entries: [], requests: 0 };
+// Per place, because one number cannot say that a region went quiet. The Bay
+// Area feed carries hundreds and San Diego's carries single figures, so a total
+// that looks healthy says nothing about the smaller one.
+const feeds = [];
 const startedAt = Date.now();
-try {
-  pulled = await pullFeed(config.lumaApiMaxEvents ?? 1_200);
-} catch (error) {
-  problems.push({ stage: "feed", error: String(error).slice(0, 160) });
+// Dedupe: the feed can repeat an event across cursor pages, and two places can
+// both list an event on the line between them.
+const byUrl = new Map();
+for (const place of FEEDS) {
+  let result = { entries: [], requests: 0 };
+  try {
+    result = await pullFeed(place.placeId, config.lumaApiMaxEvents ?? 1_200);
+  } catch (error) {
+    problems.push({
+      stage: "feed",
+      region: place.region,
+      error: String(error).slice(0, 160),
+    });
+  }
+  let unique = 0;
+  for (const entry of result.entries) {
+    const record = normalize(entry);
+    if (record && !byUrl.has(record.url)) {
+      byUrl.set(record.url, record);
+      unique += 1;
+    }
+  }
+  pulled.entries.push(...result.entries);
+  pulled.requests += result.requests;
+  feeds.push({
+    region: place.region,
+    placeId: place.placeId,
+    entries: result.entries.length,
+    unique,
+    requests: result.requests,
+  });
+  console.log(
+    `  ${place.label}: ${result.entries.length} entries in ${result.requests} ` +
+      `request(s), ${unique} new.`,
+  );
 }
 const elapsedSeconds = ((Date.now() - startedAt) / 1000).toFixed(1);
-
-// Dedupe: the feed can repeat an event across cursor pages.
-const byUrl = new Map();
-for (const entry of pulled.entries) {
-  const record = normalize(entry);
-  if (record && !byUrl.has(record.url)) byUrl.set(record.url, record);
-}
 console.log(
   `Luma API: ${pulled.entries.length} entries in ${pulled.requests} request(s), ` +
     `${byUrl.size} unique, ${elapsedSeconds}s.`,
@@ -538,11 +596,12 @@ for (const gone of retention.released.slice(0, 6)) {
 candidates.sort((a, b) => b.relevance - a.relevance);
 const fresh = candidates.filter((candidate) => !sweptUrls.has(candidate.url));
 
-// Luma's discover feed is IP-geolocated to the place you ask about, so this pass
-// only works from a Bay Area address. Run from a datacenter it returns a couple
-// of events and no error at all — which once overwrote a 897-event pull with 2
-// and cost the board seven hackathons before anyone noticed. So a collapse never
-// replaces a good file: the previous one stands and this exits non-zero.
+// A thin pull never replaces a good file. This was written when the feed
+// answered a datacenter with a couple of events and no error at all, overwriting
+// an 897-event pull with 2 and costing the board seven hackathons before anyone
+// noticed. The cause turned out to be the parameter name above rather than the
+// address, but the guard stands on its own: a feed that answers 200 with almost
+// nothing is not news about the world, and the previous file is better than it.
 let previousUnique = 0;
 let previous = null;
 try {
@@ -557,10 +616,9 @@ const floor = Math.max(
 );
 const feedCollapsed = previousUnique > 0 && byUrl.size < floor;
 if (feedCollapsed) {
-  // The feed is geolocated: from outside the Bay Area it answers 200 with almost
-  // nothing, so its own numbers are kept from the previous pull rather than
-  // overwritten. But the calendar and retention passes above are not geolocated,
-  // and exiting here threw their work away: CI reused a file frozen at the last
+  // The feed's own numbers are kept from the previous pull rather than
+  // overwritten. But the calendar and retention passes above do not depend on
+  // the feed at all, and exiting here threw their work away: CI reused a file frozen at the last
   // local run, so retention never ran where it was needed most, and CI's own
   // crawl contributed 8 candidates against 46 locally while the board survived
   // only on carried-over state.
@@ -574,7 +632,7 @@ if (feedCollapsed) {
   candidates.sort((a, b) => b.relevance - a.relevance);
   console.warn(
     `Feed pulled ${byUrl.size} event(s) against ${previousUnique} last time ` +
-      `(floor ${floor}), which is what a datacenter address sees. Keeping the ` +
+      `(floor ${floor}). Keeping the ` +
       `feed's own numbers from the previous pull and merging this run's ` +
       `${claimedByPass.size} calendar and retention candidate(s) into it.`,
   );
@@ -586,7 +644,7 @@ await writeFile(
     {
       collectedAt: new Date().toISOString(),
       source: `${API}/discover/get-paginated-events`,
-      placeId: PLACE_ID,
+      feeds,
       feedCollapsed,
       entriesPulled: feedCollapsed
         ? previous?.entriesPulled ?? pulled.entries.length
@@ -608,9 +666,15 @@ await writeFile(
       // Both are feed-derived, so a collapsed pull keeps the previous ones: the
       // crawl's seed list must not shrink because a datacenter asked.
       calendarSeeds: feedCollapsed
-        ? previous?.calendarSeeds ?? [...calendarSeeds].sort()
+        ? [...new Set([...(previous?.calendarSeeds ?? []), ...calendarSeeds])].sort()
         : [...calendarSeeds].sort(),
-      enrichment: feedCollapsed ? previous?.enrichment ?? enrichment : enrichment,
+      // Merged rather than replaced on a collapse. The pull that collapses is the
+      // geolocated one; the place-scoped feeds beside it answered normally, and
+      // dropping back to the previous file wholesale would throw away the
+      // enrichment for every region the caller is not sitting in.
+      enrichment: feedCollapsed
+        ? { ...(previous?.enrichment ?? {}), ...enrichment }
+        : enrichment,
       candidates,
     },
     null,
