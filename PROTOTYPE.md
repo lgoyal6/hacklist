@@ -6,6 +6,13 @@ The first city is the San Francisco Bay Area, using a 55-mile radius so events
 in Oakland, Berkeley, the Peninsula and the South Bay can be included without
 pretending they are all inside San Francisco proper.
 
+The second is San Diego, added once the pipeline could tell two boards apart. A
+region is a config entry declaring the cities it serves, and an event is filed by
+its city rather than its state - both regions are in California, so the state
+cannot decide it. One sweep, one classifier, one site: each region gets its own
+tab, its own ICS feed and its own Luma calendar. See the Regions section of the
+README.
+
 ## Discovery model
 
 The crawler starts with public Luma city/category pages and known calendars,

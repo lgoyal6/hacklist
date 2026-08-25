@@ -45,9 +45,9 @@ reliable core.
    signed-in account (local only; see below).
 
 **Then:** `scripts/normalize-events.mjs` parses each candidate into a structured
-record (dates, venue, city, status, prizes, tags), scores it (40% hackathon
-confidence, 25% builder value, 20% accessibility, 15% freshness) and writes
-`data/events.json`. Every sweep is snapshotted to `data/history/` and diffed into
+record (dates, venue, city, status, prizes, tags), decides which region it
+belongs to, scores it (40% hackathon confidence, 25% builder value, 20%
+accessibility, 15% freshness) and writes `data/events.json`. Every sweep is snapshotted to `data/history/` and diffed into
 `data/changes.json`. The site (`app/page.tsx`) and the ICS feed
 (`app/calendar.ics/route.ts`) are generated from `data/events.json`.
 
@@ -136,7 +136,7 @@ Tests come in two kinds, and only one of them gates a deploy.
 `npm run test:artifact` asks whether the thing about to be published is correct  - 
 the rendered board, the ICS feed, the date arithmetic most likely to publish
 something wrong (Devpost's date-only ranges, Y Combinator's placeholder
-timestamps), the duplicate-collapsing rules and the calendar sync's decisions. 63
+timestamps), the duplicate-collapsing rules and the calendar sync's decisions. 68
 tests, three seconds, and CI runs it between the commit and the deploy.
 
 `npm run test:browser` drives the real Add-External-Event form filler against a
@@ -170,6 +170,56 @@ numbers as a ranking, not an inventory, and read the named results underneath.
 As of August 2026, per 60 days and quality-adjusted by hand: Bay Area 8-12,
 SoCal 3-4 (which is only visible if Los Angeles and San Diego are counted as one
 region), New York 2-3, Austin 2, Seattle and Boston 0.
+
+San Diego is the second region anyway, added deliberately rather than because the
+measurement asked for it. Worth saying plainly what that means: a San Diego board
+is thin. Its Luma discover place lists six upcoming events in total, none of them
+hackathons, and the metro's own count is only respectable when Los Angeles is
+counted with it. What San Diego has is a real hackathon scene that no calendar
+aggregates, which is the same gap the Bay Area board was built for - it is just
+smaller, and its board will look it until North County and the university
+calendars are seeded properly.
+
+## Regions
+
+A region is the answer to "which board does this event belong on". It is data,
+in the `regions` block of `config/discovery.json`, and it declares:
+
+- `label` and `coreArea` - what the site calls the region, and which of its areas
+  counts as "in the city".
+- `areas` - the cities it serves, grouped. These are the *only* place the board
+  names a city: the crawl's place-matching regex, the local-city set every source
+  filters on, and the area printed on a listing are all derived from them. A
+  parallel `placeTerms` list used to hold the same names a second time, which is
+  exactly the kind of duplication that starts disagreeing the moment there are
+  two of something.
+- `areaBonus` - how reachable each area is *within its own region*, worth up to
+  8 points of the accessibility score. The Peninsula is close to San Francisco
+  and nothing at all to San Diego, so this belongs to the region rather than to a
+  table in the scorer that silently means "near SF".
+- `lumaPlaceId` - the metro's Luma discover place (`discplace-...`), read off
+  `luma.com/<city>`.
+- `lumaCalendarName` - the Luma calendar this region's events are mirrored to.
+
+Which region an event lands on is decided by its **city**, never by its state:
+the Bay Area and San Diego are both in California, so a state test says nothing
+once there is more than one Californian board. An event whose city no region
+claims is not published at all; an event with no readable city - an online
+hackathon, or one whose venue is not announced yet - goes to `defaultRegion`,
+which is where the single-region board put it implicitly.
+
+Each region gets its own ICS feed and its own Luma calendar. `/calendar.ics`
+keeps meaning what it meant before San Diego existed - the Bay Area board - so
+nobody who already subscribed wakes up with hackathons 500 miles away on their
+calendar. Every other region is `?region=<key>`, and an unknown region is a 404
+rather than a quiet fallback to the default.
+
+Adding a third region is a config entry, some seed URLs, and one line of site
+copy in `app/page.tsx` (which has a serviceable default if you skip it). Two
+things are not data yet, both because every region so far is Pacific: the
+normalizer formats every event in the board's single `timezone`, and the ICS feed
+hardcodes a Pacific `VTIMEZONE`. A region outside that would need both, and a
+region declaring its own `timezone` is already carried through to the site.
 
 ## Local passes (never run in CI)
 

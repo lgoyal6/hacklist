@@ -46,10 +46,7 @@ export function buildPatterns(config) {
       test: (text) => vocabulary.test(text) || ATHON.test(text),
     },
     titleFormat: STANDALONE_HACK,
-    place: new RegExp(
-      `\\b(${config.placeTerms.map(escapeTerm).join("|")})\\b`,
-      "i",
-    ),
+    place: placePattern(config),
     build: /\b(build|prototype|ship|demo|project|team up|submission)\b/i,
     competition:
       /\b(prize|prizes|judg(?:e|es|ing)|winner|leaderboard|award|bounty|track)\b/i,
@@ -69,13 +66,31 @@ export function buildPatterns(config) {
   };
 }
 
-/** Cities the board treats as local, lowercased, from config.areas. */
+/** Cities the board treats as local, lowercased, across every region it serves. */
 export function localCitySet(config) {
-  return new Set(
-    Object.values(config.areas ?? {})
-      .flat()
-      .map((city) => city.toLowerCase()),
+  return servedCities(config);
+}
+
+/**
+ * Every served city as regex alternatives, longest first.
+ *
+ * Longest first because alternation is first-match, not longest-match: with
+ * "san diego" after "san marcos" both still work, but a city that is a prefix of
+ * another would resolve to the shorter one and place an event in the wrong area.
+ *
+ * This used to be config.placeTerms, a hand-maintained copy of the same city
+ * names that config.areas already held. Two regions is exactly where that kind
+ * of duplication starts silently disagreeing, so the regions are now the only
+ * place a city is named.
+ */
+export function placeTerms(config) {
+  return [...servedCities(config)].sort(
+    (a, b) => b.length - a.length || a.localeCompare(b),
   );
+}
+
+export function placePattern(config) {
+  return new RegExp(`\\b(${placeTerms(config).map(escapeTerm).join("|")})\\b`, "i");
 }
 
 /**
@@ -170,6 +185,49 @@ export function resolveRegion(location, config) {
   for (const [key, region] of Object.entries(regionsOf(config))) {
     for (const list of Object.values(region.areas ?? {})) {
       if (list.some((known) => String(known).toLowerCase() === city)) return key;
+    }
+  }
+  return null;
+}
+
+/**
+ * The region key a board falls back to: the one an event with no readable city
+ * belongs to. That is what the single-region board did with an online hackathon
+ * or an unannounced venue implicitly, and it stays the answer now that there is
+ * a second region to be wrong about.
+ */
+export function defaultRegionKey(config) {
+  const regions = regionsOf(config);
+  if (config.defaultRegion && regions[config.defaultRegion]) {
+    return config.defaultRegion;
+  }
+  return Object.keys(regions)[0];
+}
+
+/** A region record by key, with its key on it, falling back to the default. */
+export function regionFor(key, config) {
+  const regions = regionsOf(config);
+  const resolved = key && regions[key] ? key : defaultRegionKey(config);
+  return { key: resolved, ...regions[resolved] };
+}
+
+/**
+ * Which area within its region does this city sit in?
+ *
+ * Areas are searched across every region, so their names have to stay unique
+ * across regions -- San Diego's near-coastal band is "North County" and not a
+ * second "North Bay". The board prints an area on its own ("Peninsula"), so a
+ * name that means two different places would be wrong on the page as well as
+ * here.
+ */
+export function areaForCity(city, config) {
+  const lower = String(city ?? "").trim().toLowerCase();
+  if (!lower) return null;
+  for (const region of Object.values(regionsOf(config))) {
+    for (const [area, cities] of Object.entries(region.areas ?? {})) {
+      if (cities.some((known) => String(known).toLowerCase() === lower)) {
+        return area;
+      }
     }
   }
   return null;

@@ -25,10 +25,13 @@ import {
 import { brightDataSearch, linksFromSerpHtml, serpResults } from "../scripts/lib/serp.mjs";
 import { isMisconfiguration } from "../scripts/lib/source-health.mjs";
 import {
+  areaForCity,
   buildPatterns,
   localCitySet,
   namesHackathonFormat,
   namesUnservedRegion,
+  placeTerms,
+  regionsOf,
   resolveRegion,
   resolveCity,
   scoreCandidate,
@@ -257,6 +260,10 @@ test("a location resolves to the region that actually serves its city", () => {
   // old check passed Los Angeles as local to the Bay Area board.
   assert.equal(resolveRegion({ city: "San Francisco", region: "CA" }, config), "bay-area");
   assert.equal(resolveRegion({ city: "Oakland", region: "California" }, config), "bay-area");
+  // Both boards are in California, which is the whole reason the city decides.
+  assert.equal(resolveRegion({ city: "San Diego", region: "CA" }, config), "san-diego");
+  assert.equal(resolveRegion({ city: "La Jolla", region: "California" }, config), "san-diego");
+  assert.equal(resolveRegion({ city: "Carlsbad", region: "CA" }, config), "san-diego");
   assert.equal(resolveRegion({ city: "Los Angeles", region: "CA" }, config), null);
   assert.equal(resolveRegion({ city: "New York", region: "NY" }, config), null);
   // A state is not a place. Assigning "CA, USA" to whichever region asked first
@@ -671,4 +678,76 @@ test("SERP link extraction does not duplicate a link found both ways", () => {
   const html = `<a href="/url?q=https%3A%2F%2Fluma.com%2Fsame">a</a><a href="https://luma.com/same">b</a>`;
   const links = linksFromSerpHtml(html);
   assert.equal(links.filter((l) => l === "https://luma.com/same").length, 1);
+});
+
+// --- two regions, one board -------------------------------------------------
+
+test("an area name means one place across every region", () => {
+  // areaForCity searches every region, and the board prints an area on its own
+  // ("Peninsula", "North County"), so a name used by two regions would be wrong
+  // on the page as well as ambiguous here.
+  const seen = new Map();
+  for (const [key, region] of Object.entries(regionsOf(config))) {
+    for (const area of Object.keys(region.areas ?? {})) {
+      assert.ok(
+        !seen.has(area),
+        `area "${area}" is declared by both ${seen.get(area)} and ${key}`,
+      );
+      seen.set(area, key);
+    }
+  }
+});
+
+test("a city is claimed by exactly one region", () => {
+  const owner = new Map();
+  for (const [key, region] of Object.entries(regionsOf(config))) {
+    for (const cities of Object.values(region.areas ?? {})) {
+      for (const city of cities) {
+        const lower = city.toLowerCase();
+        assert.ok(
+          !owner.has(lower),
+          `"${city}" is claimed by both ${owner.get(lower)} and ${key}`,
+        );
+        owner.set(lower, key);
+      }
+    }
+  }
+});
+
+test("place terms are the regions' own cities, not a second list", () => {
+  const terms = placeTerms(config);
+  assert.ok(terms.includes("san francisco"));
+  assert.ok(terms.includes("san diego"));
+  assert.ok(terms.includes("la jolla"));
+  assert.equal(terms.length, localCities.size);
+  // Longest first, so a city that is a prefix of another cannot win the match.
+  const lengths = terms.map((term) => term.length);
+  assert.deepEqual(lengths, [...lengths].sort((a, b) => b - a));
+  // And the pattern built from them still finds a city inside a longer string.
+  assert.equal(patterns.place.test("Rancho Bernardo Inn, San Diego, CA"), true);
+});
+
+test("an area belongs to the region that declared it", () => {
+  assert.equal(areaForCity("San Francisco", config), "SF");
+  assert.equal(areaForCity("Oceanside", config), "North County");
+  assert.equal(areaForCity("Chula Vista", config), "South County");
+  // Not a city any region names: no area to give it, and the caller decides.
+  assert.equal(areaForCity("Austin", config), null);
+  assert.equal(areaForCity(null, config), null);
+});
+
+test("every published event is filed under the region that serves its city", () => {
+  for (const event of board.events) {
+    assert.ok(event.region, `${event.title} has no region`);
+    assert.ok(
+      regionsOf(config)[event.region],
+      `${event.title} is filed under unknown region ${event.region}`,
+    );
+    if (!event.city) continue; // no city: filed under the default region
+    assert.equal(
+      resolveRegion({ city: event.city }, config),
+      event.region,
+      `${event.title} is in ${event.city} but filed under ${event.region}`,
+    );
+  }
 });

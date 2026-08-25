@@ -8,6 +8,7 @@ import {
   buildPatterns,
   namesHackathonFormat,
   namesUnservedRegion,
+  placePattern,
 } from "./lib/candidate-score.mjs";
 import { createPacer, fetchPage, isThrottled } from "./lib/page-http.mjs";
 
@@ -16,8 +17,6 @@ const config = JSON.parse(
   await readFile(resolve(root, "config/discovery.json"), "utf8"),
 );
 
-const escapePattern = (value) =>
-  value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 // One definition of "this names a hackathon", shared with every other pass.
 // These used to be separate regexes that had drifted apart -- this one required
 // word boundaries and the shared one did not -- so the same page scored 52 here
@@ -50,10 +49,7 @@ const CONFIDENCE_BAR = 54;
 // worth reading.
 const NEAR_MISS_FLOOR = 45;
 
-const locationPattern = new RegExp(
-  `\\b(${config.placeTerms.map(escapePattern).join("|")})\\b`,
-  "i",
-);
+const locationPattern = placePattern(config);
 
 function canonicalize(raw, base, allowExternal = false) {
   try {
@@ -398,7 +394,7 @@ try {
 // unshifted to the front, ahead of seeds that had not been reached yet. With a
 // page budget and a time budget that is not a priority, it is a lottery: a sweep
 // can spend 870 pages on what it found on page one and never open the last
-// entries in config.
+// entries in config, which is where a newly added region's surfaces are.
 const seedQueue = config.seedUrls.map((url) => ({
   url,
   depth: 0,
@@ -753,9 +749,13 @@ try {
       const sourceLocal = locationPattern.test(
         `${title}\n${result.bodyText.slice(0, 900)}`,
       );
-      const localIndexSource =
-        /^https:\/\/luma\.com\/discover\/sf(?:\/|$)/.test(url) ||
-        url === "https://luma.com/hackathon_collections";
+      // Surfaces whose listings are local by construction: a city's own discover
+      // page, and the curated hackathon board. Configured rather than matched on
+      // "/discover/sf", which stopped being the only one of them the day a
+      // second region existed.
+      const localIndexSource = (config.localIndexUrls ?? []).some(
+        (surface) => url === surface || url.startsWith(`${surface}/`),
+      );
       for (const structuredEvent of result.structuredEvents) {
         structuredEventsFound += 1;
         const eventUrl = canonicalize(structuredEvent.url, url, true);

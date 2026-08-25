@@ -4,7 +4,12 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import {
+  areaForCity as areaOfCity,
+  defaultRegionKey,
   namesUnservedRegion,
+  placePattern,
+  regionFor,
+  regionsOf,
   resolveRegion,
 } from "./lib/candidate-score.mjs";
 import { isSameEvent, mergeDuplicate } from "./lib/dedupe.mjs";
@@ -84,6 +89,9 @@ try {
 } catch {
   // Optional input; absent until the API pass has run.
 }
+
+// One place regex for the whole file, built from the cities the regions declare.
+const placeRegex = placePattern(config);
 
 const timezone = config.timezone;
 const sweepTime = new Date(discovery.sweep.completedAt).getTime();
@@ -342,14 +350,8 @@ function parseLocation(lines, timeLineIndex) {
     }
   }
   if (!city) {
-    const placePattern = new RegExp(
-      `\\b(${config.placeTerms
-        .map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
-        .join("|")})\\b`,
-      "i",
-    );
     for (const line of locationLines) {
-      const match = line.match(placePattern);
+      const match = line.match(placeRegex);
       if (match) {
         city = match[1]
           .split(" ")
@@ -371,13 +373,7 @@ function parseStructuredLocation(structuredEvent, evidence) {
   const location = structuredEvent?.location ?? {};
   let city = location.city || null;
   if (!city) {
-    const placePattern = new RegExp(
-      `\\b(${config.placeTerms
-        .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
-        .join("|")})\\b`,
-      "i",
-    );
-    const match = evidence.match(placePattern);
+    const match = evidence.match(placeRegex);
     if (match) {
       city = match[1]
         .split(" ")
@@ -403,13 +399,13 @@ function parseStructuredLocation(structuredEvent, evidence) {
   return { venue, city };
 }
 
-function areaForCity(city) {
-  if (!city) return "Bay Area";
-  const lower = city.toLowerCase();
-  for (const [area, cities] of Object.entries(config.areas ?? {})) {
-    if (cities.includes(lower)) return area;
-  }
-  return "Bay Area";
+/**
+ * The area label to print for a city, or the region's own name when no area
+ * claims it. A city we do not recognise is still somewhere, and the region it
+ * was filed under is the most honest thing to say about it.
+ */
+function areaForCity(city, regionKey) {
+  return areaOfCity(city, config) ?? regionFor(regionKey, config).label;
 }
 
 function parseOrganizer(lines) {
@@ -622,13 +618,16 @@ function scoreBuilderValue(schedule, prize, evidence) {
   return Math.min(100, value);
 }
 
-function scoreAccessibility(status, area) {
+function scoreAccessibility(status, area, region) {
   const base =
     { Open: 92, Approval: 74, Waitlist: 45, Closed: 28, "Sold out": 35 }[
       status
     ] ?? 60;
-  const areaBonus =
-    { SF: 8, "East Bay": 3, Peninsula: 3, "South Bay": 0 }[area] ?? -5;
+  // How reachable the area is *within its own region*: an hour out of the city
+  // people live in. The Peninsula is close to San Francisco and nothing at all
+  // to San Diego, so the bonus is the region's to declare rather than a table
+  // here that silently means "near SF".
+  const areaBonus = region.areaBonus?.[area] ?? -5;
   return Math.max(0, Math.min(100, base + areaBonus));
 }
 
@@ -745,15 +744,9 @@ const organizerOf = (candidate) => {
 // "San Francisco" for the same place, and a raw compare treats them as different.
 const areaOf = (candidate) => {
   const structured = candidate.structuredEvent?.location?.city;
-  if (structured) return areaForCity(structured);
-  const placePattern = new RegExp(
-    `\\b(${config.placeTerms
-      .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
-      .join("|")})\\b`,
-    "i",
-  );
-  const match = String(candidate.evidence ?? "").match(placePattern);
-  return match ? areaForCity(match[1]) : "";
+  if (structured) return areaForCity(structured, null);
+  const match = String(candidate.evidence ?? "").match(placeRegex);
+  return match ? areaForCity(match[1], null) : "";
 };
 
 const resolvers = { day: dayOf, organizer: organizerOf, area: areaOf };
@@ -833,7 +826,15 @@ for (const rawCandidate of deduped) {
       city: location.city ?? remembered.city ?? null,
     };
   }
-  const area = areaForCity(location.city);
+  // The city the structured location stated decides the region; when it stated
+  // none, the city recovered from the page (or remembered from a previous sweep)
+  // gets the same say, and an event with no city at all goes to the default
+  // region -- which is where the single-region board put them implicitly.
+  const region = regionFor(
+    eventRegion ?? resolveRegion({ city: location.city }, config),
+    config,
+  );
+  const area = areaForCity(location.city, region.key);
   // Luma reports registration state as a field; that beats reading the page.
   const status = candidate.lumaFacts?.status ?? parseCandidateStatus(candidate, lines);
   const prize = parsePrize(candidate.title, candidate.evidence);
@@ -855,7 +856,7 @@ for (const rawCandidate of deduped) {
 
 
   const builderValue = scoreBuilderValue(schedule, prize, candidate.evidence);
-  const accessibility = scoreAccessibility(status, area);
+  const accessibility = scoreAccessibility(status, area, region);
   const freshness = scoreFreshness(schedule);
   const score = Math.round(
     0.4 * candidate.confidence +
@@ -879,6 +880,8 @@ for (const rawCandidate of deduped) {
     venue: location.venue,
     city: location.city,
     area,
+    region: region.key,
+    regionLabel: region.label,
     start: schedule ? toIsoWithOffset(schedule.startUtc, timezone) : null,
     end: schedule ? toIsoWithOffset(schedule.endUtc, timezone) : null,
     timezone,
@@ -913,9 +916,28 @@ events.sort(
     (a.start ?? "9999").localeCompare(b.start ?? "9999"),
 );
 
+// What the site and the ICS feed need to know about the regions, counted here
+// rather than derived in two places from the events themselves.
+const regionSummary = Object.entries(regionsOf(config)).map(([key, region]) => {
+  const mine = events.filter((event) => event.region === key);
+  return {
+    key,
+    label: region.label,
+    // The area that is "in the city" for this region: SF for the Bay Area, San
+    // Diego proper for San Diego.
+    coreArea: region.coreArea ?? null,
+    boardName: region.boardName ?? `Hacklist ${region.label}`,
+    timezone: region.timezone ?? timezone,
+    count: mine.length,
+    hackathonCount: mine.filter((event) => event.category === "hackathon").length,
+  };
+});
+
 const output = {
   meta: {
     city: discovery.sweep.city,
+    defaultRegion: defaultRegionKey(config),
+    regions: regionSummary,
     timezone,
     sweepCompletedAt: discovery.sweep.completedAt,
     pagesVisited: discovery.sweep.pagesVisited,

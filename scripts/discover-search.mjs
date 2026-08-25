@@ -54,7 +54,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Luma paths that are surfaces, not events.
 const NON_EVENT_PATH =
-  /^(discover|home|signin|signup|create|pricing|help|settings|user|explore|about|terms|privacy|sf|nyc|la|app|calendar|hackathon_collections|maps?|embed)$/i;
+  /^(discover|home|signin|signup|create|pricing|help|settings|user|explore|about|terms|privacy|sf|sd|nyc|la|app|calendar|hackathon_collections|maps?|embed)$/i;
 
 function allQueries() {
   if (Array.isArray(config.searchQueries) && config.searchQueries.length) {
@@ -70,6 +70,8 @@ function allQueries() {
     `luma "hackathon" oakland OR berkeley OR "palo alto" ${year}`,
     `luma.com hackathon "san jose" OR "santa clara" OR sunnyvale ${year}`,
     `"hackathon" san francisco ${year} register lu.ma`,
+    `site:luma.com hackathon "san diego" ${year}`,
+    `luma "hackathon" "san diego" OR "la jolla" OR carlsbad ${year}`,
   ];
 }
 

@@ -25,7 +25,9 @@ import { fileURLToPath } from "node:url";
 
 import {
   buildPatterns,
+  localCitySet,
   namesHackathonFormat,
+  placePattern,
 } from "./lib/candidate-score.mjs";
 import { isSuspectSchedule, recoverTimeRange } from "./lib/event-dates.mjs";
 
@@ -49,10 +51,7 @@ function escapeTerm(term) {
 // here and another in the sweep.
 const patterns = buildPatterns(config);
 const candidatePattern = patterns.candidate;
-const placePattern = new RegExp(
-  `\\b(${config.placeTerms.map(escapeTerm).join("|")})\\b`,
-  "i",
-);
+const placeRegex = placePattern(config);
 // Same scoring vocabulary the sweep uses, so a YC candidate's confidence means
 // the same thing as a Luma one's.
 const buildPattern = /\b(build|prototype|ship|demo|project|team up|submission)\b/i;
@@ -61,9 +60,7 @@ const competitionPattern =
 const negativeTitlePattern =
   /\b(meet[-\s]?ups?|conference|summit|webinar|expo|mixer|happy hour|fireside|panel|screening|dinner|networking|workshop|office hours|pitch night|demo night|launch party|party|social|talk|talks|showcase|open house|salons?|series|roundtable|symposium|forum|town hall|book club|concert|film)\b/i;
 
-const localCities = new Set(
-  Object.values(config.areas ?? {}).flat().map((city) => city.toLowerCase()),
-);
+const localCities = localCitySet(config);
 
 /** Pull the Inertia props out of a server-rendered YC page. */
 function inertiaProps(html) {
@@ -161,7 +158,7 @@ function resolveCity(meetup) {
     const candidate = segment.trim();
     if (candidate && localCities.has(candidate.toLowerCase())) return candidate;
   }
-  const match = raw.match(placePattern);
+  const match = raw.match(placeRegex);
   if (match) {
     return match[1]
       .split(" ")
@@ -219,7 +216,7 @@ function score(title, evidence) {
   const builds = buildPattern.test(combined);
   const competes = competitionPattern.test(combined);
   const negative = negativeTitlePattern.test(title);
-  const local = placePattern.test(combined);
+  const local = placeRegex.test(combined);
 
   let confidence = direct ? 62 : 20;
   if (builds) confidence += 16;
@@ -285,7 +282,7 @@ const shortlist = listed.filter((event) => {
     /hackathon/i.test(label) || namesHackathonFormat(event.title, patterns);
   if (!looksLikeHackathon) return false;
   const place = `${event.city ?? ""} ${event.public_location ?? ""}`;
-  return placePattern.test(place);
+  return placeRegex.test(place);
 });
 for (const slug of shortlist.map((event) => event.slug)) extraSlugs.add(slug);
 
