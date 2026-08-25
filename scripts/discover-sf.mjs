@@ -392,13 +392,21 @@ try {
   // Optional input; absent until LinkedIn discovery has run.
 }
 
+// The configured seeds are drained before anything else, discovered links
+// included. Every other item in the queue is a guess of some kind -- a link the
+// crawl found, a search hit, a recommendation -- and a promising-looking one is
+// unshifted to the front, ahead of seeds that had not been reached yet. With a
+// page budget and a time budget that is not a priority, it is a lottery: a sweep
+// can spend 870 pages on what it found on page one and never open the last
+// entries in config.
+const seedQueue = config.seedUrls.map((url) => ({
+  url,
+  depth: 0,
+  via: "seed",
+  allowExternal: !["luma.com", "lu.ma"].includes(new URL(url).hostname),
+}));
+
 const queue = [
-  ...config.seedUrls.map((url) => ({
-    url,
-    depth: 0,
-    via: "seed",
-    allowExternal: !["luma.com", "lu.ma"].includes(new URL(url).hostname),
-  })),
   // Calendars the API found hosting a hackathon. Crawled like any other seed,
   // but capped per run so a growing list cannot crowd out the configured ones.
   ...rotateSlice(apiCalendarSeeds, config.apiCalendarSeedsPerRun ?? 12).map(
@@ -559,12 +567,15 @@ const sweepDeadline = sweepStartedAt + (config.maxSweepMinutes ?? 12) * 60_000;
 let stoppedOnTime = false;
 
 try {
-  while (queue.length && visited.size < config.maxPagesPerSweep) {
+  while (
+    (seedQueue.length || queue.length) &&
+    visited.size < config.maxPagesPerSweep
+  ) {
     if (Date.now() > sweepDeadline) {
       stoppedOnTime = true;
       break;
     }
-    const current = queue.shift();
+    const current = seedQueue.length ? seedQueue.shift() : queue.shift();
     const url = canonicalize(
       current.url,
       current.url,
@@ -979,7 +990,7 @@ const output = {
         : null,
     pageBudget: config.maxPagesPerSweep,
     timeBudgetSeconds: (config.maxSweepMinutes ?? 12) * 60,
-    queueRemaining: queue.length,
+    queueRemaining: seedQueue.length + queue.length,
     completedAt: new Date().toISOString(),
   },
   candidates: [...candidates.values()].sort(
