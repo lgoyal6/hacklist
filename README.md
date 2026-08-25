@@ -331,9 +331,11 @@ is suppressed by the normalizer rather than published.
 
 ## Automation
 
-`.github/workflows/discover.yml` runs the whole loop at exactly 8am and 8pm
-Pacific (DST-aware): all sources → normalize → commit data → deploy → check
-source health.
+`.github/workflows/discover.yml` runs the whole loop twice a day, around 8am and
+8pm Pacific (DST-aware): all sources → normalize → commit data → deploy → check
+source health. Four crons fire as a supply of chances and the job gates on how
+long it has been since the last real sweep, because GitHub delivers a scheduled
+run late rather than on time; observed starts land 10-90 minutes after the hour.
 
 The health check runs last, deliberately after the deploy: a broken source should
 never stop the board from updating, it should just make the run red. A collapse is
