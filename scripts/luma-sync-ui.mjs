@@ -14,6 +14,7 @@
 import {
   formatQueueReport,
   markFailed,
+  markSubmitted,
   markSynced,
   pendingEvents,
   readEvents,
@@ -36,6 +37,7 @@ import {
   root,
 } from "./lib/local-browser.mjs";
 import { defaultRegionKey, regionFor } from "./lib/candidate-score.mjs";
+import { calendarApiId, readCalendarState } from "./lib/luma-calendar-api.mjs";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
@@ -416,6 +418,59 @@ async function harvestCalendarSlugs(page) {
 }
 
 /**
+ * What is on the calendar, asked of Luma rather than of the page.
+ *
+ * The rendered list is virtualized: a row far enough down it is never mounted,
+ * so scrolling and reading reports it absent. For a Luma-hosted event that only
+ * costs a wasted retry, since Luma refuses a duplicate submission. For an
+ * external event nothing refuses it, and every retry adds another copy -- eight
+ * of SF Hacks and three of DeveloperWeek 2027 before anyone noticed, both far
+ * enough in the future to sit at the bottom of a 69-row list.
+ *
+ * The API is exact, keyless and immune to that. The scroll-and-read path stays
+ * as a fallback for the day Luma changes the endpoint, and it can no longer
+ * cause a duplicate on its own, because an event we submitted and could not
+ * confirm is now recorded as submitted rather than offered again.
+ */
+let calendarIdForApi = null;
+// Whether the last state read came from the API. "Not on the calendar" means
+// something quite different depending on the answer.
+let stateIsAuthoritative = false;
+async function calendarState(page) {
+  if (calendarIdForApi === null) {
+    calendarIdForApi = (await calendarApiId(ledger.calendars[region.key])) ?? "";
+  }
+  if (calendarIdForApi) {
+    try {
+      const state = await readCalendarState(calendarIdForApi);
+      stateIsAuthoritative = true;
+      console.log(`  read ${state.entryCount} event(s) from the calendar API`);
+      return state;
+    } catch (error) {
+      console.warn(
+        `  calendar API unavailable (${String(error).slice(0, 60)}); ` +
+          "falling back to reading the page",
+      );
+    }
+  }
+  stateIsAuthoritative = false;
+  try {
+    return await harvestCalendarSlugs(page);
+  } catch (error) {
+    // Both ways of asking have failed, and an empty state is the most dangerous
+    // answer available: reconcile reads "not on the calendar" as "un-record it",
+    // so it would clear all 106 synced events and the next run would offer every
+    // one of them again. Nothing about this run is safe to continue.
+    console.error(
+      `\n  Could not read the calendar, by API or by page (${String(error).slice(0, 80)}).` +
+        "\n  Stopping with the ledger untouched: proceeding on an empty view of" +
+        "\n  the calendar would un-record everything and re-offer it next run.\n",
+    );
+    return null;
+  }
+}
+
+/**
  * Make the ledger agree with the calendar, in both directions: adopt events
  * that are present but unrecorded, and un-sync records whose event is not
  * actually there so they become pending again instead of being skipped forever.
@@ -487,14 +542,33 @@ try {
 
   // Start from what is really on the calendar, so a stale or wrong ledger
   // cannot cause either a duplicate add or a permanent skip.
-  const onCalendar = await harvestCalendarSlugs(page);
+  const onCalendar = await calendarState(page);
+  if (!onCalendar) {
+    await context.close();
+    process.exit(1);
+  }
   const { adopted, cleared } = force
     ? { adopted: 0, cleared: 0 }
     : reconcile(ledger, events, onCalendar, { markSynced });
-  if (adopted || cleared) {
+  // An offer we could not confirm last time gets exactly one authoritative
+  // answer. If the calendar really does not have it, the record goes and the
+  // event is offered again; if it does, reconcile has already adopted it. This
+  // is what keeps "do not re-offer" from becoming "never retry".
+  let retryable = 0;
+  if (stateIsAuthoritative) {
+    for (const event of events) {
+      if (!ledger.submitted[event.id]) continue;
+      if (isOnCalendar(event, onCalendar)) continue;
+      delete ledger.submitted[event.id];
+      retryable += 1;
+    }
+  }
+  if (adopted || cleared || retryable) {
     console.log(
       `Reconciled with the calendar: ${adopted} already there, ` +
-        `${cleared} previously recorded but missing.\n`,
+        `${cleared} previously recorded but missing` +
+        (retryable ? `, ${retryable} unconfirmed offer(s) confirmed absent` : "") +
+        ".\n",
     );
   }
 
@@ -513,7 +587,11 @@ try {
       `Cleared ${stale.length} failure record(s) for events no longer on the board.\n`,
     );
   }
-  let queue = dryRun ? pending : pendingEvents(events, ledger);
+  // Always recomputed, dry run included. `pending` was read before the calendar
+  // was, so it does not know what reconcile has just adopted -- and a dry run
+  // that reports it would add events already on the calendar is exactly the
+  // wrong thing for the flag whose job is to tell you what a real run will do.
+  let queue = pendingEvents(events, ledger);
   if (force && onlyUrl) queue = events.filter((event) => event.url === onlyUrl);
   if (onlyUrl) {
     queue = queue.filter((event) => event.url === onlyUrl);
@@ -693,7 +771,7 @@ try {
   if (!dryRun && queue.length) {
     console.log("\nConfirming against the calendar...");
     await page.waitForTimeout(5_000);
-    const finalState = await harvestCalendarSlugs(page);
+    const finalState = await calendarState(page);
     // Verify what actually landed, not merely that something did.
     //
     // The sync used to confirm presence and stop there, which let two events go
@@ -701,32 +779,23 @@ try {
     // runner was UTC, and a 9am start became 2am. Presence was correct and the
     // data was wrong. Luma's public calendar feed reports the stored start, so it
     // can simply be read back and compared.
-    let storedStarts = new Map();
-    try {
-      const calendarId = (ledger.calendar ?? "").match(/cal-[A-Za-z0-9]+/)?.[0];
-      if (calendarId) {
-        const response = await fetch(
-          `https://api.lu.ma/calendar/get-items?calendar_api_id=${calendarId}&pagination_limit=100`,
-          { headers: { accept: "application/json" }, signal: AbortSignal.timeout(20_000) },
-        );
-        if (response.ok) {
-          const body = await response.json();
-          for (const entry of body.entries ?? []) {
-            const name = (entry.event?.name ?? "").replace(/[^a-z0-9]/gi, "").toLowerCase();
-            if (name) storedStarts.set(name, entry.event?.start_at ?? null);
-          }
-        }
-      }
-    } catch {
-      // Read-back is a check, not a requirement; a failure here must not undo a
-      // sync that worked.
-    }
+    // The same read as above, which already carries every stored start. It used
+    // to fetch this itself from `ledger.calendar` -- a field that stopped
+    // existing when the ledger went per-region, so the check had been silently
+    // doing nothing.
+    const storedStarts = finalState.startsByName ?? new Map();
     const sameMinute = (a, b) =>
       Number.isFinite(Date.parse(a)) &&
       Number.isFinite(Date.parse(b)) &&
       Math.abs(Date.parse(a) - Date.parse(b)) < 60_000;
 
+    const declinedIds = new Set(declined.map(({ event }) => event.id));
     for (const event of queue) {
+      // A decline is not a failure. These were never offered, so confirming
+      // them against the calendar can only conclude "never appeared" -- which is
+      // both untrue and the reason three deliberate declines were being counted
+      // and reported as three failures.
+      if (declinedIds.has(event.id)) continue;
       if (event.start && storedStarts.size) {
         const key = (text) => String(text).replace(/[^a-z0-9]/gi, "").toLowerCase();
         let stored = storedStarts.get(key(event.title));
@@ -760,6 +829,17 @@ try {
           event,
           eventSlug(event) ? "luma-ui" : "luma-ui-external",
         );
+      } else if (!stateIsAuthoritative) {
+        // We offered it and cannot see the calendar properly. Saying "failed"
+        // here is what put eight copies of one event on the calendar: the
+        // ledger left it pending, the next run offered it again, and nothing on
+        // Luma's side refuses a duplicate external event.
+        markSubmitted(
+          ledger,
+          event,
+          "submitted; the calendar could not be read to confirm it",
+        );
+        console.warn(`  unconfirmed: ${event.title.slice(0, 44)} — not offering it again until the calendar can be read`);
       } else if (!ledger.failures[event.id]) {
         // Only claim a failure we have not already explained. An external event
         // we declined to fill has a better message than this one.

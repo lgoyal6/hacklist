@@ -13,7 +13,12 @@ import {
   reconcile,
   titleOnCalendar,
 } from "../scripts/lib/calendar-match.mjs";
-import { markSynced, pendingEvents } from "../scripts/lib/luma-queue.mjs";
+import {
+  markSubmitted,
+  markSynced,
+  pendingEvents,
+} from "../scripts/lib/luma-queue.mjs";
+import { stateFromEntries } from "../scripts/lib/luma-calendar-api.mjs";
 
 const luma = (slug, title = "A Hackathon") => ({
   id: slug,
@@ -125,4 +130,43 @@ test("reconcile leaves a correctly-recorded event alone", () => {
   const { adopted, cleared } = reconcile(ledger, [luma("abc123")], state, { markSynced });
   assert.equal(adopted, 0);
   assert.equal(cleared, 0);
+});
+
+// --- an offer we could not confirm is not an offer to make again -------------
+// Luma refuses a duplicate of an event it hosts and says so. Nothing refuses a
+// duplicate external event, so treating "I could not see it" as "it is not
+// there" put eight copies of one hackathon on the calendar.
+
+test("an unconfirmed submission stops being pending", () => {
+  const events = [external("sfhacks.devpost.com", "SF Hacks")];
+  const ledger = { synced: {}, submitted: {}, failures: {} };
+  assert.equal(pendingEvents(events, ledger).length, 1);
+  markSubmitted(ledger, events[0], "could not read the calendar");
+  assert.equal(
+    pendingEvents(events, ledger).length,
+    0,
+    "an event already offered must not be offered again on a guess",
+  );
+});
+
+test("confirming an unconfirmed submission clears the record", () => {
+  const events = [external("sfhacks.devpost.com", "SF Hacks")];
+  const ledger = { synced: {}, submitted: {}, failures: {} };
+  markSubmitted(ledger, events[0], "could not read the calendar");
+  markSynced(ledger, events[0], "luma-ui-external");
+  assert.deepEqual(ledger.submitted, {}, "no longer merely submitted");
+  assert.equal(pendingEvents(events, ledger).length, 0);
+});
+
+test("the calendar API answers the question the rendered list got wrong", () => {
+  // The row that caused this was an event far enough in the future to sit at the
+  // bottom of a virtualized list, so the page never mounted it.
+  const state = stateFromEntries([
+    { event: { url: "abc123", name: "A Hackathon", start_at: "2027-02-19T17:00:00.000Z" } },
+    { event: { name: "SF Hacks", start_at: "2027-02-19T17:00:00.000Z" } },
+  ]);
+  assert.equal(isOnCalendar(luma("abc123"), state), true);
+  assert.equal(isOnCalendar(external("sfhacks.devpost.com", "SF Hacks"), state), true);
+  assert.equal(isOnCalendar(external("nope.devpost.com", "Never Submitted Hackathon"), state), false);
+  assert.equal(state.startsByName.get("sfhacks"), "2027-02-19T17:00:00.000Z");
 });
