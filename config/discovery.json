@@ -1,5 +1,6 @@
 {
   "city": "San Francisco",
+  "defaultRegion": "bay-area",
   "timezone": "America/Los_Angeles",
   "radiusMiles": 55,
   "maxPagesPerSweep": 870,
@@ -25,106 +26,128 @@
     "https://luma.com/calendar/cal-3A00RBKfF0vkoAd",
     "https://luma.com/g6org075",
     "https://luma.com/IterateHacks",
-    "https://luma.com/devnovate"
+    "https://luma.com/devnovate",
+    "https://luma.com/sd",
+    "https://luma.com/discover/sd",
+    "https://luma.com/discover/sd/tech",
+    "https://luma.com/wv1l2wb3"
   ],
   "regions": {
     "bay-area": {
       "label": "Bay Area",
       "timezone": "America/Los_Angeles",
-      "states": ["CA", "California"],
+      "states": [
+        "CA",
+        "California"
+      ],
       "areas": {
-        "SF": ["san francisco", "sf", "daly city", "south san francisco"],
-        "North Bay": ["sausalito", "san rafael", "novato"],
-        "East Bay": ["oakland", "berkeley", "alameda", "emeryville", "richmond", "walnut creek", "concord", "san ramon", "livermore", "hayward", "fremont", "pleasanton"],
-        "Peninsula": ["san bruno", "millbrae", "burlingame", "san mateo", "redwood city", "palo alto", "stanford", "menlo park"],
-        "South Bay": ["mountain view", "sunnyvale", "santa clara", "san jose", "milpitas", "cupertino", "campbell", "los gatos"]
-      }
+        "SF": [
+          "san francisco",
+          "sf",
+          "daly city",
+          "south san francisco"
+        ],
+        "North Bay": [
+          "sausalito",
+          "san rafael",
+          "novato"
+        ],
+        "East Bay": [
+          "oakland",
+          "berkeley",
+          "alameda",
+          "emeryville",
+          "richmond",
+          "walnut creek",
+          "concord",
+          "san ramon",
+          "livermore",
+          "hayward",
+          "fremont",
+          "pleasanton"
+        ],
+        "Peninsula": [
+          "san bruno",
+          "millbrae",
+          "burlingame",
+          "san mateo",
+          "redwood city",
+          "palo alto",
+          "stanford",
+          "menlo park"
+        ],
+        "South Bay": [
+          "mountain view",
+          "sunnyvale",
+          "santa clara",
+          "san jose",
+          "milpitas",
+          "cupertino",
+          "campbell",
+          "los gatos"
+        ]
+      },
+      "coreArea": "SF",
+      "areaBonus": {
+        "SF": 8,
+        "North Bay": -5,
+        "East Bay": 3,
+        "Peninsula": 3,
+        "South Bay": 0
+      },
+      "lumaPlaceId": "discplace-BDj7GNbGlsF7Cka",
+      "lumaCalendarName": "HackList SF",
+      "boardName": "Hacklist SF"
+    },
+    "san-diego": {
+      "label": "San Diego",
+      "timezone": "America/Los_Angeles",
+      "states": [
+        "CA",
+        "California"
+      ],
+      "coreArea": "San Diego",
+      "areas": {
+        "San Diego": [
+          "san diego",
+          "la jolla",
+          "rancho bernardo",
+          "point loma",
+          "coronado",
+          "sorrento valley"
+        ],
+        "North County": [
+          "carlsbad",
+          "encinitas",
+          "oceanside",
+          "escondido",
+          "poway",
+          "del mar",
+          "solana beach",
+          "san marcos"
+        ],
+        "East County": [
+          "el cajon",
+          "la mesa",
+          "santee"
+        ],
+        "South County": [
+          "chula vista",
+          "national city",
+          "imperial beach"
+        ]
+      },
+      "areaBonus": {
+        "San Diego": 8,
+        "North County": 3,
+        "East County": 0,
+        "South County": 0
+      },
+      "lumaPlaceId": "discplace-MNBATdzid940kqJ",
+      "lumaCalendarName": "Hacklist-SD",
+      "boardName": "Hacklist San Diego"
     }
   },
-  "areas": {
-    "SF": [
-      "san francisco",
-      "sf",
-      "daly city",
-      "south san francisco"
-    ],
-    "North Bay": [
-      "sausalito",
-      "san rafael",
-      "novato"
-    ],
-    "East Bay": [
-      "oakland",
-      "berkeley",
-      "alameda",
-      "emeryville",
-      "richmond",
-      "walnut creek",
-      "concord",
-      "san ramon",
-      "livermore",
-      "hayward",
-      "fremont",
-      "pleasanton"
-    ],
-    "Peninsula": [
-      "san bruno",
-      "millbrae",
-      "burlingame",
-      "san mateo",
-      "redwood city",
-      "palo alto",
-      "stanford",
-      "menlo park"
-    ],
-    "South Bay": [
-      "mountain view",
-      "sunnyvale",
-      "santa clara",
-      "san jose",
-      "milpitas",
-      "cupertino",
-      "campbell",
-      "los gatos"
-    ]
-  },
-  "placeTerms": [
-    "san francisco",
-    "sf",
-    "oakland",
-    "berkeley",
-    "alameda",
-    "emeryville",
-    "richmond",
-    "walnut creek",
-    "concord",
-    "san ramon",
-    "livermore",
-    "hayward",
-    "fremont",
-    "pleasanton",
-    "sausalito",
-    "san rafael",
-    "novato",
-    "daly city",
-    "south san francisco",
-    "san bruno",
-    "millbrae",
-    "burlingame",
-    "san mateo",
-    "redwood city",
-    "palo alto",
-    "stanford",
-    "menlo park",
-    "mountain view",
-    "sunnyvale",
-    "santa clara",
-    "san jose",
-    "milpitas",
-    "cupertino",
-    "campbell",
-    "los gatos"
-  ],
   "candidateTerms": [
     "hackathon",
     "hack day",
@@ -153,14 +176,17 @@
   "eventbriteQueries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
     "https://www.eventbrite.com/d/ca--oakland/hackathon/",
-    "https://www.eventbrite.com/d/ca--san-jose/hackathon/"
+    "https://www.eventbrite.com/d/ca--san-jose/hackathon/",
+    "https://www.eventbrite.com/d/ca--san-diego/hackathon/"
   ],
   "meetupQueries": [
     "https://www.meetup.com/find/?keywords=hackathon&location=us--ca--san%20francisco&source=EVENTS",
-    "https://www.meetup.com/find/?keywords=hackathon&location=us--ca--san%20jose&source=EVENTS"
+    "https://www.meetup.com/find/?keywords=hackathon&location=us--ca--san%20jose&source=EVENTS",
+    "https://www.meetup.com/find/?keywords=hackathon&location=us--ca--san%20diego&source=EVENTS"
   ],
   "citySurfaces": [
-    "https://luma.com/sf"
+    "https://luma.com/sf",
+    "https://luma.com/sd"
   ],
   "curatedIndexUrls": [
     "https://luma.com/hackathon_collections",
@@ -181,7 +207,9 @@
     "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
     "weekly bay area ai events hackathon 2026",
     "hackathon sponsors judges san francisco apply luma",
-    "\"we are hosting\" hackathon san francisco 2026"
+    "\"we are hosting\" hackathon san francisco 2026",
+    "hackathon san diego 2026 lu.ma",
+    "\"ai hackathon\" san diego open registration"
   ],
   "linkedinQueriesPerRun": 3,
   "linkedinPagesPerRun": 12,
@@ -199,7 +227,6 @@
     "hackathon.com",
     "eventbrite.com"
   ],
-  "lumaPlaceId": "discplace-BDj7GNbGlsF7Cka",
   "lumaApiMaxEvents": 1200,
   "apiCalendarSeedsPerRun": 16,
   "devpostMaxPages": 24,
@@ -208,5 +235,10 @@
   "syncTimeUnknownExternals": false,
   "minSweepCandidates": 20,
   "retentionPerRun": 80,
-  "lumaApiMinEvents": 100
+  "lumaApiMinEvents": 100,
+  "localIndexUrls": [
+    "https://luma.com/discover/sf",
+    "https://luma.com/discover/sd",
+    "https://luma.com/hackathon_collections"
+  ]
 }

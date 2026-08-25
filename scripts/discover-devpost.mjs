@@ -46,8 +46,8 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const patterns = buildPatterns(config);
 const localCities = localCitySet(config);
-// "Bay Area" is not a city, so it is not in placeTerms, but an organizer typing
-// it means exactly this board's catchment.
+// "Bay Area" is not a city, so no region names it, but an organizer typing it
+// means exactly the default region's catchment.
 const REGION_ALIAS = /\b(bay area|silicon valley|sf bay)\b/i;
 
 async function getJson(url) {
