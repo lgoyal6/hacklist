@@ -1,6 +1,9 @@
 {
-  "calendar": "https://luma.com/calendar/manage/cal-LHMcppIqcJ4kHZt",
-  "updatedAt": "2026-08-25T03:27:15.457Z",
+  "calendars": {
+    "bay-area": "https://luma.com/calendar/manage/cal-LHMcppIqcJ4kHZt",
+    "san-diego": "https://luma.com/hacklist-sd"
+  },
+  "updatedAt": "2026-08-25T15:57:16.675Z",
   "synced": {
     "05aqg7b8": {
       "url": "https://luma.com/05aqg7b8",
@@ -416,6 +419,12 @@
       "syncedAt": "2026-08-04T16:51:09.382Z",
       "method": "luma-ui"
     },
+    "n5ozj6uv": {
+      "url": "https://luma.com/n5ozj6uv",
+      "title": "Agent Context Without the Round Trip",
+      "syncedAt": "2026-08-25T15:55:16.998Z",
+      "method": "luma-ui"
+    },
     "nkknxvrz": {
       "url": "https://luma.com/nkknxvrz",
       "title": "The Physical AI Sprint Hackathon",
@@ -444,6 +453,12 @@
       "url": "https://luma.com/openmodelhack",
       "title": "Open Model Hack - Gradient x Google Deepmind",
       "syncedAt": "2026-08-14T05:00:45.546Z",
+      "method": "luma-ui"
+    },
+    "ovtw6uf9": {
+      "url": "https://luma.com/ovtw6uf9",
+      "title": "Oakland Tech Week: The Future of Oakland",
+      "syncedAt": "2026-08-25T15:55:16.998Z",
       "method": "luma-ui"
     },
     "pharma-hack-day-aws-builder-loft-aug13-2026": {
@@ -486,6 +501,12 @@
       "url": "https://luma.com/qisv9xmg",
       "title": "Data & AI Hackathon: SF",
       "syncedAt": "2026-08-03T19:08:02.334Z",
+      "method": "luma-ui"
+    },
+    "qualcomm-event-sep10-2026": {
+      "url": "https://luma.com/qualcomm-event-sep10-2026",
+      "title": "Qualcomm UNO Q Hack Night #2",
+      "syncedAt": "2026-08-25T15:55:16.998Z",
       "method": "luma-ui"
     },
     "qzct3ybt": {
@@ -536,6 +557,12 @@
       "syncedAt": "2026-08-03T19:01:54.333Z",
       "method": "luma-ui"
     },
+    "shipfrom0": {
+      "url": "https://luma.com/shipfrom0",
+      "title": "Ship from Zero Hackathon",
+      "syncedAt": "2026-08-25T15:55:16.997Z",
+      "method": "luma-ui"
+    },
     "spp2": {
       "url": "https://luma.com/spp2",
       "title": "Side-Project Party II",
@@ -578,10 +605,22 @@
       "syncedAt": "2026-08-23T00:55:59.904Z",
       "method": "luma-ui"
     },
+    "wmpvhql4": {
+      "url": "https://luma.com/wmpvhql4",
+      "title": "Hardware Hack Night & Fixit Clinic",
+      "syncedAt": "2026-08-25T15:55:16.998Z",
+      "method": "luma-ui"
+    },
     "ws7x9u9q": {
       "url": "https://luma.com/ws7x9u9q",
       "title": "Corgi x OpenSwarm x EF Hackathon",
       "syncedAt": "2026-08-07T21:28:34.200Z",
+      "method": "luma-ui"
+    },
+    "wv1l2wb3": {
+      "url": "https://luma.com/wv1l2wb3",
+      "title": "Applied AI Hackathon",
+      "syncedAt": "2026-08-25T03:26:45.407Z",
       "method": "luma-ui"
     },
     "y7u3pk8t": {
@@ -601,39 +640,15 @@
       "title": "intergenerational hackathon",
       "syncedAt": "2026-08-07T21:28:34.200Z",
       "method": "luma-ui"
-    },
-    "wv1l2wb3": {
-      "url": "https://luma.com/wv1l2wb3",
-      "title": "Applied AI Hackathon",
-      "syncedAt": "2026-08-25T03:26:45.407Z",
-      "method": "luma-ui"
     }
   },
   "failures": {
-    "external-sfhacks-io--69dcce9d": {
-      "url": "https://sfhacks.io",
-      "title": "SF Hacks",
-      "lastAttemptAt": "2026-08-23T00:55:59.907Z",
-      "attempts": 1,
-      "message": "Submitted but never appeared on the calendar"
-    },
-    "external-the-cad-challenge-2026-devpost-com--1ccd7184": {
-      "url": "https://the-cad-challenge-2026.devpost.com",
-      "title": "The CAD Challenge 2026",
-      "lastAttemptAt": "2026-08-24T15:47:01.542Z",
-      "attempts": 1,
-      "message": "Submitted but never appeared on the calendar"
-    },
     "external-htcj-aviation-futures-devpost-com--a1cad4b4": {
       "url": "https://htcj-aviation-futures.devpost.com",
       "title": "HTCJ Aviation Futures Innovation Challenge",
-      "lastAttemptAt": "2026-08-25T03:26:45.406Z",
+      "lastAttemptAt": "2026-08-25T15:57:16.576Z",
       "attempts": 1,
       "message": "Submitted but never appeared on the calendar"
     }
-  },
-  "calendars": {
-    "bay-area": "https://luma.com/calendar/manage/cal-LHMcppIqcJ4kHZt",
-    "san-diego": "https://luma.com/hacklist-sd"
   }
 }
