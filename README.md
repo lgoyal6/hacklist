@@ -57,6 +57,58 @@ crawl: they find different things, measured rather than assumed. The API surface
 because they live on organizer calendars the feed does not surface. Dropping
 either would cost coverage.
 
+### The sweep, end to end
+
+```mermaid
+flowchart TD
+  subgraph direct["direct APIs, keyless, work from any IP"]
+    L["discover-luma-api.mjs<br/>~900 events in 19 requests"]
+    Y["discover-yc.mjs"]
+    D["discover-devpost.mjs"]
+  end
+  subgraph crawl["crawl, reaches what no feed indexes"]
+    SF["discover-sf.mjs<br/>Lightpanda + Playwright<br/>Schema.org event lists"]
+  end
+  subgraph best["best-effort, needs a residential IP"]
+    SE["discover-search.mjs"]
+    LI["discover-linkedin.mjs"]
+    PE["discover-personalized.mjs<br/>local only"]
+  end
+  L -.->|"seeds calendars it saw"| SF
+  L & Y & D & SF & SE & LI & PE --> RAW[("data/discovery-output.json")]
+  RAW --> NORM["normalize-events.mjs<br/>parse dates, venue, city,<br/>status, prizes, tags"]
+  NORM --> SCORE["score: 40% hackathon confidence,<br/>25% builder value,<br/>20% accessibility, 15% freshness"]
+  SCORE --> EV[("data/events.json")]
+  EV --> SNAP[("data/history/ snapshot")]
+  SNAP --> DIFF[("data/changes.json")]
+  EV --> SITE["app/page.tsx"]
+  EV --> ICS["app/calendar.ics/route.ts"]
+
+  style EV fill:#1f6feb,color:#fff
+```
+
+The API pass and the crawl both run because they find different things, measured
+rather than assumed: the API surfaced 4 hackathons the crawl missed, the crawl had
+8 the feed never returned.
+
+## Deploying it
+
+The site and the ICS feed are one Cloudflare Worker, configured in
+`wrangler.jsonc` with `ASSETS` and `IMAGES` bindings.
+
+```bash
+npm install
+npm run dev          # local worker
+npm run build
+npm run deploy       # vinext deploy, to Cloudflare
+```
+
+The discovery passes are separate from the deploy: they write `data/events.json`,
+which is committed, and the Worker serves whatever is in it. That split is why the
+site never depends on a scraper being up, and why the best-effort passes can be
+skipped in CI without breaking the build. See **Automation** below for the schedule
+and **Local passes** for what must never run in CI.
+
 ## Reliability
 
 Every discovery pass is built never to fail - a throttled search or a dead
