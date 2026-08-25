@@ -89,6 +89,28 @@ main {
   text-transform: uppercase;
   color: var(--ink-faint);
 }
+/* Region switcher: the masthead's place line, made selectable. Same type as the
+   line it replaces, so the masthead does not gain a second voice. */
+.regions {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.regions button {
+  border: 0;
+  background: none;
+  padding: 2px 0;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border-bottom: 1px solid transparent;
+}
+.regions button:hover { color: var(--ink); }
+.regions button.active { color: var(--ink); border-color: var(--accent); }
+
 .masthead-cta {
   margin-left: auto;
   font-family: var(--mono);
@@ -458,6 +480,10 @@ footer a:hover { color: var(--accent); }
   .masthead { gap: 12px; padding: 18px 0 14px; }
   /* The nameplate and the one action are what matter at this width. */
   .masthead-meta { display: none; }
+  /* The switcher stays, tighter: it is the only way to the other board, and a
+     region you cannot reach on a phone is a region most people never see. */
+  .regions { gap: 10px; }
+  .regions button { letter-spacing: 0.06em; }
   .wordmark { font-size: 21px; }
   .lede { padding: 40px 0 32px; }
   .lede h1 { font-size: 33px; letter-spacing: -0.02em; }

@@ -3,6 +3,7 @@ import discovery from "../../data/events.json";
 type FeedEvent = {
   id: string;
   url: string;
+  region?: string;
   category: "hackathon" | "adjacent";
   timeUnverified?: boolean;
   title: string;
@@ -106,7 +107,29 @@ const timezoneBlock = [
   "END:VTIMEZONE",
 ];
 
-function buildCalendar(): string {
+type FeedRegion = {
+  key: string;
+  label: string;
+  boardName: string;
+};
+
+// A data file written before regions existed has none, and the feed still has to
+// serve: it is one region's board, the one everything defaults to.
+const regions: FeedRegion[] = (discovery.meta as unknown as {
+  regions?: FeedRegion[];
+}).regions ?? [{ key: "bay-area", label: "Bay Area", boardName: "Hacklist SF" }];
+const defaultRegion =
+  (discovery.meta as unknown as { defaultRegion?: string }).defaultRegion ??
+  regions[0]?.key ??
+  "bay-area";
+
+/**
+ * One feed per region, because a subscriber asked for a place and not for a
+ * product. /calendar.ics keeps meaning what it meant before San Diego existed -
+ * the Bay Area board - so nobody who subscribed to it wakes up with hackathons
+ * 500 miles away on their calendar; every other region is ?region=<key>.
+ */
+function buildCalendar(region: FeedRegion): string {
   // Anything with a date goes in the feed. An event whose *time* we do not trust
   // goes in as an all-day entry rather than being withheld: the day is solid —
   // Devpost publishes submission dates and no clock times at all — and an all-day
@@ -119,6 +142,9 @@ function buildCalendar(): string {
   const asOf = Date.now();
   const events = (discovery.events as FeedEvent[]).filter((event) => {
     if (!event.start) return false;
+    // An event written before regions existed belongs to the default one, which
+    // is where the single-region board had it.
+    if ((event.region ?? defaultRegion) !== region.key) return false;
     const over = Date.parse(event.end ?? event.start);
     return !Number.isFinite(over) || over >= asOf;
   });
@@ -127,10 +153,10 @@ function buildCalendar(): string {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Hacklist SF//Hackathon Calendar//EN",
+    `PRODID:-//${region.boardName}//Hackathon Calendar//EN`,
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
-    "X-WR-CALNAME:Hacklist SF",
+    `X-WR-CALNAME:${region.boardName}`,
     "X-WR-TIMEZONE:America/Los_Angeles",
     ...timezoneBlock,
   ];
@@ -171,6 +197,9 @@ function buildCalendar(): string {
         ];
     lines.push(
       "BEGIN:VEVENT",
+      // The UID namespace stays "hacklist-sf" for every region. It is an
+      // identity, not a label, and rewriting it would make every event on an
+      // existing subscription look like a new one.
       `UID:${event.id}@hacklist-sf`,
       `DTSTAMP:${stamp}`,
       ...when,
@@ -187,11 +216,23 @@ function buildCalendar(): string {
   return lines.map(foldLine).join("\r\n");
 }
 
-export async function GET() {
-  return new Response(buildCalendar(), {
+export async function GET(request: Request) {
+  const asked = new URL(request.url).searchParams.get("region");
+  const region = regions.find((entry) => entry.key === (asked ?? defaultRegion));
+  // An unknown region is refused rather than quietly served the default: a
+  // subscriber who mistyped one would otherwise never find out, and would be
+  // reading another metro's hackathons.
+  if (!region) {
+    return new Response(
+      `Unknown region "${asked}". Available: ${regions.map((entry) => entry.key).join(", ")}.`,
+      { status: 404, headers: { "Content-Type": "text/plain; charset=utf-8" } },
+    );
+  }
+  const filename = `${region.boardName.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.ics`;
+  return new Response(buildCalendar(region), {
     headers: {
       "Content-Type": "text/calendar; charset=utf-8",
-      "Content-Disposition": 'attachment; filename="hacklist-sf.ics"',
+      "Content-Disposition": `attachment; filename="${filename}"`,
       "Cache-Control": "public, max-age=1800",
     },
   });
