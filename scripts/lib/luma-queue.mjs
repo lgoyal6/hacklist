@@ -35,10 +35,13 @@ export async function readLedger(defaultRegion = "bay-area") {
     return {
       calendars,
       synced: ledger.synced ?? {},
+      // Offered to the calendar, without a trustworthy answer about whether it
+      // stuck. See markSubmitted.
+      submitted: ledger.submitted ?? {},
       failures: ledger.failures ?? {},
     };
   } catch {
-    return { calendars: {}, synced: {}, failures: {} };
+    return { calendars: {}, synced: {}, submitted: {}, failures: {} };
   }
 }
 
@@ -51,6 +54,9 @@ export async function writeLedger(ledger) {
     synced: Object.fromEntries(
       Object.entries(ledger.synced).sort(([a], [b]) => a.localeCompare(b)),
     ),
+    submitted: Object.fromEntries(
+      Object.entries(ledger.submitted ?? {}).sort(([a], [b]) => a.localeCompare(b)),
+    ),
     failures: Object.fromEntries(
       Object.entries(ledger.failures).sort(([a], [b]) => a.localeCompare(b)),
     ),
@@ -59,14 +65,35 @@ export async function writeLedger(ledger) {
 }
 
 /**
- * Pending = published events that have never been confirmed on the calendar.
- * A previous failure leaves an event pending, so retries happen naturally.
+ * Pending = published events that have never been confirmed on the calendar and
+ * have not already been offered to it without an answer.
+ *
+ * A previous failure leaves an event pending, so retries happen naturally. An
+ * unanswered submission does not, and that distinction is the whole point:
+ * Luma refuses a duplicate of an event it hosts, but nothing refuses a
+ * duplicate external event, so an offer we could not confirm must not be made
+ * again on a guess. It is cleared by the next run that can actually see the
+ * calendar, whichever way that goes.
  */
 export function pendingEvents(events, ledger) {
-  return events.filter((event) => !ledger.synced[event.id]);
+  return events.filter(
+    (event) => !ledger.synced[event.id] && !(ledger.submitted ?? {})[event.id],
+  );
+}
+
+/** Offered to the calendar, with no trustworthy answer about whether it stuck. */
+export function markSubmitted(ledger, event, why) {
+  ledger.submitted ??= {};
+  ledger.submitted[event.id] = {
+    url: event.url,
+    title: event.title,
+    submittedAt: new Date().toISOString(),
+    why,
+  };
 }
 
 export function markSynced(ledger, event, method) {
+  delete (ledger.submitted ?? {})[event.id];
   ledger.synced[event.id] = {
     url: event.url,
     title: event.title,

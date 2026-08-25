@@ -25,6 +25,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { defaultRegionKey, regionFor } from "./lib/candidate-score.mjs";
+import { calendarApiId } from "./lib/luma-calendar-api.mjs";
 import { readEvents, readLedger } from "./lib/luma-queue.mjs";
 import {
   ensureSignedIn,
@@ -120,31 +121,12 @@ for (const event of events) {
  * manage view, so the sync is happy with it -- but `<slug>/manage/settings/tags`
  * does not 404, it silently renders the events page again, so the tag controls
  * are simply absent and every click here timed out with nothing to say about
- * why. Only `luma.com/calendar/manage/<cal_api_id>` carries the settings pages,
- * and api.lu.ma/url resolves a slug to that id without a key.
+ * why. Only `luma.com/calendar/manage/<cal_api_id>` carries the settings pages.
  */
-async function canonicalManageUrl(recorded) {
-  if (!recorded) return null;
-  if (/\/calendar\/manage\/cal-/.test(recorded)) return recorded;
-  const slug = new URL(recorded).pathname.replace(/^\/+/, "").replace(/\/manage.*$/, "");
-  if (!slug) return recorded;
-  try {
-    const response = await fetch(`https://api.lu.ma/url?url=${encodeURIComponent(slug)}`, {
-      headers: { accept: "application/json" },
-      signal: AbortSignal.timeout(15_000),
-    });
-    const resolved = await response.json();
-    const id = resolved?.data?.calendar?.api_id ?? resolved?.data?.api_id;
-    if (id) return `https://luma.com/calendar/manage/${id}`;
-  } catch {
-    // Fall back to what was recorded; the run will say what it could not do.
-  }
-  return recorded;
-}
-
-const adminUrl = await canonicalManageUrl(
-  ledger.calendars[region.key]?.replace(/\/$/, "") ?? null,
-);
+const calendarId = await calendarApiId(ledger.calendars[region.key]);
+const adminUrl = calendarId
+  ? `https://luma.com/calendar/manage/${calendarId}`
+  : (ledger.calendars[region.key]?.replace(/\/$/, "") ?? null);
 if (!adminUrl) {
   console.error(
     `No calendar recorded yet for ${region.label}. Run \`npm run luma:sync -- ` +
