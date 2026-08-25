@@ -2,6 +2,11 @@
 // Hacklist SF on Luma itself. Requires LUMA_API_KEY — a calendar-scoped key
 // from a calendar with Luma Plus (Settings -> Options -> API). Without the
 // key this script exits quietly so the pipeline can always include it.
+//
+// The key is scoped to one calendar, so this syncs one region: the default one,
+// or LUMA_SYNC_REGION. Without that filter a second region's events would land
+// on the first region's calendar, which is a public mistake to undo by hand.
+// The free per-region path is scripts/luma-sync-ui.mjs.
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -20,9 +25,17 @@ const headers = {
   "content-type": "application/json",
 };
 
-const { events } = JSON.parse(
+const config = JSON.parse(
+  await readFile(resolve(root, "config/discovery.json"), "utf8"),
+);
+const region =
+  process.env.LUMA_SYNC_REGION ??
+  config.defaultRegion ??
+  Object.keys(config.regions ?? {})[0];
+const { events: allEvents } = JSON.parse(
   await readFile(resolve(root, "data/events.json"), "utf8"),
 );
+const events = allEvents.filter((event) => (event.region ?? region) === region);
 
 const statePath = resolve(root, "data/luma-sync.json");
 let synced = new Set();

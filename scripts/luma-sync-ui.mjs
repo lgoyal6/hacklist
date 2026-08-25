@@ -1,12 +1,16 @@
-// Adds pending events to the free "Hacklist SF" Luma calendar by driving
-// Luma's own supported Add Event admin UI with the signed-in local profile.
-// This is the no-paid-API path: same clicks a human would make, just batched.
+// Adds pending events to a region's free Luma calendar by driving Luma's own
+// supported Add Event admin UI with the signed-in local profile. This is the
+// no-paid-API path: same clicks a human would make, just batched.
+//
+// One calendar per region, because a calendar is a thing people subscribe to and
+// nobody in San Diego wants a Bay Area board's events on theirs. Which calendar
+// a region syncs to is `lumaCalendarName` in config/discovery.json; the resolved
+// URL is remembered per region in data/luma-ledger.json after the first run.
 //
 // Usage:
-//   node scripts/luma-sync-ui.mjs --calendar https://luma.com/<slug> [--dry-run]
+//   node scripts/luma-sync-ui.mjs [--region san-diego] [--dry-run]
+//   node scripts/luma-sync-ui.mjs --calendar https://luma.com/<slug>
 //   node scripts/luma-sync-ui.mjs --queue        # print pending list, no browser
-//
-// The calendar URL is remembered in data/luma-ledger.json after the first run.
 import {
   formatQueueReport,
   markFailed,
@@ -31,6 +35,7 @@ import {
   needsHumanAttention,
   root,
 } from "./lib/local-browser.mjs";
+import { defaultRegionKey, regionFor } from "./lib/candidate-score.mjs";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
@@ -59,20 +64,45 @@ const force = args.includes("--force");
 const onlyArg = args[args.indexOf("--only") + 1];
 const onlyUrl =
   args.includes("--only") && onlyArg && !onlyArg.startsWith("--") ? onlyArg : null;
+const regionArg = args[args.indexOf("--region") + 1];
+const askedRegion =
+  args.includes("--region") && regionArg && !regionArg.startsWith("--")
+    ? regionArg
+    : null;
+// Refused rather than defaulted. regionFor falls back to the default region for
+// anything it does not know, and a mistyped --region would then publish San
+// Diego's board onto the Bay Area's public calendar, which is a mistake that has
+// to be undone by hand.
+if (askedRegion && !config.regions?.[askedRegion]) {
+  console.error(
+    `Unknown region "${askedRegion}". Configured: ${Object.keys(config.regions ?? {}).join(", ")}.`,
+  );
+  process.exit(1);
+}
+const region = regionFor(askedRegion ?? defaultRegionKey(config), config);
+const boardName = region.boardName ?? `Hacklist ${region.label}`;
 const nameArg = args[args.indexOf("--name") + 1];
 const calendarName =
   args.includes("--name") && nameArg && !nameArg.startsWith("--")
     ? nameArg
-    : "Hacklist SF";
+    : region.lumaCalendarName ?? boardName;
 
-const { events } = await readEvents();
-const ledger = await readLedger();
+const { events: allEvents } = await readEvents();
+// One region's board syncs to one region's calendar. An event written before
+// regions existed belongs to the default one, which is where it already is.
+const defaultRegion = defaultRegionKey(config);
+const events = allEvents.filter(
+  (event) => (event.region ?? defaultRegion) === region.key,
+);
+const ledger = await readLedger(defaultRegion);
 const pending = pendingEvents(events, ledger);
 
 if (queueOnly) {
   console.log(
     formatQueueReport(pending, ledger, {
       syncTimeUnknownExternals: config.syncTimeUnknownExternals === true,
+      boardName,
+      published: events.length,
     }),
   );
   process.exit(0);
@@ -82,6 +112,8 @@ if (!pending.length) {
   console.log(
     formatQueueReport(pending, ledger, {
       syncTimeUnknownExternals: config.syncTimeUnknownExternals === true,
+      boardName,
+      published: events.length,
     }),
   );
   process.exit(0);
@@ -98,7 +130,7 @@ console.log(
  * calendar by name and take the link Luma itself provides.
  */
 async function resolveCalendarUrl(page) {
-  const known = calendarFromArg ?? ledger.calendar;
+  const known = calendarFromArg ?? ledger.calendars[region.key];
   if (known) return known;
 
   const wanted = calendarName.toLowerCase().replace(/[^a-z0-9]+/g, "");
@@ -404,7 +436,7 @@ try {
         "  directly:",
         "    npm run luma:sync -- --calendar https://luma.com/<slug>",
         "  If it exists under a different name:",
-        `    npm run luma:sync -- --name "Your Calendar Name"`,
+        `    npm run luma:sync -- --region ${region.key} --name "Your Calendar Name"`,
         "",
       ].join("\n"),
     );
@@ -451,7 +483,7 @@ try {
     process.exit(1);
   }
   console.log(`Calendar admin: ${adminUrl}\n`);
-  ledger.calendar = calendarUrl;
+  ledger.calendars[region.key] = calendarUrl;
 
   // Start from what is really on the calendar, so a stale or wrong ledger
   // cannot cause either a duplicate add or a permanent skip.
