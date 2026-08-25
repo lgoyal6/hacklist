@@ -250,9 +250,14 @@ jobs:
         continue-on-error: true
         env:
           CHROME_PATH: /usr/bin/google-chrome
+        # One calendar per region, named in config/discovery.json. A region whose
+        # calendar does not exist on the account yet says so and the next region
+        # still runs, which is why each line carries its own `|| true`.
         run: |
-          node scripts/luma-sync-ui.mjs --headless --name "HackList SF"
-          node scripts/luma-tag-events.mjs --headless --name "HackList SF"
+          for region in $(node -e "const c=require('./config/discovery.json'); console.log(Object.entries(c.regions ?? {}).filter(([, r]) => r.lumaCalendarName).map(([k]) => k).join(' '))"); do
+            node scripts/luma-sync-ui.mjs --headless --region "$region" || true
+            node scripts/luma-tag-events.mjs --headless --region "$region" || true
+          done
       - name: Commit the sync ledger
         if: env.LUMA_SESSION_COOKIES != ''
         continue-on-error: true

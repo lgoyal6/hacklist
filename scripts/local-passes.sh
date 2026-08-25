@@ -67,9 +67,11 @@ echo "=== $(date '+%Y-%m-%d %H:%M:%S') local passes starting"
 HEADLESS_FLAG="--headless"
 [ "${HACKLIST_HEADED:-0}" = "1" ] && HEADLESS_FLAG=""
 
-# Luma's discover feed is geolocated, so this only works from here — from a
-# datacenter it returns a couple of events and a 200. It refuses to overwrite a
-# good pull with a collapsed one, so a bad run leaves the last good file alone.
+# Luma's rich discover pull is the one for wherever the caller is, so the Bay
+# Area's 889 events only arrive from here; from a datacenter that same call
+# returns a couple of events and a 200. The per-region place feeds beside it work
+# from anywhere. It refuses to overwrite a good pull with a collapsed one, so a
+# bad run leaves the last good file alone.
 echo "--- luma discover feed"
 "$NODE" scripts/discover-luma-api.mjs || \
   echo "    luma api pass failed; previous pull kept" >&2
@@ -163,13 +165,26 @@ if [ "${UNPUSHED:-0}" -gt 0 ]; then
   echo "    Inspect with: git -C $REPO log --oneline origin/main..HEAD" >&2
 fi
 
-echo "--- luma calendar sync"
-"$NODE" scripts/luma-sync-ui.mjs --name "$CAL_NAME" $HEADLESS_FLAG || \
-  echo "    sync did not complete; queue state preserved" >&2
+# One Luma calendar per region, named in config/discovery.json. A region whose
+# calendar does not exist yet says so and the next region still runs.
+REGIONS="$("$NODE" -e "const c=require('./config/discovery.json'); console.log(Object.entries(c.regions ?? {}).filter(([, r]) => r.lumaCalendarName).map(([k]) => k).join(' '))")"
+DEFAULT_REGION="$("$NODE" -e "const c=require('./config/discovery.json'); console.log(c.defaultRegion ?? Object.keys(c.regions ?? {})[0] ?? '')")"
+for REGION in $REGIONS; do
+  # The env override, when set, names the default region's calendar. Every other
+  # region takes its name from config.
+  NAME_FLAG=()
+  if [ -n "${LUMA_CALENDAR_NAME:-}" ] && [ "$REGION" = "$DEFAULT_REGION" ]; then
+    NAME_FLAG=(--name "$CAL_NAME")
+  fi
 
-echo "--- luma event tags"
-"$NODE" scripts/luma-tag-events.mjs --name "$CAL_NAME" $HEADLESS_FLAG || \
-  echo "    tagging did not complete; already-applied tags are recorded" >&2
+  echo "--- luma calendar sync ($REGION)"
+  "$NODE" scripts/luma-sync-ui.mjs --region "$REGION" "${NAME_FLAG[@]}" $HEADLESS_FLAG || \
+    echo "    sync did not complete for $REGION; queue state preserved" >&2
+
+  echo "--- luma event tags ($REGION)"
+  "$NODE" scripts/luma-tag-events.mjs --region "$REGION" "${NAME_FLAG[@]}" $HEADLESS_FLAG || \
+    echo "    tagging did not complete for $REGION; already-applied tags are recorded" >&2
+done
 
 # Re-arm tomorrow's wake so the schedule survives the repeating wake being
 # cleared by anything else that calls `pmset repeat` (it holds only one).

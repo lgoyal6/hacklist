@@ -20,9 +20,11 @@
 // button under Settings -> Tags -> Event Tags, so this script creates any
 // missing tag there first and then applies it from the event rows.
 //
-// Usage: node scripts/luma-tag-events.mjs [--name "HackList SF"] [--dry-run]
+// Usage: node scripts/luma-tag-events.mjs [--region san-diego] [--dry-run]
+//        node scripts/luma-tag-events.mjs [--name "HackList SF"]
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { defaultRegionKey, regionFor } from "./lib/candidate-score.mjs";
 import { readEvents, readLedger } from "./lib/luma-queue.mjs";
 import {
   ensureSignedIn,
@@ -31,14 +33,31 @@ import {
   root,
 } from "./lib/local-browser.mjs";
 
+const config = JSON.parse(
+  await readFile(resolve(root, "config/discovery.json"), "utf8"),
+);
+
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
 const headless = args.includes("--headless");
+const regionArg = args[args.indexOf("--region") + 1];
+const askedRegion =
+  args.includes("--region") && regionArg && !regionArg.startsWith("--")
+    ? regionArg
+    : null;
+if (askedRegion && !config.regions?.[askedRegion]) {
+  console.error(
+    `Unknown region "${askedRegion}". Configured: ${Object.keys(config.regions ?? {}).join(", ")}.`,
+  );
+  process.exit(1);
+}
+const defaultRegion = defaultRegionKey(config);
+const region = regionFor(askedRegion ?? defaultRegion, config);
 const nameArg = args[args.indexOf("--name") + 1];
 const calendarName =
   args.includes("--name") && nameArg && !nameArg.startsWith("--")
     ? nameArg
-    : "HackList SF";
+    : region.lumaCalendarName ?? `Hacklist ${region.label}`;
 
 /**
  * The tags a calendar row should carry.
@@ -51,12 +70,18 @@ const calendarName =
  */
 function desiredTags(event) {
   const tags = [event.category === "adjacent" ? "Tech Events" : "Hackathon"];
-  tags.push(event.area === "SF" ? "SF" : "Bay Area");
+  // In the city, or the region at large. Named from the region rather than
+  // hardcoded to SF, so the tag on a San Diego calendar says San Diego.
+  const areaTag = event.area === region.coreArea ? region.coreArea : region.label;
+  if (areaTag && !tags.includes(areaTag)) tags.push(areaTag);
   return tags;
 }
 
-const { events } = await readEvents();
-const ledger = await readLedger();
+const { events: allEvents } = await readEvents();
+const events = allEvents.filter(
+  (event) => (event.region ?? defaultRegion) === region.key,
+);
+const ledger = await readLedger(defaultRegion);
 /**
  * Key an event the way its calendar row can be recognised: by Luma slug when it
  * has one, and by its title when it does not.
@@ -87,14 +112,43 @@ for (const event of events) {
   if (key) wanted.set(key, { title: event.title, tags: desiredTags(event) });
 }
 
-const adminUrl = ledger.calendar
-  ? `${ledger.calendar.replace(/\/$/, "")}`
-  : null;
+/**
+ * The one admin URL shape that has settings pages under it.
+ *
+ * The ledger records whatever the sync resolved, which for a calendar added by
+ * `--calendar https://luma.com/<slug>` is the slug URL. That shape has a working
+ * manage view, so the sync is happy with it -- but `<slug>/manage/settings/tags`
+ * does not 404, it silently renders the events page again, so the tag controls
+ * are simply absent and every click here timed out with nothing to say about
+ * why. Only `luma.com/calendar/manage/<cal_api_id>` carries the settings pages,
+ * and api.lu.ma/url resolves a slug to that id without a key.
+ */
+async function canonicalManageUrl(recorded) {
+  if (!recorded) return null;
+  if (/\/calendar\/manage\/cal-/.test(recorded)) return recorded;
+  const slug = new URL(recorded).pathname.replace(/^\/+/, "").replace(/\/manage.*$/, "");
+  if (!slug) return recorded;
+  try {
+    const response = await fetch(`https://api.lu.ma/url?url=${encodeURIComponent(slug)}`, {
+      headers: { accept: "application/json" },
+      signal: AbortSignal.timeout(15_000),
+    });
+    const resolved = await response.json();
+    const id = resolved?.data?.calendar?.api_id ?? resolved?.data?.api_id;
+    if (id) return `https://luma.com/calendar/manage/${id}`;
+  } catch {
+    // Fall back to what was recorded; the run will say what it could not do.
+  }
+  return recorded;
+}
+
+const adminUrl = await canonicalManageUrl(
+  ledger.calendars[region.key]?.replace(/\/$/, "") ?? null,
+);
 if (!adminUrl) {
   console.error(
-    "No calendar recorded yet. Run `npm run luma:sync -- --name \"" +
-      calendarName +
-      '"` first.',
+    `No calendar recorded yet for ${region.label}. Run \`npm run luma:sync -- ` +
+      `--region ${region.key} --name "${calendarName}"\` first.`,
   );
   process.exit(1);
 }

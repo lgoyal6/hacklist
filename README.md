@@ -246,14 +246,17 @@ bash scripts/install-wake-schedule.sh   # let them fire with the lid shut (sudo,
 bash scripts/local-passes.sh            # or run them now, by hand
 
 npm run discover:personalized           # just the personalized pass
-npm run luma:queue                      # what's pending for the Luma calendar
-npm run luma:sync -- --name "HackList SF"
+npm run luma:queue                      # what's pending for the Bay Area calendar
+npm run luma:queue -- --region san-diego
+npm run luma:sync                       # the default region
+npm run luma:sync -- --region san-diego
 ```
 
 `scripts/local-passes.sh` is what the schedule runs, once a day at 8:30pm:
 LinkedIn and personalized discovery (which commit and push their seeds so the
-next GitHub sweep crawls them), then the calendar sync and the tagging pass. No
-step can abort another, and the log lands in `logs/local-passes.log`.
+next GitHub sweep crawls them), then the calendar sync and the tagging pass once
+per region. No step can abort another, and the log lands in
+`logs/local-passes.log`.
 
 Once a day rather than twice: the sync is idempotent and the calendar only
 changes when the board does, so the second run mostly re-confirmed the first.
@@ -280,6 +283,14 @@ whole pending batch, marks an event synced only after seeing it on the
 calendar, and stops without losing queue state if it hits a CAPTCHA, a
 sign-out, or a UI it does not recognize. `data/luma-ledger.json` tracks what
 has been added; `npm run luma:queue` prints a paste-by-hand fallback list.
+
+One calendar per region, named by `lumaCalendarName` in the region's config and
+found on the signed-in account by that name, so **the calendar has to exist
+before the first sync** - create it free at https://luma.com/create/calendar
+("HackList San Diego" for the San Diego region). The resolved URL is remembered
+per region in the ledger afterwards. A `--region` the config does not know is
+refused rather than defaulted, because a typo would otherwise publish one
+region's board onto another's public calendar.
 
 ## Search discovery
 
@@ -422,6 +433,7 @@ npm run discover:luma-api  # just Luma's public discover feed
 npm run discover:yc        # just the Y Combinator pass
 npm run discover:devpost   # just the Devpost pass
 npm run discover:linkedin  # just the LinkedIn pass
+npm run luma:sync -- --region san-diego   # mirror one region to its Luma calendar
 npm run normalize          # re-normalize existing discovery output only
 npm run check:sources      # are all the sources still working?
 npm test                   # everything, including the browser-driven form test

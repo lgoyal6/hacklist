@@ -14,22 +14,39 @@ export async function readEvents() {
   return { events, meta };
 }
 
-export async function readLedger() {
+/**
+ * One calendar per region, keyed by region.
+ *
+ * The ledger held a single `calendar` back when the board had one region; that
+ * value is the default region's calendar and is migrated here, so an existing
+ * ledger keeps pointing at the calendar it has always synced to rather than
+ * going looking for it again by name.
+ *
+ * `synced` and `failures` stay flat: an event belongs to exactly one region, so
+ * splitting them would only mean two places to look for one event id.
+ */
+export async function readLedger(defaultRegion = "bay-area") {
   try {
     const ledger = JSON.parse(await readFile(ledgerPath, "utf8"));
+    const calendars = { ...(ledger.calendars ?? {}) };
+    if (ledger.calendar && !calendars[defaultRegion]) {
+      calendars[defaultRegion] = ledger.calendar;
+    }
     return {
-      calendar: ledger.calendar ?? null,
+      calendars,
       synced: ledger.synced ?? {},
       failures: ledger.failures ?? {},
     };
   } catch {
-    return { calendar: null, synced: {}, failures: {} };
+    return { calendars: {}, synced: {}, failures: {} };
   }
 }
 
 export async function writeLedger(ledger) {
   const ordered = {
-    calendar: ledger.calendar ?? null,
+    calendars: Object.fromEntries(
+      Object.entries(ledger.calendars ?? {}).sort(([a], [b]) => a.localeCompare(b)),
+    ),
     updatedAt: new Date().toISOString(),
     synced: Object.fromEntries(
       Object.entries(ledger.synced).sort(([a], [b]) => a.localeCompare(b)),
@@ -74,9 +91,20 @@ export function markFailed(ledger, event, message) {
  * Human-readable fallback: if the automation cannot run, this is the list to
  * paste into Luma's Add Event box by hand.
  */
-export function formatQueueReport(pending, ledger, { syncTimeUnknownExternals = false } = {}) {
+export function formatQueueReport(
+  pending,
+  ledger,
+  { syncTimeUnknownExternals = false, boardName = "Hacklist SF", published = null } = {},
+) {
   if (!pending.length) {
-    return `All ${Object.keys(ledger.synced).length} published events are on the calendar. Nothing pending.`;
+    // `published` is this region's count. Without it the report reached for the
+    // ledger's total, which spans every region: an empty San Diego board read as
+    // "all 100 published events are on the calendar".
+    if (published === 0) {
+      return `Nothing published for ${boardName} yet, so there is nothing to sync.`;
+    }
+    const count = published ?? Object.keys(ledger.synced).length;
+    return `All ${count} published events are on the ${boardName} calendar. Nothing pending.`;
   }
   // Split by why an event is waiting, because the two halves need different
   // things. A Luma event is just waiting its turn and the next run adds it. An
@@ -102,7 +130,7 @@ export function formatQueueReport(pending, ledger, { syncTimeUnknownExternals = 
       );
 
   const lines = [
-    `${pending.length} event${pending.length === 1 ? "" : "s"} pending for the Hacklist SF Luma calendar.`,
+    `${pending.length} event${pending.length === 1 ? "" : "s"} pending for the ${boardName} Luma calendar.`,
     "",
   ];
   const describe = (event) => {
