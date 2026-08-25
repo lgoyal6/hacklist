@@ -14,6 +14,7 @@ type EventRecord = {
   venue: string | null;
   city: string | null;
   area: string;
+  region?: string;
   start: string | null;
   end: string | null;
   timezone: string;
@@ -27,15 +28,57 @@ type EventRecord = {
   score: number;
 };
 
+type RegionSummary = {
+  key: string;
+  label: string;
+  coreArea: string | null;
+  boardName: string;
+  hackathonCount: number;
+};
+
 type Meta = {
   timezone: string;
   sweepCompletedAt: string;
   hackathonCount: number;
   adjacentCount: number;
+  defaultRegion: string;
+  regions: RegionSummary[];
 };
 
 const meta = discovery.meta as unknown as Meta;
 const events = discovery.events as unknown as EventRecord[];
+const regions = meta.regions;
+const defaultRegion = meta.defaultRegion;
+
+// Site copy, which is writing rather than data: a region gets its own lines when
+// someone has written them, and a serviceable default until then.
+const COPY: Record<string, { where: string; deck: string }> = {
+  "bay-area": {
+    where: "San Francisco Bay Area",
+    deck:
+      "Every hackathon across San Francisco and the wider Bay Area, kept " +
+      "current morning and evening. Subscribe once and the next one finds " +
+      "you — no more combing through invite links and half-dead group chats.",
+  },
+  "san-diego": {
+    where: "San Diego County",
+    deck:
+      "Every hackathon from La Jolla to North County, kept current morning " +
+      "and evening. Subscribe once and the next one finds you, instead of " +
+      "combing through invite links and half-dead group chats.",
+  },
+};
+
+function copyFor(region: RegionSummary) {
+  return (
+    COPY[region.key] ?? {
+      where: region.label,
+      deck:
+        `Every hackathon across ${region.label}, kept current morning and ` +
+        "evening. Subscribe once and the next one finds you.",
+    }
+  );
+}
 
 const updatedLabel = new Intl.DateTimeFormat("en-US", {
   timeZone: meta.timezone,
@@ -66,16 +109,27 @@ function monthGroup(start: string | null, timezone: string) {
 }
 
 export default function Home() {
+  const [regionKey, setRegionKey] = useState(defaultRegion);
   const [view, setView] = useState("Hackathons");
   const [query, setQuery] = useState("");
   const [copied, setCopied] = useState(false);
+
+  const region =
+    regions.find((entry) => entry.key === regionKey) ?? regions[0];
+  const copy = copyFor(region);
+  // The default region keeps the bare path it has always had, so an existing
+  // subscription is untouched by a second region existing.
+  const feedPath =
+    region.key === defaultRegion
+      ? "/calendar.ics"
+      : `/calendar.ics?region=${region.key}`;
 
   const origin = useSyncExternalStore(
     subscribeToNothing,
     () => window.location.origin,
     () => "",
   );
-  const feedUrl = origin ? `${origin}/calendar.ics` : "/calendar.ics";
+  const feedUrl = origin ? `${origin}${feedPath}` : feedPath;
   const webcalUrl = feedUrl.replace(/^https?:/, "webcal:");
   const googleUrl = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcalUrl)}`;
 
@@ -95,9 +149,20 @@ export default function Home() {
   // than when the next sweep runs.
   const [asOf] = useState(() => Date.now());
 
+  const inRegion = useMemo(
+    // An event written before regions existed belongs to the default one, which
+    // is where the single-region board had it. Without the fallback an older
+    // data file would render every tab empty.
+    () =>
+      events.filter(
+        (event) => (event.region ?? defaultRegion) === region.key,
+      ),
+    [region.key],
+  );
+
   const visible = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    return events
+    return inRegion
       .filter((event) => {
         const over = Date.parse(event.end ?? event.start ?? "");
         if (Number.isFinite(over) && over < asOf) return false;
@@ -110,33 +175,48 @@ export default function Home() {
         if (view === "Open to join")
           return ["Open", "Approval"].includes(event.status);
         if (view === "With prizes") return event.prize.includes("$");
-        if (view === "In the city") return event.area === "SF";
+        if (view === "In the city") return event.area === region.coreArea;
         return true;
       })
       .sort((a, b) => (a.start ?? "9999").localeCompare(b.start ?? "9999"));
-  }, [query, view, asOf]);
+  }, [inRegion, query, view, asOf, region.coreArea]);
 
   return (
     <main>
       <header className="masthead">
         <a className="wordmark" href="#top">Hacklist</a>
-        <span className="masthead-meta">San Francisco Bay Area</span>
+        {regions.length > 1 ? (
+          <nav className="regions" aria-label="Choose a region">
+            {regions.map((entry) => (
+              <button
+                key={entry.key}
+                onClick={() => setRegionKey(entry.key)}
+                className={entry.key === region.key ? "active" : ""}
+                aria-pressed={entry.key === region.key}
+              >
+                {entry.label}
+              </button>
+            ))}
+          </nav>
+        ) : (
+          <span className="masthead-meta">{copy.where}</span>
+        )}
         <a className="masthead-cta" href="#subscribe">Subscribe</a>
       </header>
 
       <section className="lede" id="top">
-        <p className="kicker">The Bay Area hackathon calendar</p>
+        <p className="kicker">The {region.label} hackathon calendar</p>
         <h1>
           Everything worth building at,<br />
           <em>gathered in one place.</em>
         </h1>
-        <p className="deck">
-          Every hackathon across San Francisco and the wider Bay Area, kept
-          current morning and evening. Subscribe once and the next one finds
-          you — no more combing through invite links and half-dead group chats.
-        </p>
+        <p className="deck">{copy.deck}</p>
         <p className="byline">
-          <b>{meta.hackathonCount} hackathons</b> listed now
+          <b>
+            {region.hackathonCount} hackathon
+            {region.hackathonCount === 1 ? "" : "s"}
+          </b>{" "}
+          listed now
           <span aria-hidden="true"> · </span>
           Last checked {updatedLabel}
         </p>
@@ -153,7 +233,7 @@ export default function Home() {
         <div className="subscribe-actions">
           <div className="feed">
             <code title={feedUrl}>
-              {origin ? `${origin.replace(/^https?:\/\//, "")}/calendar.ics` : "/calendar.ics"}
+              {origin ? `${origin.replace(/^https?:\/\//, "")}${feedPath}` : feedPath}
             </code>
             <button onClick={copyFeed} aria-label="Copy calendar link">
               {copied ? "Copied" : "Copy link"}
@@ -163,7 +243,7 @@ export default function Home() {
             <p className="feed-links">
               <a href={googleUrl} target="_blank" rel="noreferrer">Google Calendar</a>
               <a href={webcalUrl}>Apple Calendar</a>
-              <a href="/calendar.ics" download>Download file</a>
+              <a href={feedPath} download>Download file</a>
             </p>
           )}
         </div>
@@ -255,7 +335,13 @@ export default function Home() {
             );
           })}
           {visible.length === 0 && (
-            <li className="empty">Nothing matches that. Try a different view.</li>
+            <li className="empty">
+              {inRegion.length === 0
+                ? `Nothing on the ${region.label} board yet. The sweep runs every ` +
+                  "morning and evening, and anything it finds lands here and in " +
+                  "the feed."
+                : "Nothing matches that. Try a different view."}
+            </li>
           )}
         </ol>
       </section>

@@ -1,12 +1,13 @@
 # Hacklist SF
 
-Public hackathons in the SF Bay Area - including externally hosted events
-linked from Luma calendars - discovered automatically, ranked by signal, and
-published as a subscribable calendar.
+Public hackathons in the SF Bay Area and San Diego - including externally hosted
+events linked from Luma calendars - discovered automatically, ranked by signal,
+and published as a subscribable calendar per region.
 
 - **Site:** https://hacklist-sf.modern-renaissance-artifacts.workers.dev
-- **Calendar feed:** https://hacklist-sf.modern-renaissance-artifacts.workers.dev/calendar.ics
+- **Bay Area feed:** https://hacklist-sf.modern-renaissance-artifacts.workers.dev/calendar.ics
   (add this URL to Google/Apple/Outlook Calendar to subscribe)
+- **San Diego feed:** https://hacklist-sf.modern-renaissance-artifacts.workers.dev/calendar.ics?region=san-diego
 
 ## How it works
 
@@ -148,7 +149,7 @@ Tests come in two kinds, and only one of them gates a deploy.
 `npm run test:artifact` asks whether the thing about to be published is correct  - 
 the rendered board, the ICS feed, the date arithmetic most likely to publish
 something wrong (Devpost's date-only ranges, Y Combinator's placeholder
-timestamps), the duplicate-collapsing rules and the calendar sync's decisions. 68
+timestamps), the duplicate-collapsing rules and the calendar sync's decisions. 70
 tests, three seconds, and CI runs it between the commit and the deploy.
 
 `npm run test:browser` drives the real Add-External-Event form filler against a

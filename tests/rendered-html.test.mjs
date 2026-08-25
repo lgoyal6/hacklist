@@ -58,6 +58,10 @@ test("events.json only contains upcoming, fully-normalized events", () => {
   }
 });
 
+const defaultRegion = eventsData.meta.defaultRegion;
+/** The region an event is published under, defaulting like the feed does. */
+const regionOf = (event) => event.region ?? defaultRegion;
+
 /** Has this event not finished yet, as the site and feed judge it per request? */
 function isUpcoming(event) {
   const over = Date.parse(event.end ?? event.start ?? "");
@@ -80,12 +84,28 @@ test("server-renders the ranked event board", async () => {
   // filter, so they are legitimately absent from the first paint.
   // Still upcoming, because the board is a twice-daily snapshot and the page
   // filters out anything that has finished since it was written.
+  // The first paint is the default region's board. Another region's events are
+  // one click away behind the switcher, and asserting them here would be
+  // asserting that the switcher does not work.
   for (const event of eventsData.events.filter(
-    (candidate) => candidate.category === "hackathon" && isUpcoming(candidate),
+    (candidate) =>
+      candidate.category === "hackathon" &&
+      isUpcoming(candidate) &&
+      regionOf(candidate) === defaultRegion,
   )) {
     assert.ok(
       html.includes(`href="${event.url}"`),
       `${event.title} is not hyperlinked on the board`,
+    );
+  }
+  // And another region's events are genuinely not on it.
+  for (const event of eventsData.events.filter(
+    (candidate) => regionOf(candidate) !== defaultRegion,
+  )) {
+    assert.ok(
+      !html.includes(`href="${event.url}"`),
+      `${event.title} is a ${regionOf(event)} event and must not be on the ` +
+        `${defaultRegion} first paint`,
     );
   }
   // And an event that has finished must not still be listed.
@@ -118,7 +138,11 @@ test("serves an ICS feed with one VEVENT per dated event", async () => {
   // filtered per request, because the file is written twice a day and events
   // finish continuously; one build published a hackathon that ended sixteen
   // minutes after the sweep wrote it.
-  const datedEvents = eventsData.events.filter((e) => e.start && isUpcoming(e));
+  // The bare path is the default region's feed and nothing else: an existing
+  // subscriber asked for the Bay Area, not for every region the board grows.
+  const datedEvents = eventsData.events.filter(
+    (e) => e.start && isUpcoming(e) && regionOf(e) === defaultRegion,
+  );
   const vevents = ics.match(/BEGIN:VEVENT/g) ?? [];
   assert.equal(vevents.length, datedEvents.length);
   // Unfold folded lines before checking content.
@@ -135,7 +159,10 @@ test("serves an ICS feed with one VEVENT per dated event", async () => {
   // with an invented clock time. Devpost publishes dates and no times at all, so
   // this is the normal case for that source rather than an edge case.
   const unverified = eventsData.events.filter(
-    (event) => event.start && (!event.end || event.timeUnverified === true),
+    (event) =>
+      event.start &&
+      regionOf(event) === defaultRegion &&
+      (!event.end || event.timeUnverified === true),
   );
   for (const event of unverified) {
     const vevent = unfolded
@@ -172,5 +199,43 @@ test("serves an ICS feed with one VEVENT per dated event", async () => {
       days <= 3,
       `${event.title} occupies ${days} all-day slots; long spans must collapse to the first day`,
     );
+  }
+});
+
+test("each region's feed carries that region's events and no others", async () => {
+  for (const region of eventsData.meta.regions) {
+    const path =
+      region.key === defaultRegion
+        ? "/calendar.ics"
+        : `/calendar.ics?region=${region.key}`;
+    const response = await render(path);
+    assert.equal(response.status, 200, `${region.key} feed did not serve`);
+    const ics = (await response.text()).replace(/\r\n[ \t]/g, "");
+    assert.ok(
+      ics.includes(`X-WR-CALNAME:${region.boardName}`),
+      `${region.key} feed is not named ${region.boardName}`,
+    );
+
+    for (const event of eventsData.events) {
+      if (!event.start || !isUpcoming(event)) continue;
+      const present = ics.includes(`UID:${event.id}@hacklist-sf`);
+      assert.equal(
+        present,
+        regionOf(event) === region.key,
+        `${event.title} (${regionOf(event)}) ${present ? "is in" : "is missing from"} the ${region.key} feed`,
+      );
+    }
+  }
+});
+
+test("a region nobody serves is refused rather than quietly given another", async () => {
+  const response = await render("/calendar.ics?region=atlantis");
+  assert.equal(response.status, 404);
+  const body = await response.text();
+  assert.match(body, /atlantis/);
+  // The answer has to name the regions that do exist, or a mistyped
+  // subscription URL is a dead end with nothing to try next.
+  for (const region of eventsData.meta.regions) {
+    assert.ok(body.includes(region.key), `404 does not mention ${region.key}`);
   }
 });
