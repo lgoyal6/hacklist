@@ -3,12 +3,18 @@
     "bay-area": "https://luma.com/calendar/manage/cal-LHMcppIqcJ4kHZt",
     "san-diego": "https://luma.com/hacklist-sd"
   },
-  "updatedAt": "2026-08-25T18:01:20.592Z",
+  "updatedAt": "2026-08-26T04:06:21.241Z",
   "synced": {
     "05aqg7b8": {
       "url": "https://luma.com/05aqg7b8",
       "title": "Silicon Valley Robotics Fair 2026",
       "syncedAt": "2026-08-07T21:32:44.529Z",
+      "method": "luma-ui"
+    },
+    "0nada7qz": {
+      "url": "https://luma.com/0nada7qz",
+      "title": "Degrees of Freedom: Bring Your Own Robot @ Mission Robotics",
+      "syncedAt": "2026-08-26T04:04:53.862Z",
       "method": "luma-ui"
     },
     "0nkmbhav": {
@@ -285,6 +291,18 @@
       "url": "https://firehacks.devpost.com",
       "title": "Firehacks",
       "syncedAt": "2026-08-09T15:34:48.468Z",
+      "method": "luma-ui-external"
+    },
+    "external-hackstorm3-devpost-com--af663478": {
+      "url": "https://hackstorm3.devpost.com",
+      "title": "HackStorm 3.0: Sense, Think and Act",
+      "syncedAt": "2026-08-26T04:04:53.862Z",
+      "method": "luma-ui-external"
+    },
+    "external-sfhacks-io--69dcce9d": {
+      "url": "https://sfhacks.io",
+      "title": "SF Hacks",
+      "syncedAt": "2026-08-25T17:21:48.171Z",
       "method": "luma-ui-external"
     },
     "external-showerhacks-devpost-com--17486452": {
@@ -581,6 +599,12 @@
       "syncedAt": "2026-08-22T15:32:43.366Z",
       "method": "luma-ui"
     },
+    "uqxby9dm": {
+      "url": "https://luma.com/uqxby9dm",
+      "title": "AI Infra Signal: Build, Operate, and Monetize Intelligence",
+      "syncedAt": "2026-08-26T04:04:53.861Z",
+      "method": "luma-ui"
+    },
     "utyqfarn": {
       "url": "https://luma.com/utyqfarn",
       "title": "The First Non-Tech Buildathon",
@@ -640,22 +664,8 @@
       "title": "intergenerational hackathon",
       "syncedAt": "2026-08-07T21:28:34.200Z",
       "method": "luma-ui"
-    },
-    "external-sfhacks-io--69dcce9d": {
-      "url": "https://sfhacks.io",
-      "title": "SF Hacks",
-      "syncedAt": "2026-08-25T17:21:48.171Z",
-      "method": "luma-ui-external"
     }
   },
-  "failures": {
-    "external-htcj-aviation-futures-devpost-com--a1cad4b4": {
-      "url": "https://htcj-aviation-futures.devpost.com",
-      "title": "HTCJ Aviation Futures Innovation Challenge",
-      "lastAttemptAt": "2026-08-25T15:57:16.576Z",
-      "attempts": 1,
-      "message": "Submitted but never appeared on the calendar"
-    }
-  },
-  "submitted": {}
+  "submitted": {},
+  "failures": {}
 }
