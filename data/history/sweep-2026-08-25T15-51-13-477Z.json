@@ -9,8 +9,8 @@
         "coreArea": "SF",
         "boardName": "Hacklist SF",
         "timezone": "America/Los_Angeles",
-        "count": 57,
-        "hackathonCount": 57
+        "count": 55,
+        "hackathonCount": 55
       },
       {
         "key": "san-diego",
@@ -18,213 +18,23 @@
         "coreArea": "San Diego",
         "boardName": "Hacklist San Diego",
         "timezone": "America/Los_Angeles",
-        "count": 2,
-        "hackathonCount": 2
+        "count": 3,
+        "hackathonCount": 3
       }
     ],
     "timezone": "America/Los_Angeles",
     "sweepCompletedAt": "2026-08-25T15:51:13.477Z",
     "pagesVisited": 870,
     "candidatesFound": 3,
-    "publishedCount": 59,
-    "hackathonCount": 59,
+    "publishedCount": 58,
+    "hackathonCount": 58,
     "adjacentCount": 0,
-    "organizerCount": 52,
-    "sourceCount": 18,
+    "organizerCount": 49,
+    "sourceCount": 14,
     "seedCount": 24,
-    "externalCount": 7
+    "externalCount": 8
   },
   "events": [
-    {
-      "id": "agentnativebuildershackathon",
-      "url": "https://luma.com/agentnativebuildershackathon",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Agent Native Builders Hackathon @ Cloudflare HQ",
-      "organizer": "Immersive Commons",
-      "venue": "Cloudflare",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-08-26T09:00:00-07:00",
-      "end": "2026-08-27T20:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 26",
-      "dateDetail": "Wed–Thu · 2 days",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "$500 cash",
-      "tags": [
-        "AI",
-        "Agents"
-      ],
-      "going": 0,
-      "why": "2-day build with judging, demos, team formation; $500 cash.",
-      "score": 97,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 99,
-        "accessibility": 100,
-        "freshness": 100
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:11.743Z"
-    },
-    {
-      "id": "agent-harness",
-      "url": "https://luma.com/agent-harness",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Agent Harness Hackathon | Win an NVIDIA DGX Spark AI Supercomputer",
-      "organizer": "Bright Data",
-      "venue": "Bright Data",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-08-29T09:00:00-07:00",
-      "end": "2026-08-29T18:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 29",
-      "dateDetail": "Sat · 9am–6pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "$50 prizes",
-      "tags": [
-        "AI",
-        "Agents",
-        "Data"
-      ],
-      "going": 542,
-      "why": "9-hour build with judging, team formation; $50 prizes.",
-      "score": 95,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 93,
-        "accessibility": 100,
-        "freshness": 92
-      },
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "checkedAt": "2026-08-25T15:34:12.219Z"
-    },
-    {
-      "id": "l74b4u7b",
-      "url": "https://luma.com/l74b4u7b",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "🔥 Qoder AI Hackathon with $4500 cash prizes",
-      "organizer": "B.E.L.L.E Community",
-      "venue": "Rincon Hill",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-12T09:00:00-07:00",
-      "end": "2026-09-12T21:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 12",
-      "dateDetail": "Sat · 9am–9pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "$4500 cash",
-      "tags": [
-        "AI"
-      ],
-      "going": 117,
-      "why": "12-hour build with judging, demos, team formation, a submission deadline; $4500 cash.",
-      "score": 92,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 94,
-        "accessibility": 100,
-        "freshness": 70
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:12.552Z"
-    },
-    {
-      "id": "d6g5mb9o",
-      "url": "https://luma.com/d6g5mb9o",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "MantisGrid AI Hackathon & Summit 2026",
-      "organizer": "MantisGrid AI",
-      "venue": "Mitchell Park Community Center",
-      "city": "Palo Alto",
-      "area": "Peninsula",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-17T08:00:00-07:00",
-      "end": "2026-09-17T17:30:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 17",
-      "dateDetail": "Thu · 8am–5:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "$10,000 cash",
-      "tags": [
-        "AI",
-        "Agents",
-        "Infra"
-      ],
-      "going": 0,
-      "why": "10-hour build with judging, demos, team formation, a submission deadline; $10,000 cash.",
-      "score": 92,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 99,
-        "accessibility": 95,
-        "freshness": 70
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:12.903Z"
-    },
-    {
-      "id": "qbp3ck7t",
-      "url": "https://luma.com/qbp3ck7t",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Codex Community Hackathon - San Francisco",
-      "organizer": "Muhtasham Oblokulov",
-      "venue": "Hogpatch",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-08-29T10:00:00-07:00",
-      "end": "2026-08-29T22:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 29",
-      "dateDetail": "Sat · 10am–10pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Prizes listed",
-      "tags": [
-        "AI"
-      ],
-      "going": 31,
-      "why": "12-hour build with demos, team formation; prizes listed.",
-      "score": 91,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 79,
-        "accessibility": 100,
-        "freshness": 92
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:13.422Z"
-    },
     {
       "id": "external-api-cloud-ai-hackathon-2026-devpost-com--4a825940",
       "url": "https://api-cloud-ai-hackathon-2026.devpost.com",
@@ -261,44 +71,6 @@
       "checkedAt": "2026-08-25T15:51:21.372Z"
     },
     {
-      "id": "Innovation4Veterans",
-      "url": "https://luma.com/Innovation4Veterans",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Veteran Innovation Hackathon",
-      "organizer": "Hacker Dojo",
-      "venue": "Hacker Dojo",
-      "city": "Mountain View",
-      "area": "South Bay",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-08-28T18:30:00-07:00",
-      "end": "2026-08-30T21:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 28",
-      "dateDetail": "Fri–Sun · 3 days",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "Tech",
-        "Design"
-      ],
-      "going": 102,
-      "why": "3-day build with judging, demos, team formation, a submission deadline.",
-      "score": 90,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 79,
-        "accessibility": 92,
-        "freshness": 92
-      },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-25T15:34:13.671Z"
-    },
-    {
       "id": "qa11srwr",
       "url": "https://luma.com/qa11srwr",
       "platform": "luma",
@@ -322,7 +94,7 @@
       "tags": [
         "AI"
       ],
-      "going": null,
+      "going": 0,
       "why": "2-day build with judging, demos, team formation; prizes listed.",
       "score": 90,
       "confidence": 94,
@@ -332,122 +104,8 @@
         "accessibility": 82,
         "freshness": 92
       },
-      "discoveredVia": "https://luma.com/IterateHacks",
-      "checkedAt": "2026-08-25T15:34:13.968Z"
-    },
-    {
-      "id": "beta-khbp",
-      "url": "https://luma.com/beta-khbp",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Qoder × Beta Fund · Agent Factory",
-      "organizer": "Beta University Events",
-      "venue": null,
-      "city": "Sunnyvale",
-      "area": "South Bay",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-08-29T09:30:00-07:00",
-      "end": "2026-08-29T17:30:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 29",
-      "dateDetail": "Sat · 9:30am–5:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Prizes listed",
-      "tags": [
-        "AI",
-        "Agents"
-      ],
-      "going": 195,
-      "why": "8-hour build with demos, team formation; prizes listed.",
-      "score": 89,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 78,
-        "accessibility": 92,
-        "freshness": 92
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:14.239Z"
-    },
-    {
-      "id": "678a9u02",
-      "url": "https://luma.com/678a9u02",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Guava Voice AI Hackathon: Build Night SF",
-      "organizer": "Guava",
-      "venue": "House of AI",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-08-29T17:30:00-07:00",
-      "end": "2026-08-29T21:30:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 29",
-      "dateDetail": "Sat · 5:30pm–9:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "$3,000 cash",
-      "tags": [
-        "AI",
-        "Voice AI"
-      ],
-      "going": 44,
-      "why": "4-hour build with demos, team formation; $3,000 cash.",
-      "score": 89,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 70,
-        "accessibility": 100,
-        "freshness": 92
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:14.508Z"
-    },
-    {
-      "id": "qisv9xmg",
-      "url": "https://luma.com/qisv9xmg",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Data & AI Hackathon: Real job. Real AI. Real scale.",
-      "organizer": "Devnovate",
-      "venue": "AWS Builder Loft",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-11T09:30:00-07:00",
-      "end": "2026-09-11T18:30:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 11",
-      "dateDetail": "Fri · 9:30am–6:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Prizes listed",
-      "tags": [
-        "AI",
-        "Data"
-      ],
-      "going": 0,
-      "why": "9-hour build with demos, team formation, a submission deadline; prizes listed.",
-      "score": 89,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 84,
-        "accessibility": 100,
-        "freshness": 70
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:14.774Z"
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-08-26T03:30:17.034Z"
     },
     {
       "id": "3t95uj7s",
@@ -484,7 +142,7 @@
         "freshness": 55
       },
       "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-08-25T15:34:29.148Z"
+      "checkedAt": "2026-08-26T03:30:21.189Z"
     },
     {
       "id": "mvcg9eyw",
@@ -521,44 +179,7 @@
         "freshness": 55
       },
       "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-08-25T15:34:14.993Z"
-    },
-    {
-      "id": "anq7lf5m",
-      "url": "https://luma.com/anq7lf5m",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "🚀 Codex Best Practices Night #9 - OpenAI Codex & YCombinator Networking",
-      "organizer": "TatianaSF",
-      "venue": null,
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-08-25T17:00:00-07:00",
-      "end": "2026-08-25T20:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 25",
-      "dateDetail": "Tue · 5pm–8pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Prizes listed",
-      "tags": [
-        "AI"
-      ],
-      "going": 359,
-      "why": "3-hour build with demos, team formation; prizes listed.",
-      "score": 88,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 63,
-        "accessibility": 100,
-        "freshness": 100
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:15.388Z"
+      "checkedAt": "2026-08-26T03:30:21.389Z"
     },
     {
       "id": "lablab-zbl9",
@@ -584,7 +205,7 @@
       "tags": [
         "Infra"
       ],
-      "going": 161,
+      "going": 173,
       "why": "3-day build with judging, demos, team formation; prizes tba.",
       "score": 88,
       "confidence": 94,
@@ -594,82 +215,8 @@
         "accessibility": 92,
         "freshness": 70
       },
-      "discoveredVia": "https://luma.com/lablab.ai",
-      "checkedAt": "2026-08-25T15:34:15.770Z"
-    },
-    {
-      "id": "qzct3ybt",
-      "url": "https://luma.com/qzct3ybt",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "AI Hackathon: Sales Copilot AI",
-      "organizer": "TatianaSF",
-      "venue": "Northern Waterfront",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-08T11:00:00-07:00",
-      "end": "2026-10-08T19:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 08",
-      "dateDetail": "Thu · 11am–7pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Prizes listed",
-      "tags": [
-        "AI"
-      ],
-      "going": 431,
-      "why": "8-hour build with judging, demos, team formation; prizes listed.",
-      "score": 88,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 87,
-        "accessibility": 100,
-        "freshness": 55
-      },
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "checkedAt": "2026-08-25T15:34:16.158Z"
-    },
-    {
-      "id": "clickh-sie8",
-      "url": "https://luma.com/clickh-sie8",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Better Days: A Hackathon — San Francisco",
-      "organizer": "ClickHouse Events",
-      "venue": "KOHO Co-Creative Hub",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-08-28T09:00:00-07:00",
-      "end": "2026-08-28T19:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 28",
-      "dateDetail": "Fri · 9am–7pm",
-      "timeUnverified": false,
-      "status": "Waitlist",
-      "prize": "$500 cash",
-      "tags": [
-        "AI"
-      ],
-      "going": 374,
-      "why": "10-hour build with judging, demos, team formation, a submission deadline; $500 cash.",
-      "score": 87,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 99,
-        "accessibility": 53,
-        "freshness": 92
-      },
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "checkedAt": "2026-08-25T15:34:16.552Z"
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-08-26T03:30:15.666Z"
     },
     {
       "id": "utyqfarn",
@@ -693,7 +240,7 @@
       "status": "Open",
       "prize": "Not listed",
       "tags": [],
-      "going": null,
+      "going": 0,
       "why": "4-hour build with judging, demos, team formation.",
       "score": 87,
       "confidence": 94,
@@ -703,8 +250,8 @@
         "accessibility": 100,
         "freshness": 84
       },
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-08-25T15:34:16.857Z"
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-08-26T03:30:17.329Z"
     },
     {
       "id": "burningtoken",
@@ -731,7 +278,7 @@
         "AI",
         "Token economy"
       ],
-      "going": null,
+      "going": 0,
       "why": "11-hour build with judging; prizes listed.",
       "score": 87,
       "confidence": 94,
@@ -741,8 +288,8 @@
         "accessibility": 82,
         "freshness": 84
       },
-      "discoveredVia": "https://luma.com/frontiertower",
-      "checkedAt": "2026-08-25T15:34:17.186Z"
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-08-26T03:30:20.490Z"
     },
     {
       "id": "runpod-online-hackathon",
@@ -779,119 +326,45 @@
         "freshness": 84
       },
       "discoveredVia": "https://luma.com/sf-builders-collective",
-      "checkedAt": "2026-08-25T15:34:17.455Z"
+      "checkedAt": "2026-08-26T03:30:21.709Z"
     },
     {
-      "id": "lsa8mrp7",
-      "url": "https://luma.com/lsa8mrp7",
+      "id": "beta-khbp",
+      "url": "https://luma.com/beta-khbp",
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Festiverse 2026: Diwali Hackathon",
-      "organizer": "Events",
-      "venue": "Financial District",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-11-23T09:30:00-08:00",
-      "end": "2026-11-23T20:30:00-08:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "NOV 23",
-      "dateDetail": "Mon · 9:30am–8:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Prizes listed",
-      "tags": [
-        "AI"
-      ],
-      "going": 113,
-      "why": "11-hour build with judging, demos, team formation, a submission deadline; prizes listed.",
-      "score": 87,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 92,
-        "accessibility": 100,
-        "freshness": 40
-      },
-      "discoveredVia": "https://luma.com/devnovate",
-      "checkedAt": "2026-08-25T15:34:17.876Z"
-    },
-    {
-      "id": "openmodelhack",
-      "url": "https://luma.com/openmodelhack",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Open Model Hack - Gradient x Google Deepmind",
-      "organizer": "tokens&",
+      "title": "Qoder × Beta Fund · Agent Factory",
+      "organizer": "Beta University Events",
       "venue": null,
-      "city": "San Francisco",
-      "area": "SF",
+      "city": "Sunnyvale",
+      "area": "South Bay",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-09-12T09:30:00-07:00",
-      "end": "2026-09-12T19:30:00-07:00",
+      "start": "2026-08-29T09:30:00-07:00",
+      "end": "2026-08-29T17:30:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 12",
-      "dateDetail": "Sat · 9:30am–7:30pm",
+      "dateLabel": "AUG 29",
+      "dateDetail": "Sat · 9:30am–5:30pm",
       "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
+      "status": "Approval",
+      "prize": "Prizes listed",
       "tags": [
         "AI",
-        "Token economy"
+        "Agents"
       ],
-      "going": 0,
-      "why": "10-hour build with judging, demos, team formation.",
+      "going": 195,
+      "why": "8-hour build with demos, team formation; prizes listed.",
       "score": 86,
       "confidence": 94,
       "scores": {
         "confidence": 94,
-        "builderValue": 73,
-        "accessibility": 100,
-        "freshness": 70
-      },
-      "discoveredVia": "https://luma.com/sf",
-      "checkedAt": "2026-08-25T15:34:18.301Z"
-    },
-    {
-      "id": "ai-conference-hack-day-2026",
-      "url": "https://luma.com/ai-conference-hack-day-2026",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "The AI Conference Hack Day 2026",
-      "organizer": "[SF] HackerSquad",
-      "venue": "Mission Bay",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-29T09:30:00-07:00",
-      "end": "2026-09-29T19:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 29",
-      "dateDetail": "Tue · 9:30am–7pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Prizes listed",
-      "tags": [
-        "AI"
-      ],
-      "going": 0,
-      "why": "10-hour build with demos, team formation; prizes listed.",
-      "score": 86,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 79,
-        "accessibility": 100,
-        "freshness": 55
+        "builderValue": 78,
+        "accessibility": 74,
+        "freshness": 92
       },
       "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:18.597Z"
+      "checkedAt": "2026-08-26T03:30:20.905Z"
     },
     {
       "id": "roastpr",
@@ -928,45 +401,7 @@
         "freshness": 100
       },
       "discoveredVia": "https://luma.com/sf",
-      "checkedAt": "2026-08-25T15:34:19.059Z"
-    },
-    {
-      "id": "m9h5vo7a",
-      "url": "https://luma.com/m9h5vo7a",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Universal Celebration Hackathon",
-      "organizer": "BondHaus",
-      "venue": "AWS Builder Loft",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-19T09:30:00-07:00",
-      "end": "2026-10-19T20:30:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 19",
-      "dateDetail": "Mon · 9:30am–8:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "AI",
-        "Climate"
-      ],
-      "going": 33,
-      "why": "11-hour build with demos, team formation.",
-      "score": 85,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 76,
-        "accessibility": 100,
-        "freshness": 55
-      },
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "checkedAt": "2026-08-25T15:34:20.528Z"
+      "checkedAt": "2026-08-26T03:30:22.245Z"
     },
     {
       "id": "truefoundry-agent-harness-hackathon-sep19-2026",
@@ -1004,7 +439,45 @@
         "freshness": 70
       },
       "discoveredVia": "https://luma.com/sf-builders-collective",
-      "checkedAt": "2026-08-25T15:34:20.885Z"
+      "checkedAt": "2026-08-26T03:30:22.464Z"
+    },
+    {
+      "id": "openmodelhack",
+      "url": "https://luma.com/openmodelhack",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Open Model Hack - Gradient x Google Deepmind",
+      "organizer": "tokens&",
+      "venue": null,
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-12T09:30:00-07:00",
+      "end": "2026-09-12T19:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 12",
+      "dateDetail": "Sat · 9:30am–7:30pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "Not listed",
+      "tags": [
+        "AI",
+        "Token economy"
+      ],
+      "going": 0,
+      "why": "10-hour build with judging, demos, team formation.",
+      "score": 83,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 73,
+        "accessibility": 82,
+        "freshness": 70
+      },
+      "discoveredVia": "https://luma.com/sf",
+      "checkedAt": "2026-08-26T03:30:21.973Z"
     },
     {
       "id": "7ndhdy7n",
@@ -1039,7 +512,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://luma.com/hackathon_collections",
-      "checkedAt": "2026-08-25T15:34:21.197Z"
+      "checkedAt": "2026-08-26T03:30:22.628Z"
     },
     {
       "id": "external-htcj-aviation-futures-devpost-com--a1cad4b4",
@@ -1079,41 +552,39 @@
       "checkedAt": "2026-08-25T15:51:20.889Z"
     },
     {
-      "id": "99857qk9",
-      "url": "https://luma.com/99857qk9",
+      "id": "l74b4u7b",
+      "url": "https://luma.com/l74b4u7b",
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Showerhacks",
-      "organizer": "Showerhacks",
-      "venue": "Entrepreneurs First",
+      "title": "🔥 Qoder AI Hackathon with $4500 cash prizes",
+      "organizer": "B.E.L.L.E Community",
+      "venue": "Rincon Hill",
       "city": "San Francisco",
       "area": "SF",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-09-26T10:00:00-07:00",
-      "end": "2026-09-26T23:00:00-07:00",
+      "start": "2026-09-12T09:00:00-07:00",
+      "end": "2026-09-12T21:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 26",
-      "dateDetail": "Sat · 10am–11pm",
+      "dateLabel": "SEP 12",
+      "dateDetail": "Sat · 9am–9pm",
       "timeUnverified": false,
       "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 201,
-      "why": "13-hour build with team formation.",
+      "prize": "$4500 cash",
+      "tags": [],
+      "going": 119,
+      "why": "12-hour build; $4500 cash.",
       "score": 82,
-      "confidence": 94,
+      "confidence": 78,
       "scores": {
-        "confidence": 94,
-        "builderValue": 65,
+        "confidence": 78,
+        "builderValue": 80,
         "accessibility": 100,
-        "freshness": 55
+        "freshness": 70
       },
-      "discoveredVia": "https://luma.com/99857qk9",
-      "checkedAt": "2026-08-25T15:34:21.663Z"
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.507Z"
     },
     {
       "id": "shipfrom0",
@@ -1137,7 +608,6 @@
       "status": "Approval",
       "prize": "Not listed",
       "tags": [
-        "AI",
         "Token economy"
       ],
       "going": 0,
@@ -1151,45 +621,7 @@
         "freshness": 55
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-08-25T15:34:05.252Z"
-    },
-    {
-      "id": "oct-hackathon",
-      "url": "https://luma.com/oct-hackathon",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Company Brain Hackathon: Build an AI Agent That Knows Your Organization",
-      "organizer": "TechEquity Ai - Silicon Valley",
-      "venue": "135 Constitution Dr",
-      "city": "Menlo Park",
-      "area": "Peninsula",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-12T13:00:00-07:00",
-      "end": "2026-10-12T17:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 12",
-      "dateDetail": "Mon · 1pm–5pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "AI",
-        "Agents"
-      ],
-      "going": 5,
-      "why": "4-hour build with judging, demos.",
-      "score": 81,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 63,
-        "accessibility": 95,
-        "freshness": 55
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:22.346Z"
+      "checkedAt": "2026-08-26T03:30:14.611Z"
     },
     {
       "id": "HT27Pitch",
@@ -1226,33 +658,33 @@
         "freshness": 40
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-25T15:34:23.288Z"
+      "checkedAt": "2026-08-26T03:30:23.293Z"
     },
     {
-      "id": "pnf1qf3g",
-      "url": "https://luma.com/pnf1qf3g",
+      "id": "678a9u02",
+      "url": "https://luma.com/678a9u02",
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Punk Software Hack Night: LLM Freemaxxing",
-      "organizer": "Imbue Events",
-      "venue": "Civic Center",
+      "title": "Guava Voice AI Hackathon: Build Night SF",
+      "organizer": "Guava",
+      "venue": "SoMa",
       "city": "San Francisco",
       "area": "SF",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-08-27T18:00:00-07:00",
-      "end": "2026-08-27T22:00:00-07:00",
+      "start": "2026-08-29T17:30:00-07:00",
+      "end": "2026-08-29T21:30:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 27",
-      "dateDetail": "Thu · 6pm–10pm",
+      "dateLabel": "AUG 29",
+      "dateDetail": "Sat · 5:30pm–9:30pm",
       "timeUnverified": false,
       "status": "Open",
       "prize": "Not listed",
       "tags": [
-        "AI"
+        "Voice AI"
       ],
-      "going": 22,
+      "going": 59,
       "why": "4-hour build.",
       "score": 79,
       "confidence": 78,
@@ -1262,46 +694,8 @@
         "accessibility": 100,
         "freshness": 92
       },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:23.922Z"
-    },
-    {
-      "id": "n5ozj6uv",
-      "url": "https://luma.com/n5ozj6uv",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Agent Context Without the Round Trip",
-      "organizer": "Actian",
-      "venue": "Financial District",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-08-27T18:00:00-07:00",
-      "end": "2026-08-27T21:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 27",
-      "dateDetail": "Thu · 6pm–9pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "AI",
-        "Agents"
-      ],
-      "going": 60,
-      "why": "3-hour build with demos.",
-      "score": 79,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 55,
-        "accessibility": 100,
-        "freshness": 92
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:19.738Z"
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.506Z"
     },
     {
       "id": "278ujx64",
@@ -1338,84 +732,116 @@
         "freshness": 92
       },
       "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:24.319Z"
+      "checkedAt": "2026-08-26T03:30:23.821Z"
     },
     {
-      "id": "y7u3pk8t",
-      "url": "https://luma.com/y7u3pk8t",
+      "id": "e9z9vuxz",
+      "url": "https://luma.com/e9z9vuxz",
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Health2Tech San Francisco September 3, 2026",
-      "organizer": "Alex Koshykov",
-      "venue": null,
+      "title": "Healthcare AI Hackathon",
+      "organizer": "Personal",
+      "venue": "AWS Builder Loft, 525 Market St, Floor 2",
+      "city": "Stanford",
+      "area": "Peninsula",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-26T10:00:00-07:00",
+      "end": "2026-09-26T17:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 26",
+      "dateDetail": "Sat · 10am–5pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "$5,000 cash",
+      "tags": [],
+      "going": 0,
+      "why": "7-hour build with demos, team formation; $5,000 cash.",
+      "score": 79,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 70,
+        "accessibility": 77,
+        "freshness": 55
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:27.316Z"
+    },
+    {
+      "id": "99857qk9",
+      "url": "https://luma.com/99857qk9",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Showerhacks",
+      "organizer": "Showerhacks",
+      "venue": "Entrepreneurs First",
       "city": "San Francisco",
       "area": "SF",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-09-03T17:30:00-07:00",
-      "end": "2026-09-03T20:30:00-07:00",
+      "start": "2026-09-26T10:00:00-07:00",
+      "end": "2026-09-26T23:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 03",
-      "dateDetail": "Thu · 5:30pm–8:30pm",
+      "dateLabel": "SEP 26",
+      "dateDetail": "Sat · 10am–11pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "Not listed",
+      "tags": [
+        "Tech"
+      ],
+      "going": 201,
+      "why": "13-hour build with team formation.",
+      "score": 79,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 65,
+        "accessibility": 82,
+        "freshness": 55
+      },
+      "discoveredVia": "https://luma.com/99857qk9",
+      "checkedAt": "2026-08-26T03:30:23.077Z"
+    },
+    {
+      "id": "Innovation4Veterans",
+      "url": "https://luma.com/Innovation4Veterans",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Veteran Innovation Hackathon",
+      "organizer": "Personal",
+      "venue": "Hacker Dojo",
+      "city": "Mountain View",
+      "area": "South Bay",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-08-28T18:30:00-07:00",
+      "end": "2026-08-30T12:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 28",
+      "dateDetail": "Fri–Sun · 3 days",
       "timeUnverified": false,
       "status": "Open",
       "prize": "Not listed",
       "tags": [
-        "AI"
-      ],
-      "going": 123,
-      "why": "3-hour build with a submission deadline.",
-      "score": 79,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 61,
-        "accessibility": 100,
-        "freshness": 84
-      },
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-08-25T15:34:20.134Z"
-    },
-    {
-      "id": "lbfyvfe4",
-      "url": "https://luma.com/lbfyvfe4",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Design Hackathon: The Vibe Coding Night for Designers!",
-      "organizer": "IxDF San Francisco",
-      "venue": "SoMa",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-08-28T17:30:00-07:00",
-      "end": "2026-08-28T20:30:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 28",
-      "dateDetail": "Fri · 5:30pm–8:30pm",
-      "timeUnverified": false,
-      "status": "Waitlist",
-      "prize": "Prizes listed",
-      "tags": [
-        "AI",
-        "Arts & Culture",
-        "Vibe coding",
         "Design"
       ],
-      "going": 40,
-      "why": "3-hour build with team formation; prizes listed.",
-      "score": 78,
-      "confidence": 94,
+      "going": 104,
+      "why": "2-day build with judging, demos, team formation, a submission deadline.",
+      "score": 77,
+      "confidence": 62,
       "scores": {
-        "confidence": 94,
-        "builderValue": 63,
-        "accessibility": 53,
+        "confidence": 62,
+        "builderValue": 79,
+        "accessibility": 92,
         "freshness": 92
       },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:24.688Z"
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.506Z"
     },
     {
       "id": "external-showerhacks-devpost-com--17486452",
@@ -1489,7 +915,45 @@
         "freshness": 70
       },
       "discoveredVia": "https://luma.com/AIHardware",
-      "checkedAt": "2026-08-25T15:34:26.464Z"
+      "checkedAt": "2026-08-26T03:30:24.339Z"
+    },
+    {
+      "id": "n5ozj6uv",
+      "url": "https://luma.com/n5ozj6uv",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Agent Context Without the Round Trip",
+      "organizer": "Actian",
+      "venue": "Financial District",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-08-27T18:00:00-07:00",
+      "end": "2026-08-27T21:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 27",
+      "dateDetail": "Thu · 6pm–9pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "Not listed",
+      "tags": [
+        "AI",
+        "Agents"
+      ],
+      "going": 60,
+      "why": "3-hour build with demos.",
+      "score": 75,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 55,
+        "accessibility": 82,
+        "freshness": 92
+      },
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "checkedAt": "2026-08-26T03:30:23.568Z"
     },
     {
       "id": "0nkmbhav",
@@ -1526,7 +990,79 @@
         "freshness": 92
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-25T15:34:25.464Z"
+      "checkedAt": "2026-08-26T03:30:24.531Z"
+    },
+    {
+      "id": "qbp3ck7t",
+      "url": "https://luma.com/qbp3ck7t",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Codex Community Hackathon - San Francisco",
+      "organizer": "Personal",
+      "venue": "Dogpatch",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-08-29T10:00:00-07:00",
+      "end": "2026-08-29T22:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 29",
+      "dateDetail": "Sat · 10am–10pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [],
+      "going": 50,
+      "why": "12-hour build.",
+      "score": 75,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 65,
+        "accessibility": 100,
+        "freshness": 92
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.506Z"
+    },
+    {
+      "id": "y7u3pk8t",
+      "url": "https://luma.com/y7u3pk8t",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Health2Tech San Francisco September 3, 2026",
+      "organizer": "Alex Koshykov",
+      "venue": null,
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-03T17:30:00-07:00",
+      "end": "2026-09-03T20:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 03",
+      "dateDetail": "Thu · 5:30pm–8:30pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "Not listed",
+      "tags": [
+        "AI"
+      ],
+      "going": 123,
+      "why": "3-hour build with a submission deadline.",
+      "score": 75,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 61,
+        "accessibility": 82,
+        "freshness": 84
+      },
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "checkedAt": "2026-08-26T03:30:24.044Z"
     },
     {
       "id": "wv1l2wb3",
@@ -1563,7 +1099,42 @@
         "freshness": 55
       },
       "discoveredVia": "seed",
-      "checkedAt": "2026-08-25T15:34:21.944Z"
+      "checkedAt": "2026-08-26T03:30:24.731Z"
+    },
+    {
+      "id": "clickh-sie8",
+      "url": "https://luma.com/clickh-sie8",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Better Days: A Hackathon — San Francisco",
+      "organizer": "ClickHouse Events",
+      "venue": "Japantown",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-08-28T09:00:00-07:00",
+      "end": "2026-08-28T19:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 28",
+      "dateDetail": "Fri · 9am–7pm",
+      "timeUnverified": false,
+      "status": "Waitlist",
+      "prize": "$500 cash",
+      "tags": [],
+      "going": 374,
+      "why": "10-hour build with judging, demos, team formation, a submission deadline; $500 cash.",
+      "score": 74,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 99,
+        "accessibility": 53,
+        "freshness": 92
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.505Z"
     },
     {
       "id": "b101ml40",
@@ -1598,116 +1169,117 @@
         "freshness": 84
       },
       "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-08-25T15:34:04.394Z"
+      "checkedAt": "2026-08-26T03:30:11.509Z"
     },
     {
-      "id": "qualcomm-event-sep10-2026",
-      "url": "https://luma.com/qualcomm-event-sep10-2026",
+      "id": "pnf1qf3g",
+      "url": "https://luma.com/pnf1qf3g",
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Qualcomm UNO Q Hack Night #2",
-      "organizer": "[SF] HackerSquad",
-      "venue": "Qualcomm",
-      "city": "Santa Clara",
-      "area": "South Bay",
+      "title": "Punk Software Hack Night: LLM Freemaxxing",
+      "organizer": "Imbue Events",
+      "venue": "Civic Center",
+      "city": "San Francisco",
+      "area": "SF",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-09-10T17:00:00-07:00",
-      "end": "2026-09-10T20:00:00-07:00",
+      "start": "2026-08-27T18:00:00-07:00",
+      "end": "2026-08-27T22:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 10",
-      "dateDetail": "Thu · 5pm–8pm",
+      "dateLabel": "AUG 27",
+      "dateDetail": "Thu · 6pm–10pm",
       "timeUnverified": false,
       "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "AI"
-      ],
-      "going": 2,
-      "why": "3-hour build.",
-      "score": 74,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 55,
-        "accessibility": 92,
-        "freshness": 70
-      },
-      "discoveredVia": "https://luma.com/sf-builders-collective",
-      "checkedAt": "2026-08-25T15:34:26.178Z"
-    },
-    {
-      "id": "j95l4cwz",
-      "url": "https://luma.com/j95l4cwz",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Mango Hacks",
-      "organizer": "krishay suresh",
-      "venue": "Zoho Corporation",
-      "city": "Pleasanton",
-      "area": "East Bay",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-12-05T08:00:00-08:00",
-      "end": "2026-12-05T20:30:00-08:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "DEC 05",
-      "dateDetail": "Sat · 8am–8:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 58,
-      "why": "13-hour build with judging, a submission deadline.",
-      "score": 74,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 73,
-        "accessibility": 95,
-        "freshness": 40
-      },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-25T15:34:22.810Z"
-    },
-    {
-      "id": "wmpvhql4",
-      "url": "https://luma.com/wmpvhql4",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Hardware Hack Night & Fixit Clinic",
-      "organizer": "SudoRoom",
-      "venue": "sudoroom",
-      "city": "Oakland",
-      "area": "East Bay",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-08-25T19:00:00-07:00",
-      "end": "2026-08-25T23:20:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 25",
-      "dateDetail": "Tue · 7pm–11:20pm",
-      "timeUnverified": false,
-      "status": "Check page",
       "prize": "Not listed",
       "tags": [],
-      "going": null,
+      "going": 56,
       "why": "4-hour build.",
-      "score": 73,
-      "confidence": 78,
+      "score": 72,
+      "confidence": 62,
       "scores": {
-        "confidence": 78,
+        "confidence": 62,
         "builderValue": 55,
-        "accessibility": 63,
-        "freshness": 100
+        "accessibility": 100,
+        "freshness": 92
       },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-25T15:34:50.909Z"
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.503Z"
+    },
+    {
+      "id": "lbfyvfe4",
+      "url": "https://luma.com/lbfyvfe4",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Design Hackathon: The Vibe Coding Night for Designers!",
+      "organizer": "IxDF San Francisco",
+      "venue": "SoMa",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-08-28T17:30:00-07:00",
+      "end": "2026-08-28T20:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 28",
+      "dateDetail": "Fri · 5:30pm–8:30pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "Vibe coding",
+        "Design"
+      ],
+      "going": 50,
+      "why": "3-hour build.",
+      "score": 72,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 55,
+        "accessibility": 100,
+        "freshness": 92
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.506Z"
+    },
+    {
+      "id": "qisv9xmg",
+      "url": "https://luma.com/qisv9xmg",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Data & AI Hackathon: Real job. Real AI. Real scale.",
+      "organizer": "Devnovate",
+      "venue": "Financial District",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-11T09:30:00-07:00",
+      "end": "2026-09-11T18:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 11",
+      "dateDetail": "Fri · 9:30am–6:30pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "Data"
+      ],
+      "going": 0,
+      "why": "9-hour build.",
+      "score": 72,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 65,
+        "accessibility": 100,
+        "freshness": 70
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.507Z"
     },
     {
       "id": "pw54q8np",
@@ -1742,7 +1314,44 @@
         "freshness": 70
       },
       "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-08-25T15:34:04.394Z"
+      "checkedAt": "2026-08-26T03:30:11.508Z"
+    },
+    {
+      "id": "oct-hackathon",
+      "url": "https://luma.com/oct-hackathon",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Company Brain Hackathon: Build an AI Agent That Knows Your Organization",
+      "organizer": "TechEquity Ai - Silicon Valley",
+      "venue": "135 Constitution Dr",
+      "city": "Menlo Park",
+      "area": "Peninsula",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-12T13:00:00-07:00",
+      "end": "2026-10-12T17:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 12",
+      "dateDetail": "Mon · 1pm–5pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "Agents"
+      ],
+      "going": 10,
+      "why": "4-hour build.",
+      "score": 72,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 55,
+        "accessibility": 95,
+        "freshness": 55
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.509Z"
     },
     {
       "id": "rzb0plq0",
@@ -1765,10 +1374,8 @@
       "timeUnverified": false,
       "status": "Open",
       "prize": "Not listed",
-      "tags": [
-        "AI"
-      ],
-      "going": 30,
+      "tags": [],
+      "going": 31,
       "why": "7-hour build.",
       "score": 71,
       "confidence": 62,
@@ -1778,8 +1385,80 @@
         "accessibility": 95,
         "freshness": 92
       },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:25.103Z"
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.506Z"
+    },
+    {
+      "id": "d6g5mb9o",
+      "url": "https://luma.com/d6g5mb9o",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "MantisGrid AI Hackathon & Summit 2026",
+      "organizer": "MantisGrid AI",
+      "venue": "Fairmeadow",
+      "city": "Palo Alto",
+      "area": "Peninsula",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-17T08:00:00-07:00",
+      "end": "2026-09-17T17:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 17",
+      "dateDetail": "Thu · 8am–5:30pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [],
+      "going": 0,
+      "why": "10-hour build.",
+      "score": 71,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 65,
+        "accessibility": 95,
+        "freshness": 70
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.508Z"
+    },
+    {
+      "id": "j95l4cwz",
+      "url": "https://luma.com/j95l4cwz",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Mango Hacks",
+      "organizer": "krishay suresh",
+      "venue": "Zoho Corporation",
+      "city": "Pleasanton",
+      "area": "East Bay",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-12-05T08:00:00-08:00",
+      "end": "2026-12-05T20:30:00-08:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "DEC 05",
+      "dateDetail": "Sat · 8am–8:30pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "Not listed",
+      "tags": [
+        "Tech"
+      ],
+      "going": 58,
+      "why": "13-hour build with judging, a submission deadline.",
+      "score": 71,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 73,
+        "accessibility": 77,
+        "freshness": 40
+      },
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "checkedAt": "2026-08-26T03:30:25.010Z"
     },
     {
       "id": "3bd9nnuh",
@@ -1816,7 +1495,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-25T15:34:27.140Z"
+      "checkedAt": "2026-08-26T03:30:25.654Z"
     },
     {
       "id": "llamalounge26",
@@ -1853,7 +1532,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://luma.com/discover/sf",
-      "checkedAt": "2026-08-25T15:34:27.511Z"
+      "checkedAt": "2026-08-26T03:30:25.906Z"
     },
     {
       "id": "3x24sk2k",
@@ -1890,7 +1569,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-25T15:34:27.886Z"
+      "checkedAt": "2026-08-26T03:30:26.160Z"
     },
     {
       "id": "ovtw6uf9",
@@ -1927,7 +1606,114 @@
         "freshness": 55
       },
       "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-08-25T15:34:25.736Z"
+      "checkedAt": "2026-08-26T03:30:26.656Z"
+    },
+    {
+      "id": "qzct3ybt",
+      "url": "https://luma.com/qzct3ybt",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "AI Hackathon: Sales Copilot AI",
+      "organizer": "TatianaSF",
+      "venue": "Northern Waterfront",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-08T11:00:00-07:00",
+      "end": "2026-10-08T19:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 08",
+      "dateDetail": "Thu · 11am–7pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [],
+      "going": 432,
+      "why": "8-hour build.",
+      "score": 69,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 65,
+        "accessibility": 100,
+        "freshness": 55
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.508Z"
+    },
+    {
+      "id": "m9h5vo7a",
+      "url": "https://luma.com/m9h5vo7a",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Universal Celebration Hackathon",
+      "organizer": "BondHaus",
+      "venue": "Financial District",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-19T09:30:00-07:00",
+      "end": "2026-10-19T20:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 19",
+      "dateDetail": "Mon · 9:30am–8:30pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [],
+      "going": 34,
+      "why": "11-hour build.",
+      "score": 69,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 65,
+        "accessibility": 100,
+        "freshness": 55
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.509Z"
+    },
+    {
+      "id": "agentnativebuildershackathon",
+      "url": "https://luma.com/agentnativebuildershackathon",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Agent Native Builders Hackathon @ Cloudflare HQ",
+      "organizer": "Immersive Commons",
+      "venue": "South Beach",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-08-26T10:00:00-07:00",
+      "end": "2026-08-27T20:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 26",
+      "dateDetail": "Wed–Thu · 2 days",
+      "timeUnverified": false,
+      "status": "Waitlist",
+      "prize": "Not listed",
+      "tags": [
+        "Agents"
+      ],
+      "going": 0,
+      "why": "2-day build.",
+      "score": 67,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 65,
+        "accessibility": 53,
+        "freshness": 100
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.501Z"
     },
     {
       "id": "spp2",
@@ -1964,42 +1750,77 @@
         "freshness": 92
       },
       "discoveredVia": "https://luma.com/sf",
-      "checkedAt": "2026-08-25T15:34:28.206Z"
+      "checkedAt": "2026-08-26T03:30:26.954Z"
     },
     {
-      "id": "e9z9vuxz",
-      "url": "https://luma.com/e9z9vuxz",
+      "id": "qualcomm-event-sep10-2026",
+      "url": "https://luma.com/qualcomm-event-sep10-2026",
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Healthcare AI Hackathon",
-      "organizer": "Personal",
-      "venue": "Financial District",
-      "city": "San Francisco",
-      "area": "SF",
+      "title": "Qualcomm UNO Q Hack Night #2",
+      "organizer": "[SF] HackerSquad",
+      "venue": "Qualcomm",
+      "city": "Santa Clara",
+      "area": "South Bay",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-09-26T10:00:00-07:00",
-      "end": "2026-09-26T17:00:00-07:00",
+      "start": "2026-09-10T17:00:00-07:00",
+      "end": "2026-09-10T20:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 26",
-      "dateDetail": "Sat · 10am–5pm",
+      "dateLabel": "SEP 10",
+      "dateDetail": "Thu · 5pm–8pm",
       "timeUnverified": false,
       "status": "Open",
       "prize": "Not listed",
       "tags": [],
-      "going": 0,
-      "why": "7-hour build.",
+      "going": 10,
+      "why": "3-hour build.",
       "score": 67,
       "confidence": 62,
       "scores": {
         "confidence": 62,
         "builderValue": 55,
-        "accessibility": 100,
-        "freshness": 55
+        "accessibility": 92,
+        "freshness": 70
       },
       "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-08-25T15:34:04.394Z"
+      "checkedAt": "2026-08-26T03:30:11.507Z"
+    },
+    {
+      "id": "lsa8mrp7",
+      "url": "https://luma.com/lsa8mrp7",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Festiverse 2026: Diwali Hackathon",
+      "organizer": "Events",
+      "venue": "Financial District",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-11-23T09:30:00-08:00",
+      "end": "2026-11-23T20:30:00-08:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "NOV 23",
+      "dateDetail": "Mon · 9:30am–8:30pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [],
+      "going": 113,
+      "why": "11-hour build.",
+      "score": 67,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 65,
+        "accessibility": 100,
+        "freshness": 40
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.509Z"
     },
     {
       "id": "HTW27",
@@ -2036,7 +1857,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-25T15:34:28.747Z"
+      "checkedAt": "2026-08-26T03:30:27.539Z"
     },
     {
       "id": "m4efz4ib",
@@ -2073,7 +1894,45 @@
         "freshness": 40
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-25T15:34:26.816Z"
+      "checkedAt": "2026-08-26T03:30:27.838Z"
+    },
+    {
+      "id": "agent-harness",
+      "url": "https://luma.com/agent-harness",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Agent Harness Hackathon | Win an NVIDIA DGX Spark AI Supercomputer",
+      "organizer": "Bright Data",
+      "venue": "South Beach",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-08-29T09:00:00-07:00",
+      "end": "2026-08-29T18:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 29",
+      "dateDetail": "Sat · 9am–6pm",
+      "timeUnverified": false,
+      "status": "Waitlist",
+      "prize": "Not listed",
+      "tags": [
+        "Agents",
+        "Data"
+      ],
+      "going": 540,
+      "why": "9-hour build.",
+      "score": 65,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 65,
+        "accessibility": 53,
+        "freshness": 92
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.506Z"
     },
     {
       "id": "external-developerweek-2027-hackathon-devpost-com--4f1df228",
@@ -2215,7 +2074,77 @@
         "freshness": 40
       },
       "discoveredVia": "https://www.mlh.com/seasons",
-      "checkedAt": "2026-08-25T15:51:27.083Z"
+      "checkedAt": "2026-08-26T07:33:48.218Z"
+    },
+    {
+      "id": "external-diamondhacks-acmucsd-com--ea08a261",
+      "url": "https://diamondhacks.acmucsd.com/",
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Diamondhacks",
+      "organizer": "Major League Hacking",
+      "venue": null,
+      "city": "La Jolla",
+      "area": "San Diego",
+      "region": "san-diego",
+      "regionLabel": "San Diego",
+      "start": "2027-04-04T00:00:00-07:00",
+      "end": "2027-04-05T23:59:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "APR 04",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Check page",
+      "prize": "Not listed",
+      "tags": [],
+      "going": null,
+      "why": "2-day build.",
+      "score": 61,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 65,
+        "accessibility": 68,
+        "freshness": 40
+      },
+      "discoveredVia": "https://www.mlh.com/seasons",
+      "checkedAt": "2026-08-26T07:33:48.224Z"
+    },
+    {
+      "id": "ai-conference-hack-day-2026",
+      "url": "https://luma.com/ai-conference-hack-day-2026",
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "The AI Conference Hack Day 2026",
+      "organizer": "[SF] HackerSquad",
+      "venue": "Mission Bay",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-29T09:30:00-07:00",
+      "end": "2026-09-29T19:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 29",
+      "dateDetail": "Tue · 9:30am–7pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [],
+      "going": 0,
+      "why": "10-hour build.",
+      "score": 57,
+      "confidence": 32,
+      "scores": {
+        "confidence": 32,
+        "builderValue": 65,
+        "accessibility": 100,
+        "freshness": 55
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-08-26T03:30:11.508Z"
     }
   ]
 }

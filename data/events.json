@@ -9,8 +9,8 @@
         "coreArea": "SF",
         "boardName": "Hacklist SF",
         "timezone": "America/Los_Angeles",
-        "count": 59,
-        "hackathonCount": 58
+        "count": 58,
+        "hackathonCount": 57
       },
       {
         "key": "san-diego",
@@ -18,8 +18,8 @@
         "coreArea": "San Diego",
         "boardName": "Hacklist San Diego",
         "timezone": "America/Los_Angeles",
-        "count": 2,
-        "hackathonCount": 2
+        "count": 3,
+        "hackathonCount": 3
       }
     ],
     "timezone": "America/Los_Angeles",
@@ -29,10 +29,10 @@
     "publishedCount": 61,
     "hackathonCount": 60,
     "adjacentCount": 1,
-    "organizerCount": 53,
+    "organizerCount": 52,
     "sourceCount": 14,
     "seedCount": 24,
-    "externalCount": 8
+    "externalCount": 9
   },
   "events": [
     {
@@ -1672,41 +1672,6 @@
       "checkedAt": "2026-08-26T03:47:51.156Z"
     },
     {
-      "id": "wmpvhql4",
-      "url": "https://luma.com/wmpvhql4",
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Hardware Hack Night & Fixit Clinic",
-      "organizer": "SudoRoom",
-      "venue": "sudoroom",
-      "city": "Oakland",
-      "area": "East Bay",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-08-25T19:00:00-07:00",
-      "end": "2026-08-25T23:20:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "AUG 25",
-      "dateDetail": "Tue · 7pm–11:20pm",
-      "timeUnverified": false,
-      "status": "Check page",
-      "prize": "Not listed",
-      "tags": [],
-      "going": null,
-      "why": "4-hour build.",
-      "score": 72,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 55,
-        "accessibility": 63,
-        "freshness": 96
-      },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-08-26T03:47:21.559Z"
-    },
-    {
       "id": "pw54q8np",
       "url": "https://luma.com/pw54q8np",
       "platform": "luma",
@@ -2214,7 +2179,42 @@
         "freshness": 40
       },
       "discoveredVia": "https://www.mlh.com/seasons",
-      "checkedAt": "2026-08-26T04:02:29.429Z"
+      "checkedAt": "2026-08-26T07:37:20.185Z"
+    },
+    {
+      "id": "external-diamondhacks-acmucsd-com--ea08a261",
+      "url": "https://diamondhacks.acmucsd.com/",
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Diamondhacks",
+      "organizer": "Major League Hacking",
+      "venue": null,
+      "city": "La Jolla",
+      "area": "San Diego",
+      "region": "san-diego",
+      "regionLabel": "San Diego",
+      "start": "2027-04-04T00:00:00-07:00",
+      "end": "2027-04-05T23:59:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "APR 04",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Check page",
+      "prize": "Not listed",
+      "tags": [],
+      "going": null,
+      "why": "2-day build.",
+      "score": 61,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 65,
+        "accessibility": 68,
+        "freshness": 40
+      },
+      "discoveredVia": "https://www.mlh.com/seasons",
+      "checkedAt": "2026-08-26T07:37:20.191Z"
     },
     {
       "id": "external-hackstorm3-devpost-com--af663478",
