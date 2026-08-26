@@ -11,6 +11,7 @@ import test from "node:test";
 
 import {
   isSuspectSchedule,
+  mlhSchedule,
   parseDevpostDates,
   recoverTimeRange,
 } from "../scripts/lib/event-dates.mjs";
@@ -750,4 +751,32 @@ test("every published event is filed under the region that serves its city", () 
       `${event.title} is in ${event.city} but filed under ${event.region}`,
     );
   }
+});
+
+// --- MLH's timestamps, which are days as often as they are times ------------
+
+test("an MLH timestamp with junk seconds becomes the day MLH prints", () => {
+  // Diamondhacks, verbatim from MLH's 2027 season, which prints "APR 04 - 05".
+  // Read as an instant in Pacific it is 6:11pm on 3 April: a day early, at a
+  // time nobody stated.
+  const schedule = mlhSchedule("2027-04-04T01:11:11Z", "2027-04-05T23:59:59Z", TZ);
+  assert.equal(schedule.dateOnly, true);
+  assert.equal(pacific(schedule.startMs), "4/4/2027, 12:00 AM");
+  assert.equal(pacific(schedule.endMs), "4/5/2027, 11:59 PM");
+});
+
+test("an MLH timestamp on the minute is left as the time it states", () => {
+  // DataHacks and Hard Hack, also verbatim. Both are real starts, and the
+  // normalizer's own early-hour guard is what judges them from here.
+  const data = mlhSchedule("2026-04-18T12:00:00Z", "2026-04-19T21:00:00Z", TZ);
+  assert.equal(data.dateOnly, false);
+  assert.equal(data.startMs, Date.parse("2026-04-18T12:00:00Z"));
+  const hard = mlhSchedule("2026-01-24T14:45:00Z", "2026-01-25T19:00:00Z", TZ);
+  assert.equal(hard.dateOnly, false);
+  assert.equal(pacific(hard.startMs), "1/24/2026, 6:45 AM");
+});
+
+test("an MLH event with no readable start is refused rather than guessed", () => {
+  assert.equal(mlhSchedule(null, null, TZ), null);
+  assert.equal(mlhSchedule("not a date", "2027-04-05T23:59:59Z", TZ), null);
 });

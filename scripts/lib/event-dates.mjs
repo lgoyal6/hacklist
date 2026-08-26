@@ -175,3 +175,41 @@ export function parseDevpostDates(raw, timeZone) {
   if (endUtc <= startUtc) return null;
   return { startUtc, endUtc };
 }
+
+/**
+ * What MLH means by its timestamps.
+ *
+ * MLH publishes a start and end for every event, and about as often as not they
+ * are day markers rather than times. The seconds field is the tell: a stated
+ * start is on the minute. "2027-04-04T01:11:11Z" is Diamondhacks, which MLH
+ * itself prints as "APR 04 - 05" -- read as an instant in Pacific it becomes
+ * 6:11pm on 3 April, a day early at a time nobody stated. "2026-04-18T12:00:00Z"
+ * is DataHacks and "2026-01-24T14:45:00Z" is Hard Hack, both on the minute and
+ * both real.
+ *
+ * A synthetic clock makes the event date-only -- local midnight to end of day,
+ * which is how Devpost's date ranges are already carried -- and the date taken
+ * is the UTC one, because that is the day MLH prints beside it.
+ */
+export function mlhSchedule(startsAt, endsAt, timeZone) {
+  const startMs = Date.parse(startsAt ?? "");
+  if (!Number.isFinite(startMs)) return null;
+  const endMs = Date.parse(endsAt ?? startsAt ?? "");
+  if (new Date(startMs).getUTCSeconds() === 0) {
+    return { dateOnly: false, startMs, endMs };
+  }
+  const utcDay = (ms) => {
+    const at = new Date(ms);
+    return [at.getUTCFullYear(), at.getUTCMonth() + 1, at.getUTCDate()];
+  };
+  return {
+    dateOnly: true,
+    startMs: localToUtc(...utcDay(startMs), 0, 0, timeZone),
+    endMs: localToUtc(
+      ...utcDay(Number.isFinite(endMs) ? endMs : startMs),
+      23,
+      59,
+      timeZone,
+    ),
+  };
+}

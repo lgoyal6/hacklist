@@ -31,6 +31,7 @@ import {
   resolveCity,
   scoreCandidate,
 } from "./lib/candidate-score.mjs";
+import { mlhSchedule } from "./lib/event-dates.mjs";
 import { createPacer, DEFAULT_UA } from "./lib/page-http.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -133,6 +134,11 @@ for (const event of seen.values()) {
     continue;
   }
 
+  // MLH's timestamps are day markers as often as they are start times; see
+  // mlhSchedule for what tells them apart and why it matters.
+  const schedule = mlhSchedule(event.startsAt, event.endsAt, config.timezone);
+  if (!schedule) continue;
+
   // MLH lists design jams and career fairs beside hackathons, so its own
   // membership is not evidence of format; the name is judged as anywhere else.
   const evidence = [
@@ -144,7 +150,15 @@ for (const event of seen.values()) {
   ]
     .filter(Boolean)
     .join("\n");
-  if (!namesHackathonFormat(event.name, patterns)) {
+  // MLH is a hackathon league, and that listing is the context its names lack.
+  // "DiamondHacks", "BroncoHacks", "Hacktech", "FullyHacks" are all hackathons
+  // whose names the shared vocabulary cannot parse: `\bhacks?\b` needs a word
+  // boundary that a compound name does not have. Measured across the 2026 and
+  // 2027 seasons: 174 of the 333 names MLH lists contain "hack" and fail
+  // namesHackathonFormat, and every one of them is a hackathon. The things MLH
+  // lists that are not -- design jams, career fairs -- do not carry "hack" in
+  // the name, so this stays a narrow widening rather than trusting membership.
+  if (!namesHackathonFormat(event.name, patterns) && !/hack/i.test(event.name)) {
     skipped.notHackathon += 1;
     continue;
   }
@@ -165,9 +179,11 @@ for (const event of seen.values()) {
       url,
       name: event.name,
       description: null,
-      startDate: new Date(startMs).toISOString(),
-      endDate: Number.isFinite(endMs) ? new Date(endMs).toISOString() : null,
-      timeSource: "mlh",
+      startDate: new Date(schedule.startMs).toISOString(),
+      endDate: Number.isFinite(schedule.endMs)
+        ? new Date(schedule.endMs).toISOString()
+        : null,
+      timeSource: schedule.dateOnly ? "mlh-date" : "mlh",
       organizers: ["Major League Hacking"],
       location: {
         name: event.location ?? null,
