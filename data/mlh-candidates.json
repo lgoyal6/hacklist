@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-08-26T04:02:29.429Z",
+  "collectedAt": "2026-08-26T07:37:20.192Z",
   "source": "https://www.mlh.com/seasons",
   "seasons": [
     2026,
@@ -10,7 +10,7 @@
     "past": 261,
     "online": 2,
     "notLocal": 59,
-    "notHackathon": 1,
+    "notHackathon": 0,
     "unplaceable": [
       {
         "name": "LA Hacks AI Hackathon 2026",
@@ -40,7 +40,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "SF Hacks \nSan Francisco, CA, US, San Francisco, CA\nFEB 19 - 21\nhackathon\nhttps://sfhacks.io",
-      "checkedAt": "2026-08-26T04:02:29.429Z",
+      "checkedAt": "2026-08-26T07:37:20.185Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://sfhacks.io",
@@ -56,6 +56,42 @@
           "name": "San Francisco, CA",
           "city": "San Francisco",
           "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    },
+    {
+      "url": "https://diamondhacks.acmucsd.com/",
+      "title": "Diamondhacks",
+      "category": "hackathon",
+      "discoveredVia": "https://www.mlh.com/seasons",
+      "confidence": 62,
+      "relevance": 60,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Diamondhacks\nLa Jolla, California , US, La Jolla, California \nAPR 04 - 05\nhackathon\nhttps://diamondhacks.acmucsd.com/",
+      "checkedAt": "2026-08-26T07:37:20.191Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://diamondhacks.acmucsd.com/",
+        "name": "Diamondhacks",
+        "description": null,
+        "startDate": "2027-04-04T07:00:00.000Z",
+        "endDate": "2027-04-06T06:59:00.000Z",
+        "timeSource": "mlh-date",
+        "organizers": [
+          "Major League Hacking"
+        ],
+        "location": {
+          "name": "La Jolla, California ",
+          "city": "La Jolla",
+          "region": "California "
         },
         "offerAvailability": null,
         "going": null
