@@ -172,17 +172,23 @@ DEFAULT_REGION="$("$NODE" -e "const c=require('./config/discovery.json'); consol
 for REGION in $REGIONS; do
   # The env override, when set, names the default region's calendar. Every other
   # region takes its name from config.
+  #
+  # Expanded as ${NAME_FLAG[@]+"${NAME_FLAG[@]}"} below rather than plainly:
+  # /bin/bash here is 3.2, where `set -u` treats an *empty* array expansion as an
+  # unbound variable and aborts. The Bay Area iteration has the flag set and
+  # worked; San Diego's is empty, so the run died on the second region and never
+  # reached its sync, its tags or the wake re-arm.
   NAME_FLAG=()
   if [ -n "${LUMA_CALENDAR_NAME:-}" ] && [ "$REGION" = "$DEFAULT_REGION" ]; then
     NAME_FLAG=(--name "$CAL_NAME")
   fi
 
   echo "--- luma calendar sync ($REGION)"
-  "$NODE" scripts/luma-sync-ui.mjs --region "$REGION" "${NAME_FLAG[@]}" $HEADLESS_FLAG || \
+  "$NODE" scripts/luma-sync-ui.mjs --region "$REGION" ${NAME_FLAG[@]+"${NAME_FLAG[@]}"} $HEADLESS_FLAG || \
     echo "    sync did not complete for $REGION; queue state preserved" >&2
 
   echo "--- luma event tags ($REGION)"
-  "$NODE" scripts/luma-tag-events.mjs --region "$REGION" "${NAME_FLAG[@]}" $HEADLESS_FLAG || \
+  "$NODE" scripts/luma-tag-events.mjs --region "$REGION" ${NAME_FLAG[@]+"${NAME_FLAG[@]}"} $HEADLESS_FLAG || \
     echo "    tagging did not complete for $REGION; already-applied tags are recorded" >&2
 done
 
