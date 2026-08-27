@@ -1,33 +1,7 @@
 {
-  "sweepCompletedAt": "2026-08-26T16:28:17.114Z",
+  "sweepCompletedAt": "2026-08-27T13:40:20.332Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
-  "nearMisses": [
-    {
-      "url": "https://luma.com/trossen-proprio-livekit",
-      "title": "Trossen Robotics x Proprio Robotics x LiveKit — Partner Night",
-      "readFrom": "page",
-      "via": "personalized",
-      "confidence": 52,
-      "relevance": 62,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://luma.com/txup8dqa",
-      "title": "Bay Area Founder Networking & Startup Workshop | Mountain View",
-      "readFrom": "page",
-      "via": "personalized",
-      "confidence": 52,
-      "relevance": 54,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms",
-        "title names a non-hackathon format"
-      ]
-    }
-  ]
+  "nearMisses": []
 }

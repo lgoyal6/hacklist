@@ -2,10 +2,10 @@
   "sweep": {
     "city": "San Francisco",
     "startedFrom": 24,
-    "personalizedSeeds": 822,
-    "personalizedPromising": 27,
+    "personalizedSeeds": 880,
+    "personalizedPromising": 29,
     "searchSeeds": 60,
-    "apiCalendarSeeds": 16,
+    "apiCalendarSeeds": 18,
     "linkedinSeeds": 60,
     "linkedinPromising": 60,
     "pagesVisited": 870,
@@ -16,17 +16,17 @@
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
     "externalPagesVisited": 2,
-    "structuredEventsFound": 85,
+    "structuredEventsFound": 65,
     "candidatesFound": 1,
     "heldForReview": 0,
-    "nearMisses": 2,
+    "nearMisses": 0,
     "stoppedOnTimeBudget": false,
-    "elapsedSeconds": 949,
-    "secondsPerPage": 1.0908,
+    "elapsedSeconds": 937,
+    "secondsPerPage": 1.0769,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 23,
-    "completedAt": "2026-08-26T16:28:17.114Z"
+    "queueRemaining": 72,
+    "completedAt": "2026-08-27T13:40:20.332Z"
   },
   "candidates": [
     {
@@ -43,7 +43,7 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Agent Native Builders Hackathon @ Cloudflare HQ\nImmersive Commons\nImmersive commons\nPrakshal Jain\nNathan Booker\nDavid Farah\nSven Jonscher\nDevinder Sodhi (LLL)\nRayyan Zahid\nBalazs Nemethi\nNebius Developer Community\nMichalis Vasileiadis\nCloudflare\nSan Francisco\nCalifornia",
+      "evidence": "Agent Native Builders Hackathon @ Cloudflare HQ\nImmersive Commons\nImmersive commons\nPrakshal Jain\nNathan Booker\nDavid Farah\nSven Jonscher\nDevinder Sodhi (LLL)\nRayyan Zahid\nBalazs Nemethi\nNebius Developer Community\nMichalis Vasileiadis\nTenki Cloud\nAIsa.one\nCloudflare\nSan Francisco\nCalifornia",
       "structuredEvent": {
         "url": "https://luma.com/agentnativebuildershackathon",
         "name": "Agent Native Builders Hackathon @ Cloudflare HQ",
@@ -68,11 +68,13 @@
           "Rayyan Zahid",
           "Balazs Nemethi",
           "Nebius Developer Community",
-          "Michalis Vasileiadis"
+          "Michalis Vasileiadis",
+          "Tenki Cloud",
+          "AIsa.one"
         ],
         "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-08-26T16:13:18.359Z"
+      "checkedAt": "2026-08-27T13:25:33.810Z"
     }
   ],
   "errors": []
