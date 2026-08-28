@@ -1,7 +1,32 @@
 {
-  "sweepCompletedAt": "2026-08-28T00:25:12.098Z",
+  "sweepCompletedAt": "2026-08-28T15:01:16.984Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
-  "nearMisses": []
+  "nearMisses": [
+    {
+      "url": "https://luma.com/3x24sk2k",
+      "title": "Tech Makers Goes West - Robotics and Beyond Pitch Night and Drinks",
+      "readFrom": "listing",
+      "via": "https://luma.com/sf",
+      "confidence": 52,
+      "relevance": 54,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/scalekit-key0",
+      "title": "Building a Team Brain with Scalekit: Code, Context & Production Agents",
+      "readFrom": "listing",
+      "via": "https://luma.com/genai-sf",
+      "confidence": 52,
+      "relevance": 54,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    }
+  ]
 }
