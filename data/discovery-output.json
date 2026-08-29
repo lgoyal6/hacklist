@@ -5,7 +5,7 @@
     "personalizedSeeds": 919,
     "personalizedPromising": 33,
     "searchSeeds": 60,
-    "apiCalendarSeeds": 13,
+    "apiCalendarSeeds": 15,
     "linkedinSeeds": 60,
     "linkedinPromising": 60,
     "pagesVisited": 870,
@@ -16,36 +16,19 @@
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
     "externalPagesVisited": 2,
-    "structuredEventsFound": 67,
-    "candidatesFound": 8,
+    "structuredEventsFound": 66,
+    "candidatesFound": 6,
     "heldForReview": 0,
-    "nearMisses": 1,
+    "nearMisses": 0,
     "stoppedOnTimeBudget": false,
-    "elapsedSeconds": 969,
-    "secondsPerPage": 1.1139,
+    "elapsedSeconds": 938,
+    "secondsPerPage": 1.0778,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 172,
-    "completedAt": "2026-08-29T00:02:58.782Z"
+    "queueRemaining": 89,
+    "completedAt": "2026-08-29T09:52:30.584Z"
   },
   "candidates": [
-    {
-      "url": "https://luma.com",
-      "title": "Luma",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "confidence": 94,
-      "relevance": 81,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": true,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Sign In\nDelightful\nevents\nstart here\n\nFrom run clubs to launch parties and firework shows, Luma makes every event feel effortless.\n\nStellar\nevents\nstart here\n\nFrom run clubs to launch parties and firework shows, Luma makes every event feel effortless.\n\nCreate Your First Event\nDiscover Events\nExplore Global Communities\nReading Rhythms Global\nNot a book club. A reading party. Read with friends to live music & curated playlists!\nBuild Club\nThe most collaborative AI community in the world (50+ Cities, 30K+ community)\nSouth Park Commons\nSouth Park Commons helps you get from -1 to 0. To learn more or apply, visit southparkcommons.com.\nDesign Buddies\nEvents for all creatives across SF/LA, online, and the world! Hosted by Design Buddies, the world's largest design community (https://designbuddies.community). Founded by Grace Ling\nCursor Community\nCursor community meetups, hackathons, workshops taking place around the world. Learn more here: cursor.com/community\nGoogle DeepMind\nConnect with the Google DeepMind Developer Experience Team\nBrowse by Category\nFamily\nBooks\nGames\nTech\nFood & Drink\nAI\nRunning\nArts & Culture\nClimate\nFitness\nWellness\nCrypto\nYour next unforgettable memory awaits.\nDiscover Events\nGet the App\nDiscoverPricingAppHelp\nTermsPrivacySecurityDMCA",
-      "checkedAt": "2026-08-28T23:48:52.674Z"
-    },
     {
       "url": "https://luma.com/Innovation4Veterans",
       "title": "Veteran Innovation Hackathon",
@@ -80,46 +63,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-08-28T23:47:11.179Z"
-    },
-    {
-      "url": "https://luma.com/lbfyvfe4",
-      "title": "Design Hackathon: The Vibe Coding Night for Designers!",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Design Hackathon: The Vibe Coding Night for Designers!\nIxDF San Francisco\nElijah-Justin Leano\nPooja VK\nGrinshtein Yan\nEmre Şarbak\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/lbfyvfe4",
-        "name": "Design Hackathon: The Vibe Coding Night for Designers!",
-        "description": null,
-        "startDate": "2026-08-28T17:30:00.000-07:00",
-        "endDate": "2026-08-28T20:30:00.000-07:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "IxDF San Francisco",
-          "Elijah-Justin Leano",
-          "Pooja VK",
-          "Grinshtein Yan",
-          "Emre Şarbak"
-        ],
-        "offerAvailability": "https://schema.org/SoldOut"
-      },
-      "checkedAt": "2026-08-28T23:47:43.385Z"
+      "checkedAt": "2026-08-29T09:37:12.409Z"
     },
     {
       "url": "https://luma.com/agent-harness",
@@ -135,7 +79,7 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Agent Harness Hackathon | Win an NVIDIA DGX Spark AI Supercomputer\nBright Data\nWeMakeDevs\nKerry Farrell\nBright Data\nKunal Kushwaha\nSai Krishna\nDana Fine\nBright Data\nSan Francisco\nCalifornia",
+      "evidence": "Agent Harness Hackathon | Win an NVIDIA DGX Spark AI Supercomputer\nBright Data\nWeMakeDevs\nBright Data\nKunal Kushwaha\nDana Fine\nKerry Farrell\nSai Krishna\nBright Data\nSan Francisco\nCalifornia",
       "structuredEvent": {
         "url": "https://luma.com/agent-harness",
         "name": "Agent Harness Hackathon | Win an NVIDIA DGX Spark AI Supercomputer",
@@ -152,15 +96,15 @@
         "organizers": [
           "Bright Data",
           "WeMakeDevs",
-          "Kerry Farrell",
           "Bright Data",
           "Kunal Kushwaha",
-          "Sai Krishna",
-          "Dana Fine"
+          "Dana Fine",
+          "Kerry Farrell",
+          "Sai Krishna"
         ],
         "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-08-28T23:47:43.385Z"
+      "checkedAt": "2026-08-29T09:37:43.413Z"
     },
     {
       "url": "https://luma.com/qbp3ck7t",
@@ -200,7 +144,7 @@
         ],
         "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-08-28T23:47:43.385Z"
+      "checkedAt": "2026-08-29T09:37:43.414Z"
     },
     {
       "url": "https://luma.com/678a9u02",
@@ -237,7 +181,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-08-28T23:47:43.385Z"
+      "checkedAt": "2026-08-29T09:37:43.414Z"
     },
     {
       "url": "https://luma.com/rzb0plq0",
@@ -273,7 +217,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-08-28T23:47:43.385Z"
+      "checkedAt": "2026-08-29T09:37:43.414Z"
     },
     {
       "url": "https://luma.com/7cacs0ez",
@@ -313,7 +257,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-08-28T23:47:43.385Z"
+      "checkedAt": "2026-08-29T09:37:43.414Z"
     }
   ],
   "errors": []
