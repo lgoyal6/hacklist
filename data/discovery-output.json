@@ -5,7 +5,7 @@
     "personalizedSeeds": 919,
     "personalizedPromising": 33,
     "searchSeeds": 60,
-    "apiCalendarSeeds": 15,
+    "apiCalendarSeeds": 16,
     "linkedinSeeds": 60,
     "linkedinPromising": 60,
     "pagesVisited": 870,
@@ -16,17 +16,17 @@
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
     "externalPagesVisited": 2,
-    "structuredEventsFound": 66,
-    "candidatesFound": 6,
+    "structuredEventsFound": 85,
+    "candidatesFound": 7,
     "heldForReview": 0,
     "nearMisses": 0,
     "stoppedOnTimeBudget": false,
-    "elapsedSeconds": 938,
-    "secondsPerPage": 1.0778,
+    "elapsedSeconds": 939,
+    "secondsPerPage": 1.0797,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 89,
-    "completedAt": "2026-08-29T09:52:30.584Z"
+    "queueRemaining": 138,
+    "completedAt": "2026-08-29T18:16:01.969Z"
   },
   "candidates": [
     {
@@ -63,7 +63,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-08-29T09:37:12.409Z"
+      "checkedAt": "2026-08-29T18:00:42.690Z"
     },
     {
       "url": "https://luma.com/agent-harness",
@@ -102,9 +102,47 @@
           "Kerry Farrell",
           "Sai Krishna"
         ],
-        "offerAvailability": "https://schema.org/SoldOut"
+        "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-08-29T09:37:43.413Z"
+      "checkedAt": "2026-08-29T18:01:13.819Z"
+    },
+    {
+      "url": "https://luma.com/qa11srwr",
+      "title": "Himalaya Robotics Hack",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Himalaya Robotics Hack\nIterate\nYoan Di Cosmo\nHenri Bonamy\nPablo Berlanga Boemare\nWefunder\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/qa11srwr",
+        "name": "Himalaya Robotics Hack",
+        "description": null,
+        "startDate": "2026-08-29T09:00:00.000-07:00",
+        "endDate": "2026-08-30T19:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "Wefunder",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Iterate",
+          "Yoan Di Cosmo",
+          "Henri Bonamy",
+          "Pablo Berlanga Boemare"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-08-29T18:01:13.819Z"
     },
     {
       "url": "https://luma.com/qbp3ck7t",
@@ -120,7 +158,7 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Codex Community Hackathon - San Francisco\nMuhtasham Oblokulov\nMuhtasham Oblokulov\nVaibhav Srivastav\nKliment Minchev\nJonathan Trieu\nVin Wanfan\nHogpatch\nSan Francisco\nCalifornia",
+      "evidence": "Codex Community Hackathon - San Francisco\nMuhtasham Oblokulov\nMuhtasham Oblokulov\nVaibhav Srivastav\nKliment Minchev\nVin Wanfan\nJonathan Trieu\nHogpatch\nSan Francisco\nCalifornia",
       "structuredEvent": {
         "url": "https://luma.com/qbp3ck7t",
         "name": "Codex Community Hackathon - San Francisco",
@@ -139,12 +177,12 @@
           "Muhtasham Oblokulov",
           "Vaibhav Srivastav",
           "Kliment Minchev",
-          "Jonathan Trieu",
-          "Vin Wanfan"
+          "Vin Wanfan",
+          "Jonathan Trieu"
         ],
-        "offerAvailability": "https://schema.org/SoldOut"
+        "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-08-29T09:37:43.414Z"
+      "checkedAt": "2026-08-29T18:01:13.819Z"
     },
     {
       "url": "https://luma.com/678a9u02",
@@ -181,7 +219,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-08-29T09:37:43.414Z"
+      "checkedAt": "2026-08-29T18:01:13.820Z"
     },
     {
       "url": "https://luma.com/rzb0plq0",
@@ -217,7 +255,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-08-29T09:37:43.414Z"
+      "checkedAt": "2026-08-29T18:01:13.820Z"
     },
     {
       "url": "https://luma.com/7cacs0ez",
@@ -257,7 +295,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-08-29T09:37:43.414Z"
+      "checkedAt": "2026-08-29T18:01:13.820Z"
     }
   ],
   "errors": []
