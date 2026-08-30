@@ -170,6 +170,38 @@ export function servedCities(config) {
 }
 
 /**
+ * "Online" is a place a hackathon can be, and saying so is a fact about the
+ * event rather than a gap in what we read off it. Devpost states it in the
+ * location field and flags it with a globe icon; a rendered page states it in
+ * the venue name. Either way the event is nowhere, which is not the same as
+ * being somewhere we could not identify.
+ *
+ * Anchored rather than a substring search, because "Online" has to mean the
+ * whole of what the field says: "Online Learning Lab, Berkeley" is a room.
+ */
+const ONLINE_PLACE = /^(online|virtual|remote)(?:[\s-]*(?:event|only|hackathon))?$/i;
+
+export function isOnlineLocation(location) {
+  if (!location) return false;
+  if (location.online === true) return true;
+  return ONLINE_PLACE.test(String(location.name ?? "").trim());
+}
+
+/**
+ * The region that collects events with no place, if a board declares one.
+ *
+ * Found by the flag rather than by a key named "online", so a board that does
+ * not want an online section simply does not declare one and every online event
+ * keeps falling to the default region, exactly as before.
+ */
+export function onlineRegionKey(config) {
+  for (const [key, region] of Object.entries(regionsOf(config))) {
+    if (region.online) return key;
+  }
+  return null;
+}
+
+/**
  * Which region does this location belong to, if any?
  *
  * Decided on the city, because the state cannot decide it: the Bay Area and
@@ -180,6 +212,14 @@ export function servedCities(config) {
  * assigning it to whichever region asked first would be a guess.
  */
 export function resolveRegion(location, config) {
+  // An event that says it is online is placed by that statement, before any city
+  // is looked for. It has no city to find, so without this it falls through to
+  // defaultRegionKey() -- which is how online hackathons landed on the Bay Area
+  // board, on a feed whose subscribers asked for somewhere they can get to.
+  if (isOnlineLocation(location)) {
+    const online = onlineRegionKey(config);
+    if (online) return online;
+  }
   const city = String(location?.city ?? "").trim().toLowerCase();
   if (!city) return null;
   for (const [key, region] of Object.entries(regionsOf(config))) {
@@ -192,9 +232,10 @@ export function resolveRegion(location, config) {
 
 /**
  * The region key a board falls back to: the one an event with no readable city
- * belongs to. That is what the single-region board did with an online hackathon
- * or an unannounced venue implicitly, and it stays the answer now that there is
- * a second region to be wrong about.
+ * belongs to. That is what the single-region board did with an unannounced venue
+ * implicitly, and it stays the answer now that there is a second region to be
+ * wrong about. An event that states it is online no longer arrives here; it is
+ * placed by onlineRegionKey() above, when a board declares that region.
  */
 export function defaultRegionKey(config) {
   const regions = regionsOf(config);
