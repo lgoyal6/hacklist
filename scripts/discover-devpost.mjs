@@ -25,6 +25,7 @@ import { fileURLToPath } from "node:url";
 
 import {
   buildPatterns,
+  isOnlineLocation,
   localCitySet,
   resolveCity,
   scoreCandidate,
@@ -74,6 +75,17 @@ function cleanPrize(raw) {
  * Returning null is the honest answer: publishing a guess would put an event in
  * the wrong city.
  */
+/**
+ * Is this hackathon online? Devpost answers structurally: it renders a globe
+ * against a remote event and a map pin against a physical one, so the icon is
+ * the field the organizer could not typo. The location string is checked too,
+ * for the same answer by a second route.
+ */
+function isOnline(hackathon) {
+  if (hackathon.displayed_location?.icon === "globe") return true;
+  return isOnlineLocation({ name: hackathon.displayed_location?.location });
+}
+
 function placeLocation(raw) {
   const text = String(raw ?? "");
   const city = resolveCity(text, config, localCities, patterns);
@@ -178,6 +190,14 @@ const queries = [
   // Belt and braces for anything an organizer tagged oddly.
   ["search-sf", `https://devpost.com/api/hackathons?${OPEN}&search=san+francisco`, 3],
   ["search-bay", `https://devpost.com/api/hackathons?${OPEN}&search=bay+area`, 3],
+  // Every open online hackathon worldwide. Nobody has to travel to one, so
+  // unlike the in-person feed there is nothing to filter by place: the whole
+  // feed is eligible, and it goes to the online board rather than a city's.
+  [
+    "online",
+    `https://devpost.com/api/hackathons?${OPEN}&challenge_type[]=online&order_by=recently-added`,
+    config.devpostOnlineMaxPages ?? 12,
+  ],
 ];
 for (const [label, url, maxPages] of queries) {
   const before = seen.size;
@@ -188,10 +208,17 @@ for (const [label, url, maxPages] of queries) {
 const now = Date.now();
 const candidates = [];
 const skipped = { notLocal: 0, unplaceable: [], past: 0, undated: 0, inviteOnly: 0 };
+let onlineCount = 0;
 
 for (const hackathon of seen.values()) {
   const locationText = hackathon.displayed_location?.location ?? "";
-  const placed = placeLocation(locationText);
+  const online = isOnline(hackathon);
+  // An online hackathon is not placed, and the place filter below is the wrong
+  // question to ask of it: every check there decides whether someone could get
+  // to the venue, and there is no venue. It is admitted as-is and carries the
+  // fact of being online through to the normalizer, which sends it to the
+  // online board.
+  const placed = online ? { city: null, venue: null } : placeLocation(locationText);
   if (!placed) {
     // Only worth reporting when the thing is plausibly local-ish noise; a
     // hackathon in Indore is simply not local.
@@ -244,7 +271,7 @@ for (const hackathon of seen.values()) {
     "Hosted By",
     organizer,
     hackathon.title,
-    city ? `${city}, CA` : "Bay Area",
+    online ? "Online" : city ? `${city}, CA` : "Bay Area",
     locationText,
     prize ? `Prizes ${prize}` : null,
     typeof hackathon.registrations_count === "number"
@@ -259,6 +286,7 @@ for (const hackathon of seen.values()) {
     .join("\n");
 
   const scored = scoreCandidate(hackathon.title, evidence, patterns);
+  if (online) onlineCount += 1;
   candidates.push({
     url: hackathon.url.replace(/\/$/, ""),
     title: String(hackathon.title ?? "").trim(),
@@ -280,7 +308,9 @@ for (const hackathon of seen.values()) {
       // placeholder rather than printing a time nobody stated.
       timeSource: stated ? "devpost-page" : "devpost-date-only",
       organizers: [organizer],
-      location: { name: city ? locationText : null, city, region: "CA" },
+      location: online
+        ? { name: "Online", city: null, region: null, online: true }
+        : { name: city ? locationText : null, city, region: "CA" },
       offerAvailability: hackathon.open_state === "open" ? "InStock" : null,
       going: hackathon.registrations_count ?? null,
     },
@@ -297,6 +327,7 @@ await writeFile(
       source: "https://devpost.com/api/hackathons",
       seen: seen.size,
       candidates: candidates.length,
+      online: onlineCount,
       skipped: {
         ...skipped,
         unplaceable: skipped.unplaceable.slice(0, 25),
@@ -304,7 +335,9 @@ await writeFile(
       },
       problems,
       note:
-        "Devpost's public hackathon API, read anonymously. Dates only — Devpost " +
+        "Devpost's public hackathon API, read anonymously. Online hackathons are " +
+        "taken whole, without a place filter, and go to the online board. " +
+        "Dates only — Devpost " +
         "publishes no clock times, so the normalizer prints the date and omits " +
         "the time. Locations that name only a venue are skipped rather than " +
         "assigned to a guessed city; see skipped.unplaceable.",
@@ -317,7 +350,8 @@ await writeFile(
 
 console.log(
   `Devpost discovery: ${candidates.length} candidate(s) from ${seen.size} seen ` +
-    `(${skipped.notLocal} not local, ${skipped.unplaceable.length} unplaceable, ` +
+    `(${onlineCount} online, ${skipped.notLocal} not local, ` +
+    `${skipped.unplaceable.length} unplaceable, ` +
     `${skipped.past} past, ${skipped.undated} undated)` +
     (problems.length ? `, ${problems.length} problem(s)` : "") +
     `.\nWrote ${outputPath}`,
