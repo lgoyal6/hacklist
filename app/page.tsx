@@ -67,6 +67,13 @@ const COPY: Record<string, { where: string; deck: string }> = {
       "and evening. Subscribe once and the next one finds you, instead of " +
       "combing through invite links and half-dead group chats.",
   },
+  online: {
+    where: "anywhere",
+    deck:
+      "Every hackathon you can enter without going anywhere, kept current " +
+      "morning and evening. Remote by design, open worldwide, and running " +
+      "long enough that you can actually build something.",
+  },
 };
 
 function copyFor(region: RegionSummary) {
