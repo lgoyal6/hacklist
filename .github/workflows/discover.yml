@@ -201,7 +201,33 @@ jobs:
               exit 0
             fi
             echo "Push rejected (attempt $attempt); rebasing onto origin/main."
-            git pull --rebase --autostash origin main
+            if git pull --rebase --autostash origin main; then
+              continue
+            fi
+            # A conflicted rebase stops here and returns non-zero, and this step
+            # runs under `bash -e`, so before this the whole step died on the
+            # first collision. The three attempts never happened: the run that
+            # failed on 2026-08-25 and again on 2026-08-30 each got exactly one,
+            # left a rebase mid-flight, and threw away everything the sweep had
+            # just spent twenty minutes collecting.
+            #
+            # There is nothing here to merge. Every file that conflicts is one
+            # this sweep regenerates whole, so whatever is on main is stale by
+            # definition and the fresh copy simply wins. Inside a rebase
+            # "theirs" is the commit being replayed, which is ours, which is why
+            # that flag reads backwards. Only conflicted paths are touched, so
+            # the seed files the union driver in .gitattributes already merged
+            # are left exactly as it merged them.
+            conflicts="$(git diff --name-only --diff-filter=U)"
+            if [ -z "$conflicts" ]; then
+              git rebase --abort || true
+              echo "Rebase failed with nothing conflicted; giving up." >&2
+              exit 1
+            fi
+            echo "Resolving in favour of this sweep: $conflicts"
+            git checkout --theirs -- $conflicts
+            git add -- $conflicts
+            GIT_EDITOR=true git rebase --continue
           done
           echo "Could not push after 3 attempts." >&2
           exit 1
