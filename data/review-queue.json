@@ -1,7 +1,32 @@
 {
-  "sweepCompletedAt": "2026-08-29T18:16:01.969Z",
+  "sweepCompletedAt": "2026-08-30T08:58:31.036Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
-  "nearMisses": []
+  "nearMisses": [
+    {
+      "url": "https://luma.com/kszd8yw7",
+      "title": "October 2026: AI on the Hunt: Using Claude to Unmask the hackerbot_claw Attack Campaign",
+      "readFrom": "page",
+      "via": "https://luma.com/sv-issa",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/scalekit-key0",
+      "title": "Building a Team Brain with Scalekit: Code, Context & Production Agents",
+      "readFrom": "listing",
+      "via": "https://luma.com/genai-sf",
+      "confidence": 52,
+      "relevance": 54,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    }
+  ]
 }
