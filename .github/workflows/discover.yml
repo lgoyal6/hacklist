@@ -338,3 +338,29 @@ jobs:
             gh issue create --title "Discovery pipeline is red" --label pipeline-red --body "$body"
           fi
           exit 0
+      # The other half of the same signal. Filing an issue when the pipeline goes
+      # red only helps if it stops saying so once it is green: issue #13 sat open
+      # from 2026-08-07 with twelve comments against a pipeline that had long
+      # since recovered, which is the same way a warning that can never clear
+      # teaches you to stop reading warnings.
+      #
+      # Closing rather than commenting-and-leaving-open means the next red run
+      # files a fresh issue, so one issue is one episode instead of one forever.
+      - name: Close the red-run issue once green
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          # Never let a GitHub API hiccup turn a green run red: this reports on
+          # the pipeline, it is not part of it.
+          set +e
+          open=$(gh issue list --state open --label pipeline-red --limit 1 --json number --jq '.[0].number')
+          if [ -n "$open" ]; then
+            gh issue comment "$open" --body "Pipeline is green again. Run: $RUN_URL"
+            gh issue close "$open" --reason completed
+            echo "Closed #$open."
+          else
+            echo "No open pipeline-red issue."
+          fi
+          exit 0
