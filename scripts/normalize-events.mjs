@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import {
   areaForCity as areaOfCity,
   defaultRegionKey,
+  isOnlineLocation,
   namesUnservedRegion,
   placePattern,
   regionFor,
@@ -371,6 +372,12 @@ function parseLocation(lines, timeLineIndex) {
 
 function parseStructuredLocation(structuredEvent, evidence) {
   const location = structuredEvent?.location ?? {};
+  // An online event has no city, and the evidence fallback below reads the whole
+  // blurb rather than a location field: a sponsor's headquarters, an organizer's
+  // home town or a prize-ceremony mention would each be read as this event's
+  // city and printed as one. There is nothing here to recover, so nothing is
+  // guessed.
+  if (isOnlineLocation(location)) return { venue: null, city: null };
   let city = location.city || null;
   if (!city) {
     const match = evidence.match(placeRegex);
@@ -820,7 +827,13 @@ for (const rawCandidate of deduped) {
   // that happens to read the thinner one should not erase what a richer one
   // already established. Only fills gaps; never overwrites a fresh value.
   const remembered = previousByUrlForVenue.get(candidate.url);
-  if (remembered) {
+  // An online event has no venue and no city for a richer pass to have found, so
+  // there is nothing here worth keeping. What a previous sweep recorded for one
+  // is a leftover from before the online board existed, when every placeless
+  // event was read as the default region's: "Runpod - Online Hackathon" was
+  // remembered as being in SF. Filling it back in would print that old mistake
+  // onto an event that states it is nowhere.
+  if (remembered && !isOnlineLocation(structuredLocation)) {
     location = {
       venue: location.venue ?? remembered.venue ?? null,
       city: location.city ?? remembered.city ?? null,
