@@ -382,7 +382,23 @@ if (!ledger.__missing && !board.__missing) {
   const synced = new Set(
     Object.values(ledger.synced ?? {}).map((entry) => entry.url),
   );
-  const events = board.events ?? [];
+  // Only the boards that have a Luma calendar. sync-luma-calendar.mjs filters to
+  // one region and the CI loop only runs it for regions declaring a
+  // lumaCalendarName, so counting the rest here measures this against a calendar
+  // they were never eligible for. Before this, the online board's 77 date-only
+  // Devpost events all landed in "declined", which pushed a warning over its
+  // threshold that could never clear: Devpost publishes no clock times, so those
+  // events are permanently ineligible by nature rather than by any fault.
+  // An event with no region predates regions and belongs to the default one,
+  // which has a calendar.
+  const calendarRegions = new Set(
+    Object.entries(config.regions ?? {})
+      .filter(([, region]) => region.lumaCalendarName)
+      .map(([key]) => key),
+  );
+  const events = (board.events ?? []).filter(
+    (event) => !event.region || calendarRegions.has(event.region),
+  );
   const pending = events.filter((event) => !synced.has(event.url));
   // The same rule the sync applies, so this agrees with what it actually does.
   // Respects the override, or this reports declines the sync no longer makes.
