@@ -146,6 +146,15 @@
       "lumaPlaceId": "discplace-MNBATdzid940kqJ",
       "lumaCalendarName": "Hacklist-SD",
       "boardName": "Hacklist San Diego"
+    },
+    "online": {
+      "label": "Online",
+      "online": true,
+      "timezone": "America/Los_Angeles",
+      "areaBonus": {
+        "Online": 0
+      },
+      "boardName": "Hacklist Online"
     }
   },
   "candidateTerms": [
@@ -230,6 +239,7 @@
   "lumaApiMaxEvents": 1200,
   "apiCalendarSeedsPerRun": 16,
   "devpostMaxPages": 24,
+  "devpostOnlineMaxPages": 12,
   "minPublishedEvents": 12,
   "collapseRatio": 0.5,
   "syncTimeUnknownExternals": false,
