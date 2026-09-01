@@ -266,6 +266,20 @@ if (discovery.__missing) {
         `fallback after ${visited} pages`,
     );
   }
+  // The unlocker exists to answer exactly the block above, so a broken one is a
+  // configuration error rather than a bad day: nobody is coming to fix a dead
+  // key or a wrong zone on its own, and a sweep that quietly fell back to
+  // reading directly is a sweep with the datacenter block back in place.
+  if (discovery.sweep?.unlockerProblem) {
+    failures.push(
+      `sweep: Bright Data refused the unlocker (${discovery.sweep.unlockerProblem}), ` +
+        "so Luma was read directly and the datacenter block applies again",
+    );
+  } else if (discovery.sweep?.unlockerConfigured) {
+    notes.push(
+      `sweep: ${discovery.sweep?.pagesReadViaUnlocker ?? 0} page(s) read through the unlocker`,
+    );
+  }
   notes.push(
     `sweep: ${visited} pages, ${discovery.sweep?.candidatesFound ?? 0} candidates${discovery.sweep?.stoppedOnTimeBudget ? " (hit time budget)" : ""}`,
   );
