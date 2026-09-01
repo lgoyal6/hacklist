@@ -17,10 +17,12 @@ import {
 } from "../scripts/lib/event-dates.mjs";
 import {
   createPacer,
+  fetchPage,
   isThrottled,
   linksFromHtml,
   looksLikeRefusal,
   structuredEventsFromHtml,
+  unlockerFromEnv,
   visibleText,
 } from "../scripts/lib/page-http.mjs";
 import { brightDataSearch, linksFromSerpHtml, serpResults } from "../scripts/lib/serp.mjs";
@@ -779,4 +781,135 @@ test("an MLH timestamp on the minute is left as the time it states", () => {
 test("an MLH event with no readable start is refused rather than guessed", () => {
   assert.equal(mlhSchedule(null, null, TZ), null);
   assert.equal(mlhSchedule("not a date", "2027-04-05T23:59:59Z", TZ), null);
+});
+
+// --- reading Luma through Bright Data's Web Unlocker -----------------------
+
+test("a blank unlocker zone or key leaves the direct path in place", () => {
+  // The same empty-string-secret trap as BRIGHTDATA_SERP_ZONE above, and worse
+  // here: a blank zone would route every Luma read in the sweep into a
+  // guaranteed 400 rather than merely reading from this address.
+  assert.equal(
+    unlockerFromEnv({ BRIGHTDATA_UNLOCKER_ZONE: "", BRIGHTDATA_API_KEY: "k" }),
+    null,
+  );
+  assert.equal(
+    unlockerFromEnv({ BRIGHTDATA_UNLOCKER_ZONE: "z", BRIGHTDATA_API_KEY: "" }),
+    null,
+  );
+  assert.equal(unlockerFromEnv({}), null, "nothing set is the ordinary case");
+  assert.deepEqual(
+    unlockerFromEnv({ BRIGHTDATA_UNLOCKER_ZONE: "z", BRIGHTDATA_API_KEY: "k" }),
+    { zone: "z", apiKey: "k" },
+  );
+});
+
+test("an unlocker read reaches Bright Data carrying the page's own URL", async () => {
+  const sent = [];
+  const fetchImpl = async (endpoint, init) => {
+    sent.push({
+      endpoint,
+      body: JSON.parse(init.body),
+      auth: init.headers.authorization,
+    });
+    return {
+      ok: true,
+      status: 200,
+      headers: { get: () => null },
+      text: async () =>
+        "<html><head><title>Hack Night</title></head>" +
+        "<body><p>a hackathon in San Francisco</p></body></html>",
+    };
+  };
+
+  const page = await fetchPage("https://luma.com/abc123", {
+    unlocker: { zone: "unlocker_zone", apiKey: "key" },
+    fetchImpl,
+  });
+
+  assert.equal(sent.length, 1);
+  assert.equal(sent[0].endpoint, "https://api.brightdata.com/request");
+  assert.equal(sent[0].body.url, "https://luma.com/abc123", "Luma's URL, not the endpoint's");
+  assert.equal(sent[0].body.zone, "unlocker_zone");
+  assert.equal(sent[0].body.format, "raw", "omitting format is a 400");
+  assert.equal(sent[0].auth, "Bearer key");
+  assert.equal(page.title, "Hack Night", "a proxied page extracts like any other");
+});
+
+test("unlocker failures are told apart: throttled backs off, misconfigured does not", async () => {
+  const failing =
+    (status, body = "") =>
+    async () => ({
+      ok: false,
+      status,
+      headers: { get: () => null },
+      text: async () => body,
+    });
+  const unlocker = { zone: "z", apiKey: "k" };
+  const failureOf = (fetchImpl) =>
+    fetchPage("https://luma.com/x", { unlocker, fetchImpl }).then(
+      () => null,
+      (error) => error,
+    );
+
+  // Bright Data saying "slow down" has to reach the caller's backoff.
+  const throttled = await failureOf(failing(429));
+  assert.ok(isThrottled(throttled), `429 should throttle: ${throttled}`);
+  assert.ok(!isMisconfiguration(String(throttled)));
+
+  // A dead key must never be waited out. That is how a broken zone hides.
+  const dead = await failureOf(failing(401, "Auth method is not supported"));
+  assert.ok(isMisconfiguration(String(dead)), `401 should be misconfigured: ${dead}`);
+  assert.ok(!isThrottled(dead), "a dead key is not a rate limit");
+});
+
+test("Bright Data reporting trouble inside a 200 is still a failure", async () => {
+  // The SERP leg learned this one live: an upstream failure arrives as 200 with
+  // an empty body and x-brd-error-code set. Read as success it is a blank page
+  // scored as a real event.
+  const unlocker = { zone: "z", apiKey: "k" };
+  await assert.rejects(
+    fetchPage("https://luma.com/x", {
+      unlocker,
+      fetchImpl: async () => ({
+        ok: true,
+        status: 200,
+        headers: { get: (name) => (name === "x-brd-error-code" ? "expect_body" : null) },
+        text: async () => "",
+      }),
+    }),
+    /expect_body/,
+  );
+
+  await assert.rejects(
+    fetchPage("https://luma.com/x", {
+      unlocker,
+      fetchImpl: async () => ({
+        ok: true,
+        status: 200,
+        headers: { get: () => null },
+        text: async () => "   ",
+      }),
+    }),
+    /empty body/,
+  );
+});
+
+test("a challenge page proxied from a residential address is still refused", async () => {
+  // The unlocker changes where the request comes from, not what came back. A
+  // rate-limit page served with a 200 has to fail the same refusal test as one
+  // fetched from here, or the sweep scores Luma's error page as an event.
+  await assert.rejects(
+    fetchPage("https://luma.com/x", {
+      unlocker: { zone: "z", apiKey: "k" },
+      fetchImpl: async () => ({
+        ok: true,
+        status: 200,
+        headers: { get: () => null },
+        text: async () =>
+          "<html><head><title>Rate limited</title></head><body></body></html>",
+      }),
+    }),
+    /refused:/,
+  );
 });

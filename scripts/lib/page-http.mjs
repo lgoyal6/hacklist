@@ -207,12 +207,33 @@ export function looksLikeRefusal({ title, bodyText, structuredEvents }) {
   return null;
 }
 
+const BRIGHTDATA_ENDPOINT = "https://api.brightdata.com/request";
+
 /**
- * Fetch and extract a page. Returns the browser extractor's shape so callers can
- * use either interchangeably; throws so a caller can fall back to the browser.
+ * The Web Unlocker zone to read Luma through, or null to read it from here.
+ *
+ * Luma answers a residential address and refuses a datacenter one, and that is
+ * not a rate limit to wait out: CI went from 100 reads over HTTP to 0 of 24,
+ * every one a 429, and the sweep fell from 42 candidates to none. The browser
+ * fallback keeps the page count up but not the candidates, because it does not
+ * carry the About Event body the classifier scores on.
+ *
+ * `||`, not `??`, for the reason serp.mjs spells it that way: an unset GitHub
+ * secret interpolates to an EMPTY STRING rather than undefined, and `??` passes
+ * that straight through. A blank zone reaches Bright Data as zone:"" and comes
+ * back 400, which is how the search leg stayed broken for four days in silence.
+ * Blank is absent here, so an unset secret leaves the direct path alone instead
+ * of routing every read into a guaranteed 400.
  */
-export async function fetchPage(url, { timeoutMs = 15_000, userAgent } = {}) {
-  const response = await fetch(url, {
+export function unlockerFromEnv(env = process.env) {
+  const zone = env.BRIGHTDATA_UNLOCKER_ZONE || "";
+  const apiKey = env.BRIGHTDATA_API_KEY || "";
+  return zone && apiKey ? { zone, apiKey } : null;
+}
+
+/** The page's HTML, read from this machine. */
+async function directHtml(url, { timeoutMs, userAgent, fetchImpl }) {
+  const response = await fetchImpl(url, {
     headers: {
       "user-agent": userAgent ?? DEFAULT_UA,
       accept: "text/html,application/xhtml+xml",
@@ -226,7 +247,64 @@ export async function fetchPage(url, { timeoutMs = 15_000, userAgent } = {}) {
   if (type && !/html|xml/i.test(type)) {
     throw new Error(`not HTML (${type.split(";")[0]})`);
   }
-  const extracted = extractFromHtml(await response.text());
+  return response.text();
+}
+
+/**
+ * The page's HTML, read by Bright Data from a residential address.
+ *
+ * Same endpoint and body as the SERP leg, so the lessons there hold: `format`
+ * is required, and Bright Data reports upstream trouble in x-brd-error-code
+ * while still answering 200 with an empty body.
+ *
+ * No content-type check on this path. The header here describes Bright Data's
+ * own envelope rather than Luma's document, so testing it rejects good pages.
+ *
+ * The error text is load-bearing, not decoration. `unlocker HTTP 429` has to
+ * read as throttled to isThrottled() so the caller backs off, and `unlocker
+ * HTTP 401` has to read as misconfigured to isMisconfiguration() so a dead key
+ * is never mistaken for Luma being busy and quietly waited out.
+ */
+async function unlockerHtml(url, { zone, apiKey, timeoutMs, fetchImpl }) {
+  const response = await fetchImpl(BRIGHTDATA_ENDPOINT, {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${apiKey}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ zone, url, format: "raw" }),
+    signal: AbortSignal.timeout(timeoutMs),
+  });
+  const brdError = response.headers.get("x-brd-error-code");
+  const text = await response.text().catch(() => "");
+  if (!response.ok) {
+    throw new Error(
+      `unlocker HTTP ${response.status}${text ? `: ${text.slice(0, 120)}` : ""}`,
+    );
+  }
+  if (brdError || !text.trim()) {
+    throw new Error(`unlocker ${brdError || "empty body"}`);
+  }
+  return text;
+}
+
+/**
+ * Fetch and extract a page. Returns the browser extractor's shape so callers can
+ * use either interchangeably; throws so a caller can fall back to the browser.
+ *
+ * `unlocker` routes the read through Bright Data rather than fetching from
+ * here. Everything after the HTML arrives is identical either way, so a page
+ * read through the unlocker faces the same refusal test as a direct one: a
+ * challenge page proxied from a residential address is still a challenge page.
+ */
+export async function fetchPage(
+  url,
+  { timeoutMs = 15_000, userAgent, unlocker = null, fetchImpl = fetch } = {},
+) {
+  const html = unlocker
+    ? await unlockerHtml(url, { ...unlocker, timeoutMs, fetchImpl })
+    : await directHtml(url, { timeoutMs, userAgent, fetchImpl });
+  const extracted = extractFromHtml(html);
   const refusal = looksLikeRefusal(extracted);
   if (refusal) throw new Error(`refused: ${refusal}`);
   return extracted;
