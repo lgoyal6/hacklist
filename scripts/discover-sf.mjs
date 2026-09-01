@@ -10,7 +10,13 @@ import {
   namesUnservedRegion,
   placePattern,
 } from "./lib/candidate-score.mjs";
-import { createPacer, fetchPage, isThrottled } from "./lib/page-http.mjs";
+import {
+  createPacer,
+  fetchPage,
+  isThrottled,
+  unlockerFromEnv,
+} from "./lib/page-http.mjs";
+import { isMisconfiguration } from "./lib/source-health.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
@@ -470,6 +476,14 @@ let externalPagesVisited = 0;
 let pagesReadOverHttp = 0;
 let httpFailures = 0;
 let httpThrottled = 0;
+// Reading Luma through a residential address, when one is configured. Left null
+// and the sweep behaves exactly as before, so this lands dark until the zone
+// exists. Reassignable because a misconfigured unlocker is switched off mid-run
+// rather than retried 800 times.
+let unlocker = unlockerFromEnv();
+const unlockerConfigured = unlocker !== null;
+let pagesReadViaUnlocker = 0;
+let unlockerProblem = null;
 // Giving up on the fast path was right; giving up permanently was not. Luma's
 // limit is a window, not a ban: the last sweep read 96 of 750 pages over HTTP,
 // tripped after 8 refusals, and then spent the remaining 654 pages on the
@@ -609,15 +623,33 @@ try {
       ) {
         try {
           await paceLuma();
-          result = await fetchPage(url, { timeoutMs: 15_000 });
+          // Bright Data fetches the page itself before answering, so the round
+          // trip is its latency plus Luma's, not Luma's alone.
+          result = await fetchPage(url, {
+            unlocker,
+            timeoutMs: unlocker ? 30_000 : 15_000,
+          });
           pagesReadOverHttp += 1;
+          if (unlocker) pagesReadViaUnlocker += 1;
         } catch (error) {
           // Count every failure, not just the disguised ones. Counting only the
           // 200-with-a-rate-limit-page meant a sweep where a third of reads got
           // an honest 429 still reported "0 refusals" and looked healthy while
           // it collapsed from 47 candidates to 17.
           httpFailures += 1;
-          if (isThrottled(error)) {
+          // A misconfigured unlocker is not Luma being busy, and must not be
+          // answered by backing off. The pause ladder would disable the fast
+          // path and leave a wrong zone looking exactly like an ordinary
+          // blocked sweep -- the same silence that hid zone:"" for four days.
+          // Drop back to reading directly and record it for the health gate.
+          if (unlocker && isMisconfiguration(String(error))) {
+            unlockerProblem = String(error).slice(0, 160);
+            unlocker = null;
+            console.warn(
+              `Bright Data refused the unlocker request: ${unlockerProblem}. ` +
+                "Reading Luma directly for the rest of this sweep.",
+            );
+          } else if (isThrottled(error)) {
             httpThrottled += 1;
             paceLuma.backOff();
             // Once Luma is refusing, HTTP has stopped being an optimisation and
@@ -967,6 +999,9 @@ const output = {
     linkedinPromising: linkedinSeeds.filter((e) => e.promising).length,
     pagesVisited: visited.size,
     pagesReadOverHttp,
+    pagesReadViaUnlocker,
+    unlockerConfigured,
+    unlockerProblem,
     httpFailures,
     httpThrottled,
     httpPauses,
@@ -1052,6 +1087,7 @@ console.log(
   `SF sweep complete: ${output.sweep.pagesVisited} pages, ` +
     `${output.sweep.candidatesFound} candidates, ${review.size} held for review, ` +
     `${nearMisses.size} near miss(es), ${pagesReadOverHttp} read over HTTP` +
+    (pagesReadViaUnlocker ? ` (${pagesReadViaUnlocker} via the unlocker)` : "") +
     (httpFailures ? `, ${httpFailures} HTTP failure(s)` : "") +
     (httpThrottled ? ` (${httpThrottled} throttled)` : "") +
     `.`,

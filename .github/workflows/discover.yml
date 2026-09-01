@@ -149,6 +149,10 @@ jobs:
       LUMA_SESSION_COOKIES: ${{ secrets.LUMA_SESSION_COOKIES }}
       BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
       BRIGHTDATA_SERP_ZONE: ${{ secrets.BRIGHTDATA_SERP_ZONE }}
+      # A Web Unlocker zone, not the SERP one: Luma refuses this runner's
+      # datacenter address outright, so event pages are read through a
+      # residential one. Unset leaves the sweep reading Luma directly.
+      BRIGHTDATA_UNLOCKER_ZONE: ${{ secrets.BRIGHTDATA_UNLOCKER_ZONE }}
       SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
       TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
       BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
