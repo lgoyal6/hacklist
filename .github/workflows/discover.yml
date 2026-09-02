@@ -2,6 +2,11 @@ name: SF hackathon discovery
 
 on:
   workflow_dispatch:
+    inputs:
+      deep:
+        description: "Read Luma through the unlocker (spends ~800 Bright Data credits)"
+        type: boolean
+        default: true
   schedule:
     # Every UTC hour that can be 8am or 8pm Pacific across PST/PDT. These are
     # only a supply of chances to run: the gate decides from how long it has been
@@ -29,6 +34,7 @@ jobs:
     outputs:
       run: ${{ steps.check.outputs.run }}
       slot: ${{ steps.check.outputs.slot }}
+      deep: ${{ steps.check.outputs.deep }}
     steps:
       - uses: actions/checkout@v4
       - name: Sweep twice a day, however late the trigger arrives
@@ -69,13 +75,49 @@ jobs:
           if [ "${{ github.event_name }}" != "schedule" ]; then
             echo "slot=morning" >> "$GITHUB_OUTPUT"
             echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Manual dispatch: sweeping regardless of the last run, as the morning slot."
+            echo "deep=${{ inputs.deep }}" >> "$GITHUB_OUTPUT"
+            echo "Manual dispatch: sweeping regardless of the last run, as the morning slot (deep=${{ inputs.deep }})."
             exit 0
           fi
 
           slot=morning
           [ "$(TZ=America/Los_Angeles date +%H)" -ge 14 ] && slot=evening
           echo "slot=$slot" >> "$GITHUB_OUTPUT"
+
+          # How often the unlocker runs, which is the only metered part of the
+          # sweep. One deep run reads ~809 Luma pages through Bright Data
+          # against a 5,000/month free tier, so the twice-daily cadence would
+          # spend the month in three days. Twice a week fits, and the rest of
+          # the sweep still runs twice a day on the browser, which costs
+          # nothing. The shallow runs find almost no candidates by design; the
+          # health gate knows that and only warns.
+          #
+          # Gated on when we last actually went deep, not on the weekday, for
+          # the same reason the sweep gate is: these triggers arrive 50-110
+          # minutes late and GitHub's registered schedule lags this file. What
+          # is trustworthy is the record of what we did, stamped into
+          # data/discovery-output.json by the sweep that did it.
+          DEEP_MIN_GAP_HOURS=84
+          last_deep=$(node -e "
+            try {
+              const s = require('./data/discovery-output.json').sweep ?? {};
+              const t = Date.parse(s.lastDeepSweepAt ?? '');
+              process.stdout.write(Number.isFinite(t) ? String(t) : '0');
+            } catch { process.stdout.write('0'); }
+          ")
+          if [ "$last_deep" = "0" ]; then
+            echo "deep=true" >> "$GITHUB_OUTPUT"
+            echo "No deep sweep on record, taking one."
+          else
+            deep_gap_hours=$(( ($(date +%s000) - last_deep) / 3600000 ))
+            if [ "$deep_gap_hours" -ge "$DEEP_MIN_GAP_HOURS" ]; then
+              echo "deep=true" >> "$GITHUB_OUTPUT"
+              echo "Deep sweep: last unlocker run ${deep_gap_hours}h ago (>= ${DEEP_MIN_GAP_HOURS}h)."
+            else
+              echo "deep=false" >> "$GITHUB_OUTPUT"
+              echo "Shallow sweep: last unlocker run ${deep_gap_hours}h ago (< ${DEEP_MIN_GAP_HOURS}h), browser only."
+            fi
+          fi
 
           last=$(node -e "
             try {
@@ -151,8 +193,10 @@ jobs:
       BRIGHTDATA_SERP_ZONE: ${{ secrets.BRIGHTDATA_SERP_ZONE }}
       # A Web Unlocker zone, not the SERP one: Luma refuses this runner's
       # datacenter address outright, so event pages are read through a
-      # residential one. Unset leaves the sweep reading Luma directly.
-      BRIGHTDATA_UNLOCKER_ZONE: ${{ secrets.BRIGHTDATA_UNLOCKER_ZONE }}
+      # residential one. Passed only on deep runs -- blank is how the sweep is
+      # told to stay on the browser, and unlockerFromEnv() already treats an
+      # empty string as absent, so no code branches on the cadence.
+      BRIGHTDATA_UNLOCKER_ZONE: ${{ needs.gate.outputs.deep == 'true' && secrets.BRIGHTDATA_UNLOCKER_ZONE || '' }}
       SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
       TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
       BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
