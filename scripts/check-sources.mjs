@@ -200,11 +200,29 @@ if (discovery.__missing) {
   failures.push(`discovery-output.json unreadable: ${discovery.__missing}`);
 } else if (checkFreshness("sweep", discovery.sweep?.completedAt, { required: true })) {
   const visited = discovery.sweep?.pagesVisited ?? 0;
+  // Whether this run was meant to read Luma from a residential address. The
+  // unlocker is metered, so it runs twice a week while the rest of the sweep
+  // runs twice a day, and the two kinds of run have to be judged differently.
+  const deepRun = discovery.sweep?.unlockerConfigured === true;
   if (visited < 25) {
     failures.push(`sweep: only ${visited} page(s) visited — the browser is failing, not the sites`);
   }
+  // Zero is the expected result of a shallow run, not a collapse. Luma refuses
+  // this address outright and the browser brings back page chrome with no About
+  // Event body, so the classifier has nothing to score and every event reads as
+  // a meetup. Failing on that would file an issue twelve times a week for the
+  // runs that are supposed to be thin. A deep run finding nothing is still a
+  // collapse, and the staleness check below is what stops a shallow-forever
+  // pipeline from going quiet.
   if ((discovery.sweep?.candidatesFound ?? 0) === 0) {
-    failures.push("sweep: zero candidates from a full crawl");
+    if (deepRun) {
+      failures.push("sweep: zero candidates from a full crawl with the unlocker on");
+    } else {
+      warnings.push(
+        "sweep: zero candidates, which is what a run without the unlocker looks " +
+          "like: Luma pages carry no readable body from this address",
+      );
+    }
   }
   // Only failing at zero let a real collapse through: one run crawled 731 pages
   // and produced 8 candidates against 46 from the same code an hour earlier, and
@@ -218,7 +236,7 @@ if (discovery.__missing) {
   const found = discovery.sweep?.candidatesFound ?? 0;
   const geolocatedOut = lumaApi.feedCollapsed === true;
   const candidateFloor = config.minSweepCandidates ?? 20;
-  if (found > 0 && found < candidateFloor && !geolocatedOut) {
+  if (found > 0 && found < candidateFloor && !geolocatedOut && deepRun) {
     failures.push(
       `sweep: ${found} candidate(s) from ${visited} pages, under the floor of ` +
         `${candidateFloor}, and the discover feed was healthy, so this is a ` +
@@ -275,10 +293,33 @@ if (discovery.__missing) {
       `sweep: Bright Data refused the unlocker (${discovery.sweep.unlockerProblem}), ` +
         "so Luma was read directly and the datacenter block applies again",
     );
-  } else if (discovery.sweep?.unlockerConfigured) {
+  } else if (deepRun) {
     notes.push(
       `sweep: ${discovery.sweep?.pagesReadViaUnlocker ?? 0} page(s) read through the unlocker`,
     );
+  }
+  // A deep sweep that quietly stops is the failure this cadence invites. Every
+  // shallow run in between reports zero candidates and now only warns, so
+  // without this nothing would ever say the crawl-only long tail had stopped
+  // being collected, and the board would just slowly stop growing.
+  const deepAgeLimit = config.maxDeepSweepAgeHours ?? 192;
+  const lastDeep = Date.parse(discovery.sweep?.lastDeepSweepAt ?? "");
+  if (!Number.isFinite(lastDeep)) {
+    warnings.push(
+      "sweep: no deep sweep on record yet; the next run should take one, and " +
+        "this becomes a failure if it does not",
+    );
+  } else {
+    const deepAgeHours = Math.round((Date.now() - lastDeep) / 3_600_000);
+    if (deepAgeHours > deepAgeLimit) {
+      failures.push(
+        `sweep: the last deep sweep was ${deepAgeHours}h ago, past the ` +
+          `${deepAgeLimit}h limit, so the crawl-only long tail has stopped ` +
+          "being collected",
+      );
+    } else {
+      notes.push(`sweep: last deep sweep ${deepAgeHours}h ago`);
+    }
   }
   notes.push(
     `sweep: ${visited} pages, ${discovery.sweep?.candidatesFound ?? 0} candidates${discovery.sweep?.stoppedOnTimeBudget ? " (hit time budget)" : ""}`,
