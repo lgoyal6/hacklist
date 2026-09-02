@@ -1,14 +1,19 @@
 {
-  "collectedAt": "2026-09-01T23:33:14.245Z",
+  "collectedAt": "2026-09-02T04:19:37.832Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
   "pagesFound": 29,
-  "pagesRead": 12,
-  "readStoppedOnTimeBudget": false,
+  "pagesRead": 0,
+  "readStoppedOnTimeBudget": true,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "read",
+      "error": "time budget reached with 12 page(s) unread"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -32,28 +37,28 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/william-j-stewart_northflank-is-partnering-again-with-cerebral-activity-7432152372090589186-Cypu",
       "context": "s from Meta , Hugging Face , University of California, Berkeley , Cursor , Scale AI , and more. You can submit an application at the link in comments. 56 3 Comments Like Comment Share Copy LinkedIn Facebook X Will Stewart 6mo Report this comment Register here https://cerebralvalley.ai/e/openenv-hack",
-      "lastSeenAt": "2026-09-01T08:09:24.906Z"
+      "lastSeenAt": "2026-09-01T03:31:20.606Z"
     },
     {
       "url": "https://luma.com/6eqa8nbh",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/sauain_i-am-organizing-apifys-biggest-ai-hackathon-activity-7453878365427662848-PN5x",
       "context": "es Sign in Join now Saurav Jain’s Post Saurav Jain 4mo Report this post I am organizing Apify 's BIGGEST AI hackathon in San Francisco 🔥 We are inviting SF's best 180 hackers (80+ spots already gone) to join us for a day of building agents. 🤖 Register here: https://luma.com/6eqa8nbh What's in ther",
-      "lastSeenAt": "2026-09-01T08:09:24.906Z"
+      "lastSeenAt": "2026-09-01T03:31:20.606Z"
     },
     {
       "url": "https://luma.com/rgk6ln4e.",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/troy-gwdn_ive-started-going-to-hackathons-every-single-activity-7458893560977862656-2Ixu",
-      "context": "Broadening Horizons at SF Hackathons Every hackathon is an opportunity to broaden your horizons, 📝 Apply on Luma: https://luma.com/rgk6ln4e. I was judge at a hackathon where the ...",
-      "lastSeenAt": "2026-09-01T23:33:14.245Z"
+      "context": "Broadening Horizons at SF Hackathons Every hackathon is an opportunity to broaden your horizons, Apply on Luma: https://luma.com/rgk6ln4e. I was judge at a hackathon. This is for ...",
+      "lastSeenAt": "2026-08-31T03:31:07.633Z"
     },
     {
       "url": "https://luma.com/HackBio",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/aneesav_hackathon-ai-biotech-activity-7441829245028368384-mv6b",
-      "context": "BioSolutions Hackathon in SF: Collaboration for Real- ... Apply to build → https://luma.com/HackBio Proud to be building alongside MelanInScience, NSBE SF Bay Area Professionals, and ImpaktBio on this ...",
-      "lastSeenAt": "2026-09-01T23:33:14.245Z"
+      "context": "BioSolutions Hackathon in SF: Collaboration for Real- ... Hackathon in SF: Collaboration for Real-World Problem Solving. Apply to build → https://luma.com/HackBio Proud to be building alongside ...",
+      "lastSeenAt": "2026-08-31T03:31:07.633Z"
     },
     {
       "url": "https://luma.com/hh-future-ai-news-theatlantic-infactory",
@@ -122,8 +127,8 @@
       "url": "https://luma.com/intercomai",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-charles-guo-s81hc",
-      "context": "tps://lu.ma/ugqmmkkp 6:00 PM - Beyond the Prompt: Mastering the AI Collaboration Mindset 📍 5 Palo Alto Square, Palo Alto, CA 🔗 https://lu.ma/5ccq20wd FRIDAY, February 6 9:30 AM - Continual Learning Hackathon 📍 San Francisco, CA (Register to See Address) 🔗 https://lu.ma/intercomai 10:00 AM - Fine",
-      "lastSeenAt": "2026-08-30T03:31:20.358Z"
+      "context": "AI Events FRIDAY, February 6 9:30 AM - Continual Learning Hackathon 📍 San Francisco, CA (Register to See Address) 🔗 https://lu.ma/intercomai 10:00 AM - ...",
+      "lastSeenAt": "2026-09-02T04:19:37.832Z"
     },
     {
       "url": "https://luma.com/slicelab",
@@ -137,7 +142,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/troy-gwdn_ive-started-going-to-hackathons-every-single-activity-7458893560977862656-2Ixu",
       "context": "“𝘔𝘢𝘭𝘢𝘺𝘴𝘪𝘢 𝘩𝘢𝘴 𝘵𝘢𝘭𝘦𝘯𝘵, 𝘣𝘶𝘵 𝘸𝘦 𝘯𝘦𝘦𝘥 𝘮𝘰𝘳𝘦 𝘱𝘭𝘢𝘵𝘧𝘰𝘳𝘮𝘴” - this is one of those platforms. 𝐑𝐞𝐠𝐢𝐬𝐭𝐫𝐚𝐭𝐢𝐨𝐧𝐬 𝐚𝐫𝐞 𝐧𝐨𝐰 𝐨𝐩𝐞𝐧. 🌐 𝐄𝐯𝐞𝐧𝐭 𝐰𝐞𝐛𝐬𝐢𝐭𝐞: http://codexhackathon.my/ 📝 𝐀𝐩𝐩𝐥𝐲 𝐨𝐧 𝐋𝐮𝐦𝐚: https://luma.com/rgk6ln4e #Malaysia #AI #",
-      "lastSeenAt": "2026-09-01T23:33:14.245Z"
+      "lastSeenAt": "2026-08-31T03:31:07.633Z"
     },
     {
       "url": "https://luma.com/hackbio",
@@ -151,14 +156,14 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/emerging-angels_startup-couve-coffee-luma-activity-7494056389217193984-7wHZ",
       "context": "1752vc: Venture Fellow & Emerging Angel Program's Post ... Hackathon, August 17, 2026 https://luma.com/nkknxvrz ModCon 2026, August 18 ... 2026 https://luma.com/eat5sm3n.",
-      "lastSeenAt": "2026-08-31T03:31:07.633Z"
+      "lastSeenAt": "2026-09-02T04:19:37.832Z"
     },
     {
       "url": "https://luma.com/arc-commerce-",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-tech-events-january-17-24-2026-charles-guo-4id1c",
       "context": "Bay Area AI & Tech Events: January 17-24, 2026 ... hackathon finale (Jan 23-24) showcasing agentic commerce on Arc and USDC; Location: MindsDB, San Francisco, CA; URL: https://lu.ma/arc-commerce- ...Read more",
-      "lastSeenAt": "2026-08-28T03:42:51.319Z"
+      "lastSeenAt": "2026-09-02T04:19:37.832Z"
     },
     {
       "url": "https://luma.com/xt4k5374",
@@ -207,7 +212,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-april-311-2026-charles-guo-nyiqc",
       "context": "Bay Area AI Events — April 3–11, 2026 8:30 AM — Hackathon: Who is the Agent Master? | Entrepreneurs First, SF | https://lu.ma/sk000djt ; 11:00 AM — Scout Athletic Club (April) | San ...Read more",
-      "lastSeenAt": "2026-08-30T03:31:20.358Z"
+      "lastSeenAt": "2026-09-02T04:19:37.832Z"
     },
     {
       "url": "https://luma.com/human-enhancement-hackathon",
