@@ -987,6 +987,22 @@ try {
   processHandle.kill();
 }
 
+const outputPath = resolve(root, "data/discovery-output.json");
+
+// When the unlocker last actually ran, carried across the runs that skip it.
+// A shallow sweep overwrites this file, so without carrying the stamp forward
+// the record of the last deep run would not survive its own next run, and the
+// gate would have nothing to schedule the next one from.
+let lastDeepSweepAt = null;
+try {
+  const previous = JSON.parse(await readFile(outputPath, "utf8"));
+  lastDeepSweepAt = previous?.sweep?.lastDeepSweepAt ?? null;
+} catch {
+  // No previous sweep on disk, or an unreadable one. Absent, not fatal: the
+  // gate reads a missing stamp as "never went deep" and schedules one.
+}
+if (pagesReadViaUnlocker > 0) lastDeepSweepAt = new Date().toISOString();
+
 const output = {
   sweep: {
     city: config.city,
@@ -1002,6 +1018,7 @@ const output = {
     pagesReadViaUnlocker,
     unlockerConfigured,
     unlockerProblem,
+    lastDeepSweepAt,
     httpFailures,
     httpThrottled,
     httpPauses,
@@ -1034,7 +1051,6 @@ const output = {
   errors,
 };
 
-const outputPath = resolve(root, "data/discovery-output.json");
 await mkdir(dirname(outputPath), { recursive: true });
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`);
 
