@@ -1,20 +1,7 @@
 {
-  "sweepCompletedAt": "2026-09-03T07:45:36.144Z",
+  "sweepCompletedAt": "2026-09-03T18:29:53.360Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
-  "nearMisses": [
-    {
-      "url": "https://luma.com",
-      "title": "Luma",
-      "readFrom": "page",
-      "via": "https://luma.com/hackathon_collections",
-      "confidence": 52,
-      "relevance": 54,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    }
-  ]
+  "nearMisses": []
 }

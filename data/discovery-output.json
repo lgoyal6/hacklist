@@ -14,29 +14,61 @@
     "unlockerConfigured": false,
     "unlockerProblem": null,
     "lastDeepSweepAt": "2026-09-02T08:33:26.411Z",
-    "httpFailures": 24,
-    "httpThrottled": 24,
-    "httpPauses": 3,
+    "httpFailures": 32,
+    "httpThrottled": 32,
+    "httpPauses": 4,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 2,
-    "structuredEventsFound": 50,
-    "candidatesFound": 0,
+    "externalPagesVisited": 15,
+    "structuredEventsFound": 103,
+    "candidatesFound": 1,
     "heldForReview": 0,
-    "nearMisses": 1,
+    "nearMisses": 0,
     "stoppedOnTimeBudget": false,
-    "elapsedSeconds": 706,
-    "secondsPerPage": 0.812,
+    "elapsedSeconds": 1016,
+    "secondsPerPage": 1.1683,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 227,
-    "completedAt": "2026-09-03T07:45:36.144Z"
+    "queueRemaining": 149,
+    "completedAt": "2026-09-03T18:29:53.360Z"
   },
-  "candidates": [],
-  "errors": [
+  "candidates": [
     {
-      "url": "https://cerebralvalley.ai/e/openenv-hackathon-sf",
-      "message": "page.goto: Http2 at https://cerebralvalley.ai/e/openenv-hackathon-sf\nCall log:\n  - navigating to \"https://cerebralvalley.ai/e/openenv-hackathon-sf\", waiting until \"domcontentloaded\"\n"
+      "url": "https://cerebralvalley.ai/e/vultr-the-agent-arena",
+      "title": "The Agent Arena Hackathon | Cerebral Valley",
+      "category": "hackathon",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 94,
+      "relevance": 96,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Skip to Main Content\nHosted ByVultr\nThe Agent Arena Hackathon\nSan Francisco, CASep 26 at 9:00 AM – Sep 27 at 5:00 PM (PDT)\n\nJoin us at The Agent Arena Hackathon hosted by Vultr to build what the next generation of agent infrastructure actually looks like in production.\n\nAgents are writing code, driving browsers, and running real operations for teams. The infrastructure built to contain and coordinate what they do needs to get better.\n\nVultr is bringing the tools for you to build infrastructure powering the next generation of autonomous execution: VM backends, serverless inference, and the compute layer agents run on when they stop talking and start acting.\n\nCompete for more than $10,000 across cash and credits!\n\nNote: This event is fully in-person in San Francisco. Teams may have up to four members. All attendees must apply and be approved. Submitting an application does not guarantee a seat; approved applicants must confirm their attendance.\n\nRegister",
+      "checkedAt": "2026-09-03T18:16:48.368Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://cerebralvalley.ai/e/vultr-the-agent-arena",
+        "name": "The Agent Arena Hackathon",
+        "description": "Developers will compete in the Agent Arena Hackathon to build production-ready agent infrastructure, with Vultr providing the cloud platform and resources for this next-generation AI challenge.",
+        "startDate": "2026-09-26T16:00:00.000Z",
+        "endDate": "2026-09-28T00:00:00.000Z",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "organizers": [
+          "Cerebral Valley"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      }
     }
-  ]
+  ],
+  "errors": []
 }
