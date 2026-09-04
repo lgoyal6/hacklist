@@ -57,6 +57,7 @@ const apiCandidates = [
   ...(await readCandidates("data/luma-api.json")),
   ...(await readCandidates("data/devpost-candidates.json")),
   ...(await readCandidates("data/mlh-candidates.json")),
+  ...(await readCandidates("data/lablab-candidates.json")),
   ...(await readCandidates("data/eventbrite-candidates.json")),
   ...(await readCandidates("data/meetup-candidates.json")),
 ];
