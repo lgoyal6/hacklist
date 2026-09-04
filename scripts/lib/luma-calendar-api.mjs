@@ -18,7 +18,7 @@ const TIMEOUT_MS = 20_000;
 
 async function getJson(url) {
   const response = await fetch(url, {
-    headers: { accept: "application/json", "user-agent": "hacklist-sf" },
+    headers: { accept: "application/json", "user-agent": "hacklist" },
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
