@@ -4,6 +4,16 @@ Public hackathons in the SF Bay Area and San Diego - including externally hosted
 events linked from Luma calendars - discovered automatically, ranked by signal,
 and published as a subscribable calendar per region.
 
+> The project is `hacklist`; it covers three boards, Hacklist SF, Hacklist San
+> Diego and Hacklist Online. Two identifiers deliberately keep the older
+> `hacklist-sf` spelling and should not be "fixed":
+>
+> - the **deployed Worker hostname** below, because the published `calendar.ics`
+>   feeds hang off it and a subscribed calendar that starts 404ing does not warn
+>   anyone, it just stops updating;
+> - the **ICS UID namespace** in `app/calendar.ics/route.ts`, because a changed
+>   UID makes every client treat every event as new and duplicate the lot.
+
 - **Site:** https://hacklist-sf.modern-renaissance-artifacts.workers.dev
 - **Bay Area feed:** https://hacklist-sf.modern-renaissance-artifacts.workers.dev/calendar.ics
   (add this URL to Google/Apple/Outlook Calendar to subscribe)

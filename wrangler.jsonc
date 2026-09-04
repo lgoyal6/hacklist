@@ -1,5 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
+  // Deliberately still hacklist-sf, though the project is now just
+  // "hacklist". This name is the deployed hostname, and the published
+  // calendar.ics feeds hang off it. A subscribed calendar that starts
+  // 404ing does not warn anybody, it just quietly stops updating, so the
+  // hostname is worth more than the consistency.
   "name": "hacklist-sf",
   "compatibility_date": "2026-07-31",
   "compatibility_flags": [
