@@ -1,26 +1,52 @@
 {
-  "sweepCompletedAt": "2026-09-04T18:12:39.190Z",
+  "sweepCompletedAt": "2026-09-05T07:33:20.745Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
   "nearMisses": [
     {
-      "url": "https://luma.com/3gi6nzga",
-      "title": "Dimensional Office Cooling Party",
-      "readFrom": "listing",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "url": "https://luma.com/84lattht",
+      "title": "137th SF Hardware Meetup @ Mission Robotics | Physical AI Robotics",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf",
       "confidence": 52,
       "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/25odwnxl",
+      "title": "Bay Area Founders Pitch & Startup Networking",
+      "readFrom": "listing",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 54,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/6hjgfjid",
+      "title": "WAKA x WorldBuilder Mixer",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf",
+      "confidence": 52,
+      "relevance": 54,
       "short": 2,
       "missing": [
         "no term from candidateTerms"
       ]
     },
     {
-      "url": "https://luma.com/cafe-cowork-temporal",
-      "title": "Cafe Cowork: Temporal x Corgi",
-      "readFrom": "listing",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "url": "https://luma.com/linden-po4b",
+      "title": "Raina Telgemeier and Gale Galligan: The Baby-Sitters Club Super Special Launch",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf",
       "confidence": 52,
       "relevance": 54,
       "short": 2,

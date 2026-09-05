@@ -2,7 +2,7 @@
   "sweep": {
     "city": "San Francisco",
     "startedFrom": 24,
-    "personalizedSeeds": 1094,
+    "personalizedSeeds": 1127,
     "personalizedPromising": 34,
     "searchSeeds": 60,
     "apiCalendarSeeds": 19,
@@ -19,20 +19,57 @@
     "httpPauses": 4,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 10,
-    "structuredEventsFound": 107,
+    "externalPagesVisited": 11,
+    "structuredEventsFound": 105,
     "candidatesFound": 5,
     "heldForReview": 0,
-    "nearMisses": 2,
+    "nearMisses": 4,
     "stoppedOnTimeBudget": false,
-    "elapsedSeconds": 1081,
-    "secondsPerPage": 1.242,
+    "elapsedSeconds": 995,
+    "secondsPerPage": 1.1436,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 147,
-    "completedAt": "2026-09-04T18:12:39.190Z"
+    "queueRemaining": 226,
+    "completedAt": "2026-09-05T07:33:20.745Z"
   },
   "candidates": [
+    {
+      "url": "https://cerebralvalley.ai/e/openai-gpt-6-astra-sf",
+      "title": "GPT-6 Astra Hackathon SF | Cerebral Valley",
+      "category": "hackathon",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 94,
+      "relevance": 96,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Skip to Main Content\nHostsOpenAI & Cerebral Valley\nGPT-6 Astra Hackathon SF\nSan Francisco, CATue, Sep 8 at 9:00 AM – 10:00 PM (PDT)\n\nGPT-6 Astra is here. Come build with it.\n\nThis hackathon is for developers, technical founders, and startup teams to build with GPT-6 Astra – the world’s most intelligent and aligned model. Meet the OpenAI team and compete for a chance to demo onstage for a panel of judges (announcing soon). \n\nPrizes:\n\n1st place - $50,000 credits + DevDay 2026 tickets\n2nd place - $25,000 credits\n3rd place - $15,000 credits\nAll finalists - 1 year of ChatGPT Pro\n\nRules:\n\nShow us what you can ship with GPT-6 Astra's new capabilities, whether that’s something new or a feature for your existing startup. All work must be built during the hackathon and submitted as a public open source repository - existing product code does not qualify.\n\nApplications reviewed on a rolling basis & space is limited. Maximum teams of four. All attendees must submit an application to be approved.\n\nPlease note: This event is fully in-person in San Francisco. Capacity is limited. Teams may have up to four members. All attendees must apply and be approved. Submitting an application does not guarantee a seat; approved applicants must confirm their attendance.\n\nRegister",
+      "checkedAt": "2026-09-05T07:20:02.760Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://cerebralvalley.ai/e/openai-gpt-6-astra-sf",
+        "name": "GPT-6 Astra Hackathon SF",
+        "description": "Developers and technical founders will race to build cutting-edge projects using GPT-6 Astra in a high-stakes hackathon where top teams can snag up to $50K in credits and DevDay 2026 passes, with all finalists walking away with a year of ChatGPT Pro.",
+        "startDate": "2026-09-08T16:00:00.000Z",
+        "endDate": "2026-09-09T05:00:00.000Z",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "organizers": [
+          "OpenAI",
+          "Cerebral Valley"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      }
+    },
     {
       "url": "https://cerebralvalley.ai/e/vultr-the-agent-arena",
       "title": "The Agent Arena Hackathon | Cerebral Valley",
@@ -47,8 +84,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Skip to Main Content\nHosted ByVultr\nThe Agent Arena Hackathon\nSan Francisco, CASep 26 at 9:00 AM – Sep 27 at 5:00 PM (PDT)\n\nJoin us at The Agent Arena Hackathon hosted by Vultr to build what the next generation of agent infrastructure actually looks like in production.\n\nAgents are writing code, driving browsers, and running real operations for teams. The infrastructure built to contain and coordinate what they do needs to get better.\n\nVultr is bringing the tools for you to build infrastructure powering the next generation of autonomous execution: VM backends, serverless inference, and the compute layer agents run on when they stop talking and start acting.\n\nCompete for more than $10,000 across cash and credits!\n\nNote: This event is fully in-person in San Francisco. Teams may have up to four members. All attendees must apply and be approved. Submitting an application does not guarantee a seat; approved applicants must confirm their attendance.\n\nRegister",
-      "checkedAt": "2026-09-04T17:57:48.430Z",
+      "evidence": "Skip to Main Content\nHostsVultr\nThe Agent Arena Hackathon\nSan Francisco, CASep 26 at 9:00 AM – Sep 27 at 5:00 PM (PDT)\n\nJoin us at The Agent Arena Hackathon hosted by Vultr to build what the next generation of agent infrastructure actually looks like in production.\n\nAgents are writing code, driving browsers, and running real operations for teams. The infrastructure built to contain and coordinate what they do needs to get better.\n\nVultr is bringing the tools for you to build infrastructure powering the next generation of autonomous execution: VM backends, serverless inference, and the compute layer agents run on when they stop talking and start acting.\n\nCompete for more than $10,000 across cash and credits!\n\nNote: This event is fully in-person in San Francisco. Teams may have up to four members. All attendees must apply and be approved. Submitting an application does not guarantee a seat; approved applicants must confirm their attendance.\n\nRegister",
+      "checkedAt": "2026-09-05T07:19:39.148Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://cerebralvalley.ai/e/vultr-the-agent-arena",
@@ -100,40 +137,7 @@
         "organizers": [],
         "offerAvailability": null
       },
-      "checkedAt": "2026-09-04T17:55:20.165Z"
-    },
-    {
-      "url": "https://luma.com/utyqfarn",
-      "title": "The First Non-Tech Buildathon",
-      "category": "hackathon",
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "confidence": 94,
-      "relevance": 81,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": true,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "The First Non-Tech Buildathon\nNon-technical creators, designers, and founders will spend an afternoon building working AI tools from scratch at the first-ever Non-Tech Buildathon on September 4, with hands-on guidance helping you turn any idea into a demo-ready prototype. Whether you're pitching solo, joining an existing…\nSan Francisco, California\nSan Francisco\nCA",
-      "structuredEvent": {
-        "url": "https://luma.com/utyqfarn",
-        "name": "The First Non-Tech Buildathon",
-        "description": "Non-technical creators, designers, and founders will spend an afternoon building working AI tools from scratch at the first-ever Non-Tech Buildathon on September 4, with hands-on guidance helping you turn any idea into a demo-ready prototype. Whether you're pitching solo, joining an existing…",
-        "startDate": "2026-09-04T20:00:00.000Z",
-        "endDate": "2026-09-05T00:00:00.000Z",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, California",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "organizers": [],
-        "offerAvailability": null
-      },
-      "checkedAt": "2026-09-04T17:55:20.165Z"
+      "checkedAt": "2026-09-05T07:17:29.031Z"
     },
     {
       "url": "https://luma.com/b101ml40",
@@ -166,14 +170,14 @@
         "organizers": [],
         "offerAvailability": null
       },
-      "checkedAt": "2026-09-04T17:55:20.165Z",
+      "checkedAt": "2026-09-05T07:17:29.031Z",
       "heldBecause": null
     },
     {
       "url": "https://luma.com/40ivcqxg",
-      "title": "Recursive Self Improvement Hack #3: Co-Scientist",
+      "title": "Recursive Self Improvement Hack: Co-Scientist",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
       "confidence": 78,
       "relevance": 71,
       "signals": {
@@ -183,37 +187,26 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Recursive Self Improvement Hack #3: Co-Scientist\nSerge Alexander Didenko\nSerge Alexander Didenko\nArtem Lukoianov\nSean Klein\nSam Tandogdu\nMehmet Ozan Kabak\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "evidence": "Recursive Self Improvement Hack: Co-Scientist\nEvery Sunday, researchers from MIT, Harvard, Stanford, DeepMind, and Meta gather to build recursive self-improving agents and explore the frontier of AI research using cutting-edge tools and autoresearch principles—spawned from 130+ consecutive weekend hacks and aimed at accelerating the…\nSan Francisco, California\nSan Francisco\nCA",
       "structuredEvent": {
         "url": "https://luma.com/40ivcqxg",
-        "name": "Recursive Self Improvement Hack #3: Co-Scientist",
-        "description": null,
-        "startDate": "2026-09-06T10:00:00.000-07:00",
-        "endDate": "2026-09-06T20:00:00.000-07:00",
+        "name": "Recursive Self Improvement Hack: Co-Scientist",
+        "description": "Every Sunday, researchers from MIT, Harvard, Stanford, DeepMind, and Meta gather to build recursive self-improving agents and explore the frontier of AI research using cutting-edge tools and autoresearch principles—spawned from 130+ consecutive weekend hacks and aimed at accelerating the…",
+        "startDate": "2026-09-06T17:00:00.000Z",
+        "endDate": "2026-09-07T03:00:00.000Z",
         "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
-          "name": "San Francisco, CA",
+          "name": "San Francisco, California",
           "city": "San Francisco",
-          "region": "California"
+          "region": "CA"
         },
-        "organizers": [
-          "Serge Alexander Didenko",
-          "Serge Alexander Didenko",
-          "Artem Lukoianov",
-          "Sean Klein",
-          "Sam Tandogdu",
-          "Mehmet Ozan Kabak"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
+        "organizers": [],
+        "offerAvailability": null
       },
-      "checkedAt": "2026-09-04T17:55:27.350Z"
+      "checkedAt": "2026-09-05T07:17:29.031Z",
+      "heldBecause": null
     }
   ],
-  "errors": [
-    {
-      "url": "https://cerebralvalley.ai/e/openenv-hackathon-sf",
-      "message": "page.goto: Http2 at https://cerebralvalley.ai/e/openenv-hackathon-sf\nCall log:\n  - navigating to \"https://cerebralvalley.ai/e/openenv-hackathon-sf\", waiting until \"domcontentloaded\"\n"
-    }
-  ]
+  "errors": []
 }
