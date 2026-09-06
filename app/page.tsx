@@ -26,6 +26,16 @@ type EventRecord = {
   going: number | null;
   why: string;
   score: number;
+  // A sweep that cannot reach a listing republishes it from the last snapshot
+  // rather than dropping the row off every subscription. These two are what a
+  // renderer needs to say "last confirmed on the 4th" instead of showing a
+  // three-day-old row as if it had been read this morning.
+  missedSweeps?: number;
+  provenance?: {
+    kind: "observed" | "carried-forward";
+    carriedFrom?: { file: string; sweepCompletedAt: string | null } | null;
+    lastConfirmedAt?: string | null;
+  };
 };
 
 type RegionSummary = {

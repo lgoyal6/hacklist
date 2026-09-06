@@ -25,6 +25,8 @@
 // is still on, because their client has nothing to act on. A cancelled event
 // stays in the feed, marked, until its date passes.
 
+import { PROVENANCE_KIND, contentHash } from "./provenance.mjs";
+
 /** Fields whose change is worth reporting as a revision of an existing entry. */
 export const TRACKED_FIELDS = ["title", "start", "end", "status", "venue", "prize"];
 
@@ -53,6 +55,43 @@ export function cancelledByOrganizer(candidate) {
 /** How many consecutive sweeps may fail to see an event before it is dropped. */
 export const DEFAULT_MAX_MISSED_SWEEPS = 3;
 
+/**
+ * Where a republished event came from, given that this sweep did not read it.
+ *
+ * A carried event is a real listing that was not re-observed, so neither
+ * available shortcut is honest. Stamping it with this run's input hashes would
+ * assert it was seen today; keeping the stamp it had would name a file revision
+ * this board does not list. What it does trace to is the snapshot it was
+ * republished from, which is a file this run genuinely read, so that file and
+ * its digest are what `inputs` names.
+ *
+ * `lastConfirmedAt` is the field that answers "how stale is this row". It is
+ * inherited along a chain of carries, so three consecutive misses still point
+ * at the sweep that actually saw the event rather than at the one before last.
+ * When the snapshot predates provenance it has no inherited answer, and the
+ * snapshot's own sweep time is only correct if that snapshot had *observed* the
+ * event; if it was already carrying it, the honest answer is that nothing on
+ * disk records when the event was last seen. Null says that. Reporting the
+ * snapshot time there would make a stale listing look fresher than it is, which
+ * is the failure this whole path exists to avoid.
+ */
+function carriedProvenance(before, source) {
+  const inherited = before.provenance;
+  return {
+    kind: PROVENANCE_KIND.carriedForward,
+    inputs: source ? [{ file: source.file, sha256: source.sha256 }] : [],
+    // The record did not change, so neither did its content hash. Recomputing
+    // is the fallback for a snapshot written before events carried one.
+    contentSha256: inherited?.contentSha256 ?? contentHash(before),
+    carriedFrom: source
+      ? { file: source.file, sweepCompletedAt: source.capturedAt ?? null }
+      : null,
+    lastConfirmedAt:
+      inherited?.lastConfirmedAt ??
+      ((before.missedSweeps ?? 0) === 0 ? source?.capturedAt ?? null : null),
+  };
+}
+
 function isOver(event, now) {
   const last = Date.parse(event.end ?? event.start ?? "");
   return Number.isFinite(last) && last < now;
@@ -63,12 +102,17 @@ function isOver(event, now) {
  *
  * `current` is what this sweep read. `previous` is the last published set,
  * which is where a carried event's fields and its missed-sweep count come from.
+ * `previousSource` is the versioned identity of the file `previous` was read
+ * out of, `{ file, sha256, capturedAt }`, and is what a carried event's
+ * provenance names. Without it a carried event is published with no input to
+ * trace to, which the provenance gate rejects, correctly.
  * Returns the same `added` / `removed` / `updated` shape data/changes.json has
  * always had, plus `carried` and `cancelled`.
  */
 export function reconcile({
   current,
   previous = [],
+  previousSource = null,
   now = Date.now(),
   maxMissedSweeps = DEFAULT_MAX_MISSED_SWEEPS,
 }) {
@@ -107,7 +151,14 @@ export function reconcile({
       removed.push(url);
       continue;
     }
-    published.set(url, { ...before, missedSweeps });
+    published.set(url, {
+      ...before,
+      missedSweeps,
+      // Not `...before`'s own stamp: that names an input file this run never
+      // read, at a revision this board does not list, and keeping it would
+      // claim the listing was observed today.
+      provenance: carriedProvenance(before, previousSource),
+    });
     carried.push({ url, missedSweeps });
   }
 
