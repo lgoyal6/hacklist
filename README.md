@@ -141,7 +141,7 @@ site never depends on a scraper being up, and why the best-effort passes can be
 skipped in CI without breaking the build. See **Automation** below for the schedule
 and **Local passes** for what must never run in CI.
 
-## Provenance
+## Provenance, deletion and retention
 
 ### Where a listed event came from
 
@@ -164,6 +164,55 @@ The content hash covers `url`, `title`, `category`, `discoveredVia`,
 `confidence`, `relevance` and `evidence`, in a fixed order. Fields nothing is
 derived from are excluded, so an unrelated edit upstream does not read as a
 changed record; absent and empty hash differently.
+
+### Deleting or redacting an event
+
+```bash
+node scripts/redact-event.mjs --url https://luma.com/abc123 --reason "duplicate"
+node scripts/redact-event.mjs --url https://... --redact organizer --reason "..."
+```
+
+A delete drops the event; a redact keeps the row and blanks the named fields. A
+reason is required.
+
+The record has to leave four places, and removing it from `data/events.json`
+only covers two of them:
+
+| surface | what it is | how it is cleared |
+| --- | --- | --- |
+| index | the rendered board | rebuilt from `data/events.json` |
+| export | the `/calendar.ics` feed subscribers hold | rebuilt from `data/events.json` |
+| cache | `data/luma-ledger.json`, which records the event as pushed to the public Luma calendar | the entry is deleted, so reconciliation can see the event again |
+| next sweep | the sweep runs twice a day and finds the same page | a tombstone in `data/tombstones.json`, applied on every publish |
+
+Without the tombstone the record is back within twelve hours. The tombstone
+stores the content hash of what was removed, which identifies the record for a
+later audit and does not reconstruct it. If `data/tombstones.json` cannot be
+read the publish stops, because publishing without it would restore everything
+ever deleted.
+
+`scripts/verify-deletion.mjs` proves all four, by building the site before and
+after a real deletion and fetching both routes from the built Worker.
+
+The Luma calendar itself is a third-party surface this repository cannot write
+to on deletion; clearing the ledger entry is what makes the discrepancy visible
+rather than settled.
+
+### Retention and backups
+
+There is no backup automation in this repository, and nothing here restores from
+one. What exists is version history:
+
+- `data/history/` holds one snapshot per sweep, committed to git. Snapshots are
+  never rewritten, including by a deletion: they are the record of what the
+  board said at a past time.
+- git history holds every past revision of `data/events.json` and of the
+  candidate files.
+
+So a deletion removes a record from everything the site serves and from the next
+sweep, and it does not remove it from the snapshots or from git history. Both
+are public. A deletion that has to reach them is a history rewrite and this
+tooling does not do it.
 
 ## Reliability
 
@@ -479,6 +528,8 @@ npm run discover:linkedin  # just the LinkedIn pass
 npm run luma:sync -- --region san-diego   # mirror one region to its Luma calendar
 npm run normalize          # re-normalize existing discovery output only
 npm run check:sources      # are all the sources still working?
+node scripts/redact-event.mjs --url <url> --reason <text>   # delete or redact one event
+node scripts/verify-deletion.mjs   # prove a deletion clears index, export and cache
 npm test                   # everything, including the browser-driven form test
 npm run test:artifact      # the deploy gate: is the published artifact correct?
 npm run test:browser       # drives the Luma form filler against a local fixture

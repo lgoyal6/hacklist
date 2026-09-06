@@ -20,6 +20,11 @@ import {
   reconcile,
 } from "./lib/event-revisions.mjs";
 import { Provenance } from "./lib/provenance.mjs";
+import {
+  TOMBSTONE_FILE,
+  apply as applyTombstones,
+  readTombstonesStrict,
+} from "./lib/tombstones.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
@@ -975,6 +980,38 @@ events.sort(
     (a.start ?? "9999").localeCompare(b.start ?? "9999"),
 );
 
+// --- deletions ---
+//
+// Applied here, after scoring and before anything is counted, so a deleted
+// event is missing from the counts, the regions, the snapshot, the change log
+// and the feed rather than being filtered out at the last moment by whichever
+// consumer remembered to.
+//
+// This is also what makes a deletion durable. The sweep runs twice a day and
+// will find the same page again; without this the record returns on the next
+// run. A tombstone file that cannot be read stops the publish, because
+// publishing without it would republish everything ever deleted.
+const tombstonePath = resolve(root, TOMBSTONE_FILE);
+let tombstones;
+try {
+  tombstones = await readTombstonesStrict(tombstonePath);
+} catch (error) {
+  console.error(
+    `Refusing to publish: ${TOMBSTONE_FILE} could not be read (${String(error).slice(0, 120)}).\n` +
+      "Publishing without it would restore every deleted record, so " +
+      "data/events.json is untouched.",
+  );
+  process.exit(1);
+}
+const applied = applyTombstones(events, tombstones);
+if (applied.deleted.length || applied.redacted.length) {
+  events.splice(0, events.length, ...applied.events);
+  console.log(
+    `Applied ${tombstones.length} tombstone(s): ` +
+      `${applied.deleted.length} deleted, ${applied.redacted.length} redacted.`,
+  );
+}
+
 // What the site and the ICS feed need to know about the regions, counted here
 // rather than derived in two places from the events themselves.
 //
@@ -1016,6 +1053,10 @@ function buildOutput(events) {
       seedCount: config.seedUrls.length,
       // The exact input revisions this board was built from.
       inputs: provenance.manifest(),
+      // How many records were withheld, so a count that dropped can be explained
+      // without diffing two snapshots.
+      deletedCount: applied.deleted.length,
+      redactedCount: applied.redacted.length,
       externalCount: events.filter((event) => event.platform === "external")
         .length,
     },
