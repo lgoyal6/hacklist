@@ -33,6 +33,7 @@ import {
 } from "./lib/candidate-score.mjs";
 import { mlhSchedule } from "./lib/event-dates.mjs";
 import { createPacer, DEFAULT_UA } from "./lib/page-http.mjs";
+import { safeFetch } from "./lib/safe-fetch.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
@@ -85,7 +86,7 @@ for (const year of YEARS) {
   const url = `https://www.mlh.com/seasons/${year}/events`;
   try {
     await pace();
-    const response = await fetch(url, {
+    const response = await safeFetch(url, {
       headers: { "user-agent": DEFAULT_UA, accept: "text/html" },
       redirect: "follow",
       signal: AbortSignal.timeout(20_000),

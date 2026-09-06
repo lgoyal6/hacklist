@@ -13,11 +13,13 @@
 // address, with no key. It is the same endpoint the sync already used to read
 // back stored start times; it just was not trusted with the question that
 // mattered.
+import { safeFetch } from "./safe-fetch.mjs";
+
 const API = "https://api.lu.ma";
 const TIMEOUT_MS = 20_000;
 
 async function getJson(url) {
-  const response = await fetch(url, {
+  const response = await safeFetch(url, {
     headers: { accept: "application/json", "user-agent": "hacklist" },
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
