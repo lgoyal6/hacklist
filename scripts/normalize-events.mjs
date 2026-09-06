@@ -19,14 +19,38 @@ import {
   cancelledByOrganizer,
   reconcile,
 } from "./lib/event-revisions.mjs";
+import { Provenance } from "./lib/provenance.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
   await readFile(resolve(root, "config/discovery.json"), "utf8"),
 );
-const discovery = JSON.parse(
-  await readFile(resolve(root, "data/discovery-output.json"), "utf8"),
+// Every input this run reads is hashed as it is read, so the published board
+// can name the exact revisions it was built from rather than the file paths.
+const provenance = new Provenance();
+// Which input files each candidate came from, keyed by URL.
+//
+// Not by object identity: the deduplicator returns a new object for a merge and
+// the enricher returns another, so an identity key loses the source at the
+// first transformation and 34 of 145 events came out with no traceable input.
+// The URL is what survives both, and it is the record's identity anyway.
+const candidateSources = new Map();
+const noteSource = (url, file) => {
+  const seen = candidateSources.get(url);
+  if (seen) seen.add(file);
+  else candidateSources.set(url, new Set([file]));
+};
+const sourcesOf = (url) => candidateSources.get(url) ?? new Set(["unknown"]);
+
+const discoveryRaw = await readFile(
+  resolve(root, "data/discovery-output.json"),
+  "utf8",
 );
+provenance.record("data/discovery-output.json", discoveryRaw);
+const discovery = JSON.parse(discoveryRaw);
+for (const candidate of discovery.candidates) {
+  noteSource(candidate.url, "data/discovery-output.json");
+}
 
 // Sources that arrive as structured data rather than as a page the sweep could
 // render: Y Combinator's own events site, Luma's public discover API, and
@@ -48,7 +72,12 @@ async function readCandidates(file) {
     return []; // optional input; absent until that pass has run
   }
   try {
-    return JSON.parse(raw).candidates ?? [];
+    const candidates = JSON.parse(raw).candidates ?? [];
+    // Recorded only once the file parsed: an input version that names bytes
+    // nothing was read from would be a provenance claim with no content.
+    provenance.record(file, raw);
+    for (const candidate of candidates) noteSource(candidate.url, file);
+    return candidates;
   } catch (error) {
     console.warn(
       `WARNING: ${file} exists but is not valid JSON (${String(error).slice(0, 80)}) - ` +
@@ -87,6 +116,7 @@ try {
   const raw = await readFile(resolve(root, "data/luma-api.json"), "utf8");
   try {
     lumaEnrichment = JSON.parse(raw).enrichment ?? {};
+    provenance.record("data/luma-api.json", raw);
   } catch (error) {
     console.warn(
       `WARNING: data/luma-api.json is not valid JSON (${String(error).slice(0, 80)}) - ` +
@@ -771,7 +801,12 @@ for (const candidate of allCandidates) {
   for (const [index, kept] of deduped.entries()) {
     const why = isSameEvent(candidate, kept, resolvers);
     if (!why) continue;
-    deduped[index] = mergeDuplicate(kept, candidate, config.timezone);
+    const merged = mergeDuplicate(kept, candidate, config.timezone);
+    // The merged record is derived from both sides, so it inherits both sets of
+    // sources. Whichever URL survives carries them.
+    for (const file of sourcesOf(kept.url)) noteSource(merged.url, file);
+    for (const file of sourcesOf(candidate.url)) noteSource(merged.url, file);
+    deduped[index] = merged;
     mergedAny = true;
     console.log(
       `  merged duplicate (${why}): "${candidate.title.slice(0, 36)}" + ` +
@@ -889,6 +924,9 @@ for (const rawCandidate of deduped) {
   events.push({
     id: stableEventId(candidate.url),
     url: candidate.url,
+    // Which revision of which input produced this row, and the hash of the
+    // record inside it. `discoveredVia` names a website; this names a version.
+    provenance: provenance.stamp(sourcesOf(candidate.url), candidate),
     platform:
       new URL(candidate.url).hostname === "luma.com" ? "luma" : "external",
     // "hackathon" is the real thing; "adjacent" is a build-adjacent event
@@ -976,6 +1014,8 @@ function buildOutput(events) {
       organizerCount: new Set(events.map((e) => e.organizer)).size,
       sourceCount: new Set(events.map((e) => e.discoveredVia)).size,
       seedCount: config.seedUrls.length,
+      // The exact input revisions this board was built from.
+      inputs: provenance.manifest(),
       externalCount: events.filter((event) => event.platform === "external")
         .length,
     },
@@ -994,13 +1034,21 @@ const previousSnapshots = (await readdir(historyDir))
   .sort();
 
 let previous = null;
+let previousSource = null;
 if (previousSnapshots.length) {
-  previous = JSON.parse(
-    await readFile(
-      resolve(historyDir, previousSnapshots[previousSnapshots.length - 1]),
-      "utf8",
-    ),
-  );
+  const name = previousSnapshots[previousSnapshots.length - 1];
+  const raw = await readFile(resolve(historyDir, name), "utf8");
+  previous = JSON.parse(raw);
+  // Yesterday's output is one of today's inputs. Every event this sweep failed
+  // to reach is republished out of these bytes, and what is removed is decided
+  // against them, so the snapshot is versioned like any other input file and
+  // appears in meta.inputs. That is what a carried event's provenance points
+  // at, and it makes the lineage walkable: snapshot names snapshot, back to the
+  // sweep that read the listing.
+  previousSource = {
+    ...provenance.record(`data/history/${name}`, raw),
+    capturedAt: previous.meta?.sweepCompletedAt ?? null,
+  };
 }
 
 // A published board is more valuable than a fresh one. Every discovery pass is
@@ -1063,6 +1111,7 @@ const maxMissedSweeps = Number(config.maxMissedSweeps ?? 3);
 const { events: published, changes: revisions } = reconcile({
   current: events,
   previous: previous?.events ?? [],
+  previousSource,
   now: Date.now(),
   maxMissedSweeps,
 });

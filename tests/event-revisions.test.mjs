@@ -13,6 +13,7 @@ import {
   cancelledByOrganizer,
   reconcile,
 } from "../scripts/lib/event-revisions.mjs";
+import { PROVENANCE_KIND, contentHash } from "../scripts/lib/provenance.mjs";
 
 const NOW = Date.parse("2026-09-05T12:00:00Z");
 const SOON = "2026-09-20T17:00:00.000Z";
@@ -38,6 +39,22 @@ const other = (over = {}) =>
 
 const run = (current, previous, over = {}) =>
   reconcile({ current, previous, now: NOW, ...over });
+
+// The versioned identity of the snapshot a carried event is republished out of,
+// as normalize-events hands it over: the same { file, sha256 } every other input
+// gets, plus when the snapshot was taken.
+const SNAPSHOT = {
+  file: "data/history/sweep-2026-09-04T07-54-53-629Z.json",
+  sha256: "a".repeat(64),
+  bytes: 170649,
+  capturedAt: "2026-09-04T07:54:53.629Z",
+};
+
+const observedStamp = {
+  kind: PROVENANCE_KIND.observed,
+  inputs: [{ file: "data/luma-api.json", sha256: "b".repeat(64) }],
+  contentSha256: "c".repeat(64),
+};
 
 test("a renamed venue revises the existing entry rather than replacing it", () => {
   const before = [event()];
@@ -135,6 +152,80 @@ test("a source that temporarily disappears does not cancel the event", () => {
   ]);
   // A carried event was not read, so it cannot have revised anything.
   assert.deepEqual(changes.updated, []);
+});
+
+test("an event the sweep could not reach names the snapshot it came from", () => {
+  const observed = { ...event(), missedSweeps: 0, provenance: observedStamp };
+  const { events } = run([], [observed], { previousSource: SNAPSHOT });
+  const [carried] = events;
+
+  assert.equal(carried.provenance.kind, PROVENANCE_KIND.carriedForward);
+  // Not data/luma-api.json. This sweep never opened it, and the revision the
+  // observed stamp names is not one the board it is about to be published on
+  // can list. The snapshot is the file this run actually read the row out of.
+  assert.deepEqual(carried.provenance.inputs, [
+    { file: SNAPSHOT.file, sha256: SNAPSHOT.sha256 },
+  ]);
+  assert.deepEqual(carried.provenance.carriedFrom, {
+    file: SNAPSHOT.file,
+    sweepCompletedAt: SNAPSHOT.capturedAt,
+  });
+  // The record itself did not change, so what identifies it does not either.
+  assert.equal(carried.provenance.contentSha256, observedStamp.contentSha256);
+  assert.equal(carried.provenance.lastConfirmedAt, SNAPSHOT.capturedAt);
+});
+
+test("carrying an event twice does not move when it was last confirmed", () => {
+  const observed = { ...event(), missedSweeps: 0, provenance: observedStamp };
+  const once = run([], [observed], { previousSource: SNAPSHOT }).events;
+  const later = {
+    file: "data/history/sweep-2026-09-04T18-12-39-190Z.json",
+    sha256: "d".repeat(64),
+    capturedAt: "2026-09-04T18:12:39.190Z",
+  };
+  const [twice] = run([], once, { previousSource: later }).events;
+
+  assert.equal(twice.missedSweeps, 2);
+  // The snapshot the row is copied out of moves forward every sweep. The sweep
+  // that actually saw the event does not, and it is the one a reader needs:
+  // taking the newer date would report a row nobody has confirmed in two sweeps
+  // as if it had been read half a day ago.
+  assert.equal(twice.provenance.carriedFrom.file, later.file);
+  assert.equal(twice.provenance.lastConfirmedAt, SNAPSHOT.capturedAt);
+});
+
+test("a snapshot that predates provenance is not credited with a sighting", () => {
+  // Boards written before events carried provenance record only how many sweeps
+  // have missed a row. For one that snapshot was already carrying, the
+  // snapshot's own completion time is not when the event was last seen, and
+  // nothing on disk is. Null says that; the sweep time would say something
+  // false, and it would say it in the direction that makes stale look fresh.
+  const stale = { ...event(), missedSweeps: 2 };
+  const [carried] = run([], [stale], { previousSource: SNAPSHOT }).events;
+  assert.equal(carried.provenance.lastConfirmedAt, null);
+  // The snapshot is still named, so "not confirmed since at latest this" holds.
+  assert.equal(carried.provenance.carriedFrom.sweepCompletedAt, SNAPSHOT.capturedAt);
+  // And nothing recorded the row's identity, so it is computed here rather than
+  // left absent and failing the publisher's own gate.
+  assert.equal(carried.provenance.contentSha256, contentHash(stale));
+
+  // The other half, without which the null above would just be the only answer
+  // this branch can give: a snapshot that had read the event does date it.
+  const fresh = { ...event(), missedSweeps: 0 };
+  const [dated] = run([], [fresh], { previousSource: SNAPSHOT }).events;
+  assert.equal(dated.provenance.lastConfirmedAt, SNAPSHOT.capturedAt);
+});
+
+test("an event the sweep read keeps the stamp the sweep gave it", () => {
+  // The other half of carrying provenance forward: it goes on the rows that
+  // were not read, not on every row that gets published.
+  const { events } = run(
+    [{ ...event(), provenance: observedStamp }],
+    [event()],
+    { previousSource: SNAPSHOT },
+  );
+  assert.equal(events.length, 1);
+  assert.deepEqual(events[0].provenance, observedStamp);
 });
 
 test("an event that comes back is confirmed again and its counter resets", () => {

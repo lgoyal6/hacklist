@@ -141,6 +141,30 @@ site never depends on a scraper being up, and why the best-effort passes can be
 skipped in CI without breaking the build. See **Automation** below for the schedule
 and **Local passes** for what must never run in CI.
 
+## Provenance
+
+### Where a listed event came from
+
+`discoveredVia` names the page a candidate was found on. That answers "which
+site", not "which version of which file", and two sweeps a week apart produce
+the same value from different data. So `data/events.json` carries two more
+things:
+
+- `meta.inputs` lists every input file the run read, each with the sha256 of its
+  exact bytes. That names the revisions the board was built from.
+- every event carries `provenance.inputs`, the subset of those revisions it came
+  from, and `provenance.contentSha256`, a hash of the candidate fields the event
+  is derived from.
+
+`provenance.inputs` is a list because the deduplicator merges the same event
+found on Luma with the same event found on Devpost, and the result comes from
+both files.
+
+The content hash covers `url`, `title`, `category`, `discoveredVia`,
+`confidence`, `relevance` and `evidence`, in a fixed order. Fields nothing is
+derived from are excluded, so an unrelated edit upstream does not read as a
+changed record; absent and empty hash differently.
+
 ## Reliability
 
 Every discovery pass is built never to fail - a throttled search or a dead
