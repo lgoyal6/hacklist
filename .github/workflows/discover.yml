@@ -12,7 +12,7 @@ on:
     # only a supply of chances to run: the gate decides from how long it has been
     # since the last real sweep, so it does not matter which of them fires, how
     # late it arrives, or whether GitHub is still running an older registered
-    # schedule. Extra fires are cheap — a suppressed one costs about 15 seconds.
+    # schedule. Extra fires are cheap - a suppressed one costs about 15 seconds.
     #
     # Split into four rather than "0 3,4,15,16 * * *" only because separate
     # entries read more clearly and make github.event.schedule useful in the log.
@@ -40,7 +40,7 @@ jobs:
       - name: Sweep twice a day, however late the trigger arrives
         id: check
         env:
-          # Only for the log — nothing branches on it any more. See below.
+          # Only for the log - nothing branches on it any more. See below.
           FIRED_CRON: ${{ github.event.schedule }}
         run: |
           # Gate on WHEN WE LAST ACTUALLY SWEPT, not on the trigger.
@@ -58,7 +58,7 @@ jobs:
           #      which matches no branch, so everything skipped again.
           #
           # Both tried to infer intent from the trigger. The trigger is not
-          # trustworthy — its timing drifts and its identity lags the file. What
+          # trustworthy - its timing drifts and its identity lags the file. What
           # is trustworthy is the record of what we did: the sweep stamps
           # meta.sweepCompletedAt into data/events.json and commits it.
           #
@@ -134,10 +134,10 @@ jobs:
           # the cost of skipping is a stale board nobody is told about.
           if [ "$last" = "0" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "No usable sweepCompletedAt in data/events.json — sweeping ($slot)."
+            echo "No usable sweepCompletedAt in data/events.json - sweeping ($slot)."
           elif [ "$gap_hours" -ge "$MIN_GAP_HOURS" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Last sweep ${gap_hours}h ago (>= ${MIN_GAP_HOURS}h) — sweeping ($slot). Trigger: '${FIRED_CRON:-dispatch}'."
+            echo "Last sweep ${gap_hours}h ago (>= ${MIN_GAP_HOURS}h) - sweeping ($slot). Trigger: '${FIRED_CRON:-dispatch}'."
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
             echo "Skipping: last sweep only ${gap_hours}h ago (< ${MIN_GAP_HOURS}h). Trigger: '${FIRED_CRON:-dispatch}'."
@@ -149,7 +149,7 @@ jobs:
     runs-on: ubuntu-latest
     # Scoped to this job rather than the whole workflow. Two of the four crons
     # are always the other timezone's and skip in about 15 seconds, but a
-    # workflow-level group still enrols them — and GitHub cancels an older
+    # workflow-level group still enrols them - and GitHub cancels an older
     # PENDING run when a newer one joins the group. With the fires arriving
     # 50-110 minutes late they bunch together, so a skip-run could displace a
     # real sweep that was queued behind it. A skipped job never enters a
@@ -174,17 +174,17 @@ jobs:
       # Worth knowing before adding one: the KEYLESS path returns nothing here.
       # DuckDuckGo's HTML endpoint does bot detection and this is a datacenter, so
       # it answers 403 or an empty page however politely it asks. That is specific
-      # to scraping a search engine's own page — Serper and Tavily are APIs built
+      # to scraping a search engine's own page - Serper and Tavily are APIs built
       # for server use and work fine from here, as does Bright Data. Any of the
       # keyed entries below fixes CI; the keyless fallback cannot.
       #
-      # LinkedIn's paid per-call fallback is deliberately unreachable here — it
+      # LinkedIn's paid per-call fallback is deliberately unreachable here - it
       # runs through the `zero` CLI, which is not installed on this runner, so no
       # CI job can spend money. That leg runs on the local schedule instead
       # (scripts/local-passes.sh), and is off by default there too.
       # Lets the Luma calendar sync and the tagging pass run here instead of only
-      # on one Mac. This is a real credential — whoever holds it can act as that
-      # account on Luma, not merely on one calendar — so it lives in an encrypted
+      # on one Mac. This is a real credential - whoever holds it can act as that
+      # account on Luma, not merely on one calendar - so it lives in an encrypted
       # secret and nothing ever prints it. Re-export with
       # `npm run luma:export-session | gh secret set LUMA_SESSION_COOKIES`;
       # luma.auth-session-key currently runs to September 2027.
@@ -207,6 +207,13 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Before the sweep, not after: these assert that a fetcher refuses a private
+      # or redirected destination. Running them once the sweep has already reached
+      # the network would be checking the lock after opening the door. No build
+      # needed, so this costs seconds.
+      - name: Check the fetchers refuse forbidden destinations
+        run: npm run test:fetchers
+
       - name: Sweep Luma and normalize events
         run: npm run discover:sf
         env:
@@ -285,7 +292,7 @@ jobs:
       # promoted, and the live site keeps serving the last version that passed.
       #
       # Deliberately test:artifact and not the whole suite. This gate answers one
-      # question — is the thing we are about to publish correct — and the browser
+      # question - is the thing we are about to publish correct - and the browser
       # tests that drive Luma's form answer a different one. A flaky Chrome in a
       # sync test must not be able to stop the site from updating.
       #
@@ -309,7 +316,7 @@ jobs:
         run: npm run deploy
       # Last, and deliberately after the deploy. Every discovery pass is built to
       # exit 0 whatever happens, so a source can die and the pipeline keeps
-      # publishing yesterday's answer in silence — which is exactly what happened
+      # publishing yesterday's answer in silence - which is exactly what happened
       # to web search. This step is the alarm: it never blocks the board from
       # updating, it just turns the run red so a dead source is visible.
       # Mirror the board onto the Luma calendar. Runs here only when the session
@@ -317,7 +324,7 @@ jobs:
       #
       # After the deploy on purpose. The site and the feed are the product and
       # must not wait on a browser driving somebody else's admin UI, and this step
-      # is allowed to fail without taking the run down — the sync is idempotent and
+      # is allowed to fail without taking the run down - the sync is idempotent and
       # loses no queue state, so the next run simply picks up where it stopped.
       - name: Mirror the board onto the Luma calendar
         if: env.LUMA_SESSION_COOKIES != ''
@@ -361,7 +368,7 @@ jobs:
           npm run check:sources 2>&1 | tee /tmp/health.txt
       # A red run only helps if someone finds out. GitHub's own workflow-failure
       # email depends on per-account settings and, for scheduled runs, on who last
-      # touched the workflow file — too conditional to rely on. An issue is
+      # touched the workflow file - too conditional to rely on. An issue is
       # unconditional: it emails, it pushes to the GitHub mobile app, and it
       # leaves a record that persists after the run logs age out.
       #
@@ -376,7 +383,7 @@ jobs:
         run: |
           set +e
           detail=$(tail -40 /tmp/health.txt 2>/dev/null)
-          [ -z "$detail" ] && detail="The run failed before the health check — see the run log. A refused publish (collapsed board) looks like this."
+          [ -z "$detail" ] && detail="The run failed before the health check - see the run log. A refused publish (collapsed board) looks like this."
           body=$(printf 'The discovery pipeline failed.\n\nRun: %s\n\n```\n%s\n```\n\nThe live board is unaffected: a collapsed sweep is refused before publishing, and the health check runs after the deploy.\n' "$RUN_URL" "$detail")
           existing=$(gh issue list --state open --label pipeline-red --limit 1 --json number --jq '.[0].number')
           if [ -n "$existing" ]; then
