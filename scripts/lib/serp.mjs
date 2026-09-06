@@ -2,6 +2,8 @@
 //
 // Pure functions, no network, no top-level work, so the tests can exercise them.
 
+import { safeFetch } from "./safe-fetch.mjs";
+
 /**
  * Pull result links out of a Google SERP's HTML.
  *
@@ -69,30 +71,30 @@ const BRIGHTDATA_ENDPOINT = "https://api.brightdata.com/request";
  *   * Do NOT put brd_json in the URL. The zone carries its own data_format
  *     ("parsed_light" for a Light JSON zone), and specifying it again makes
  *     Bright Data answer 200 with an empty body and x-brd-error-code:
- *     expect_body — a success status with nothing in it.
+ *     expect_body - a success status with nothing in it.
  *   * A first attempt fails with expect_body/502 often enough to matter: Bright
  *     Data's own fetch of Google comes back empty. The retry succeeds. Without
  *     retrying, the whole leg loses queries to a transient upstream blip.
  *   * After a failed query Bright Data imposes a ~15s cooldown on that exact
  *     query and answers 429 failed_query_rejected inside it, so the retry has to
  *     wait it out rather than fire immediately.
- *   * /status reporting can_make_requests:false is not a signal — it checks
+ *   * /status reporting can_make_requests:false is not a signal - it checks
  *     proxy credentials this path does not use.
  */
 export async function brightDataSearch(query, options = {}) {
   const {
-    // `||`, not `??`. An unset GitHub secret does not arrive as undefined — the
+    // `||`, not `??`. An unset GitHub secret does not arrive as undefined - the
     // workflow interpolates `${{ secrets.X }}` to an EMPTY STRING, which `??`
     // happily passes straight through. BRIGHTDATA_SERP_ZONE has never been set
     // as a secret, so every CI sweep since 2026-08-04 sent zone:"" and got back
     // 400 `"zone" is not allowed to be empty`, losing the whole search leg in
-    // silence — the pass exits 0 by design, so the sweep just carried on.
+    // silence - the pass exits 0 by design, so the sweep just carried on.
     zone: zoneOption,
     apiKey = process.env.BRIGHTDATA_API_KEY,
     timeoutMs = 60_000,
     cooldownMs = Number(process.env.BRIGHTDATA_COOLDOWN_MS ?? 17_000),
     attempts = 2,
-    fetchImpl = fetch,
+    fetchImpl = safeFetch,
     sleep = (ms) => new Promise((r) => setTimeout(r, ms)),
   } = options;
   // Blank is absent, wherever it came from: an unset secret, an empty line in
