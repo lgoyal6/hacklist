@@ -26,7 +26,7 @@ function icsDate(iso: string): string {
 
 /**
  * All-day DTEND is exclusive (RFC 5545 §3.6.1), so a one-day event ending on the
- * 26th must say the 27th. Pure calendar arithmetic on the date parts — no
+ * 26th must say the 27th. Pure calendar arithmetic on the date parts - no
  * timezone is involved in "the day after".
  */
 function icsDateExclusive(iso: string, addDays = 1): string {
@@ -83,34 +83,110 @@ function icsLocal(iso: string): string {
   return iso.slice(0, 19).replace(/[-:]/g, "");
 }
 
+/**
+ * DTSTART/DTEND for a timed event.
+ *
+ * icsLocal takes the wall clock straight out of the ISO string, so labelling it
+ * TZID=<zone> is only true when the string's own offset IS that zone's offset at
+ * that instant. Normalisation makes that hold today, but a source that hands back
+ * a UTC timestamp would otherwise be published as if the UTC wall time were local.
+ * When the offsets disagree the event is emitted as an absolute UTC timestamp,
+ * which every client renders correctly in the viewer's own zone - correct beats
+ * pretty here.
+ */
+function timedWhen(startIso: string, endIso: string, zone: string): string[] {
+  const matchesZone = (iso: string) => {
+    const carried = isoOffsetMinutes(iso);
+    if (carried === null) return false; // no offset at all: not safe to relabel
+    return carried === zoneOffsetMinutes(new Date(iso), zone);
+  };
+  if (matchesZone(startIso) && matchesZone(endIso)) {
+    return [
+      `DTSTART;TZID=${zone}:${icsLocal(startIso)}`,
+      `DTEND;TZID=${zone}:${icsLocal(endIso)}`,
+    ];
+  }
+  return [`DTSTART:${icsUtcStamp(startIso)}`, `DTEND:${icsUtcStamp(endIso)}`];
+}
+
 function icsUtcStamp(iso: string): string {
   return `${new Date(iso).toISOString().slice(0, 19).replace(/[-:]/g, "")}Z`;
 }
 
-const timezoneBlock = [
+// VTIMEZONE definitions for the zones this feed can publish. A calendar client
+// needs the zone's DST rules to place a local time, so a zone is only safe to
+// emit if its rules are actually written down here - hence an allowlist rather
+// than passing an arbitrary IANA name through to TZID and hoping.
+const US_DST = (tzid: string, stdOffset: string, dstOffset: string,
+                stdName: string, dstName: string) => [
   "BEGIN:VTIMEZONE",
-  "TZID:America/Los_Angeles",
+  `TZID:${tzid}`,
   "BEGIN:DAYLIGHT",
-  "TZOFFSETFROM:-0800",
-  "TZOFFSETTO:-0700",
-  "TZNAME:PDT",
+  `TZOFFSETFROM:${stdOffset}`,
+  `TZOFFSETTO:${dstOffset}`,
+  `TZNAME:${dstName}`,
   "DTSTART:19700308T020000",
   "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU",
   "END:DAYLIGHT",
   "BEGIN:STANDARD",
-  "TZOFFSETFROM:-0700",
-  "TZOFFSETTO:-0800",
-  "TZNAME:PST",
+  `TZOFFSETFROM:${dstOffset}`,
+  `TZOFFSETTO:${stdOffset}`,
+  `TZNAME:${stdName}`,
   "DTSTART:19701101T020000",
   "RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU",
   "END:STANDARD",
   "END:VTIMEZONE",
 ];
 
+const timezoneBlocks: Record<string, string[]> = {
+  "America/Los_Angeles": US_DST("America/Los_Angeles", "-0800", "-0700", "PST", "PDT"),
+  "America/Denver": US_DST("America/Denver", "-0700", "-0600", "MST", "MDT"),
+  "America/Chicago": US_DST("America/Chicago", "-0600", "-0500", "CST", "CDT"),
+  "America/New_York": US_DST("America/New_York", "-0500", "-0400", "EST", "EDT"),
+};
+
+const DEFAULT_TIMEZONE = "America/Los_Angeles";
+
+/** The zone's UTC offset in minutes at a given instant, DST included. */
+function zoneOffsetMinutes(instant: Date, timeZone: string): number {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    hour12: false,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).formatToParts(instant);
+  const at = (type: string) => Number(parts.find((p) => p.type === type)?.value);
+  const asUtc = Date.UTC(
+    at("year"), at("month") - 1, at("day"),
+    at("hour") % 24, at("minute"), at("second"),
+  );
+  return Math.round((asUtc - instant.getTime()) / 60000);
+}
+
+/** The offset an ISO timestamp already carries, in minutes. */
+function isoOffsetMinutes(iso: string): number | null {
+  const m = /(Z|[+-]\d{2}:\d{2})$/.exec(iso.trim());
+  if (!m) return null;
+  if (m[1] === "Z") return 0;
+  const sign = m[1][0] === "-" ? -1 : 1;
+  return sign * (Number(m[1].slice(1, 3)) * 60 + Number(m[1].slice(4, 6)));
+}
+
 type FeedRegion = {
   key: string;
   label: string;
   boardName: string;
+  // The region data has carried a timezone since San Diego was added; this feed
+  // used to ignore it and stamp America/Los_Angeles on every event. That is
+  // harmless while every region is Pacific and silently wrong the day one is
+  // not: the wall clock would be published unchanged under the wrong zone, so a
+  // 9am event in a -04:00 region would land on subscribers' calendars at 9am
+  // Pacific - three hours out, with nothing to notice it by.
+  timezone?: string;
 };
 
 // A data file written before regions existed has none, and the feed still has to
@@ -130,9 +206,20 @@ const defaultRegion =
  * 500 miles away on their calendar; every other region is ?region=<key>.
  */
 function buildCalendar(region: FeedRegion): string {
+  const zone = region.timezone ?? DEFAULT_TIMEZONE;
+  const zoneBlock = timezoneBlocks[zone];
+  if (!zoneBlock) {
+    // Refuse rather than fall back to Pacific. Serving a New York board with
+    // Pacific timestamps is worse than serving nothing: the feed looks healthy
+    // and every event is silently three hours out.
+    throw new Error(
+      `no VTIMEZONE definition for region "${region.key}" zone "${zone}"; ` +
+        `supported: ${Object.keys(timezoneBlocks).join(", ")}`,
+    );
+  }
   // Anything with a date goes in the feed. An event whose *time* we do not trust
-  // goes in as an all-day entry rather than being withheld: the day is solid —
-  // Devpost publishes submission dates and no clock times at all — and an all-day
+  // goes in as an all-day entry rather than being withheld: the day is solid -
+  // Devpost publishes submission dates and no clock times at all - and an all-day
   // row claims no hour, so it cannot land a subscriber in the wrong place. Only
   // an event with no date at all has nowhere to go.
   // Filtered per request, not per build. The board is rebuilt twice a day, so
@@ -157,8 +244,8 @@ function buildCalendar(region: FeedRegion): string {
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     `X-WR-CALNAME:${region.boardName}`,
-    "X-WR-TIMEZONE:America/Los_Angeles",
-    ...timezoneBlock,
+    `X-WR-TIMEZONE:${zone}`,
+    ...zoneBlock,
   ];
 
   for (const event of events) {
@@ -166,7 +253,13 @@ function buildCalendar(region: FeedRegion): string {
     const adjacent = event.category === "adjacent";
     // A calendar row has no room for a badge, so say it in the title. A
     // subscriber should never mistake a pitch night for a hackathon.
-    const summary = adjacent ? `[Tech Event] ${event.title}` : event.title;
+    // A cancellation has to reach the row itself. STATUS:CANCELLED is what a
+    // client acts on, but not every client shows it, and a subscriber glancing
+    // at their week sees only the title.
+    const cancelled = event.status === "Cancelled";
+    const summary =
+      (cancelled ? "[Cancelled] " : "") +
+      (adjacent ? `[Tech Event] ${event.title}` : event.title);
     // No end, or a time we do not believe, means the hour is unknown but the day
     // is not. Say so in the description so a subscriber knows to check.
     const allDay = !event.end || event.timeUnverified === true;
@@ -191,10 +284,7 @@ function buildCalendar(region: FeedRegion): string {
               : icsDateExclusive((event.end ?? event.start) as string)
           }`,
         ]
-      : [
-          `DTSTART;TZID=America/Los_Angeles:${icsLocal(event.start as string)}`,
-          `DTEND;TZID=America/Los_Angeles:${icsLocal(event.end as string)}`,
-        ];
+      : timedWhen(event.start as string, event.end as string, zone);
     lines.push(
       "BEGIN:VEVENT",
       // The UID namespace stays "hacklist-sf" for every region. It is an
@@ -204,6 +294,12 @@ function buildCalendar(region: FeedRegion): string {
       `DTSTAMP:${stamp}`,
       ...when,
       `SUMMARY:${escapeText(summary)}`,
+      // A cancelled event stays in the feed rather than being dropped. Dropping
+      // it removes the row, and a row that quietly disappears leaves the
+      // subscriber believing the hackathon is still on; STATUS:CANCELLED gives
+      // their client something to act on. It ages out with everything else once
+      // its date passes.
+      ...(cancelled ? ["STATUS:CANCELLED"] : []),
       `CATEGORIES:${adjacent ? "TECH-EVENT" : "HACKATHON"}`,
       ...(location ? [`LOCATION:${escapeText(location)}`] : []),
       `DESCRIPTION:${escapeText(description)}`,
