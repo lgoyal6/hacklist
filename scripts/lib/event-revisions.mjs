@@ -115,6 +115,7 @@ export function reconcile({
   previousSource = null,
   now = Date.now(),
   maxMissedSweeps = DEFAULT_MAX_MISSED_SWEEPS,
+  doNotCarryUrls = new Set(),
 }) {
   const previousByUrl = new Map(previous.map((event) => [event.url, event]));
   const published = new Map();
@@ -137,6 +138,13 @@ export function reconcile({
   const removed = [];
   for (const [url, before] of previousByUrl) {
     if (published.has(url)) continue;
+    // A tombstoned event is intentionally absent. Treating that absence as a
+    // failed read would copy it back from the previous snapshot after the
+    // tombstone filter had already removed it from this sweep.
+    if (doNotCarryUrls.has(url)) {
+      removed.push(url);
+      continue;
+    }
     if (isOver(before, now)) {
       // It ran. Dropping it is not a claim about cancellation, and the feed
       // stops serving finished events anyway.

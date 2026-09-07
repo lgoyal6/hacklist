@@ -1155,6 +1155,11 @@ const { events: published, changes: revisions } = reconcile({
   previousSource,
   now: Date.now(),
   maxMissedSweeps,
+  doNotCarryUrls: new Set(
+    tombstones
+      .filter((tombstone) => tombstone.action !== "redact")
+      .map((tombstone) => tombstone.url),
+  ),
 });
 const changes = {
   comparedTo: previous?.meta.sweepCompletedAt ?? null,
