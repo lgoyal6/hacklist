@@ -16,7 +16,7 @@
 //   3. Touch targets, measured on the rendered boxes, at a phone viewport.
 //   4. axe-core injected from node_modules, reporting `incomplete` alongside
 //      `violations`, because the last scan on this board returned zero
-//      violations while declining to check color-contrast on 484 nodes.
+//      violations while declining to check color-contrast on 471 nodes.
 //
 // WHAT THIS ESTABLISHES: the roles, names, states and live-region text that
 // Chromium's accessibility tree carries for these flows, and the axe result
@@ -479,7 +479,7 @@ test("axe reports violations AND what it declined to check", { skip }, async () 
     // did not pass, it declined to decide, and reporting only `violations`
     // turns that into a green tick. The number is recorded so a reader can see
     // how much of the page the tool actually judged: the previous scan on this
-    // board left color-contrast incomplete for 484 nodes, which is why
+    // board left color-contrast incomplete for 471 nodes, which is why
     // tests/accessibility.test.mjs does the contrast arithmetic by hand.
     assert.equal(typeof incompleteNodes, "number");
   } finally {
