@@ -175,6 +175,17 @@ test("an event the sweep could not reach names the snapshot it came from", () =>
   assert.equal(carried.provenance.lastConfirmedAt, SNAPSHOT.capturedAt);
 });
 
+test("an intentionally deleted event is not carried from the previous snapshot", () => {
+  const deleted = event();
+  const { events, changes } = run([], [deleted], {
+    doNotCarryUrls: new Set([deleted.url]),
+  });
+
+  assert.deepEqual(events, []);
+  assert.deepEqual(changes.carried, []);
+  assert.deepEqual(changes.removed, [deleted.url]);
+});
+
 test("carrying an event twice does not move when it was last confirmed", () => {
   const observed = { ...event(), missedSweeps: 0, provenance: observedStamp };
   const once = run([], [observed], { previousSource: SNAPSHOT }).events;
