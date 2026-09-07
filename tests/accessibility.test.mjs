@@ -2,7 +2,7 @@
 //
 // Each one was found by hand with a browser, not by axe: axe reported zero
 // violations on this board while returning `color-contrast` as *incomplete* for
-// 484 nodes, because the body's gradient and grain defeat its computation. So
+// 471 nodes, because the body's gradient and grain defeat its computation. So
 // the contrast test below does the arithmetic itself, against the composited
 // pixel colours sampled by `.agent-work/contrast2.mjs`, rather than trusting a
 // tool that declined to look.
