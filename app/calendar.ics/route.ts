@@ -319,8 +319,18 @@ export async function GET(request: Request) {
   // subscriber who mistyped one would otherwise never find out, and would be
   // reading another metro's hackathons.
   if (!region) {
+    // The refusal is the one human-readable thing this route says, so it may
+    // follow the reader's language. The calendar itself never does: every 200
+    // from this route is byte-identical whatever Accept-Language asks for,
+    // because the feed is one shared artifact, not a per-locale rendering.
+    const wantsSpanish = /(^|,)\s*es\b/i.test(
+      request.headers.get("accept-language") ?? "",
+    );
+    const available = regions.map((entry) => entry.key).join(", ");
     return new Response(
-      `Unknown region "${asked}". Available: ${regions.map((entry) => entry.key).join(", ")}.`,
+      wantsSpanish
+        ? `Región desconocida "${asked}". Disponibles: ${available}.`
+        : `Unknown region "${asked}". Available: ${available}.`,
       { status: 404, headers: { "Content-Type": "text/plain; charset=utf-8" } },
     );
   }
