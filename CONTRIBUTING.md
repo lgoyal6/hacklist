@@ -41,7 +41,7 @@ people; the paid attendee, liker and commenter APIs exist and are not used.
 | `scripts/normalize-events.mjs` | Merges every candidate file, dedupes by URL, parses, scores, and writes `data/events.json`. |
 | `scripts/check-sources.mjs` | The health check, with `scripts/lib/source-health.mjs` deciding blocked versus misconfigured. |
 | `scripts/local-passes.sh` | The signed-in, machine-local passes and their schedule. |
-| `app/page.tsx`, `app/calendar.ics/route.ts` | The site and the ICS feed, both generated from `data/events.json`. |
+| `app/board.tsx`, `app/calendar.ics/route.ts` | The site and the ICS feed, both generated from `data/events.json`. Locale routes and message catalogs live in `app/i18n/`. |
 | `tests/` | `node --test` suites. `test:artifact` is the deploy gate. |
 | `.github/workflows/discover.yml` | The twice-daily sweep, commented with why each step sits where it does. `PROTOTYPE.md` has the product spec. |
 

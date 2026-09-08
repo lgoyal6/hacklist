@@ -71,7 +71,7 @@ reliable core.
 record (dates, venue, city, status, prizes, tags), decides which region it
 belongs to, scores it (40% hackathon confidence, 25% builder value, 20%
 accessibility, 15% freshness) and writes `data/events.json`. Every sweep is snapshotted to `data/history/` and diffed into
-`data/changes.json`. The site (`app/page.tsx`) and the ICS feed
+`data/changes.json`. The site (`app/board.tsx`) and the ICS feed
 (`app/calendar.ics/route.ts`) are generated from `data/events.json`.
 
 Why the Luma API and the Luma crawl both run, rather than the API replacing the
@@ -104,7 +104,7 @@ flowchart TD
   SCORE --> EV[("data/events.json")]
   EV --> SNAP[("data/history/ snapshot")]
   SNAP --> DIFF[("data/changes.json")]
-  EV --> SITE["app/page.tsx"]
+  EV --> SITE["app/board.tsx"]
   EV --> ICS["app/calendar.ics/route.ts"]
 
   style EV fill:#1f6feb,color:#fff
@@ -319,12 +319,44 @@ nobody who already subscribed wakes up with hackathons 500 miles away on their
 calendar. Every other region is `?region=<key>`, and an unknown region is a 404
 rather than a quiet fallback to the default.
 
-Adding a third region is a config entry, some seed URLs, and one line of site
-copy in `app/page.tsx` (which has a serviceable default if you skip it). Two
-things are not data yet, both because every region so far is Pacific: the
-normalizer formats every event in the board's single `timezone`, and the ICS feed
-hardcodes a Pacific `VTIMEZONE`. A region outside that would need both, and a
-region declaring its own `timezone` is already carried through to the site.
+Adding a third region is a config entry, some seed URLs, and a `copy.<key>.*`
+entry per language in `app/i18n/` (which has a serviceable default if you skip
+it). Two things are not data yet, both because every region so far is Pacific:
+the normalizer formats every event in the board's single `timezone`, and the ICS
+feed hardcodes a Pacific `VTIMEZONE`. A region outside that would need both, and
+a region declaring its own `timezone` is already carried through to the site.
+
+## Languages
+
+The board reads in English and in Spanish. English keeps the bare paths it has
+always had (`/`), Spanish is `/es`, and the switcher in the masthead links the
+two. A locale nobody serves (`/fr`) falls back to the English board rather than
+404ing - a page in the wrong language is read once and corrected in one click,
+unlike a feed, which is a standing order and is refused when unknown.
+
+What a language changes is the chrome: headings, filters, empty states, date and
+time rendering, plurals, aria labels, page metadata. What it never touches:
+
+- **Event titles and organizer copy.** They are data, not site copy, and pass
+  through exactly as written until an authoritative translation exists
+  (none does).
+- **Time zones.** Every date is rendered from the event's UTC instant in the
+  event's own IANA zone, so DST behaves identically in every language.
+- **The calendar.** `/calendar.ics` is one shared artifact with no locale
+  anywhere in it: the same request returns byte-identical output whatever
+  `Accept-Language` asks for, and both boards link the same URL, so switching
+  language can never fork a subscription or rewrite an event's identity.
+  `tests/i18n-rendered.test.mjs` asserts the byte equivalence and the UIDs;
+  the browser suite downloads the feed from both boards and compares bytes.
+
+Adding a locale is one file plus two lines: copy `app/i18n/en.json` to
+`app/i18n/<locale>.json` and translate every value (the catalogs are flat
+key-to-string maps), then add the locale to `LOCALES` in `app/i18n/index.ts` and
+its label pair (`locale.<code>`, `locale.<code>.short`) to every catalog.
+Routing, the switcher, metadata alternates and the fallback come along for free.
+`tests/i18n-messages.test.mjs` runs inside `test:artifact`, so a key missing
+from any catalog - or a placeholder dropped in translation - turns the run red
+before anything is promoted.
 
 ## Local passes (never run in CI)
 
