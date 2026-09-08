@@ -1,17 +1,20 @@
 {
-  "collectedAt": "2026-09-08T03:33:23.078Z",
+  "collectedAt": "2026-09-08T08:24:36.293Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 26,
+  "pagesFound": 24,
   "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
   "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
-  "ycEventUrls": [],
+  "ycEventUrls": [
+    "https://events.ycombinator.com/deepmind-march26",
+    "https://events.ycombinator.com/bio-ai-hackathon"
+  ],
   "urls": [
     {
       "url": "https://luma.com/hqz8wi79",
@@ -46,7 +49,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/troy-gwdn_ive-started-going-to-hackathons-every-single-activity-7458893560977862656-2Ixu",
       "context": "Broadening Horizons at SF Hackathons Apply on Luma: https://luma.com/rgk6ln4e. I was judge at a hackathon. This is for students, recent grads, career switchers.",
-      "lastSeenAt": "2026-09-08T03:33:23.078Z"
+      "lastSeenAt": "2026-09-08T08:24:36.293Z"
     },
     {
       "url": "https://luma.com/HackBio",
@@ -424,7 +427,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/tezock_builders-cup-2026-a-hackathon-by-ramp-activity-7479926811095867392-A1AN",
       "context": "🏆 Builders Cup 2026, a one-day hackathon in Flatiron NYC. If you're a student looking for a SWE internship or new grad role, this is *definitely* worth your Saturday. Top builders get in front of Ramp directly, on top of food, coffee, and prizes. RSVP here: https://luma.com/nrletiv9 📅 July 18, 10a",
-      "lastSeenAt": "2026-09-08T03:33:23.078Z"
+      "lastSeenAt": "2026-09-08T08:24:36.293Z"
     },
     {
       "url": "https://luma.com/battle-bots-hack-night-jul15-2026",
