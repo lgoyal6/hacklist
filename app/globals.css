@@ -116,6 +116,26 @@ main {
 .regions button:hover { color: var(--ink); }
 .regions button.active { color: var(--ink); border-color: var(--accent); }
 
+/* Language switcher: two-letter links in the same mono voice as the region
+   line. Links rather than buttons because each language is a real address. */
+.locales {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.locales a {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-faint);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+.locales a:hover { color: var(--ink); }
+.locales a.active { color: var(--ink); border-color: var(--accent); }
+
 .masthead-cta {
   margin-left: auto;
   font-family: var(--mono);
