@@ -929,7 +929,8 @@ function reportMarkdown(offlineReport, onlineReport) {
   say("## Limitations");
   say();
   for (const limitation of LIMITATIONS) say(`- ${limitation}`);
-  say();
+  // No trailing blank line: `git diff --check` treats one as whitespace damage,
+  // and this file is committed.
   return `${lines.join("\n")}\n`;
 }
 
