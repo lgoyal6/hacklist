@@ -7,12 +7,25 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
+import { fileURLToPath } from "node:url";
+
 import {
   BOARD_DEFAULT_VIEW,
+  FEATURE_NAMES,
+  RANKING_TIME_EVENT_FIELDS,
   boardVisible,
+  candidateOrder,
+  draftSeed,
+  extractFeatures,
+  logLoss,
   productionOrder,
   productionOrderIds,
+  rankedList,
+  teamDraftInterleave,
+  trainLogistic,
+  validateModel,
 } from "../app/ranking.mjs";
+import { trainFromLog } from "../scripts/recommender-train.mjs";
 import {
   EVENT_FIELDS,
   FEED_EVENT_ID,
@@ -54,6 +67,9 @@ const FIXTURE = new URL(
   import.meta.url,
 );
 const fixtureRows = await readEventLog(FIXTURE);
+const ranker = JSON.parse(
+  await readFile(new URL("../data/ranker.json", import.meta.url), "utf8"),
+);
 
 // --- the frozen ordering ---
 
@@ -585,4 +601,239 @@ test("the synthesizer is a function of its seed", async () => {
   assert.deepEqual(first.rows, second.rows);
   const different = await synthesize({ ...small, seed: 8 });
   assert.notDeepEqual(different.rows, first.rows);
+});
+
+// --- the ranker, the draft, and what happens without either ---
+
+test("features read only the fields the manifest allows", () => {
+  const event = data.events.find((entry) => entry.category === "hackathon");
+  const context = {
+    asOf: frozenAsOf,
+    regionKey: data.meta.defaultRegion,
+    defaultRegion: data.meta.defaultRegion,
+  };
+  const baseline = extractFeatures(event, context);
+  assert.equal(baseline.length, FEATURE_NAMES.length);
+
+  // Every field outside the allow-list is moved, including two planted ones
+  // that look exactly like the future information a leak would reach for. If a
+  // feature is reading any of them, the vector moves and this fails.
+  const perturbed = { ...event, futureClicks: 999, clicksAfterImpression: 42 };
+  for (const [key, value] of Object.entries(event)) {
+    if (RANKING_TIME_EVENT_FIELDS.includes(key)) continue;
+    if (typeof value === "string") perturbed[key] = `${value}-moved`;
+    else if (typeof value === "number") perturbed[key] = value + 1234;
+    else if (typeof value === "boolean") perturbed[key] = !value;
+    else perturbed[key] = null;
+  }
+  assert.deepEqual(
+    extractFeatures(perturbed, context),
+    baseline,
+    "a feature moved when a field it is not allowed to read moved",
+  );
+
+  // And a planted future feature is exactly what the detector must catch, so
+  // the detection itself is checked here rather than assumed.
+  const leaky = (row, ctx) => [...extractFeatures(row, ctx), row.futureClicks ?? 0];
+  assert.notDeepEqual(
+    leaky(perturbed, context),
+    leaky(event, context),
+    "a planted future field did not change a leaky extractor, so the perturbation proves nothing",
+  );
+});
+
+test("the logistic ranker separates a separable set, and does it the same way twice", () => {
+  const rows = [];
+  for (let i = 0; i < 60; i += 1) {
+    const positive = i % 2 === 0;
+    const features = new Array(FEATURE_NAMES.length).fill(0);
+    features[0] = positive ? 1 : 0;
+    features[1] = positive ? 0 : 1;
+    rows.push({ features, label: positive ? 1 : 0, weight: 1 });
+  }
+  const first = trainLogistic(rows);
+  const second = trainLogistic(rows);
+  assert.deepEqual(first.weights, second.weights, "training is not deterministic");
+  assert.equal(first.bias, second.bias);
+  // Order must not matter either: the gradient sums over every row before it
+  // steps, so a shuffled set is the same problem.
+  const shuffled = trainLogistic([...rows].reverse());
+  assert.deepEqual(shuffled.weights, first.weights);
+  assert.ok(
+    first.weights[0] > first.weights[1],
+    "the feature that predicts a click did not outweigh the one that predicts none",
+  );
+  assert.ok(
+    logLoss(rows, first) < 0.5,
+    `log loss ${logLoss(rows, first)} on a separable set`,
+  );
+});
+
+test("a model artifact is accepted only when it is a model for this board", () => {
+  assert.ok(validateModel(ranker), "the committed artifact is not valid");
+  assert.equal(validateModel(null), null);
+  assert.equal(validateModel(undefined), null);
+  assert.equal(validateModel({}), null);
+  assert.equal(validateModel("a model, honestly"), null);
+  assert.equal(validateModel({ ...ranker, model_version: "" }), null);
+  assert.equal(validateModel({ ...ranker, bias: "high" }), null);
+  assert.equal(validateModel({ ...ranker, weights: [1, 2] }), null);
+  assert.equal(
+    validateModel({ ...ranker, weights: ranker.weights.map(() => Number.NaN) }),
+    null,
+  );
+  // A model trained on a different feature list is not a model for this board,
+  // however well it scored wherever it came from.
+  assert.equal(
+    validateModel({
+      ...ranker,
+      feature_names: [...ranker.feature_names].reverse(),
+    }),
+    null,
+  );
+});
+
+test("a team draft is a real interleaving: every item once, seeded, both teams", () => {
+  const ordered = productionOrder(data, { asOf: frozenAsOf });
+  const model = validateModel(ranker);
+  const context = {
+    asOf: frozenAsOf,
+    regionKey: data.meta.defaultRegion,
+    defaultRegion: data.meta.defaultRegion,
+  };
+  const candidate = candidateOrder(ordered, model, context);
+  assert.deepEqual(
+    [...candidate].map((event) => event.id).sort(),
+    ordered.map((event) => event.id).sort(),
+    "the candidate ordering is not a permutation of the same set",
+  );
+
+  const seeds = [1, 2, 3, 99, 20260909];
+  let sawCandidateFirst = false;
+  let sawProductionFirst = false;
+  for (const seed of seeds) {
+    const drafted = teamDraftInterleave(ordered, candidate, seed);
+    assert.equal(drafted.length, ordered.length, "the draft lost or gained rows");
+    const ids = drafted.map((entry) => entry.event.id);
+    assert.equal(new Set(ids).size, ids.length, "an event was drafted twice");
+    assert.deepEqual([...ids].sort(), ordered.map((event) => event.id).sort());
+    assert.ok(drafted.every((entry) => ["production", "candidate"].includes(entry.team)));
+    // Team sizes never differ by more than one: that is what makes a click a
+    // fair vote rather than a reflection of who got more slots.
+    const counts = { production: 0, candidate: 0 };
+    for (const entry of drafted) {
+      counts[entry.team] += 1;
+      assert.ok(
+        Math.abs(counts.production - counts.candidate) <= 1,
+        `teams drifted to ${counts.production} versus ${counts.candidate}`,
+      );
+    }
+    if (drafted[0].team === "candidate") sawCandidateFirst = true;
+    if (drafted[0].team === "production") sawProductionFirst = true;
+
+    // Same seed, same draft.
+    assert.deepEqual(
+      teamDraftInterleave(ordered, candidate, seed).map((entry) => entry.team),
+      drafted.map((entry) => entry.team),
+    );
+  }
+  assert.ok(
+    sawCandidateFirst && sawProductionFirst,
+    "the coin that decides who picks first never came down both ways",
+  );
+});
+
+test("a draft is the same for one client on one day, and not across days", () => {
+  const ordered = productionOrder(data, { asOf: frozenAsOf });
+  const model = validateModel(ranker);
+  const context = {
+    asOf: frozenAsOf,
+    regionKey: data.meta.defaultRegion,
+    defaultRegion: data.meta.defaultRegion,
+  };
+  const candidate = candidateOrder(ordered, model, context);
+  const draft = (client, day) =>
+    teamDraftInterleave(ordered, candidate, draftSeed(client, day)).map(
+      (entry) => `${entry.event.id}:${entry.team}`,
+    );
+  assert.deepEqual(
+    draft("AbCdEfGhIjKlMnOpQr", "2026-09-09"),
+    draft("AbCdEfGhIjKlMnOpQr", "2026-09-09"),
+    "the same client saw two different drafts on the same day",
+  );
+  assert.notDeepEqual(
+    draft("AbCdEfGhIjKlMnOpQr", "2026-09-09"),
+    draft("AbCdEfGhIjKlMnOpQr", "2026-09-10"),
+  );
+  assert.notDeepEqual(
+    draft("AbCdEfGhIjKlMnOpQr", "2026-09-09"),
+    draft("ZyXwVuTsRqPoNmLkJi", "2026-09-09"),
+  );
+});
+
+test("no client id and no artifact are the same answer: the production order", () => {
+  const ordered = productionOrder(data, { asOf: frozenAsOf });
+  const context = {
+    asOf: frozenAsOf,
+    regionKey: data.meta.defaultRegion,
+    defaultRegion: data.meta.defaultRegion,
+  };
+  const expected = manifest.production_ordering.snapshot;
+
+  // Cold start: a reader with no stored identity has no draft seed. On this
+  // board that is also a reader with no history, because history is the
+  // localStorage record.
+  const cold = rankedList({
+    visible: ordered,
+    model: validateModel(ranker),
+    clientId: null,
+    dayKey: "2026-09-09",
+    context,
+  });
+  assert.deepEqual(cold.rows.map((entry) => entry.event.id), expected);
+  assert.ok(cold.rows.every((entry) => entry.team === "production"));
+  assert.equal(cold.ordering, "production");
+  assert.equal(cold.chronological, true);
+
+  // Missing artifact: the build carries no model, so there is nothing to draft
+  // against. Same rows, same order, and it says so rather than guessing.
+  for (const absent of [null, undefined, {}, { model_version: "x" }]) {
+    const fallback = rankedList({
+      visible: ordered,
+      model: validateModel(absent),
+      clientId: "AbCdEfGhIjKlMnOpQr",
+      dayKey: "2026-09-09",
+      context,
+    });
+    assert.deepEqual(fallback.rows.map((entry) => entry.event.id), expected);
+    assert.equal(fallback.ordering, "production");
+    assert.equal(fallback.modelVersion, null);
+  }
+
+  // And with both, it really does draft, so the two branches above are not
+  // passing because nothing ever interleaves.
+  const drafted = rankedList({
+    visible: ordered,
+    model: validateModel(ranker),
+    clientId: "AbCdEfGhIjKlMnOpQr",
+    dayKey: "2026-09-09",
+    context,
+  });
+  assert.equal(drafted.ordering, "interleaved");
+  assert.equal(drafted.chronological, false);
+  assert.ok(drafted.rows.some((entry) => entry.team === "candidate"));
+  assert.notDeepEqual(drafted.rows.map((entry) => entry.event.id), expected);
+});
+
+test("the committed artifact says what it was trained on", () => {
+  assert.match(ranker.model_version, /^syn-/, "a synthetic model is not marked syn-");
+  assert.equal(ranker.log.organic_rows, 0);
+  assert.deepEqual(Object.keys(ranker.log.rows_by_source), ["synthetic"]);
+  assert.match(ranker.honesty, /synthetic/i);
+  assert.match(ranker.position_bias.status, /assumed, not measured/);
+});
+
+test("training the committed artifact again produces the committed artifact", async () => {
+  const { artifact } = await trainFromLog(fileURLToPath(FIXTURE));
+  assert.deepEqual(artifact, ranker, "data/ranker.json is not what its own log trains");
 });

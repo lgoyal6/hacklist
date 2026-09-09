@@ -1,0 +1,67 @@
+{
+  "model_version": "syn-981390602e",
+  "feature_names": [
+    "confidence",
+    "builderValue",
+    "accessibility",
+    "freshness",
+    "score",
+    "isHackathon",
+    "isLuma",
+    "daysUntilStart",
+    "daysUntilStartMissing",
+    "hasPrize",
+    "tagCount",
+    "regionMatch",
+    "statusOpen",
+    "going",
+    "goingMissing"
+  ],
+  "weights": [
+    -0.04089419178299115,
+    -0.07288029053509834,
+    0.0012971935784866218,
+    -0.044618264380581155,
+    -0.04163031756527193,
+    -0.11892773437020879,
+    -0.23194727731304865,
+    -0.08865154201972478,
+    0,
+    0.06748651751149393,
+    -0.007813832313892662,
+    -0.11892773437020879,
+    0.23426555488930853,
+    -0.05550489414769981,
+    0.140738918433299
+  ],
+  "bias": -2.8008437107433655,
+  "family": "logistic regression, binary, click-or-save",
+  "l2": 0.01,
+  "learning_rate": 0.5,
+  "iterations": 2000,
+  "position_bias": {
+    "method": "inverse propensity weighting by rank",
+    "eta": 1,
+    "weight_cap": 10,
+    "status": "assumed, not measured"
+  },
+  "training_window": {
+    "from": "2026-08-26T12:24:25.998Z",
+    "to": "2026-09-09T01:55:09.619Z"
+  },
+  "training_days": 15,
+  "trained_rows": 4020,
+  "positive_rows": 242,
+  "weighted_log_loss": 0.160208,
+  "log": {
+    "path": "tests/fixtures/recommender-synthetic-events.jsonl",
+    "sha256": "07c631c92a16710e8ea8e825732aa401a55025263fead51c8667080a065d8183",
+    "rows": 4282,
+    "rows_by_source": {
+      "synthetic": 4282
+    },
+    "organic_rows": 0
+  },
+  "honesty": "Trained entirely on synthetic rows. This artifact carries no claim about real readers, and no number derived from it is a measurement of the board.",
+  "reproduce": "node scripts/recommender-train.mjs --log tests/fixtures/recommender-synthetic-events.jsonl"
+}
