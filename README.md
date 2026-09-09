@@ -358,6 +358,140 @@ Routing, the switcher, metadata alternates and the fallback come along for free.
 from any catalog - or a placeholder dropped in translation - turns the run red
 before anything is promoted.
 
+## Recommender and evaluation
+
+The board's ordering is a chronological list: soonest first, hackathons before
+adjacent events, ties left in the order the sweep scored them. This section is
+about the attempt to learn a better one, and about the machinery that exists to
+stop that attempt from convincing anybody before it has earned it.
+
+**There is no result yet.** Nothing has been deployed with logging enabled, so
+no reader has ever been logged, and every number in
+`results/recommender-report.md` comes from a synthetic fixture. The verdict is
+`Implemented result pending` and will stay there until the organic gate below is
+met. Implemented, not measured; local, not deployed; synthetic, not organic.
+
+### What is logged, and what is never logged
+
+Eleven fields, listed in `app/telemetry-schema.mjs` as a closed list rather than
+a filter, so an unknown key is a 400 naming the key and a key that looks like
+personal data is a 400 naming it as personal data:
+
+`type` (impression, click or save), `ts`, `client_id`, `session_id`, `locale`,
+`event_id`, `position` (the 0-based rank as shown), `ranking` (which ordering
+put it there), `model_version`, `viewport` (`narrow` or `wide`), and `source`.
+
+Never: an IP address, an email, a name, a user-agent, a referrer, or any
+identity the server derives. `worker/events-endpoint.mjs` does not read the
+request's address or user-agent at all, and never logs the payload, because a
+Worker log line would be a second copy of the data with none of the rules. A
+browser test sends `CF-Connecting-IP` and a user-agent on every request and
+asserts neither reaches the sink, so that claim is about the code rather than
+about the fixture.
+
+The client id is sixteen random bytes from `crypto.getRandomValues`, minted in
+the browser, kept in `localStorage` with the time it was minted, and **thrown
+away after seven days**. A browser that refuses `localStorage` gets no client id,
+sends nothing, and reads the board exactly as it did before any of this existed.
+The cost of that is real: any per-client analysis can only reach back seven days,
+and one long-lived reader looks like several readers.
+
+Rate limiting is by payload and batch size only: at most 50 events and 32KB per
+request. There is no per-client counter, no deny list and nothing that can
+punish anybody. The id is random and rotates, so a limit keyed on it would be
+both trivially evaded and the one piece of per-person state this refuses to keep.
+
+Storage is a Cloudflare Workers Analytics Engine dataset (`hacklist_events`,
+binding `EVENTS` in `wrangler.jsonc`). Datasets are created on first write with
+no dashboard step, and the Workers Free plan includes 100,000 data points
+written and 10,000 read queries a day, so the binding provisions nothing and
+cannot start a bill. Rows are kept for three months, which also caps how far any
+analysis can reach back.
+
+- <https://developers.cloudflare.com/analytics/analytics-engine/get-started/>
+- <https://developers.cloudflare.com/analytics/analytics-engine/pricing/>
+- <https://developers.cloudflare.com/analytics/analytics-engine/limits/>
+
+### Ordering, interleaving, cold start and fallback
+
+`app/ranking.mjs` holds one implementation of the board's ordering, and
+`app/board.tsx` is its only caller. An ordering that an evaluation script
+re-implements is an ordering nobody has actually measured.
+
+- **Production order.** `boardVisible` filters and sorts exactly as the page
+  does. `results/recommender-manifest.json` freezes a snapshot of the 69 ordered
+  event ids it returns for the committed `data/events.json`, with the sha256 of
+  both, and a test in `test:artifact` compares them.
+- **Candidate order.** A fifteen-feature L2-regularized logistic regression,
+  trained by full-batch gradient descent with no dependencies, predicting a click
+  or a save. Every feature is knowable when the list is rendered; engagement
+  counts are excluded, because a click total is future information relative to
+  the impression that produced it. The artifact is `data/ranker.json`.
+- **Interleaving.** With both an artifact and a client id, the board team-drafts
+  between the two orderings, seeded by the client id and the date, and every row
+  remembers which side picked it. Both orderings are on the same page for the
+  same person, so a click is a comparison rather than an anecdote. A drafted list
+  is not in date order, so it drops the month headings rather than repeating
+  "September" down the page, and it says the order is being tested.
+- **Cold start and fallback are the same branch.** No client id, or no valid
+  artifact, returns the production ordering. Deleting `data/ranker.json` is a
+  complete and sufficient way to turn the candidate off: `app/model.ts` reads it
+  through `import.meta.glob`, which resolves at build time and yields nothing
+  when the file is absent, so there is no flag that could disagree with reality.
+  The server render always takes this branch, because it has no client identity
+  and deriving one is exactly what the privacy rules forbid.
+
+### The evaluation
+
+Frozen first, in `results/recommender-manifest.json`, before the evaluator
+existed: the ordering under test, the feature list, the model family and its
+regularization, the split, the five baselines, the six metrics, the promotion
+gate, the organic gate and the four negative controls. The evaluator reads the
+thresholds back out of that file at runtime. A gate chosen after seeing the
+result is not a gate.
+
+`npm run recommender:eval` runs a leakage detector, a prequential split (train
+on every day strictly before day d, evaluate day d, never both), the baselines,
+the metrics with 95 percent bootstrap intervals resampled by client, the
+interleaving credit, and the gate. `npm run recommender:controls` runs the four
+controls, each of which plants a specific defect that the machinery must notice:
+
+| Control | Must |
+| --- | --- |
+| `leak-future` | fail the run: a feature reads engagement after the impression |
+| `shuffle-labels` | not beat production: the model has nothing to learn |
+| `cold-start` | return exactly the frozen production snapshot |
+| `missing-artifact` | return exactly the frozen snapshot, deterministically |
+
+### The organic gate
+
+No online result is claimed until all four of these hold, counting only rows
+tagged `source: web`. Seeded, synthetic, developer (`localhost` and
+`workers.dev`) and replay rows are tagged at the point they are made and never
+counted:
+
+| Requirement | Need | Have |
+| --- | ---: | ---: |
+| organic impressions | 500 | 0 |
+| organic interactions | 50 | 0 |
+| anonymous clients | 25 | 0 |
+| full days | 7 | 0 |
+
+### Commands
+
+```bash
+npm run recommender:freeze       # rebuild the manifest from the committed board
+npm run recommender:synthesize   # regenerate the seeded synthetic fixture
+npm run recommender:train        # rebuild data/ranker.json from a log
+npm run recommender:eval         # the evaluation, into results/
+npm run recommender:controls     # the four negative controls
+npm run recommender:export       # local pass: pull logged events out of Analytics Engine
+```
+
+`recommender:export` is a **local pass** and never runs in CI: it needs a
+Cloudflare token with Account Analytics: Read, and the local passes stay off the
+runner. With no credentials it prints how to make one and exits 0.
+
 ## Local passes (never run in CI)
 
 Two steps need a signed-in Luma session, so they run on your machine against a
@@ -560,6 +694,8 @@ npm run discover:linkedin  # just the LinkedIn pass
 npm run luma:sync -- --region san-diego   # mirror one region to its Luma calendar
 npm run normalize          # re-normalize existing discovery output only
 npm run check:sources      # are all the sources still working?
+npm run recommender:eval   # the ordering evaluation (see Recommender and evaluation)
+npm run recommender:controls  # the four negative controls, each of which must fail
 node scripts/redact-event.mjs --url <url> --reason <text>   # delete or redact one event
 node scripts/verify-deletion.mjs   # prove a deletion clears index, export and cache
 npm test                   # everything, including the browser-driven form test
