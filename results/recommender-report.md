@@ -85,4 +85,3 @@ Verdict: **Implemented result pending**
 - Regional coverage cannot discriminate on this board: the first paint is a single region, so every ordering scores one region. The check is in place for the day a render spans more.
 - A save is feed-level on this board, because subscribing covers a whole region. It therefore labels no event, and the click-or-save label is driven entirely by clicks.
 - The inverse-propensity weight is applied to every training row rather than to the clicked rows alone. That is what the frozen manifest specified and what was run; weighting only the positives is the more standard form of the correction and is the first thing to change in a next round, before any organic data is collected.
-
