@@ -1,0 +1,77 @@
+{
+  "generated_from": {
+    "log": "tests/fixtures/recommender-synthetic-events.jsonl",
+    "control_mode": null
+  },
+  "honesty": {
+    "traffic": "SYNTHETIC ONLY. Every row in this log is seeded, synthetic, developer or replay traffic. Nothing here is a measurement of how anybody uses the board.",
+    "offline_numbers": "The offline table below carries NO quality claim. The fixture's reader is a linear function of the same features the ranker gets and is examined at exactly the propensity the trainer assumes, so a win here shows the pipeline runs and a loss would show a bug.",
+    "implemented_vs_measured": "Implemented and exercised locally. Nothing in this file is an online lift measurement.",
+    "local_vs_deployed": "Produced locally from a committed log. The board has not been deployed with logging enabled by this branch."
+  },
+  "interleaving_all_rows": {
+    "drafted_renders": 104,
+    "clients": 26,
+    "wins": 45,
+    "losses": 14,
+    "ties": 45,
+    "delta": 0.2981,
+    "delta_ci95": [
+      0.1959,
+      0.41
+    ],
+    "lower_bound_above_zero": true
+  },
+  "interleaving_organic_only": {
+    "drafted_renders": 0,
+    "clients": 0,
+    "wins": 0,
+    "losses": 0,
+    "ties": 0,
+    "delta": null,
+    "delta_ci95": [
+      null,
+      null
+    ],
+    "lower_bound_above_zero": false
+  },
+  "organic_gate": {
+    "rule": "Only rows tagged source=web count. Seeded, synthetic, developer and replay rows never count.",
+    "checks": {
+      "organic_impressions": {
+        "value": 0,
+        "required": 500,
+        "met": false
+      },
+      "organic_interactions": {
+        "value": 0,
+        "required": 50,
+        "met": false
+      },
+      "anonymous_clients": {
+        "value": 0,
+        "required": 25,
+        "met": false
+      },
+      "full_days": {
+        "value": 0,
+        "required": 7,
+        "met": false
+      }
+    },
+    "met": false,
+    "excluded_rows_by_source": {
+      "synthetic": 4282
+    }
+  },
+  "promotion": {
+    "no_leakage": true,
+    "all_controls_behaved": true,
+    "beats_best_frozen_baseline": false,
+    "best_frozen_baseline": "popularity",
+    "wins_organic_interleaving": false,
+    "diversity_held": true,
+    "organic_gate_met": false
+  },
+  "verdict": "Implemented result pending"
+}
