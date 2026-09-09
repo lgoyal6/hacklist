@@ -43,6 +43,8 @@ people; the paid attendee, liker and commenter APIs exist and are not used.
 | `scripts/local-passes.sh` | The signed-in, machine-local passes and their schedule. |
 | `app/board.tsx`, `app/calendar.ics/route.ts` | The site and the ICS feed, both generated from `data/events.json`. Locale routes and message catalogs live in `app/i18n/`. |
 | `tests/` | `node --test` suites. `test:artifact` is the deploy gate. |
+| `app/ranking.mjs`, `app/telemetry*` | The board's ordering, the candidate ranker, and the eleven fields a reader's visit may put in a database. One implementation each, shared by the page, the Worker and the evaluation. |
+| `scripts/recommender-*.mjs`, `results/` | Freezing the experiment, training, evaluating, and the four controls. `results/recommender-manifest.json` is frozen: it was committed before any result existed and its thresholds are read back at runtime. |
 | `.github/workflows/discover.yml` | The twice-daily sweep, commented with why each step sits where it does. `PROTOTYPE.md` has the product spec. |
 
 ## Building and testing
