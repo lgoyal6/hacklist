@@ -18,5 +18,27 @@
   },
   "images": {
     "binding": "IMAGES"
-  }
+  },
+  // Where POST /api/events writes. Configuration only: this takes effect on the
+  // next deploy through .github/workflows/discover.yml and provisions nothing.
+  //
+  // Analytics Engine datasets are created on first write, with no dashboard or
+  // API step to run first, and the Workers Free plan includes 100,000 data
+  // points written and 10,000 read queries a day, so this cannot start a bill:
+  //   https://developers.cloudflare.com/analytics/analytics-engine/get-started/
+  //   https://developers.cloudflare.com/analytics/analytics-engine/pricing/
+  //
+  // A full board is about 70 impressions, so the free daily allowance is
+  // roughly 1,400 board views a day before sampling would matter. Rows are kept
+  // for three months, which also caps how far any analysis can reach back:
+  //   https://developers.cloudflare.com/analytics/analytics-engine/limits/
+  //
+  // The Worker treats this binding as optional. A build or a `wrangler dev`
+  // without it serves the board and stores nothing, rather than failing.
+  "analytics_engine_datasets": [
+    {
+      "binding": "EVENTS",
+      "dataset": "hacklist_events"
+    }
+  ]
 }
