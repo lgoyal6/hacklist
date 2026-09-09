@@ -1,0 +1,263 @@
+{
+  "manifest_version": 1,
+  "frozen_at": "2026-09-09",
+  "subject": "hacklist board ordering: production versus a learned candidate",
+  "claim_state": "Implemented, not measured on organic traffic.",
+  "honesty": {
+    "traffic": "No organic traffic exists yet. Every number produced before a deploy collects real impressions is synthetic.",
+    "implemented_vs_measured": "The logging, the ranker, the interleaving and the evaluator are implemented and exercised locally. Nothing here is a measurement of how people use the board.",
+    "local_vs_deployed": "Everything in this manifest was produced locally. The Analytics Engine binding takes effect only on the next deploy of the repo's existing workflow."
+  },
+  "production_ordering": {
+    "description": "The board's first paint: default region, default view, no search, sorted by start date ascending with a stable tie-break on the order data/events.json already carries (hackathon before adjacent, then score descending).",
+    "implementation": "app/ranking.mjs -> productionOrder / boardVisible",
+    "called_by": "app/board.tsx (the page calls the same function; nothing re-implements the ordering)",
+    "view": "hackathons",
+    "region": "bay-area",
+    "as_of": "2026-09-09T08:02:21.488Z",
+    "as_of_rationale": "The board drops events that have already finished, so its list depends on the render instant. Freezing at meta.sweepCompletedAt makes the snapshot reproducible from the committed files alone.",
+    "events_file": "data/events.json",
+    "events_file_sha256": "dd573ab6426ec0caf24983c7bf6bd32236865d103ecdce38b0dfc7bd5bb9deff",
+    "snapshot_length": 69,
+    "snapshot_sha256": "3c2231331f5d9058ad262ddd70d6947e33e7e60d303a719c701f1b253bcdae89",
+    "snapshot": [
+      "5agzmgqu",
+      "qualcomm-event-sep10-2026",
+      "llamalounge26",
+      "lps4ib1e",
+      "qisv9xmg",
+      "beta-dz46",
+      "abundant-3yz7",
+      "external-the-cad-challenge-2026-devpost-com--1ccd7184",
+      "coreweavehacks",
+      "l74b4u7b",
+      "beta-6y1n",
+      "openmodelhack",
+      "uqxby9dm",
+      "pw54q8np",
+      "7a4iutvp",
+      "lablab-zbl9",
+      "d6g5mb9o",
+      "89209klj",
+      "nighthack",
+      "upjkn37w",
+      "truefoundry-agent-harness-hackathon-sep19-2026",
+      "external-svycay4e-devpost-com--450deb80",
+      "AIHardware",
+      "n86yufdi",
+      "epfgz3gx",
+      "7mdzwof8",
+      "shipfrom0",
+      "horizonagentshack",
+      "external-cerebralvalley-ai-e-vultr-the-agent-arena-67cbdf3a",
+      "zr87gmkt",
+      "99857qk9",
+      "external-showerhacks-devpost-com--17486452",
+      "e9z9vuxz",
+      "external-events-ycombinator-com-bitrig-hacks-september2026-bdd25cbb",
+      "r1zdzwv4",
+      "external-events-ycombinator-com-gbrain-qm-river-memorable-hacka-6d3d81f5",
+      "ai-conference-hack-day-2026",
+      "flwrlabs-bamu",
+      "cepu8kjp",
+      "ovtw6uf9",
+      "vastsf",
+      "o9hcn6kk",
+      "6bbloggr",
+      "frontier-d03j",
+      "external-dublin-hacx-devpost-com--e005f591",
+      "sf-agents-owning-inference",
+      "qzct3ybt",
+      "vibe-coach-hack-night",
+      "cyberhack",
+      "3t95uj7s",
+      "frontier-99lw",
+      "oct-hackathon",
+      "6p4w9p21",
+      "mvcg9eyw",
+      "m9h5vo7a",
+      "7ndhdy7n",
+      "beta-79jb",
+      "frontier-al6k",
+      "external-hackstorm3-devpost-com--af663478",
+      "beta-msyd",
+      "m4efz4ib",
+      "lsa8mrp7",
+      "x05cmrqh",
+      "j95l4cwz",
+      "12545fxr",
+      "HTW27",
+      "HT27Pitch",
+      "external-developerweek-2027-hackathon-devpost-com--4f1df228",
+      "external-sfhacks-io--69dcce9d"
+    ]
+  },
+  "features": {
+    "rule": "Ranking-time only. A feature may read a field the sweep wrote before the list was rendered, or compare against the render instant the impression records. Engagement counts are excluded: a click total is future information relative to the impression that produced it.",
+    "names": [
+      "confidence",
+      "builderValue",
+      "accessibility",
+      "freshness",
+      "score",
+      "isHackathon",
+      "isLuma",
+      "daysUntilStart",
+      "daysUntilStartMissing",
+      "hasPrize",
+      "tagCount",
+      "regionMatch",
+      "statusOpen",
+      "going",
+      "goingMissing"
+    ],
+    "allowed_event_fields": [
+      "id",
+      "category",
+      "platform",
+      "start",
+      "prize",
+      "tags",
+      "region",
+      "status",
+      "going",
+      "score",
+      "scores"
+    ],
+    "excluded_on_purpose": [
+      "clicks, saves or impressions for the event (future information relative to an impression)",
+      "anything derived from the reader beyond the anonymous client id: no IP, no email, no name, no user-agent, no referrer"
+    ]
+  },
+  "model": {
+    "family": "logistic regression, binary, predicting click-or-save from the feature vector",
+    "optimizer": "full-batch gradient descent in plain JavaScript, no dependencies",
+    "regularization": "L2 on the weights only, lambda = 0.01",
+    "learning_rate": 0.5,
+    "iterations": 2000,
+    "initialization": "zeros",
+    "position_bias_correction": {
+      "method": "inverse propensity weighting by rank",
+      "propensity": "1 / rank^eta",
+      "eta": 1,
+      "weight_cap": 10,
+      "status": "ASSUMED, NOT MEASURED. Hacklist has no position-swap experiment, so this curve is borrowed rather than fitted."
+    },
+    "artifact": "data/ranker.json",
+    "determinism": "Full-batch, zero-initialized, fixed step count: the weights are a function of the rows and the hyperparameters, not of row order or a seed."
+  },
+  "split": {
+    "scheme": "prequential, rolling by calendar day (UTC)",
+    "rule": "For each evaluation day d, train on every row strictly before the start of day d and evaluate on day d only. No row is ever both trained on and evaluated.",
+    "minimum_training_rows": 200,
+    "minimum_evaluation_days": 1
+  },
+  "baselines": [
+    {
+      "id": "production",
+      "description": "the frozen production ordering above"
+    },
+    {
+      "id": "popularity",
+      "description": "clicks accumulated strictly before the impression instant, descending; ties fall back to production order"
+    },
+    {
+      "id": "recency",
+      "description": "soonest start first; undated last"
+    },
+    {
+      "id": "random",
+      "description": "seeded shuffle, seed fixed in the evaluator"
+    },
+    {
+      "id": "candidate",
+      "description": "the trained model's ordering (the thing on trial)"
+    }
+  ],
+  "metrics": [
+    "NDCG@5",
+    "NDCG@10",
+    "MRR",
+    "click recall@10",
+    "coverage (distinct events appearing in any top 10)",
+    "regional coverage (distinct regions appearing in any top 10)"
+  ],
+  "interval_method": "bootstrap, 2000 resamples, resampled by client rather than by row, 95 percent percentile interval",
+  "promotion_gate": {
+    "all_of": [
+      "the leakage detector reports no leakage",
+      "all four negative controls behave as expected",
+      "the candidate beats the best frozen offline baseline on NDCG@10",
+      "the candidate wins the organic team-draft interleaving with a lower 95 percent bootstrap bound above zero",
+      "no material diversity or regional-coverage drop: coverage@10 within 10 percent of production, and regional coverage not lower than production"
+    ],
+    "organic_gate": {
+      "rule": "Only rows tagged source=web count. Seeded, synthetic, developer and replay rows never count.",
+      "min_organic_impressions": 500,
+      "min_organic_interactions": 50,
+      "min_anonymous_clients": 25,
+      "min_full_days": 7
+    },
+    "verdict_when_organic_gate_unmet": "Implemented result pending"
+  },
+  "negative_controls": [
+    {
+      "id": "leak-future",
+      "expectation": "the leakage detector FAILS the run",
+      "mechanism": "a feature is added that reads engagement written after the impression; the detector perturbs every event field outside the allow-list and the feature vector moves"
+    },
+    {
+      "id": "shuffle-labels",
+      "expectation": "the candidate FAILS promotion",
+      "mechanism": "labels are shuffled within the training window, so the model has nothing to learn"
+    },
+    {
+      "id": "cold-start",
+      "expectation": "a client with no history receives EXACTLY the production ordering",
+      "mechanism": "no client id means no draft seed, so rankedList returns the production rows"
+    },
+    {
+      "id": "missing-artifact",
+      "expectation": "a missing model artifact yields the production ordering, deterministically",
+      "mechanism": "validateModel returns null for an absent or malformed artifact and rankedList falls back"
+    }
+  ],
+  "privacy": {
+    "stored_fields": [
+      "type",
+      "ts",
+      "client_id",
+      "session_id",
+      "locale",
+      "event_id",
+      "position",
+      "ranking",
+      "model_version",
+      "viewport",
+      "source"
+    ],
+    "never_stored": [
+      "IP address",
+      "email",
+      "name",
+      "user-agent",
+      "referrer",
+      "any server-derived identity"
+    ],
+    "client_id": "random 16 bytes from crypto.getRandomValues, base64url, generated in the browser, stored in localStorage with its creation time, rotated every 7 days. The server never derives, enriches or joins it.",
+    "rotation_days": 7,
+    "consequence": "Rotation caps how long any per-client analysis can reach back, and the interleaving credit is per client per day, which is well inside the window."
+  },
+  "storage": {
+    "decision": "Cloudflare Workers Analytics Engine, binding EVENTS, dataset hacklist_events",
+    "plan_basis": "The Workers Free plan includes 100,000 data points written and 10,000 read queries per day, and datasets are created on first write with no dashboard or API provisioning step.",
+    "docs": [
+      "https://developers.cloudflare.com/analytics/analytics-engine/pricing/",
+      "https://developers.cloudflare.com/analytics/analytics-engine/get-started/",
+      "https://developers.cloudflare.com/analytics/analytics-engine/limits/",
+      "https://developers.cloudflare.com/analytics/analytics-engine/sql-api/"
+    ],
+    "provisioning": "none; the binding is declared in wrangler.jsonc and takes effect on the next deploy",
+    "no_resource_created_in_this_branch": "Nothing was deployed and no Cloudflare resource was created while writing this. The binding is configuration only."
+  }
+}

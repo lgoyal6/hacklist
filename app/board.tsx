@@ -14,6 +14,7 @@ import {
   monthGroupLabel,
   updatedStampLabel,
 } from "./i18n/dates.mjs";
+import { boardVisible, regionOf } from "./ranking.mjs";
 
 type EventRecord = {
   id: string;
@@ -147,32 +148,26 @@ export default function Board({ locale }: { locale: Locale }) {
     // is where the single-region board had it. Without the fallback an older
     // data file would render every tab empty.
     () =>
-      events.filter(
-        (event) => (event.region ?? defaultRegion) === region.key,
-      ),
+      events.filter((event) => regionOf(event, defaultRegion) === region.key),
     [region.key],
   );
 
-  const visible = useMemo(() => {
-    const needle = query.trim().toLowerCase();
-    return inRegion
-      .filter((event) => {
-        const over = Date.parse(event.end ?? event.start ?? "");
-        if (Number.isFinite(over) && over < asOf) return false;
-        return true;
-      })
-      .filter((event) => {
-        const haystack = `${event.title} ${event.organizer} ${event.tags.join(" ")} ${event.city ?? ""}`;
-        if (needle && !haystack.toLowerCase().includes(needle)) return false;
-        if (view === "hackathons") return event.category === "hackathon";
-        if (view === "open")
-          return ["Open", "Approval"].includes(event.status);
-        if (view === "prizes") return event.prize.includes("$");
-        if (view === "city") return event.area === region.coreArea;
-        return true;
-      })
-      .sort((a, b) => (a.start ?? "9999").localeCompare(b.start ?? "9999"));
-  }, [inRegion, query, view, asOf, region.coreArea]);
+  // The filter and the sort live in app/ranking.mjs, and this is the only
+  // caller: an ordering the evaluator re-implements is an ordering nobody has
+  // actually measured. results/recommender-manifest.json freezes a snapshot of
+  // what this returns on the committed data file, and a test compares them.
+  const visible = useMemo<EventRecord[]>(
+    () =>
+      boardVisible(events, {
+        regionKey: region.key,
+        coreArea: region.coreArea,
+        defaultRegion,
+        view,
+        query,
+        asOf,
+      }) as EventRecord[],
+    [region.key, region.coreArea, view, query, asOf],
+  );
 
   /** A status pill's text is copy; its identity (and CSS class) stays the raw value. */
   const statusLabel = (status: string) => {
