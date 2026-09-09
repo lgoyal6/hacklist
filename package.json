@@ -38,7 +38,8 @@
     "discover:eventbrite": "node scripts/discover-eventbrite.mjs",
     "discover:meetup": "node scripts/discover-meetup.mjs",
     "discover:lablab": "node scripts/discover-lablab.mjs",
-    "recommender:freeze": "node scripts/recommender-freeze.mjs"
+    "recommender:freeze": "node scripts/recommender-freeze.mjs",
+    "recommender:synthesize": "node scripts/recommender-synthesize-events.mjs"
   },
   "dependencies": {
     "@lightpanda/browser": "^1.2.0",
