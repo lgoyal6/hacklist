@@ -1,15 +1,15 @@
 {
-  "collectedAt": "2026-09-08T18:30:09.276Z",
+  "collectedAt": "2026-09-09T08:03:28.332Z",
   "source": "https://www.mlh.com/seasons",
   "seasons": [
     2026,
     2027
   ],
-  "eventsSeen": 336,
+  "eventsSeen": 84,
   "skipped": {
-    "past": 264,
+    "past": 11,
     "online": 1,
-    "notLocal": 67,
+    "notLocal": 68,
     "notHackathon": 0,
     "unplaceable": [
       {
@@ -22,7 +22,12 @@
       }
     ]
   },
-  "problems": [],
+  "problems": [
+    {
+      "season": 2026,
+      "error": "TimeoutError: The operation was aborted due to timeout"
+    }
+  ],
   "note": "Major League Hacking's season calendar, read anonymously from the JSON the season page embeds. Real timestamps and a structured venueAddress, so locality is decided on stated fields. Sees further ahead than any calendar source because student hackathons are announced a semester out.",
   "candidates": [
     {
@@ -40,7 +45,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "SF Hacks \nSan Francisco, CA, US, San Francisco, CA\nFEB 19 - 21\nhackathon\nhttps://sfhacks.io",
-      "checkedAt": "2026-09-08T18:30:09.267Z",
+      "checkedAt": "2026-09-09T08:03:28.323Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://sfhacks.io",
@@ -76,7 +81,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Diamondhacks\nLa Jolla, California , US, La Jolla, California \nAPR 04 - 05\nhackathon\nhttps://diamondhacks.acmucsd.com/",
-      "checkedAt": "2026-09-08T18:30:09.276Z",
+      "checkedAt": "2026-09-09T08:03:28.332Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://diamondhacks.acmucsd.com/",
