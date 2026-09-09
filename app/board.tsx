@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import discovery from "../data/events.json";
 import {
   LOCALES,
@@ -15,6 +15,15 @@ import {
   updatedStampLabel,
 } from "./i18n/dates.mjs";
 import { boardVisible, regionOf } from "./ranking.mjs";
+import {
+  identity,
+  recordClick,
+  recordImpressions,
+  recordSave,
+  serverIdentity,
+  type RenderContext,
+  type Shown,
+} from "./telemetry";
 
 type EventRecord = {
   id: string;
@@ -121,11 +130,32 @@ export default function Board({ locale }: { locale: Locale }) {
   const webcalUrl = feedUrl.replace(/^https?:/, "webcal:");
   const googleUrl = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcalUrl)}`;
 
+  // Browser-only, exactly like the origin above and for the same reason: the
+  // server render has no client identity and must not invent one, and
+  // useSyncExternalStore is how this file already reaches a browser value
+  // without lying to hydration. A reader whose browser refuses localStorage has
+  // no client id, sends nothing, and sees the production ordering.
+  const who = useSyncExternalStore(
+    subscribeToNothing,
+    identity,
+    serverIdentity,
+  );
+
+  // What the list IS: region, view and search. A new signature is a new list,
+  // which is what stops a keystroke from re-reporting the same impressions and
+  // stops a real reordering from being mistaken for one already reported.
+  const signature = `${region.key}|${view}|${query.trim().toLowerCase()}`;
+  const telemetry = useMemo<RenderContext>(
+    () => ({ locale, modelVersion: null, signature }),
+    [locale, signature],
+  );
+
   const copyFeed = async () => {
     try {
       await navigator.clipboard.writeText(feedUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2200);
+      recordSave(telemetry);
     } catch {
       setCopied(false);
     }
@@ -168,6 +198,24 @@ export default function Board({ locale }: { locale: Locale }) {
       }) as EventRecord[],
     [region.key, region.coreArea, view, query, asOf],
   );
+
+  // One impression per row of the list, batched and settled rather than sent
+  // per render: every keystroke in the search box is a render of what is
+  // substantially the same list a moment later.
+  const shown = useMemo<Shown[]>(
+    () =>
+      visible.map((event, index) => ({
+        eventId: event.id,
+        position: index,
+        ranking: "production" as const,
+      })),
+    [visible],
+  );
+
+  useEffect(() => {
+    if (!who) return;
+    recordImpressions(shown, telemetry);
+  }, [who, shown, telemetry]);
 
   /** A status pill's text is copy; its identity (and CSS class) stays the raw value. */
   const statusLabel = (status: string) => {
@@ -257,9 +305,20 @@ export default function Board({ locale }: { locale: Locale }) {
           </div>
           {origin && (
             <p className="feed-links">
-              <a href={googleUrl} target="_blank" rel="noreferrer">{t("subscribe.google")}</a>
-              <a href={webcalUrl}>{t("subscribe.apple")}</a>
-              <a href={feedPath} download>{t("subscribe.download")}</a>
+              <a
+                href={googleUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => recordSave(telemetry)}
+              >
+                {t("subscribe.google")}
+              </a>
+              <a href={webcalUrl} onClick={() => recordSave(telemetry)}>
+                {t("subscribe.apple")}
+              </a>
+              <a href={feedPath} download onClick={() => recordSave(telemetry)}>
+                {t("subscribe.download")}
+              </a>
             </p>
           )}
         </div>
@@ -326,7 +385,12 @@ export default function Board({ locale }: { locale: Locale }) {
                   </time>
                   <div className="event-body">
                     <h4>
-                      <a href={event.url} target="_blank" rel="noreferrer">
+                      <a
+                        href={event.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() => recordClick(shown[index], telemetry)}
+                      >
                         {event.title}
                       </a>
                     </h4>
@@ -344,7 +408,12 @@ export default function Board({ locale }: { locale: Locale }) {
                         // leaving a blank where a location should be.
                         <>
                           {" · "}
-                          <a href={event.url} target="_blank" rel="noreferrer">
+                          <a
+                            href={event.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={() => recordClick(shown[index], telemetry)}
+                          >
                             {t("event.locationOnPage")}
                           </a>
                         </>
