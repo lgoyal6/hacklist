@@ -40,7 +40,9 @@
     "discover:lablab": "node scripts/discover-lablab.mjs",
     "recommender:freeze": "node scripts/recommender-freeze.mjs",
     "recommender:synthesize": "node scripts/recommender-synthesize-events.mjs",
-    "recommender:train": "node scripts/recommender-train.mjs"
+    "recommender:train": "node scripts/recommender-train.mjs",
+    "recommender:eval": "node scripts/recommender-eval.mjs",
+    "recommender:controls": "node scripts/recommender-controls.mjs"
   },
   "dependencies": {
     "@lightpanda/browser": "^1.2.0",
