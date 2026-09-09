@@ -14,7 +14,8 @@ import {
   monthGroupLabel,
   updatedStampLabel,
 } from "./i18n/dates.mjs";
-import { boardVisible, regionOf } from "./ranking.mjs";
+import { boardVisible, dayKeyOf, rankedList, regionOf } from "./ranking.mjs";
+import { model } from "./model";
 import {
   identity,
   recordClick,
@@ -59,6 +60,14 @@ type EventRecord = {
     carriedFrom?: { file: string; sweepCompletedAt: string | null } | null;
     lastConfirmedAt?: string | null;
   };
+};
+
+/** One row of the printed list, and which ordering put it there. */
+type Ranked = {
+  rows: Array<{ event: EventRecord; team: "production" | "candidate" }>;
+  ordering: "production" | "interleaved";
+  modelVersion: string | null;
+  chronological: boolean;
 };
 
 type RegionSummary = {
@@ -141,25 +150,6 @@ export default function Board({ locale }: { locale: Locale }) {
     serverIdentity,
   );
 
-  // What the list IS: region, view and search. A new signature is a new list,
-  // which is what stops a keystroke from re-reporting the same impressions and
-  // stops a real reordering from being mistaken for one already reported.
-  const signature = `${region.key}|${view}|${query.trim().toLowerCase()}`;
-  const telemetry = useMemo<RenderContext>(
-    () => ({ locale, modelVersion: null, signature }),
-    [locale, signature],
-  );
-
-  const copyFeed = async () => {
-    try {
-      await navigator.clipboard.writeText(feedUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2200);
-      recordSave(telemetry);
-    } catch {
-      setCopied(false);
-    }
-  };
 
   // The board is a twice-daily snapshot, so it always carries events that have
   // finished since it was written. Read once on mount rather than during render,
@@ -199,23 +189,64 @@ export default function Board({ locale }: { locale: Locale }) {
     [region.key, region.coreArea, view, query, asOf],
   );
 
+  // The order the board actually prints.
+  //
+  // With no model in the build, or no client id to seed a draft with, this is
+  // the production ordering and the same code path serves both: the fallback
+  // and the cold start are one branch rather than two things that could
+  // disagree. With both, it is a team draft between the production ordering and
+  // the model's, and every row remembers which side picked it, which is what
+  // makes an ordinary visit into a comparison rather than an anecdote.
+  const ranked = useMemo<Ranked>(
+    () =>
+      rankedList({
+        visible,
+        model,
+        clientId: who ? who.clientId : null,
+        dayKey: dayKeyOf(asOf),
+        context: { asOf, regionKey: region.key, defaultRegion },
+      }) as Ranked,
+    [visible, who, asOf, region.key],
+  );
+
+  // What the list IS: region, view, search, and which ordering produced it. A
+  // new signature is a new list, which is what stops a keystroke from
+  // re-reporting the same impressions and stops a real reordering from being
+  // mistaken for one already reported.
+  const signature = `${region.key}|${view}|${query.trim().toLowerCase()}|${ranked.ordering}`;
+  const telemetry = useMemo<RenderContext>(
+    () => ({ locale, modelVersion: ranked.modelVersion, signature }),
+    [locale, ranked.modelVersion, signature],
+  );
+
   // One impression per row of the list, batched and settled rather than sent
   // per render: every keystroke in the search box is a render of what is
   // substantially the same list a moment later.
   const shown = useMemo<Shown[]>(
     () =>
-      visible.map((event, index) => ({
-        eventId: event.id,
+      ranked.rows.map((entry, index) => ({
+        eventId: entry.event.id,
         position: index,
-        ranking: "production" as const,
+        ranking: entry.team,
       })),
-    [visible],
+    [ranked],
   );
 
   useEffect(() => {
     if (!who) return;
     recordImpressions(shown, telemetry);
   }, [who, shown, telemetry]);
+
+  const copyFeed = async () => {
+    try {
+      await navigator.clipboard.writeText(feedUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+      recordSave(telemetry);
+    } catch {
+      setCopied(false);
+    }
+  };
 
   /** A status pill's text is copy; its identity (and CSS class) stays the raw value. */
   const statusLabel = (status: string) => {
@@ -352,26 +383,38 @@ export default function Board({ locale }: { locale: Locale }) {
               is the only confirmation the search worked. Announced politely,
               which lets a screen reader finish the keystroke first. */}
           <span className="count" role="status" aria-live="polite">
-            {plural("listing.shown", visible.length)}
+            {plural("listing.shown", ranked.rows.length)}
           </span>
         </nav>
 
+        {/* Reordering a calendar without saying so would be a quiet lie about
+            what this page is, so a drafted list says it is drafted. It claims
+            nothing about being better, because nothing has measured that yet. */}
+        {ranked.ordering === "interleaved" && (
+          <p className="ordering-note">{t("listing.orderTested")}</p>
+        )}
+
         <ol className="events">
-          {visible.map((event, index) => {
+          {ranked.rows.map(({ event }, index) => {
             const group = monthGroupLabel(
               event.start,
               meta.timezone,
               locale,
               t,
             );
+            // Month headings are a claim that the list runs in date order, so
+            // they are printed only while it does. A drafted list drops them
+            // rather than repeating "September" three times down the page; no
+            // date is lost, because every row already prints its own.
             const newGroup =
+              ranked.chronological &&
               group !==
-              monthGroupLabel(
-                visible[index - 1]?.start ?? null,
-                meta.timezone,
-                locale,
-                t,
-              );
+                monthGroupLabel(
+                  ranked.rows[index - 1]?.event.start ?? null,
+                  meta.timezone,
+                  locale,
+                  t,
+                );
             // Rendered from the event's instant in the event's own zone, so the
             // words follow the locale and the moment follows the event.
             const when = formatEventDate(event, locale, t);
@@ -438,7 +481,7 @@ export default function Board({ locale }: { locale: Locale }) {
               </li>
             );
           })}
-          {visible.length === 0 && (
+          {ranked.rows.length === 0 && (
             <li className="empty">
               {inRegion.length === 0
                 ? t("empty.noneOnBoard", { region: region.label })

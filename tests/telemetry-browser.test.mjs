@@ -25,6 +25,10 @@ import {
   fromQueryRow,
 } from "../app/telemetry-schema.mjs";
 
+const ranker = JSON.parse(
+  await readFile(new URL("../data/ranker.json", import.meta.url), "utf8"),
+);
+
 const CHROME = [
   process.env.CHROME_PATH,
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
@@ -330,6 +334,59 @@ test(
     assert.ok(
       events().every((row) => row.client_id === rotated.id),
       "the board kept reporting the rotated-out id",
+    );
+
+    await context.close();
+  },
+);
+
+test(
+  "with a model in the build the board drafts, says so, and labels every row",
+  skipUnlessBrowser,
+  async () => {
+    stored = [];
+    const context = await browser.newContext({ locale: "en" });
+    const page = await context.newPage();
+    page.setDefaultTimeout(15_000);
+    await page.goto(`${origin}/`, { waitUntil: "networkidle" });
+    await settle(page);
+
+    const rows = events().filter((row) => row.type === "impression");
+    const teams = new Set(rows.map((row) => row.ranking));
+    assert.ok(
+      teams.has("production") && teams.has("candidate"),
+      `the drafted list used only ${[...teams].join(", ")}`,
+    );
+    // Team sizes never differ by more than one across the whole list, which is
+    // what makes a click a fair vote between the two orderings.
+    const counts = { production: 0, candidate: 0 };
+    for (const row of [...rows].sort((a, b) => a.position - b.position)) {
+      counts[row.ranking] += 1;
+      assert.ok(
+        Math.abs(counts.production - counts.candidate) <= 1,
+        `teams drifted to ${counts.production} versus ${counts.candidate} by rank ${row.position}`,
+      );
+    }
+    assert.ok(
+      rows.every((row) => row.model_version === ranker.model_version),
+      "a drafted impression did not name the model that drafted it",
+    );
+
+    // The page says the order is being tested, and stops printing month
+    // headings, because it is no longer in date order.
+    assert.equal(await page.locator(".ordering-note").count(), 1);
+    assert.equal(
+      await page.locator(".events .month").count(),
+      0,
+      "a drafted list still printed month headings, which claim date order",
+    );
+
+    // The server render, which has no client identity, is still the board's
+    // own ordering: the reorder happens after hydration or not at all.
+    const serverHtml = await (await fetch(`${origin}/`)).text();
+    assert.ok(
+      serverHtml.includes('class="month"'),
+      "the server render lost its month headings, so it drafted without a client id",
     );
 
     await context.close();
