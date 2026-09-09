@@ -318,6 +318,17 @@ main {
   letter-spacing: 0.06em;
 }
 
+/* Shown only while the list is drafted rather than chronological. Same faint
+   ink and same monospace as the result count beside it: this is a note about
+   the page, not a banner. */
+.ordering-note {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  margin: 14px 0 0;
+}
+
 .events { list-style: none; margin: 0; padding: 0; }
 .month {
   font-family: var(--mono);
