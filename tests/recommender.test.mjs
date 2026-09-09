@@ -27,6 +27,12 @@ import {
 } from "../app/ranking.mjs";
 import { trainFromLog } from "../scripts/recommender-train.mjs";
 import {
+  buildQuery,
+  fetchEvents,
+} from "../scripts/recommender-export-events.mjs";
+import {
+  BLOB_COLUMNS,
+  DOUBLE_COLUMNS,
   EVENT_FIELDS,
   FEED_EVENT_ID,
   LOCALES,
@@ -836,4 +842,83 @@ test("the committed artifact says what it was trained on", () => {
 test("training the committed artifact again produces the committed artifact", async () => {
   const { artifact } = await trainFromLog(fileURLToPath(FIXTURE));
   assert.deepEqual(artifact, ranker, "data/ranker.json is not what its own log trains");
+});
+
+// --- the export pass ---
+
+test("the export asks the SQL API only for the columns the schema declares", () => {
+  const query = buildQuery(30);
+  assert.match(query, /FROM hacklist_events/);
+  assert.match(query, /FORMAT JSON/);
+  for (let i = 1; i <= BLOB_COLUMNS.length; i += 1) {
+    assert.ok(query.includes(`blob${i}`), `blob${i} is not selected`);
+  }
+  // The SELECT list is exactly the declared columns and nothing else. Analytics
+  // Engine also stores the index and a per-request _sample_interval, and the
+  // dataset carries a timestamp; none of them is selected, so nothing outside
+  // the eleven declared fields can reach a local file.
+  const selected = query
+    .slice("SELECT ".length, query.indexOf(" FROM "))
+    .split(",")
+    .map((column) => column.trim());
+  assert.deepEqual(selected, [
+    ...BLOB_COLUMNS.map((name, i) => `blob${i + 1}`),
+    ...DOUBLE_COLUMNS.map((name, i) => `double${i + 1}`),
+  ]);
+});
+
+test("the export validates on the way out as well as on the way in", async () => {
+  const good = {
+    blob1: "impression",
+    blob2: "AbCdEfGhIjKlMnOpQr",
+    blob3: "ZyXwVuTsRqPoNmLkJi",
+    blob4: "en",
+    blob5: "coreweavehacks",
+    blob6: "candidate",
+    blob7: "syn-1",
+    blob8: "wide",
+    blob9: "web",
+    double1: 1789000000000,
+    double2: 4,
+  };
+  // A row written by an older client than this checkout describes: kept in the
+  // dataset for three months, and refused here rather than parsed hopefully.
+  const stale = { ...good, blob1: "pageview" };
+  const fetchImpl = async (url, init) => {
+    assert.match(url, /analytics_engine\/sql$/);
+    assert.equal(init.method, "POST");
+    assert.equal(init.headers.authorization, "Bearer token-value");
+    return new Response(JSON.stringify({ data: [good, stale] }), { status: 200 });
+  };
+  const { events, rejected } = await fetchEvents({
+    accountId: "acc",
+    token: "token-value",
+    days: 7,
+    fetchImpl,
+  });
+  assert.equal(events.length, 1);
+  assert.equal(rejected.length, 1);
+  assert.equal(events[0].type, "impression");
+  assert.equal(events[0].source, "web");
+  assert.equal(events[0].position, 4);
+  assert.deepEqual(Object.keys(events[0]).sort(), [...EVENT_FIELDS].sort());
+});
+
+test("a failed export says so without printing the token", async () => {
+  const fetchImpl = async () =>
+    new Response("token-value is not authorized", {
+      status: 403,
+      statusText: "Forbidden",
+    });
+  await assert.rejects(
+    () => fetchEvents({ accountId: "acc", token: "token-value", days: 7, fetchImpl }),
+    (error) => {
+      assert.match(error.message, /403 Forbidden/);
+      assert.ok(
+        !error.message.includes("token-value"),
+        "the error carries the token",
+      );
+      return true;
+    },
+  );
 });

@@ -42,7 +42,8 @@
     "recommender:synthesize": "node scripts/recommender-synthesize-events.mjs",
     "recommender:train": "node scripts/recommender-train.mjs",
     "recommender:eval": "node scripts/recommender-eval.mjs",
-    "recommender:controls": "node scripts/recommender-controls.mjs"
+    "recommender:controls": "node scripts/recommender-controls.mjs",
+    "recommender:export": "node scripts/recommender-export-events.mjs"
   },
   "dependencies": {
     "@lightpanda/browser": "^1.2.0",
