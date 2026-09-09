@@ -253,7 +253,20 @@ test(
     const clicks = events().filter((row) => row.type === "click");
     assert.equal(clicks.length, before + 1, "the click was not reported");
     assert.equal(clicks[0].position, 0, "a click on the top row was not rank 0");
-    assert.equal(clicks[0].ranking, "production");
+    // Which team owns rank 0 is a seeded coin off a freshly minted client id,
+    // so it is genuinely either one. What must hold is that the click agrees
+    // with the impression it came from: crediting a click to the team that did
+    // not put the row there is the one way this measurement can be wrong.
+    const topImpression = events().find(
+      (row) => row.type === "impression" && row.position === 0,
+    );
+    assert.equal(
+      clicks[0].ranking,
+      topImpression.ranking,
+      "the click credited a different team than the impression at the same rank",
+    );
+    assert.equal(clicks[0].event_id, topImpression.event_id);
+    assert.equal(clicks[0].session_id, topImpression.session_id);
 
     // The copy button is the subscribe action, and the feed is not one event.
     await page.locator(".feed button").first().click();
