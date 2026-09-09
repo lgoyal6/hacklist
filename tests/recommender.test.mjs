@@ -32,6 +32,12 @@ import {
   sinkFor,
 } from "../worker/events-endpoint.mjs";
 import { buildManifest } from "../scripts/recommender-freeze.mjs";
+import {
+  groupRenders,
+  organicCounts,
+  readEventLog,
+} from "../scripts/lib/recommender-log.mjs";
+import { synthesize } from "../scripts/recommender-synthesize-events.mjs";
 
 const data = JSON.parse(
   await readFile(new URL("../data/events.json", import.meta.url), "utf8"),
@@ -43,6 +49,11 @@ const manifest = JSON.parse(
   ),
 );
 const frozenAsOf = Date.parse(manifest.production_ordering.as_of);
+const FIXTURE = new URL(
+  "./fixtures/recommender-synthetic-events.jsonl",
+  import.meta.url,
+);
+const fixtureRows = await readEventLog(FIXTURE);
 
 // --- the frozen ordering ---
 
@@ -454,4 +465,124 @@ test("the built Worker serves the endpoint, and stores through the binding", asy
   assert.equal(refused.status, 400);
   assert.match(await refused.text(), /rejected personal field: email/);
   assert.equal(written.length, 1, "a refused batch still wrote something");
+});
+
+// --- the log, and the synthetic fixture that stands in for one ---
+
+test("the committed fixture is a log the Worker would have accepted", async () => {
+  const rows = await readEventLog(FIXTURE);
+  assert.ok(rows.length > 1000, `only ${rows.length} rows in the fixture`);
+  // readEventLog validates every row against the same schema the endpoint
+  // enforces, so reaching here is the assertion. What is left to check is the
+  // tagging, because the whole honesty of the evaluation rests on it.
+  assert.ok(
+    rows.every((row) => row.source === "synthetic"),
+    "a fixture row is not tagged synthetic",
+  );
+  assert.equal(
+    organicCounts(rows).impressions,
+    0,
+    "the synthetic fixture contributed organic impressions",
+  );
+  assert.equal(organicCounts(rows).interactions, 0);
+  assert.equal(organicCounts(rows).clients, 0);
+});
+
+test("the fixture carries both a production-only period and a drafted one", () => {
+  const renders = groupRenders(fixtureRows);
+  const production = renders.filter((render) =>
+    render.items.every((item) => item.ranking === "production"),
+  );
+  const drafted = renders.filter((render) =>
+    render.items.some((item) => item.ranking === "candidate"),
+  );
+  assert.ok(production.length > 20, `only ${production.length} production renders`);
+  assert.ok(drafted.length > 20, `only ${drafted.length} drafted renders`);
+  // A drafted render must name the model that drafted it, and an undrafted one
+  // must not claim a model it never had.
+  assert.ok(drafted.every((render) => render.model_version !== null));
+  assert.ok(
+    renders
+      .filter((render) => render.model_version === null)
+      .every((render) => render.items.every((item) => item.ranking === "production")),
+  );
+});
+
+test("a render is one list, split on a repeated rank or a long gap", () => {
+  const base = {
+    client_id: "AbCdEfGhIjKlMnOpQr",
+    session_id: "ZyXwVuTsRqPoNmLkJi",
+    locale: "en",
+    ranking: "production",
+    model_version: null,
+    viewport: "wide",
+    source: "seeded",
+  };
+  const impression = (ts, position, event_id) => ({
+    ...base,
+    type: "impression",
+    ts,
+    position,
+    event_id,
+  });
+  const renders = groupRenders([
+    impression(1_700_000_000_000, 0, "a"),
+    impression(1_700_000_000_001, 1, "b"),
+    // A repeated rank: one list cannot have two rows at rank 0.
+    impression(1_700_000_000_002, 0, "c"),
+    impression(1_700_000_000_003, 1, "d"),
+    // And a long gap starts another, even with ranks that would have fitted.
+    impression(1_700_000_060_000, 2, "e"),
+    { ...base, type: "click", ts: 1_700_000_060_500, position: 2, event_id: "e" },
+  ]);
+  assert.equal(renders.length, 3);
+  assert.deepEqual(
+    renders.map((render) => render.items.map((item) => item.event_id)),
+    [["a", "b"], ["c", "d"], ["e"]],
+  );
+  // The click belongs to the list that was on screen when it happened.
+  assert.deepEqual([...renders[0].clicks.keys()], []);
+  assert.deepEqual([...renders[2].clicks.keys()], ["e"]);
+});
+
+test("only web traffic is organic, and the rest is counted separately", () => {
+  const base = {
+    type: "impression",
+    ts: 1_700_000_000_000,
+    client_id: "AbCdEfGhIjKlMnOpQr",
+    session_id: "ZyXwVuTsRqPoNmLkJi",
+    locale: "en",
+    event_id: "a",
+    position: 0,
+    ranking: "production",
+    model_version: null,
+    viewport: "wide",
+  };
+  const counts = organicCounts([
+    { ...base, source: "web" },
+    { ...base, source: "web", type: "click", client_id: "QqQqQqQqQqQqQqQqQq" },
+    { ...base, source: "dev" },
+    { ...base, source: "synthetic" },
+    { ...base, source: "seeded" },
+    { ...base, source: "replay" },
+  ]);
+  assert.equal(counts.impressions, 1);
+  assert.equal(counts.interactions, 1);
+  assert.equal(counts.clients, 2);
+  assert.equal(counts.days, 1);
+  assert.deepEqual(counts.excluded_rows_by_source, {
+    dev: 1,
+    synthetic: 1,
+    seeded: 1,
+    replay: 1,
+  });
+});
+
+test("the synthesizer is a function of its seed", async () => {
+  const small = { seed: 7, days: 4, people: 3, depth: 6 };
+  const first = await synthesize(small);
+  const second = await synthesize(small);
+  assert.deepEqual(first.rows, second.rows);
+  const different = await synthesize({ ...small, seed: 8 });
+  assert.notDeepEqual(different.rows, first.rows);
 });
