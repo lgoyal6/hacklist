@@ -1,0 +1,354 @@
+{
+  "generated_from": {
+    "log": "tests/fixtures/recommender-synthetic-events.jsonl",
+    "log_sha256": "07c631c92a16710e8ea8e825732aa401a55025263fead51c8667080a065d8183",
+    "rows": 4282,
+    "rows_by_source": {
+      "synthetic": 4282
+    },
+    "window": [
+      "2026-08-26T12:24:25.998Z",
+      "2026-09-09T01:55:11.212Z"
+    ],
+    "artifact": "data/ranker.json",
+    "artifact_present": true,
+    "model_version": "syn-981390602e",
+    "control_mode": null
+  },
+  "honesty": {
+    "traffic": "SYNTHETIC ONLY. Every row in this log is seeded, synthetic, developer or replay traffic. Nothing here is a measurement of how anybody uses the board.",
+    "offline_numbers": "The offline table below carries NO quality claim. The fixture's reader is a linear function of the same features the ranker gets and is examined at exactly the propensity the trainer assumes, so a win here shows the pipeline runs and a loss would show a bug.",
+    "implemented_vs_measured": "Implemented and exercised locally. Nothing in this file is an online lift measurement.",
+    "local_vs_deployed": "Produced locally from a committed log. The board has not been deployed with logging enabled by this branch."
+  },
+  "manifest": {
+    "path": "results/recommender-manifest.json",
+    "snapshot_sha256": "3c2231331f5d9058ad262ddd70d6947e33e7e60d303a719c701f1b253bcdae89",
+    "events_file_sha256": "dd573ab6426ec0caf24983c7bf6bd32236865d103ecdce38b0dfc7bd5bb9deff"
+  },
+  "leakage": {
+    "detected": false,
+    "future_reads": 0,
+    "future_reads_sample": [],
+    "perturbation_failures": 0,
+    "perturbation_sample": [],
+    "method": "Two prongs. Every field outside the manifest's allow-list is perturbed and the feature vector must not move. And the only accessor that can reach engagement is alarmed: asking about any instant at or after the impression records a violation."
+  },
+  "split": {
+    "scheme": "prequential, rolling by calendar day (UTC)",
+    "rule": "For each evaluation day d, train on every row strictly before the start of day d and evaluate on day d only. No row is ever both trained on and evaluated.",
+    "days_in_log": 15,
+    "evaluated_days": 14,
+    "detail": [
+      {
+        "day": "2026-08-27",
+        "training_rows": 220,
+        "training_positives": 19,
+        "evaluated_renders": 16
+      },
+      {
+        "day": "2026-08-28",
+        "training_rows": 540,
+        "training_positives": 37,
+        "evaluated_renders": 15
+      },
+      {
+        "day": "2026-08-29",
+        "training_rows": 840,
+        "training_positives": 54,
+        "evaluated_renders": 15
+      },
+      {
+        "day": "2026-08-30",
+        "training_rows": 1140,
+        "training_positives": 75,
+        "evaluated_renders": 9
+      },
+      {
+        "day": "2026-08-31",
+        "training_rows": 1320,
+        "training_positives": 84,
+        "evaluated_renders": 14
+      },
+      {
+        "day": "2026-09-01",
+        "training_rows": 1600,
+        "training_positives": 101,
+        "evaluated_renders": 16
+      },
+      {
+        "day": "2026-09-02",
+        "training_rows": 1920,
+        "training_positives": 120,
+        "evaluated_renders": 17
+      },
+      {
+        "day": "2026-09-03",
+        "training_rows": 2260,
+        "training_positives": 140,
+        "evaluated_renders": 14
+      },
+      {
+        "day": "2026-09-04",
+        "training_rows": 2540,
+        "training_positives": 156,
+        "evaluated_renders": 14
+      },
+      {
+        "day": "2026-09-05",
+        "training_rows": 2820,
+        "training_positives": 176,
+        "evaluated_renders": 13
+      },
+      {
+        "day": "2026-09-06",
+        "training_rows": 3080,
+        "training_positives": 193,
+        "evaluated_renders": 19
+      },
+      {
+        "day": "2026-09-07",
+        "training_rows": 3460,
+        "training_positives": 213,
+        "evaluated_renders": 15
+      },
+      {
+        "day": "2026-09-08",
+        "training_rows": 3760,
+        "training_positives": 227,
+        "evaluated_renders": 11
+      },
+      {
+        "day": "2026-09-09",
+        "training_rows": 3980,
+        "training_positives": 238,
+        "evaluated_renders": 2
+      }
+    ],
+    "scored_renders": 190,
+    "judged_universe": 40,
+    "note": "Each ordering re-ranks only the items its render actually showed, because those are the only items with a label. An ordering that would have surfaced an unlogged event is neither credited nor punished for it."
+  },
+  "metrics": {
+    "production": {
+      "coverage_at_10": 11,
+      "coverage_at_10_share": 0.275,
+      "regional_coverage_at_10": 1,
+      "NDCG@5": {
+        "mean": 0.3317,
+        "ci95": [
+          0.2642,
+          0.401
+        ],
+        "scored_renders": 130
+      },
+      "NDCG@10": {
+        "mean": 0.3804,
+        "ci95": [
+          0.311,
+          0.4516
+        ],
+        "scored_renders": 130
+      },
+      "MRR": {
+        "mean": 0.4558,
+        "ci95": [
+          0.378,
+          0.5333
+        ],
+        "scored_renders": 130
+      },
+      "recall@10": {
+        "mean": 0.4885,
+        "ci95": [
+          0.4092,
+          0.5663
+        ],
+        "scored_renders": 130
+      }
+    },
+    "popularity": {
+      "coverage_at_10": 18,
+      "coverage_at_10_share": 0.45,
+      "regional_coverage_at_10": 1,
+      "NDCG@5": {
+        "mean": 0.4448,
+        "ci95": [
+          0.3785,
+          0.5141
+        ],
+        "scored_renders": 130
+      },
+      "NDCG@10": {
+        "mean": 0.4955,
+        "ci95": [
+          0.4325,
+          0.56
+        ],
+        "scored_renders": 130
+      },
+      "MRR": {
+        "mean": 0.5238,
+        "ci95": [
+          0.4537,
+          0.5967
+        ],
+        "scored_renders": 130
+      },
+      "recall@10": {
+        "mean": 0.6673,
+        "ci95": [
+          0.6,
+          0.7328
+        ],
+        "scored_renders": 130
+      }
+    },
+    "recency": {
+      "coverage_at_10": 11,
+      "coverage_at_10_share": 0.275,
+      "regional_coverage_at_10": 1,
+      "NDCG@5": {
+        "mean": 0.3317,
+        "ci95": [
+          0.2642,
+          0.401
+        ],
+        "scored_renders": 130
+      },
+      "NDCG@10": {
+        "mean": 0.3804,
+        "ci95": [
+          0.311,
+          0.4516
+        ],
+        "scored_renders": 130
+      },
+      "MRR": {
+        "mean": 0.4558,
+        "ci95": [
+          0.378,
+          0.5333
+        ],
+        "scored_renders": 130
+      },
+      "recall@10": {
+        "mean": 0.4885,
+        "ci95": [
+          0.4092,
+          0.5663
+        ],
+        "scored_renders": 130
+      }
+    },
+    "random": {
+      "coverage_at_10": 40,
+      "coverage_at_10_share": 1,
+      "regional_coverage_at_10": 1,
+      "NDCG@5": {
+        "mean": 0.1463,
+        "ci95": [
+          0.1105,
+          0.1808
+        ],
+        "scored_renders": 130
+      },
+      "NDCG@10": {
+        "mean": 0.2331,
+        "ci95": [
+          0.1893,
+          0.2757
+        ],
+        "scored_renders": 130
+      },
+      "MRR": {
+        "mean": 0.2262,
+        "ci95": [
+          0.1888,
+          0.2664
+        ],
+        "scored_renders": 130
+      },
+      "recall@10": {
+        "mean": 0.4563,
+        "ci95": [
+          0.3661,
+          0.5401
+        ],
+        "scored_renders": 130
+      }
+    },
+    "candidate": {
+      "coverage_at_10": 38,
+      "coverage_at_10_share": 0.95,
+      "regional_coverage_at_10": 1,
+      "NDCG@5": {
+        "mean": 0.3802,
+        "ci95": [
+          0.3021,
+          0.4562
+        ],
+        "scored_renders": 130
+      },
+      "NDCG@10": {
+        "mean": 0.4336,
+        "ci95": [
+          0.3603,
+          0.5054
+        ],
+        "scored_renders": 130
+      },
+      "MRR": {
+        "mean": 0.4624,
+        "ci95": [
+          0.3714,
+          0.5476
+        ],
+        "scored_renders": 130
+      },
+      "recall@10": {
+        "mean": 0.5868,
+        "ci95": [
+          0.5168,
+          0.6612
+        ],
+        "scored_renders": 130
+      }
+    }
+  },
+  "evaluator_matches_the_board": true,
+  "controls": [
+    {
+      "id": "leak-future",
+      "expectation": "no leakage from the production extractor (run --control leak-future to watch the detector fire)",
+      "run_in_this_mode": false,
+      "detected": false,
+      "behaved_as_expected": true,
+      "note": "Not the planted mode: here the expectation is that the detector finds nothing, because the production extractor reads nothing it should not. Run --control leak-future to see it fail."
+    },
+    {
+      "id": "shuffle-labels",
+      "expectation": "a candidate trained on shuffled labels must not beat production",
+      "shuffled_ndcg10": 0.303,
+      "production_ndcg10": 0.3804,
+      "behaved_as_expected": true
+    },
+    {
+      "id": "cold-start",
+      "expectation": "a client with no history receives exactly the production ordering",
+      "ordering": "production",
+      "matches_frozen_snapshot": true,
+      "behaved_as_expected": true
+    },
+    {
+      "id": "missing-artifact",
+      "expectation": "a missing model artifact yields the production ordering, deterministically",
+      "artifact_path": "data/ranker.json",
+      "artifact_present": true,
+      "ordering": "production",
+      "matches_frozen_snapshot": true,
+      "deterministic": true,
+      "behaved_as_expected": true
+    }
+  ]
+}
