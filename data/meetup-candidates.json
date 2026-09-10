@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-09T18:27:54.025Z",
+  "collectedAt": "2026-09-10T08:02:59.613Z",
   "source": "meetup",
   "queries": [
     "https://www.meetup.com/find/?keywords=hackathon&location=us--ca--san%20francisco&source=EVENTS",
@@ -7,13 +7,50 @@
     "https://www.meetup.com/find/?keywords=hackathon&location=us--ca--san%20diego&source=EVENTS"
   ],
   "skipped": {
-    "past": 1,
-    "online": 3,
-    "notLocal": 4,
-    "notHackathon": 29,
+    "past": 0,
+    "online": 5,
+    "notLocal": 3,
+    "notHackathon": 28,
     "recurring": 0
   },
   "problems": [],
   "note": "Meetup search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
-  "candidates": []
+  "candidates": [
+    {
+      "url": "https://www.meetup.com/openoakland/events/316215778/",
+      "title": "Beautiful Oakland: A Civic Tech Idea-A-Thon",
+      "category": "hackathon",
+      "heldBecause": null,
+      "discoveredVia": "meetup",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Beautiful Oakland: A Civic Tech Idea-A-Thon\nMills College at Northeastern University\nOakland, CA\n**Please reserve your ticket on [Eventbrite](https://www.eventbrite.com/e/a-beautiful-oakland-a-civic-tech-idea-a-thon-tickets-1996656041970?aff=luma&utm_source=luma)!**\n​Presented by Northeastern University Oakland and OpenOakland.\n​**Interested in volunteering to support OpenOakland's Tech Week events? Sign up [here](https://forms.gle/EVdxLc6sCjJcn2HG9?utm_source=luma)!**\n​The Beautiful Oakland: Civic Tech Idea-A-Thon is a focused, energizing half-day event that brings Oakland residents, students, technologists, and city officials together to generate fresh ideas for tackling illegal dumping and improving the physical environment in Oakland.\n​The event opens with an expert panel - a mix of government and community leaders will ground participants in the problem and what's already been tried. Attendees will then take part in structured ideation workshop, practicing critical design thinking skills along the way: individual idea generation, sharing within small groups, and narrowing down ideas. Groups will then iterate on and scope their strongest idea, then present it back to the full room. Top ideas are documented as brief canvases (problem, solution sketch, feasibility, suggested next step) so they can be picked up later for a class project, a policy conversation, a pilot, or a future hackathon.",
+      "checkedAt": "2026-09-10T08:02:56.698Z",
+      "structuredEvent": {
+        "url": "https://www.meetup.com/openoakland/events/316215778/",
+        "name": "Beautiful Oakland: A Civic Tech Idea-A-Thon",
+        "description": "**Please reserve your ticket on [Eventbrite](https://www.eventbrite.com/e/a-beautiful-oakland-a-civic-tech-idea-a-thon-tickets-1996656041970?aff=luma&utm_source=luma)!**\n​Presented by Northeastern University Oakland and OpenOakland.\n​**Interested in volunteering to support OpenOakland's Tech Week events? Sign up [here](https://forms.gle/EVdxLc6sCjJcn2HG9?utm_source=luma)!**\n​The Beautiful Oakland: Civic Tech Idea-A-Thon is a focused, energizing half-day event that brings Oakland residents, students, technologists, and city officials together to generate fresh ideas for tackling illegal dumping and improving the physical environment in Oakland.\n​The event opens with an expert panel - a mix of government and community leaders will ground participants in the problem and what's already been tried. Attendees will then take part in structured ideation workshop, practicing critical design thinking skills along the way: individual idea generation, sharing within small groups, and narrowing down ideas. Groups will then iterate on and scope their strongest idea, then present it back to the full room. Top ideas are documented as brief canvases (problem, solution sketch, feasibility, suggested next step) so they can be picked up later for a class project, a policy conversation, a pilot, or a future hackathon.",
+        "startDate": "2026-09-29T20:00:00.000Z",
+        "endDate": "2026-09-29T20:00:00.000Z",
+        "timeSource": "meetup",
+        "organizers": [
+          "OpenOakland"
+        ],
+        "location": {
+          "name": "Mills College at Northeastern University",
+          "city": "Oakland",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    }
+  ]
 }
