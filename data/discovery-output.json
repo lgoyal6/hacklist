@@ -2,8 +2,8 @@
   "sweep": {
     "city": "San Francisco",
     "startedFrom": 24,
-    "personalizedSeeds": 1229,
-    "personalizedPromising": 39,
+    "personalizedSeeds": 1280,
+    "personalizedPromising": 45,
     "searchSeeds": 60,
     "apiCalendarSeeds": 19,
     "linkedinSeeds": 60,
@@ -14,32 +14,32 @@
     "unlockerConfigured": false,
     "unlockerProblem": null,
     "lastDeepSweepAt": "2026-09-10T08:01:53.445Z",
-    "httpFailures": 32,
-    "httpThrottled": 32,
-    "httpPauses": 4,
+    "httpFailures": 16,
+    "httpThrottled": 16,
+    "httpPauses": 2,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 13,
-    "structuredEventsFound": 129,
-    "candidatesFound": 4,
+    "externalPagesVisited": 17,
+    "structuredEventsFound": 93,
+    "candidatesFound": 9,
     "heldForReview": 0,
-    "nearMisses": 3,
+    "nearMisses": 0,
     "stoppedOnTimeBudget": false,
-    "elapsedSeconds": 971,
-    "secondsPerPage": 1.1157,
+    "elapsedSeconds": 193,
+    "secondsPerPage": 0.2216,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 240,
-    "completedAt": "2026-09-10T18:15:38.994Z"
+    "queueRemaining": 205,
+    "completedAt": "2026-09-11T07:42:52.097Z"
   },
   "candidates": [
     {
-      "url": "https://cerebralvalley.ai/e/vultr-the-agent-arena",
-      "title": "The Agent Arena Hackathon | Cerebral Valley",
+      "url": "https://luma.com/l74b4u7b",
+      "title": "🔥 AI Hackathon with $4500 cash prizes - Qoder & Neo4j",
       "category": "hackathon",
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
       "confidence": 94,
-      "relevance": 96,
+      "relevance": 88,
       "signals": {
         "directHackathonTerm": true,
         "buildEvidence": true,
@@ -47,9 +47,160 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Skip to Main Content\nEvents\nSearchSign InSign In\nMore\nHostsVultr\nThe Agent Arena Hackathon\nSan Francisco, CASep 26 at 9:00 AM – Sep 27 at 5:00 PM (PDT)\n\nJoin us at The Agent Arena Hackathon hosted by Vultr to build what the next generation of agent infrastructure actually looks like in production.\n\nAgents are writing code, driving browsers, and running real operations for teams. The infrastructure built to contain and coordinate what they do needs to get better.\n\nVultr is bringing the tools for you to build infrastructure powering the next generation of autonomous execution: VM backends, serverless inference, and the compute layer agents run on when they stop talking and start acting.\n\nCompete for more than $10,000 across cash and credits!\n\nNote: This event is fully in-person in San Francisco. Teams may have up to four members. All attendees must apply and be approved. Submitting an application does not guarantee a seat; approved applicants must confirm their attendance.\n\nRegister",
-      "checkedAt": "2026-09-10T18:02:49.726Z",
-      "heldBecause": null,
+      "evidence": "🔥 AI Hackathon with $4500 cash prizes - Qoder & Neo4j\nB.E.L.L.E Community\nAnna Hong\nLenka Huang\nNieChloe\nHenry Huang\nJeremy Adams\nSan Francisco, California\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/l74b4u7b",
+        "name": "🔥 AI Hackathon with $4500 cash prizes - Qoder & Neo4j",
+        "description": null,
+        "startDate": "2026-09-12T09:00:00.000-07:00",
+        "endDate": "2026-09-12T21:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, California",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "B.E.L.L.E Community",
+          "Anna Hong",
+          "Lenka Huang",
+          "NieChloe",
+          "Henry Huang",
+          "Jeremy Adams"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-09-11T07:40:27.933Z"
+    },
+    {
+      "url": "https://luma.com/beta-dz46",
+      "title": "Beta x Alibaba Cloud x AMD AI Agent Hackathon Demo Day",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "confidence": 94,
+      "relevance": 81,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Beta x Alibaba Cloud x AMD AI Agent Hackathon Demo Day\nBeta University Events\nBeta University\nDaniel Niu\nPalo Alto, CA\nPalo Alto\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/beta-dz46",
+        "name": "Beta x Alibaba Cloud x AMD AI Agent Hackathon Demo Day",
+        "description": null,
+        "startDate": "2026-09-11T13:00:00.000-07:00",
+        "endDate": "2026-09-11T18:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "Palo Alto, CA",
+          "city": "Palo Alto",
+          "region": "California"
+        },
+        "organizers": [
+          "Beta University Events",
+          "Beta University",
+          "Daniel Niu"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-09-11T07:40:27.932Z"
+    },
+    {
+      "url": "https://luma.com/openmodelhack",
+      "title": "Open Model Hack - Gradient x Google Deepmind",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "confidence": 78,
+      "relevance": 79,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Open Model Hack - Gradient x Google Deepmind\ntokens&\ntokens&\nGradient\nAlessandro Amenta\nDenise Teng\nSimon Tiu\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/openmodelhack",
+        "name": "Open Model Hack - Gradient x Google Deepmind",
+        "description": null,
+        "startDate": "2026-09-12T09:30:00.000-07:00",
+        "endDate": "2026-09-12T19:30:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "tokens&",
+          "tokens&",
+          "Gradient",
+          "Alessandro Amenta",
+          "Denise Teng",
+          "Simon Tiu"
+        ],
+        "offerAvailability": "https://schema.org/SoldOut"
+      },
+      "checkedAt": "2026-09-11T07:40:27.933Z"
+    },
+    {
+      "url": "https://luma.com/abundant-3yz7",
+      "title": "Building for SF — A Free Civic Buildathon, Sept 11-12 - Two days. Real projects. A city that works better.",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Building for SF — A Free Civic Buildathon, Sept 11-12 - Two days. Real projects. A city that works better.\nAbundant Leaders San Francisco\nLily Chandrasekher\nYes SF Headquarters\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/abundant-3yz7",
+        "name": "Building for SF — A Free Civic Buildathon, Sept 11-12 - Two days. Real projects. A city that works better.",
+        "description": null,
+        "startDate": "2026-09-11T18:00:00.000-07:00",
+        "endDate": "2026-09-12T17:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "Yes SF Headquarters",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Abundant Leaders San Francisco",
+          "Lily Chandrasekher"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-09-11T07:39:58.743Z"
+    },
+    {
+      "url": "https://cerebralvalley.ai/e/vultr-the-agent-arena",
+      "title": "The Agent Arena Hackathon",
+      "category": "hackathon",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "The Agent Arena Hackathon\nDevelopers will compete in the Agent Arena Hackathon to build production-ready agent infrastructure, with Vultr providing the cloud platform and resources for this next-generation AI challenge.\nCerebral Valley\nSan Francisco, CA\nSan Francisco\nCA",
       "structuredEvent": {
         "url": "https://cerebralvalley.ai/e/vultr-the-agent-arena",
         "name": "The Agent Arena Hackathon",
@@ -67,47 +218,12 @@
           "Cerebral Valley"
         ],
         "offerAvailability": "https://schema.org/InStock"
-      }
+      },
+      "checkedAt": "2026-09-11T07:40:20.164Z"
     },
     {
-      "url": "https://luma.com/lps4ib1e",
-      "title": "Punk Software Hack Night: Data liberation ✊",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Punk Software Hack Night: Data liberation ✊\nImbue Events\nBowei\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/lps4ib1e",
-        "name": "Punk Software Hack Night: Data liberation ✊",
-        "description": null,
-        "startDate": "2026-09-10T18:00:00.000-07:00",
-        "endDate": "2026-09-10T22:00:00.000-07:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Imbue Events",
-          "Bowei"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-09-10T17:59:48.396Z"
-    },
-    {
-      "url": "https://luma.com/qualcomm-event-sep10-2026",
-      "title": "Qualcomm UNO Q Hack Night #2",
+      "url": "https://luma.com/beta-6y1n",
+      "title": "AI + Education Hackathon@Stanford",
       "category": "hackathon",
       "discoveredVia": "https://luma.com/discover/sf/ai",
       "confidence": 78,
@@ -119,35 +235,34 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Qualcomm UNO Q Hack Night #2\n[SF] HackerSquad\nAdam Chan\nAaishika\nEmre Gumus\nQualcomm\nSanta Clara\nCalifornia",
+      "evidence": "AI + Education Hackathon@Stanford\nBeta University Events\nBeta University\nDaniel Niu\nStanford, CA\nStanford\nCalifornia",
       "structuredEvent": {
-        "url": "https://luma.com/qualcomm-event-sep10-2026",
-        "name": "Qualcomm UNO Q Hack Night #2",
+        "url": "https://luma.com/beta-6y1n",
+        "name": "AI + Education Hackathon@Stanford",
         "description": null,
-        "startDate": "2026-09-10T17:00:00.000-07:00",
-        "endDate": "2026-09-10T20:00:00.000-07:00",
+        "startDate": "2026-09-12T09:00:00.000-07:00",
+        "endDate": "2026-09-12T17:00:00.000-07:00",
         "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
-          "name": "Qualcomm",
-          "city": "Santa Clara",
+          "name": "Stanford, CA",
+          "city": "Stanford",
           "region": "California"
         },
         "organizers": [
-          "[SF] HackerSquad",
-          "Adam Chan",
-          "Aaishika",
-          "Emre Gumus"
+          "Beta University Events",
+          "Beta University",
+          "Daniel Niu"
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-09-10T18:00:19.426Z"
+      "checkedAt": "2026-09-11T07:40:27.933Z"
     },
     {
-      "url": "https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon",
-      "title": "AI Infra Summit Hackathon",
+      "url": "https://luma.com/coreweavehacks",
+      "title": "CoreWeave Hacks: Agent Loops Hackathon with Weights & Biases, AGI House, and TypeSafe AI",
       "category": "hackathon",
-      "discoveredVia": "https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
       "confidence": 78,
       "relevance": 71,
       "signals": {
@@ -157,27 +272,3331 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "AI Infra Summit Hackathon\n🌎 Hybrid Hackathon | 💻 Online Build: September 10–16, 2026 | 📍 On-site: September 15–17, 2026 The official hackathon of AI Infra Summit — co-organized by Kisaco Research and lablab.ai. Build production-grade AI applications on the modern AI infrastructure stack, alongside 8,000+ attendees, researchers, founders, and infra leaders. 📍 On-site Venue (September 15–17): Santa Clara Convention Center 5001 Great America Pkwy, Santa Clara, CA 📍 On-site participation is by invitation only. Travel and acc\nlablab.ai",
+      "evidence": "CoreWeave Hacks: Agent Loops Hackathon with Weights & Biases, AGI House, and TypeSafe AI\nWeights & Biases by CoreWeave\nAnna Shive\nWeights & Biases\nAlexa Orent\nLorenzo Balderrama Porras\n400 Alabama St ste 202\nSan Francisco\nCalifornia",
       "structuredEvent": {
-        "url": "https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon",
-        "name": "AI Infra Summit Hackathon",
-        "description": "🌎 Hybrid Hackathon | 💻 Online Build: September 10–16, 2026 | 📍 On-site: September 15–17, 2026 The official hackathon of AI Infra Summit — co-organized by Kisaco Research and lablab.ai. Build production-grade AI applications on the modern AI infrastructure stack, alongside 8,000+ attendees, researchers, founders, and infra leaders. 📍 On-site Venue (September 15–17): Santa Clara Convention Center 5001 Great America Pkwy, Santa Clara, CA 📍 On-site participation is by invitation only. Travel and acc",
-        "startDate": "2026-09-10T15:00:00.000Z",
-        "endDate": "2026-09-16T18:30:00.000Z",
-        "attendanceMode": "https://schema.org/MixedEventAttendanceMode",
+        "url": "https://luma.com/coreweavehacks",
+        "name": "CoreWeave Hacks: Agent Loops Hackathon with Weights & Biases, AGI House, and TypeSafe AI",
+        "description": null,
+        "startDate": "2026-09-12T09:00:00.000-07:00",
+        "endDate": "2026-09-13T17:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
-          "name": null,
-          "city": null,
-          "region": null
+          "name": "400 Alabama St ste 202",
+          "city": "San Francisco",
+          "region": "California"
         },
         "organizers": [
-          "lablab.ai"
+          "Weights & Biases by CoreWeave",
+          "Anna Shive",
+          "Weights & Biases",
+          "Alexa Orent",
+          "Lorenzo Balderrama Porras"
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-09-10T18:01:42.619Z"
+      "checkedAt": "2026-09-11T07:40:27.933Z"
+    },
+    {
+      "url": "https://luma.com/66qm5unt",
+      "title": "Agents, Everywhere: Global Hackathon with OpenAI • CopilotKit • openrouter [SF]",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Agents, Everywhere: Global Hackathon with OpenAI • CopilotKit • openrouter [SF]\nAI Tinkerers San Francisco\nSofía Sánchez-Zárate\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/66qm5unt",
+        "name": "Agents, Everywhere: Global Hackathon with OpenAI • CopilotKit • openrouter [SF]",
+        "description": null,
+        "startDate": "2026-09-12T10:00:00.000-07:00",
+        "endDate": "2026-09-12T17:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "AI Tinkerers San Francisco",
+          "Sofía Sánchez-Zárate"
+        ],
+        "offerAvailability": "https://schema.org/SoldOut"
+      },
+      "checkedAt": "2026-09-11T07:40:27.933Z"
+    },
+    {
+      "url": "https://luma.com/gh4256ju",
+      "title": "Live Models Hackathon, hosted by Visko x Reactor x Nebius",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Live Models Hackathon, hosted by Visko x Reactor x Nebius\nYing Yang\nYing Yang\nWill Yin\nAhmed Ahres\nNebius Developer Community\nFerry Building\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/gh4256ju",
+        "name": "Live Models Hackathon, hosted by Visko x Reactor x Nebius",
+        "description": null,
+        "startDate": "2026-09-12T10:00:00.000-07:00",
+        "endDate": "2026-09-12T18:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "Ferry Building",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Ying Yang",
+          "Ying Yang",
+          "Will Yin",
+          "Ahmed Ahres",
+          "Nebius Developer Community"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-09-11T07:40:27.933Z"
     }
   ],
-  "errors": []
+  "errors": [
+    {
+      "url": "https://www.loscobosmc.com/simposio-im%C3%A1genes-diagn%C3%B3sticas",
+      "message": "page.goto: PeerFailedVerification at https://www.loscobosmc.com/simposio-im%C3%A1genes-diagn%C3%B3sticas\nCall log:\n  - navigating to \"https://www.loscobosmc.com/simposio-im%C3%A1genes-diagn%C3%B3sticas\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "url": "https://www.edtechinnovationhub.com/news/google-challenges-students-to-build-and-pitch-an-ai-app-in-one-day-at-dublin-hackathon",
+      "message": "page.evaluate: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://www.eventbrite.co.uk/e/tickets-1991349376591",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://www.dcu.ie/careers/dcu-events/2026/aug/google-ie-student-ai-hackathon-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://www.meetup.com/thoughtworks-newcastle-events",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ak17bhn9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://www.eventbrite.com/e/tickets-1989641450137",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://aiml.events/events/humanoid-robots-summit-germany-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/deep-br7o",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://www.eventbrite.com/e/tickets-icai-summer-school-june-29th-30th-2026-1383489738049",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://cerebralvalley.ai/e/vultr-the-agent-arena",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://cerebralvalley.ai/e/mongodb-nyc-hackathon",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/discover",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/89209klj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/abundant-3yz7",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/vastsf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/wasmer",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/Beta-events",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/abundantleaderssf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/aivalley",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/belle.community",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/civic-tech-dc",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/dahacks",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/flwrlabs",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/genai-collective",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/imbue_ai",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/likelionus",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/mantisgrid-ai",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/multimodalsociety",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sf-hackersquad",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sv-issa",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tatianasf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/1i8a3dby",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/3ck0cd9g",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/5gcp8iv8",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/678a9u02",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/69bmmktv",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/agent-harness",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/agentnativebuildershackathon",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ai-conference-hack-day-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/AIHardware",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/apify-v8vw",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/b101ml40",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/beta-fdnw",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/clickh-sie8",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/cursorcommunity",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ep9jjo5u",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/Innovation4Veterans",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/jjq9vnym",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/l7grfvzp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/lps4ib1e",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/mastra-hack",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/mistral-summer-vibe-hackathon-sf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/o0id5abn",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/pharma-hack-day-aws-builder-loft-aug13-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/pnf1qf3g",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/pxdhdo4a",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qbp3ck7t",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qisv9xmg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qualcomm-event-sep10-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qzct3ybt",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rkum5o5l",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rotehack",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/runpod-online-hackathon",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/utyqfarn",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/zero-downtime",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/zp2yzp59",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/hqz8wi79",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/zsaa3r3d",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://cerebralvalley.ai/e/openenv-hackathon-sf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/6eqa8nbh",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rgk6ln4e.",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/HackBio",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/hh-future-ai-news-theatlantic-infactory",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/8g6lrxsl",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nocpgiou",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/8ca2z1rr",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/weavehacks3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rs04siso",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gu8aes78",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/y8k57glv",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/0nsdp7jv",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/intercomai",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/slicelab",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rgk6ln4e",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/hackbio",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nkknxvrz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/arc-commerce-",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/xt4k5374",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/v53qzodf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/fine-tuning-friday-13",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/or5jede2",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/50si7fw4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9m10r1bo",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sk000djt",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/human-enhancement-hackathon",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/v5rfi2zu",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/x1ts2h71",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ElevenLabsHackathon",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/l9tjozjq",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/c7zoymlp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/Vouch-HumanX",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ym0od90s",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/5xrbm4b9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/uazihx6a",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/kf7ah5ky",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/oab5dhn5",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/t5tct5jo",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/fwg50ob7",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/robohacks-at-YC",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/j9pxtjw3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/Seedance-Beta-hackathon",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/build-ycs-next-unicorn-apr29-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/pfjda5pp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q9uvx8r7",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/kezgw7zc",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/6eztejiw",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/search-hackathon",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/590cn33o",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gcha8090",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ergd4mn5",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nighthack",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/70zgy7ix",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/1dxb2fah",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nrletiv9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/battle-bots-hack-night-jul15-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/1tbk6nmd",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/2n8vk5s3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/2vzv52ct",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/3yx41qr9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/4cvz0tzf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/5ck1urs0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/7025i1j5",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/7lww915n",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/90minstartupinSF",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9n27uem4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ai",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ai-coding-hack",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ai-control-hackathon-2026-san-francisco-mox",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ai-hackathon-corp-agent-vibe-code",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ai-meets-robotics-sf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ai-sf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/aihack",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/aixbio-hackathon-2026-sf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/aws-builder-loft-events",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/b0l7tzxd",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/bayareafoundersclub",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/BayAreaProduct",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/BETAhackathon",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/bfcpaloalto",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/BuildWeek",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/claude-08pt",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/claudecommunity",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/claudemexicocitylab",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/d80jpiq0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/DeAIHackerHouse",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/dndr5niz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/eanwy2bp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/eiphx443",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/f13dwefh",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/fetch.ai",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/frw43jmv",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ftchack-sf-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/genaihackathon",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/getsolotech",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gtc-hack-for-impact",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gtc-hack-to-create",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/hacksprint-sf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/hacktoberfest-sf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/house-of-ai",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/i1x6rwe3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/il6hiolb",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/iu9svaun",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/j2176blg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/jv444zph",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ldhaw009",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ml7emv1r",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nyixzul3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/o8otrxar",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/oss4ai",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/place-holder-hack",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/t5iktvzy",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/posthog-tpmz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/pp7zo62o",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ppb0ctah",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ppnhhbv2",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/prclry87",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/press",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/pressforantler",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/prjctr-m24c",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/px31cvd5",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q252ni0c",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q299372t",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q2mndgh3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q3i1vj1g",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q4iq7fa6",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q75w4gup",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q8521f3k",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q9z99fhe",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qasar-younis-spc",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qdkmo024",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qf3rb0du",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qiv3xhu6",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qktusa7z",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qo91joc3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qqubx2vi",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qrdusggp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qtuxy56z",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qvagdprf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qvgjgdrh",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qyyl8ptl",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qyzjj21d",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/r56uib35",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/r5ae521o",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/r5ai9mfd",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/r6o27grm",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/r6o4ltx2",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/r8ft63zq",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/r8o604o0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/r9misbcg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/r9xj6zm2",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ra1q3wlf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/radi8-r71l",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/raisi-g87x",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/raleigh",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rallysf-uqiv",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rallysf-yfs4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rbsmrjl0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rbw7te2a",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rco06s30",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rcqwqgqf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rcu2x96b",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/reading-cc2u",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/readingrhythms-global",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/reductoai-obnb",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/replithq-qnnp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/revelo-dinner-san-francisco-090826",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/revgenius-palo-alto",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rfhhj6vv",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rfvpciz9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rhhjuyp4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rho-inkle-emergent",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rj42jssd",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rj50dx5x",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rjnzg562",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rkj2z92q",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rklrsomo",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rko0ggcy",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rl2sl9hj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rm2wxl8x",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/roastpr",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/roboticsaiaug26",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/roioo1zz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ruft92qf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/running",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rxc7xv2m",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rxlnxhld",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rxs0sfap",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ryw61pad",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/s1szlu9h",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/s656pzkn",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/s6o0jite",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/s9lskws9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sa9qbk8n",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sacramento",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/salt-lake-city",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/saltbreadmaxxing",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/SardineCon2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sbqtj541",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sbzgk9au",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/scale-c20e",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/scalekit-key0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/scrappysessions",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sdclimateweek",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/se9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/seamate-b902",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/seamate-v33i",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/seattle",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/secf21bn",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/second-brain-for-sales-leaders",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sept-vip-dinner",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sf-hardware-meetup",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sf-meetup-aug26",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sfsociety-xsbl",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sgllncth",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sh9uu79x",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sillybot",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/slash-a5ml",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/slash-m9y2",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/smllnzu5",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/smooth-68ni",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/software-factories",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/software-factory",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/southparkcommons-events",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spacexai-7alp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spacexai-community",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spacexai-i8qf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spacexai-qdwh",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/speculative",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spn3lke3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spp2",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sqgqwevq",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ssepa2tj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ssxw77c6",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/staaake-f062",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/StepSF26",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/su2qco99",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/summer-meetup-mistral-sglang",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/summerbash",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/superset-c1qs",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/surreal-q3p7",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sv-u5yy",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/svitla-ai-panel",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sy0mt1m4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/szngzkm1",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/t2bg4uqq",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/t56hxpmr",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/t63iakse",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/takdk0x1",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tasj011w",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tbj6dk8b",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tdicqg4p",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tdsf17",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tdsf18",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tech",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tech-5mtl",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tg3ng9yi",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tgo1mbqp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/th35npqz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/the-corgi-cup",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/the-l1rh",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/the-rnwx",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tiat",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tinyfish-awstinyfish",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tinyfish-hud0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tinyfish-hvv6",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tjo8mlo3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tmp1kqvt",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tnadukoa",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tokenscarcity",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/toronto",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/touchdesignerintro",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tqx63fpl",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tribechat-peg5",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/trmlabs-3kox",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/trossen-academic-night",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/trossen-grand-opening",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/trossen-intel",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/trossen-nvidia-partner-night",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/trossen-openhouse",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/trossen-proprio-livekit",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/trossen-ROS",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/trust3ai-snowflake-July15",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ttt-10th-sfo",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tu1kbg8n",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tuothja0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tvuj9ov4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/txup8dqa",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tym2h9zq",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tzgcpjx9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/u2r000sg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/u5e2dm38",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/u5fkxj50",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/u6a7a3hz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/u7fbkoty",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/u92zlvjg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/u978kab9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/uakrh9jr",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ubzesr24",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/uc1hf9jg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/uefuu042",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/uf96q4yi",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/uh2xt7vm",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/uivfijjh",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ujlou22c",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ujrtum42",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ujthsr31",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ul3khcc7",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ulka7k83",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/wpptamct",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/fawtwq0b",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/wiro245d",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/opjceyhi",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/Big-Brain-Bay",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nqqs96cf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/bnfjmiti",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9t3jot9d",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/wrp5vcua",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/439nsfz0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/0jpblx55",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/linden-po4b",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/berkeley-eqiv",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/demo-night-sept2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/81aqxabn",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gtmseries_decagon",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/f49ieour",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/jmny0wzn",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/allthings-kj2x",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/xksvo7fp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/obetc4nv",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/8lrofron",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spcforummercor9-16",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/parallel-543q",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/3atg5ifu",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9oiujuyw",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/lyzw2vit",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ahb7ttbn",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sqrw0b7k",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/2usao24s",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/bpk7tj30",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/acquiredmeetup",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/0460rgnq",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/5aijb3kb",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/baseten-f66n",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/uaz58gf8",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/4ge5bar2",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/events-cm5i",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/openro-kcis",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gnsypbzj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/4nkiwp04",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/w7l2sv3t",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/x0ips3nj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ou0z635y",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/z4liunka",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/claude-coworkshop-sf-sept-21",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/dmitri-waymo-spc",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/j14jqq0f",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/5cewfkx1",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/j6s8wb9d",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/PRLSFdebut",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9a5rpvce",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ojzh60h7",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/zwnmf3oo",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/mzkxb97z",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/bhmbsn8p",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/8vk9mwtp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ya0r5rym",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/claude-aly0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/z6tjtweg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/prms1lrx",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/6d5nmzxb",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/yv2hv22g",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/vdk8mt2q",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/runtime-by-modal",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/foresight-lqwp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/supabase-select-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/4xjpmq1m",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sergey-spc",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/4ljpaw1d",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/o2u9s9lr",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/lqqg6oue",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/pricing",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/app",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/55ifg8h5",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/522yxv4t",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gedzjda9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/0ao3w9ss",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gya660r2",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/kb2u75jm",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/85b2c2tx",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/open-campus-22",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/yn6uj37n",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/GuidetoSV",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/vetsin-3mkp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/bu73jsco",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/i97w2myj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/feup9a6j",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/alif-vc-fireside",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/mvwvbw3n",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/g3zow2x4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/yc-demo-day-party",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/z9h83xoi",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nby1uk7y",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/berkeley-xiq4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/l5q3ku6i",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ec0fm16b",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/yjrpe1lg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/fef4v9pw",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/hjqjnk2k",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/kzj6q924",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/projection",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/0n9p05ch",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/b35p6ahj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/yyg0otmm",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/8mjqcz8w",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/d1wltjxc",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/waz961k2",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/a6ipipmv",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nbfnrddh",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/c7kgofj7",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/AVX_MP_OHSept26",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/66g2tjye",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/f7e3ntk2",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9n9drufl",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/kr_powergrid_networking",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/asan-ifc-0926",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/j3kv31yc",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/4v46xiny",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/u8y0thrp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/6xxgrzah",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/kr_powergrid",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9zero-n5ou",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/xer5c03d",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/AVX_MP_BCSEP26",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/1zthggi0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/iw1s2arm",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/hmvkxmas",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q0pewc5n",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/dit9stm9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sv-ck5o",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/the-efn3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ib-founderfirst-4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/d08jvg91",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ruocr9ce",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qldz6akg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/clarify-aonz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/m7cru7ib",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/touchdesigner101",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/7ta3gd6a",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rtvxlfd0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/xpqvtax6",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9d447nef",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gy17ezmk",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/surreal-eem8",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/phs0pstw",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/zwrowdr5",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/joxi6n07",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sfvibehouse-fundraising",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qjiv6a44",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/etb7d9n8",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/cswssyki",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/fujn0l1y",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9dsyw7iy",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/hz11zhyg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/bnal7pbw",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/c1t1fyfy",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sunz3dc1",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/antlerus-2x9i",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spp3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/vvewpv6o",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/339bncou",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/x0gjtt5b",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/e67tkucw",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/klng0ymz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/n7irw62p",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/mp3uaxhg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/aibi00v7",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/46rtcehj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/f0lywrfi",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/vdfiz4fd",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/39x52son",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/5pld5v4t",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/f2agbtho",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/w8z4e8yu",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gkijwr41",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ATC-Summit-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/founders-lwpb",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/retail-vrag",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/94bi4tif",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/agbo8zmt",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/Bridge",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9ydth3tc",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/s701cow7",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/u0a7j7uf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/uwkk25gi",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/i4nkgal5",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/bnw1r2la",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/u5s9pbpy",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q4hve7tb",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/m4rnzzra",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qfgogf9g",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/dp0adags",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gzo9o2p8",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/clickh-wavw",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/mkuztr93",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/hp4joq8l",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/c7ebjedo",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/j31j5oee",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gzjp31ka",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/n688dcl5",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ys9d7lpl",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/leopard-game-night-at-seldon-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/5r30imsr",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/greptile-ke3n",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/s31n0jgx",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rvhbd2ml",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sl6gb2wo",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/g016t68g",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/4b2x8fgk",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tr6jtx8j",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/urikyu5b",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/v6f3zr2m",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/revelo-premium-palo-alto-092326",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/e582jn6b",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/kwgjb7r1",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/grid-h9p5",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/Vertex-Fall-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/jf5uyhr1",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/3g96tttb",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ciu7ynqz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9lmo58vk",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/8m9raosk",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/det-dr9b",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/2l5y9vmy",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/clickh-5ms6",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/iynt68rs",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/snoosec-sf-2026-q3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/78sa5943",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/39x8ql3k",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/rmgh1w3w",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/c6ba5s3i",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/k1zph1rg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/berkeley-cq5i",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/HeroCall",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/6dy4fsfk",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/8p4l9o3a",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ua5rl4ky",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nycuaa-1ipo",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/a6epozfd",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/brs9excc",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/mfeye5hn",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/0n4cra29",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/3txapzdh",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/wgluio2d",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/4luk8yy8",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ibcoc-26",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/r1zdzwv4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nasscom-q6i1",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/750vdhaz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nasscom-avzl",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/n32meg5i",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/lxlrmvle",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9x8owdoa",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/6lrpvkqj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/fhk4jk2a",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nyig98hg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nja5onlg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/cepu8kjp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/h7bxk2ig",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/oj7krbf6",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/airtable-community-bay-area-crew-09-26",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/v5xp8mzp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/vfoaux5u",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/1e1oigq1",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/xsdfbbvq",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/e20jcg2f",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/er6yritw",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/8011e2ab1df9986c45d188740935da16",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/w13fyc15",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ul39qz0d",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/openai_runclub",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ddzobhdi",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/z1y7vxcb",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/6z4cx5z4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/kmkicdgl",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/hhrufcfk",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/berkeley-sl5u",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sreday-san-francisco-2026-q4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q44mon3b",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/lkju552w",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/o9hcn6kk",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/drinkup-f26",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ttww-afterparty",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gyg38xmx",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/meshsf2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/s3b7lwtt",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/cyberdecks",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/szg4hzay",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/demo-night-oct2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sryerl20",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ozrtk4ne",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/znufxsmr",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/hlbkcd04",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/7yjpiq5n",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tgz5qdkf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ejwagfv9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sf-tech-week-discord-game-development-meetup",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/xenl8z74",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/03k1rbkr",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/850gxevn",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/kle5wsv0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/kkrjazf2",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q18jxllx",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/vmjvw2ox",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/smartleadxpump",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tzx7utxg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/v369wsyv",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/BuildBuyorPartner",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/exekfdsk",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/p5v47xxe",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/signal26-sf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/egpwc3ua",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/uxyn1kg1",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/5yi1imdq",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/8vr4srl4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sanfranciscooctober",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/8unnz4co",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/jszu8o9a",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/smartleadxchatbase",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/uouclagg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ldadx3ab",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/docs-drinks",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/lv49ml4w",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/5rmv9m3d",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/60baqdz0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/w7tae05o",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/d6yuqu04",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sep-openclaw-workshop",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ag2257tf",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/oi48vqha",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/k74fk2wj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nouxt95e",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/n79c9r1y",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/242q4gty",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/8bwra4k0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/5gbxnspq",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tosa4rdj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/4lx4k9yj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nphrzvj5",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ld4mkj2m",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/wow7m019",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/l0asdrft",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/e1rt1491",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/business-kuoz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/00imixmm",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/qxk25nvc",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/claude-4dty",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/abbg6xnx",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/7xsm72ey",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/5e5r8alo",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/aboy59mu",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/7h5hqfm0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/arqpdwe1",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ucan-2026",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/women-fqdk",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/1264ontz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/pjyc9viz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/global-8rdk",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/platform-4802",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gmicloud-ysuc",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/0nada7qz",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/deepgram-xyix",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/vz0eb1gp",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/do3e29ql",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/r4inahlq",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/jgeqv9um",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/s0w1buzu",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/openro-6w7m",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/q60llc5w",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spacexai-qki6",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/z71t3rem",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spacexai-74df",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/kdf5t1wb",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/s2gs6jxb",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gl1gg0je",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/hu0e1aks",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/helpmefixthis",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/t38k11m8",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/w46efjs0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/gs45u7vy",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ai-exec-salon-santa-clara-aiinfra",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/5u22it9b",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/fin-dreamforce",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/51nqsmin",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/4u3lizdg",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/uxmg18ib",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/xkcvfs1h",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/7xa5tvva",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/9q01m2ky",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spacexai-7n4l",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/vdlwhg9g",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/wfaqp0oy",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/4t4ayrsi",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spacexai-vpud",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tylunc6q",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/spacexai-dtez",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/baomaxxing",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/0od1pidd",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/659dphw4",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ag6weg2w",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/joi8wyx9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/naw4vjb1",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/38s8o292",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/dataforai-h5ua",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/zhkj1hn9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/bius5my0",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/sk87ssoi",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/nb19ttdy",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/7djqpn9h",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/522xwvmw",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/tejas-rf5u",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/h7g8svxw",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/3w5x9br3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/link-2n6t",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/enrich-15lm",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/h2qu25rt",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/bkpe5h92",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/2jheso8h",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/Wiki3",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ciolirkj",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/cxos1yb9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/mfx5ssys",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/pkshy6j9",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/2vr4mtto",
+      "message": "page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "url": "https://luma.com/ibconvergence",
+      "message": "page.goto: Target page, context or browser has been closed"
+    }
+  ]
 }

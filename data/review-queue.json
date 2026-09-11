@@ -1,45 +1,7 @@
 {
-  "sweepCompletedAt": "2026-09-10T18:15:38.994Z",
+  "sweepCompletedAt": "2026-09-11T07:42:52.097Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
-  "nearMisses": [
-    {
-      "url": "https://events.cmoalliance.com/location/aisanfrancisco",
-      "title": "AI for Marketers Summit | San Francisco",
-      "readFrom": "page",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "confidence": 52,
-      "relevance": 62,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://luma.com/sillybot",
-      "title": "Silly Robots Contest",
-      "readFrom": "listing",
-      "via": "https://luma.com/discover/sf/tech",
-      "confidence": 52,
-      "relevance": 54,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://luma.com/9sunjbvp",
-      "title": "AI Design Thinking Workshop by SDN SF x Miro",
-      "readFrom": "listing",
-      "via": "https://luma.com/discover/sf/ai",
-      "confidence": 52,
-      "relevance": 54,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms",
-        "title names a non-hackathon format"
-      ]
-    }
-  ]
+  "nearMisses": []
 }

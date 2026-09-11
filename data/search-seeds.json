@@ -1,9 +1,14 @@
 {
-  "collectedAt": "2026-09-10T17:57:45.187Z",
+  "collectedAt": "2026-09-11T07:38:39.597Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
-  "problems": [],
+  "problems": [
+    {
+      "query": "site:luma.com hackathon \"san diego\" 2026",
+      "error": "brightdata captcha"
+    }
+  ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
     {
