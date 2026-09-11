@@ -1,14 +1,20 @@
 {
-  "collectedAt": "2026-09-11T07:39:07.264Z",
+  "collectedAt": "2026-09-11T18:01:21.880Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 0,
-  "pagesRead": 0,
+  "pagesFound": 3,
+  "pagesRead": 3,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "weekly bay area ai events hackathon 2026",
+      "error": "brightdata captcha"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
