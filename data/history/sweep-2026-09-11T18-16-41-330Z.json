@@ -9,8 +9,8 @@
         "coreArea": "SF",
         "boardName": "Hacklist SF",
         "timezone": "America/Los_Angeles",
-        "count": 77,
-        "hackathonCount": 75
+        "count": 74,
+        "hackathonCount": 72
       },
       {
         "key": "san-diego",
@@ -27,19 +27,19 @@
         "coreArea": null,
         "boardName": "Hacklist Online",
         "timezone": "America/Los_Angeles",
-        "count": 81,
-        "hackathonCount": 81
+        "count": 94,
+        "hackathonCount": 94
       }
     ],
     "timezone": "America/Los_Angeles",
     "sweepCompletedAt": "2026-09-11T18:16:41.330Z",
     "pagesVisited": 870,
     "candidatesFound": 11,
-    "publishedCount": 160,
-    "hackathonCount": 158,
+    "publishedCount": 170,
+    "hackathonCount": 168,
     "adjacentCount": 2,
-    "organizerCount": 123,
-    "sourceCount": 18,
+    "organizerCount": 134,
+    "sourceCount": 22,
     "seedCount": 24,
     "inputs": [
       {
@@ -51,6 +51,16 @@
         "file": "data/discovery-output.json",
         "sha256": "784b1ac83571e4319c37887f0c469f674dd8d5ce2037dfcfd3c029b9daf9da0f",
         "bytes": 23566
+      },
+      {
+        "file": "data/dorahacks-candidates.json",
+        "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86",
+        "bytes": 21276
+      },
+      {
+        "file": "data/ethglobal-candidates.json",
+        "sha256": "a8e4023f2983f6728db95a65641320dffd7b433334c6c57f3aaa874709ed6bc9",
+        "bytes": 2030
       },
       {
         "file": "data/eventbrite-candidates.json",
@@ -69,8 +79,8 @@
       },
       {
         "file": "data/luma-api.json",
-        "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763",
-        "bytes": 270642
+        "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2",
+        "bytes": 633309
       },
       {
         "file": "data/meetup-candidates.json",
@@ -90,9 +100,59 @@
     ],
     "deletedCount": 0,
     "redactedCount": 0,
-    "externalCount": 95
+    "externalCount": 106
   },
   "events": [
+    {
+      "id": "d6g5mb9o",
+      "url": "https://luma.com/d6g5mb9o",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "ecc0c16ed363e0f4431edd776d7a51394f851f8c9b8a21dc925259ec00789eeb"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "MantisGrid AI Hackathon & Summit 2026",
+      "organizer": "MantisGrid AI",
+      "venue": "Mitchell Park Community Center",
+      "city": "Palo Alto",
+      "area": "Peninsula",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-17T08:00:00-07:00",
+      "end": "2026-09-17T17:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 17",
+      "dateDetail": "Thu · 8am–5:30pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "$10,000 cash",
+      "tags": [
+        "AI",
+        "Agents",
+        "Infra"
+      ],
+      "going": 0,
+      "why": "10-hour build with judging, demos, team formation, a submission deadline; $10,000 cash.",
+      "score": 95,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 99,
+        "accessibility": 95,
+        "freshness": 92
+      },
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "checkedAt": "2026-09-12T03:37:57.113Z",
+      "missedSweeps": 0
+    },
     {
       "id": "7a4iutvp",
       "url": "https://luma.com/7a4iutvp",
@@ -105,7 +165,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "05a8fea793dc91ca66078a03fd31d98ca10b47fa9d200a21051605149b14e200"
@@ -131,7 +191,7 @@
       "tags": [
         "Agents"
       ],
-      "going": 508,
+      "going": 290,
       "why": "10-hour build with judging, demos, team formation; prizes listed.",
       "score": 94,
       "confidence": 94,
@@ -146,6 +206,54 @@
       "missedSweeps": 0
     },
     {
+      "id": "upjkn37w",
+      "url": "https://luma.com/upjkn37w",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "22c91919df9bb5c903ebe7e7bfad2a139e1a8e1c9471c15878d8d306e8ff7264"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Dream AI Hackathon 2026",
+      "organizer": "LIKELION US",
+      "venue": "Frontier Tower 🧑‍🚀",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-19T09:00:00-07:00",
+      "end": "2026-09-19T21:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 19",
+      "dateDetail": "Sat · 9am–9pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "$297 prizes",
+      "tags": [
+        "AI"
+      ],
+      "going": 0,
+      "why": "12-hour build with judging, team formation, a submission deadline; $297 prizes.",
+      "score": 94,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 94,
+        "accessibility": 100,
+        "freshness": 84
+      },
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-09-12T03:37:50.379Z",
+      "missedSweeps": 0
+    },
+    {
       "id": "l74b4u7b",
       "url": "https://luma.com/l74b4u7b",
       "provenance": {
@@ -157,7 +265,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "7bb2a2ccf5ddd107c0335097cf5222bea0df9474f6a782a0ac6138a764e75132"
@@ -181,7 +289,7 @@
       "status": "Open",
       "prize": "$4500 cash",
       "tags": [],
-      "going": 191,
+      "going": 147,
       "why": "12-hour build; $4500 cash.",
       "score": 93,
       "confidence": 94,
@@ -203,10 +311,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "4d87273295e2734306358dd01f2ec628cb83480ce181c08bc98604ab000870c6"
+        "contentSha256": "fde321aed7a13aab09c23a8428f3e7352120d580a98ac3646a2eb511553d9459"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -229,7 +337,7 @@
       "tags": [
         "Infra"
       ],
-      "going": 286,
+      "going": 288,
       "why": "3-day build with judging, demos, team formation; prizes listed.",
       "score": 93,
       "confidence": 94,
@@ -240,7 +348,57 @@
         "freshness": 92
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T18:01:42.138Z",
+      "checkedAt": "2026-09-12T03:37:48.015Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "vastsf",
+      "url": "https://luma.com/vastsf",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "4849e09cc161dd8eaec36f39267cc4ed2a7ebd569d94c9843de79fe1da0e8fd9"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Real-Time Video Agents Hack - SF",
+      "organizer": "tokens&",
+      "venue": null,
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-02T08:30:00-07:00",
+      "end": "2026-10-02T18:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 02",
+      "dateDetail": "Fri · 8:30am–6:30pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Prizes listed",
+      "tags": [
+        "AI",
+        "Agents",
+        "Token economy"
+      ],
+      "going": 0,
+      "why": "10-hour build with judging, demos, team formation; prizes listed.",
+      "score": 91,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 92,
+        "accessibility": 100,
+        "freshness": 70
+      },
+      "discoveredVia": "https://luma.com/discover/sf",
+      "checkedAt": "2026-09-12T03:37:58.812Z",
       "missedSweeps": 0
     },
     {
@@ -251,10 +409,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "a125a5ff1b33d4d19e93efc6f26b9cc202fa389863c91fd313ba41e72e0b17b5"
+        "contentSha256": "51a7de65ca211a254b5bce46a26bc2b80631b7a526de0dd3385eba223ce24f3f"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -288,7 +446,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-09-11T18:01:43.978Z",
+      "checkedAt": "2026-09-12T03:37:58.072Z",
       "missedSweeps": 0
     },
     {
@@ -947,6 +1105,54 @@
       "missedSweeps": 0
     },
     {
+      "id": "6bbloggr",
+      "url": "https://luma.com/6bbloggr",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "7c12da9884b60add68210217e173b315cc9deaa5909a9b1289e46f481822f90e"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "The AI Commerce Gallery - Hackathon | Walt Disney Family Museum",
+      "organizer": "AI Valley",
+      "venue": null,
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-03T09:00:00-07:00",
+      "end": "2026-10-03T21:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 03",
+      "dateDetail": "Sat · 9am–9pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Prizes listed",
+      "tags": [
+        "AI"
+      ],
+      "going": 0,
+      "why": "12-hour build with judging, demos, team formation, a submission deadline; prizes listed.",
+      "score": 90,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 87,
+        "accessibility": 100,
+        "freshness": 70
+      },
+      "discoveredVia": "https://luma.com/aivalley",
+      "checkedAt": "2026-09-12T03:37:58.384Z",
+      "missedSweeps": 0
+    },
+    {
       "id": "qzct3ybt",
       "url": "https://luma.com/qzct3ybt",
       "provenance": {
@@ -954,10 +1160,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "45ff5904dd093ca885479cdd186c6190073b4ab602a633def53f8b25845b67e5"
+        "contentSha256": "62bc1377dd764dd5c67a98e005f9ad1a9cf0bb240b942221682dac2dbeb64dd6"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -980,7 +1186,7 @@
       "tags": [
         "AI"
       ],
-      "going": 456,
+      "going": 444,
       "why": "8-hour build with judging, demos, team formation; prizes listed.",
       "score": 90,
       "confidence": 94,
@@ -991,103 +1197,101 @@
         "freshness": 70
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T18:01:39.634Z",
+      "checkedAt": "2026-09-12T03:37:41.754Z",
       "missedSweeps": 0
     },
     {
-      "id": "external-builder-aws-com-content-3FSmDcUErZ2vqZLApWoIrKhKsyn-da-471a73c2",
-      "url": "https://builder.aws.com/content/3FSmDcUErZ2vqZLApWoIrKhKsyn/data-and-ai-hackathon-8-hour-hackathon-at-aws-builder-loft-san-francisco",
+      "id": "external-dorahacks-io-hackathon-null-7607bbeb",
+      "url": "https://dorahacks.io/hackathon/null/",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
-            "file": "data/discovery-output.json",
-            "sha256": "784b1ac83571e4319c37887f0c469f674dd8d5ce2037dfcfd3c029b9daf9da0f"
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
           }
         ],
-        "contentSha256": "a6a3fb48819d2e9e0fd9a2c7682afabb44e3370d1b4d6f3fe70d14b4e89fb992"
+        "contentSha256": "83bd3bf01370ee6bf9b86e4cd01b1a7392095ca0882df63a1a55d1ef4f8a0d21"
       },
       "platform": "external",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Data & AI Hackathon, 8-Hour Hackathon at AWS Builder Loft, San Francisco | AWS Builder Center",
-      "organizer": "builder.aws.com",
+      "title": "MunichTech Innovation Hackathon 2026 – Build Applied solutions for Industry",
+      "organizer": "MunichTech EXPO",
       "venue": null,
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-11T09:30:00-07:00",
-      "end": "2026-09-11T12:00:00-07:00",
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-02-24T00:00:00-08:00",
+      "end": "2026-09-20T09:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 11",
-      "dateDetail": "Fri · 9:30am–12pm",
-      "timeUnverified": false,
+      "dateLabel": "FEB 24",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
       "status": "Open",
       "prize": "Prizes listed",
       "tags": [
-        "Data"
+        "Agents"
       ],
-      "going": null,
-      "why": "3-hour build with demos, team formation; prizes listed.",
+      "going": 246,
+      "why": "209-day build; prizes listed.",
       "score": 89,
       "confidence": 94,
       "scores": {
         "confidence": 94,
-        "builderValue": 69,
-        "accessibility": 100,
+        "builderValue": 73,
+        "accessibility": 92,
         "freshness": 96
       },
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-09-11T18:03:50.570Z",
+      "discoveredVia": "https://dorahacks.io/hackathon",
+      "checkedAt": "2026-09-12T06:12:27.859Z",
       "missedSweeps": 0
     },
     {
-      "id": "qisv9xmg",
-      "url": "https://luma.com/qisv9xmg",
+      "id": "external-dorahacks-io-hackathon-coinmarketcap-api-202609-b708c9be",
+      "url": "https://dorahacks.io/hackathon/coinmarketcap-api-202609/",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
-            "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
           }
         ],
-        "contentSha256": "c4f20710a30d42535ac414c761c87a91fdd2a55cc6dcc79ba59d691804ab0928"
+        "contentSha256": "b5e598de7c3f13852105d209a0aa191dcfac781f398c075ebd74229a459abf62"
       },
-      "platform": "luma",
+      "platform": "external",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Data & AI Hackathon: Real job. Real AI. Real scale.",
-      "organizer": "Devnovate",
-      "venue": "AWS Builder Loft",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-11T09:30:00-07:00",
-      "end": "2026-09-11T19:00:00-07:00",
+      "title": "Build with CMC: API Hackathon",
+      "organizer": "CoinMarketCap",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-09-01T17:00:00-07:00",
+      "end": "2026-09-30T17:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 11",
-      "dateDetail": "Fri · 9:30am–7pm",
+      "dateLabel": "SEP 01",
+      "dateDetail": "Tue–Wed · 30 days",
       "timeUnverified": false,
-      "status": "Approval",
+      "status": "Open",
       "prize": "Prizes listed",
-      "tags": [
-        "Data"
-      ],
-      "going": 0,
-      "why": "10-hour build with demos, team formation, a submission deadline; prizes listed.",
+      "tags": [],
+      "going": 100,
+      "why": "29-day build; prizes listed.",
       "score": 89,
       "confidence": 94,
       "scores": {
         "confidence": 94,
-        "builderValue": 84,
-        "accessibility": 82,
+        "builderValue": 73,
+        "accessibility": 92,
         "freshness": 96
       },
-      "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T18:01:43.602Z",
+      "discoveredVia": "https://dorahacks.io/hackathon",
+      "checkedAt": "2026-09-12T06:12:27.858Z",
       "missedSweeps": 0
     },
     {
@@ -1134,6 +1338,54 @@
       },
       "discoveredVia": "https://lablab.ai/event",
       "checkedAt": "2026-09-11T18:17:43.878Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "mvcg9eyw",
+      "url": "https://luma.com/mvcg9eyw",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "6c520fed91ce73fbceb2ec087acad00e7a52a641511cc5ca325990c380a3fcb6"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Fincantieri Maritime Dual-Use Hackathon",
+      "organizer": "Mind the Bridge",
+      "venue": "Mind the Bridge",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-16T16:30:00-07:00",
+      "end": "2026-10-18T16:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 16",
+      "dateDetail": "Fri–Sun · 3 days",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Prizes listed",
+      "tags": [
+        "Tech"
+      ],
+      "going": 4,
+      "why": "2-day build with judging, team formation; prizes listed.",
+      "score": 89,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 92,
+        "accessibility": 100,
+        "freshness": 55
+      },
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "checkedAt": "2026-09-12T03:37:59.243Z",
       "missedSweeps": 0
     },
     {
@@ -1231,6 +1483,55 @@
       "missedSweeps": 0
     },
     {
+      "id": "truefoundry-agent-harness-hackathon-sep19-2026",
+      "url": "https://luma.com/truefoundry-agent-harness-hackathon-sep19-2026",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "da1ed14a7935eddd61c6537e19c575b1ee1971dab02dc23d2d69442e51ea7bb4"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "TrueFoundry Agent Harness Hackathon",
+      "organizer": "[SF] HackerSquad",
+      "venue": "3120 Scott Blvd",
+      "city": "Santa Clara",
+      "area": "South Bay",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-19T09:30:00-07:00",
+      "end": "2026-09-19T20:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 19",
+      "dateDetail": "Sat · 9:30am–8pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "AI",
+        "Agents"
+      ],
+      "going": 64,
+      "why": "11-hour build with judging, demos, team formation, a submission deadline.",
+      "score": 88,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 78,
+        "accessibility": 92,
+        "freshness": 84
+      },
+      "discoveredVia": "https://luma.com/sf-builders-collective",
+      "checkedAt": "2026-09-12T03:37:59.771Z",
+      "missedSweeps": 0
+    },
+    {
       "id": "epfgz3gx",
       "url": "https://luma.com/epfgz3gx",
       "provenance": {
@@ -1238,7 +1539,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "3c019da9d53f64fccf13ff2e52a89244ef86821ed30aa1bdf0b3c19644a2bc12"
@@ -1275,7 +1576,57 @@
         "freshness": 84
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T18:01:44.682Z",
+      "checkedAt": "2026-09-12T03:37:54.968Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "horizonagentshack",
+      "url": "https://luma.com/horizonagentshack",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "90dac49fadfe371c9e75cb7219fd74b4db0aae97fade78d7dcb22730f5bf5e84"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Long Horizon Agents Hackathon",
+      "organizer": "tokens&",
+      "venue": "Financial District",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-25T09:30:00-07:00",
+      "end": "2026-09-25T19:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 25",
+      "dateDetail": "Fri · 9:30am–7:30pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "AI",
+        "Agents",
+        "Token economy"
+      ],
+      "going": 0,
+      "why": "10-hour build with judging, demos, team formation, a submission deadline.",
+      "score": 88,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 73,
+        "accessibility": 100,
+        "freshness": 84
+      },
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-09-12T03:37:37.931Z",
       "missedSweeps": 0
     },
     {
@@ -1328,53 +1679,294 @@
       "missedSweeps": 0
     },
     {
-      "id": "vastsf",
-      "url": "https://luma.com/vastsf",
+      "id": "ai-conference-hack-day-2026",
+      "url": "https://luma.com/ai-conference-hack-day-2026",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "4849e09cc161dd8eaec36f39267cc4ed2a7ebd569d94c9843de79fe1da0e8fd9"
+        "contentSha256": "94f90f21dc1ff7f372df26cb7820b9f1cd7d9e04883875984d3d541ce0e5ad5f"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Real-Time Video Agents Hack - SF",
-      "organizer": "tokens&",
-      "venue": null,
+      "title": "The AI Conference Hack Day 2026",
+      "organizer": "[SF] HackerSquad",
+      "venue": "Mission Bay",
       "city": "San Francisco",
       "area": "SF",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-10-02T08:30:00-07:00",
-      "end": "2026-10-02T18:30:00-07:00",
+      "start": "2026-09-29T09:30:00-07:00",
+      "end": "2026-09-29T19:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 02",
-      "dateDetail": "Fri · 8:30am–6:30pm",
+      "dateLabel": "SEP 29",
+      "dateDetail": "Tue · 9:30am–7pm",
       "timeUnverified": false,
-      "status": "Approval",
+      "status": "Open",
       "prize": "Prizes listed",
       "tags": [
-        "AI",
-        "Agents",
-        "Token economy"
+        "AI"
       ],
       "going": 0,
-      "why": "10-hour build with judging, demos, team formation; prizes listed.",
+      "why": "10-hour build with demos, team formation; prizes listed.",
       "score": 88,
       "confidence": 94,
       "scores": {
         "confidence": 94,
-        "builderValue": 92,
-        "accessibility": 82,
+        "builderValue": 79,
+        "accessibility": 100,
         "freshness": 70
       },
-      "discoveredVia": "https://luma.com/discover/sf",
-      "checkedAt": "2026-09-11T18:01:44.446Z",
+      "discoveredVia": "https://luma.com/sf-builders-collective",
+      "checkedAt": "2026-09-12T03:38:00.188Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "cyberhack",
+      "url": "https://luma.com/cyberhack",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "a9a3d5213513d1448374a59ce9a05ce40110ee4f19627a3cb5328391745132fd"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Cyberdefense Hackathon",
+      "organizer": "tokens&",
+      "venue": "Financial District",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-09T09:30:00-07:00",
+      "end": "2026-10-09T19:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 09",
+      "dateDetail": "Fri · 9:30am–7:30pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Prizes listed",
+      "tags": [
+        "AI",
+        "Token economy"
+      ],
+      "going": 0,
+      "why": "10-hour build with judging, demos, team formation, a submission deadline; prizes listed.",
+      "score": 88,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 81,
+        "accessibility": 100,
+        "freshness": 70
+      },
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-09-12T03:37:38.842Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "n86yufdi",
+      "url": "https://luma.com/n86yufdi",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "69a2db47989e2c461d003f7b33d664f5259b6efec12fcc3b3905d140a632f85f"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Alpaca x Conviction Trading Hackathon",
+      "organizer": "Frontier Tower SF",
+      "venue": "Frontier Tower @ Spaceship 995 Market Street",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-20T12:00:00-07:00",
+      "end": "2026-09-20T15:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 20",
+      "dateDetail": "Sun · 12pm–3:30pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "$2,000 prizes",
+      "tags": [
+        "AI"
+      ],
+      "going": 25,
+      "why": "4-hour build with judging, demos, team formation; $2,000 prizes.",
+      "score": 87,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 83,
+        "accessibility": 82,
+        "freshness": 84
+      },
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-09-12T03:37:50.667Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "sep-21-cognee-aws",
+      "url": "https://luma.com/sep-21-cognee-aws",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "ec292625488aafe48e17422c1559bbb56b505dd8e54f135518b05ee9cebae807"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Battle of the Personal Brains Hackathon 🧠",
+      "organizer": "Bright Data",
+      "venue": "Bright Data",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-21T16:00:00-07:00",
+      "end": "2026-09-21T21:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 21",
+      "dateDetail": "Mon · 4pm–9pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Prizes listed",
+      "tags": [
+        "AI",
+        "Data"
+      ],
+      "going": 16,
+      "why": "5-hour build with demos, team formation; prizes listed.",
+      "score": 87,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 69,
+        "accessibility": 100,
+        "freshness": 84
+      },
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-09-12T03:37:44.375Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "flwrlabs-bamu",
+      "url": "https://luma.com/flwrlabs-bamu",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "ba45e10e8f74c3ff2512548b1d80ad001fd365c3857448391067eb1a145065d7"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Collaborative Agent Hackathon @ Stanford",
+      "organizer": "Flower Labs",
+      "venue": "389 Jane Stanford Way",
+      "city": "Stanford",
+      "area": "Peninsula",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-29T09:30:00-07:00",
+      "end": "2026-09-29T19:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 29",
+      "dateDetail": "Tue · 9:30am–7:30pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Prizes listed",
+      "tags": [
+        "AI",
+        "Agents"
+      ],
+      "going": 77,
+      "why": "10-hour build with demos, team formation; prizes listed.",
+      "score": 87,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 79,
+        "accessibility": 95,
+        "freshness": 70
+      },
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-09-12T03:37:41.429Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "lsa8mrp7",
+      "url": "https://luma.com/lsa8mrp7",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "8c0434341d4fcbe8c65ef4525a67cee0ae3744a1e8fae94295d1b5ce77bb45ae"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Festiverse 2026: Diwali Hackathon",
+      "organizer": "Events",
+      "venue": "Financial District",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-11-23T09:30:00-08:00",
+      "end": "2026-11-23T20:30:00-08:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "NOV 23",
+      "dateDetail": "Mon · 9:30am–8:30pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Prizes listed",
+      "tags": [
+        "AI"
+      ],
+      "going": 122,
+      "why": "11-hour build with judging, demos, team formation, a submission deadline; prizes listed.",
+      "score": 87,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 92,
+        "accessibility": 100,
+        "freshness": 40
+      },
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-09-09T03:30:25.296Z",
       "missedSweeps": 0
     },
     {
@@ -1385,10 +1977,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "5c8675b3f3345c69f6106dcdc6f9c855fdb15a3f568adacd0d9dc5badc491e24"
+        "contentSha256": "07823566da6dc7ddf26782038530242ff650c6ffc026fd8f7b927c05d6fe0680"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -1409,7 +2001,7 @@
       "status": "Open",
       "prize": "Not listed",
       "tags": [],
-      "going": 126,
+      "going": 18,
       "why": "12-hour build with demos, team formation.",
       "score": 86,
       "confidence": 94,
@@ -1419,8 +2011,8 @@
         "accessibility": 100,
         "freshness": 70
       },
-      "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T18:01:40.546Z",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "checkedAt": "2026-09-12T03:38:01.096Z",
       "missedSweeps": 0
     },
     {
@@ -1520,151 +2112,375 @@
       "missedSweeps": 0
     },
     {
-      "id": "6bbloggr",
-      "url": "https://luma.com/6bbloggr",
+      "id": "m9h5vo7a",
+      "url": "https://luma.com/m9h5vo7a",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "7c12da9884b60add68210217e173b315cc9deaa5909a9b1289e46f481822f90e"
+        "contentSha256": "da766f85a3677fb214507230b88dbe8aacf3ca37efd01c7a04508d27943ecd97"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "The AI Commerce Gallery - Hackathon | Walt Disney Family Museum",
-      "organizer": "AI Valley",
-      "venue": null,
+      "title": "Universal Celebration Hackathon",
+      "organizer": "BondHaus",
+      "venue": "AWS Builder Loft",
       "city": "San Francisco",
       "area": "SF",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-10-03T09:00:00-07:00",
-      "end": "2026-10-03T21:00:00-07:00",
+      "start": "2026-10-19T09:30:00-07:00",
+      "end": "2026-10-19T20:30:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 03",
-      "dateDetail": "Sat · 9am–9pm",
-      "timeUnverified": false,
-      "status": "Approval",
-      "prize": "Prizes listed",
-      "tags": [
-        "AI"
-      ],
-      "going": 0,
-      "why": "12-hour build with judging, demos, team formation, a submission deadline; prizes listed.",
-      "score": 86,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 87,
-        "accessibility": 82,
-        "freshness": 70
-      },
-      "discoveredVia": "https://luma.com/aivalley",
-      "checkedAt": "2026-09-11T18:01:44.148Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "beta-dz46",
-      "url": "https://luma.com/beta-dz46",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/discovery-output.json",
-            "sha256": "784b1ac83571e4319c37887f0c469f674dd8d5ce2037dfcfd3c029b9daf9da0f"
-          },
-          {
-            "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
-          }
-        ],
-        "contentSha256": "7c94f16228848e172420008e53c1b57f4851c6217c7ad13d459c6bd3ec0be1f6"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Beta x Alibaba Cloud x AMD AI Agent Hackathon Demo Day",
-      "organizer": "Beta University Events",
-      "venue": null,
-      "city": "Palo Alto",
-      "area": "Peninsula",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-11T13:00:00-07:00",
-      "end": "2026-09-11T18:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 11",
-      "dateDetail": "Fri · 1pm–6pm",
+      "dateLabel": "OCT 19",
+      "dateDetail": "Mon · 9:30am–8:30pm",
       "timeUnverified": false,
       "status": "Open",
       "prize": "Not listed",
       "tags": [
-        "Agents"
+        "AI"
       ],
-      "going": 101,
-      "why": "5-hour build with demos.",
+      "going": 64,
+      "why": "11-hour build with demos, team formation.",
       "score": 85,
       "confidence": 94,
       "scores": {
         "confidence": 94,
-        "builderValue": 55,
-        "accessibility": 95,
-        "freshness": 100
+        "builderValue": 76,
+        "accessibility": 100,
+        "freshness": 55
       },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-09-11T18:02:42.132Z",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-09-09T03:30:13.559Z",
       "missedSweeps": 0
     },
     {
-      "id": "n86yufdi",
-      "url": "https://luma.com/n86yufdi",
+      "id": "external-dorahacks-io-hackathon-mdba-youth-9ee4c7cf",
+      "url": "https://dorahacks.io/hackathon/mdba-youth/",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
-            "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
           }
         ],
-        "contentSha256": "cd4bb5cf737bb41aa8e1fbf7fe35edbfe38ffe31240d0b2536cc0b28b7da1f84"
+        "contentSha256": "113447b2aa8d10dd7487e16150a294a5f989586e688d8a919e3d633518a863c6"
       },
-      "platform": "luma",
+      "platform": "external",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Alpaca x Conviction Trading Hackathon",
-      "organizer": "Frontier Tower SF",
-      "venue": "Frontier Tower @ Spaceship 995 Market Street",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-20T12:00:00-07:00",
-      "end": "2026-09-20T15:30:00-07:00",
+      "title": "MDBA Youth Blockchain Hackathon",
+      "organizer": "Blockchain Legal Institute",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-02-27T05:01:00-08:00",
+      "end": "2026-11-01T05:01:00-08:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 20",
-      "dateDetail": "Sun · 12pm–3:30pm",
-      "timeUnverified": false,
-      "status": "Approval",
-      "prize": "$2,000 prizes",
-      "tags": [
-        "AI"
-      ],
-      "going": 24,
-      "why": "4-hour build with demos, team formation; $2,000 prizes.",
-      "score": 85,
-      "confidence": 94,
+      "dateLabel": "FEB 27",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Open",
+      "prize": "$50,000 prizes",
+      "tags": [],
+      "going": 168,
+      "why": "247-day build; $50,000 prizes.",
+      "score": 84,
+      "confidence": 78,
       "scores": {
-        "confidence": 94,
-        "builderValue": 75,
-        "accessibility": 82,
-        "freshness": 84
+        "confidence": 78,
+        "builderValue": 80,
+        "accessibility": 92,
+        "freshness": 96
       },
-      "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T18:01:45.280Z",
+      "discoveredVia": "https://dorahacks.io/hackathon",
+      "checkedAt": "2026-09-12T06:12:27.859Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "external-dorahacks-io-hackathon-hackathon2026challenge-babdc922",
+      "url": "https://dorahacks.io/hackathon/hackathon2026challenge/",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
+          }
+        ],
+        "contentSha256": "1713b9d1a885626024d476e7bf988d6ed3b813ab9a59925076f9272988cfed0a"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Hackathon 2026 Challenge",
+      "organizer": "TechHub Africa LLC",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-03-01T00:00:00-08:00",
+      "end": "2026-12-18T12:20:00-08:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "MAR 01",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Open",
+      "prize": "$1,000 prizes",
+      "tags": [],
+      "going": 232,
+      "why": "293-day build; $1,000 prizes.",
+      "score": 84,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 80,
+        "accessibility": 92,
+        "freshness": 96
+      },
+      "discoveredVia": "https://dorahacks.io/hackathon",
+      "checkedAt": "2026-09-12T06:12:27.859Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "external-dorahacks-io-hackathon-legal-hack-2026-2950aa7d",
+      "url": "https://dorahacks.io/hackathon/legal-hack-2026/",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
+          }
+        ],
+        "contentSha256": "715f9dd4514f81413cea979a315e0f5b0414b2470d4f92f78d5ec806652b9869"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "BLI Legal Tech Hackathon 2",
+      "organizer": "Blockchain Legal Institute",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-05-15T05:01:00-07:00",
+      "end": "2026-10-31T18:01:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "MAY 15",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Open",
+      "prize": "$20,000 prizes",
+      "tags": [],
+      "going": 391,
+      "why": "170-day build; $20,000 prizes.",
+      "score": 84,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 80,
+        "accessibility": 92,
+        "freshness": 96
+      },
+      "discoveredVia": "https://dorahacks.io/hackathon",
+      "checkedAt": "2026-09-12T06:12:27.859Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "external-dorahacks-io-hackathon-weex-ai-wars2-98db2f60",
+      "url": "https://dorahacks.io/hackathon/weex-ai-wars2/",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
+          }
+        ],
+        "contentSha256": "f3953e71424f46d46148a0297a9a583167397ee5da67308a56b3a6b300b86e18"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "WEEX AI Wars II: Rise of Intelligence",
+      "organizer": "WEEX LABs",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-06-29T21:00:00-07:00",
+      "end": "2026-10-12T08:59:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "JUN 29",
+      "dateDetail": "Mon–Mon · 106 days",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "$200,000 prizes",
+      "tags": [],
+      "going": 180,
+      "why": "105-day build; $200,000 prizes.",
+      "score": 84,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 80,
+        "accessibility": 92,
+        "freshness": 96
+      },
+      "discoveredVia": "https://dorahacks.io/hackathon",
+      "checkedAt": "2026-09-12T06:12:27.856Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "external-dorahacks-io-hackathon-buidl-ctc-2026-fall-6c2ff13f",
+      "url": "https://dorahacks.io/hackathon/buidl-ctc-2026-fall/",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
+          }
+        ],
+        "contentSha256": "f936c5df04fc5a774d37d93110ce4ba4b421bdfa5d6a9966483bb068e982f74f"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "BUIDL CTC 2026 Fall - BUIDL For The Real World",
+      "organizer": "BUIDL CTC",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-08-12T22:00:00-07:00",
+      "end": "2026-09-13T20:59:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 12",
+      "dateDetail": "Wed–Sun · 33 days",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "$15,000 prizes",
+      "tags": [],
+      "going": 309,
+      "why": "32-day build; $15,000 prizes.",
+      "score": 84,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 80,
+        "accessibility": 92,
+        "freshness": 96
+      },
+      "discoveredVia": "https://dorahacks.io/hackathon",
+      "checkedAt": "2026-09-12T06:12:27.858Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "external-dorahacks-io-hackathon-chain-jam-vol-1-061627fd",
+      "url": "https://dorahacks.io/hackathon/chain-jam-vol-1/",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
+          }
+        ],
+        "contentSha256": "01a2291af6ae207eca365e1d781d2d2737d941020028bb7a6122a40e96075dd6"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Chain Jam Vol. 1",
+      "organizer": "chain",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-08-20T13:58:00-07:00",
+      "end": "2026-09-20T13:58:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 20",
+      "dateDetail": "Thu–Sun · 32 days",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "$1,000 prizes",
+      "tags": [],
+      "going": 37,
+      "why": "31-day build; $1,000 prizes.",
+      "score": 84,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 80,
+        "accessibility": 92,
+        "freshness": 96
+      },
+      "discoveredVia": "https://dorahacks.io/hackathon",
+      "checkedAt": "2026-09-12T06:12:27.858Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "external-dorahacks-io-hackathon-agent-economy-3a346411",
+      "url": "https://dorahacks.io/hackathon/agent-economy/",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
+          }
+        ],
+        "contentSha256": "fae04bdce00538bcd5e8ea8f29f3b39cd758660f45fd26fb7126c1e2357fc495"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "KeeperHub - The Agent Economy Hackathon",
+      "organizer": "KeeperHub",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-08-25T03:00:00-07:00",
+      "end": "2026-09-18T03:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "AUG 25",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Open",
+      "prize": "$5,000 prizes",
+      "tags": [
+        "Agents"
+      ],
+      "going": 206,
+      "why": "24-day build; $5,000 prizes.",
+      "score": 84,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 80,
+        "accessibility": 92,
+        "freshness": 96
+      },
+      "discoveredVia": "https://dorahacks.io/hackathon",
+      "checkedAt": "2026-09-12T06:12:27.858Z",
       "missedSweeps": 0
     },
     {
@@ -1717,6 +2533,100 @@
       "missedSweeps": 0
     },
     {
+      "id": "external-ethglobal-com-events-ethonline2026-7646aefa",
+      "url": "https://ethglobal.com/events/ethonline2026",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/ethglobal-candidates.json",
+            "sha256": "a8e4023f2983f6728db95a65641320dffd7b433334c6c57f3aaa874709ed6bc9"
+          }
+        ],
+        "contentSha256": "325d8ecead9b36c2cb2b0f44683373f9db6c8dcdf63a8c5cff9c11c0576e279e"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "ETHOnline 2026",
+      "organizer": "ETHGlobal",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-09-04T00:00:00-07:00",
+      "end": "2026-09-16T23:59:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 04",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Open",
+      "prize": "$80,000 prizes",
+      "tags": [],
+      "going": null,
+      "why": "13-day build; $80,000 prizes.",
+      "score": 84,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 80,
+        "accessibility": 92,
+        "freshness": 96
+      },
+      "discoveredVia": "https://ethglobal.com/events",
+      "checkedAt": "2026-09-12T06:12:23.225Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "external-dorahacks-io-hackathon-binance-b1d07f16",
+      "url": "https://dorahacks.io/hackathon/binance/",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
+          }
+        ],
+        "contentSha256": "871b1b5d476bf118fd45fc8b64a653a3a9d23a48800adb46a67b86b9f041682e"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Beyond the Benchmark: The Binance Agentic AI Challenge",
+      "organizer": "Binance",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-09-06T09:00:00-07:00",
+      "end": "2026-11-13T06:59:00-08:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 06",
+      "dateDetail": "Sun–Fri · 69 days",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "$6,000 prizes",
+      "tags": [
+        "Agents"
+      ],
+      "going": 13,
+      "why": "68-day build; $6,000 prizes.",
+      "score": 84,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 80,
+        "accessibility": 92,
+        "freshness": 96
+      },
+      "discoveredVia": "https://dorahacks.io/hackathon",
+      "checkedAt": "2026-09-12T06:12:27.858Z",
+      "missedSweeps": 0
+    },
+    {
       "id": "h4h-san-francisco",
       "url": "https://luma.com/h4h-san-francisco",
       "provenance": {
@@ -1724,7 +2634,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "b3d74e24f7c204a2992772d17d893b024ab320b8516f893d5353c2f7fc9150be"
@@ -1765,6 +2675,100 @@
       "missedSweeps": 0
     },
     {
+      "id": "st9fa3gb",
+      "url": "https://luma.com/st9fa3gb",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "e0e2fa45443858073f078d5f998366779d147459a28abd4b6eb6383664514897"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "NewsBreak x CMU-SV ECE Hackathon",
+      "organizer": "CMU-SV",
+      "venue": "NewsBreak Headquarters (Particle Media, Inc.)",
+      "city": "Mountain View",
+      "area": "South Bay",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-19T11:30:00-07:00",
+      "end": "2026-09-19T18:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 19",
+      "dateDetail": "Sat · 11:30am–6pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Prizes TBA",
+      "tags": [
+        "AI"
+      ],
+      "going": 25,
+      "why": "7-hour build with judging, demos, team formation; prizes tba.",
+      "score": 84,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 63,
+        "accessibility": 92,
+        "freshness": 84
+      },
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "checkedAt": "2026-09-12T03:38:01.980Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "99857qk9",
+      "url": "https://luma.com/99857qk9",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "16e82c587043503b9c998016e9c760da21dee41dd36f5a867c9148be9102227f"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Showerhacks",
+      "organizer": "Showerhacks",
+      "venue": "Entrepreneurs First",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-26T10:00:00-07:00",
+      "end": "2026-09-26T23:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 26",
+      "dateDetail": "Sat · 10am–11pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [],
+      "going": 298,
+      "why": "13-hour build with team formation.",
+      "score": 84,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 65,
+        "accessibility": 100,
+        "freshness": 70
+      },
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-09-12T03:37:41.120Z",
+      "missedSweeps": 0
+    },
+    {
       "id": "sf-agents-owning-inference",
       "url": "https://luma.com/sf-agents-owning-inference",
       "provenance": {
@@ -1772,10 +2776,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "dd3687e8259843f5e4da07cfd3d4b64ec9c8087c87ba4372516681378901189f"
+        "contentSha256": "932bc5cd695189436924612beccad5b01b195db23d6a07771afb312855985d52"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -1799,7 +2803,7 @@
         "AI",
         "Agents"
       ],
-      "going": 0,
+      "going": null,
       "why": "10-hour build with judging, demos.",
       "score": 84,
       "confidence": 94,
@@ -1809,8 +2813,8 @@
         "accessibility": 82,
         "freshness": 70
       },
-      "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T18:01:33.604Z",
+      "discoveredVia": "https://luma.com/sf-builders-collective",
+      "checkedAt": "2026-09-12T03:38:02.506Z",
       "missedSweeps": 0
     },
     {
@@ -1860,6 +2864,54 @@
       "missedSweeps": 0
     },
     {
+      "id": "6p4w9p21",
+      "url": "https://luma.com/6p4w9p21",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "05ee15d3a09b2308cb30513eb7157260ad2774e0753d138810d2d37829755a95"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "De Anza Hackathon 5.0",
+      "organizer": "De Anza Hacks",
+      "venue": "De Anza College",
+      "city": "Cupertino",
+      "area": "South Bay",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-16T08:00:00-07:00",
+      "end": "2026-10-17T20:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 16",
+      "dateDetail": "Fri–Sat · 2 days",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Prizes listed",
+      "tags": [
+        "Tech"
+      ],
+      "going": 4,
+      "why": "2-day build; prizes listed.",
+      "score": 84,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 78,
+        "accessibility": 92,
+        "freshness": 55
+      },
+      "discoveredVia": "https://luma.com/dahacks",
+      "checkedAt": "2026-09-12T03:38:03.041Z",
+      "missedSweeps": 0
+    },
+    {
       "id": "beta-79jb",
       "url": "https://luma.com/beta-79jb",
       "provenance": {
@@ -1867,10 +2919,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "3524caa9e139d048a76be311c22cec30195998c932be5fd94fb31cb6329332c2"
+        "contentSha256": "7008488101cb920e594c6700ccc8d17dfb133ecba4a104aee2be88e9b71fb701"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -1893,7 +2945,7 @@
       "tags": [
         "AI"
       ],
-      "going": 0,
+      "going": null,
       "why": "9-hour build with judging, demos, team formation; prizes listed.",
       "score": 84,
       "confidence": 94,
@@ -1903,8 +2955,8 @@
         "accessibility": 82,
         "freshness": 55
       },
-      "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T18:01:31.993Z",
+      "discoveredVia": "https://luma.com/Beta-events",
+      "checkedAt": "2026-09-12T03:38:03.458Z",
       "missedSweeps": 0
     },
     {
@@ -2148,53 +3200,101 @@
       "missedSweeps": 0
     },
     {
-      "id": "abundant-3yz7",
-      "url": "https://luma.com/abundant-3yz7",
+      "id": "external-dorahacks-io-hackathon-algobharat-regional-hack-893d334e",
+      "url": "https://dorahacks.io/hackathon/algobharat-regional-hack/",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
-            "file": "data/discovery-output.json",
-            "sha256": "784b1ac83571e4319c37887f0c469f674dd8d5ce2037dfcfd3c029b9daf9da0f"
-          },
-          {
-            "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
           }
         ],
-        "contentSha256": "78b887ed4359c9de89c400940bfee5f7617aab869da6382f5df92fbc80f3a5a3"
+        "contentSha256": "b2e9dd709b0f95dc23b7638fb8293233f2b9f86eab3ef26f3407fa2bba999cf5"
       },
-      "platform": "luma",
+      "platform": "external",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Building for SF — A Free Civic Buildathon, Sept 11-12 - Two days. Real projects. A city that works better.",
-      "organizer": "Abundant Leaders San Francisco",
-      "venue": "Yes SF Headquarters",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-11T18:00:00-07:00",
-      "end": "2026-09-12T17:00:00-07:00",
+      "title": "AlgoBharat Regional Hackathons",
+      "organizer": "Algorand",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-03-19T11:30:00-07:00",
+      "end": "2026-12-31T10:29:00-08:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 11",
-      "dateDetail": "Fri–Sat · 2 days",
+      "dateLabel": "MAR 19",
+      "dateDetail": "Thu–Thu · 288 days",
       "timeUnverified": false,
       "status": "Open",
-      "prize": "Not listed",
-      "tags": [],
-      "going": 0,
-      "why": "23-hour build.",
+      "prize": "Prizes listed",
+      "tags": [
+        "Agents"
+      ],
+      "going": 202,
+      "why": "287-day build; prizes listed.",
       "score": 82,
       "confidence": 78,
       "scores": {
         "confidence": 78,
-        "builderValue": 65,
-        "accessibility": 100,
-        "freshness": 100
+        "builderValue": 73,
+        "accessibility": 92,
+        "freshness": 96
       },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-09-11T18:02:13.260Z",
+      "discoveredVia": "https://dorahacks.io/hackathon",
+      "checkedAt": "2026-09-12T06:12:27.858Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "external-evorozen-apex-devpost-com--64e3df8c",
+      "url": "https://evorozen-apex.devpost.com",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/devpost-candidates.json",
+            "sha256": "f6b97d31d5bb0122c9ab67f0596ff0af28d32fdeaca6dd8480a0d9b8b88281d3"
+          },
+          {
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
+          }
+        ],
+        "contentSha256": "ff5b40946589c54bca8a9728f6a49b09f4da0420063490c99d1d7ffb19baa3b2"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Evorozen Apex: NextGen AI Buildathon",
+      "organizer": "Evorozen ",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-07-17T20:00:00-07:00",
+      "end": "2026-09-20T23:45:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "JUL 17",
+      "dateDetail": "Fri–Sun · 66 days",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Prizes listed",
+      "tags": [],
+      "going": 246,
+      "why": "66-day build with a submission deadline; prizes listed.",
+      "score": 82,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 73,
+        "accessibility": 92,
+        "freshness": 96
+      },
+      "discoveredVia": "https://devpost.com/api/hackathons",
+      "checkedAt": "2026-09-11T18:17:16.693Z",
       "missedSweeps": 0
     },
     {
@@ -2209,7 +3309,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "1fb429ad819f0b1200dbb4def05e4267a7c84e07c46ae0714cb911224c157719"
@@ -2237,54 +3337,6 @@
       ],
       "going": 0,
       "why": "2-day build.",
-      "score": 82,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 65,
-        "accessibility": 100,
-        "freshness": 100
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-09-11T18:02:42.132Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "openmodelhack",
-      "url": "https://luma.com/openmodelhack",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/discovery-output.json",
-            "sha256": "784b1ac83571e4319c37887f0c469f674dd8d5ce2037dfcfd3c029b9daf9da0f"
-          }
-        ],
-        "contentSha256": "91d4b25980378b84df241cbfabbc597454a4422684b6472945703a95ea9021f5"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Open Model Hack - Gradient x Google Deepmind",
-      "organizer": "tokens&",
-      "venue": null,
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-12T09:30:00-07:00",
-      "end": "2026-09-12T19:30:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 12",
-      "dateDetail": "Sat · 9:30am–7:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "Token economy"
-      ],
-      "going": 0,
-      "why": "10-hour build.",
       "score": 82,
       "confidence": 78,
       "scores": {
@@ -2399,7 +3451,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "204429e4123807e6c3a34a4c0550cfe03dd8dc166c16838819d9d7defe56d0fe"
@@ -2434,7 +3486,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T18:01:39.008Z",
+      "checkedAt": "2026-09-12T03:37:40.673Z",
       "missedSweeps": 0
     },
     {
@@ -2445,7 +3497,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "7e4083fcaa58150a8ddaa1b59fbd758ccd7e4bc486e0fa0ff8c0e8fb0bce6c28"
@@ -2497,7 +3549,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "b9fbe5ef72802a124f0d7516c95bfb7a94a7aebc9aea59ab3f5fd5801cfaacf2"
@@ -2521,7 +3573,7 @@
       "status": "Open",
       "prize": "Not listed",
       "tags": [],
-      "going": 317,
+      "going": 96,
       "why": "8-hour build.",
       "score": 81,
       "confidence": 78,
@@ -2536,49 +3588,101 @@
       "missedSweeps": 0
     },
     {
-      "id": "99857qk9",
-      "url": "https://luma.com/99857qk9",
+      "id": "uqxby9dm",
+      "url": "https://luma.com/uqxby9dm",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "ab6f84764edecbc40973e08c4493760de25a66f1e68b3c482c0194ccc43971e4"
+        "contentSha256": "64834acf7bc27ca25113127d1fb37abb802167dcbe8833bf4b69d0f6639dcf48"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Showerhacks",
-      "organizer": "Showerhacks",
-      "venue": "Entrepreneurs First",
-      "city": "San Francisco",
-      "area": "SF",
+      "title": "AI Infra Signal: Build, Operate, and Monetize Intelligence",
+      "organizer": "OpenStages Calendar",
+      "venue": null,
+      "city": "Sunnyvale",
+      "area": "South Bay",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-09-26T10:00:00-07:00",
-      "end": "2026-09-26T23:00:00-07:00",
+      "start": "2026-09-12T14:00:00-07:00",
+      "end": "2026-09-12T19:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 26",
-      "dateDetail": "Sat · 10am–11pm",
+      "dateLabel": "SEP 12",
+      "dateDetail": "Sat · 2pm–7pm",
       "timeUnverified": false,
-      "status": "Approval",
+      "status": "Open",
       "prize": "Not listed",
-      "tags": [],
-      "going": 362,
-      "why": "13-hour build with team formation.",
+      "tags": [
+        "AI",
+        "Infra"
+      ],
+      "going": 0,
+      "why": "5-hour build with demos, team formation.",
+      "score": 81,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 66,
+        "accessibility": 92,
+        "freshness": 100
+      },
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "checkedAt": "2026-09-12T03:38:05.429Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "oct-hackathon",
+      "url": "https://luma.com/oct-hackathon",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "20605798227d32b50c3e4e16f1787a4b968ae2c56a221e963cf31846eb74fed5"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Company Brain Hackathon: Build an AI Agent That Knows Your Organization",
+      "organizer": "TechEquity Ai - Silicon Valley",
+      "venue": "135 Constitution Dr",
+      "city": "Menlo Park",
+      "area": "Peninsula",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-12T13:00:00-07:00",
+      "end": "2026-10-12T17:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 12",
+      "dateDetail": "Mon · 1pm–5pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "AI",
+        "Agents"
+      ],
+      "going": 49,
+      "why": "4-hour build with judging, demos, team formation.",
       "score": 81,
       "confidence": 94,
       "scores": {
         "confidence": 94,
-        "builderValue": 65,
-        "accessibility": 82,
-        "freshness": 70
+        "builderValue": 63,
+        "accessibility": 95,
+        "freshness": 55
       },
-      "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T18:01:39.440Z",
+      "discoveredVia": "https://luma.com/techequity-ai",
+      "checkedAt": "2026-09-12T03:38:03.969Z",
       "missedSweeps": 0
     },
     {
@@ -2589,7 +3693,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "a76a3923c2f65e77c0aa06d51b5751ac3ac3ee7c5dda00cef59b8c1104ca8a73"
@@ -2624,7 +3728,7 @@
         "freshness": 55
       },
       "discoveredVia": "https://luma.com/hackathon_collections",
-      "checkedAt": "2026-09-11T18:01:46.785Z",
+      "checkedAt": "2026-09-12T03:38:04.187Z",
       "missedSweeps": 0
     },
     {
@@ -2635,10 +3739,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "b22ed2444aae0a7fe5c987343e34cca821d41bb85b4930b37e744aabc03f01c1"
+        "contentSha256": "95b5c2f5ba65ac719cf51d2d6638354e6c33ee13fe0d212b7a7d653d132accb7"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -2671,8 +3775,8 @@
         "accessibility": 74,
         "freshness": 55
       },
-      "discoveredVia": "personalized",
-      "checkedAt": "2026-09-11T18:01:46.934Z",
+      "discoveredVia": "https://luma.com/sf-builders-collective",
+      "checkedAt": "2026-09-12T03:38:04.472Z",
       "missedSweeps": 0
     },
     {
@@ -2683,7 +3787,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "06ebd6230b92f59f5f1c420a9463d6679eecd7975bd4fd7ce1a246ec4d4049e3"
@@ -2720,7 +3824,7 @@
         "freshness": 55
       },
       "discoveredVia": "https://luma.com/beta-msyd",
-      "checkedAt": "2026-09-11T18:01:47.277Z",
+      "checkedAt": "2026-09-12T03:38:04.726Z",
       "missedSweeps": 0
     },
     {
@@ -2731,7 +3835,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "56ecc9686f3bdc96d47bd90af7ad509c949c6d0869faef76c6a5f508710d7397"
@@ -2768,7 +3872,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-09-11T18:01:47.466Z",
+      "checkedAt": "2026-09-12T03:38:04.981Z",
       "missedSweeps": 0
     },
     {
@@ -2907,52 +4011,6 @@
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
       "checkedAt": "2026-09-11T18:17:17.487Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "external-evorozen-apex-devpost-com--64e3df8c",
-      "url": "https://evorozen-apex.devpost.com",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/devpost-candidates.json",
-            "sha256": "f6b97d31d5bb0122c9ab67f0596ff0af28d32fdeaca6dd8480a0d9b8b88281d3"
-          }
-        ],
-        "contentSha256": "2654b400950d7d4f65515610c136d916af6057bffff9745cce3a331bcf4acc21"
-      },
-      "platform": "external",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Evorozen Apex: NextGen AI Buildathon",
-      "organizer": "Evorozen ",
-      "venue": null,
-      "city": null,
-      "area": "Online",
-      "region": "online",
-      "regionLabel": "Online",
-      "start": "2026-07-17T00:00:00-07:00",
-      "end": "2026-09-20T23:59:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "JUL 17",
-      "dateDetail": "Time on event page",
-      "timeUnverified": true,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [],
-      "going": 246,
-      "why": "66-day build with a submission deadline.",
-      "score": 80,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 65,
-        "accessibility": 92,
-        "freshness": 96
-      },
-      "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-09-11T18:17:16.693Z",
       "missedSweeps": 0
     },
     {
@@ -3245,7 +4303,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "3ef63e24e0824de651d06a9c083cf82110748569220284e9199e625b3b9a4c62"
@@ -3282,7 +4340,104 @@
         "freshness": 40
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T18:01:47.682Z",
+      "checkedAt": "2026-09-12T03:37:56.074Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "12545fxr",
+      "url": "https://luma.com/12545fxr",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "d5bacd7ffdfacb76baca1dcd100896d7ea7169168a528df23e0dd6aafe7d3f91"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Agentic AI Hackathon 2.0 - SF",
+      "organizer": "Devnovate",
+      "venue": "AWS Builder Loft",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-12-15T09:30:00-08:00",
+      "end": "2026-12-15T18:30:00-08:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "DEC 15",
+      "dateDetail": "Tue · 9:30am–6:30pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "Prizes listed",
+      "tags": [
+        "AI",
+        "Agents"
+      ],
+      "going": null,
+      "why": "9-hour build with demos, team formation; prizes listed.",
+      "score": 80,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 79,
+        "accessibility": 82,
+        "freshness": 40
+      },
+      "discoveredVia": "https://luma.com/devnovate",
+      "checkedAt": "2026-09-02T19:09:06.086Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "0nada7qz",
+      "url": "https://luma.com/0nada7qz",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "56ee2fadf1ba39f1a705479a98d1503ab8f5c9e42a88d335c38c8227f169b914"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Degrees of Freedom: Bring Your Own Robot @ Mission Robotics",
+      "organizer": "Rally SF",
+      "venue": null,
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-14T18:00:00-07:00",
+      "end": "2026-09-14T21:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 14",
+      "dateDetail": "Mon · 6pm–9pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "AI"
+      ],
+      "going": 28,
+      "why": "3-hour build with demos.",
+      "score": 79,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 55,
+        "accessibility": 100,
+        "freshness": 92
+      },
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "checkedAt": "2026-09-12T03:38:12.034Z",
       "missedSweeps": 0
     },
     {
@@ -3293,10 +4448,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "af002de9f9103f7665f496ac4740110982b288ae9a564601c74a2f5cc12070c1"
+        "contentSha256": "312745bd691eecc2a3597251c134dc40ac7a43b0e30275780744475a7716eb86"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -3330,7 +4485,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-09-11T18:01:48.604Z",
+      "checkedAt": "2026-09-12T03:38:07.401Z",
       "missedSweeps": 0
     },
     {
@@ -3389,10 +4544,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "66b5556a17c7d64a0bc03ee9eeee6f57dc21fe8ebdb4c567e6af97b618ccb3b4"
+        "contentSha256": "7d79f218b00b464681e8deefb91d75365e24fad5fe095ec1b355ca424c0531d1"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -3426,56 +4581,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-09-11T18:01:48.993Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "uqxby9dm",
-      "url": "https://luma.com/uqxby9dm",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
-          }
-        ],
-        "contentSha256": "ca08154a3ba7381285f771c35c3fb5246051ff5a3f843b7b309311845fd8b015"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "AI Infra Signal: Build, Operate, and Monetize Intelligence",
-      "organizer": "OpenStages Calendar",
-      "venue": null,
-      "city": "Sunnyvale",
-      "area": "South Bay",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-12T14:00:00-07:00",
-      "end": "2026-09-12T19:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 12",
-      "dateDetail": "Sat · 2pm–7pm",
-      "timeUnverified": false,
-      "status": "Approval",
-      "prize": "Not listed",
-      "tags": [
-        "AI",
-        "Infra"
-      ],
-      "going": 0,
-      "why": "5-hour build with demos, team formation.",
-      "score": 78,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 66,
-        "accessibility": 74,
-        "freshness": 100
-      },
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-09-11T18:01:46.483Z",
+      "checkedAt": "2026-09-12T03:38:06.009Z",
       "missedSweeps": 0
     },
     {
@@ -3486,7 +4592,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "7762d05bde2c651ecfcb406224bfcae88839709d8522d9f417c0aa58381d84e4"
@@ -3523,7 +4629,101 @@
         "freshness": 84
       },
       "discoveredVia": "https://luma.com/AIHardware",
-      "checkedAt": "2026-09-11T18:01:49.333Z",
+      "checkedAt": "2026-09-12T03:38:06.686Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "7mdzwof8",
+      "url": "https://luma.com/7mdzwof8",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "8fe57ba48189ec5efc6e652edf9838e5edcd8912880590585e6cfaac6395fc98"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "A Night with AI Builders, Startup Stories & Community -- Celebrating One Year of the SVAI Hub",
+      "organizer": "Silicon Valley AI Hub",
+      "venue": "135 Constitution Dr",
+      "city": "Menlo Park",
+      "area": "Peninsula",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-22T17:00:00-07:00",
+      "end": "2026-09-22T20:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 22",
+      "dateDetail": "Tue · 5pm–8pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "AI"
+      ],
+      "going": 166,
+      "why": "3-hour build with demos, team formation.",
+      "score": 78,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 61,
+        "accessibility": 95,
+        "freshness": 84
+      },
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "checkedAt": "2026-09-12T03:38:06.961Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "external-dorahacks-io-hackathon-satnav-388139dc",
+      "url": "https://dorahacks.io/hackathon/satnav/",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/dorahacks-candidates.json",
+            "sha256": "d881253f11b83d200cfc0c4c73a739c0819c6be66dc880a9e601d76a61ffef86"
+          }
+        ],
+        "contentSha256": "1cb2ec539df6c5e78fc4207d1ff1aa414b605fc68204c7af617c73787e371d22"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "GNSS 4 for Space Applications in Africa (G4-SAA)",
+      "organizer": "SATNAV AFRICA JPO",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-09-26T03:00:00-07:00",
+      "end": "2026-10-10T13:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 26",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Open",
+      "prize": "Prizes listed",
+      "tags": [],
+      "going": 53,
+      "why": "15-day build; prizes listed.",
+      "score": 78,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 73,
+        "accessibility": 92,
+        "freshness": 70
+      },
+      "discoveredVia": "https://dorahacks.io/hackathon",
+      "checkedAt": "2026-09-12T06:12:27.860Z",
       "missedSweeps": 0
     },
     {
@@ -3667,51 +4867,53 @@
       "missedSweeps": 0
     },
     {
-      "id": "wv1l2wb3",
-      "url": "https://luma.com/wv1l2wb3",
+      "id": "abundant-3yz7",
+      "url": "https://luma.com/abundant-3yz7",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
+            "file": "data/discovery-output.json",
+            "sha256": "784b1ac83571e4319c37887f0c469f674dd8d5ce2037dfcfd3c029b9daf9da0f"
+          },
+          {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "8e56b4dceddb6bf8c07b649c037fe2e78b60e53fef64254a46a94fa71dd81657"
+        "contentSha256": "78b887ed4359c9de89c400940bfee5f7617aab869da6382f5df92fbc80f3a5a3"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Applied AI Hackathon",
-      "organizer": "Alisa Hayashi",
-      "venue": "Rancho Bernardo Inn",
-      "city": "San Diego",
-      "area": "San Diego",
-      "region": "san-diego",
-      "regionLabel": "San Diego",
-      "start": "2026-10-02T08:00:00-07:00",
-      "end": "2026-10-02T19:30:00-07:00",
+      "title": "Building for SF — A Free Civic Buildathon, Sept 11-12 - Two days. Real projects. A city that works better.",
+      "organizer": "Abundant Leaders San Francisco",
+      "venue": "Yes SF Headquarters",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-11T18:00:00-07:00",
+      "end": "2026-09-12T17:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 02",
-      "dateDetail": "Fri · 8am–7:30pm",
+      "dateLabel": "SEP 11",
+      "dateDetail": "Fri–Sat · 2 days",
       "timeUnverified": false,
       "status": "Check page",
-      "prize": "$5,000 prizes",
-      "tags": [
-        "AI"
-      ],
+      "prize": "Not listed",
+      "tags": [],
       "going": 0,
-      "why": "12-hour build with judging, a submission deadline; $5,000 prizes.",
-      "score": 77,
+      "why": "23-hour build.",
+      "score": 76,
       "confidence": 78,
       "scores": {
         "confidence": 78,
-        "builderValue": 88,
+        "builderValue": 65,
         "accessibility": 68,
-        "freshness": 70
+        "freshness": 100
       },
-      "discoveredVia": "seed",
-      "checkedAt": "2026-09-11T18:01:45.987Z",
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "checkedAt": "2026-09-11T18:02:13.260Z",
       "missedSweeps": 0
     },
     {
@@ -3722,7 +4924,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "cc3c339ccfd6b29035c548b6348b8b4e56ea15a62c16cc37e71521f6880e8660"
@@ -3757,7 +4959,7 @@
         "freshness": 100
       },
       "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
+      "checkedAt": "2026-09-11T03:30:07.523Z",
       "missedSweeps": 0
     },
     {
@@ -3768,10 +4970,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "0d3703228cb49ca62bf6910f93120e6e875a4a259d638547002d67fb9163cbd0"
+        "contentSha256": "80d9c16e0037e8d1ae49182d4238b70f961db4ffba1ceeaeccfada57c067b802"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -3792,7 +4994,7 @@
       "status": "Open",
       "prize": "Not listed",
       "tags": [],
-      "going": 204,
+      "going": 203,
       "why": "10-hour build.",
       "score": 76,
       "confidence": 62,
@@ -3803,7 +5005,7 @@
         "freshness": 100
       },
       "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
+      "checkedAt": "2026-09-06T03:30:16.628Z",
       "missedSweeps": 0
     },
     {
@@ -3898,6 +5100,54 @@
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
       "checkedAt": "2026-09-11T18:17:04.487Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "o9hcn6kk",
+      "url": "https://luma.com/o9hcn6kk",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "b36b0d78933dbca28f3c36356b2b5592b86f42a7292c8bb9dbdfb869c75e25f7"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Personalized Medicine Builders: Demos, Discussion and Social",
+      "organizer": "Research to the People Patient Hackathons",
+      "venue": "81 Langton St",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-02T18:00:00-07:00",
+      "end": "2026-10-02T21:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 02",
+      "dateDetail": "Fri · 6pm–9pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "Tech"
+      ],
+      "going": 4,
+      "why": "3-hour build with demos.",
+      "score": 75,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 55,
+        "accessibility": 100,
+        "freshness": 70
+      },
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "checkedAt": "2026-09-12T03:38:07.620Z",
       "missedSweeps": 0
     },
     {
@@ -4517,192 +5767,103 @@
       "missedSweeps": 0
     },
     {
-      "id": "d6g5mb9o",
-      "url": "https://luma.com/d6g5mb9o",
+      "id": "cepu8kjp",
+      "url": "https://luma.com/cepu8kjp",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "554c5a318d1c4ba53262899191fde43f3b431403f5248182660f61a04a45e2a5"
+        "contentSha256": "453475711963734f36724a1203ab466b21c7605e101caba9a1bfd83cf6110ef9"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "MantisGrid AI Hackathon & Summit 2026",
-      "organizer": "MantisGrid AI",
-      "venue": "Fairmeadow",
-      "city": "Palo Alto",
+      "title": "Picnic with Builders at Stanford",
+      "organizer": "SF Startup Labs",
+      "venue": "Stanford University",
+      "city": "Stanford",
       "area": "Peninsula",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-09-17T08:00:00-07:00",
-      "end": "2026-09-17T17:30:00-07:00",
+      "start": "2026-09-30T13:00:00-07:00",
+      "end": "2026-09-30T15:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 17",
-      "dateDetail": "Thu · 8am–5:30pm",
+      "dateLabel": "SEP 30",
+      "dateDetail": "Wed · 1pm–3pm",
       "timeUnverified": false,
       "status": "Open",
-      "prize": "Not listed",
-      "tags": [],
-      "going": 267,
-      "why": "10-hour build.",
-      "score": 74,
-      "confidence": 62,
-      "scores": {
-        "confidence": 62,
-        "builderValue": 65,
-        "accessibility": 95,
-        "freshness": 92
-      },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "upjkn37w",
-      "url": "https://luma.com/upjkn37w",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
-          }
-        ],
-        "contentSha256": "c0e7d4d07458944206a5ad35e2d68887de73de9ea8ec66e8148ea5b370597635"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Dream AI Hackathon 2026",
-      "organizer": "LIKELION US",
-      "venue": "Mid-Market",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-19T09:00:00-07:00",
-      "end": "2026-09-19T21:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 19",
-      "dateDetail": "Sat · 9am–9pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [],
-      "going": 0,
-      "why": "12-hour build.",
-      "score": 74,
-      "confidence": 62,
-      "scores": {
-        "confidence": 62,
-        "builderValue": 65,
-        "accessibility": 100,
-        "freshness": 84
-      },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "7mdzwof8",
-      "url": "https://luma.com/7mdzwof8",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
-          }
-        ],
-        "contentSha256": "4f1cf3bb8324b09395dd7b07c8553ec6e37ed77959f1760c9ca06542e1bf0ce4"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "A Night with AI Builders, Startup Stories & Community -- Celebrating One Year of the SVAI Hub",
-      "organizer": "Silicon Valley AI Hub",
-      "venue": "135 Constitution Dr",
-      "city": "Menlo Park",
-      "area": "Peninsula",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-22T17:00:00-07:00",
-      "end": "2026-09-22T20:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 22",
-      "dateDetail": "Tue · 5pm–8pm",
-      "timeUnverified": false,
-      "status": "Approval",
       "prize": "Not listed",
       "tags": [
-        "AI"
+        "Tech"
       ],
-      "going": 166,
-      "why": "3-hour build with demos, team formation.",
+      "going": 0,
+      "why": "2-hour build with team formation.",
       "score": 74,
       "confidence": 78,
       "scores": {
         "confidence": 78,
-        "builderValue": 61,
-        "accessibility": 77,
-        "freshness": 84
+        "builderValue": 55,
+        "accessibility": 95,
+        "freshness": 70
       },
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-09-11T18:01:49.565Z",
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "checkedAt": "2026-09-12T03:38:07.906Z",
       "missedSweeps": 0
     },
     {
-      "id": "horizonagentshack",
-      "url": "https://luma.com/horizonagentshack",
+      "id": "openmodelhack",
+      "url": "https://luma.com/openmodelhack",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
+            "file": "data/discovery-output.json",
+            "sha256": "784b1ac83571e4319c37887f0c469f674dd8d5ce2037dfcfd3c029b9daf9da0f"
+          },
+          {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "4e42be41868977d2ce2a1180645475e36d864af6825989d3d644140fbd58e232"
+        "contentSha256": "91d4b25980378b84df241cbfabbc597454a4422684b6472945703a95ea9021f5"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Long Horizon Agents Hackathon",
+      "title": "Open Model Hack - Gradient x Google Deepmind",
       "organizer": "tokens&",
-      "venue": "Financial District",
+      "venue": null,
       "city": "San Francisco",
       "area": "SF",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-09-25T09:30:00-07:00",
-      "end": "2026-09-25T19:30:00-07:00",
+      "start": "2026-09-12T09:30:00-07:00",
+      "end": "2026-09-12T19:30:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 25",
-      "dateDetail": "Fri · 9:30am–7:30pm",
+      "dateLabel": "SEP 12",
+      "dateDetail": "Sat · 9:30am–7:30pm",
       "timeUnverified": false,
-      "status": "Open",
+      "status": "Waitlist",
       "prize": "Not listed",
       "tags": [
-        "Agents",
         "Token economy"
       ],
       "going": 0,
       "why": "10-hour build.",
-      "score": 74,
-      "confidence": 62,
+      "score": 73,
+      "confidence": 78,
       "scores": {
-        "confidence": 62,
+        "confidence": 78,
         "builderValue": 65,
-        "accessibility": 100,
-        "freshness": 84
+        "accessibility": 53,
+        "freshness": 100
       },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "checkedAt": "2026-09-11T18:02:42.132Z",
       "missedSweeps": 0
     },
     {
@@ -4844,134 +6005,132 @@
       "missedSweeps": 0
     },
     {
-      "id": "truefoundry-agent-harness-hackathon-sep19-2026",
-      "url": "https://luma.com/truefoundry-agent-harness-hackathon-sep19-2026",
+      "id": "wv1l2wb3",
+      "url": "https://luma.com/wv1l2wb3",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "612889442d9be3988db42e0359aa481d0d971e51c9baf352d78529701ff9a3f4"
+        "contentSha256": "cb2470705756a4afe085b923982958ef293e5b9429ae5da8a7394690dc299515"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "TrueFoundry Agent Harness Hackathon",
-      "organizer": "[SF] HackerSquad",
-      "venue": "3120 Scott Blvd",
-      "city": "Santa Clara",
-      "area": "South Bay",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-19T09:30:00-07:00",
-      "end": "2026-09-19T20:00:00-07:00",
+      "title": "Applied AI Hackathon",
+      "organizer": "Personal",
+      "venue": "Rancho Bernardo",
+      "city": "San Diego",
+      "area": "San Diego",
+      "region": "san-diego",
+      "regionLabel": "San Diego",
+      "start": "2026-10-02T08:00:00-07:00",
+      "end": "2026-10-02T19:30:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 19",
-      "dateDetail": "Sat · 9:30am–8pm",
+      "dateLabel": "OCT 02",
+      "dateDetail": "Fri · 8am–7:30pm",
       "timeUnverified": false,
       "status": "Open",
       "prize": "Not listed",
-      "tags": [
-        "Agents"
-      ],
-      "going": 145,
-      "why": "11-hour build.",
+      "tags": [],
+      "going": 0,
+      "why": "12-hour build.",
       "score": 72,
       "confidence": 62,
       "scores": {
         "confidence": 62,
         "builderValue": 65,
-        "accessibility": 92,
-        "freshness": 84
-      },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "o9hcn6kk",
-      "url": "https://luma.com/o9hcn6kk",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
-          }
-        ],
-        "contentSha256": "b36b0d78933dbca28f3c36356b2b5592b86f42a7292c8bb9dbdfb869c75e25f7"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Personalized Medicine Builders: Demos, Discussion and Social",
-      "organizer": "Research to the People Patient Hackathons",
-      "venue": "81 Langton St",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-02T18:00:00-07:00",
-      "end": "2026-10-02T21:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 02",
-      "dateDetail": "Fri · 6pm–9pm",
-      "timeUnverified": false,
-      "status": "Approval",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 4,
-      "why": "3-hour build with demos.",
-      "score": 72,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 55,
-        "accessibility": 82,
+        "accessibility": 100,
         "freshness": 70
       },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-09-11T18:01:49.712Z",
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-09-07T03:30:04.074Z",
       "missedSweeps": 0
     },
     {
-      "id": "cyberhack",
-      "url": "https://luma.com/cyberhack",
+      "id": "frontier-d03j",
+      "url": "https://luma.com/frontier-d03j",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "f95604e95486d2061f5f06d87022f4fc0318290626f11bd08adbd2ed98e6f6ec"
+        "contentSha256": "06bddbd3f55f4a5fcaf0f6782c48a3fe545f6a5f9deec26548ddc20cdcc04b7d"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Cyberdefense Hackathon",
-      "organizer": "tokens&",
-      "venue": "Financial District",
+      "title": "October 3 Hackathon",
+      "organizer": "Frontier Tower SF",
+      "venue": "Frontier Tower @ Spaceship 995 Market Street",
       "city": "San Francisco",
       "area": "SF",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-10-09T09:30:00-07:00",
-      "end": "2026-10-09T19:30:00-07:00",
+      "start": "2026-10-03T09:00:00-07:00",
+      "end": "2026-10-03T22:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 09",
-      "dateDetail": "Fri · 9:30am–7:30pm",
+      "dateLabel": "OCT 03",
+      "dateDetail": "Sat · 9am–10pm",
       "timeUnverified": false,
       "status": "Open",
       "prize": "Not listed",
       "tags": [
-        "Token economy"
+        "Tech"
+      ],
+      "going": 0,
+      "why": "13-hour build.",
+      "score": 72,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 65,
+        "accessibility": 100,
+        "freshness": 70
+      },
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-09-12T03:37:50.891Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "frontier-99lw",
+      "url": "https://luma.com/frontier-99lw",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "5202e40689bf3696fd087076b41cd1f154f3bb355932e5a3c09f38cfe3e28782"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Tech Week Hackathon",
+      "organizer": "Frontier Tower SF",
+      "venue": "Frontier Tower @ Spaceship 995 Market Street",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-11T09:00:00-07:00",
+      "end": "2026-10-11T19:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 11",
+      "dateDetail": "Sun · 9am–7pm",
+      "timeUnverified": false,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "Tech"
       ],
       "going": 0,
       "why": "10-hour build.",
@@ -4983,56 +6142,8 @@
         "accessibility": 100,
         "freshness": 70
       },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "oct-hackathon",
-      "url": "https://luma.com/oct-hackathon",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
-          }
-        ],
-        "contentSha256": "9d4441596adac498b6f8228964b7507375aeebd6bef39c5ee689b085a29f2a7d"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Company Brain Hackathon: Build an AI Agent That Knows Your Organization",
-      "organizer": "TechEquity Ai - Silicon Valley",
-      "venue": "135 Constitution Dr",
-      "city": "Menlo Park",
-      "area": "Peninsula",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-12T13:00:00-07:00",
-      "end": "2026-10-12T17:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 12",
-      "dateDetail": "Mon · 1pm–5pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "Agents"
-      ],
-      "going": 65,
-      "why": "4-hour build.",
-      "score": 72,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 55,
-        "accessibility": 95,
-        "freshness": 55
-      },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-09-12T03:37:51.233Z",
       "missedSweeps": 0
     },
     {
@@ -5047,7 +6158,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "31644133a15ad3355e3e06076305d90cbdec9063fda843beabbce37d86d68bc0"
@@ -5088,145 +6199,99 @@
       "missedSweeps": 0
     },
     {
-      "id": "sep-21-cognee-aws",
-      "url": "https://luma.com/sep-21-cognee-aws",
+      "id": "ovtw6uf9",
+      "url": "https://luma.com/ovtw6uf9",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "09b41461e86889218458f37507d8c20f2a6ae770c022055917a98e3019b925fc"
+        "contentSha256": "3041faeeef450f879e645c0ff08ea3a0fdc54d49bc513b1188f9c375e5b19f58"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Battle of the Personal Brains Hackathon 🧠",
-      "organizer": "Bright Data",
-      "venue": "South Beach",
-      "city": "San Francisco",
-      "area": "SF",
+      "title": "Oakland Tech Week: The Future of Oakland",
+      "organizer": "Hack the Hood Community",
+      "venue": null,
+      "city": "Oakland",
+      "area": "East Bay",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-09-21T16:00:00-07:00",
-      "end": "2026-09-21T21:00:00-07:00",
+      "start": "2026-10-01T17:00:00-07:00",
+      "end": "2026-10-01T19:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 21",
-      "dateDetail": "Mon · 4pm–9pm",
+      "dateLabel": "OCT 01",
+      "dateDetail": "Thu · 5pm–7pm",
       "timeUnverified": false,
-      "status": "Open",
+      "status": "Approval",
       "prize": "Not listed",
       "tags": [
-        "Data"
+        "Tech"
       ],
-      "going": 16,
-      "why": "5-hour build.",
+      "going": 9,
+      "why": "2-hour build with demos, team formation.",
       "score": 71,
-      "confidence": 62,
+      "confidence": 78,
       "scores": {
-        "confidence": 62,
+        "confidence": 78,
         "builderValue": 55,
-        "accessibility": 100,
-        "freshness": 84
-      },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "flwrlabs-bamu",
-      "url": "https://luma.com/flwrlabs-bamu",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
-          }
-        ],
-        "contentSha256": "8ca549730ed0061f1e363c2f89b6f11a17fb03a5a0e046e49ed5adfef2e32fdd"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Collaborative Agent Hackathon @ Stanford",
-      "organizer": "Flower Labs",
-      "venue": "389 Jane Stanford Way",
-      "city": "Stanford",
-      "area": "Peninsula",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-29T09:30:00-07:00",
-      "end": "2026-09-29T19:30:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 29",
-      "dateDetail": "Tue · 9:30am–7:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "Agents"
-      ],
-      "going": 125,
-      "why": "10-hour build.",
-      "score": 71,
-      "confidence": 62,
-      "scores": {
-        "confidence": 62,
-        "builderValue": 65,
-        "accessibility": 95,
+        "accessibility": 77,
         "freshness": 70
       },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "checkedAt": "2026-09-12T03:38:08.425Z",
       "missedSweeps": 0
     },
     {
-      "id": "st9fa3gb",
-      "url": "https://luma.com/st9fa3gb",
+      "id": "j95l4cwz",
+      "url": "https://luma.com/j95l4cwz",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "a0c80ebf9b17f7f4f6f2a7da398a1ac8cd26f6f92d7348df4d60c3c0b99ffd94"
+        "contentSha256": "5626756e67f4e86743073854b7a7a56a1165da05c35943d837aa8aef4af9e32d"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "NewsBreak x CMU-SV ECE Hackathon",
-      "organizer": "CMU-SV",
-      "venue": "Old",
-      "city": "Mountain View",
-      "area": "South Bay",
+      "title": "Mango Hacks",
+      "organizer": "krishay suresh",
+      "venue": "Zoho Corporation",
+      "city": "Pleasanton",
+      "area": "East Bay",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-09-19T11:30:00-07:00",
-      "end": "2026-09-19T18:00:00-07:00",
+      "start": "2026-12-05T08:00:00-08:00",
+      "end": "2026-12-05T20:30:00-08:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 19",
-      "dateDetail": "Sat · 11:30am–6pm",
+      "dateLabel": "DEC 05",
+      "dateDetail": "Sat · 8am–8:30pm",
       "timeUnverified": false,
-      "status": "Open",
+      "status": "Approval",
       "prize": "Not listed",
-      "tags": [],
-      "going": 25,
-      "why": "7-hour build.",
-      "score": 70,
-      "confidence": 62,
+      "tags": [
+        "Tech"
+      ],
+      "going": 61,
+      "why": "13-hour build with judging, a submission deadline.",
+      "score": 71,
+      "confidence": 78,
       "scores": {
-        "confidence": 62,
-        "builderValue": 55,
-        "accessibility": 92,
-        "freshness": 84
+        "confidence": 78,
+        "builderValue": 73,
+        "accessibility": 77,
+        "freshness": 40
       },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "checkedAt": "2026-09-12T03:38:08.885Z",
       "missedSweeps": 0
     },
     {
@@ -5278,39 +6343,41 @@
       "missedSweeps": 0
     },
     {
-      "id": "mvcg9eyw",
-      "url": "https://luma.com/mvcg9eyw",
+      "id": "frontier-al6k",
+      "url": "https://luma.com/frontier-al6k",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "fce4ebb4db79834babbe075a59916800af90218c2feb89a96de89ce512a2d68c"
+        "contentSha256": "01d194a7710509f748a605d726c816ed7fe3663d92cb462a750fad056ff95468"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Fincantieri Maritime Dual-Use Hackathon",
-      "organizer": "Personal",
-      "venue": "SoMa",
+      "title": "Dell x NVIDIA Hackathon",
+      "organizer": "Frontier Tower SF",
+      "venue": "Frontier Tower @ Spaceship 995 Market Street",
       "city": "San Francisco",
       "area": "SF",
       "region": "bay-area",
       "regionLabel": "Bay Area",
-      "start": "2026-10-16T16:30:00-07:00",
-      "end": "2026-10-18T16:30:00-07:00",
+      "start": "2026-10-25T09:00:00-07:00",
+      "end": "2026-10-25T19:00:00-07:00",
       "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 16",
-      "dateDetail": "Fri–Sun · 3 days",
+      "dateLabel": "OCT 25",
+      "dateDetail": "Sun · 9am–7pm",
       "timeUnverified": false,
       "status": "Open",
       "prize": "Not listed",
-      "tags": [],
+      "tags": [
+        "Tech"
+      ],
       "going": 0,
-      "why": "2-day build.",
+      "why": "10-hour build.",
       "score": 69,
       "confidence": 62,
       "scores": {
@@ -5319,8 +6386,8 @@
         "accessibility": 100,
         "freshness": 55
       },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-09-12T03:37:51.482Z",
       "missedSweeps": 0
     },
     {
@@ -5418,6 +6485,54 @@
       "missedSweeps": 0
     },
     {
+      "id": "89209klj",
+      "url": "https://luma.com/89209klj",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "b80fa501bc1d736e3dd40d9ad7ff2729177b3ff3fa4b75ba279504730f5dd0c8"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Office Hours with DJ Patil - Hack Your Summer x Replit",
+      "organizer": "Hack Your Summer",
+      "venue": null,
+      "city": "Stanford",
+      "area": "Peninsula",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-09-17T18:30:00-07:00",
+      "end": "2026-09-17T20:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "SEP 17",
+      "dateDetail": "Thu · 6:30pm–8pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "Not listed",
+      "tags": [
+        "Tech"
+      ],
+      "going": 5,
+      "why": "2-hour build.",
+      "score": 68,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 55,
+        "accessibility": 77,
+        "freshness": 92
+      },
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "checkedAt": "2026-09-12T03:38:09.551Z",
+      "missedSweeps": 0
+    },
+    {
       "id": "vibe-coach-hack-night",
       "url": "https://luma.com/vibe-coach-hack-night",
       "provenance": {
@@ -5425,7 +6540,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
         "contentSha256": "58dc6795789863f1a803b54969e79378dfc00dfeef2762a1021da094d7685122"
@@ -5462,53 +6577,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T18:01:33.903Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "6p4w9p21",
-      "url": "https://luma.com/6p4w9p21",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
-          }
-        ],
-        "contentSha256": "ca24e86faf45bf4ddd8eb0effd5bd8c4b63323f5addf890cf6704980febc728a"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "De Anza Hackathon 5.0",
-      "organizer": "De Anza Hacks",
-      "venue": "De Anza College",
-      "city": "Cupertino",
-      "area": "South Bay",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-16T08:00:00-07:00",
-      "end": "2026-10-17T20:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 16",
-      "dateDetail": "Fri–Sat · 2 days",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [],
-      "going": 4,
-      "why": "2-day build.",
-      "score": 68,
-      "confidence": 62,
-      "scores": {
-        "confidence": 62,
-        "builderValue": 65,
-        "accessibility": 92,
-        "freshness": 55
-      },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
+      "checkedAt": "2026-09-12T03:38:09.121Z",
       "missedSweeps": 0
     },
     {
@@ -5606,51 +6675,103 @@
       "missedSweeps": 0
     },
     {
-      "id": "external-futureforge-hacks-devpost-com--d3eb7a35",
-      "url": "https://futureforge-hacks.devpost.com",
+      "id": "HTW27",
+      "url": "https://luma.com/HTW27",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
+          }
+        ],
+        "contentSha256": "4cc14e5d0275804958f4a769e0a474ac848b38747d8d82bc22137ef3dfbd4d34"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "⚕️ SF HealthTech Week 2027 Passport! ⚕️(@ JPM)",
+      "organizer": "⚕️SF HealthTech Week⚕️ Events",
+      "venue": null,
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2027-01-09T00:00:00-08:00",
+      "end": "2027-01-15T21:00:00-08:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "JAN 09",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "Tech"
+      ],
+      "going": 112,
+      "why": "7-day build with demos.",
+      "score": 67,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 65,
+        "accessibility": 100,
+        "freshness": 40
+      },
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "checkedAt": "2026-09-12T03:38:09.875Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "m4efz4ib",
+      "url": "https://luma.com/m4efz4ib",
       "provenance": {
         "kind": "observed",
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
             "sha256": "f6b97d31d5bb0122c9ab67f0596ff0af28d32fdeaca6dd8480a0d9b8b88281d3"
+          },
+          {
+            "file": "data/luma-api.json",
+            "sha256": "cd494ca8c2f676bc4f4462e9ff04472d8219e6cfdb7816b66243e6b0bf8ad7d2"
           }
         ],
-        "contentSha256": "69bc4f1c5e143d62223b844b99797bd35ee32950563f282d2d5aa0a50cb864e9"
+        "contentSha256": "004940ad646fc037194107ec06c9c9962c23dd3d25b4ba377ec6a0dad5457637"
       },
-      "platform": "external",
+      "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
       "title": "FutureForge Hacks",
-      "organizer": "Future Forge",
-      "venue": null,
+      "organizer": "FutureForge Hacks",
+      "venue": "Zoho Corporation",
       "city": "Pleasanton",
       "area": "East Bay",
       "region": "bay-area",
       "regionLabel": "Bay Area",
       "start": "2026-11-21T08:00:00-08:00",
-      "end": "2026-11-21T19:00:00-08:00",
+      "end": "2026-11-21T20:30:00-08:00",
       "timezone": "America/Los_Angeles",
       "dateLabel": "NOV 21",
-      "dateDetail": "Sat · 8am–7pm",
+      "dateDetail": "Sat · 8am–8:30pm",
       "timeUnverified": false,
-      "status": "Check page",
+      "status": "Open",
       "prize": "Not listed",
       "tags": [
-        "Social impact"
+        "Tech"
       ],
-      "going": 5,
-      "why": "11-hour build with a submission deadline.",
+      "going": 35,
+      "why": "13-hour build.",
       "score": 66,
-      "confidence": 78,
+      "confidence": 62,
       "scores": {
-        "confidence": 78,
+        "confidence": 62,
         "builderValue": 65,
-        "accessibility": 63,
+        "accessibility": 95,
         "freshness": 40
       },
-      "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-09-11T18:17:03.429Z",
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "checkedAt": "2026-09-12T03:38:10.113Z",
       "missedSweeps": 0
     },
     {
@@ -6306,52 +7427,6 @@
       "missedSweeps": 0
     },
     {
-      "id": "ai-conference-hack-day-2026",
-      "url": "https://luma.com/ai-conference-hack-day-2026",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/luma-api.json",
-            "sha256": "bd22f95d4c89a5da7a95743e8c6c2022b3a0134a15aa16714c92b22d80442763"
-          }
-        ],
-        "contentSha256": "51948ebe87d97a8bd82848f893d7d2420d164ca40958a550eb4716b7b6e68e6e"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "The AI Conference Hack Day 2026",
-      "organizer": "[SF] HackerSquad",
-      "venue": "Mission Bay",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-29T09:30:00-07:00",
-      "end": "2026-09-29T19:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 29",
-      "dateDetail": "Tue · 9:30am–7pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [],
-      "going": 0,
-      "why": "10-hour build.",
-      "score": 60,
-      "confidence": 32,
-      "scores": {
-        "confidence": 32,
-        "builderValue": 65,
-        "accessibility": 100,
-        "freshness": 70
-      },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-09-11T18:01:31.304Z",
-      "missedSweeps": 0
-    },
-    {
       "id": "external-sourcehacksv1-devpost-com--12175d0a",
       "url": "https://sourcehacksv1.devpost.com",
       "provenance": {
@@ -6868,112 +7943,6 @@
       "missedSweeps": 0
     },
     {
-      "id": "lsa8mrp7",
-      "url": "https://luma.com/lsa8mrp7",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-            "sha256": "ac90309b2f246e3d5ee76dd25b6c9770312ef33edaecfbe27e7d237831b50cf6"
-          }
-        ],
-        "contentSha256": "8c0434341d4fcbe8c65ef4525a67cee0ae3744a1e8fae94295d1b5ce77bb45ae",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-          "sweepCompletedAt": "2026-09-11T07:42:52.097Z"
-        },
-        "lastConfirmedAt": "2026-09-11T07:42:52.097Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Festiverse 2026: Diwali Hackathon",
-      "organizer": "Events",
-      "venue": "Financial District",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-11-23T09:30:00-08:00",
-      "end": "2026-11-23T20:30:00-08:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "NOV 23",
-      "dateDetail": "Mon · 9:30am–8:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Prizes listed",
-      "tags": [
-        "AI"
-      ],
-      "going": 122,
-      "why": "11-hour build with judging, demos, team formation, a submission deadline; prizes listed.",
-      "score": 87,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 92,
-        "accessibility": 100,
-        "freshness": 40
-      },
-      "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-09T03:30:25.296Z",
-      "missedSweeps": 1
-    },
-    {
-      "id": "m9h5vo7a",
-      "url": "https://luma.com/m9h5vo7a",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-            "sha256": "ac90309b2f246e3d5ee76dd25b6c9770312ef33edaecfbe27e7d237831b50cf6"
-          }
-        ],
-        "contentSha256": "da766f85a3677fb214507230b88dbe8aacf3ca37efd01c7a04508d27943ecd97",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-          "sweepCompletedAt": "2026-09-11T07:42:52.097Z"
-        },
-        "lastConfirmedAt": "2026-09-11T07:42:52.097Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Universal Celebration Hackathon",
-      "organizer": "BondHaus",
-      "venue": "AWS Builder Loft",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-19T09:30:00-07:00",
-      "end": "2026-10-19T20:30:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 19",
-      "dateDetail": "Mon · 9:30am–8:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "AI"
-      ],
-      "going": 64,
-      "why": "11-hour build with demos, team formation.",
-      "score": 85,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 76,
-        "accessibility": 100,
-        "freshness": 55
-      },
-      "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-09T03:30:13.559Z",
-      "missedSweeps": 1
-    },
-    {
       "id": "external-innovart2027-devpost-com--af8af0b8",
       "url": "https://innovart2027.devpost.com",
       "provenance": {
@@ -7025,60 +7994,6 @@
       "missedSweeps": 1
     },
     {
-      "id": "12545fxr",
-      "url": "https://luma.com/12545fxr",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-            "sha256": "ac90309b2f246e3d5ee76dd25b6c9770312ef33edaecfbe27e7d237831b50cf6"
-          }
-        ],
-        "contentSha256": "d5bacd7ffdfacb76baca1dcd100896d7ea7169168a528df23e0dd6aafe7d3f91",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-          "sweepCompletedAt": "2026-09-11T07:42:52.097Z"
-        },
-        "lastConfirmedAt": "2026-09-11T07:42:52.097Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Agentic AI Hackathon 2.0 - SF",
-      "organizer": "Devnovate",
-      "venue": "AWS Builder Loft",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-12-15T09:30:00-08:00",
-      "end": "2026-12-15T18:30:00-08:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "DEC 15",
-      "dateDetail": "Tue · 9:30am–6:30pm",
-      "timeUnverified": false,
-      "status": "Approval",
-      "prize": "Prizes listed",
-      "tags": [
-        "AI",
-        "Agents"
-      ],
-      "going": null,
-      "why": "9-hour build with demos, team formation; prizes listed.",
-      "score": 80,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 79,
-        "accessibility": 82,
-        "freshness": 40
-      },
-      "discoveredVia": "https://luma.com/devnovate",
-      "checkedAt": "2026-09-02T19:09:06.086Z",
-      "missedSweeps": 1
-    },
-    {
       "id": "external-gatewayhacks-2026-devpost-com--758eac7e",
       "url": "https://gatewayhacks-2026.devpost.com",
       "provenance": {
@@ -7127,483 +8042,6 @@
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
       "checkedAt": "2026-09-11T07:43:19.437Z",
-      "missedSweeps": 1
-    },
-    {
-      "id": "cepu8kjp",
-      "url": "https://luma.com/cepu8kjp",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-            "sha256": "ac90309b2f246e3d5ee76dd25b6c9770312ef33edaecfbe27e7d237831b50cf6"
-          }
-        ],
-        "contentSha256": "453475711963734f36724a1203ab466b21c7605e101caba9a1bfd83cf6110ef9",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-          "sweepCompletedAt": "2026-09-11T07:42:52.097Z"
-        },
-        "lastConfirmedAt": "2026-09-11T07:42:52.097Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Picnic with Builders at Stanford",
-      "organizer": "SF Startup Labs",
-      "venue": "Stanford University",
-      "city": "Stanford",
-      "area": "Peninsula",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-30T13:00:00-07:00",
-      "end": "2026-09-30T15:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 30",
-      "dateDetail": "Wed · 1pm–3pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 0,
-      "why": "2-hour build with team formation.",
-      "score": 74,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 55,
-        "accessibility": 95,
-        "freshness": 70
-      },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-09-06T03:30:40.130Z",
-      "missedSweeps": 1
-    },
-    {
-      "id": "frontier-d03j",
-      "url": "https://luma.com/frontier-d03j",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-            "sha256": "ac90309b2f246e3d5ee76dd25b6c9770312ef33edaecfbe27e7d237831b50cf6"
-          }
-        ],
-        "contentSha256": "06bddbd3f55f4a5fcaf0f6782c48a3fe545f6a5f9deec26548ddc20cdcc04b7d",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-          "sweepCompletedAt": "2026-09-11T07:42:52.097Z"
-        },
-        "lastConfirmedAt": "2026-09-11T07:42:52.097Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "October 3 Hackathon",
-      "organizer": "Frontier Tower SF",
-      "venue": "Frontier Tower @ Spaceship 995 Market Street",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-03T09:00:00-07:00",
-      "end": "2026-10-03T22:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 03",
-      "dateDetail": "Sat · 9am–10pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 0,
-      "why": "13-hour build.",
-      "score": 72,
-      "confidence": 62,
-      "scores": {
-        "confidence": 62,
-        "builderValue": 65,
-        "accessibility": 100,
-        "freshness": 70
-      },
-      "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T07:39:23.881Z",
-      "missedSweeps": 1
-    },
-    {
-      "id": "ovtw6uf9",
-      "url": "https://luma.com/ovtw6uf9",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-            "sha256": "ac90309b2f246e3d5ee76dd25b6c9770312ef33edaecfbe27e7d237831b50cf6"
-          }
-        ],
-        "contentSha256": "eb59b56aadb5ca66308b9318077a3120fb280d8474ee0ee3e539ea13a6484f22",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-          "sweepCompletedAt": "2026-09-11T07:42:52.097Z"
-        },
-        "lastConfirmedAt": "2026-09-11T07:42:52.097Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Oakland Tech Week: The Future of Oakland",
-      "organizer": "Hack the Hood Community",
-      "venue": null,
-      "city": "Oakland",
-      "area": "East Bay",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-01T17:00:00-07:00",
-      "end": "2026-10-01T19:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 01",
-      "dateDetail": "Thu · 5pm–7pm",
-      "timeUnverified": false,
-      "status": "Approval",
-      "prize": "Not listed",
-      "tags": [
-        "AI"
-      ],
-      "going": 9,
-      "why": "2-hour build with demos, team formation.",
-      "score": 71,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 55,
-        "accessibility": 77,
-        "freshness": 70
-      },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-09-06T03:30:40.663Z",
-      "missedSweeps": 1
-    },
-    {
-      "id": "j95l4cwz",
-      "url": "https://luma.com/j95l4cwz",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-            "sha256": "ac90309b2f246e3d5ee76dd25b6c9770312ef33edaecfbe27e7d237831b50cf6"
-          }
-        ],
-        "contentSha256": "2b14b4cd61435dc7a55f3671a5542440161429ebebb70b7aa390a0fd946962dc",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-          "sweepCompletedAt": "2026-09-11T07:42:52.097Z"
-        },
-        "lastConfirmedAt": "2026-09-11T07:42:52.097Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Mango Hacks",
-      "organizer": "krishay suresh",
-      "venue": "Zoho Corporation",
-      "city": "Pleasanton",
-      "area": "East Bay",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-12-05T08:00:00-08:00",
-      "end": "2026-12-05T20:30:00-08:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "DEC 05",
-      "dateDetail": "Sat · 8am–8:30pm",
-      "timeUnverified": false,
-      "status": "Approval",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 61,
-      "why": "13-hour build with judging, a submission deadline.",
-      "score": 71,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 73,
-        "accessibility": 77,
-        "freshness": 40
-      },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-09-06T03:30:41.053Z",
-      "missedSweeps": 1
-    },
-    {
-      "id": "frontier-99lw",
-      "url": "https://luma.com/frontier-99lw",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-            "sha256": "ac90309b2f246e3d5ee76dd25b6c9770312ef33edaecfbe27e7d237831b50cf6"
-          }
-        ],
-        "contentSha256": "5202e40689bf3696fd087076b41cd1f154f3bb355932e5a3c09f38cfe3e28782",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-          "sweepCompletedAt": "2026-09-11T07:42:52.097Z"
-        },
-        "lastConfirmedAt": "2026-09-11T07:42:52.097Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Tech Week Hackathon",
-      "organizer": "Frontier Tower SF",
-      "venue": "Frontier Tower @ Spaceship 995 Market Street",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-11T09:00:00-07:00",
-      "end": "2026-10-11T19:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 11",
-      "dateDetail": "Sun · 9am–7pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 0,
-      "why": "10-hour build.",
-      "score": 69,
-      "confidence": 62,
-      "scores": {
-        "confidence": 62,
-        "builderValue": 65,
-        "accessibility": 100,
-        "freshness": 55
-      },
-      "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T07:39:24.106Z",
-      "missedSweeps": 1
-    },
-    {
-      "id": "frontier-al6k",
-      "url": "https://luma.com/frontier-al6k",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-            "sha256": "ac90309b2f246e3d5ee76dd25b6c9770312ef33edaecfbe27e7d237831b50cf6"
-          }
-        ],
-        "contentSha256": "01d194a7710509f748a605d726c816ed7fe3663d92cb462a750fad056ff95468",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-          "sweepCompletedAt": "2026-09-11T07:42:52.097Z"
-        },
-        "lastConfirmedAt": "2026-09-11T07:42:52.097Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Dell x NVIDIA Hackathon",
-      "organizer": "Frontier Tower SF",
-      "venue": "Frontier Tower @ Spaceship 995 Market Street",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-25T09:00:00-07:00",
-      "end": "2026-10-25T19:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 25",
-      "dateDetail": "Sun · 9am–7pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 0,
-      "why": "10-hour build.",
-      "score": 69,
-      "confidence": 62,
-      "scores": {
-        "confidence": 62,
-        "builderValue": 65,
-        "accessibility": 100,
-        "freshness": 55
-      },
-      "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-09-11T07:39:24.313Z",
-      "missedSweeps": 1
-    },
-    {
-      "id": "89209klj",
-      "url": "https://luma.com/89209klj",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-            "sha256": "ac90309b2f246e3d5ee76dd25b6c9770312ef33edaecfbe27e7d237831b50cf6"
-          }
-        ],
-        "contentSha256": "f989dc1f938b0bb2d21342b8bce383c46f78d17558121f412d42b08438a01eba",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-          "sweepCompletedAt": "2026-09-11T07:42:52.097Z"
-        },
-        "lastConfirmedAt": "2026-09-11T07:42:52.097Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Office Hours with DJ Patil - Hack Your Summer x Replit",
-      "organizer": "Hack Your Summer",
-      "venue": null,
-      "city": "Stanford",
-      "area": "Peninsula",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-09-17T18:30:00-07:00",
-      "end": "2026-09-17T20:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 17",
-      "dateDetail": "Thu · 6:30pm–8pm",
-      "timeUnverified": false,
-      "status": "Approval",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 5,
-      "why": "2-hour build.",
-      "score": 68,
-      "confidence": 62,
-      "scores": {
-        "confidence": 62,
-        "builderValue": 55,
-        "accessibility": 77,
-        "freshness": 92
-      },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-09-08T18:11:21.650Z",
-      "missedSweeps": 1
-    },
-    {
-      "id": "HTW27",
-      "url": "https://luma.com/HTW27",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-            "sha256": "ac90309b2f246e3d5ee76dd25b6c9770312ef33edaecfbe27e7d237831b50cf6"
-          }
-        ],
-        "contentSha256": "c2e6ba9eca62e9550471ec128f0da53fbcb8bed830abd071309d255890798050",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-          "sweepCompletedAt": "2026-09-11T07:42:52.097Z"
-        },
-        "lastConfirmedAt": "2026-09-11T07:42:52.097Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "⚕️ SF HealthTech Week 2027 Passport! ⚕️(@ JPM)",
-      "organizer": "⚕️SF HealthTech Week⚕️ Events",
-      "venue": null,
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2027-01-09T00:00:00-08:00",
-      "end": "2027-01-15T21:00:00-08:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "JAN 09",
-      "dateDetail": "Time on event page",
-      "timeUnverified": true,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 112,
-      "why": "7-day build with demos.",
-      "score": 67,
-      "confidence": 62,
-      "scores": {
-        "confidence": 62,
-        "builderValue": 65,
-        "accessibility": 100,
-        "freshness": 40
-      },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-09-03T03:30:49.508Z",
-      "missedSweeps": 1
-    },
-    {
-      "id": "m4efz4ib",
-      "url": "https://luma.com/m4efz4ib",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-            "sha256": "ac90309b2f246e3d5ee76dd25b6c9770312ef33edaecfbe27e7d237831b50cf6"
-          }
-        ],
-        "contentSha256": "cbd48c14106b0ac45de8f98b437efebdcd653873ebf312975837b7a6d97f4d25",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-09-11T07-42-52-097Z.json",
-          "sweepCompletedAt": "2026-09-11T07:42:52.097Z"
-        },
-        "lastConfirmedAt": "2026-09-11T07:42:52.097Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "FutureForge Hacks",
-      "organizer": "FutureForge Hacks",
-      "venue": "Zoho Corporation",
-      "city": "Pleasanton",
-      "area": "East Bay",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-11-21T08:00:00-08:00",
-      "end": "2026-11-21T20:30:00-08:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "NOV 21",
-      "dateDetail": "Sat · 8am–8:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 35,
-      "why": "13-hour build.",
-      "score": 66,
-      "confidence": 62,
-      "scores": {
-        "confidence": 62,
-        "builderValue": 65,
-        "accessibility": 95,
-        "freshness": 40
-      },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-09-03T03:30:49.763Z",
       "missedSweeps": 1
     },
     {
