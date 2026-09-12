@@ -1,0 +1,53 @@
+{
+  "collectedAt": "2026-09-12T06:09:24.749Z",
+  "source": "https://ethglobal.com/events",
+  "seen": 9,
+  "candidates": [
+    {
+      "url": "https://ethglobal.com/events/ethonline2026",
+      "title": "ETHOnline 2026",
+      "category": "hackathon",
+      "discoveredVia": "https://ethglobal.com/events",
+      "confidence": 78,
+      "relevance": 51,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": false,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "ETHGlobal\nETHOnline 2026\nAsync Hackathon\nPrizes $80,000\nAsync Hackathon",
+      "checkedAt": "2026-09-12T06:09:24.748Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://ethglobal.com/events/ethonline2026",
+        "name": "ETHOnline 2026",
+        "description": null,
+        "startDate": "2026-09-04T07:00:00.000Z",
+        "endDate": "2026-09-17T06:59:00.000Z",
+        "timeSource": "ethglobal-date-only",
+        "organizers": [
+          "ETHGlobal"
+        ],
+        "location": {
+          "name": "Online",
+          "city": null,
+          "region": null,
+          "online": true
+        },
+        "offerAvailability": "InStock",
+        "going": null,
+        "prize": "$80,000"
+      }
+    }
+  ],
+  "online": 1,
+  "skipped": {
+    "notAsync": 8,
+    "undated": 0,
+    "finished": 0
+  },
+  "problems": [],
+  "note": "ETHGlobal's own events page, read anonymously. Only the cards whose stated type is \"Async Hackathon\" are taken: the IRL hackathons are real but happen in cities this board does not serve, and co-working days and conferences are not hackathons anywhere. The type pill is a stated field, so neither the hackathon question nor the online question is inferred from a title. The prize is summed from each event's /prizes page because the listing states no money and the event page itself answers 500 to an anonymous request. Dates carry a month and day but no year and no clock time."
+}
