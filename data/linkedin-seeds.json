@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-13T07:50:37.245Z",
+  "collectedAt": "2026-09-13T17:48:18.094Z",
   "searchProviders": [
     "brightdata"
   ],
@@ -8,7 +8,13 @@
   "pagesRead": 3,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "\"ai hackathon\" san diego open registration",
+      "error": "brightdata captcha"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -376,6 +382,20 @@
       "sourcePage": "https://www.linkedin.com/posts/voice-os_we-just-wrapped-up-our-first-voiceos-hackathon-activity-7493065757262598144-xfsF",
       "context": null,
       "lastSeenAt": "2026-09-13T07:50:37.245Z"
+    },
+    {
+      "url": "https://luma.com/4jl26q01",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/posts/build-club-ai_exciting-news-lovable-is-coming-to-san-francisco-activity-7369151636188876802-LMrm",
+      "context": "Nitya Sridhar 1y Report this comment Excited for this Friday! So many vibe coding ideas on my mind Like Reply 3 Reactions 4 Reactions Pramod Thebe 1y Report this comment Location? Like Reply 2 Reactions 3 Reactions Annie Liao 🇦🇺 1y Report this comment RSVP: https://luma.com/4jl26q01 Like Reply 1 R",
+      "lastSeenAt": "2026-09-13T17:48:18.094Z"
+    },
+    {
+      "url": "https://luma.com/u7pmhw92",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/posts/laurenathoman_worlds-in-action-hack-02-la-siggraph-edition-activity-7473789453082185728-0ECT",
+      "context": null,
+      "lastSeenAt": "2026-09-13T17:48:18.094Z"
     }
   ]
 }
