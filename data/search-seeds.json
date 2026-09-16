@@ -1,9 +1,14 @@
 {
-  "collectedAt": "2026-09-16T08:08:05.774Z",
+  "collectedAt": "2026-09-16T18:32:46.858Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
-  "problems": [],
+  "problems": [
+    {
+      "query": "site:luma.com buildathon OR makeathon OR \"make-a-thon\" bay area",
+      "error": "brightdata captcha"
+    }
+  ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
     {
@@ -12,13 +17,6 @@
         "site:luma.com buildathon OR makeathon OR \"make-a-thon\" bay area"
       ],
       "lastSeenAt": "2026-09-09T07:42:49.784Z"
-    },
-    {
-      "url": "https://luma.com/2n8vk5s3",
-      "queries": [
-        "site:luma.com hackathon \"bay area\" 2026"
-      ],
-      "lastSeenAt": "2026-08-26T16:09:35.359Z"
     },
     {
       "url": "https://luma.com/2vzv52ct",
@@ -67,14 +65,14 @@
       "queries": [
         "site:lu.ma hackathon san francisco 2026"
       ],
-      "lastSeenAt": "2026-09-09T07:42:49.784Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/8ca2z1rr",
       "queries": [
         "site:luma.com hackathon san francisco 2026"
       ],
-      "lastSeenAt": "2026-09-09T07:42:49.783Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/90minstartupinSF",
@@ -102,7 +100,7 @@
       "queries": [
         "site:luma.com hackathon san francisco 2026"
       ],
-      "lastSeenAt": "2026-09-09T07:42:49.784Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/ai-hackathon-corp-agent-vibe-code",
@@ -116,7 +114,7 @@
       "queries": [
         "site:luma.com hackathon san francisco 2026"
       ],
-      "lastSeenAt": "2026-09-09T07:42:49.784Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/ai-sf",
@@ -137,14 +135,14 @@
       "queries": [
         "site:luma.com hackathon san francisco 2026"
       ],
-      "lastSeenAt": "2026-09-07T18:55:12.879Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/aws-builder-loft-events",
       "queries": [
         "site:lu.ma hackathon san francisco 2026"
       ],
-      "lastSeenAt": "2026-09-09T07:42:49.784Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/b0l7tzxd",
@@ -152,13 +150,6 @@
         "site:luma.com hackathon san francisco 2026"
       ],
       "lastSeenAt": "2026-08-28T14:44:50.515Z"
-    },
-    {
-      "url": "https://luma.com/bayareafoundersclub",
-      "queries": [
-        "site:luma.com buildathon OR makeathon OR \"make-a-thon\" bay area"
-      ],
-      "lastSeenAt": "2026-08-26T16:09:35.359Z"
     },
     {
       "url": "https://luma.com/BayAreaProduct",
@@ -170,9 +161,9 @@
     {
       "url": "https://luma.com/BETAhackathon",
       "queries": [
-        "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026"
+        "site:luma.com hackathon \"bay area\" 2026"
       ],
-      "lastSeenAt": "2026-09-09T18:07:20.684Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/bfcpaloalto",
@@ -254,32 +245,31 @@
     {
       "url": "https://luma.com/frontiertower",
       "queries": [
-        "site:luma.com \"ai hackathon\" san francisco upcoming"
+        "site:lu.ma hackathon san francisco 2026"
       ],
-      "lastSeenAt": "2026-09-09T18:07:20.684Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/frw43jmv",
       "queries": [
         "site:luma.com hackathon san francisco 2026"
       ],
-      "lastSeenAt": "2026-09-07T18:55:12.879Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/genai-sf",
       "queries": [
-        "site:luma.com hackathon san francisco 2026",
         "site:lu.ma hackathon san francisco 2026",
         "site:luma.com hackathon \"bay area\" 2026"
       ],
-      "lastSeenAt": "2026-09-09T07:42:49.784Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/genaihackathon",
       "queries": [
         "site:luma.com hackathon san francisco 2026"
       ],
-      "lastSeenAt": "2026-09-04T07:38:11.584Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/getsolotech",
@@ -359,6 +349,14 @@
       "lastSeenAt": "2026-09-09T07:42:49.784Z"
     },
     {
+      "url": "https://luma.com/llamalounge",
+      "queries": [
+        "site:lu.ma hackathon san francisco 2026",
+        "site:luma.com hackathon \"bay area\" 2026"
+      ],
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
+    },
+    {
       "url": "https://luma.com/ml7emv1r",
       "queries": [
         "site:luma.com hackathon \"bay area\" 2026"
@@ -377,7 +375,7 @@
       "queries": [
         "site:luma.com hackathon \"bay area\" 2026"
       ],
-      "lastSeenAt": "2026-09-09T07:42:49.784Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/oss4ai",
@@ -391,7 +389,7 @@
       "queries": [
         "site:lu.ma hackathon san francisco 2026"
       ],
-      "lastSeenAt": "2026-09-09T07:42:49.784Z"
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
     },
     {
       "url": "https://luma.com/sf-ebl",
@@ -401,6 +399,15 @@
       "lastSeenAt": "2026-09-16T08:08:05.767Z"
     },
     {
+      "url": "https://luma.com/sftw",
+      "queries": [
+        "site:luma.com hackathon san francisco 2026",
+        "site:lu.ma hackathon san francisco 2026",
+        "site:luma.com hackathon \"bay area\" 2026"
+      ],
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
+    },
+    {
       "url": "https://luma.com/t5iktvzy",
       "queries": [
         "site:luma.com \"ai hackathon\" san francisco upcoming"
@@ -408,16 +415,23 @@
       "lastSeenAt": "2026-09-09T18:07:20.684Z"
     },
     {
+      "url": "https://luma.com/ufm1y1z1",
+      "queries": [
+        "site:luma.com hackathon \"bay area\" 2026"
+      ],
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
+    },
+    {
+      "url": "https://luma.com/zemh10km",
+      "queries": [
+        "site:luma.com hackathon san francisco 2026"
+      ],
+      "lastSeenAt": "2026-09-16T18:32:46.853Z"
+    },
+    {
       "url": "https://luma.com/znhcct7v",
       "queries": [
         "\"hackathon\" san francisco 2026 register lu.ma"
-      ],
-      "lastSeenAt": "2026-09-16T08:08:05.767Z"
-    },
-    {
-      "url": "https://luma.com/zsaa3r3d",
-      "queries": [
-        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
       ],
       "lastSeenAt": "2026-09-16T08:08:05.767Z"
     }
