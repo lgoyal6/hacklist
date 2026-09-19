@@ -5,7 +5,7 @@
     "personalizedSeeds": 1540,
     "personalizedPromising": 53,
     "searchSeeds": 60,
-    "apiCalendarSeeds": 20,
+    "apiCalendarSeeds": 22,
     "linkedinSeeds": 60,
     "linkedinPromising": 60,
     "pagesVisited": 870,
@@ -14,23 +14,23 @@
     "unlockerConfigured": false,
     "unlockerProblem": null,
     "lastDeepSweepAt": "2026-09-18T08:12:46.734Z",
-    "httpFailures": 32,
-    "httpThrottled": 32,
-    "httpPauses": 4,
+    "httpFailures": 24,
+    "httpThrottled": 24,
+    "httpPauses": 3,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 14,
-    "structuredEventsFound": 93,
+    "externalPagesVisited": 10,
+    "structuredEventsFound": 110,
     "candidatesFound": 8,
     "heldForReview": 0,
-    "nearMisses": 1,
+    "nearMisses": 2,
     "stoppedOnTimeBudget": false,
-    "elapsedSeconds": 1035,
-    "secondsPerPage": 1.1897,
+    "elapsedSeconds": 923,
+    "secondsPerPage": 1.0609,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 171,
-    "completedAt": "2026-09-19T08:01:11.616Z"
+    "queueRemaining": 225,
+    "completedAt": "2026-09-19T17:54:51.396Z"
   },
   "candidates": [
     {
@@ -48,7 +48,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Skip to Main Content\nEvents\nSearchSign InSign In\nMore\nHostsVultr\nThe Agent Arena Hackathon\nSan Francisco, CASep 26 at 9:00 AM – Sep 27 at 5:00 PM (PDT)\n\nJoin us at The Agent Arena Hackathon hosted by Vultr to build what the next generation of agent infrastructure actually looks like in production.\n\nAgents are writing code, driving browsers, and running real operations for teams. The infrastructure built to contain and coordinate what they do needs to get better.\n\nVultr is bringing the tools for you to build infrastructure powering the next generation of autonomous execution: VM backends, serverless inference, and the compute layer agents run on when they stop talking and start acting.\n\nCompete for more than $10,000 across cash and credits!\n\nNote: This event is fully in-person in San Francisco. Teams may have up to four members. All attendees must apply and be approved. Submitting an application does not guarantee a seat; approved applicants must confirm their attendance.\n\nRegister",
-      "checkedAt": "2026-09-19T07:47:32.864Z",
+      "checkedAt": "2026-09-19T17:42:26.695Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://cerebralvalley.ai/e/vultr-the-agent-arena",
@@ -70,6 +70,40 @@
       }
     },
     {
+      "url": "https://luma.com/exruwpkp",
+      "title": "The Executable World: A Full Stack AI Hackathon & Mixer",
+      "category": "hackathon",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 94,
+      "relevance": 88,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "The Executable World: A Full Stack AI Hackathon & Mixer\nA full-day Full-Stack AI Hackathon on September 19, 2026 will bring together builders competing for a $270,000 prize pool while shipping real AI products with support from industry leaders like AWS, Tencent EdgeOne, and ServiceTikTok executives. Teams will build, demo, and network with founders…\nSan Francisco, CA\nSan Francisco\nCA",
+      "structuredEvent": {
+        "url": "https://luma.com/exruwpkp",
+        "name": "The Executable World: A Full Stack AI Hackathon & Mixer",
+        "description": "A full-day Full-Stack AI Hackathon on September 19, 2026 will bring together builders competing for a $270,000 prize pool while shipping real AI products with support from industry leaders like AWS, Tencent EdgeOne, and ServiceTikTok executives. Teams will build, demo, and network with founders…",
+        "startDate": "2026-09-19T16:00:00.000Z",
+        "endDate": "2026-09-20T03:00:00.000Z",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "organizers": [],
+        "offerAvailability": null
+      },
+      "checkedAt": "2026-09-19T17:40:09.782Z",
+      "heldBecause": null
+    },
+    {
       "url": "https://luma.com/upjkn37w",
       "title": "Dream AI Hackathon 2026",
       "category": "hackathon",
@@ -83,7 +117,7 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Dream AI Hackathon 2026\nLIKELION US\nLIKELION US\nSerephina Ha\nGrace Kim\nUri Lee\nFrontier Tower\nFrontier Tower 🧑‍🚀\nSan Francisco\nCalifornia",
+      "evidence": "Dream AI Hackathon 2026\nLIKELION US\nLIKELION US\nSerephina Ha\nGrace Kim\nUri Lee\nFrontier Tower\nHeejoon Cho\nFrontier Tower 🧑‍🚀\nSan Francisco\nCalifornia",
       "structuredEvent": {
         "url": "https://luma.com/upjkn37w",
         "name": "Dream AI Hackathon 2026",
@@ -103,55 +137,12 @@
           "Serephina Ha",
           "Grace Kim",
           "Uri Lee",
-          "Frontier Tower"
+          "Frontier Tower",
+          "Heejoon Cho"
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-09-19T07:44:45.756Z"
-    },
-    {
-      "url": "https://luma.com/exruwpkp",
-      "title": "The Executable World: A Full Stack AI Hackathon & Mixer",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "The Executable World: A Full Stack AI Hackathon & Mixer\nFig Studio\nFig Studio\nVeloDB Inc\nCoco Wang\nVicky L\nRobin Wang\nIris Sun\nPop Pop Tech\nSahar Mor (Bond AI)\nElenor Zhong\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/exruwpkp",
-        "name": "The Executable World: A Full Stack AI Hackathon & Mixer",
-        "description": null,
-        "startDate": "2026-09-19T09:00:00.000-07:00",
-        "endDate": "2026-09-19T20:00:00.000-07:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Fig Studio",
-          "Fig Studio",
-          "VeloDB Inc",
-          "Coco Wang",
-          "Vicky L",
-          "Robin Wang",
-          "Iris Sun",
-          "Pop Pop Tech",
-          "Sahar Mor (Bond AI)",
-          "Elenor Zhong"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-09-19T07:44:45.757Z"
+      "checkedAt": "2026-09-19T17:40:16.664Z"
     },
     {
       "url": "https://luma.com/truefoundry-agent-harness-hackathon-sep19-2026",
@@ -192,7 +183,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-09-19T07:44:45.757Z"
+      "checkedAt": "2026-09-19T17:40:16.664Z"
     },
     {
       "url": "https://luma.com/h4h-san-francisco",
@@ -232,7 +223,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-09-19T07:44:45.757Z"
+      "checkedAt": "2026-09-19T17:40:16.664Z"
     },
     {
       "url": "https://luma.com/st9fa3gb",
@@ -269,7 +260,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-09-19T07:44:45.757Z"
+      "checkedAt": "2026-09-19T17:40:16.664Z"
     },
     {
       "url": "https://luma.com/td9pjor4",
@@ -309,7 +300,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-09-19T07:44:45.757Z"
+      "checkedAt": "2026-09-19T17:40:16.664Z"
     },
     {
       "url": "https://lablab.ai/ai-hackathons/wearedevelopers-hackathon",
@@ -344,7 +335,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-09-19T07:46:55.974Z"
+      "checkedAt": "2026-09-19T17:41:58.901Z"
     }
   ],
   "errors": [
