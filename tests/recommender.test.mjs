@@ -68,6 +68,16 @@ const manifest = JSON.parse(
   ),
 );
 const frozenAsOf = Date.parse(manifest.production_ordering.as_of);
+// The board the manifest was frozen against, byte for byte. data/events.json is
+// rewritten by every sweep, so a test that holds the live file to the frozen
+// snapshot fails on the first sweep after the freeze and withholds every deploy
+// after it, which it did from 2026-09-10. Claims about the experiment are
+// checked here; claims about the page being served use `data`.
+const FROZEN_BOARD = new URL(
+  "./fixtures/recommender-frozen-events.json",
+  import.meta.url,
+);
+const frozen = JSON.parse(await readFile(FROZEN_BOARD, "utf8"));
 const FIXTURE = new URL(
   "./fixtures/recommender-synthetic-events.jsonl",
   import.meta.url,
@@ -79,20 +89,20 @@ const ranker = JSON.parse(
 
 // --- the frozen ordering ---
 
-test("the frozen snapshot is what productionOrder returns on the committed board", () => {
+test("the frozen snapshot is what productionOrder returns on the frozen board", () => {
   assert.deepEqual(
-    productionOrderIds(data, { asOf: frozenAsOf }),
+    productionOrderIds(frozen, { asOf: frozenAsOf }),
     manifest.production_ordering.snapshot,
     "the production ordering moved after the manifest was frozen; that is a new experiment, not an edit to this one",
   );
 });
 
-test("the manifest still describes the committed board", async () => {
-  const rebuilt = await buildManifest();
+test("the manifest still describes the frozen board", async () => {
+  const rebuilt = await buildManifest(fileURLToPath(FROZEN_BOARD));
   assert.equal(
     rebuilt.production_ordering.events_file_sha256,
     manifest.production_ordering.events_file_sha256,
-    "data/events.json changed under a frozen manifest",
+    "the frozen board is not the data/events.json the manifest was frozen against",
   );
   assert.equal(
     rebuilt.production_ordering.snapshot_sha256,
@@ -103,8 +113,8 @@ test("the manifest still describes the committed board", async () => {
 
 test("the snapshot is the default region's hackathons and nothing else", () => {
   const ids = new Set(manifest.production_ordering.snapshot);
-  const defaultRegion = data.meta.defaultRegion;
-  for (const event of data.events) {
+  const defaultRegion = frozen.meta.defaultRegion;
+  for (const event of frozen.events) {
     if (!ids.has(event.id)) continue;
     assert.equal(event.category, "hackathon", `${event.id} is not a hackathon`);
     assert.equal(
@@ -138,13 +148,13 @@ test("a later render drops finished events and reorders nothing", () => {
   // sequence with some prefix of finished events removed. That is what makes
   // one committed snapshot a fair description of every future first paint.
   for (const shiftDays of [0.5, 7, 400]) {
-    const later = productionOrderIds(data, {
+    const later = productionOrderIds(frozen, {
       asOf: frozenAsOf + shiftDays * 86400000,
     });
-    const frozen = manifest.production_ordering.snapshot;
+    const snapshot = manifest.production_ordering.snapshot;
     let cursor = 0;
     for (const id of later) {
-      const found = frozen.indexOf(id, cursor);
+      const found = snapshot.indexOf(id, cursor);
       assert.ok(
         found >= 0,
         `${id} appears ${shiftDays} days later but is not in the frozen order at or after position ${cursor}`,
@@ -840,7 +850,9 @@ test("the committed artifact says what it was trained on", () => {
 });
 
 test("training the committed artifact again produces the committed artifact", async () => {
-  const { artifact } = await trainFromLog(fileURLToPath(FIXTURE));
+  const { artifact } = await trainFromLog(fileURLToPath(FIXTURE), {
+    eventsPath: fileURLToPath(FROZEN_BOARD),
+  });
   assert.deepEqual(artifact, ranker, "data/ranker.json is not what its own log trains");
 });
 
