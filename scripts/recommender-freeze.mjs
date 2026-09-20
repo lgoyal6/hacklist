@@ -39,9 +39,12 @@ const sha256 = (text) => createHash("sha256").update(text).digest("hex");
  * list tomorrow and could never be checked by a test. The sweep stamp is the
  * one instant the committed data file names, so the snapshot is reproducible
  * forever from the two committed files alone.
+ *
+ * @param {string} [eventsPath] the board to describe; the tests pass the frozen
+ *   copy, because data/events.json is rewritten by every sweep.
  */
-export async function buildManifest() {
-  const rawEvents = await readFile(EVENTS_PATH, "utf8");
+export async function buildManifest(eventsPath = EVENTS_PATH) {
+  const rawEvents = await readFile(eventsPath, "utf8");
   const data = JSON.parse(rawEvents);
   const asOfIso = data.meta.sweepCompletedAt;
   const asOf = Date.parse(asOfIso);

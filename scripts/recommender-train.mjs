@@ -52,11 +52,17 @@ const argOf = (name, fallback) => {
  * Build a model artifact from a log.
  *
  * @param {string} logPath
+ * @param {{eventsPath?: string}} [options] the board the log's event ids are
+ *   looked up in; the tests pass the frozen copy the committed model was
+ *   trained against.
  */
-export async function trainFromLog(logPath) {
+export async function trainFromLog(
+  logPath,
+  { eventsPath = resolve(root, "data/events.json") } = {},
+) {
   const raw = await readFile(logPath, "utf8");
   const rows = await readEventLog(logPath);
-  const data = JSON.parse(await readFile(resolve(root, "data/events.json"), "utf8"));
+  const data = JSON.parse(await readFile(eventsPath, "utf8"));
   const defaultRegion = data.meta.defaultRegion;
   const catalog = new Map(data.events.map((event) => [event.id, event]));
 
