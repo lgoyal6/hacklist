@@ -204,7 +204,7 @@ test("boardVisible is what the views and the search actually filter with", () =>
 
 // --- the page renders that ordering ---
 
-test("the server-rendered board is the frozen ordering, minus what has finished", async () => {
+test("the server-rendered board is the production ordering, minus what has finished", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
@@ -225,13 +225,18 @@ test("the server-rendered board is the frozen ordering, minus what has finished"
     .filter(Boolean);
   assert.ok(rendered.length > 0, "no event links found in the rendered board");
 
-  const frozen = manifest.production_ordering.snapshot;
+  // The page is built from the live board, so it is held to that board's own
+  // production order at its sweep instant. A render is never earlier than the
+  // sweep, so it can only have dropped finished events from that list.
+  const production = productionOrderIds(data, {
+    asOf: Date.parse(data.meta.sweepCompletedAt),
+  });
   let cursor = 0;
   for (const id of rendered) {
-    const found = frozen.indexOf(id, cursor);
+    const found = production.indexOf(id, cursor);
     assert.ok(
       found >= 0,
-      `the page rendered ${id} out of the frozen production order`,
+      `the page rendered ${id} out of the production order`,
     );
     cursor = found + 1;
   }
@@ -794,7 +799,7 @@ test("no client id and no artifact are the same answer: the production order", (
     regionKey: data.meta.defaultRegion,
     defaultRegion: data.meta.defaultRegion,
   };
-  const expected = manifest.production_ordering.snapshot;
+  const expected = ordered.map((event) => event.id);
 
   // Cold start: a reader with no stored identity has no draft seed. On this
   // board that is also a reader with no history, because history is the
