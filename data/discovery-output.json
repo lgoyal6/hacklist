@@ -14,23 +14,23 @@
     "unlockerConfigured": false,
     "unlockerProblem": null,
     "lastDeepSweepAt": "2026-09-18T08:12:46.734Z",
-    "httpFailures": 32,
-    "httpThrottled": 32,
-    "httpPauses": 4,
+    "httpFailures": 24,
+    "httpThrottled": 24,
+    "httpPauses": 3,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 15,
-    "structuredEventsFound": 91,
-    "candidatesFound": 4,
+    "externalPagesVisited": 14,
+    "structuredEventsFound": 89,
+    "candidatesFound": 5,
     "heldForReview": 0,
     "nearMisses": 1,
     "stoppedOnTimeBudget": false,
-    "elapsedSeconds": 1049,
-    "secondsPerPage": 1.2057,
+    "elapsedSeconds": 885,
+    "secondsPerPage": 1.0173,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 211,
-    "completedAt": "2026-09-20T18:08:24.214Z"
+    "queueRemaining": 215,
+    "completedAt": "2026-09-21T00:28:45.336Z"
   },
   "candidates": [
     {
@@ -48,7 +48,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Skip to Main Content\nEvents\nSearchSign InSign In\nMore\nHostsVultr\nThe Agent Arena Hackathon\nSan Francisco, CASep 26 at 9:00 AM – Sep 27 at 5:00 PM (PDT)\n\nJoin us at The Agent Arena Hackathon hosted by Vultr to build what the next generation of agent infrastructure actually looks like in production.\n\nAgents are writing code, driving browsers, and running real operations for teams. The infrastructure built to contain and coordinate what they do needs to get better.\n\nVultr is bringing the tools for you to build infrastructure powering the next generation of autonomous execution: VM backends, serverless inference, and the compute layer agents run on when they stop talking and start acting.\n\nCompete for more than $10,000 across cash and credits!\n\nNote: This event is fully in-person in San Francisco. Teams may have up to four members. All attendees must apply and be approved. Submitting an application does not guarantee a seat; approved applicants must confirm their attendance.\n\nRegister",
-      "checkedAt": "2026-09-20T17:54:41.142Z",
+      "checkedAt": "2026-09-21T00:17:22.629Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://cerebralvalley.ai/e/vultr-the-agent-arena",
@@ -68,6 +68,39 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       }
+    },
+    {
+      "url": "https://luma.com/epfgz3gx",
+      "title": "Enterprise Hackathon 2.0",
+      "category": "hackathon",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 94,
+      "relevance": 81,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Enterprise Hackathon 2.0\nWorking professionals—engineers, founders, and product leaders—will spend an action-packed day building AI solutions for real enterprise challenges, collaborating with experienced mentors, and pitching to industry experts. Expect hands-on hacking powered by tools like RocketRide and Snyk…\nSan Francisco, CA\nSan Francisco\nCA",
+      "structuredEvent": {
+        "url": "https://luma.com/epfgz3gx",
+        "name": "Enterprise Hackathon 2.0",
+        "description": "Working professionals—engineers, founders, and product leaders—will spend an action-packed day building AI solutions for real enterprise challenges, collaborating with experienced mentors, and pitching to industry experts. Expect hands-on hacking powered by tools like RocketRide and Snyk…",
+        "startDate": "2026-09-21T16:30:00.000Z",
+        "endDate": "2026-09-22T00:30:00.000Z",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "organizers": [],
+        "offerAvailability": null
+      },
+      "checkedAt": "2026-09-21T00:14:41.993Z"
     },
     {
       "url": "https://luma.com/td9pjor4",
@@ -100,7 +133,7 @@
         "organizers": [],
         "offerAvailability": null
       },
-      "checkedAt": "2026-09-20T17:51:39.074Z"
+      "checkedAt": "2026-09-21T00:14:41.993Z"
     },
     {
       "url": "https://luma.com/sep-21-cognee-aws",
@@ -138,7 +171,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-09-20T17:51:47.060Z"
+      "checkedAt": "2026-09-21T00:14:49.290Z"
     },
     {
       "url": "https://lablab.ai/ai-hackathons/wearedevelopers-hackathon",
@@ -173,7 +206,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-09-20T17:54:22.936Z"
+      "checkedAt": "2026-09-21T00:17:06.630Z"
     }
   ],
   "errors": [
