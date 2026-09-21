@@ -34,6 +34,7 @@ import {
   productionExtractor,
   readEventLog,
 } from "./lib/recommender-log.mjs";
+import { FROZEN_EVENTS_PATH } from "./recommender-freeze.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DEFAULT_LOG = "tests/fixtures/recommender-synthetic-events.jsonl";
@@ -52,17 +53,13 @@ const argOf = (name, fallback) => {
  * Build a model artifact from a log.
  *
  * @param {string} logPath
- * @param {{eventsPath?: string}} [options] the board the log's event ids are
- *   looked up in; the tests pass the frozen copy the committed model was
- *   trained against.
  */
-export async function trainFromLog(
-  logPath,
-  { eventsPath = resolve(root, "data/events.json") } = {},
-) {
+export async function trainFromLog(logPath) {
   const raw = await readFile(logPath, "utf8");
   const rows = await readEventLog(logPath);
-  const data = JSON.parse(await readFile(eventsPath, "utf8"));
+  // The frozen board, not data/events.json: every sweep rewrites that file, and
+  // the same log looked up in a different board is a different model.
+  const data = JSON.parse(await readFile(FROZEN_EVENTS_PATH, "utf8"));
   const defaultRegion = data.meta.defaultRegion;
   const catalog = new Map(data.events.map((event) => [event.id, event]));
 

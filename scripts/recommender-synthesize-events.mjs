@@ -45,6 +45,7 @@ import {
   trainLogistic,
 } from "../app/ranking.mjs";
 import { validateEvent } from "../app/telemetry-schema.mjs";
+import { FROZEN_EVENTS_PATH } from "./recommender-freeze.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DEFAULT_OUT = "tests/fixtures/recommender-synthetic-events.jsonl";
@@ -144,9 +145,9 @@ export async function synthesize(options = {}) {
     depth = DEFAULT_DEPTH,
   } = options;
 
-  const data = JSON.parse(
-    await readFile(resolve(root, "data/events.json"), "utf8"),
-  );
+  // The frozen board, so the same seed keeps producing the same log after a
+  // sweep rewrites data/events.json.
+  const data = JSON.parse(await readFile(FROZEN_EVENTS_PATH, "utf8"));
   const defaultRegion = data.meta.defaultRegion;
   const region =
     data.meta.regions.find((entry) => entry.key === defaultRegion) ??
