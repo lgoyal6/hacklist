@@ -1,4 +1,6 @@
+import { accessSync, constants } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { homedir } from "node:os";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { lightpanda } from "@lightpanda/browser";
@@ -272,6 +274,31 @@ async function extractPage(
     }
     return { title: document.title, bodyText, links, structuredEvents };
   });
+}
+
+// Check the browser can actually be run before anything is spawned.
+//
+// @lightpanda/browser downloads its binary in a postinstall that chmods it only
+// after checking a checksum against the GitHub API, and swallows its own
+// failure with `|| true`. A rate-limited or flaky call there leaves the file in
+// place but not executable, so lightpanda.serve() emits an EACCES on the child
+// process with nobody listening, which is an uncaught exception rather than a
+// rejected promise: the sweep dies mid-run with a spawn stack and no hint of
+// what to do. That is four dead sweeps (2026-09-02, 09-07, 09-08, 09-20). Say
+// what is wrong and how to repair it instead.
+const lightpandaBinary =
+  process.env.LIGHTPANDA_EXECUTABLE_PATH ??
+  resolve(homedir(), ".cache/lightpanda-node/lightpanda");
+try {
+  accessSync(lightpandaBinary, constants.X_OK);
+} catch (error) {
+  throw new Error(
+    `Lightpanda's binary at ${lightpandaBinary} is not executable (${
+      error instanceof Error ? error.message : String(error)
+    }). Its installer downloads the binary but only makes it executable once a ` +
+      "checksum call to the GitHub API succeeds. Repair it with " +
+      "`npm rebuild @lightpanda/browser --foreground-scripts`.",
+  );
 }
 
 const host = "127.0.0.1";
