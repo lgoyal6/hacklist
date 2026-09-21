@@ -42,6 +42,7 @@ import {
   productionExtractor,
   readEventLog,
 } from "./lib/recommender-log.mjs";
+import { FROZEN_EVENTS_PATH } from "./recommender-freeze.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const DEFAULT_LOG = "tests/fixtures/recommender-synthetic-events.jsonl";
@@ -248,7 +249,9 @@ export async function evaluate(options = {}) {
 
   const rawLog = await readFile(logPath, "utf8");
   const rows = await readEventLog(logPath);
-  const data = JSON.parse(await readFile(resolve(root, "data/events.json"), "utf8"));
+  // The board the manifest was frozen on. The live data/events.json moves every
+  // sweep, and the controls compare against the manifest's frozen snapshot.
+  const data = JSON.parse(await readFile(FROZEN_EVENTS_PATH, "utf8"));
   const manifest = JSON.parse(
     await readFile(resolve(root, "results/recommender-manifest.json"), "utf8"),
   );

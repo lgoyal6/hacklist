@@ -6,11 +6,16 @@
 // the branch, and the numbers in it are never edited afterwards. A gate chosen
 // after seeing the result is not a gate.
 //
+// It also copies data/events.json, byte for byte, to FROZEN_EVENTS_PATH. Every
+// sweep rewrites data/events.json, so the experiment's scripts and tests read
+// that copy: it is the board the manifest describes, and it moves only when the
+// experiment is frozen again.
+//
 // Run: node scripts/recommender-freeze.mjs
 // Check without writing: node scripts/recommender-freeze.mjs --check
 
 import { createHash } from "node:crypto";
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { copyFile, readFile, writeFile, mkdir } from "node:fs/promises";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -27,6 +32,11 @@ import {
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 export const MANIFEST_PATH = resolve(root, "results/recommender-manifest.json");
 const EVENTS_PATH = resolve(root, "data/events.json");
+/** The board the experiment was frozen on. See the header. */
+export const FROZEN_EVENTS_PATH = resolve(
+  root,
+  "tests/fixtures/recommender-frozen-events.json",
+);
 
 const sha256 = (text) => createHash("sha256").update(text).digest("hex");
 
@@ -223,23 +233,25 @@ export async function buildManifest(eventsPath = EVENTS_PATH) {
 const canonical = (manifest) => `${JSON.stringify(manifest, null, 2)}\n`;
 
 async function main() {
-  const manifest = await buildManifest();
-  const text = canonical(manifest);
   if (process.argv.includes("--check")) {
+    const text = canonical(await buildManifest(FROZEN_EVENTS_PATH));
     const existing = await readFile(MANIFEST_PATH, "utf8");
     if (existing !== text) {
       console.error(
-        "results/recommender-manifest.json does not match the committed board.\n" +
-          "The manifest is frozen: if data/events.json changed, that is a new experiment, not an edit to this one.",
+        "results/recommender-manifest.json does not match the frozen board.\n" +
+          "The manifest is frozen: if the board it describes changed, that is a new experiment, not an edit to this one.",
       );
       process.exitCode = 1;
       return;
     }
-    console.log("Manifest matches the committed board.");
+    console.log("Manifest matches the frozen board.");
     return;
   }
+  const manifest = await buildManifest();
+  const text = canonical(manifest);
   await mkdir(dirname(MANIFEST_PATH), { recursive: true });
   await writeFile(MANIFEST_PATH, text);
+  await copyFile(EVENTS_PATH, FROZEN_EVENTS_PATH);
   console.log(
     `Wrote results/recommender-manifest.json: ${manifest.production_ordering.snapshot_length} events, ` +
       `snapshot sha256 ${manifest.production_ordering.snapshot_sha256}`,

@@ -50,7 +50,10 @@ import {
   nullSink,
   sinkFor,
 } from "../worker/events-endpoint.mjs";
-import { buildManifest } from "../scripts/recommender-freeze.mjs";
+import {
+  FROZEN_EVENTS_PATH,
+  buildManifest,
+} from "../scripts/recommender-freeze.mjs";
 import {
   groupRenders,
   organicCounts,
@@ -73,11 +76,7 @@ const frozenAsOf = Date.parse(manifest.production_ordering.as_of);
 // snapshot fails on the first sweep after the freeze and withholds every deploy
 // after it, which it did from 2026-09-10. Claims about the experiment are
 // checked here; claims about the page being served use `data`.
-const FROZEN_BOARD = new URL(
-  "./fixtures/recommender-frozen-events.json",
-  import.meta.url,
-);
-const frozen = JSON.parse(await readFile(FROZEN_BOARD, "utf8"));
+const frozen = JSON.parse(await readFile(FROZEN_EVENTS_PATH, "utf8"));
 const FIXTURE = new URL(
   "./fixtures/recommender-synthetic-events.jsonl",
   import.meta.url,
@@ -98,7 +97,7 @@ test("the frozen snapshot is what productionOrder returns on the frozen board", 
 });
 
 test("the manifest still describes the frozen board", async () => {
-  const rebuilt = await buildManifest(fileURLToPath(FROZEN_BOARD));
+  const rebuilt = await buildManifest(FROZEN_EVENTS_PATH);
   assert.equal(
     rebuilt.production_ordering.events_file_sha256,
     manifest.production_ordering.events_file_sha256,
@@ -855,9 +854,7 @@ test("the committed artifact says what it was trained on", () => {
 });
 
 test("training the committed artifact again produces the committed artifact", async () => {
-  const { artifact } = await trainFromLog(fileURLToPath(FIXTURE), {
-    eventsPath: fileURLToPath(FROZEN_BOARD),
-  });
+  const { artifact } = await trainFromLog(fileURLToPath(FIXTURE));
   assert.deepEqual(artifact, ranker, "data/ranker.json is not what its own log trains");
 });
 
