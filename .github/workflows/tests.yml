@@ -1,0 +1,44 @@
+name: tests
+
+# The suite, on every branch, on Linux.
+#
+# Until now the only place `npm run test:artifact` ran was inside the twice-daily
+# sweep, as the gate between the data commit and the deploy. That is the right
+# place for a gate and the wrong place for the only run of the tests: a test that
+# breaks is not discovered when it is pushed, it is discovered the next time the
+# sweep wants to publish, and it withholds the board when it does. Two real
+# cases: the frozen-manifest tests broke the board for eleven days from
+# 2026-09-10, and the retrain test compared floating-point bytes that only ever
+# matched on the Mac that produced them, so it had never once passed in CI.
+#
+# This does not gate anything. It runs the same tests earlier, where a failure
+# costs a red branch instead of a stale site.
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+# A branch only needs its newest push checked.
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check the fetchers refuse forbidden destinations
+        run: npm run test:fetchers
+      # The deploy gate itself: the rendered board, the ICS feed, dates, dedupe,
+      # i18n and the recommender. It builds first, so it also proves the build.
+      # The browser-driven Luma form test is deliberately left out, exactly as it
+      # is left out of the gate.
+      - name: Run the deploy gate's tests
+        run: npm run test:artifact
