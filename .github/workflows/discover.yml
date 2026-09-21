@@ -207,6 +207,34 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # @lightpanda/browser downloads the browser the sweep crawls with in a
+      # postinstall, and makes it executable only after checking its checksum
+      # against the GitHub API - unauthenticated, so shared-runner rate limits
+      # reach it. Its own failure is swallowed (`node ... postinstall.js || true`),
+      # so npm ci reports success and leaves a file that cannot be run. The sweep
+      # then dies on spawn EACCES: 2026-09-02, 09-07, 09-08 and 09-20, each time
+      # after the metered search legs had already spent their requests.
+      #
+      # Re-running the installer re-downloads and re-verifies, which is the only
+      # honest repair - chmod +x here would just make an unverified binary
+      # runnable. It does not fail the job: the sweep now exits 0 on a browser it
+      # cannot start, the board still publishes from the other sources and
+      # retention, and the health check at the end is what turns the run red.
+      - name: Make sure the crawler's browser can actually be run
+        continue-on-error: true
+        run: |
+          bin="${LIGHTPANDA_EXECUTABLE_PATH:-$HOME/.cache/lightpanda-node/lightpanda}"
+          for attempt in 1 2 3; do
+            if [ -x "$bin" ]; then
+              echo "Lightpanda is executable at $bin"
+              exit 0
+            fi
+            echo "Lightpanda at $bin is not executable (attempt $attempt); re-running its installer."
+            npm rebuild @lightpanda/browser --foreground-scripts || true
+            sleep 10
+          done
+          echo "Still not executable. The sweep will skip its crawl and say so." >&2
+          exit 1
       # Before the sweep, not after: these assert that a fetcher refuses a private
       # or redirected destination. Running them once the sweep has already reached
       # the network would be checking the lock after opening the door. No build
