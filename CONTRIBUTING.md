@@ -6,7 +6,10 @@ interesting failure is not a crash but a board that quietly stops being true.
 ## The contract you must not break
 
 **A bad sweep must never replace a good board.** Every discovery pass is deliberately
-built to exit 0 whatever happens, because a partial sweep beats no sweep. That design
+built to exit 0 whatever happens, because a partial sweep beats no sweep. The headless
+sweep is one of them: it is `|| true` in the `discover:sf` chain like the rest, because
+a browser that will not start used to stop `normalize-events.mjs` from ever running and
+so withheld the whole board (four dead sweeps in September 2026). That design
 means the guards downstream are the only thing between a dead source and an empty
 calendar, and all three of them are load-bearing:
 
