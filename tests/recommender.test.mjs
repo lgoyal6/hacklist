@@ -855,7 +855,44 @@ test("the committed artifact says what it was trained on", () => {
 
 test("training the committed artifact again produces the committed artifact", async () => {
   const { artifact } = await trainFromLog(fileURLToPath(FIXTURE));
-  assert.deepEqual(artifact, ranker, "data/ranker.json is not what its own log trains");
+
+  // Everything that says which run this was is compared exactly. model_version
+  // is a hash of the features, the hyperparameters, the row count and the log's
+  // own sha256, so a model trained on a different log, or under different
+  // terms, still fails here.
+  const learned = new Set(["weights", "bias", "weighted_log_loss"]);
+  const identity = (model) =>
+    Object.fromEntries(
+      Object.entries(model).filter(([key]) => !learned.has(key)),
+    );
+  assert.deepEqual(
+    identity(artifact),
+    identity(ranker),
+    "data/ranker.json is not what its own log trains",
+  );
+
+  // The learned numbers are compared with a tolerance, because they are not
+  // bit-identical across platforms. The trainer runs Math.exp a few million
+  // times, and libm's last digit differs between the Mac this artifact was
+  // trained on and CI's Linux: one weight came back 1.2971935784866213e-3 there
+  // against ...18e-3 here, a gap of one ULP. Demanding equal bytes made this
+  // test fail on every CI run from 2026-09-10 on. A retrain that actually
+  // changed the model moves these numbers in the third decimal, not the
+  // eighteenth.
+  const EPSILON = 1e-9;
+  assert.equal(artifact.weights.length, ranker.weights.length);
+  artifact.weights.forEach((weight, index) => {
+    assert.ok(
+      Math.abs(weight - ranker.weights[index]) <= EPSILON,
+      `weight ${ranker.feature_names[index]} retrained as ${weight}, committed as ${ranker.weights[index]}`,
+    );
+  });
+  assert.ok(Math.abs(artifact.bias - ranker.bias) <= EPSILON);
+  // Rounded to six decimals when written, so one unit in that last place is the
+  // most a last-digit weight difference can move it.
+  assert.ok(
+    Math.abs(artifact.weighted_log_loss - ranker.weighted_log_loss) <= 1e-6,
+  );
 });
 
 // --- the export pass ---
