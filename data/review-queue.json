@@ -1,19 +1,20 @@
 {
-  "sweepCompletedAt": "2026-09-21T20:04:44.123Z",
+  "sweepCompletedAt": "2026-09-22T08:28:52.027Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
   "nearMisses": [
     {
-      "url": "https://luma.com/dmitri-waymo-spc",
-      "title": "-1 to Waymo with Dmitri Dolgov",
+      "url": "https://www.humanx.co/europe",
+      "title": "HumanX Amsterdam 2026 | The #1 AI Conference | 22-24 Sept",
       "readFrom": "page",
       "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
       "confidence": 52,
       "relevance": 62,
       "short": 2,
       "missing": [
-        "no term from candidateTerms"
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
       ]
     },
     {
@@ -21,18 +22,6 @@
       "title": "TechCrunch Disrupt - Founders & Operators Evening",
       "readFrom": "page",
       "via": "https://luma.com/discover/sf/tech",
-      "confidence": 52,
-      "relevance": 62,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://luma.com/kszd8yw7",
-      "title": "October 2026: AI on the Hunt: Using Claude to Unmask the hackerbot_claw Attack Campaign",
-      "readFrom": "page",
-      "via": "https://luma.com/sv-issa",
       "confidence": 52,
       "relevance": 62,
       "short": 2,
@@ -77,23 +66,10 @@
       ]
     },
     {
-      "url": "https://luma.com/claude-workshop-sf-sept-21",
-      "title": "Claude Workshop with Provectus",
+      "url": "https://luma.com/uglytalk-ei4p",
+      "title": "UGLY TALK: B2B LinkedIn Prospecting Webinar",
       "readFrom": "listing",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "confidence": 52,
-      "relevance": 54,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms",
-        "title names a non-hackathon format"
-      ]
-    },
-    {
-      "url": "https://luma.com/7qtbycmm",
-      "title": "KSC Founders Pitch Day | Physical AI, Robotics and more",
-      "readFrom": "listing",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "via": "https://luma.com/uglytalk-ei4p",
       "confidence": 52,
       "relevance": 54,
       "short": 2,

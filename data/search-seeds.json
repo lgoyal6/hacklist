@@ -1,9 +1,14 @@
 {
-  "collectedAt": "2026-09-21T19:48:56.820Z",
+  "collectedAt": "2026-09-22T08:07:02.089Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
-  "problems": [],
+  "problems": [
+    {
+      "query": "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026",
+      "error": "brightdata captcha"
+    }
+  ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
     {
@@ -110,7 +115,7 @@
       "queries": [
         "site:luma.com \"ai hackathon\" san francisco upcoming"
       ],
-      "lastSeenAt": "2026-09-20T17:49:04.739Z"
+      "lastSeenAt": "2026-09-22T08:07:02.081Z"
     },
     {
       "url": "https://luma.com/ai-control-hackathon-2026-san-francisco-mox",
@@ -124,28 +129,28 @@
       "queries": [
         "site:luma.com \"ai hackathon\" san francisco upcoming"
       ],
-      "lastSeenAt": "2026-09-20T17:49:04.739Z"
+      "lastSeenAt": "2026-09-22T08:07:02.081Z"
     },
     {
       "url": "https://luma.com/ai-meets-robotics-sf",
       "queries": [
-        "site:luma.com hackathon san francisco 2026"
+        "\"hackathon\" san francisco 2026 register lu.ma"
       ],
-      "lastSeenAt": "2026-09-21T19:48:56.814Z"
+      "lastSeenAt": "2026-09-22T08:07:02.081Z"
     },
     {
       "url": "https://luma.com/ai-sf",
       "queries": [
         "\"hackathon\" san francisco 2026 register lu.ma"
       ],
-      "lastSeenAt": "2026-09-16T08:08:05.767Z"
+      "lastSeenAt": "2026-09-22T08:07:02.081Z"
     },
     {
       "url": "https://luma.com/aihack",
       "queries": [
         "site:luma.com \"ai hackathon\" san francisco upcoming"
       ],
-      "lastSeenAt": "2026-09-19T17:37:54.420Z"
+      "lastSeenAt": "2026-09-22T08:07:02.081Z"
     },
     {
       "url": "https://luma.com/aixbio-hackathon-2026-sf",
@@ -185,9 +190,9 @@
     {
       "url": "https://luma.com/BETAhackathon",
       "queries": [
-        "site:luma.com hackathon \"bay area\" 2026"
+        "\"hackathon\" san francisco 2026 register lu.ma"
       ],
-      "lastSeenAt": "2026-09-21T19:48:56.814Z"
+      "lastSeenAt": "2026-09-22T08:07:02.081Z"
     },
     {
       "url": "https://luma.com/bfcpaloalto",
@@ -243,7 +248,7 @@
       "queries": [
         "site:luma.com \"ai hackathon\" san francisco upcoming"
       ],
-      "lastSeenAt": "2026-09-19T17:37:54.420Z"
+      "lastSeenAt": "2026-09-22T08:07:02.081Z"
     },
     {
       "url": "https://luma.com/dndr5niz",
@@ -278,7 +283,7 @@
       "queries": [
         "site:luma.com \"ai hackathon\" san francisco upcoming"
       ],
-      "lastSeenAt": "2026-09-20T17:49:04.739Z"
+      "lastSeenAt": "2026-09-22T08:07:02.081Z"
     },
     {
       "url": "https://luma.com/frontiertower",
@@ -317,25 +322,11 @@
       "lastSeenAt": "2026-09-20T17:49:04.739Z"
     },
     {
-      "url": "https://luma.com/hacksprint-sf",
-      "queries": [
-        "site:luma.com hackathon \"bay area\" 2026"
-      ],
-      "lastSeenAt": "2026-08-31T20:27:30.650Z"
-    },
-    {
       "url": "https://luma.com/hacktoberfest-sf",
       "queries": [
         "site:luma.com \"ai hackathon\" san francisco upcoming"
       ],
-      "lastSeenAt": "2026-09-04T17:53:14.955Z"
-    },
-    {
-      "url": "https://luma.com/house-of-ai",
-      "queries": [
-        "site:luma.com \"ai hackathon\" san francisco upcoming"
-      ],
-      "lastSeenAt": "2026-08-31T20:27:30.650Z"
+      "lastSeenAt": "2026-09-22T08:07:02.081Z"
     },
     {
       "url": "https://luma.com/i1x6rwe3",
@@ -369,9 +360,9 @@
     {
       "url": "https://luma.com/j2176blg",
       "queries": [
-        "site:luma.com hackathon san francisco 2026"
+        "\"hackathon\" san francisco 2026 register lu.ma"
       ],
-      "lastSeenAt": "2026-09-09T07:42:49.784Z"
+      "lastSeenAt": "2026-09-22T08:07:02.081Z"
     },
     {
       "url": "https://luma.com/jv444zph",
@@ -428,6 +419,20 @@
         "site:luma.com hackathon \"san diego\" 2026"
       ],
       "lastSeenAt": "2026-09-21T01:09:28.392Z"
+    },
+    {
+      "url": "https://luma.com/upjkn37w",
+      "queries": [
+        "site:luma.com \"ai hackathon\" san francisco upcoming"
+      ],
+      "lastSeenAt": "2026-09-22T08:07:02.081Z"
+    },
+    {
+      "url": "https://luma.com/yqg1y4d6",
+      "queries": [
+        "site:luma.com \"ai hackathon\" san francisco upcoming"
+      ],
+      "lastSeenAt": "2026-09-22T08:07:02.081Z"
     }
   ]
 }
