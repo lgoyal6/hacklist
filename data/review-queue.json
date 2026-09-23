@@ -1,5 +1,5 @@
 {
-  "sweepCompletedAt": "2026-09-23T08:30:03.964Z",
+  "sweepCompletedAt": "2026-09-23T19:04:31.752Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
@@ -22,6 +22,18 @@
       "title": "WeAreDevelopers World Congress North America (with Docker & GitHub)",
       "readFrom": "listing",
       "via": "https://luma.com/discover/sf/ai",
+      "confidence": 52,
+      "relevance": 54,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://stayhappening.com/e/wearedevelopers-world-congress-2026-north-america-E2ISYDLC0SC",
+      "title": "WeAreDevelopers World Congress 2026 North America Tickets, San Jose Convention Center, 23 September 2026",
+      "readFrom": "page",
+      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
       "confidence": 52,
       "relevance": 54,
       "short": 2,

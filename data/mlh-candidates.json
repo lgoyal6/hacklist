@@ -1,15 +1,15 @@
 {
-  "collectedAt": "2026-09-23T08:30:55.738Z",
+  "collectedAt": "2026-09-23T19:05:22.122Z",
   "source": "https://www.mlh.com/seasons",
   "seasons": [
     2026,
     2027
   ],
-  "eventsSeen": 351,
+  "eventsSeen": 353,
   "skipped": {
     "past": 274,
     "online": 1,
-    "notLocal": 72,
+    "notLocal": 73,
     "notHackathon": 0,
     "unplaceable": [
       {
@@ -26,6 +26,42 @@
   "note": "Major League Hacking's season calendar, read anonymously from the JSON the season page embeds. Real timestamps and a structured venueAddress, so locality is decided on stated fields. Sees further ahead than any calendar source because student hackathons are announced a semester out.",
   "candidates": [
     {
+      "url": "https://calhacks.io/",
+      "title": "Cal Hacks 13.0",
+      "category": "hackathon",
+      "discoveredVia": "https://www.mlh.com/seasons",
+      "confidence": 62,
+      "relevance": 60,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Cal Hacks 13.0 \nSan Francisco, California, US, San Francisco, California\nOCT 23 - 25\nhackathon\nhttps://calhacks.io/",
+      "checkedAt": "2026-09-23T19:05:22.114Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://calhacks.io/",
+        "name": "Cal Hacks 13.0 ",
+        "description": null,
+        "startDate": "2026-10-23T17:00:00.000Z",
+        "endDate": "2026-10-25T19:00:00.000Z",
+        "timeSource": "mlh",
+        "organizers": [
+          "Major League Hacking"
+        ],
+        "location": {
+          "name": "San Francisco, California",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    },
+    {
       "url": "https://sfhacks.io",
       "title": "SF Hacks",
       "category": "hackathon",
@@ -40,7 +76,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "SF Hacks \nSan Francisco, CA, US, San Francisco, CA\nFEB 19 - 21\nhackathon\nhttps://sfhacks.io",
-      "checkedAt": "2026-09-23T08:30:55.729Z",
+      "checkedAt": "2026-09-23T19:05:22.115Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://sfhacks.io",
@@ -76,7 +112,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Diamondhacks\nLa Jolla, California , US, La Jolla, California \nAPR 04 - 05\nhackathon\nhttps://diamondhacks.acmucsd.com/",
-      "checkedAt": "2026-09-23T08:30:55.737Z",
+      "checkedAt": "2026-09-23T19:05:22.122Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://diamondhacks.acmucsd.com/",
