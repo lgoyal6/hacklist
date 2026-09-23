@@ -1,29 +1,14 @@
 {
-  "collectedAt": "2026-09-23T03:58:36.984Z",
+  "collectedAt": "2026-09-23T08:10:54.147Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 20,
-  "pagesRead": 4,
-  "readStoppedOnTimeBudget": true,
+  "pagesFound": 22,
+  "pagesRead": 12,
+  "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [
-    {
-      "stage": "search",
-      "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
-      "error": "brightdata: TimeoutError: The operation was aborted due to timeout"
-    },
-    {
-      "stage": "read",
-      "url": "https://www.linkedin.com/pulse/ai-events-sep-17-25-2026-bay-area-charles-guo-7wjwc",
-      "error": "TimeoutError: The operation was aborted due to timeout"
-    },
-    {
-      "stage": "read",
-      "error": "time budget reached with 7 page(s) unread"
-    }
-  ],
+  "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -348,7 +333,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/tezock_builders-cup-2026-a-hackathon-by-ramp-activity-7479926811095867392-A1AN",
       "context": "🏆 Builders Cup 2026, a one-day hackathon in Flatiron NYC. If you're a student looking for a SWE internship or new grad role, this is *definitely* worth your Saturday. Top builders get in front of Ramp directly, on top of food, coffee, and prizes. RSVP here: https://luma.com/nrletiv9 📅 July 18, 10a",
-      "lastSeenAt": "2026-09-18T03:31:55.043Z"
+      "lastSeenAt": "2026-09-23T08:10:54.147Z"
     },
     {
       "url": "https://luma.com/battle-bots-hack-night-jul15-2026",
