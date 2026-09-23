@@ -1,14 +1,29 @@
 {
-  "collectedAt": "2026-09-22T18:27:24.840Z",
+  "collectedAt": "2026-09-23T03:58:36.984Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 23,
-  "pagesRead": 12,
-  "readStoppedOnTimeBudget": false,
+  "pagesFound": 20,
+  "pagesRead": 4,
+  "readStoppedOnTimeBudget": true,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
+      "error": "brightdata: TimeoutError: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "read",
+      "url": "https://www.linkedin.com/pulse/ai-events-sep-17-25-2026-bay-area-charles-guo-7wjwc",
+      "error": "TimeoutError: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "read",
+      "error": "time budget reached with 7 page(s) unread"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -18,21 +33,21 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "isco, California - Host: Luma - Details available on the RSVP page. 5:30 PM PT - Agents in Production: correctness, context, and control - AWS Builder Loft, San Francisco, CA - Host: SurrealDB San Francisco - To sign up for this event, you must register here: https://luma.com/hqz8wi79 -- Agents are ",
-      "lastSeenAt": "2026-09-22T18:27:24.840Z"
+      "lastSeenAt": "2026-09-09T03:31:21.217Z"
     },
     {
       "url": "https://luma.com/zsaa3r3d",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/pepijn-kooijmans-737545175_seeed-2026-embodied-ai-hackathon-in-bay-area-activity-7438243939834564608-8o7_",
       "context": "o Store Coupon per Team 🚀 Participation Award (16th–25th Place) 1× Amazing Hand per Team 📅 Event Details Date: March 21-22, 2026 Location: Seeed U.S. Office, Santa Clara 🔗 How to Join Registration entry: https://lnkd.in/g5ERmCsq Learn more about hackathon: https://luma.com/zsaa3r3d A huge thank y",
-      "lastSeenAt": "2026-09-22T18:27:24.840Z"
+      "lastSeenAt": "2026-09-14T03:34:21.287Z"
     },
     {
       "url": "https://luma.com/6eqa8nbh",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-may-5-12-charles-guo-ebcjc",
       "context": "ing products. It is also about shaping meaning. If you are especially energized by competition and building under pressure, the days ahead are full of hackathons and summits that can accelerate both skills and visibility. All Things Agent Hackathon by Apify ( https://lu.ma/6eqa8nbh ), Physical AI Ha",
-      "lastSeenAt": "2026-09-22T08:08:14.144Z"
+      "lastSeenAt": "2026-09-09T03:31:21.217Z"
     },
     {
       "url": "https://luma.com/rgk6ln4e.",
@@ -116,7 +131,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-charles-guo-s81hc",
       "context": "AI Events FRIDAY, February 6 ; 9:30 AM - Continual Learning Hackathon San Francisco, CA (Register to See Address) https://lu.ma/intercomai ; 10:00 AM ...Read more",
-      "lastSeenAt": "2026-09-22T08:08:14.144Z"
+      "lastSeenAt": "2026-09-22T03:36:00.862Z"
     },
     {
       "url": "https://luma.com/slicelab",
@@ -129,8 +144,8 @@
       "url": "https://luma.com/rgk6ln4e",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/troy-gwdn_ive-started-going-to-hackathons-every-single-activity-7458893560977862656-2Ixu",
-      "context": "Broadening Horizons at SF Hackathons Event website: http://codexhackathon.my/ Apply on Luma: https://luma.com/rgk6ln4e #Malaysia #AI #Codex ...Read more",
-      "lastSeenAt": "2026-09-20T03:32:46.411Z"
+      "context": "Broadening Horizons at SF Hackathons Event website: http://codexhackathon.my/ Apply on Luma: https://luma.com/rgk6ln4e #Malaysia #AI #Codex ...",
+      "lastSeenAt": "2026-09-23T03:58:36.984Z"
     },
     {
       "url": "https://luma.com/hackbio",
@@ -319,14 +334,14 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/marianebekker_founders-bay-san-francisco-tech-events-activity-7413725053739102208-MDhG",
       "context": "Mariane Bekker's Post - Founders Bay ... [SF] luma.com/1dxb2fah 🗓️ Saturday, Jan 10 Healthcare x AI Hackathon (9AM-6PM) [SF] luma.com/txlhkuu3 NFX Bio Pre-JPM Networking Run ...",
-      "lastSeenAt": "2026-09-22T18:27:24.840Z"
+      "lastSeenAt": "2026-09-21T03:31:30.971Z"
     },
     {
       "url": "https://luma.com/69bmmktv",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/sharatchander_auraomp-harness-hackathon-luma-activity-7493339705833414656-Lti6",
       "context": "LEASE REGISTER! Elide is hosting a local hackathon to showcase its latest product, giving you a look in, and offering the opportunity to provide feedback ( #Community participation matters!). I'm attending so come join me (food, drinks, etc): * Register here: https://luma.com/69bmmktv * Date/Time: W",
-      "lastSeenAt": "2026-09-22T18:27:24.840Z"
+      "lastSeenAt": "2026-09-09T03:31:21.217Z"
     },
     {
       "url": "https://luma.com/nrletiv9",
@@ -354,7 +369,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/maxkrueger1_one-thing-i-feel-strongly-about-right-now-activity-7433186458318028800-x06P",
       "context": "Intelligence at the Frontier, Shaw will join us not only as a speaker but also as a mentor for the hackathon, supporting builders exploring new approaches to AI agents. He’s joining us at FtC SF: Intelligence at the Frontier, March 14–15 in San Francisco. 👉 luma.com/ftc-sf-2026 6 Like Comment Share",
-      "lastSeenAt": "2026-09-22T08:08:14.144Z"
+      "lastSeenAt": "2026-09-22T03:36:00.862Z"
     },
     {
       "url": "https://luma.com/e9h4kv5k",
@@ -396,7 +411,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/marianebekker_founders-bay-san-francisco-tech-events-activity-7413725053739102208-MDhG",
       "context": "Mariane Bekker's Post - Founders Bay ... [SF] luma.com/1dxb2fah 🗓️ Saturday, Jan 10 Healthcare x AI Hackathon (9AM-6PM) [SF] luma.com/txlhkuu3 NFX Bio Pre-JPM Networking Run ...",
-      "lastSeenAt": "2026-09-22T18:27:24.840Z"
+      "lastSeenAt": "2026-09-21T03:31:30.971Z"
     },
     {
       "url": "https://luma.com/92g7smqv",
