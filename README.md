@@ -335,10 +335,14 @@ out in two places.
   queries that name one of its cities, and the default region rotates through
   the rest (`scripts/lib/query-rotation.mjs`).
 
-Eventbrite and Meetup read through the Bright Data unlocker when a direct read is
-refused, which is every Eventbrite read from a CI runner. The unlocker is only
-configured on deep sweeps, so a run where every query is refused keeps the last
-run's upcoming candidates instead of overwriting them with nothing.
+Eventbrite refuses GitHub's runners with a 405 and answers a residential
+address, so its main reader is the nightly local pass, which commits
+`data/eventbrite-candidates.json` with the seed files (union-merged, like them).
+In CI, Eventbrite and Meetup read through the Bright Data unlocker when a direct
+read is refused, but only on deep sweeps: about seven requests each, so the
+free tier's credits stay with the Luma crawl and search. A CI run where every
+query is refused keeps the previous upcoming candidates instead of overwriting
+them with nothing.
 
 Adding a third region is a config entry, some seed URLs, and a `copy.<key>.*`
 entry per language in `app/i18n/` (which has a serviceable default if you skip

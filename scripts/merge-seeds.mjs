@@ -1,6 +1,6 @@
 // Git merge driver for the generated data files that have two writers.
 //
-// Most of data/ has a single author, but five files are written both by the
+// Most of data/ has a single author, but six files are written both by the
 // GitHub sweep and by the nightly local pass:
 //
 //   data/linkedin-seeds.json      search from a datacenter vs a residential IP
@@ -8,6 +8,7 @@
 //   data/luma-api.json            same
 //   data/luma-ledger.json         the calendar mirror runs in CI and locally
 //   data/luma-tags.json           same
+//   data/eventbrite-candidates.json  Eventbrite refuses CI, answers the Mac
 //
 // Two writers plus a shared branch means the local pass's push is rejected
 // whenever a sweep landed first, so it rebases, and git tries to reconcile

@@ -78,6 +78,14 @@ echo "--- luma discover feed"
 
 # LinkedIn runs here as well as in CI because search engines answer a residential
 # address and block a datacenter one, so this is where it actually finds anything.
+# Eventbrite answers a residential address and refuses GitHub's runners with a
+# 405, so this is where it actually reads anything. CI still runs it, reads
+# through the metered unlocker on deep sweeps only, and keeps these candidates
+# when every query it sends is refused. Free here, so it runs every night.
+echo "--- eventbrite discovery"
+"$NODE" scripts/discover-eventbrite.mjs || \
+  echo "    eventbrite pass failed; previous candidates kept" >&2
+
 echo "--- linkedin discovery"
 "$NODE" scripts/discover-linkedin.mjs || \
   echo "    linkedin pass failed; continuing" >&2
@@ -90,7 +98,8 @@ echo "--- personalized discovery"
 # classifies. Committed together so one push covers whichever of them changed.
 # luma-api.json rides along: the GitHub sweep reads its calendar seeds, and the
 # normalizer its candidates and enrichment, but only this machine can produce it.
-SEED_FILES=(data/personalized-seeds.json data/linkedin-seeds.json data/luma-api.json)
+# eventbrite-candidates.json likewise: CI is refused, so this is its main source.
+SEED_FILES=(data/personalized-seeds.json data/linkedin-seeds.json data/luma-api.json data/eventbrite-candidates.json)
 # Validate before committing. A conflicted file once reached CI this way: the
 # markers made it invalid JSON, and every reader treats a parse failure as "file
 # absent", so a whole sweep ran without its calendar seeds and enrichment and
