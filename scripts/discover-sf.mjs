@@ -12,6 +12,8 @@ import {
   namesUnservedRegion,
   placePattern,
 } from "./lib/candidate-score.mjs";
+import { createCrawlQueue } from "./lib/crawl-queue.mjs";
+import { queryRegion } from "./lib/query-rotation.mjs";
 import {
   createPacer,
   fetchPage,
@@ -379,7 +381,15 @@ try {
   const searched = JSON.parse(
     await readFile(resolve(root, "data/search-seeds.json"), "utf8"),
   );
-  searchSeeds = (searched.urls ?? []).map((entry) => entry.url);
+  // The query that found a seed says which region it was looking for, which is
+  // what puts a San Diego search hit on San Diego's page reserve.
+  searchSeeds = (searched.urls ?? []).map((entry) => ({
+    url: entry.url,
+    region:
+      (entry.queries ?? [])
+        .map((query) => queryRegion(query, config))
+        .find(Boolean) ?? null,
+  }));
 } catch {
   // Optional input; absent until search discovery has run.
 }
@@ -428,14 +438,22 @@ try {
 // page budget and a time budget that is not a priority, it is a lottery: a sweep
 // can spend 870 pages on what it found on page one and never open the last
 // entries in config, which is where a newly added region's surfaces are.
+//
+// Every item carries the region it is working for, when that is not the default
+// one: a seed's comes from config.seedRegions, and whatever a page leads to
+// inherits the page's. That is what config.regionPageReserve spends against; see
+// scripts/lib/crawl-queue.mjs.
+const seedRegions = config.seedRegions ?? {};
 const seedQueue = config.seedUrls.map((url) => ({
   url,
   depth: 0,
   via: "seed",
   allowExternal: !["luma.com", "lu.ma"].includes(new URL(url).hostname),
+  region: seedRegions[url] ?? null,
 }));
 
-const queue = [
+const queue = createCrawlQueue({ reserve: config.regionPageReserve ?? {} });
+for (const item of [
   // Calendars the API found hosting a hackathon. Crawled like any other seed,
   // but capped per run so a growing list cannot crowd out the configured ones.
   ...rotateSlice(apiCalendarSeeds, config.apiCalendarSeedsPerRun ?? 12).map(
@@ -463,11 +481,12 @@ const queue = [
         new URL(entry.url).hostname,
       ),
     })),
-  ...searchSeeds.map((url) => ({
+  ...searchSeeds.map(({ url, region }) => ({
     url,
     depth: config.maxGraphDepth, // visit and classify, never expand
     via: "search",
     allowExternal: false,
+    region,
   })),
   ...linkedinSeeds
     .filter((entry) => !entry.promising)
@@ -492,7 +511,9 @@ const queue = [
     via: "personalized",
     allowExternal: false,
   })),
-];
+]) {
+  queue.add(item);
+}
 const visited = new Set();
 const candidates = new Map();
 const review = new Map();
@@ -612,7 +633,7 @@ try {
       stoppedOnTime = true;
       break;
     }
-    const current = seedQueue.length ? seedQueue.shift() : queue.shift();
+    const current = seedQueue.length ? seedQueue.shift() : queue.next();
     const url = canonicalize(
       current.url,
       current.url,
@@ -620,6 +641,7 @@ try {
     );
     if (!url || visited.has(url)) continue;
     visited.add(url);
+    queue.spend(current.region);
     if (!isLumaUrl(url)) externalPagesVisited += 1;
 
     const isIndexSource = isCuratedIndex(url);
@@ -863,13 +885,17 @@ try {
           !isPastStructuredEvent &&
           current.depth < config.maxGraphDepth
         ) {
-          queue.unshift({
-            url: eventUrl,
-            depth: current.depth + 1,
-            via: url,
-            allowExternal: !isLumaUrl(eventUrl),
-            spa: !isLumaUrl(eventUrl),
-          });
+          queue.add(
+            {
+              url: eventUrl,
+              depth: current.depth + 1,
+              via: url,
+              allowExternal: !isLumaUrl(eventUrl),
+              spa: !isLumaUrl(eventUrl),
+              region: current.region,
+            },
+            { front: true },
+          );
         }
 
         if (
@@ -940,13 +966,17 @@ try {
         // record rather than competing with it. Queued at max depth: worth
         // visiting however deep the listing was found, but never expanded
         // further, so this cannot widen the crawl.
-        queue.unshift({
-          url: eventUrl,
-          depth: config.maxGraphDepth,
-          via: url,
-          allowExternal: !isLumaUrl(eventUrl),
-          spa: !isLumaUrl(eventUrl),
-        });
+        queue.add(
+          {
+            url: eventUrl,
+            depth: config.maxGraphDepth,
+            via: url,
+            allowExternal: !isLumaUrl(eventUrl),
+            spa: !isLumaUrl(eventUrl),
+            region: current.region,
+          },
+          { front: true },
+        );
       }
 
       if (current.depth >= config.maxGraphDepth) continue;
@@ -990,12 +1020,9 @@ try {
             depth: browseListing ? config.maxGraphDepth : current.depth + 1,
             via: url,
             allowExternal: !isLumaUrl(next),
+            region: current.region,
           };
-          if (directCandidateLink || curatedLink) {
-            queue.unshift(item);
-          } else {
-            queue.push(item);
-          }
+          queue.add(item, { front: directCandidateLink || curatedLink });
         }
       }
     } catch (error) {
@@ -1070,6 +1097,10 @@ const output = {
     pageBudget: config.maxPagesPerSweep,
     timeBudgetSeconds: (config.maxSweepMinutes ?? 12) * 60,
     queueRemaining: seedQueue.length + queue.length,
+    // Pages spent per region with a reserve or a regional seed. The default
+    // region's share is everything else.
+    pagesByRegion: queue.spentByRegion(),
+    regionPageReserve: config.regionPageReserve ?? {},
     completedAt: new Date().toISOString(),
   },
   candidates: [...candidates.values()].sort(

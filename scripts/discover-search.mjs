@@ -17,6 +17,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { pickQueries } from "./lib/query-rotation.mjs";
 import { safeFetch } from "./lib/safe-fetch.mjs";
 import { brightDataSearch } from "./lib/serp.mjs";
 
@@ -73,6 +74,7 @@ function allQueries() {
     `"hackathon" san francisco ${year} register lu.ma`,
     `site:luma.com hackathon "san diego" ${year}`,
     `luma "hackathon" "san diego" OR "la jolla" OR carlsbad ${year}`,
+    `hackathon "uc san diego" OR ucsd ${year} register`,
   ];
 }
 
@@ -84,14 +86,8 @@ function allQueries() {
  */
 function buildQueries() {
   const all = allQueries();
-  const perRun = Math.min(
-    config.searchQueriesPerRun ?? (hasKey ? 8 : 2),
-    all.length,
-  );
-  // A stateless rotation that advances every 12 hours, matching the schedule.
-  const slot = Math.floor(Date.now() / (12 * 3_600 * 1_000));
-  const start = ((slot * perRun) % all.length + all.length) % all.length;
-  return Array.from({ length: perRun }, (_, i) => all[(start + i) % all.length]);
+  const perRun = config.searchQueriesPerRun ?? (hasKey ? 8 : 2);
+  return pickQueries(all, perRun, config);
 }
 
 /** Pull absolute URLs out of DuckDuckGo's redirect-wrapped results. */

@@ -27,6 +27,9 @@ import {
 } from "../scripts/lib/page-http.mjs";
 import { brightDataSearch, linksFromSerpHtml, serpResults } from "../scripts/lib/serp.mjs";
 import { isMisconfiguration } from "../scripts/lib/source-health.mjs";
+import { createCrawlQueue } from "../scripts/lib/crawl-queue.mjs";
+import { pickQueries, queryRegion } from "../scripts/lib/query-rotation.mjs";
+import { searchPageCandidates } from "../scripts/lib/search-page-events.mjs";
 import {
   areaForCity,
   buildPatterns,
@@ -911,5 +914,123 @@ test("a challenge page proxied from a residential address is still refused", asy
       }),
     }),
     /refused:/,
+  );
+});
+
+// ---------------------------------------------------------------------------
+// Regional coverage: the smaller regions keep a share of queries and pages.
+// ---------------------------------------------------------------------------
+
+test("a query is placed in the non-default region it names, and only on whole words", () => {
+  assert.equal(queryRegion('site:luma.com hackathon "san diego" 2026', config), "san-diego");
+  assert.equal(queryRegion("hackathon carlsbad OR encinitas", config), "san-diego");
+  assert.equal(queryRegion("hackathon san francisco 2026 lu.ma", config), null);
+  // "del mar" is a San Diego area; "delmarva" is not.
+  assert.equal(queryRegion("delmarva hackathon", config), null);
+});
+
+test("every run sends one query per non-default region and fills the rest from the default", () => {
+  const all = [
+    "hackathon san francisco a",
+    "hackathon san francisco b",
+    "hackathon oakland c",
+    "hackathon san diego d",
+    "hackathon la jolla e",
+  ];
+  const seenRegional = new Set();
+  for (let slot = 0; slot < 6; slot += 1) {
+    const picked = pickQueries(all, 3, config, slot);
+    assert.equal(picked.length, 3);
+    const regional = picked.filter((q) => queryRegion(q, config) === "san-diego");
+    assert.equal(regional.length, 1, `slot ${slot}: ${picked}`);
+    seenRegional.add(regional[0]);
+  }
+  // The region's own slot rotates through all of its queries.
+  assert.deepEqual([...seenRegional].sort(), ["hackathon la jolla e", "hackathon san diego d"]);
+});
+
+test("a list with no regional queries rotates exactly as before", () => {
+  const all = ["a", "b", "c", "d", "e"];
+  assert.deepEqual(pickQueries(all, 2, config, 0), ["a", "b"]);
+  assert.deepEqual(pickQueries(all, 2, config, 1), ["c", "d"]);
+  assert.deepEqual(pickQueries(all, 2, config, 2), ["e", "a"]);
+});
+
+test("a region's reserved pages are served ahead of the shared queue, then compete", () => {
+  const queue = createCrawlQueue({ reserve: { "san-diego": 2 } });
+  queue.add({ url: "sf-1" });
+  queue.add({ url: "sf-front" }, { front: true });
+  queue.add({ url: "sd-1", region: "san-diego" });
+  queue.add({ url: "sd-2", region: "san-diego" });
+  queue.add({ url: "sd-3", region: "san-diego" });
+  assert.equal(queue.length, 5);
+  const order = [];
+  while (queue.length) {
+    const item = queue.next();
+    queue.spend(item.region);
+    order.push(item.url);
+  }
+  // Two reserved pages first; the third San Diego item joins the back of the
+  // shared queue rather than being dropped.
+  assert.deepEqual(order, ["sd-1", "sd-2", "sf-front", "sf-1", "sd-3"]);
+  assert.deepEqual(queue.spentByRegion(), { "san-diego": 3 });
+});
+
+test("with no reserve configured the crawl queue is the old single queue", () => {
+  const queue = createCrawlQueue();
+  queue.add({ url: "a" });
+  queue.add({ url: "b", region: "san-diego" });
+  queue.add({ url: "c" }, { front: true });
+  assert.deepEqual([queue.next().url, queue.next().url, queue.next().url], ["c", "a", "b"]);
+  assert.equal(queue.next(), undefined);
+});
+
+test("every regional seed is a configured seed, and every reserve is a real region", () => {
+  for (const [url, region] of Object.entries(config.seedRegions ?? {})) {
+    assert.ok(config.seedUrls.includes(url), `${url} has a region but is not a seed`);
+    assert.ok(config.regions[region], `${url} names unknown region ${region}`);
+  }
+  for (const region of Object.keys(config.regionPageReserve ?? {})) {
+    assert.ok(config.regions[region], `reserve for unknown region ${region}`);
+    assert.notEqual(region, config.defaultRegion);
+  }
+});
+
+test("a search page refused from this address is read through the unlocker", async () => {
+  const calls = [];
+  const html = "<html><head><title>ok</title></head><body></body></html>";
+  const fetchImpl = async (url, init = {}) => {
+    calls.push(url);
+    if (String(url).includes("brightdata")) {
+      assert.equal(JSON.parse(init.body).url, "https://www.eventbrite.com/d/ca--san-diego/hackathon/");
+      return new Response(html, { status: 200 });
+    }
+    return new Response("", { status: 405 });
+  };
+  const result = await searchPageCandidates({
+    url: "https://www.eventbrite.com/d/ca--san-diego/hackathon/",
+    source: "eventbrite",
+    config,
+    localCities,
+    patterns,
+    unlocker: { zone: "z", apiKey: "k" },
+    fetchImpl,
+  });
+  assert.equal(calls.length, 2);
+  assert.deepEqual(result.candidates, []);
+});
+
+test("without an unlocker a refused search page is still reported as refused", async () => {
+  await assert.rejects(
+    searchPageCandidates({
+      url: "https://www.eventbrite.com/d/ca--san-diego/hackathon/",
+      source: "eventbrite",
+      config,
+      localCities,
+      patterns,
+      unlocker: null,
+      fetchImpl: async () => new Response("", { status: 405 }),
+    }),
+    /HTTP 405/,
   );
 });

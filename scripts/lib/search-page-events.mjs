@@ -22,8 +22,15 @@ import {
   resolveCity,
   scoreCandidate,
 } from "./candidate-score.mjs";
+import { readFile } from "node:fs/promises";
+
 import { localToUtc } from "./event-dates.mjs";
-import { DEFAULT_UA, structuredEventsFromHtml } from "./page-http.mjs";
+import {
+  DEFAULT_UA,
+  structuredEventsFromHtml,
+  unlockerFromEnv,
+  unlockerHtml,
+} from "./page-http.mjs";
 import { safeFetch } from "./safe-fetch.mjs";
 
 /** A name that says the event happens again and again. */
@@ -71,17 +78,23 @@ function instantFor(raw, timeZone, { endOfDay = false } = {}) {
   return { ms: Number.isFinite(ms) ? ms : Number.NaN, dateOnly: false };
 }
 
-export async function searchPageCandidates({
-  url,
-  source,
-  config,
-  localCities,
-  patterns,
-  windowDays = 180,
-  timeoutMs = 25_000,
-}) {
-  const timeZone = config.timezone ?? "America/Los_Angeles";
-  const response = await safeFetch(url, {
+/**
+ * Statuses that mean "not from this address" rather than "no such page".
+ *
+ * Eventbrite answered every query from the CI runner with a 405 from the day
+ * this pass was added, so it contributed nothing for its whole life while
+ * reporting four problems a run that nobody read. A datacenter address is the
+ * whole reason, the same as Luma's 429s, and the same unlocker is the answer.
+ */
+const REFUSED = new Set([403, 405, 429]);
+
+/**
+ * The search page's HTML: read directly, and through the unlocker when the
+ * direct read is refused and one is configured. The unlocker is metered, so it
+ * is only ever the second attempt.
+ */
+async function pageHtml(url, { timeoutMs, unlocker, fetchImpl }) {
+  const response = await fetchImpl(url, {
     headers: {
       "user-agent": DEFAULT_UA,
       accept: "text/html,application/xhtml+xml",
@@ -90,8 +103,30 @@ export async function searchPageCandidates({
     redirect: "follow",
     signal: AbortSignal.timeout(timeoutMs),
   });
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  const html = await response.text();
+  if (response.ok) return response.text();
+  if (!(unlocker && REFUSED.has(response.status))) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+  try {
+    return await unlockerHtml(url, { ...unlocker, timeoutMs, fetchImpl });
+  } catch (error) {
+    throw new Error(`HTTP ${response.status}, then ${String(error.message ?? error)}`);
+  }
+}
+
+export async function searchPageCandidates({
+  url,
+  source,
+  config,
+  localCities,
+  patterns,
+  windowDays = 180,
+  timeoutMs = 25_000,
+  unlocker = unlockerFromEnv(),
+  fetchImpl = safeFetch,
+}) {
+  const timeZone = config.timezone ?? "America/Los_Angeles";
+  const html = await pageHtml(url, { timeoutMs, unlocker, fetchImpl });
 
   const now = Date.now();
   const horizon = now + windowDays * 864e5;
@@ -174,4 +209,24 @@ export async function searchPageCandidates({
     });
   }
   return { candidates, skipped };
+}
+
+/**
+ * The previous run's still-upcoming candidates, for a run where every query
+ * failed.
+ *
+ * The unlocker is only configured on the deep sweeps, so a shallow sweep that
+ * is refused everywhere would otherwise overwrite what the last deep sweep
+ * found with nothing, and the board would lose those events until the next
+ * one. A run that read anything at all is trusted as it stands.
+ */
+export async function carriedCandidates(outputPath, now = Date.now()) {
+  try {
+    const previous = JSON.parse(await readFile(outputPath, "utf8"));
+    return (previous.candidates ?? []).filter(
+      (candidate) => Date.parse(candidate.structuredEvent?.startDate ?? "") > now,
+    );
+  } catch {
+    return [];
+  }
 }

@@ -267,7 +267,7 @@ async function directHtml(url, { timeoutMs, userAgent, fetchImpl }) {
  * HTTP 401` has to read as misconfigured to isMisconfiguration() so a dead key
  * is never mistaken for Luma being busy and quietly waited out.
  */
-async function unlockerHtml(url, { zone, apiKey, timeoutMs, fetchImpl }) {
+export async function unlockerHtml(url, { zone, apiKey, timeoutMs, fetchImpl }) {
   const response = await fetchImpl(BRIGHTDATA_ENDPOINT, {
     method: "POST",
     headers: {

@@ -319,6 +319,27 @@ nobody who already subscribed wakes up with hackathons 500 miles away on their
 calendar. Every other region is `?region=<key>`, and an unknown region is a 404
 rather than a quiet fallback to the default.
 
+A smaller region needs protecting from the default one's size, which crowds it
+out in two places.
+
+- **Pages.** 43 of the 50 sweeps in September stopped on the full page budget, all of it
+  spent on a Bay Area graph that keeps unshifting promising links ahead of
+  anything else. `seedRegions` tags a seed with the region it serves, whatever
+  that seed leads to inherits the tag, and `regionPageReserve` gives that region
+  its own queue, served first until it has spent that many pages. Past the
+  reserve its leftovers compete in the shared queue, so a reserve is a floor and
+  never a cap. Search seeds are tagged by the query that found them. The pages
+  each region spent are in the sweep's `pagesByRegion`.
+- **Queries.** Search and LinkedIn discovery send a few queries a run from a
+  longer list. Each non-default region keeps one slot a run, rotating through the
+  queries that name one of its cities, and the default region rotates through
+  the rest (`scripts/lib/query-rotation.mjs`).
+
+Eventbrite and Meetup read through the Bright Data unlocker when a direct read is
+refused, which is every Eventbrite read from a CI runner. The unlocker is only
+configured on deep sweeps, so a run where every query is refused keeps the last
+run's upcoming candidates instead of overwriting them with nothing.
+
 Adding a third region is a config entry, some seed URLs, and a `copy.<key>.*`
 entry per language in `app/i18n/` (which has a serviceable default if you skip
 it). Two things are not data yet, both because every region so far is Pacific:

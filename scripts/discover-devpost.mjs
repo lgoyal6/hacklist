@@ -191,6 +191,9 @@ const queries = [
   // Belt and braces for anything an organizer tagged oddly.
   ["search-sf", `https://devpost.com/api/hackathons?${OPEN}&search=san+francisco`, 3],
   ["search-bay", `https://devpost.com/api/hackathons?${OPEN}&search=bay+area`, 3],
+  // San Diego is small enough on Devpost that a mistagged event there is a
+  // large share of the region, so it gets the same belt and braces.
+  ["search-sd", `https://devpost.com/api/hackathons?${OPEN}&search=san+diego`, 3],
   // Every open online hackathon worldwide. Nobody has to travel to one, so
   // unlike the in-person feed there is nothing to filter by place: the whole
   // feed is eligible, and it goes to the online board rather than a city's.

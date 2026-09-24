@@ -10,7 +10,10 @@ import { fileURLToPath } from "node:url";
 
 import { buildPatterns, localCitySet } from "./lib/candidate-score.mjs";
 import { createPacer } from "./lib/page-http.mjs";
-import { searchPageCandidates } from "./lib/search-page-events.mjs";
+import {
+  carriedCandidates,
+  searchPageCandidates,
+} from "./lib/search-page-events.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
@@ -49,6 +52,12 @@ for (const query of QUERIES) {
   }
 }
 
+// Every query refused: keep what the last run that could read found.
+const carried =
+  QUERIES.length && problems.length === QUERIES.length
+    ? await carriedCandidates(outputPath)
+    : [];
+for (const candidate of carried) byUrl.set(candidate.url, candidate);
 const candidates = [...byUrl.values()].sort((a, b) => b.relevance - a.relevance);
 await writeFile(
   outputPath,
@@ -59,6 +68,7 @@ await writeFile(
       queries: QUERIES,
       skipped,
       problems,
+      carried: carried.length,
       note:
         "Meetup search pages, read anonymously. They server-render schema.org " +
         "Events with a postal address and a description. Names that say the event " +

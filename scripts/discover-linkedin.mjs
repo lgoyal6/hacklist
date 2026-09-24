@@ -37,6 +37,7 @@ import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 
 import { buildPatterns } from "./lib/candidate-score.mjs";
+import { pickQueries } from "./lib/query-rotation.mjs";
 import { safeFetch } from "./lib/safe-fetch.mjs";
 import { brightDataSearch } from "./lib/serp.mjs";
 
@@ -122,11 +123,7 @@ function allQueries() {
  * hammering a keyless endpoint or burning a metered quota.
  */
 function buildQueries() {
-  const all = allQueries();
-  const perRun = Math.min(config.linkedinQueriesPerRun ?? 3, all.length);
-  const slot = Math.floor(Date.now() / (12 * 3_600 * 1_000));
-  const start = ((slot * perRun) % all.length + all.length) % all.length;
-  return Array.from({ length: perRun }, (_, i) => all[(start + i) % all.length]);
+  return pickQueries(allQueries(), config.linkedinQueriesPerRun ?? 3, config);
 }
 
 function pickFreeProvider() {
