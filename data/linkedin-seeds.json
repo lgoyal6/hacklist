@@ -1,14 +1,29 @@
 {
-  "collectedAt": "2026-09-23T18:44:49.883Z",
+  "collectedAt": "2026-09-24T04:27:41.336Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 30,
-  "pagesRead": 12,
-  "readStoppedOnTimeBudget": false,
+  "pagesFound": 10,
+  "pagesRead": 0,
+  "readStoppedOnTimeBudget": true,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon san francisco 2026 lu.ma",
+      "error": "brightdata: TimeoutError: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "search",
+      "query": "hackathon \"bay area\" 2026 register luma",
+      "error": "brightdata no_ready_cookies"
+    },
+    {
+      "stage": "read",
+      "error": "time budget reached with 10 page(s) unread"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -319,7 +334,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/marianebekker_founders-bay-san-francisco-tech-events-activity-7413725053739102208-MDhG",
       "context": "Mariane Bekker's Post - Founders Bay ... [SF] luma.com/1dxb2fah 🗓️ Saturday, Jan 10 Healthcare x AI Hackathon (9AM-6PM) [SF] luma.com/txlhkuu3 NFX Bio Pre-JPM Networking Run ...",
-      "lastSeenAt": "2026-09-21T03:31:30.971Z"
+      "lastSeenAt": "2026-09-24T04:27:41.336Z"
     },
     {
       "url": "https://luma.com/69bmmktv",
@@ -333,7 +348,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/tezock_builders-cup-2026-a-hackathon-by-ramp-activity-7479926811095867392-A1AN",
       "context": "🏆 Builders Cup 2026, a one-day hackathon in Flatiron NYC. If you're a student looking for a SWE internship or new grad role, this is *definitely* worth your Saturday. Top builders get in front of Ramp directly, on top of food, coffee, and prizes. RSVP here: https://luma.com/nrletiv9 📅 July 18, 10a",
-      "lastSeenAt": "2026-09-23T08:10:54.147Z"
+      "lastSeenAt": "2026-09-18T03:31:55.043Z"
     },
     {
       "url": "https://luma.com/battle-bots-hack-night-jul15-2026",
@@ -354,7 +369,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/maxkrueger1_one-thing-i-feel-strongly-about-right-now-activity-7433186458318028800-x06P",
       "context": "Intelligence at the Frontier, Shaw will join us not only as a speaker but also as a mentor for the hackathon, supporting builders exploring new approaches to AI agents. He’s joining us at FtC SF: Intelligence at the Frontier, March 14–15 in San Francisco. 👉 luma.com/ftc-sf-2026 6 Like Comment Share",
-      "lastSeenAt": "2026-09-23T18:44:49.883Z"
+      "lastSeenAt": "2026-09-22T03:36:00.862Z"
     },
     {
       "url": "https://luma.com/e9h4kv5k",
@@ -396,7 +411,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/marianebekker_founders-bay-san-francisco-tech-events-activity-7413725053739102208-MDhG",
       "context": "Mariane Bekker's Post - Founders Bay ... [SF] luma.com/1dxb2fah 🗓️ Saturday, Jan 10 Healthcare x AI Hackathon (9AM-6PM) [SF] luma.com/txlhkuu3 NFX Bio Pre-JPM Networking Run ...",
-      "lastSeenAt": "2026-09-21T03:31:30.971Z"
+      "lastSeenAt": "2026-09-24T04:27:41.336Z"
     },
     {
       "url": "https://luma.com/92g7smqv",
