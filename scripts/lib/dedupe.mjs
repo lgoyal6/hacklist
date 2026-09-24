@@ -27,9 +27,20 @@ export const titleFingerprint = (title) =>
  *                "SF Enterprise HACKATHON" and "SF Enterprise Innovation
  *                Hackathon: 8-Hour Hackathon in San Francisco".
  *
- * Both require the same calendar day, which is what keeps a recurring series from
+ *   title words — same day, same area, and every word of the shorter title
+ *                appears somewhere in the longer, with at least four distinct
+ *                words. Sources reword a title rather than extend it:
+ *                Eventbrite's "Startup Weekend San Diego: Justice + AI" is
+ *                Luma's "UC San Diego Horizon x Techstars Startup Weekend:
+ *                Justice + AI", under a different organiser name, and neither
+ *                test above could see it.
+ *
+ * All require the same calendar day, which is what keeps a recurring series from
  * collapsing into a single event.
  */
+const titleWords = (title) =>
+  new Set(String(title ?? "").toLowerCase().match(/[a-z0-9]+/g) ?? []);
+
 export function isSameEvent(a, b, { day, organizer, area }) {
   if (!day(a) || day(a) !== day(b)) return false;
 
@@ -42,6 +53,15 @@ export function isSameEvent(a, b, { day, organizer, area }) {
   const host = organizer(a);
   if (host && host === organizer(b) && area(a) && area(a) === area(b)) {
     return "same host + area + day";
+  }
+
+  if (area(a) && area(a) === area(b)) {
+    const wa = titleWords(a.title);
+    const wb = titleWords(b.title);
+    const [fewer, more] = wa.size <= wb.size ? [wa, wb] : [wb, wa];
+    if (fewer.size >= 4 && [...fewer].every((word) => more.has(word))) {
+      return "title words + area + day";
+    }
   }
   return false;
 }

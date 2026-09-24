@@ -136,3 +136,25 @@ test("title fingerprinting ignores case and punctuation", () => {
   assert.equal(titleFingerprint("ROAST MY PR CTF - Win a Mac Mini!"), "roastmyprctfwinamacmini");
   assert.equal(titleFingerprint(null), "");
 });
+
+test("a reworded title with every word inside the other is the same event in one area", () => {
+  const a = at(ev({ title: "Startup Weekend San Diego: Justice + AI" }), "2026-11-13", "techstars", "San Diego");
+  const b = at(
+    ev({ title: "UC San Diego Horizon x Techstars Startup Weekend: Justice + AI" }),
+    "2026-11-13",
+    "ucsandiegohorizon",
+    "San Diego",
+  );
+  assert.equal(isSameEvent(a, b, R), "title words + area + day");
+});
+
+test("shared title words are not enough across areas, days, or with too few words", () => {
+  const long = "UC San Diego Horizon x Techstars Startup Weekend: Justice + AI";
+  const short = "Startup Weekend San Diego: Justice + AI";
+  assert.equal(isSameEvent(at(ev({ title: short }), "2026-11-13", "", "North County"), at(ev({ title: long }), "2026-11-13", "", "San Diego"), R), false);
+  assert.equal(isSameEvent(at(ev({ title: short }), "2026-11-14", "", "San Diego"), at(ev({ title: long }), "2026-11-13", "", "San Diego"), R), false);
+  // Three words: "AI Hackathon SF" sits inside plenty of different events.
+  assert.equal(isSameEvent(at(ev({ title: "AI Hackathon SF" }), "2026-08-14", "", "SF"), at(ev({ title: "AI Agents Hackathon SF" }), "2026-08-14", "", "SF"), R), false);
+  // A word the other title lacks keeps them apart.
+  assert.equal(isSameEvent(at(ev({ title: "Robotics Hackathon San Francisco" }), "2026-08-14", "", "SF"), at(ev({ title: "Biotech Hackathon San Francisco Edition" }), "2026-08-14", "", "SF"), R), false);
+});

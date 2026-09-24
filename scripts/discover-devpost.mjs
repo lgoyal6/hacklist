@@ -8,9 +8,10 @@
 // upcoming in-person hackathons worldwide, only a handful are Bay Area, and
 // Devpost's location field is free text an organizer typed - sometimes a city
 // ("San Francisco, CA, USA"), sometimes a region ("Bay Area"), sometimes just a
-// venue ("AWS Builder Loft"). Venue-only strings cannot be placed without
-// guessing, so they are skipped and recorded rather than published to the wrong
-// city. `skipped.unplaceable` in the output is the list to check if something is
+// venue ("AWS Builder Loft"). A venue-only string is placed from the postal
+// address in the hackathon page's own JSON-LD when it has one, and skipped and
+// recorded otherwise rather than published to a guessed city.
+// `skipped.unplaceable` in the output is the list to check if something is
 // missing.
 //
 // Devpost publishes submission-period *dates* and no clock times, so every event
@@ -147,6 +148,43 @@ const MIDNIGHT_IN_OWN_OFFSET = /T00:00:00(?:\.\d+)?(?:Z|[+-]\d{2}:?\d{2})$/;
  * that offset, which means no time was given rather than "starts at midnight".
  */
 async function statedSchedule(pageUrl) {
+  const parsed = await pageEvent(pageUrl);
+  if (!parsed?.startDate) return null;
+  if (MIDNIGHT_IN_OWN_OFFSET.test(String(parsed.startDate))) return null;
+  const startUtc = Date.parse(parsed.startDate);
+  const endUtc = Date.parse(parsed.endDate ?? parsed.startDate);
+  if (!Number.isFinite(startUtc)) return null;
+  return {
+    startUtc,
+    endUtc: Number.isFinite(endUtc) && endUtc > startUtc ? endUtc : startUtc,
+  };
+}
+
+/**
+ * The postal address on the hackathon's own page, as "City, Region".
+ *
+ * The API's location is whatever the organizer typed, and H.A.R.D. Hack 2027
+ * typed "University of California - Jacobs Hall": no city, and a building name
+ * UC Berkeley has too. Its page states 9736 Engineers Ln, La Jolla, CA 92093 in
+ * the same JSON-LD the schedule is read from, so a venue-only location is
+ * placed from that rather than guessed or dropped.
+ */
+async function statedPlace(pageUrl) {
+  const address = (await pageEvent(pageUrl))?.location?.address;
+  if (!address || typeof address !== "object") return "";
+  return [address.addressLocality, address.addressRegion, address.streetAddress]
+    .filter(Boolean)
+    .join(", ");
+}
+
+/** The Event JSON-LD on a hackathon's page, read at most once per run. */
+const pageEvents = new Map();
+function pageEvent(pageUrl) {
+  if (!pageEvents.has(pageUrl)) pageEvents.set(pageUrl, readPageEvent(pageUrl));
+  return pageEvents.get(pageUrl);
+}
+
+async function readPageEvent(pageUrl) {
   let html;
   try {
     await pacePage();
@@ -170,17 +208,23 @@ async function statedSchedule(pageUrl) {
     const types = Array.isArray(parsed?.["@type"])
       ? parsed["@type"]
       : [parsed?.["@type"]];
-    if (!types.includes("Event") || !parsed.startDate) continue;
-    if (MIDNIGHT_IN_OWN_OFFSET.test(String(parsed.startDate))) return null;
-    const startUtc = Date.parse(parsed.startDate);
-    const endUtc = Date.parse(parsed.endDate ?? parsed.startDate);
-    if (!Number.isFinite(startUtc)) return null;
-    return {
-      startUtc,
-      endUtc: Number.isFinite(endUtc) && endUtc > startUtc ? endUtc : startUtc,
-    };
+    if (types.includes("Event")) return parsed;
   }
   return null;
+}
+
+/**
+ * A location worth a page read to place: one naming only a venue (no comma, so
+ * no city or country), or one that says it is in the US or California without
+ * a city we know. "Indore, India" is neither and costs nothing.
+ */
+function worthPlacingFromPage(locationText) {
+  const text = locationText.trim();
+  if (!text) return false;
+  return (
+    !text.includes(",") ||
+    /\b(usa|united states|,\s*ca\b|california)\b/i.test(text)
+  );
 }
 
 const OPEN = "status[]=upcoming&status[]=open";
@@ -222,7 +266,12 @@ for (const hackathon of seen.values()) {
   // to the venue, and there is no venue. It is admitted as-is and carries the
   // fact of being online through to the normalizer, which sends it to the
   // online board.
-  const placed = online ? { city: null, venue: null } : placeLocation(locationText);
+  let placed = online ? { city: null, venue: null } : placeLocation(locationText);
+  if (!placed && worthPlacingFromPage(locationText)) {
+    const place = placeLocation(await statedPlace(hackathon.url));
+    // A page address that only says "Bay Area" is no better than the API's.
+    if (place?.city) placed = place;
+  }
   if (!placed) {
     // Only worth reporting when the thing is plausibly local-ish noise; a
     // hackathon in Indore is simply not local.
