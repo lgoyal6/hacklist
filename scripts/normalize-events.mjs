@@ -97,6 +97,7 @@ const apiCandidates = [
   ...(await readCandidates("data/devpost-candidates.json")),
   ...(await readCandidates("data/mlh-candidates.json")),
   ...(await readCandidates("data/lablab-candidates.json")),
+  ...(await readCandidates("data/devto-candidates.json")),
   ...(await readCandidates("data/ethglobal-candidates.json")),
   ...(await readCandidates("data/dorahacks-candidates.json")),
   ...(await readCandidates("data/eventbrite-candidates.json")),

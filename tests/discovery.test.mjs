@@ -28,6 +28,7 @@ import {
 import { brightDataSearch, linksFromSerpHtml, serpResults } from "../scripts/lib/serp.mjs";
 import { isMisconfiguration } from "../scripts/lib/source-health.mjs";
 import { createCrawlQueue } from "../scripts/lib/crawl-queue.mjs";
+import { parseDetail as parseDevtoDetail, parseListing as parseDevtoListing } from "../scripts/lib/devto.mjs";
 import { pickQueries, queryRegion } from "../scripts/lib/query-rotation.mjs";
 import { searchPageCandidates } from "../scripts/lib/search-page-events.mjs";
 import {
@@ -1033,4 +1034,45 @@ test("without an unlocker a refused search page is still reported as refused", a
     }),
     /HTTP 405/,
   );
+});
+
+test("dev.to: only current challenge cards are taken, with title and status", () => {
+  const card = (state, slug, title, status) => `
+<a   class="challenge-index-card challenge-index-card--${state}"
+  href="https://dev.to/challenges/${slug}"
+>
+  <h3 class="challenge-index-card__title">${title}</h3>
+  <p class="challenge-index-card__subtitle">Build something &amp; ship it.</p>
+  ${status ? `<span class="challenge-index-card__status challenge-index-card__status--live">${status}</span>` : ""}
+</a>`;
+  const rows = parseDevtoListing(
+    card("current", "sanity-2026-09-16", "Sanity Challenge", "Live") +
+      card("past", "weekend-2026-09-03", "Weekend Challenge: Generosity Edition", null),
+  );
+  assert.equal(rows.length, 2);
+  const current = rows.filter((row) => row.state === "current");
+  assert.deepEqual(current.map((row) => row.title), ["Sanity Challenge"]);
+  assert.equal(current[0].subtitle, "Build something & ship it.");
+  assert.equal(current[0].status, "Live");
+});
+
+test("dev.to: key dates and a prize stated next to the word prizes", () => {
+  const detail = parseDevtoDetail(`
+    <p>Sponsor plans from $99/month. <strong>$2,500 in prizes.</strong></p>
+    <li><span>Contest start:</span>
+      <span class="tw-italic">
+        September 18, 2026
+      </span></li>
+    <li><span>Submissions due:</span> <span>October 04, 2026</span></li>`);
+  assert.deepEqual(detail.start, { year: 2026, month: 9, day: 18 });
+  assert.deepEqual(detail.due, { year: 2026, month: 10, day: 4 });
+  // The pricing figure is not next to "prize" and must not be read as one.
+  assert.equal(detail.prize, 2500);
+});
+
+test("dev.to: a page with no key dates parses as undated rather than guessing", () => {
+  const detail = parseDevtoDetail("<p>Coming soon. Cash prizes!</p>");
+  assert.equal(detail.start, null);
+  assert.equal(detail.due, null);
+  assert.equal(detail.prize, 0);
 });

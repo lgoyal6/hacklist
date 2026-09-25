@@ -193,6 +193,18 @@ if (devpost.__missing) {
   notes.push(`devpost: ${devpost.seen} seen, ${devpost.candidates?.length ?? 0} local candidates`);
 }
 
+// DEV's challenge index always lists its whole archive, so a read that sees no
+// cards at all means the markup changed, not that there are no challenges.
+const devto = await readJson("data/devto-candidates.json");
+if (devto.__missing) {
+  warnings.push(`devto-candidates.json unreadable: ${devto.__missing}`);
+} else if (checkFreshness("devto", devto.collectedAt, { required: false })) {
+  if ((devto.seen ?? 0) === 0) {
+    failures.push("devto: the challenge index listed no cards — markup or URL changed");
+  }
+  notes.push(`devto: ${devto.seen} listed, ${devto.current ?? 0} current, ${devto.candidates?.length ?? 0} candidates`);
+}
+
 // --- the headless sweep ----------------------------------------------------
 
 const discovery = await readJson("data/discovery-output.json");
