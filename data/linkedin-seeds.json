@@ -1,28 +1,18 @@
 {
-  "collectedAt": "2026-09-25T08:24:55.231Z",
+  "collectedAt": "2026-09-25T19:04:26.191Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 0,
-  "pagesRead": 0,
+  "pagesFound": 17,
+  "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
   "problems": [
     {
       "stage": "search",
-      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
-      "error": "brightdata captcha"
-    },
-    {
-      "stage": "search",
-      "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
-      "error": "brightdata captcha"
-    },
-    {
-      "stage": "search",
-      "query": "weekly bay area ai events hackathon 2026",
-      "error": "brightdata captcha"
+      "query": "hackathon sponsors judges san francisco apply luma",
+      "error": "brightdata expect_element"
     }
   ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
