@@ -1,14 +1,30 @@
 {
-  "collectedAt": "2026-09-25T03:31:48.686Z",
+  "collectedAt": "2026-09-25T08:24:55.231Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 18,
-  "pagesRead": 12,
+  "pagesFound": 0,
+  "pagesRead": 0,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
+      "error": "brightdata captcha"
+    },
+    {
+      "stage": "search",
+      "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
+      "error": "brightdata captcha"
+    },
+    {
+      "stage": "search",
+      "query": "weekly bay area ai events hackathon 2026",
+      "error": "brightdata captcha"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -432,13 +448,6 @@
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-may-5-12-charles-guo-ebcjc",
       "context": "re especially energized by competition and building under pressure, the days ahead are full of hackathons and summits that can accelerate both skills and visibility. All Things Agent Hackathon by Apify ( https://lu.ma/6eqa8nbh ), Physical AI Hack World Tour ( https://lu.ma/0xbcm3kj ), Nozomio Hackat",
       "lastSeenAt": "2026-09-24T08:03:34.254Z"
-    },
-    {
-      "url": "https://luma.com/february-ai-for-science-sf-event",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
-      "context": "Bay Area AI Events - Jan 31 - Feb 8, 2026 SF Lab - Hands-on hackathon with real robots https://lu.ma/8ca2z1rr ... lu.ma/february-ai-for-science-sf-event; Cloudflare IRL (5:30 PM) 930 ...Read more",
-      "lastSeenAt": "2026-09-22T03:36:00.862Z"
     }
   ]
 }
