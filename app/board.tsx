@@ -76,6 +76,7 @@ type RegionSummary = {
   coreArea: string | null;
   boardName: string;
   hackathonCount: number;
+  lumaUrl?: string | null;
 };
 
 type Meta = {
@@ -350,6 +351,16 @@ export default function Board({ locale }: { locale: Locale }) {
               <a href={feedPath} download onClick={() => recordSave(telemetry)}>
                 {t("subscribe.download")}
               </a>
+              {region.lumaUrl && (
+                <a
+                  href={region.lumaUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => recordSave(telemetry)}
+                >
+                  {t("subscribe.luma")}
+                </a>
+              )}
             </p>
           )}
         </div>

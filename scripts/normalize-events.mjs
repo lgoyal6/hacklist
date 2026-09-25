@@ -1031,6 +1031,9 @@ function buildOutput(events) {
         // Area, San Diego proper for San Diego.
         coreArea: region.coreArea ?? null,
         boardName: region.boardName ?? `Hacklist ${region.label}`,
+        // The region's public Luma calendar, for people who would rather follow
+        // it there than subscribe to the feed. Null for a region without one.
+        lumaUrl: region.lumaUrl ?? null,
         timezone: region.timezone ?? timezone,
         count: mine.length,
         hackathonCount: mine.filter((e) => e.category === "hackathon").length,
