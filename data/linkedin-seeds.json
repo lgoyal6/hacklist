@@ -1,14 +1,20 @@
 {
-  "collectedAt": "2026-09-26T08:10:42.684Z",
+  "collectedAt": "2026-09-26T18:11:04.514Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 27,
+  "pagesFound": 18,
   "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "\"ai hackathon\" san diego open registration",
+      "error": "brightdata captcha"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],

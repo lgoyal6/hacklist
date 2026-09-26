@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-26T08:33:17.542Z",
+  "collectedAt": "2026-09-26T18:30:38.012Z",
   "source": "eventbrite",
   "queries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
@@ -8,14 +8,31 @@
     "https://www.eventbrite.com/d/ca--san-diego/hackathon/"
   ],
   "skipped": {
-    "past": 16,
+    "past": 0,
     "online": 0,
-    "notLocal": 1,
-    "notHackathon": 55,
+    "notLocal": 0,
+    "notHackathon": 0,
     "recurring": 0
   },
-  "problems": [],
-  "carried": 0,
+  "problems": [
+    {
+      "query": "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
+      "error": "Error: HTTP 405"
+    },
+    {
+      "query": "https://www.eventbrite.com/d/ca--oakland/hackathon/",
+      "error": "Error: HTTP 405"
+    },
+    {
+      "query": "https://www.eventbrite.com/d/ca--san-jose/hackathon/",
+      "error": "Error: HTTP 405"
+    },
+    {
+      "query": "https://www.eventbrite.com/d/ca--san-diego/hackathon/",
+      "error": "Error: HTTP 405"
+    }
+  ],
+  "carried": 5,
   "note": "Eventbrite search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
   "candidates": [
     {
