@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-25T19:24:02.592Z",
+  "collectedAt": "2026-09-26T03:51:59.005Z",
   "source": "eventbrite",
   "queries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
@@ -8,31 +8,194 @@
     "https://www.eventbrite.com/d/ca--san-diego/hackathon/"
   ],
   "skipped": {
-    "past": 0,
+    "past": 1,
     "online": 0,
     "notLocal": 0,
-    "notHackathon": 0,
+    "notHackathon": 33,
     "recurring": 0
   },
   "problems": [
     {
-      "query": "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
-      "error": "Error: HTTP 405"
-    },
-    {
-      "query": "https://www.eventbrite.com/d/ca--oakland/hackathon/",
-      "error": "Error: HTTP 405"
-    },
-    {
       "query": "https://www.eventbrite.com/d/ca--san-jose/hackathon/",
-      "error": "Error: HTTP 405"
+      "error": "TimeoutError: The operation was aborted due to timeout"
     },
     {
       "query": "https://www.eventbrite.com/d/ca--san-diego/hackathon/",
-      "error": "Error: HTTP 405"
+      "error": "TimeoutError: The operation was aborted due to timeout"
     }
   ],
   "carried": 0,
   "note": "Eventbrite search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
-  "candidates": []
+  "candidates": [
+    {
+      "url": "https://www.eventbrite.com/e/the-hidden-genius-project-oakland-tech-week-youth-hackathon-2026-tickets-2002178214938",
+      "title": "The Hidden Genius Project | Oakland Tech Week Youth Hackathon 2026",
+      "category": "hackathon",
+      "heldBecause": null,
+      "discoveredVia": "eventbrite",
+      "confidence": 94,
+      "relevance": 81,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "The Hidden Genius Project | Oakland Tech Week Youth Hackathon 2026\nHenry J. Kaiser Center for the Arts\nOakland, CA\nYouth hackathon at Oakland Tech Week: solve real County problems, pitch to judges, win up to $1,000, take the main stage that night.",
+      "checkedAt": "2026-09-26T03:31:14.430Z",
+      "structuredEvent": {
+        "url": "https://www.eventbrite.com/e/the-hidden-genius-project-oakland-tech-week-youth-hackathon-2026-tickets-2002178214938",
+        "name": "The Hidden Genius Project | Oakland Tech Week Youth Hackathon 2026",
+        "description": "Youth hackathon at Oakland Tech Week: solve real County problems, pitch to judges, win up to $1,000, take the main stage that night.",
+        "startDate": "2026-10-03T07:00:00.000Z",
+        "endDate": "2026-10-04T06:59:00.000Z",
+        "timeSource": "eventbrite",
+        "organizers": [],
+        "location": {
+          "name": "Henry J. Kaiser Center for the Arts",
+          "city": "Oakland",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    },
+    {
+      "url": "https://www.eventbrite.com/e/2026-student-robotics-hackathon-tickets-1994480873984",
+      "title": "2026 Student Robotics Hackathon",
+      "category": "hackathon",
+      "heldBecause": null,
+      "discoveredVia": "eventbrite",
+      "confidence": 62,
+      "relevance": 60,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "2026 Student Robotics Hackathon\nAfrican American Art & Culture Complex\nSan Francisco, CA\nRobots. Gadgets. Panels. Vendors. All of this and more will be present during the 2026 Student Robotics Hackathon!",
+      "checkedAt": "2026-09-26T03:31:12.707Z",
+      "structuredEvent": {
+        "url": "https://www.eventbrite.com/e/2026-student-robotics-hackathon-tickets-1994480873984",
+        "name": "2026 Student Robotics Hackathon",
+        "description": "Robots. Gadgets. Panels. Vendors. All of this and more will be present during the 2026 Student Robotics Hackathon!",
+        "startDate": "2026-09-26T07:00:00.000Z",
+        "endDate": "2026-09-27T06:59:00.000Z",
+        "timeSource": "eventbrite",
+        "organizers": [],
+        "location": {
+          "name": "African American Art & Culture Complex",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    },
+    {
+      "url": "https://www.eventbrite.com/e/developerweek-2027-hackathon-registration-1992072331970",
+      "title": "DeveloperWeek 2027 Hackathon",
+      "category": "hackathon",
+      "heldBecause": null,
+      "discoveredVia": "eventbrite",
+      "confidence": 62,
+      "relevance": 60,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "DeveloperWeek 2027 Hackathon\nSanta Clara Convention Center\nSanta Clara, CA\nJoin the nation's largest challenge-driven hackathon @ DeveloperWeek 2027!",
+      "checkedAt": "2026-09-26T03:31:14.432Z",
+      "structuredEvent": {
+        "url": "https://www.eventbrite.com/e/developerweek-2027-hackathon-registration-1992072331970",
+        "name": "DeveloperWeek 2027 Hackathon",
+        "description": "Join the nation's largest challenge-driven hackathon @ DeveloperWeek 2027!",
+        "startDate": "2027-01-25T08:00:00.000Z",
+        "endDate": "2027-02-12T07:59:00.000Z",
+        "timeSource": "eventbrite",
+        "organizers": [],
+        "location": {
+          "name": "Santa Clara Convention Center",
+          "city": "Santa Clara",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    },
+    {
+      "url": "https://www.eventbrite.com/e/odsc-ai-x-nebius-hackathon-tickets-2002152139947",
+      "title": "ODSC AI x NEBIUS | Hackathon",
+      "category": "hackathon",
+      "heldBecause": null,
+      "discoveredVia": "eventbrite",
+      "confidence": 62,
+      "relevance": 60,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "ODSC AI x NEBIUS | Hackathon\nHyatt Regency San Francisco Airport\nBurlingame, CA\nThis event is part of the ODSC AI West 2026 Conference, bringing together AI and data professionals for practical, expert-led sessions.",
+      "checkedAt": "2026-09-26T03:31:14.432Z",
+      "structuredEvent": {
+        "url": "https://www.eventbrite.com/e/odsc-ai-x-nebius-hackathon-tickets-2002152139947",
+        "name": "ODSC AI x NEBIUS | Hackathon",
+        "description": "This event is part of the ODSC AI West 2026 Conference, bringing together AI and data professionals for practical, expert-led sessions.",
+        "startDate": "2026-12-29T08:00:00.000Z",
+        "endDate": "2026-12-30T07:59:00.000Z",
+        "timeSource": "eventbrite",
+        "organizers": [],
+        "location": {
+          "name": "Hyatt Regency San Francisco Airport",
+          "city": "Burlingame",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    },
+    {
+      "url": "https://www.eventbrite.com/e/a-beautiful-oakland-a-civic-tech-idea-a-thon-tickets-1996656041970",
+      "title": "A Beautiful Oakland: A Civic Tech Idea-A-Thon",
+      "category": "hackathon",
+      "heldBecause": null,
+      "discoveredVia": "eventbrite",
+      "confidence": 62,
+      "relevance": 60,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "A Beautiful Oakland: A Civic Tech Idea-A-Thon\nRothwell Student Union at Mills College at Northeastern University\nOakland, CA\nPresented by Northeastern University Oakland and OpenOakland",
+      "checkedAt": "2026-09-26T03:31:14.435Z",
+      "structuredEvent": {
+        "url": "https://www.eventbrite.com/e/a-beautiful-oakland-a-civic-tech-idea-a-thon-tickets-1996656041970",
+        "name": "A Beautiful Oakland: A Civic Tech Idea-A-Thon",
+        "description": "Presented by Northeastern University Oakland and OpenOakland",
+        "startDate": "2026-09-29T07:00:00.000Z",
+        "endDate": "2026-09-30T06:59:00.000Z",
+        "timeSource": "eventbrite",
+        "organizers": [],
+        "location": {
+          "name": "Rothwell Student Union at Mills College at Northeastern University",
+          "city": "Oakland",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    }
+  ]
 }
