@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-09-26T18:30:38.012Z",
+  "collectedAt": "2026-09-27T03:41:21.030Z",
   "source": "eventbrite",
   "queries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
@@ -10,29 +10,17 @@
   "skipped": {
     "past": 0,
     "online": 0,
-    "notLocal": 0,
-    "notHackathon": 0,
+    "notLocal": 4,
+    "notHackathon": 48,
     "recurring": 0
   },
   "problems": [
     {
       "query": "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
-      "error": "Error: HTTP 405"
-    },
-    {
-      "query": "https://www.eventbrite.com/d/ca--oakland/hackathon/",
-      "error": "Error: HTTP 405"
-    },
-    {
-      "query": "https://www.eventbrite.com/d/ca--san-jose/hackathon/",
-      "error": "Error: HTTP 405"
-    },
-    {
-      "query": "https://www.eventbrite.com/d/ca--san-diego/hackathon/",
-      "error": "Error: HTTP 405"
+      "error": "TimeoutError: The operation was aborted due to timeout"
     }
   ],
-  "carried": 5,
+  "carried": 0,
   "note": "Eventbrite search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
   "candidates": [
     {
@@ -51,7 +39,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "The Hidden Genius Project | Oakland Tech Week Youth Hackathon 2026\nHenry J. Kaiser Center for the Arts\nOakland, CA\nYouth hackathon at Oakland Tech Week: solve real County problems, pitch to judges, win up to $1,000, take the main stage that night.",
-      "checkedAt": "2026-09-26T08:33:08.799Z",
+      "checkedAt": "2026-09-27T03:41:17.093Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/the-hidden-genius-project-oakland-tech-week-youth-hackathon-2026-tickets-2002178214938",
         "name": "The Hidden Genius Project | Oakland Tech Week Youth Hackathon 2026",
@@ -85,7 +73,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "DeveloperWeek 2027 Hackathon\nSanta Clara Convention Center\nSanta Clara, CA\nJoin the nation's largest challenge-driven hackathon @ DeveloperWeek 2027!",
-      "checkedAt": "2026-09-26T08:33:08.801Z",
+      "checkedAt": "2026-09-27T03:41:17.096Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/developerweek-2027-hackathon-registration-1992072331970",
         "name": "DeveloperWeek 2027 Hackathon",
@@ -119,7 +107,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "ODSC AI x NEBIUS | Hackathon\nHyatt Regency San Francisco Airport\nBurlingame, CA\nThis event is part of the ODSC AI West 2026 Conference, bringing together AI and data professionals for practical, expert-led sessions.",
-      "checkedAt": "2026-09-26T08:33:08.801Z",
+      "checkedAt": "2026-09-27T03:41:17.095Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/odsc-ai-x-nebius-hackathon-tickets-2002152139947",
         "name": "ODSC AI x NEBIUS | Hackathon",
@@ -153,7 +141,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "A Beautiful Oakland: A Civic Tech Idea-A-Thon\nRothwell Student Union at Mills College at Northeastern University\nOakland, CA\nPresented by Northeastern University Oakland and OpenOakland",
-      "checkedAt": "2026-09-26T08:33:08.804Z",
+      "checkedAt": "2026-09-27T03:41:17.100Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/a-beautiful-oakland-a-civic-tech-idea-a-thon-tickets-1996656041970",
         "name": "A Beautiful Oakland: A Civic Tech Idea-A-Thon",
@@ -187,7 +175,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Startup Weekend San Diego: Justice + AI\nDesign and Innovation Building\nSan Diego, CA\nBring your entrepreneurial drive to create new products and services in an industry that touches everyone's lives.",
-      "checkedAt": "2026-09-26T08:33:17.541Z",
+      "checkedAt": "2026-09-27T03:41:21.029Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/startup-weekend-san-diego-justice-ai-tickets-1999007009778",
         "name": "Startup Weekend San Diego: Justice + AI",
