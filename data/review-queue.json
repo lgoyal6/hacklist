@@ -1,9 +1,81 @@
 {
-  "sweepCompletedAt": "2026-09-27T10:00:36.999Z",
+  "sweepCompletedAt": "2026-09-27T19:03:17.014Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
   "nearMisses": [
+    {
+      "url": "https://luma.com/ai-reality-summit",
+      "title": "AI Reality Summit",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 69,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/mmy2fofz",
+      "title": "SDCW: LAND SUMMIT",
+      "readFrom": "page",
+      "via": "https://luma.com/sd",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/2620atlw",
+      "title": "Sunday Scones.. with a Side of Climate Trivia!",
+      "readFrom": "page",
+      "via": "https://luma.com/sd",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/s1ge4p03",
+      "title": "Climate Salon @ San Diego Climate Week",
+      "readFrom": "page",
+      "via": "https://luma.com/sd",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/09lxnmia",
+      "title": "SDCW: FIRE SUMMIT",
+      "readFrom": "page",
+      "via": "https://luma.com/sd",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/zjdjc3ib",
+      "title": "TechCrunch Disrupt - Founders & Operators Evening",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
     {
       "url": "https://luma.com/kszd8yw7",
       "title": "October 2026: AI on the Hunt: Using Claude to Unmask the hackerbot_claw Attack Campaign",
@@ -17,23 +89,60 @@
       ]
     },
     {
-      "url": "https://luma.com/Sept29thAIBio",
-      "title": "AI x Bio Pitch Contest",
-      "readFrom": "listing",
-      "via": "https://luma.com/aws-builder-loft-events",
-      "confidence": 52,
-      "relevance": 54,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://luma.com/5dk7rv41",
-      "title": "HARD RESET PRESENTS: AN ARCHITECTURAL TOUR OF NORTH BEACH",
+      "url": "https://luma.com/ai-builders-sf-sept",
+      "title": "Daytona AI Builders - SF, September 2026",
       "readFrom": "page",
       "via": "personalized",
       "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/airtable-community-bay-area-crew-09-26",
+      "title": "Bay Area Builder Crew: Backstage >> Creative Ops on Airtable",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/b4sf-02",
+      "title": "🚀 Startup Pitch Night SF | B4SF",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/bdl545oz",
+      "title": "The Infrastructure Bet: Fireside Chat with Amr Awadallah + Mixer",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/Sept29thAIBio",
+      "title": "AI x Bio Pitch Contest",
+      "readFrom": "listing",
+      "via": "https://luma.com/genai-sf",
+      "confidence": 52,
       "relevance": 54,
       "short": 2,
       "missing": [
@@ -41,29 +150,15 @@
       ]
     },
     {
-      "url": "https://luma.com/devx-weekend-function-oct-17-2026",
-      "title": "Game Jam! — Weekend Function() { Software Developer Meetup } — 10/17/26",
+      "url": "https://luma.com/ai-agentic-coding",
+      "title": "Build Like a Frontier Lab Engineer with OpenAI, Cognition, Qodo, Auth0, Temporal",
       "readFrom": "listing",
-      "via": "https://luma.com/discover/sd/tech",
-      "confidence": 48,
-      "relevance": 51,
-      "short": 6,
+      "via": "https://luma.com/genai-sf",
+      "confidence": 52,
+      "relevance": 54,
+      "short": 2,
       "missing": [
-        "no prize, judging or submission language",
-        "title names a non-hackathon format"
-      ]
-    },
-    {
-      "url": "https://luma.com/ai-conference-hack-day-2026",
-      "title": "The AI Conference Hack Day 2026",
-      "readFrom": "listing",
-      "via": "https://luma.com/sf-hackersquad",
-      "confidence": 48,
-      "relevance": 51,
-      "short": 6,
-      "missing": [
-        "no prize, judging or submission language",
-        "title names a non-hackathon format"
+        "no term from candidateTerms"
       ]
     },
     {
