@@ -1,19 +1,19 @@
 {
-  "collectedAt": "2026-09-27T18:47:21.011Z",
+  "collectedAt": "2026-09-28T03:30:47.091Z",
   "source": "https://api.lu.ma/discover/get-paginated-events",
   "feeds": [
     {
       "region": null,
       "placeId": null,
-      "entries": 222,
-      "unique": 222,
-      "requests": 5
+      "entries": 488,
+      "unique": 488,
+      "requests": 11
     },
     {
       "region": "bay-area",
       "placeId": "discplace-BDj7GNbGlsF7Cka",
-      "entries": 71,
-      "unique": 71,
+      "entries": 68,
+      "unique": 68,
       "requests": 2
     },
     {
@@ -24,16 +24,16 @@
       "requests": 1
     }
   ],
-  "feedCollapsed": true,
-  "entriesPulled": 950,
-  "requests": 8,
-  "uniqueEvents": 903,
-  "hackathonCandidates": 83,
+  "feedCollapsed": false,
+  "entriesPulled": 582,
+  "requests": 14,
+  "uniqueEvents": 582,
+  "hackathonCandidates": 34,
   "calendarPass": {
     "calendarsRead": 17,
-    "itemsSeen": 148,
-    "pagesRead": 30,
-    "added": 12,
+    "itemsSeen": 153,
+    "pagesRead": 41,
+    "added": 22,
     "problems": [
       {
         "slug": "betauniversity",
@@ -46,57 +46,182 @@
     ]
   },
   "retention": {
-    "upcoming": 88,
-    "checked": 65,
-    "carried": 60,
+    "upcoming": 71,
+    "checked": 48,
+    "carried": 9,
     "released": [
-      {
-        "title": "Big Earth Hackathon Workshop: Google Earth Engin",
-        "why": "confidence 48"
-      },
       {
         "title": "Festiverse 2026: Diwali Hackathon",
         "why": "Error: HTTP 400"
       },
       {
         "title": "Universal Celebration Hackathon",
-        "why": "Error: HTTP 400"
+        "why": "Error: HTTP 429"
       },
       {
-        "title": "Dragon Gate - AI Filmmaking Hackathon",
-        "why": "confidence 36"
+        "title": "Code. Fix. Drink. Repeat. with WeAreDevelopers &",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "SF Frontier Hackathon: Build your Autonomous Cod",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "De Anza Hackathon 5.0",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Multi-Model Hackathon @AWS Builders Loft",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Mission Applied: Maritime Dual-Use Mixer",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Startup Sprint: Prove you're fundable",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Build AI agents that own their inference - #SFTe",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Venture Night@TechCrunch Disrupt 2026 – The Ulti",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "ExecuTorch Hackathon",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Game Jam! — Weekend Function() { Software Develo",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "AWS Community Day - AI Edition",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "The Builder Base: Buildathon",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "AI Tutor Hackathon",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "⚕️ HealthTech Week ⚕️ Startup Pitch Competition ",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Personalized Medicine Builders: Demos, Discussio",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Pax Silica Hackathon: SF Tech Week",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Universal Hackathon - Create Your Own AI Workfor",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Picnic with Builders at Stanford",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Applied AI Hackathon",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Fix My Agent: Make Your Agent Production-Ready |",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Local Align #3 — AI × GTM Growth Hackathon & Soc",
+        "why": "Error: HTTP 429"
       },
       {
         "title": "October 3 Hackathon",
-        "why": "Error: HTTP 404"
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Oakland Tech Week: The Future of Oakland",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "AI Remote Hackathon (1 Week for Building)",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Omarchy SF",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Mango Hacks",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Vibe Coach Hack Night - #SFTechWeek",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Bay Area AI+car hackathon",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "TechEquity Ai Summit 2026: Talks + AI Agent Work",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "FutureForge Hacks",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "⚕️ SF HealthTech Week 2027 Passport! ⚕️(@ JPM)",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "FAST FORWARD",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "#SFTechWeek 5-Dee Hacks : Agency - Human Flouris",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "AI Remote Hackathon (1 Week for Building)",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Bubble Lab (YC W26) X Lunatechs - Pretty Cool De",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "MITAI Conference 2026: Age of Agency",
+        "why": "Error: HTTP 429"
+      },
+      {
+        "title": "Llama Lounge 27: The AI Startup Event Series @ S",
+        "why": "Error: HTTP 429"
       }
     ]
   },
-  "notAlreadySwept": 44,
+  "notAlreadySwept": 33,
   "skipped": {
     "past": 0,
-    "nonLocal": 3,
-    "notHackathon": 313
+    "nonLocal": 2,
+    "notHackathon": 577
   },
   "problems": [],
   "note": "Luma's public discover feed, read anonymously. Same candidate shape as the sweep, merged by scripts/normalize-events.mjs. `enrichment` carries exact times, guest counts and registration state for events the sweep found by reading a page; `calendarSeeds` are calendars seen hosting a hackathon, crawled by the next sweep.",
   "calendarSeeds": [
-    "BuilderBaseLabs",
-    "bay-area-snowflake",
-    "bluedotevents",
     "brainbase-labs",
-    "coshell",
-    "dahacks",
-    "diyrobocars",
-    "flwrlabs",
-    "obviousai",
-    "playsocialclub",
-    "sf-hackersquad",
-    "stanfordbigearthhacks",
     "supabase_community_events",
-    "sv-issa",
     "techequity-ai",
-    "tokensand"
+    "tokensand",
+    "weareforgood"
   ],
   "enrichment": {
     "https://luma.com/ai-tools-for-better-futures-hack": {
@@ -117,7 +242,7 @@
       "city": "San Francisco",
       "venue": "South Beach",
       "organizer": "Brainbase Labs",
-      "going": 73,
+      "going": 89,
       "status": "Open",
       "locationType": "offline"
     },
@@ -260,7 +385,7 @@
       "city": "Menlo Park",
       "venue": null,
       "organizer": "TechEquity Ai - Silicon Valley",
-      "going": 250,
+      "going": 253,
       "status": "Open",
       "locationType": "offline"
     },
@@ -384,6 +509,28 @@
       "going": 0,
       "status": "Open",
       "locationType": "offline"
+    },
+    "https://luma.com/spread-la": {
+      "startDate": "2026-10-02T17:00:00.000Z",
+      "endDate": "2026-10-02T22:00:00.000Z",
+      "timezone": "America/Los_Angeles",
+      "city": null,
+      "venue": "Palms",
+      "organizer": "We Are For Good",
+      "going": 37,
+      "status": "Open",
+      "locationType": "offline"
+    },
+    "https://luma.com/fnooyffj": {
+      "startDate": "2026-10-03T15:00:00.000Z",
+      "endDate": "2026-10-04T13:30:00.000Z",
+      "timezone": "America/Los_Angeles",
+      "city": null,
+      "venue": "Westwood",
+      "organizer": "Hack-Nation's Global AI Hackathons",
+      "going": 0,
+      "status": "Open",
+      "locationType": "offline"
     }
   },
   "candidates": [
@@ -437,8 +584,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Everesteer Hedge Fund Hackathon: San Francisco #SFTechWeek\nSan Francisco\nSan Francisco, CA\nEveresteer Hedge Fund Hackathon: San Francisco #SFTechWeek · Luma\n\nDiscover Events\nSign In\n\nHosted By\n\nEveresteer\n\nMarton Peter Price\n\n33 Going\n\nSashank Singh, Prem Babu Kanaparthi and 31 others\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in San Francisco Tech Week\n\nEveresteer Hedge Fund Hackathon: San Francisco #SFTechWeek\n\nHosted by Everesteer & Marton Peter Price\n\nSan Francisco\n\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nEveresteer is bringing its Hedge Fund Hackathon to San Francisco.\nBuild quantitative models using frontier AI and compete in accelerated live rounds for a share of a $1,000 prize pool.\nSpend the evening building models, submitting predictions and refining your approach as results come in. Follow your model’s performance on the leaderboard throughout the competition.\nAnyone interested in AI, quantitative modeling, machine learning or finance is welcome.\nAfter New York, London and Budapest, we're bringing the challenge to San Francisco.\nMarton Peter Price, Founder of Everesteer & EverestQuant will also speak during the hackathon.\n📅 Thursday, October 8, 2026\n🕔 5:00 to 10:00 pm PT\n📍 San Francisco, Venue TBA\n🏆 $1,000 prize pool\nOur platform: https://everesteer.ai/\nFree to attend. Participants do not stake their own money. Registration is subject to approval.\nThis event is part of #SFTechWeek, a week of events hosted by VCs and startups to bring the tech ecosystem together. Learn more at www.tech-week.com .\nSee you at the summit. 🏔️\n\nLocation\n\nSan Francisco\nCA, USA\n\nHosted By\n\nEveresteer\n\nMarton Peter Price\n\n33 Going\n\nSashank Singh, Prem Babu Kanaparthi and 31 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:46:52.171Z",
+      "evidence": "Everesteer Hedge Fund Hackathon: San Francisco #SFTechWeek\nSan Francisco\nSan Francisco, CA\nEveresteer Hedge Fund Hackathon: San Francisco #SFTechWeek · Luma\n\nDiscover Events\nSign In\n\nHosted By\n\nEveresteer\n\nMarton Peter Price\n\n32 Going\n\nSashank Singh, Prem Babu Kanaparthi and 30 others\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in San Francisco Tech Week\n\nEveresteer Hedge Fund Hackathon: San Francisco #SFTechWeek\n\nHosted by Everesteer & Marton Peter Price\n\nSan Francisco\n\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nEveresteer is bringing its Hedge Fund Hackathon to San Francisco.\nBuild quantitative models using frontier AI and compete in accelerated live rounds for a share of a $1,000 prize pool.\nSpend the evening building models, submitting predictions and refining your approach as results come in. Follow your model’s performance on the leaderboard throughout the competition.\nAnyone interested in AI, quantitative modeling, machine learning or finance is welcome.\nAfter New York, London and Budapest, we're bringing the challenge to San Francisco.\nMarton Peter Price, Founder of Everesteer & EverestQuant will also speak during the hackathon.\n📅 Thursday, October 8, 2026\n🕔 5:00 to 10:00 pm PT\n📍 San Francisco, Venue TBA\n🏆 $1,000 prize pool\nOur platform: https://everesteer.ai/\nFree to attend. Participants do not stake their own money. Registration is subject to approval.\nThis event is part of #SFTechWeek, a week of events hosted by VCs and startups to bring the tech ecosystem together. Learn more at www.tech-week.com .\nSee you at the summit. 🏔️\n\nLocation\n\nSan Francisco\nCA, USA\n\nHosted By\n\nEveresteer\n\nMarton Peter Price\n\n32 Going\n\nSashank Singh, Prem Babu Kanaparthi and 30 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
+      "checkedAt": "2026-09-28T03:30:20.390Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/efs7r4o0",
@@ -456,7 +603,7 @@
           "region": "California"
         },
         "offerAvailability": "https://schema.org/InStock",
-        "going": 33
+        "going": 32
       }
     },
     {
@@ -474,7 +621,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Build Your AI Co-Founder Hackathon\n3120 Scott Blvd\nSanta Clara, CA\nBuild Your AI Co-Founder Hackathon · Luma\n\nDiscover Events\nSign In\n\nHosted By\n\nDavid Mumuni\n\nVin Wanfan\n\narticuler.ai\n\nSahar Mor (Bond AI)\n\nAviral\n\nAria\n\nLe Ma\n\nSF Hackathons\n\nDwayne Campbell\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in Bond AI - San Francisco and Bay Area\n\nBuild Your AI Co-Founder Hackathon\n\nHosted by David Mumuni & 8 others\n\n3120 Scott Blvd\n\nSanta Clara, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nIf you have registered on here, please join discord channel as well: Join Discord Server\nYou bring the idea. Build the AI that makes it happen.\nThe Challenge\r\nBuild Your AI Co-Founder is a hackathon where you build and ship a company with a founding team of 2–4 co-founders, combining humans and AI.\nEvery team must have at least one human and one AI co-founder. You decide the rest—including who takes which role, what you build, and how your founding team works together.\nAI co-founders can take any role: CEO, CTO, Product, Marketing, Sales, Research, or anything your company needs.\nThe goal is to experience what it means to build a real company with AI as part of the founding team—from idea to execution to a shipped product.\nPrizes\nBuild the Product challenge using AdaL prize: +1 month AdaL pro for the winners\nUsing AdaL, build and ship a functional app or MVP for a real-world problem. Your product should be something real people can use and should demonstrate how your human–AI founding team turns an idea into a working company.\nThe focus is on execution: build a useful product, validate it with real users, and show what your AI co-founder contributed to the journey from idea to launch.\nAsk The W think Before You Build Challenge: Prizes: Gift cards for best context, most bugs found and an opportunity to build with the founder. More details: https://askthew.com/hackathon\n\nThe fastest way to ship is to avoid building the wrong thing.\n\nUse Ask The W to gather the right context, question assumptions and get clear on what should be built before writing code. Understand first. Build second.\nTenki code review challenge: 1000 Tenki credits for winner\nUse Tenki to sandbox, test, and review your project’s code. Identify bugs and issues in AI-generated code, improve the implementation, and demonstrate how your team builds, reviews, fixes, and ships reliable software.\nSponsors & Tools\r\nOur sponsors provide the technology and infrastructure you'll use to turn your ideas into working companies.\nAdaL\nAdaL is automation-first agent harness and coding companion. While any coding agent can build, AdaL uniquely turns your codebase into go-to-market execution, helping you ship faster from development to launch.. Learn more at adalagent.ai.\nNebius\nNebius provides AI-focused cloud infrastructure and computing resources designed to help teams build, train, and run modern AI applications and workloads.\nTenki\nTenki provides developer infrastructure at tenki.cloud, including sandboxes, code review, and code runners to help teams safely build, test, and iterate on their products.\n\nAisa\n100+ AI models, composable skills, and deployable agents unified under one API. Build, monetize, and scale autonomous workflows with pay-per-call simplicity at Aisa.com\nAsk the W\nAsk the W helps you figure out what is worth building with AI. It helps identify good ideas, tasks that can be handled by agents, places where human judgment is needed, and the next steps to take.\nVenue and Community Partner\nAI Global Campus\nGlobal Platform for Applied &Agentic AI AI for Humanity. AI with Education. AI Beyond Systems\n\nSartorial\nSartorial helps make products more intelligently discoverable and recommendable.\nArticuler AI\nArticuler.ai helps people find the right professionals for their goals — whether that's raising a round, finding a co-founder, or entering a new market\nBridge US\nBridge US is an AI-powered networking platform for conferences and events. It helps attendees find the right customers, partners, engineers, investors, and other connections\nDevnovate\nHosts hackathons and events all over the world\n\nHosted by Crewbase Collective\nCrewbase Collective is organization running hackathons and events across the San Francisco\nSchedule\nBefore 12:00 PM: Online hacking begins\n12:00 PM – 1:00 PM: Welcome session\n1:00 PM – 6:00 PM: Hacking continues\n6:00 PM – 7:00 PM: Judging\n7:00 PM – 8:00 PM: Finalist demos and winner announcements\n8:00 PM – 10:00 PM: Networking\nParticipants who are unable to attend the venue can participate and hack online throughout the event.\nJudges & Mentors\nMerve Isler: Fouder @ Marvelous & AI Insiders\nAsh Bao: Head of Marketing @ Gruve\nJulie Zhu: Head of Design @ Zawa (Meitu)\nAnya Ozmen: Founder @ Gameer\nVince Kohli: Strategic Advisor @ GoogleDeepmind\nSumit Jagdale: Founder @ Sartorial\nSaurabh Khire: Software Engineer @ Govia\nDavid Li: Co-Founder @ Induction Labs\nMia Yang: AI Product Manager @ Baidu USA\nAli Amjed: Research Fellow @ R42 Group\nOptional Tracks\nBuild It: Launch the Business\nTurn your idea into a launch-ready business. Your AI co-founder helps with research, permits, costs, suppliers, branding, operations, and the launch plan.\nFund It: Raise Capital\nPrepare your company to raise funding. Your AI co-founder researches investors, finds the right fit, builds fundraising materials, and helps manage outreach.\nSell It: Get Customers\nGet your first customers. Your AI co-founder identifies prospects, researches them, creates personalized outreach, and supports the sales process.\nGrow It: Acquire Users\nBuild a repeatable growth engine. Your AI co-founder helps define your audience, develop positioning, test channels, run experiments, and measure results.\nMake It: Build the Product\nTurn an idea or problem into a working product. Your AI co-founder helps validate the problem, define the MVP, design the experience, build, test, and iterate.\nRun It: Operate the Business\nMake your business run better. Your AI co-founder helps improve processes across scheduling, customers, team coordination, reporting, inventory, and automation.\nChoose your own\nHow It Comes Together\nThe company is up to you. The co-founders are up to you. The roles are up to you. The track defines what you want to accomplish. For example:\nCompany is AI bookkeeping platform. Co-founders are Human CEO + Human CTO + AI Product + AI Sales\r\nTrack is Sell It. Build the product, find potential customers, run outreach, and aim to secure the first paying customers.\nCompany is AI travel startup. Co-founders are Human Product Lead + AI CEO + AI Growth. Track is Grow It. Build the product, define the target audience, launch growth experiments, and acquire the first users.\nCompany is Developer productivity tool. Co-founders are Human CTO + AI Product + AI Marketing. Track is Make It. Validate the problem, build the MVP, test it with developers, and ship a working product.\nChoose your company. Build your founding team. Pick your mission. Then go build.\n\nLocation\n\n3120 Scott Blvd\nSanta Clara, CA 95054, USA\n\nHosted By\n\nDavid Mumuni\n\nVin Wanfan\n\narticuler.ai\n\nSahar Mor (Bond AI)\n\nAviral\n\nAria\n\nLe Ma\n\nSF Hackathons\n\nDwayne Campbell\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:46:53.041Z",
+      "checkedAt": "2026-09-28T03:30:21.738Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/i8976ew3789",
@@ -510,7 +657,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "EMBEDDED SF: CraftifAI Physical AI Hackathon\nSan Francisco, CA\nSan Francisco, CA\nEMBEDDED SF: CraftifAI Physical AI Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nDevnovate\n\nFollow\n\nHosted By\n\nAviral\n\n22 Going\n\nHaroon Qahtan, Martin Paloncy and 20 others\n\nContact the Host\nReport Event\n\nAI\n\nEMBEDDED SF: CraftifAI Physical AI Hackathon\n\nDevnovate\n\nRegister to See Address\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nA 10-hour hackathon where you go from a plain-English spec to firmware running on a real dev board, or to a computer vision model doing real-time inference on a GPU, using CraftifAI's AI agents for hardware engineers.\n📅 Wednesday, Sept 30, 2026 · 9:00 AM – 7:00 PM PT\n📍 Frontier Tower, San Francisco, CA\n👤 Individual participation, no teams\n🛠 Dev boards and sensors provided, cloud GPUs available\nWhy we're running this\nAI coding agents changed how software gets shipped, but embedded development has barely moved. Ask a general-purpose model for an STM32 peripheral driver and you often get code that compiles cleanly, then fails on the bench because the model guessed the clock tree configuration or the pin mux. Firmware and on-device AI depend on hardware context that chat-based tools never see.\nCraftifAI builds agents that work with that context. FirmGen writes, compiles, debugs and flashes firmware for ESP32 and STM32 MCUs. PipeGen turns Python CV code and ONNX models into optimized, production-ready NVIDIA DeepStream apps, benchmarked and containerized. This hackathon is your chance to put both to the test on real hardware, in a single day.\nTrack 1 · FirmGen: Embedded Firmware\nDescribe the device you want to build, whether it's a robot subsystem, a wearable or a sensor node. FirmGen plans the firmware architecture, writes the drivers and application logic, then compiles, debugs and flashes it to the board on your desk. ESP32 and STM32 dev boards and sensors are provided on site.\nBring: a laptop with a USB port.\nTrack 2 · PipeGen: Computer Vision & Perception\nDescribe what you want the camera to detect and what should happen when it does. PipeGen builds the perception stack and deploys it for real-time inference, starting from its library of benchmarked models.\nBring: your laptop. If it has an NVIDIA GPU, build on it directly. If it doesn't, we'll spin up a cloud GPU instance for you.\nEvery participant builds solo and picks one track when registering. Accepted hackers receive their track's project briefs before the event.\nWho should apply\nFirmware and embedded engineers, robotics engineers, computer vision and perception engineers, and hardware founders who want to see how far AI agents can go on real hardware.\nPre-hack office hours\nOn Tuesday, Sept 29, 7:00 – 9:00 PM PT , accepted hackers join a live session with the CraftifAI engineering team to set up access, test their board or cloud GPU, and get technical questions answered before the day.\nAgenda\n9:00 – 10:00 AM — Check-in & Hardware Pickup\n10:00 – 10:30 AM — Keynote from CraftifAI founders Pratik Sharda (CEO) and Yashwant Dagar (CTO) , live from Bengaluru\n10:30 – 11:45 AM — Hands-on Labs: FirmGen and PipeGen walkthroughs with the CraftifAI team\n11:45 AM – 12:30 PM — Lunch & Mentor Check-ins\n12:30 – 4:00 PM — Hacking & Testing, with the CraftifAI team online for technical support\n4:00 – 4:30 PM — Top 5 Evaluation\n4:30 – 4:45 PM — Buffer\n4:45 – 5:15 PM — Live Demos & Presentations\n5:15 – 6:00 PM — Closing Ceremony & Awards\n6:00 – 7:00 PM — Demo Showcase & Networking\nPrizes\nGrand Prize: $1,000 cash + hardware prizes + OpenAI/Daytona credits\nBest Perception Pipeline: Recognition for innovative use of PipeGen\nBest Firmware & Edge Integration: Recognition for advanced use of FirmGen\nAbout CraftifAI\nCraftifAI is building the AI engineering layer for physical products. Every robot, drone, smart camera and industrial controller runs on firmware and perception software that engineers still write by hand, against datasheets, board revisions and silicon constraints that general-purpose AI doesn't understand. Our mission is to give hardware engineers agents that reason about the hardware the way they do, so a working device is hours away instead of months.\nOrbit, our platform, brings together FirmGen for firmware, PipeGen for computer vision and AgentIQ for FPGA design.\nEMBEDDED SF is the second edition of our hackathon series. The first was held at Microsoft, Bengaluru.\nSpots are limited.\nOrganized by Devnovate\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\nDevnovate\n\nFollow\n\nHosted By\n\nAviral\n\n22 Going\n\nHaroon Qahtan, Martin Paloncy and 20 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:00.175Z",
+      "checkedAt": "2026-09-28T03:30:31.101Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/5z8w42mq",
@@ -546,7 +693,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "The Build: Hackathon\nSan Francisco, CA\nSan Francisco, CA\nThe Build: Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nDevnovate\n\nFollow\n\nHosted By\n\nAviral\n\nJoe Maionchi\n\nContact the Host\nReport Event\n\nAI\n\nThe Build: Hackathon\n\nDevnovate\n\nRegister to See Address\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nThe Build: Hackathon\nBuild what’s next. Ship what matters.\nJoin us in San Francisco for The Build: Hackathon , a one-day gathering of engineers, AI builders, founders, product leaders, and technology professionals coming together to build real products around the challenges shaping the future of technology.\nThis is not just about building a prototype. It’s about taking an idea from concept to working product in one intense day.\nWhether you’re building AI applications, intelligent agents, developer tools, enterprise workflows, data products, automation, or entirely new ideas, The Build is your opportunity to collaborate with some of the best builders in San Francisco, learn from industry experts, and put your work in front of experienced judges.\nEvent Details\nWhen: 9:30 AM – 7:00 PM, 14 October 2026\nWhere: San Francisco, CA\nWho: Software Engineers, AI Engineers, Founders, Product Managers, Data Scientists, Designers, and Technology Professionals\nFormat: One-day, in-person hackathon\nTheme: Open-ended — build something meaningful\nWhat to Expect\nAn intensive one-day building experience\n\nBuild real products from idea to working prototype\n\nCollaborate with engineers, founders, and product leaders\n\nMentorship from experienced industry professionals\n\nAccess to tools, platforms, APIs, and developer resources from our partners\n\nLive demos in front of judges and industry experts\n\nNetworking with San Francisco’s technology and startup community\n\nFood, refreshments, swag, and prizes\n\nSponsor challenges, awards, and special opportunities\n\nWhat Can You Build?\nThere are no limits to what you can build.\nCreate an AI application, autonomous agent, developer tool, enterprise workflow, data platform, automation system, productivity product, or something completely new.\nThe goal is simple: identify a problem, build a solution, and ship it.\nYou don't need to arrive with a finished idea. Come with a problem you want to solve, a technology you want to experiment with, or simply the desire to build alongside great people.\nWho Should Join?\nThe Build is designed for people who love creating things.\nWhether you're an experienced engineer, an AI practitioner experimenting with agents, a founder validating a new idea, a product manager looking to prototype, or a developer who simply wants to spend a day building something ambitious, you're welcome.\nCome to learn, build, collaborate, and ship.\n🤝 Our Partners\nWe’re working with leading technology companies to give builders access to the tools, infrastructure, credits, mentorship, and resources they need to turn ideas into working products.\nRocketRide\nRocketRide is an open-source, developer-native AI meta-harness that lets developers build, debug, and deploy production AI workflows directly from their IDE.\nBuilders can also use RocketRide Cloud to simplify AI infrastructure and accelerate development.\nHackathon resources:\nFree RocketRide Cloud credits\n\nDeveloper resources and tutorials\n\nAccess to RocketRide's community and support\n\nSponsor awards and opportunities to showcase your project\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\nDevnovate\n\nFollow\n\nHosted By\n\nAviral\n\nJoe Maionchi\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:00.622Z",
+      "checkedAt": "2026-09-28T03:30:31.624Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/kwnikzpo",
@@ -582,7 +729,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "AI Native Summit - SF TechWeek 2026\nSan Francisco, CA\nSan Francisco, CA\nAI Native Summit - SF TechWeek 2026 · Luma\n\nDiscover Events\nSign In\n\nPresented by\nPAI Palooza Presents - Build with AI Native Studio - 2026\n\nFollow\n\nAINative Studio - Build with AI - 2026 Personal AI Hackathon: All day Friday with the pitches 🗣️ and a Tech Fair 🎪 on Saturday showcasing local AI community.\n\nHosted By\n\nToby Founder @ AINative.Studio\n\nAyori Selassie\n\nKarsten Wade\n\n438 Going\n\nRaphaël Vullierme, Rehema Nkisi and 436 others\n\nContact the Host\nRefund Policy\nReport Event\n\nAI\n\nFeatured in San Francisco Tech Week\n\nAI Native Summit - SF TechWeek 2026\n\nPAI Palooza Presents - Build with AI Native Studio - 2026\n\nRegister to See Address\nSan Francisco, CA\n\nGet Tickets\n\nWelcome! Please choose your desired ticket type:\n\nGeneral Admission\n\nVibe Coder (Non Engineer)\n\nAll paid tickets fees (cash) go to the winners.\n\nDeveloper\n\nAll paid tickets fees (cash) go to the winners.\n\nStudent\n\nAll paid tickets fees (cash) go to the winners.\n\nBusiness Strategy (Big Ideas)\n\nAll paid tickets fees (cash) go to the winners.\n\nDesigner / UX\n\nAll paid tickets fees (cash) go to the winners.\n\nAngel Investors / VC\n\nAll paid tickets fees (cash) go to the winners.\n\nGet Ticket\n\nSuggested price shown. Name your own price at checkout.\n\nAbout Event\n\nCode. Build. Compete.\n📍 San Francisco Tech Week\n📅 Friday, October 9, 2026\n🕙 10 AM–5 PM PDT\nAINative Summit is where builders become champions.\nJoin engineers, founders, AI researchers, infrastructure teams, and startup operators for one packed day of technical talks, hands-on build labs, and the AINative Hack Champion 2026 Finals .\nLearn from people shipping real systems. Build alongside them. Help fuel what comes next.\n🏆 $50,000 already committed—and we’re building from here\nOur partners have contributed credits and services to help the winners keep building long after the competition:\nPartner Prize value What winners can put to work:\nSalt & Ledger $5,500 ( Bookkeeping and accounting services 1 year, plus 2026 tax preparation)\nOsto $5,000 (Managed Security and compliance)\nOpen Cap Stack $2,500 (Cap Table management, Founder SAFEs, and 409A services)\nBuilder by AINative $25,000 (Builder credits to build with Cody, your autonomous CTO cofounder agent)\nAINative $12,000 (AINative platform credits (includes Agent Cloud , Zero DB , Cody CLI , Inference )\nTotal committed so far: $50,000 Credits and services for the winners\nNow we’re growing the cash prize pot.\n100% of cash collected from ticket sales, build-lab sponsorships, and other branded event sponsorships will go into the prize pot for the winners.\nEvery ticket adds to the pot. Every cash event sponsor raises the stakes. Additional contributions of tools, credits, and services give winning teams more resources to keep building.\nThe community determines how big the prize pool gets. Attendees also get a FREE pass to Shotwell's Speakeasy 2026, the official after party!\n🧠 Track 1 — Nonstop UnConference Style Technical Talks\nPractical sessions for people building AI-native systems:\nAI-native development workflows\n\nMulti-agent orchestration\n\nGPU optimization and inference strategies\n\nVector databases and agent memory\n\nModel fine-tuning and evaluation\n\nOpen-source AI tooling\n\nInfrastructure scaling\n\nLessons from real AI-native startups\n\nCome ready to ask questions, compare approaches, and take ideas back to your own stack.\n🛠 Track 2 — Hands-On Build Labs\nBring your laptop. Leave with something you built.\nPlanned labs include:\nAIKit rapid UI builds and A2UI experiments\n\nZeroDB vector memory\n\nAINative API integrations\n\nAgent Cloud orchestration workflows\n\nBuilder Track (Vibe Coders, Product Managers, Designers)\n\nInfrastructure optimization\n\nPartner-led product challenges and build sessions\n\nWork directly with the tools, explore real use cases, and get into the code.\n🥇 The AINative Hack Champion 2026 Finals\nWinning teams from regional AINative hackathons in San Francisco, Los Angeles, Atlanta, and Detroit advance to the championship finals in San Francisco.\nThey’ll compete for a prize pool that already includes $50,000 in committed credits and services , with cash from ticket sales and event sponsorships added for the winners.\nCome build. Come compete. Come back the teams taking AI-native systems forward.\n🤝 Work at a company that should be involved? Make the introduction.\nWe’re welcoming companies that want to:\nSponsor a build challenge , starting at $1,000\n\nLead a hands-on lab around tools builders can use\n\nContribute prizes , including services, software, cloud credits, GPU access, or hardware\n\nCreate a branded sponsorship that supports the championship\n\nBring technical mentors to help teams build\n\nCash collected from build-lab and branded event sponsorships goes directly into the winners’ prize pot.\nTell us what your company brings and what you want builders to experience. We’ll help shape a relevant opportunity.\nBring your company into the prize pool →\nEmail developer@ainative.studio\nSubject: AINative Summit Sponsorship — [Company]\n🎙 Shipping something worth teaching? Take the stage.\nWe’re inviting proposals for:\nDeep technical AI talks\n\nAI-Native startup use case studies\n\nInfrastructure breakdowns\n\nOpen-source showcases\n\nLive build sessions\n\nSend your proposed topic, three audience takeaways, and a short bio.\nPitch your talk or build lab →\n📣 Be part of what happens next\nAttend. Compete. Speak. Sponsor.\nJoin us on Friday, October 9 , in San Francisco.\nTickets go on sale Friday, September 25—and every ticket adds to the winners’ prize pot.\nWant to compete, contribute a prize, volunteer or connect us with your company?\n📧 developer@ainative.studio\nSend your name, company or team, and how you’d like to participate.\n$50,000 committed. A cash prize pot powered by the community. Help us make the next win bigger. All Summit attendees get a FREE pass to Shotwell's Speakeasy 2026, the after party!\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\nPAI Palooza Presents - Build with AI Native Studio - 2026\n\nFollow\n\nAINative Studio - Build with AI - 2026 Personal AI Hackathon: All day Friday with the pitches 🗣️ and a Tech Fair 🎪 on Saturday showcasing local AI community.\n\nHosted By\n\nToby Founder @ AINative.Studio\n\nAyori Selassie\n\nKarsten Wade\n\n438 Going\n\nRaphaël Vullierme, Rehema Nkisi and 436 others\n\nContact the Host\nRefund Policy\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:02.118Z",
+      "checkedAt": "2026-09-28T03:30:34.510Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/3t95uj7s",
@@ -617,8 +764,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hack-Nation 7th Global AI Hackathon\nHack-Nation 7th Global AI Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nHack-Nation's Global AI Hackathons\n\nFollow\n\nHosted By\n\nKai Wiederhold\n\nLinn _\n\nNoah-Leon Rappl\n\nNico Froehlich\n\nJanet Brinz\n\nChristian Cierny\n\n2,618 Going\n\nPrashant Soni, Anna and 2,616 others\n\nContact the Host\nReport Event\n\nAI\n\nHack-Nation 7th Global AI Hackathon\n\nHack-Nation's Global AI Hackathons\n\nRegister to See Address\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nHave an access code? You can enter it here .\n\nAbout Event\n\nKick off your fall by building something that matters 🚀\nSecure your spot for the 7th Global AI Hackathon, October 3–4, 2026 —a weekend for ambitious builders who want to meet exceptional peers, tackle some of the world’s most pressing challenges, and turn bold ideas into real ventures.\n\nWe have 15+ in-person hubs & you can list your preference once you apply for this event here on Luma: Harvard , MIT , Stanford , Berkeley, CMU, Princeton, Columbia, London, Cambridge, Munich, ETH Zurich, ... & more !\n\nYou can also participate online .\nBuild, prototype, and showcase your project to mentors and judges whose backgrounds include OpenAI, Meta, Apple, and leading AI startups .\nWhat’s in it for you?\n💰 $30K+ in cash prizes and API credits across approximately 6–8 AI challenges\n\n🛠️ $200K+ in AI tools and credits available to participating teams\n\n🚀 An invitation for the top 1% of teams to join our Venture Lab and continue incubating their startups after the hackathon, $1M+ in startup benefits\n\nNo idea or team required. Come ready to build—challenge tracks will be provided.\nAgenda\nOctober 3\n~11:00 am ET: Local Kick-off in your hub\n\n12:00 PM ET: Global kick-off\n\nOctober 4\n9:00 AM ET: Project submission deadline\n\nOctober 8\nFinalists get notified\n\nOctober 10\n12:00–1:00 PM ET: Finalist pitches and award ceremony (virtual)\n\nSpots at hubs are limited and application-only. No walk-ins.\nHosted in collaboration with the MIT Club of Northern California, MIT Club of Germany, and Hack-Nation .\nPrevious partners and sponsors have included OpenAI, Databricks, Lovable, ElevenLabs, and more .\nLearn more: hack-nation.ai\n\nLocation\n\nPlease register to see the exact location of this event.\n\nPresented by\nHack-Nation's Global AI Hackathons\n\nFollow\n\nHosted By\n\nKai Wiederhold\n\nLinn _\n\nNoah-Leon Rappl\n\nNico Froehlich\n\nJanet Brinz\n\nChristian Cierny\n\n2,618 Going\n\nPrashant Soni, Anna and 2,616 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:02.876Z",
+      "evidence": "Hack-Nation 7th Global AI Hackathon\nHack-Nation 7th Global AI Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nHack-Nation's Global AI Hackathons\n\nFollow\n\nHosted By\n\nKai Wiederhold\n\nLinn _\n\nNoah-Leon Rappl\n\nNico Froehlich\n\nJanet Brinz\n\nChristian Cierny\n\n2,629 Going\n\nPrashant Soni, Noam Didi and 2,627 others\n\nContact the Host\nReport Event\n\nAI\n\nHack-Nation 7th Global AI Hackathon\n\nHack-Nation's Global AI Hackathons\n\nRegister to See Address\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nHave an access code? You can enter it here .\n\nAbout Event\n\nKick off your fall by building something that matters 🚀\nSecure your spot for the 7th Global AI Hackathon, October 3–4, 2026 —a weekend for ambitious builders who want to meet exceptional peers, tackle some of the world’s most pressing challenges, and turn bold ideas into real ventures.\n\nWe have 15+ in-person hubs & you can list your preference once you apply for this event here on Luma: Harvard , MIT , Stanford , Berkeley, CMU, Princeton, Columbia, London, Cambridge, Munich, ETH Zurich, ... & more !\n\nYou can also participate online .\nBuild, prototype, and showcase your project to mentors and judges whose backgrounds include OpenAI, Meta, Apple, and leading AI startups .\nWhat’s in it for you?\n💰 $30K+ in cash prizes and API credits across approximately 6–8 AI challenges\n\n🛠️ $200K+ in AI tools and credits available to participating teams\n\n🚀 An invitation for the top 1% of teams to join our Venture Lab and continue incubating their startups after the hackathon, $1M+ in startup benefits\n\nNo idea or team required. Come ready to build—challenge tracks will be provided.\nAgenda\nOctober 3\n~11:00 am ET: Local Kick-off in your hub\n\n12:00 PM ET: Global kick-off\n\nOctober 4\n9:00 AM ET: Project submission deadline\n\nOctober 8\nFinalists get notified\n\nOctober 10\n12:00–1:00 PM ET: Finalist pitches and award ceremony (virtual)\n\nSpots at hubs are limited and application-only. No walk-ins.\nHosted in collaboration with the MIT Club of Northern California, MIT Club of Germany, and Hack-Nation .\nPrevious partners and sponsors have included OpenAI, Databricks, Lovable, ElevenLabs, and more .\nLearn more: hack-nation.ai\n\nLocation\n\nPlease register to see the exact location of this event.\n\nPresented by\nHack-Nation's Global AI Hackathons\n\nFollow\n\nHosted By\n\nKai Wiederhold\n\nLinn _\n\nNoah-Leon Rappl\n\nNico Froehlich\n\nJanet Brinz\n\nChristian Cierny\n\n2,629 Going\n\nPrashant Soni, Noam Didi and 2,627 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
+      "checkedAt": "2026-09-28T03:30:35.155Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/z3za7zow",
@@ -643,7 +790,7 @@
       "url": "https://luma.com/mvcg9eyw",
       "title": "Maritime Dual-Use Hackathon",
       "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
       "confidence": 94,
       "relevance": 96,
       "signals": {
@@ -654,7 +801,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Maritime Dual-Use Hackathon\nMind the Bridge\nSan Francisco, CA\nMaritime Dual-Use Hackathon · Luma\n\nDiscover Events\nSign In\n\nHosted By\n\nMind the Bridge\n\nLuisa Caluri\n\nSilicon Mountain\n\nContact the Host\nReport Event\n\nTech\n\nMaritime Dual-Use Hackathon\n\nHosted by Mind the Bridge, Luisa Caluri & Silicon Mountain\n\nMind the Bridge\n\nSan Francisco, CA\n\nGet Tickets\n\nApproval Required\nYour registration is subject to host approval.\n\nTicket Price\n$20.00\nPer ticket\n\nTickets\n\n1\n\nRequest to Join\n\nAbout Event\n\nTo help us maintain an accurate headcount, a $20 refundable deposit is required to reserve your spot. The deposit will be fully refunded upon your attendance at the event.\n\nThe Fincantieri Maritime Dual-Use Hackathon comes to San Francisco, October 16–18.\n\nFollowing the first edition in Rome, which brought together 70+ participants, including Italian Navy engineers, and produced five working prototypes, the challenge now crosses the Atlantic to the Bay Area’s deep-tech ecosystem.\nOver 48 hours, engineers, developers, founders, researchers, and designers will form teams to build working solutions around real maritime and defense engineering challenges , with access to technical mentors, development hardware, and potential opportunities to continue developing the strongest concepts beyond the event.\nChallenge Tracks\nOT Cybersecurity & Blast Radius Analysis\n\nPiping Layout Optimization\n\nSoftware-Defined Vessel\n\nBuild with Real Hardware\nParticipants will have access to a selection of Qualcomm and Arduino technologies during the hackathon, including Snapdragon-powered laptops, edge AI and robotics development platforms, Arduino prototyping hardware, and supporting developer tools.\nThese tools are intended for hands-on technical development . Participants with experience in areas such as software development, embedded systems, electronics, robotics, edge AI, computer vision, or hardware prototyping will be best positioned to take full advantage of them.\nQualcomm and Arduino technologies will be introduced during the opening session so teams can quickly understand the available resources and integrate hardware, edge AI, computer vision, sensors, or robotics into their prototypes.\nExact hardware configurations will be shared with participants ahead of the event.\nMore Than a 48-Hour Hackathon\nThe goal is not only to build a prototype, but to identify ideas with the potential to continue developing after the event.\nWork on real Fincantieri challenges with potential relevance to future maritime and defense applications.\n\nCompete for a Qualcomm-powered laptop awarded to the winning team.\n\nDevelop your concept beyond the hackathon: selected promising prototypes may have the opportunity to continue evolving.\n\nAccess Fincantieri expertise: winning and particularly promising concepts may receive mentoring from Fincantieri’s network of experts to help further mature the solution and explore its potential application within Fincantieri.\n\nConnect with leading technical talent from industry, academia, venture capital and the defense innovation ecosystem.\n\nPartners & Ecosystem\nThe hackathon is powered by Fincantieri , Mind The Bridge and Silicon Mountain .\nQualcomm is the main technology sponsor, supporting participants with hardware, development resources, and technology expertise throughout the event.\nAdditional experts from Fincantieri, academia, industry, venture capital, and the defense innovation ecosystem will support teams through mentoring and judging.\nWhat to Expect\n48 hours of hands-on building and prototyping\n\nReal technical challenges provided by Fincantieri\n\nAccess to Qualcomm and Arduino hardware and development resources\n\nMentors and domain experts supporting teams throughout the event\n\nCollaboration with engineers, founders, and researchers\n\nA Qualcomm-powered laptop prize for the winning team\n\nPotential follow-on development opportunities for the most promising concepts\n\nNo maritime background is required. However, this is a hands-on technical hackathon , and participants should be ready to contribute directly through software development, AI/ML, embedded systems, cybersecurity, robotics, engineering, CAD/optimization, product design, or prototyping.\nCome with a team or find one at the event.\nSpots are limited — register early to secure your place. Registration will close on Oct. 14th\n\nLocation\n\nMind the Bridge\n450 Townsend St, San Francisco, CA 94107, USA\n\nMind the Bridge Innovation Center\n\nHosted By\n\nMind the Bridge\n\nLuisa Caluri\n\nSilicon Mountain\n\nContact the Host\nReport Event\n\nTech\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:03.128Z",
+      "checkedAt": "2026-09-28T03:30:35.815Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/mvcg9eyw",
@@ -664,7 +811,7 @@
         "endDate": "2026-10-18T16:30:00.000-07:00",
         "timeSource": "luma-page",
         "organizers": [
-          "Personal"
+          "Mind the Bridge"
         ],
         "location": {
           "name": "Mind the Bridge",
@@ -672,7 +819,7 @@
           "region": "California"
         },
         "offerAvailability": "https://schema.org/InStock",
-        "going": 0
+        "going": 4
       }
     },
     {
@@ -751,7 +898,7 @@
       "url": "https://luma.com/t9wi8tpa",
       "title": "AI Security Engineering Hackathon",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/aws-builder-loft-events",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
       "confidence": 94,
       "relevance": 96,
       "signals": {
@@ -761,8 +908,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "AI Security Engineering Hackathon\nAWS Builder Loft\nSan Francisco, CA\nAI Security Engineering Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nRocketRide\n\nFollow\n\nHosted By\n\nJavier Garza\n\nAISecEng Community\n\nTrisha Rajesh\n\nAWS Builder Loft\n\nAviral\n\nCory Waddingham\n\n283 Going\n\nMartin Galaz, Martín Ezequiel Pulitano and 281 others\n\nContact the Host\nReport Event\n\nAI Security Engineering Hackathon\n\nRocketRide\n\nAWS Builder Loft\n\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nAI is moving faster than most security programs can keep up with — agentic tools, MCP servers, and AI-generated code are shipping into production every day, often outrunning the guardrails meant to protect them. This hackathon brings developers and security practitioners together to get hands-on with the skills defining the new discipline of AI Security Engineering. Working in teams, participants will tackle real-world AI security challenges spanning securing MCP servers and agent skills against tool poisoning and supply-chain attacks, and hardening vibe-coded applications.\nWhether you're a developer curious about securing AI-powered apps or a security specialist looking to apply your skills to LLMs and agents, you'll leave with practical, portfolio-ready experience — and the kind of muscle memory that only comes from breaking (and fixing) real systems. No prior AI security experience required — just a builder's mindset and curiosity about where AI meets attack surface.\nAgenda\n9:30am: Doors open + Networking\n\n10:00 am - 10:30 am: Welcome + Agenda + Intros\n\n10:30 am -11:30 am: Introduction to AI Security Engineering\n\n11:30 am - 12:00 pm: Hackathon guidelines\n\n12:00 -12:30 pm: Lunch\n\n12:30 -1:30 pm: Hackathon\n\n1:30 pm: Submission deadline\n\n1:35 pm - 1:45: Judges evaluate submissions\n\n1:45 pm: Winners announced + Presentation\n\n2pm: Event ends\n\nRegistration (IMPORTANT)\nSpace is limited, please ensure you register both in Luma and on the following AWS URL http://events.builder.aws.com/d/vcz3j3 (required to enter the AWS building).\nAll guests must be 18+ and present a valid government-issued physical photo ID at check-in (digital IDs will not be accepted). Scooters and bikes are not permitted in any Amazon building with no on-site parking available.\nSponsors\nSnyk\nSnyk is a developer-first cybersecurity platform that helps teams build fast without compromising on security. As developers rely heavily on AI to write code at unprecedented speeds, Snyk continuously scans and secures application code, open-source dependencies, containers, and cloud environments right within the developer’s workflow. For an AI hackathon, it matters because shipping code quickly with AI generators or autonomous agents also means shipping security risks at machine speed. Snyk acts as an intelligent security layer, catching vulnerabilities and automatically applying verified fixes in real time—allowing builders to ship ambitious AI projects safely and with complete confidence.\nAt this event you will learn:\n1) Sign-up for free (no credit card required), how to import your code, and configure your AI coding tool\n2) Free AI Security Engineer Foundations Certificate\nPrizes\n$10,000 in Anthropic credits, free stickers and cool swag from some of our sponsors upon completing some of the activities\n\nLocation\n\nAWS Builder Loft\nFirst Market Tower, 525 Market St Entrance, San Francisco, CA 94105, USA\n\nPresented by\nRocketRide\n\nFollow\n\nHosted By\n\nJavier Garza\n\nAISecEng Community\n\nTrisha Rajesh\n\nAWS Builder Loft\n\nAviral\n\nCory Waddingham\n\n283 Going\n\nMartin Galaz, Martín Ezequiel Pulitano and 281 others\n\nContact the Host\nReport Event\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:05.497Z",
+      "evidence": "AI Security Engineering Hackathon\nAWS Builder Loft\nSan Francisco, CA\nAI Security Engineering Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nAI Security Engineers - SF Bay Area\n\nFollow\n\nJoin the AI Security Engineers in the SF Bay Area for IRL Meetups and Hackathons where we share real-world experience securing AI-powered and agentic applications.\n\nHosted By\n\nJavier Garza\n\nAISecEng Community\n\nTrisha Rajesh\n\nAWS Builder Loft\n\nAviral\n\nCory Waddingham\n\n304 Going\n\nMartin Galaz, Aseem Shrey and 302 others\n\nContact the Host\nReport Event\n\nAI Security Engineering Hackathon\n\nAI Security Engineers - SF Bay Area\n\nAWS Builder Loft\n\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nAI is moving faster than most security programs can keep up with — agentic tools, MCP servers, and AI-generated code are shipping into production every day, often outrunning the guardrails meant to protect them. This hackathon brings developers and security practitioners together to get hands-on with the skills defining the new discipline of AI Security Engineering. Working in teams, participants will tackle real-world AI security challenges spanning securing MCP servers and agent skills against tool poisoning and supply-chain attacks, and hardening vibe-coded applications.\nWhether you're a developer curious about securing AI-powered apps or a security specialist looking to apply your skills to LLMs and agents, you'll leave with practical, portfolio-ready experience — and the kind of muscle memory that only comes from breaking (and fixing) real systems. No prior AI security experience required — just a builder's mindset and curiosity about where AI meets attack surface.\nAgenda\n9:30am: Doors open + Networking\n\n10:00 am - 10:30 am: Welcome + Agenda + Intros\n\n10:30 am -11:30 am: Introduction to AI Security Engineering\n\n11:30 am - 12:00 pm: Hackathon guidelines\n\n12:00 -12:30 pm: Lunch\n\n12:30 -1:30 pm: Hackathon\n\n1:30 pm: Submission deadline\n\n1:35 pm - 1:45: Judges evaluate submissions\n\n1:45 pm: Winners announced + Presentation\n\n2pm: Event ends\n\nRegistration (IMPORTANT)\nSpace is limited, please ensure you register both in Luma and on the following AWS URL http://events.builder.aws.com/d/vcz3j3 (required to enter the AWS building).\nAll guests must be 18+ and present a valid government-issued physical photo ID at check-in (digital IDs will not be accepted). Scooters and bikes are not permitted in any Amazon building with no on-site parking available.\nSponsors\nSnyk\nSnyk is a developer-first cybersecurity platform that helps teams build fast without compromising on security. As developers rely heavily on AI to write code at unprecedented speeds, Snyk continuously scans and secures application code, open-source dependencies, containers, and cloud environments right within the developer’s workflow. For an AI hackathon, it matters because shipping code quickly with AI generators or autonomous agents also means shipping security risks at machine speed. Snyk acts as an intelligent security layer, catching vulnerabilities and automatically applying verified fixes in real time—allowing builders to ship ambitious AI projects safely and with complete confidence.\nAt this event you will learn:\n1) Sign-up for free (no credit card required), how to import your code, and configure your AI coding tool\n2) Free AI Security Engineer Foundations Certificate\nPrizes\n$10,000 in Anthropic credits, free stickers and cool swag from some of our sponsors upon completing some of the activities\n\nLocation\n\nAWS Builder Loft\nFirst Market Tower, 525 Market St Entrance, San Francisco, CA 94105, USA\n\nPresented by\nAI Security Engineers - SF Bay Area\n\nFollow\n\nJoin the AI Security Engineers in the SF Bay Area for IRL Meetups and Hackathons where we share real-world experience securing AI-powered and agentic applications.\n\nHosted By\n\nJavier Garza\n\nAISecEng Community\n\nTrisha Rajesh\n\nAWS Builder Loft\n\nAviral\n\nCory Waddingham\n\n304 Going\n\nMartin Galaz, Aseem Shrey and 302 others\n\nContact the Host\nReport Event\n\nDiscover Pricing Help\n\nGet the App",
+      "checkedAt": "2026-09-28T03:30:30.847Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/t9wi8tpa",
@@ -772,7 +919,7 @@
         "endDate": "2026-09-29T14:00:00.000-07:00",
         "timeSource": "luma-page",
         "organizers": [
-          "RocketRide"
+          "AI Security Engineers - SF Bay Area"
         ],
         "location": {
           "name": "AWS Builder Loft",
@@ -780,7 +927,7 @@
           "region": "California"
         },
         "offerAvailability": "https://schema.org/InStock",
-        "going": 268
+        "going": 304
       }
     },
     {
@@ -895,7 +1042,7 @@
       "url": "https://luma.com/hacs1uig",
       "title": "The Multiplayer Coding Hackathon",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/coshell",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
       "confidence": 94,
       "relevance": 96,
       "signals": {
@@ -906,7 +1053,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "The Multiplayer Coding Hackathon\nSan Francisco, CA\nSan Francisco, CA\nThe Multiplayer Coding Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nCoshell\n\nFollow\n\nbuild together\n\nHosted By\n\nMichael Ogundare\n\nHackerSquad\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in Bond AI - San Francisco and Bay Area\n\nThe Multiplayer Coding Hackathon\n\nCoshell\n\nRegister to See Address\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nMost hackathons are a room full of people, each one alone with their own AI agent. This one is built the other way round. Your whole team works in a single shared Coshell drive, steering live AI agent sessions together. Every prompt has a name on it.\nTeams of 2 to 5 only. In person in San Francisco. One day, one clock, one room of 150.\nTracks and prizes from assistant-ui and more, judged by the sponsors themselves. The grand prize, Best Built Together, comes with a fast-tracked interview for possible VC investment. Free.\nDetails, schedule, and house rules: coshell.ai/hack\nAbout the host and sponsors\nAbout Coshell: Coshell is a multiplayer cloud terminal for engineering teams working with AI coding agents. Several people prompt the same live agent session inside one shared drive, with the code, a terminal, and a browser preview of the running app. More than 70 models. https://coshell.ai\nAbout assistant-ui: assistant-ui is the React library behind production AI chat interfaces: threads, streaming replies, tool-call UIs, and attachments. They are building a multiplayer harness, and they want teams building on it early. https://assistant-ui.com\nAbout Freestyle: Freestyle gives AI agents real Linux VMs, built for code you didn't write. Teams can run their shared Coshell drive on a Freestyle VM instead of a laptop, with $500 in credits redeemed on the day. https://freestyle.sh\nAbout Wefunder: Wefunder lets anyone invest in the startups they believe in, not just venture funds. https://wefunder.com\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\nCoshell\n\nFollow\n\nbuild together\n\nHosted By\n\nMichael Ogundare\n\nHackerSquad\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:07.817Z",
+      "checkedAt": "2026-09-28T03:30:22.771Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/hacs1uig",
@@ -931,7 +1078,7 @@
       "url": "https://luma.com/flwrlabs-bamu",
       "title": "Collaborative Agent Hackathon @ Stanford",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/flwrlabs",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
       "confidence": 94,
       "relevance": 96,
       "signals": {
@@ -941,8 +1088,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Collaborative Agent Hackathon @ Stanford\n389 Jane Stanford Way\nStanford, CA\nCollaborative Agent Hackathon @ Stanford · Luma\n\nDiscover Events\nSign In\n\nPresented by\nFlower Labs\n\nFollow\n\nFlower: Advance Collaborative Superintelligence | http://flower.ai\n\nHosted By\n\nNicolas Heinz\n\nNic Lane\n\nRuth Galindo\n\nPedro Mesa\n\n369 Going\n\nCathoryn, Tigran Misakyan and 367 others\n\nContact the Host\nReport Event\n\nAI\n\nCollaborative Agent Hackathon @ Stanford\n\nFlower Labs\n\n389 Jane Stanford Way\n\nStanford, CA\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nAbout Event\n\nBuild open agents that work together\n\nThe Collaborative Agent Hackathon is a one-day event for building open-source, collaborative AI agents with Flower .\nAgents are changing what’s possible. We’ll explore how they can achieve more by working together safely in human-supervised multi-agent teams.\nYou’ll form a team on the day, build a working prototype, and demo it at the end of the event. Projects can range from simple agent collaborations to more complex systems that delegate tasks, share context, and coordinate their work.\nYou don’t need an existing team or a fully developed idea. Bring your laptop, your interests, and a willingness to collaborate.\n\nThe event is generously supported by Nebius , which is providing all compute resources for the hackathon, sending expert technical mentors and judges, and contributing to the prize pool.\nThe hackathon challenge\nBuild an open-source agent or multi-agent system with Flower that puts safe, human-supervised collaboration at the heart of the solution.\nYour project could bring agents together to:\nAutomate a real-world task\n\nForm self-improving loops through feedback and iteration\n\nWork across distributed machines and datasets\n\nFlower simplifies building multi-agent systems, with support for distributed coordination, collaborative learning and inference, and privacy-aware deployment. It is built with an open-source community of more than 7,000 users worldwide.\n\nProjects from all industries and application areas are welcome — including scientific research, healthcare, finance, content/media production, education, public services, software development and entirely new forms of human-agent collaboration.\nTeam formation\nParticipants register individually.\nTeams of two to four people will be formed during the morning, unless formed earlier . The organisers will help participants find teammates with complementary interests and experience.\nAlready know your team? Please provide your teammates’ names when registering.\nBringing an idea is optional.\nEligibility: Everyone is welcome, including builders from startups and companies, as well as students, researchers, and postdocs from all universities.\nAwards and judges\nTeams will compete for a prize pool worth more than US$5,000 , with awards presented after the final demos to recognize outstanding projects.\nJudges include:\nAnastasia Raskolova (Nebius)\n\nDisha Patil (ARM)\n\nDaniel Nata Nugraha (Flower Labs)\n\nNaveen Purushotham (AMD)\n\nDaria Balashova (Nebius)\n\nDimitris Stripelis (Flower Labs)\n\nMehul Vani (Nvidia)\n\nSai Nagabhairava (Meta)\n\nSpecial thanks to our sponsor Nebius for contributing to the prize pool, providing all compute resources for the hackathon, and bringing expert technical mentors and judges.\nFurther details on prizes will be shared before the event.\n\nSchedule\n9:30–10:00 — Opening, check-in and breakfast\nMeet other participants and share your interests and experience.\n10:00–10:15 — Welcome\nIntroduction to the event, the challenge and the day’s practical arrangements.\n10:15–10:45 — Collaborative agents with Flower\nA technical introduction covering collaborative agent architectures, safe coordination, self-improvement loops and the available Flower resources.\n10:45–11:00 — Team formation\nMeet potential collaborators and form teams of two to four, unless your team was formed earlier.\n11:00–12:45 — Build session\nDefine the project, design the agent interactions and begin implementation.\n12:45–1:30 — Lunch\n1:30–5:15 — Build session\nDevelop and test the system, refine the collaboration or self-improvement loop and prepare the demonstration. Mentors will be available throughout.\n5:15–5:30 — Demo preparation\n5:30–6:45 — Project demonstrations\nTeams present their projects, followed by brief questions.\n6:45–7:30 — Dinner, awards and closing remarks\nEnjoy dinner as we celebrate the winning projects and bring the hackathon to a close.\n\nLocation\n\n389 Jane Stanford Way\nStanford, CA 94305, USA\n\nW450 Simonyi Center\n\nPresented by\nFlower Labs\n\nFollow\n\nFlower: Advance Collaborative Superintelligence | http://flower.ai\n\nHosted By\n\nNicolas Heinz\n\nNic Lane\n\nRuth Galindo\n\nPedro Mesa\n\n369 Going\n\nCathoryn, Tigran Misakyan and 367 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:08.422Z",
+      "evidence": "Collaborative Agent Hackathon @ Stanford\n389 Jane Stanford Way\nStanford, CA\nCollaborative Agent Hackathon @ Stanford · Luma\n\nDiscover Events\nSign In\n\nPresented by\nFlower Labs\n\nFollow\n\nFlower: Advance Collaborative Superintelligence | http://flower.ai\n\nHosted By\n\nNicolas Heinz\n\nNic Lane\n\nRuth Galindo\n\nPedro Mesa\n\n380 Going\n\nTigran Misakyan, Yilun Zhang and 378 others\n\nContact the Host\nReport Event\n\nAI\n\nCollaborative Agent Hackathon @ Stanford\n\nFlower Labs\n\n389 Jane Stanford Way\n\nStanford, CA\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nAbout Event\n\nBuild open agents that work together\n\nThe Collaborative Agent Hackathon is a one-day event for building open-source, collaborative AI agents with Flower .\nAgents are changing what’s possible. We’ll explore how they can achieve more by working together safely in human-supervised multi-agent teams.\nYou’ll form a team on the day, build a working prototype, and demo it at the end of the event. Projects can range from simple agent collaborations to more complex systems that delegate tasks, share context, and coordinate their work.\nYou don’t need an existing team or a fully developed idea. Bring your laptop, your interests, and a willingness to collaborate.\n\nThe event is generously supported by Nebius , which is providing all compute resources for the hackathon, sending expert technical mentors and judges, and contributing to the prize pool.\nThe hackathon challenge\nBuild an open-source agent or multi-agent system with Flower that puts safe, human-supervised collaboration at the heart of the solution.\nYour project could bring agents together to:\nAutomate a real-world task\n\nForm self-improving loops through feedback and iteration\n\nWork across distributed machines and datasets\n\nFlower simplifies building multi-agent systems, with support for distributed coordination, collaborative learning and inference, and privacy-aware deployment. It is built with an open-source community of more than 7,000 users worldwide.\n\nProjects from all industries and application areas are welcome — including scientific research, healthcare, finance, content/media production, education, public services, software development and entirely new forms of human-agent collaboration.\nTeam formation\nParticipants register individually.\nTeams of two to four people will be formed during the morning, unless formed earlier . The organisers will help participants find teammates with complementary interests and experience.\nAlready know your team? Please provide your teammates’ names when registering.\nBringing an idea is optional.\nEligibility: Everyone is welcome, including builders from startups and companies, as well as students, researchers, and postdocs from all universities.\nAwards and judges\nTeams will compete for a prize pool worth more than US$5,000 , with awards presented after the final demos to recognize outstanding projects.\nJudges include:\nAnastasia Raskolova (Nebius)\n\nDisha Patil (ARM)\n\nDaniel Nata Nugraha (Flower Labs)\n\nNaveen Purushotham (AMD)\n\nDaria Balashova (Nebius)\n\nDimitris Stripelis (Flower Labs)\n\nMehul Vani (Nvidia)\n\nSai Nagabhairava (Meta)\n\nSpecial thanks to our sponsor Nebius for contributing to the prize pool, providing all compute resources for the hackathon, and bringing expert technical mentors and judges.\nFurther details on prizes will be shared before the event.\n\nSchedule\n9:30–10:00 — Opening, check-in and breakfast\nMeet other participants and share your interests and experience.\n10:00–10:15 — Welcome\nIntroduction to the event, the challenge and the day’s practical arrangements.\n10:15–10:45 — Collaborative agents with Flower\nA technical introduction covering collaborative agent architectures, safe coordination, self-improvement loops and the available Flower resources.\n10:45–11:00 — Team formation\nMeet potential collaborators and form teams of two to four, unless your team was formed earlier.\n11:00–12:45 — Build session\nDefine the project, design the agent interactions and begin implementation.\n12:45–1:30 — Lunch\n1:30–5:15 — Build session\nDevelop and test the system, refine the collaboration or self-improvement loop and prepare the demonstration. Mentors will be available throughout.\n5:15–5:30 — Demo preparation\n5:30–6:45 — Project demonstrations\nTeams present their projects, followed by brief questions.\n6:45–7:30 — Dinner, awards and closing remarks\nEnjoy dinner as we celebrate the winning projects and bring the hackathon to a close.\n\nLocation\n\n389 Jane Stanford Way\nStanford, CA 94305, USA\n\nW450 Simonyi Center\n\nPresented by\nFlower Labs\n\nFollow\n\nFlower: Advance Collaborative Superintelligence | http://flower.ai\n\nHosted By\n\nNicolas Heinz\n\nNic Lane\n\nRuth Galindo\n\nPedro Mesa\n\n380 Going\n\nTigran Misakyan, Yilun Zhang and 378 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
+      "checkedAt": "2026-09-28T03:30:17.470Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/flwrlabs-bamu",
@@ -960,7 +1107,7 @@
           "region": "California"
         },
         "offerAvailability": "https://schema.org/InStock",
-        "going": 363
+        "going": 380
       }
     },
     {
@@ -977,8 +1124,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Agentic AI Hackathon: AWS Community Day Bay Area 2026\nAWS Builder Loft\nSan Francisco, CA\nAgentic AI Hackathon: AWS Community Day Bay Area 2026 · Luma\n\nDiscover Events\nSign In\n\nPresented by\nAWS Community Bay Area\n\nFollow\n\nA community of AWS enthusiasts and professionals in the Bay Area, connecting people through shared learning and experiences.\n\nHosted By\n\nJohn Varghese\n\nShravanth Venkatesh\n\n60 Going\n\nKarthik Subramanian, Haroon Qahtan and 58 others\n\nContact the Host\nReport Event\n\nAI\n\nAgentic AI Hackathon: AWS Community Day Bay Area 2026\n\nAWS Community Bay Area\n\nAWS Builder Loft\n\nSan Francisco, CA\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nAbout Event\n\nAgentic AI Hackathon at AWS Community Day Bay Area 2026\nBuild an agent that does real work on AWS. Two weeks. One track. Eight teams demo live on stage at AWS Community Day in front of 500+ builders. Up to $3,200 in AWS credits for the winners. First 25 teams to be formed will each get $50 AWS credits to build their ideas and bring it to life.\nHow it works\nRegister here by September 28. Every team member registers individually on this page and enters the same team name.\nBuild from September 29 to October 11 remotely. The top 8 submissions get a 5-minute live demo slot on October 13 at the AWS Builder Loft in San Francisco, judged on the spot, with winners announced at the closing session.\nWho should join\nAnyone building with Bedrock, Bedrock AgentCore, Strands Agents SDK, SageMaker, or any other AWS AI service. Teams of 2 to 4. Solo builders welcome; register anyway and we'll match you with a team before September 29.\nThe rules in brief\nWork starts September 29, not before\n\nAt least two AWS services, one of them an AI service\n\nPublic GitHub repo, MIT or Apache 2.0 license\n\nNo production data, PHI, or PII\n\nYou keep your IP\n\nSubmit by October 11, 11:59 PM PT: public repo, 3-minute demo video, one-page writeup. Submission link goes out in the September 29 start announcement.\nJudging: technical depth (30%), real-world usefulness (25%), responsible AI (20%), demo and communication (15%), completeness (10%). Judges score all submissions asynchronously on October 12, then re-score the 8 finalists live.\nPrizes: 1st place gets $500 in AWS credits per team member (up to 4). 2nd place gets $300 per team member (up to 4). All 8 finalists get their demo featured on the AWS Community Bay Area YouTube channel.\nFull participant guide: https://www.aws-aicd.com/hackathon/\nQuestions: Post in the Event Chat (you're added when you register) or use Contact the Host for anything private. Reply target is 24 hours.\nYou must also be registered for AWS Community Day at https://events.builder.aws.com/mevA9Z and present in person on October 13.\nHosted by AWS User Group Bay Area.\n\nLocation\n\nAWS Builder Loft\nFirst Market Tower, 525 Market St Entrance, San Francisco, CA 94105, USA\n\nPresented by\nAWS Community Bay Area\n\nFollow\n\nA community of AWS enthusiasts and professionals in the Bay Area, connecting people through shared learning and experiences.\n\nHosted By\n\nJohn Varghese\n\nShravanth Venkatesh\n\n60 Going\n\nKarthik Subramanian, Haroon Qahtan and 58 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:10.053Z",
+      "evidence": "Agentic AI Hackathon: AWS Community Day Bay Area 2026\nAWS Builder Loft\nSan Francisco, CA\nAgentic AI Hackathon: AWS Community Day Bay Area 2026 · Luma\n\nDiscover Events\nSign In\n\nPresented by\nAWS Community Bay Area\n\nFollow\n\nA community of AWS enthusiasts and professionals in the Bay Area, connecting people through shared learning and experiences.\n\nHosted By\n\nJohn Varghese\n\nShravanth Venkatesh\n\n63 Going\n\nKarthik Subramanian, Haroon Qahtan and 61 others\n\nContact the Host\nReport Event\n\nAI\n\nAgentic AI Hackathon: AWS Community Day Bay Area 2026\n\nAWS Community Bay Area\n\nAWS Builder Loft\n\nSan Francisco, CA\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nAbout Event\n\nAgentic AI Hackathon at AWS Community Day Bay Area 2026\nBuild an agent that does real work on AWS. Two weeks. One track. Eight teams demo live on stage at AWS Community Day in front of 500+ builders. Up to $3,200 in AWS credits for the winners. First 25 teams to be formed will each get $50 AWS credits to build their ideas and bring it to life.\nHow it works\nRegister here by September 28. Every team member registers individually on this page and enters the same team name.\nBuild from September 29 to October 11 remotely. The top 8 submissions get a 5-minute live demo slot on October 13 at the AWS Builder Loft in San Francisco, judged on the spot, with winners announced at the closing session.\nWho should join\nAnyone building with Bedrock, Bedrock AgentCore, Strands Agents SDK, SageMaker, or any other AWS AI service. Teams of 2 to 4. Solo builders welcome; register anyway and we'll match you with a team before September 29.\nThe rules in brief\nWork starts September 29, not before\n\nAt least two AWS services, one of them an AI service\n\nPublic GitHub repo, MIT or Apache 2.0 license\n\nNo production data, PHI, or PII\n\nYou keep your IP\n\nSubmit by October 11, 11:59 PM PT: public repo, 3-minute demo video, one-page writeup. Submission link goes out in the September 29 start announcement.\nJudging: technical depth (30%), real-world usefulness (25%), responsible AI (20%), demo and communication (15%), completeness (10%). Judges score all submissions asynchronously on October 12, then re-score the 8 finalists live.\nPrizes: 1st place gets $500 in AWS credits per team member (up to 4). 2nd place gets $300 per team member (up to 4). All 8 finalists get their demo featured on the AWS Community Bay Area YouTube channel.\nFull participant guide: https://www.aws-aicd.com/hackathon/\nQuestions: Post in the Event Chat (you're added when you register) or use Contact the Host for anything private. Reply target is 24 hours.\nYou must also be registered for AWS Community Day at https://events.builder.aws.com/mevA9Z and present in person on October 13.\nHosted by AWS User Group Bay Area.\n\nLocation\n\nAWS Builder Loft\nFirst Market Tower, 525 Market St Entrance, San Francisco, CA 94105, USA\n\nPresented by\nAWS Community Bay Area\n\nFollow\n\nA community of AWS enthusiasts and professionals in the Bay Area, connecting people through shared learning and experiences.\n\nHosted By\n\nJohn Varghese\n\nShravanth Venkatesh\n\n63 Going\n\nKarthik Subramanian, Haroon Qahtan and 61 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
+      "checkedAt": "2026-09-28T03:30:33.891Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/acba26102",
@@ -996,14 +1143,14 @@
           "region": "California"
         },
         "offerAvailability": "https://schema.org/InStock",
-        "going": null
+        "going": 54
       }
     },
     {
       "url": "https://luma.com/agent-hackathon",
       "title": "Agent Hackathon",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/bfcpaloalto",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
       "confidence": 94,
       "relevance": 96,
       "signals": {
@@ -1014,7 +1161,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Agent Hackathon\nSan Francisco, CA\nSan Francisco, CA\nAgent Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nSolana San Francisco\n\nFollow\n\nCalendar for Solana events in San Francisco.\n\nHosted By\n\nSolana Foundation\n\nThe AI Collective\n\nContact the Host\nReport Event\n\nAI\n\nCrypto\n\nFeatured in Bond AI - San Francisco and Bay Area\n\nAgent Hackathon\n\nSolana San Francisco\n\nRegister to See Address\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nBuild something an agent would buy.\nJoin us on September 30 for a one-day consumer-focused agent hackathon.\nYou'll build a product, service, or API meant for agents. After a live build period, you'll demo your product to fellow hackers and a panel of judges.\n\nPrizes:\n1st prize: $1500\n\n2nd prize: $500\n\n3rd prize: $250\n\nFood, coffee, prizes, credits, and a happy hour to follow.\nBring your laptop. Find a team. Make something an agent would buy.\n\nSpace is very limited. Please apply to attend.\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\nSolana San Francisco\n\nFollow\n\nCalendar for Solana events in San Francisco.\n\nHosted By\n\nSolana Foundation\n\nThe AI Collective\n\nContact the Host\nReport Event\n\nAI\n\nCrypto\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:10.602Z",
+      "checkedAt": "2026-09-28T03:30:17.732Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/agent-hackathon",
@@ -1032,14 +1179,14 @@
           "region": "California"
         },
         "offerAvailability": "https://schema.org/InStock",
-        "going": null
+        "going": 0
       }
     },
     {
       "url": "https://luma.com/vastsf",
       "title": "Real-Time Video Agents Hack - SF",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/tokensand",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
       "confidence": 94,
       "relevance": 96,
       "signals": {
@@ -1050,7 +1197,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Real-Time Video Agents Hack - SF\nSan Francisco, CA\nSan Francisco, CA\nReal-Time Video Agents Hack - SF · Luma\n\nDiscover Events\nSign In\n\nFeatured in San Francisco\n\nPresented by\ntokens&\n\nFollow\n\nThe AI community building the future of intelligence.\n\nHosted By\n\ntokens&\n\nAlessandro Amenta\n\nSyerra Laurusaitis\n\nJacopo Piazza\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in San Francisco\n\nReal-Time Video Agents Hack - SF\n\ntokens&\n\nRegister to See Address\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nThe VAST Builders Challenge is a three-city technical event series bringing together founders and engineers across New York, London, and San Francisco to build production-ready AI systems.\nSpend the day building agents to unlock the value of video. Because video is hard to search and analyze, most of it stays in storage, unwatched and underused.\nExperiment with the latest AI infrastructure, collaborate with other ambitious builders, and turn your ideas into shippable prototypes - with access to expert guidance, compute, and the tools you need to ship.\nHosted with VAST Data in collaboration with NVIDIA , SpaceXAI , CoreWeave and Weights & Biases.\nNote: Registration closes on September 29th.\nPrizes\n1st place: NVIDIA DGX Spark™\n\nHuggingFace Microduck\n\nCursor Credits\n\nCash Gift Cards\n\nThe Builders Stack\nHere's what you get out of the box, a lightning-quick setup:\nVideo understanding: reason over a video clip with NVIDIA Cosmos.\n\nSemantic search: find moments across hours of footage using natural language.\n\nObject detection: real-time detection and tracking across frames with YOLO.\n\nGeneral-purpose LLMs: models from Weights & Biases to power your application logic (e.g. video agents).\n\nThe VAST AI OS orchestrates the video ingestion and data layer, models are served on CoreWeave GPUs, and builders ship with Cursor.\nBuild your own video agent or something no one’s thought of. We'll share the videos to get you started on building video agents.\nJudges\nHassan Moustafa - TME, Multimodal AI @ NVIDIA\nAdam Ryason, Ph.D. - Product @ NVIDIA\nRam B. - Sr. Developer Advocate @ VAST Data\nBrian Verkley - Director, AI Data Platform @ VAST Data\nAnushrav V. - Solutions Architect, Physical AI Lead @ CoreWeave\nArnav Verma - Field Engineer @ SpaceXAI\nWho should attend\nDevelopers, ML/AI engineers, agent builders, and data engineers, from startups to enterprise teams working with video or multimodal AI.\nWhile individuals are welcome, we encourage teams of up to four members and will prioritize team applications. You can form a team on the day of the event or arrive with one already assembled.\nApplications are required. Space is limited. Registration closes one week prior to the event.\nPlease register using the same email address associated with your Cursor credits. The email you use to register will also be used for the Builders Challenge prerequisites.\nAgenda\n9:00am Doors Open + Breakfast\n9:30am Opening Keynotes\n10:00am Build Begins\n1:00pm Lunch\n5:00pm Demos\n7:00pm Closing & Awards\nNote: This event will be photographed and filmed. By attending, you consent to appearing in photos and videos that may be used for social media and promotional materials.\nAll guests must be 18+ and present a valid government-issued physical photo ID at check-in (digital IDs will not be accepted). Scooters and bikes are not permitted in any Amazon building with no on-site parking available.\nSponsors\nVAST Data: A unified AI data platform that provides the foundation for managing, processing, and activating data for AI workloads\nCoreWeave : AI cloud infrastructure that delivers high-performance GPU compute for training, fine-tuning, and inference workloads.\nSpaceXAI : AI-assisted software development tools that help developers move from idea to implementation faster\nNVIDIA: Accelerated computing and AI software that enables developers to build and deploy advanced AI applications\nWeights & Biases (A CoreWeave company) : AI developer tools for experiment tracking, model evaluation, and collaborative ML development\nSee what’s possible.\n\nFollow us on X · LinkedIn · Newsletter\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\ntokens&\n\nFollow\n\nThe AI community building the future of intelligence.\n\nHosted By\n\ntokens&\n\nAlessandro Amenta\n\nSyerra Laurusaitis\n\nJacopo Piazza\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:10.891Z",
+      "checkedAt": "2026-09-28T03:30:34.132Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/vastsf",
@@ -1068,7 +1215,7 @@
           "region": "California"
         },
         "offerAvailability": "https://schema.org/InStock",
-        "going": null
+        "going": 0
       }
     },
     {
@@ -1147,7 +1294,7 @@
       "url": "https://luma.com/ai-conference-hack-day-2026",
       "title": "The AI Conference Hack Day 2026",
       "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "discoveredVia": "https://luma.com/sf-builders-collective",
       "confidence": 94,
       "relevance": 96,
       "signals": {
@@ -1158,7 +1305,7 @@
         "negativeTitleEvidence": true
       },
       "evidence": "The AI Conference Hack Day 2026\nSan Francisco, CA\nSan Francisco, CA\nThe AI Conference Hack Day 2026 · Luma\n\nDiscover Events\nSign In\n\nPresented by\n[SF] HackerSquad\n\nFollow\n\nPreviously [SF] Builders Collective\n\nA builder first community. Hear from great speakers, learn how to implement new tools, and show off what you're building with them!\n\nHosted By\n\nThe AI Conference\n\nHackerSquad\n\nAdam Chan\n\nShon Burton\n\nContact the Host\nReport Event\n\nAI\n\nThe AI Conference Hack Day 2026\n\n[SF] HackerSquad\n\nRegister to See Address\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nThe AI Conference Hack Day is where 350 builders unite to do something that was impossible a year ago: build a working product — a real business — in a single day.\nThis isn't a hackathon in the old sense. No throwaway demos, no clever prototypes that die the next day. The AI Conference Hack Day brings together 350 builders, engineers, product and business minds to ship something real. Something that runs. Something a customers will actually use — and maybe pay for before the day is out.\nFor one day, the usual excuses disappear. You don't need a team of fifty. You don't need a year of runway. You don't need permission. What used to be a roadmap is now an afternoon. What used to be a funding round is now a focused day of work and the will to ship.\nThat's not hype. It's where the frontier actually is right now.\nAnthropic CEO Dario Amodei predicts the first billion-dollar company with a single human employee will arrive as soon as 2026 —\nEvery one of those companies has a day zero. This is where yours could begin.\nHere's how it works. You'll have a single day to take an idea from nothing to a working product. You'll build alongside the sharpest practitioners in applied AI — the engineers, ML leads, and founders who already live at the edge of what these tools can do. Mentors will be in the room. The energy will be unlike anything else at the conference. And at the end of the day, prizes go to the teams who didn't just build something interesting, but built something real.\nThe top prize is the one that matters most. The best product team won't just take home recognition — they'll take the main stage at The AI Conference the very next day to pitch a panel of top venture capitalists. That's the kind of room most founders wait years to get into. You could earn your seat in twenty-four hours.\nThis is the bet we're making: that the next great company won't be announced in a press release. It'll be built in a room full of people who decided not to wait. It'll start as a half-formed idea on Day ZERØ and walk out as something real.\nThe era of the solo builder, the tiny team that punches a hundred times above its weight, the one-person company — it's not coming someday. It's starting now, and it's starting here.\nThis is your shot.\nDon't miss it.\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\n[SF] HackerSquad\n\nFollow\n\nPreviously [SF] Builders Collective\n\nA builder first community. Hear from great speakers, learn how to implement new tools, and show off what you're building with them!\n\nHosted By\n\nThe AI Conference\n\nHackerSquad\n\nAdam Chan\n\nShon Burton\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:14.594Z",
+      "checkedAt": "2026-09-28T03:30:35.491Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/ai-conference-hack-day-2026",
@@ -1337,8 +1484,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "AI Hackathon: Sales Copilot AI\nSan Francisco, California\nSan Francisco, CA\nAI Hackathon: Sales Copilot AI · Luma\n\nDiscover Events\nSign In\n\nPresented by\nTatianaSF\n\nFollow\n\nHosted By\n\nTatianaSF com\n\nYar Doroshenko\n\n539 Going\n\nGorka Aranzabal, Arseniy Seroka and 537 others\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in San Francisco Tech Week\n\nAI Hackathon: Sales Copilot AI\n\nTatianaSF\n\nRegister to See Address\nSan Francisco, California\n\nRegistration\n\nWelcome! Please choose your desired ticket type:\n\nBuilders\n\nVolunteers\nRequire Approval\n\nMentors\n\n10 Left\n\nRequire Approval\n\nJudges\nRequire Approval\n\nJudges not pre-approved by Tatiana will be removed.\n\nSponsor\nRequire Approval\n\nRegister\n\nAbout Event\n\nVenture Mindset Hackathon - Reinvent Yourself in SF - builders, founders and judges: GSB/MSx, YC ...\n⏰ Doors open at 11:00 AM sharp.\n🚪 Entry closes at 11:15 AM or once we’re full — come early!\n🚀 Join us on January 17 (Sat), 2026 in downtown SF for a one-day Hackathon focused on bold ideas, teamwork, and innovation.\nParticipants create a clear vision of who they want to become in 10 years — not in a linear way, but in an exponential, ambitious way, similar to how venture investors think about long-term growth.\n✨ Why it matters:\nGSB/MSx alumni will see how the younger generation learns to think in true Stanford GSB style — with courage, long-term vision, and strategic imagination.\n✅ Challenge:\nCreate the ultimate AI sales copilot !\nThis hackathon is for developers, product managers, sales engineers, marketers, and AI enthusiasts who want to reinvent how sales teams work using AI.\n🔧 Choose the sales pain point you want to solve:\nqualifying and prioritizing leads,\n\nautomating repetitive follow-ups,\n\noptimizing sales funnels,\n\nor giving teams real-time AI coaching during calls.\n\n🎯 The main goal is to build a working app or prototype that empowers sales teams, saves time, and drives measurable revenue impact.\n\n🗓️ Schedule\n10:00 AM | Doors Open & Breakfast Networking\n10:55 AM | Doors Close (or earlier if capacity is reached)\n11:00 AM | Team Kick-Off\n11:15 AM | Hacking Starts\n1:30 PM | 🍴 Delicious Lunch Break (our special feature!)\n4:00 PM | Final Demos (2 min per team + 1 Q&A)\n5:00 PM | Networking\n6:00 PM | Doors Close\n🏆 Prizes\n1st Place - $30k ** + TBA\n\n2nd Place - $20k ** + TBA\n\n3rd Place - $10k ** +TBA\n\n(**Prizes via equity through FAST Advisory Agreement; see disclaimer - **.)\n\n✅ Judges\nOpenAI - TBA\n\nYC Alumnus - TBA\n\nGoogle - TBA\n\nApple - TBA\n\nCisco - TBA\n\nNVIDIA - TBA\n\nPerplexity - TBA\n\n🧑‍⚖️ Judging Note\nOur judges are selection-only and chosen through a thorough 2-step interview process . Last time, we received 65 applications — it’s a tough and competitive selection. Please, Apply here to become a judge\nJudges’ participation does not imply endorsement of any team, product, or technology.\n👉 If you truly have something to bring to the table, or can help us by sponsoring the event , we’d love to hear from you.\n\n✅ Mentors- TBA:\nRashid Aliyev | Innovator, ex Big-4, People’s Choice Awardee\n\nSako M | Senior Software Engineer @ Gladly, Hackathon Champion\n\nNatalie Pan | Founder of Funding Breakthrough Lab , Software Engineer, Cursor Vibe Coder, Hackathon Champion, Mindset Coach\n\nMentor #3 - spot is available\n\nMentor #4 - spot is available\n\nMentor #5 - spot is available\n\nMentor #6 - spot is available\n\nMentor #7 - spot is available\n\nPrevious hackathon in San Francisco:\nGPT Hackathon , San Francisco\n\nAI Vibe Coding Hackathon , San Francisco\n\n✅ Hosts:\nTatianaSF.com – Tatiana Isa ( primary host )\n\n✅ Why Join?\nPower Network : 100 + AI experts, YC founders, mentors, and advisors\n\nBold Innovation : Shape the Agent Era before it arrives\n\nElectric Vibe : One day of hacking, learning, and building\n\n✅ Want to Join?\n✅ If you have ideas or would like to support the hackathon as a 🤝sponsor, 🤝volunteer, or you have any 📩 questions, please reach out anytime at / tatianasf\n\n✅ Judges - please, Apply here for the selection process\n\nLet’s build something extraordinary together.\n🚀 Register now!\n#AIhackathon #AgentEra #AIagents #SFtech #Hackathon2025 #YC #StartupLife #AIinSF #Innovation #Founders\n\n✅ ABOUT SECTION:\nAbout me TatianaSF.com\n🌟 Tatiana Isa is a San Francisco–based entrepreneur and five-time founder, best known as Co-Founder & GP at kitSF and as an advisor to AI and edtech startups. With over 20 years of experience and holding O-1A and EB-2 NIW visas, she champions innovation in education and technology.\n\n**Government Attendees Disclaimer:\n🏆 $ Prizes will be provided as equity issued through the 🌟 FAST Advisory Agreement from the Founders Institute. Participants must send a confirmation email stating they have reviewed the equity award and that accepting it follows their local laws and their organization’s rules.\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, California\n\nPresented by\nTatianaSF\n\nFollow\n\nHosted By\n\nTatianaSF com\n\nYar Doroshenko\n\n539 Going\n\nGorka Aranzabal, Arseniy Seroka and 537 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:46:51.922Z",
+      "evidence": "AI Hackathon: Sales Copilot AI\nSan Francisco, California\nSan Francisco, CA\nAI Hackathon: Sales Copilot AI · Luma\n\nDiscover Events\nSign In\n\nPresented by\nTatianaSF\n\nFollow\n\nHosted By\n\nTatianaSF com\n\nYar Doroshenko\n\n540 Going\n\nGorka Aranzabal, Arseniy Seroka and 538 others\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in San Francisco Tech Week\n\nAI Hackathon: Sales Copilot AI\n\nTatianaSF\n\nRegister to See Address\nSan Francisco, California\n\nRegistration\n\nWelcome! Please choose your desired ticket type:\n\nBuilders\n\nVolunteers\nRequire Approval\n\nMentors\n\n10 Left\n\nRequire Approval\n\nJudges\nRequire Approval\n\nJudges not pre-approved by Tatiana will be removed.\n\nSponsor\nRequire Approval\n\nRegister\n\nAbout Event\n\nVenture Mindset Hackathon - Reinvent Yourself in SF - builders, founders and judges: GSB/MSx, YC ...\n⏰ Doors open at 11:00 AM sharp.\n🚪 Entry closes at 11:15 AM or once we’re full — come early!\n🚀 Join us on January 17 (Sat), 2026 in downtown SF for a one-day Hackathon focused on bold ideas, teamwork, and innovation.\nParticipants create a clear vision of who they want to become in 10 years — not in a linear way, but in an exponential, ambitious way, similar to how venture investors think about long-term growth.\n✨ Why it matters:\nGSB/MSx alumni will see how the younger generation learns to think in true Stanford GSB style — with courage, long-term vision, and strategic imagination.\n✅ Challenge:\nCreate the ultimate AI sales copilot !\nThis hackathon is for developers, product managers, sales engineers, marketers, and AI enthusiasts who want to reinvent how sales teams work using AI.\n🔧 Choose the sales pain point you want to solve:\nqualifying and prioritizing leads,\n\nautomating repetitive follow-ups,\n\noptimizing sales funnels,\n\nor giving teams real-time AI coaching during calls.\n\n🎯 The main goal is to build a working app or prototype that empowers sales teams, saves time, and drives measurable revenue impact.\n\n🗓️ Schedule\n10:00 AM | Doors Open & Breakfast Networking\n10:55 AM | Doors Close (or earlier if capacity is reached)\n11:00 AM | Team Kick-Off\n11:15 AM | Hacking Starts\n1:30 PM | 🍴 Delicious Lunch Break (our special feature!)\n4:00 PM | Final Demos (2 min per team + 1 Q&A)\n5:00 PM | Networking\n6:00 PM | Doors Close\n🏆 Prizes\n1st Place - $30k ** + TBA\n\n2nd Place - $20k ** + TBA\n\n3rd Place - $10k ** +TBA\n\n(**Prizes via equity through FAST Advisory Agreement; see disclaimer - **.)\n\n✅ Judges\nOpenAI - TBA\n\nYC Alumnus - TBA\n\nGoogle - TBA\n\nApple - TBA\n\nCisco - TBA\n\nNVIDIA - TBA\n\nPerplexity - TBA\n\n🧑‍⚖️ Judging Note\nOur judges are selection-only and chosen through a thorough 2-step interview process . Last time, we received 65 applications — it’s a tough and competitive selection. Please, Apply here to become a judge\nJudges’ participation does not imply endorsement of any team, product, or technology.\n👉 If you truly have something to bring to the table, or can help us by sponsoring the event , we’d love to hear from you.\n\n✅ Mentors- TBA:\nRashid Aliyev | Innovator, ex Big-4, People’s Choice Awardee\n\nSako M | Senior Software Engineer @ Gladly, Hackathon Champion\n\nNatalie Pan | Founder of Funding Breakthrough Lab , Software Engineer, Cursor Vibe Coder, Hackathon Champion, Mindset Coach\n\nMentor #3 - spot is available\n\nMentor #4 - spot is available\n\nMentor #5 - spot is available\n\nMentor #6 - spot is available\n\nMentor #7 - spot is available\n\nPrevious hackathon in San Francisco:\nGPT Hackathon , San Francisco\n\nAI Vibe Coding Hackathon , San Francisco\n\n✅ Hosts:\nTatianaSF.com – Tatiana Isa ( primary host )\n\n✅ Why Join?\nPower Network : 100 + AI experts, YC founders, mentors, and advisors\n\nBold Innovation : Shape the Agent Era before it arrives\n\nElectric Vibe : One day of hacking, learning, and building\n\n✅ Want to Join?\n✅ If you have ideas or would like to support the hackathon as a 🤝sponsor, 🤝volunteer, or you have any 📩 questions, please reach out anytime at / tatianasf\n\n✅ Judges - please, Apply here for the selection process\n\nLet’s build something extraordinary together.\n🚀 Register now!\n#AIhackathon #AgentEra #AIagents #SFtech #Hackathon2025 #YC #StartupLife #AIinSF #Innovation #Founders\n\n✅ ABOUT SECTION:\nAbout me TatianaSF.com\n🌟 Tatiana Isa is a San Francisco–based entrepreneur and five-time founder, best known as Co-Founder & GP at kitSF and as an advisor to AI and edtech startups. With over 20 years of experience and holding O-1A and EB-2 NIW visas, she champions innovation in education and technology.\n\n**Government Attendees Disclaimer:\n🏆 $ Prizes will be provided as equity issued through the 🌟 FAST Advisory Agreement from the Founders Institute. Participants must send a confirmation email stating they have reviewed the equity award and that accepting it follows their local laws and their organization’s rules.\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, California\n\nPresented by\nTatianaSF\n\nFollow\n\nHosted By\n\nTatianaSF com\n\nYar Doroshenko\n\n540 Going\n\nGorka Aranzabal, Arseniy Seroka and 538 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
+      "checkedAt": "2026-09-28T03:30:19.037Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/qzct3ybt",
@@ -1356,7 +1503,7 @@
           "region": "California"
         },
         "offerAvailability": "https://schema.org/InStock",
-        "going": 539
+        "going": 540
       }
     },
     {
@@ -1374,7 +1521,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "The AI Commerce Gallery - Hackathon | Walt Disney Family Museum\nSan Francisco, CA\nSan Francisco, CA\nThe AI Commerce Gallery - Hackathon | Walt Disney Family Museum · Luma\n\nDiscover Events\nSign In\n\nPresented by\nAI Valley\n\nFollow\n\nA community for exceptional first-gen builders and talent worldwide.\n\nHosted By\n\nAI Valley\n\nZooWork Team\n\nCourtney Ko\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in Bond AI - San Francisco and Bay Area\n\nThe AI Commerce Gallery - Hackathon | Walt Disney Family Museum\n\nAI Valley\n\nRegister to See Address\nSan Francisco, CA\n\nGet Tickets\n\nWelcome! Please choose your desired ticket type:\n\nStandard\nRequire Approval\n\nPriority - Museum Gallery Tour\n\nExplore the Walt Disney Family Museum with priority access to a guided gallery tour. Limited spots available.\n\nRequest to Join\n\nAbout Event\n\nAI Commerce Gallery — ZooWork × AI Valley\nWhat does the next generation of AI-powered commerce look like?\nZooWork and AI Valley are bringing together builders, founders, engineers, designers, and commerce leaders for AI Commerce Gallery — a curated one-day hackathon and interactive showcase for products pushing commerce forward.\nOn October 3rd, AI Commerce Gallery takes over The Walt Disney Family Museum in San Francisco for a full day of building, demos, and exploration.\nTeams will build throughout the day in the Diane Disney Miller Exhibition Hall before the evening program moves into the Main Museum, with presentations in the Theater and Lower Lobby and private access to the Museum’s Main Galleries from 6–8 PM.\n\nTeams will build AI-powered products across:\nE-commerce & storefront experiences\n\nMerchant operations, inventory, fulfillment & payments\n\nRestaurants, retail, POS & physical commerce\n\nAI agents, MCP integrations & workflow automation\n\nBut this isn’t a traditional hackathon.\nInstead of spending the evening watching dozens of back-to-back pitches, every team will turn their project into an exhibit for the AI Commerce Gallery Walk.\nAfter the Gallery Walk, the evening moves into the Main Museum for featured demos, awards, networking, and two hours to explore The Walt Disney Family Museum’s Main Galleries.\nAttendees, judges, partners, and investors will move through the gallery, interact with live demos, meet the builders, and experience what the future of commerce could actually feel like.\n\nThroughout the day, builders will have access to AI tools, APIs, integrations, technical workshops, mentors, and partner resources to help turn ideas into working products.\nThe strongest projects will be selected as Featured Exhibits and invited to demo on the main stage before the Gallery Awards.\n🏆 Awards include\nBest in Gallery\nBest AI Commerce Product\nMost Commercially Viable\nBest Use of ZooWork\nPeople’s Choice\n🗓 October 3rd, 2026\n📍 The Walt Disney Family Museum · San Francisco\n👥 100–150 curated builders, founders, investors & industry leaders\n🛠 25–35 teams\n🗓 Event Schedule\n9:00 AM — Registration & Breakfast\nCheck-in, networking, and breakfast.\n10:30 AM — Opening Ceremony\nWelcome, AI Commerce Gallery introduction & challenge briefing.\n11:00 AM — Workshops & Curator Hours\nTechnical workshops, partner resources & mentor support.\n12:30 PM — Lunch\nNetworking lunch + continued hacking.\n4:00 PM — Progress Review\nFinal team check-ins, product feedback & mentor support.\n5:00 PM — Exhibit Submission Deadline\nFinal projects, demos & gallery categories submitted.\n5:00 PM — Dinner + Gallery Setup\nTeams prepare their exhibit stations while judges review submissions.\n5:30 PM — AI Commerce Gallery Walk\nExplore every team’s live project exhibit and meet the builders.\n6:15 PM — Featured Exhibit Presentations\nTop 5–8 projects demo on the main stage.\n7:00 PM — Gallery Awards 🏆\nWinner announcements & prizes.\n7:30–9:00 PM — Gallery Reception\nNetworking with builders, partners, judges, investors & industry guests.\n9:00 PM — Event Closing\nThe formal program will conclude with a Gallery Reception bringing together builders, partners, judges, investors, and industry guests.\nCome build — or come see — what the next generation of AI-powered commerce looks like.\nZooWork — The AI agent delivery platform for FDEs and domain experts. Build, deploy, and deliver production-ready AI agents to your team or clients in minutes—with Agent Builder, Agent Runtime, model gateway, data, and integrations all in one place. ZooWork turns your expertise into repeatable AI solutions that run inside real business operations, connected to the tools your teams already use. Learn more at zoowork.ai .\n\nMoss ( moss.dev ) is a real-time semantic search engine that gives AI agents sub-10ms retrieval without the latency and infrastructure overhead of traditional vector databases.\n\nAI Valley is a community rooted in supporting exceptional first generation builders, founders, and creators. We curate environments where ambitious people meet collaborators, mentors, and opportunities through hackathons, workshops, and intimate gatherings across AI, tech, and the arts. If you care about who you build with as much as what you build, this is your place.\n🌐 Website: https://aivalley.io\n📅 Events: https://lu.ma/aivalley\n👥 Community (Discord): Join Discord Server\n📰 Newsletter: https://aivalleyio.substack.com\n🔗 All links: https://aivalley.io/links\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\nAI Valley\n\nFollow\n\nA community for exceptional first-gen builders and talent worldwide.\n\nHosted By\n\nAI Valley\n\nZooWork Team\n\nCourtney Ko\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:46:53.368Z",
+      "checkedAt": "2026-09-28T03:30:22.523Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/6bbloggr",
@@ -1410,7 +1557,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "HackwithBay 4.0\nSan Francisco, CA\nSan Francisco, CA\nHackwithBay 4.0 · Luma\n\nDiscover Events\nSign In\n\nPresented by\nDevnovate\n\nFollow\n\nHosted By\n\nAviral\n\nAWS Builder Loft\n\nContact the Host\nReport Event\n\nAI\n\nHackwithBay 4.0\n\nDevnovate\n\nRegister to See Address\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\n🎉 HackwithBay 4.0 : 8-Hour Hackathon at AWS Builder Loft, SF 🎉\nJoin us for HackwithBay 4.0, an electrifying 8-hour hackathon bringing together the brightest minds in tech, creativity, and innovation, all under one roof at the iconic AWS Builder Loft in San Francisco!\n🚀 Whether you're a seasoned hacker, a budding coder, a design wizard, or an idea machine, HackwithBay 4.0 is your chance to build, learn, and connect with the most passionate problem-solvers in the city.\n🗓️ Event Details\nWhen: 09:30 AM – 7:00 PM, 24 November 2026\n\nWhere: AWS Builder Loft\n\nTheme: Thoughtful Agents for Productivity\n\n💡 What to Expect:\nHigh-energy hacking sessions\n\nChallenges that push you to build impactful products\n\nSwag, snacks & networking\n\nExpert mentorship\n\nExciting prizes for top teams\n\nA chance to demo your project to industry leader\n\n📋 Agenda:\n10:00 AM – 11:00 AM: Opening & Presentations\n\n11:00 AM – 12:00 PM: Hackathon Begins\n\n12:00 PM – 01:00 PM: Lunch Break 🍕🍽️\n\n01:00 PM – 03:30 PM: Hacking Continues\n\n03:30 PM : Submission Deadline\n\n04:00 PM – 04:40 PM : Final Presentations (Top 5 Teams)\n\n04:40 PM – 05:00 PM: Closing Ceremony\n\n05:00 PM – 05:30 PM: Networking Session\n\n🔥 Limited seats are available; register now and hack the future with us!\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\nDevnovate\n\nFollow\n\nHosted By\n\nAviral\n\nAWS Builder Loft\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:00.915Z",
+      "checkedAt": "2026-09-28T03:30:32.146Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/x05cmrqh",
@@ -1446,7 +1593,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Agentic AI Hackathon 2.0 - SF\nAWS Builder Loft\nSan Francisco, CA\nAgentic AI Hackathon 2.0 - SF · Luma\n\nDiscover Events\nSign In\n\nPresented by\nDevnovate\n\nFollow\n\nHosted By\n\nAviral\n\nAWS Builder Loft\n\nContact the Host\nReport Event\n\nAI\n\nAgentic AI Hackathon 2.0 - SF\n\nDevnovate\n\nAWS Builder Loft\n\nSan Francisco, California\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\n🎉 Agentic AI Hackathon – 8-Hour Hackathon at AWS Builder Loft, SF 🎉\nJoin us for Agentic AI Hackathon in SF, an electrifying 8-hour hackathon bringing together the brightest minds in tech, creativity, and innovation — all under one roof at the iconic AWS Builder Loft in San Fransisco !\n🚀 Whether you're a seasoned hacker, a budding coder, a design wizard, or an idea machine, this is your chance to build, learn, and connect with the most passionate problem-solvers in the city.\n🗓️ Event Details\nWhen: 09:30 AM – 7:00 PM, 15th December 2026\n\nWhere: AWS Builder Loft\n\n💡 What to Expect:\nHigh-energy hacking sessions\n\nChallenges that push you to build impactful products\n\nSwag, snacks & networking\n\nExpert mentorship\n\nExciting prizes for top teams\n\nA chance to demo your project to industry leader\n\n🔥 Limited seats available – register now and hack the future with us!\nLet’s build something awesome together. 💻✨\n\nLocation\n\nAWS Builder Loft\n525 Market St, San Francisco, CA 94105, USA\n\nPresented by\nDevnovate\n\nFollow\n\nHosted By\n\nAviral\n\nAWS Builder Loft\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:01.169Z",
+      "checkedAt": "2026-09-28T03:30:32.395Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/12545fxr",
@@ -1518,7 +1665,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "AI-Native Startup Hackathon\nSan Francisco, CA\nSan Francisco, CA\nAI-Native Startup Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nBondHaus\n\nFollow\n\nHosted By\n\nAyush Ojha\n\nChristina Bowllan\n\nNERDCONF\n\narticuler.ai\n\nSahar Mor (Bond AI)\n\nMansi More\n\nAria\n\n105 Going\n\nMaximillian Naza, Sebastian and 103 others\n\nContact the Host\nReport Event\n\nFeatured in San Francisco Tech Week\n\nAI-Native Startup Hackathon\n\nBondHaus\n\nRegister to See Address\nSan Francisco, CA\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nAbout Event\n\nIf you have registered on here, please join discord channel as well: Join Discord Server\n\nWhat if you could go from idea to startup in a single day?\nJoin founders, builders, creators, students, and entrepreneurs for an intensive one-day challenge where you’ll use Kylon and AI teammates to turn an idea into a real, launch-ready startup.\nThis isn’t a traditional hackathon focused on writing the most code. The goal is to build a complete business — validate a real problem, develop the product, create your AI-powered organization, and pitch your startup.\nWhat You’ll Build\nThroughout the day, your team will work through the key stages of building a startup:\nDiscover — Identify a meaningful problem and define your customer\n\nValidate — Research the market and test your assumptions\n\nBuild — Create your product and working MVP\n\nOrganize — Build AI teammates to help with product, research, marketing, sales, strategy, and more\n\nLaunch — Develop your brand, landing page, business model, and go-to-market strategy\n\nPitch — Present your startup, product, and vision to judges and investors\n\nYour AI Team\nWith Kylon, you’ll build an AI-powered organization designed around your startup.\nCreate the teammates you need — from AI co-founders and product managers to researchers, engineers, marketers, sales agents, and strategic advisors — and use them to accelerate your startup throughout the challenge.\nWho Should Join?\nFounders • Developers • Designers • Product Managers • Students • Marketers • Business Owners • Researchers • Entrepreneurs\nYou don’t need to be a technical expert. A strong idea, domain knowledge, creativity, and the ability to use AI effectively can be just as valuable.\nWhat Judges Will Look For\nTeams will be evaluated on:\nProblem & customer validation\n\nMarket opportunity\n\nProduct quality\n\nBusiness model\n\nAI-native execution\n\nCreativity and effectiveness of AI teammates\n\nGo-to-market strategy\n\nStartup potential\n\nQuality of the final pitch and demo\n\nThe Goal\nBy the end of the day, you won’t just have a prototype.\nYou’ll have the foundation of a real AI-native startup — and the opportunity to put it in front of mentors, investors, and the broader startup community.\nOne day. One idea. One startup.\nBuild your AI-native startup with Kylon.\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\nBondHaus\n\nFollow\n\nHosted By\n\nAyush Ojha\n\nChristina Bowllan\n\nNERDCONF\n\narticuler.ai\n\nSahar Mor (Bond AI)\n\nMansi More\n\nAria\n\n105 Going\n\nMaximillian Naza, Sebastian and 103 others\n\nContact the Host\nReport Event\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:03.907Z",
+      "checkedAt": "2026-09-28T03:30:36.171Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/j34m6r1z",
@@ -1554,7 +1701,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Women Build Oakland: From Idea to App in One Day\nOakland, CA\nOakland, CA\nWomen Build Oakland: From Idea to App in One Day · Luma\n\nDiscover Events\nSign In\n\nPresented by\nCoCo Noir Labs Calender\n\nFollow\n\nHosted By\n\nAlicia Kidd\n\n44 Going\n\nSybil Carter-Love, Kali Fields Williams and 42 others\n\nContact the Host\nReport Event\n\nAI\n\nWomen Build Oakland: From Idea to App in One Day\n\nCoCo Noir Labs Calender\n\nRegister to See Address\nOakland, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nWomen Build Oakland: From Idea to App in One Day\nHave an idea for an app, website, or digital tool—but not sure how to build it?\nWomen Build Oakland is a free, beginner-friendly AI buildathon designed to help women turn ideas into working digital products in just one day.\nPresented by CoCo Noir Labs , this hands-on event will bring together 50 women founders, professionals, creatives, students, small-business owners, community leaders, and aspiring technology builders.\nNo previous coding experience is required.\nParticipants will join small teams of two to four women and work together to build one shared app, website, or digital tool that addresses a real business or community challenge. You can contribute through business strategy, research, project management, design, marketing, storytelling, prompting, testing, coding, or presenting.\nWhat to Expect\nDuring the event, participants will:\nLearn the basics of AI-powered vibe coding\n\nSee how an idea can become a working digital product\n\nMeet women with different professional and creative skills\n\nForm a team around a shared idea or challenge\n\nBuild a functional prototype with support from mentors\n\nPresent the completed project to a panel of judges\n\nCompete for prizes and special recognition\n\nTeams may build solutions related to:\nWomen’s economic opportunity and entrepreneurship\n\nSmall-business and hospitality innovation\n\nHealth, wellness, caregiving, and safety\n\nWorkforce development and education\n\nCommunity and public services\n\nOakland’s culture and creative economy\n\nWho Should Apply\nThis event is for women and women-identifying adults who are curious about AI, technology, entrepreneurship, or solving meaningful problems.\nYou may be a:\nFirst-time AI builder\n\nFounder or small-business owner\n\nWorking professional or executive\n\nCreative or community leader\n\nStudent or career changer\n\nDesigner, product manager, or developer\n\nBeginners are encouraged to apply. You do not need to arrive with an idea or have technical experience. You only need to be ready to learn, collaborate, and build.\nRegistration Details\nParticipation is free\n\nSpace is limited to 50 builders\n\nRegistration is application-based\n\nSubmitting an application does not guarantee acceptance\n\nAccepted participants must be available for the full program from 9:00 a.m. to 6:00 p.m.\n\nParticipants should bring a laptop and charger\n\nLunch, refreshments, mentorship, and event materials will be provided\n\nCome with an idea or simply come ready to collaborate. By the end of the day, you will have helped create a real digital product and gained the confidence to continue building with AI.\nPresented and produced by CoCo Noir Labs\nThe event is designed to use Lovable as the primary AI app-building platform, subject to approval through Lovable’s Community Events program.\nThis event has been submitted for inclusion in Oakland Tech Week 2026 and is pending final confirmation.\n\nLocation\n\nPlease register to see the exact location of this event.\nOakland, CA\n\nPresented by\nCoCo Noir Labs Calender\n\nFollow\n\nHosted By\n\nAlicia Kidd\n\n44 Going\n\nSybil Carter-Love, Kali Fields Williams and 42 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:04.175Z",
+      "checkedAt": "2026-09-28T03:30:36.443Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/6fj7ekl5",
@@ -1579,7 +1726,7 @@
       "url": "https://luma.com/jrtd50a7",
       "title": "AI-Native Startup Hackathon | #SFTechWeek",
       "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
       "confidence": 94,
       "relevance": 89,
       "signals": {
@@ -1590,7 +1737,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "AI-Native Startup Hackathon | #SFTechWeek\nSan Francisco, CA\nSan Francisco, CA\nAI-Native Startup Hackathon | #SFTechWeek · Luma\n\nDiscover Events\nSign In\n\nPresented by\nTech Events SF | BridgeUs\n\nFollow\n\nHosted By\n\nVin Wanfan\n\nSahar Mor (Bond AI)\n\nFinch ai\n\nAria\n\narticuler.ai\n\nDwayne Campbell\n\nMansi More\n\nAdaL\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in San Francisco Tech Week\n\nAI-Native Startup Hackathon | #SFTechWeek\n\nTech Events SF | BridgeUs\n\nRegister to See Address\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nWhat if you could go from idea to startup in a single day?\n\nJoin founders, builders, creators, students, and entrepreneurs for an intensive one-day challenge where you’ll use Kylon and AI teammates to turn an idea into a real, launch-ready startup.\n\nThis isn’t a traditional hackathon focused on writing the most code. The goal is to build a complete business — validate a real problem, develop the product, create your AI-powered organization, and pitch your startup.\n\nWhat You’ll Build:\nThroughout the day, your team will work through the key stages of building a startup:\n\nDiscover — Identify a meaningful problem and define your customer Validate — Research the market and test your assumptions Build — Create your product and working MVP\n\nOrganize — Build AI teammates to help with product, research, marketing, sales, strategy, and more\n\nLaunch — Develop your brand, landing page, business model, and go-to-market strategy\n\nPitch — Present your startup, product, and vision to judges and investors\n\nYour AI Team\n\nWith Kylon, you’ll build an AI-powered organization designed around your startup.\n\nCreate the teammates you need — from AI co-founders and product managers to researchers, engineers, marketers, sales agents, and strategic advisors — and use them to accelerate your startup throughout the challenge.\n\nWho Should Join?\n\nFounders • Developers • Designers • Product Managers • Students • Marketers • Business Owners • Researchers • Entrepreneurs\n\nYou don’t need to be a technical expert. A strong idea, domain knowledge, creativity, and the ability to use AI effectively can be just as valuable.\n\nWhat Judges Will Look For:\n- Problem & customer validation\n- Market opportunity\n- Product quality\n- Business model\n- AI-native execution\n- Creativity and effectiveness of AI teammates\n- Go-to-market strategy\n- Startup potential\n- Quality of the final pitch and demo\n- The Goal\n\nBy the end of the day, you won’t just have a prototype.\n\nYou’ll have the foundation of a real AI-native startup — and the opportunity to put it in front of mentors, investors, and the broader startup community.\n\nOne day. One idea. One startup.\n\nBuild your AI-native startup with Kylon.\n\nThis event is a part of #SFTechWeek—a week of events hosted by VCs and startups to bring together the tech ecosystem.\n\nLearn more at www.tech-week.com\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\nTech Events SF | BridgeUs\n\nFollow\n\nHosted By\n\nVin Wanfan\n\nSahar Mor (Bond AI)\n\nFinch ai\n\nAria\n\narticuler.ai\n\nDwayne Campbell\n\nMansi More\n\nAdaL\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:04.755Z",
+      "checkedAt": "2026-09-28T03:30:23.064Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/jrtd50a7",
@@ -1687,7 +1834,7 @@
       "url": "https://luma.com/0oww46mm",
       "title": "AI Startup Challenge Hackathon: The Pre-Event of SF AI Summit",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/aws-builder-loft-events",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
       "confidence": 94,
       "relevance": 89,
       "signals": {
@@ -1698,7 +1845,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "AI Startup Challenge Hackathon: The Pre-Event of SF AI Summit\nSan Francisco, CA\nSan Francisco, CA\nAI Startup Challenge Hackathon: The Pre-Event of SF AI Summit · Luma\n\nDiscover Events\nSign In\n\nPresented by\nDevnovate\n\nFollow\n\nHosted By\n\nAviral\n\nAWS Builder Loft\n\nContact the Host\nReport Event\n\nAI Startup Challenge Hackathon: The Pre-Event of SF AI Summit\n\nDevnovate\n\nRegister to See Address\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\n**Remember to register with the AWS Builder Loft and bring a valid Photo ID**\n🚀 AI Startup Challenge Hackathon: The Pre-Event of SF AI Summit\nGet ready for the AI Startup Challenge Hackathon , an action-packed innovation sprint bringing together AI builders, founders, engineers, product leaders, and entrepreneurs at the AWS Builder Loft in San Francisco.\nAs the official pre-event of the SF AI Summit , this hackathon is designed for teams building the next generation of AI startups, products, and intelligent applications.\nWhether you're building an AI agent, developer tool, enterprise solution, AI infrastructure, or an entirely new AI-native product, this is your opportunity to build, validate, demo, and compete alongside some of the most ambitious builders in the Bay Area.\n🗓️ Event Details\nWhen: 09:30 AM – 6:00 PM, October 20, 2026\n\nWhere: AWS Builder Loft, San Francisco, CA\n\nTheme: AI Startups, AI Agents, Enterprise AI & AI Infrastructure\n\nFormat: One-day startup-focused hackathon\n\nPart of: SF AI Summit\n\n💡 What to Expect\n🚀 Build an AI Startup: Turn an idea into a working prototype in a single day.\n\n🧠 Real-World AI Challenges: Build solutions across AI agents, enterprise automation, developer tools, AI infrastructure, data, and productivity.\n\n🤝 Founder & Builder Networking: Meet engineers, founders, product leaders, investors, and AI enthusiasts from across the Bay Area.\n\n👨‍💻 Expert Mentorship: Get feedback and guidance from experienced AI builders, founders, and industry experts.\n\n🎤 Live Demos: Present your product to a panel of judges and a room full of builders and startup enthusiasts.\n\n🏆 Prizes & Recognition: Compete for exciting prizes and opportunities to showcase your startup.\n\n🍕 Food, Swag & Networking: Enjoy breakfast, lunch, refreshments, and plenty of time to connect with the community.\n\n📋 Agenda\n09:30 AM – 10:00 AM: Check-in\n\n10:00 AM – 11:00 AM: Opening Keynote, Challenge Briefing & Partner Workshops\n\n11:00 AM – 12:00 PM: Team Formation & Hacking Begins 🚀\n\n12:00 PM – 01:00 PM: Lunch & Founder Networking 🍕\n\n01:00 PM – 03:30 PM: Deep Hacking & Mentor Office Hours\n\n03:30 PM: Project Submission Deadline\n\n04:00 PM – 04:40 PM: Top 5 Startup Demos & Pitch Presentations\n\n04:40 PM – 05:00 PM: Judging, Awards & Closing\n\n05:00 PM – 06:00 PM: Founder Networking\n\n🎯 Who Should Attend?\nAI/ML Engineers\n\nSoftware & Backend Engineers\n\nAI Researchers\n\nFounders & Entrepreneurs\n\nProduct Managers\n\nData Scientists\n\nDeveloper Relations & Developer Tool Builders\n\nStudents and aspiring founders\n\nAnyone building the future with AI\n\nCome with an idea, a team, or simply the ambition to build. Leave with a working prototype, new connections, and potentially the foundation of your next AI startup.\nBuild. Demo. Compete. Connect.\nWelcome to the AI Startup Challenge — the pre-event of SF AI Summit.\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\nDevnovate\n\nFollow\n\nHosted By\n\nAviral\n\nAWS Builder Loft\n\nContact the Host\nReport Event\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:06.113Z",
+      "checkedAt": "2026-09-28T03:30:31.812Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/0oww46mm",
@@ -1716,7 +1863,7 @@
           "region": "California"
         },
         "offerAvailability": "https://schema.org/InStock",
-        "going": null
+        "going": 0
       }
     },
     {
@@ -1759,7 +1906,7 @@
       "url": "https://luma.com/nov-hackathon-2026",
       "title": "Company Brain Hackathon: Build an AI Agent That Knows Your Organization",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/techequity-ai",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
       "confidence": 94,
       "relevance": 89,
       "signals": {
@@ -1770,7 +1917,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Company Brain Hackathon: Build an AI Agent That Knows Your Organization\n135 Constitution Dr\nMenlo Park, CA\nCompany Brain Hackathon: Build an AI Agent That Knows Your Organization · Luma\n\nDiscover Events\nSign In\n\nPresented by\nTechEquity Ai - Silicon Valley\n\nFollow\n\nSilicon Valley’s go-to AI monthly forums, workshops, and summits.\n👇Join membership below for exclusive access\n\nHosted By\n\nTechEquity Ai\n\nSheena Tu\n\nMahan Soltanzadeh\n\nDave Nielsen\n\nSilicon Valley AI Hub\n\nContact the Host\nReport Event\n\nAI\n\nCompany Brain Hackathon: Build an AI Agent That Knows Your Organization\n\nTechEquity Ai - Silicon Valley\n\n135 Constitution Dr\n\nMenlo Park, CA\n\nRegistration\n\nWelcome! Please choose your desired ticket type:\n\nIn-Person Only\n\nYou will attend in person. In addition, you will receive the event recordings afterward.\n\nHackathon Judge\n\n6 Left\n\nRequire Approval\n\nApply to join our hackathon judging pool. Judge spots are limited and applications are reviewed by the TechEquity Ai team. Selected judges will be approved and contacted with event details.\nBy applying, you’ll also be considered for future monthly hackathons.\n\nRegister\n\nAbout Event\n\nWhat if your company had a shared brain that could understand its documents, tools, processes, people, and institutional knowledge—and make that knowledge available to employees and AI agents?\nIn this afernoon hands-on hackathon, participants will build a working Company Brain: an AI-powered knowledge system that connects information from sources such as documentation, meeting notes, FAQs, policies, product information, support content, and internal tools.\nTechEquity Ai invites you to an afternoon of applied AI learning and hands-on building at Snowflake's Silicon Valley AI Hub (SVAI) in Menlo Park, CA.\nThis session is part of the TechEquity Ai Monthly Forum Series , combining strategic insights and real-world use cases from industry leaders, alongside technical workshops and live demonstrations.\n\nSPEAKERS\nDave Nielsen — Head of DevRel @Cognee AI . Head of Events @AI Alliance\nStephen Chin — VP of Developer Relations at Neo4j\nWHAT TO EXPECT\nProgram details are subject to change.\n1:00–1:50 PM | Registration\n1:50–2:15 PM | Keynote\nGraphRAG: The Definitive Guide - A Field Guide to Patterns, Trade-offs, and Production Systems (Session Details) by Stephen Chin/Neo4j\nThis talk gives AI engineers a practical map of the GraphRAG landscape. We start with the limits of vector-only RAG, especially when data is connected, multi-hop, dynamic, or needs to be explainable. From there, we break GraphRAG into a set of core building blocks: constructing knowledge graphs from structured and unstructured data, choosing among lexical, domain, and meta graphs, and applying retrieval patterns such as guided traversal, graph-filtered search, Cypher templates, Text2Cypher, graph embeddings, query-focused summarization, and agentic retrieval.\n\n2:15–4:30 PM | Hackathon Round 1\n4:30–5:00 PM | Demonstration\n5:00–5:30 PM | Hackathon Round 2\n5:30-6:45 PM | Judging\n6:45–7:15 PM | Networking\nSPONSORS & PARTNERS\nSnowflake SVAI Hub, AI Alliance, Cognee\nWHO SHOULD ATTEND\nDevelopers and engineers exploring OpenClaw and agent-based systems\n\nStartup founders building AI-powered products\n\nStudents and career-transition professionals looking to deepen hands-on AI experience\n\nAnyone interested in practical approaches to modern AI development\n\nIMPORTANT DETAILS\nFormat: In-person; hands-on hackathon\n\nWhat to Bring: Please bring a laptop\n\nCode of Conduct: This event follows TechEquity Ai’s community code of conduct to ensure a respectful, inclusive environment for all participants\n\nSPONSORSHIP OPPORTUNITIES\nInterested in getting involved? We welcome sponsors and exhibitors to take part through speaking opportunities, workshops, live demos, exhibits, and other formats\nEVENT INFO\n🎟️ Registration: RSVP required (limited capacity)\n🍽️🪑 F&B and Seating: Limited and available on a first-come, first-served basis\n🏢 Venue: Snowflake Silicon Valley AI Hub (SVAI)\n📍 Address: 8th Floor at 135 Constitution Dr. Menlo Park, CA 94025\n🚗Parking: Self-park in the garage next to the 135 Building\n❗ Arrival Guide: Download the guide at bit.ly/SVAI-Arrival-Guide\n\nTechEquity Ai is a nonprofit organization dedicated to democratizing access to artificial intelligence (AI) knowledge and applications.\nOur flagship initiative is the TechEquity Ai Summit , a series of high-impact events designed to foster innovation, broad participation, and education in AI. In addition to the Summit, TechEquity Ai hosts a Monthly Forum Series to keep the community engaged year-round through ongoing learning, networking, and hands-on exploration of emerging AI tools and ideas.\nAcross our programs, we bring together builders, leaders, and learners through keynotes, panels, fireside chats, hands-on workshops, and interactive demos.\nTo learn more about TechEquity Ai and our programs, visit techequity-ai.org or reach out to us at info@techequity-ai.org.\n\nLocation\n\n135 Constitution Dr\nMenlo Park, CA 94025, USA\n\nPresented by\nTechEquity Ai - Silicon Valley\n\nFollow\n\nSilicon Valley’s go-to AI monthly forums, workshops, and summits.\n👇Join membership below for exclusive access\n\nHosted By\n\nTechEquity Ai\n\nSheena Tu\n\nMahan Soltanzadeh\n\nDave Nielsen\n\nSilicon Valley AI Hub\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:07.989Z",
+      "checkedAt": "2026-09-28T03:30:16.448Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/nov-hackathon-2026",
@@ -1795,7 +1942,7 @@
       "url": "https://luma.com/cyberhack",
       "title": "Cyberdefense Hackathon",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/tokensand",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
       "confidence": 94,
       "relevance": 89,
       "signals": {
@@ -1806,7 +1953,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Cyberdefense Hackathon\nSan Francisco, CA\nSan Francisco, CA\nCyberdefense Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\ntokens&\n\nFollow\n\nThe AI community building the future of intelligence.\n\nHosted By\n\ntokens&\n\nAWS Builder Loft\n\nAlessandro Amenta\n\nJacopo Piazza\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in San Francisco Tech Week\n\nCyberdefense Hackathon\n\ntokens&\n\nRegister to See Address\nSan Francisco, CA\n\nRegistration\n\nApproval Required\nYour registration is subject to host approval.\n\nWelcome! To join the event, please register below.\nRequest to Join\n\nAbout Event\n\nAs AI gets more capable, so do the threats.\nAI is reshaping the economics of cyberattacks: vulnerabilities can be found faster, attacks automated, and sophisticated techniques deployed at unprecedented scale.\nRecent security tests also show frontier AI systems escaping controlled environments and reaching real-world systems. Yet this shift gives defenders a rare opportunity to rethink how we secure critical software, infrastructure, and digital systems.\nWe want to bring together developers, security engineers, ML/AI engineers, infrastructure engineers, and agent builders to tackle this head-on.\n🛡️ What You’re Building For\nThreat discovery · find vulnerabilities, misconfigurations, and attack paths before they’re exploited\n\nAttack intelligence · turn fragmented signals into a clear picture of what’s happening\n\nAutonomous remediation · patch, harden, and verify fixes with minimal human intervention\n\nContinuous defense · systems that monitor, adapt, and respond as threats evolve\n\nSpeakers\nLoading...\nJudges\nHenry Heng - Co-Founder & CEO FlowiseAI (Workday)\nLoading...\nAgenda\n9:30 AM — Doors Open + Opening Remarks\n\n1 1:00 AM — Kickoff & Hack\n\n1:30 PM — Lunch\n\n4:30 PM — Project Submission\n\n5:00 PM — Finalist Demos + Judging\n\n7:00 PM — Awards + Closing\n\nOur Partners\n\nOpenAI · Frontier AI research and developer infrastructure for building advanced models and intelligent agents.\nMongoDB · AI-ready data platform for building apps with operational data, search, and vectors.\nElevenLabs · AI voice and audio infrastructure for generating, understanding, and deploying lifelike speech at scale.\nGuild AI · AI infrastructure for building, evaluating, and deploying intelligent systems.\nClickHouse · High-performance analytics infrastructure for making sense of massive volumes of data in real time.\nSemgrep · Code security tools that help teams find and fix vulnerabilities, exposed secrets, and risky dependencies.\nNote: This event is fully in-person in San Francisco. Capacity is strictly limited. All attendees must apply and be approved prior to the event. Unapproved or pending applicants will not be admitted at the door.\nAll guests must be 18+ and present a valid government-issued physical photo ID at check-in (digital IDs will not be accepted). Scooters and bikes are not permitted in any Amazon building with no on-site parking available.\nMaximum team size is four. Solo Builders also welcome.\nSee what’s possible.\n\nFollow us on X · LinkedIn · Newsletter\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\ntokens&\n\nFollow\n\nThe AI community building the future of intelligence.\n\nHosted By\n\ntokens&\n\nAWS Builder Loft\n\nAlessandro Amenta\n\nJacopo Piazza\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:08.685Z",
+      "checkedAt": "2026-09-28T03:30:15.212Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/cyberhack",
@@ -1841,8 +1988,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "SF Hacks × GDG AI Hackathon 2026\nStudent Life Events Center / Annex I\nSan Francisco, CA\nSF Hacks × GDG AI Hackathon 2026 · Luma\n\nDiscover Events\nSign In\n\nHosted By\n\nDaksh Kumar\n\n19 Going\n\nHaroon Qahtan, Akshobhya Gupta and 17 others\n\nContact the Host\nReport Event\n\nAI\n\nSF Hacks × GDG AI Hackathon 2026\n\nHosted by Daksh Kumar\n\nStudent Life Events Center / Annex I\n\nSan Francisco, CA\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nAbout Event\n\n💻 SF Hacks × GDG AI Hackathon 2026\nJoin us for a full-day AI hackathon at San Francisco State University! Whether this is your first hackathon or you've built dozens of projects, all experience levels are welcome.\nSpend the day turning an idea into a working AI project while meeting other builders, learning from workshops, and connecting with peers and industry professionals.\n\nhttps://gdg.community.dev/events/details/google-gdg-on-campus-san-francisco-state-university-presents-ai-hackathon/\n✨ What to expect\nBuild an AI-focused project\n\nHands-on workshops\n\nMultiple competition tracks\n\nMentorship & networking\n\nConnect with industry professionals\n\nDemo what you built\n\nCompete for prizes 🏆\n\n📅 Friday, October 2, 2026\n⏰ 9:00 AM – 7:00 PM\n📍 SFSU Student Life Events Center / Annex I\nCome with an idea, join a team, or meet people at the event and build something together.\n\nLocation\n\nStudent Life Events Center / Annex I\n1 N State Dr, San Francisco, CA 94132, USA\n\nHosted By\n\nDaksh Kumar\n\n19 Going\n\nHaroon Qahtan, Akshobhya Gupta and 17 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:15.406Z",
+      "evidence": "SF Hacks × GDG AI Hackathon 2026\nStudent Life Events Center / Annex I\nSan Francisco, CA\nSF Hacks × GDG AI Hackathon 2026 · Luma\n\nDiscover Events\nSign In\n\nHosted By\n\nDaksh Kumar\n\n20 Going\n\nHaroon Qahtan, Akshobhya Gupta and 18 others\n\nContact the Host\nReport Event\n\nAI\n\nSF Hacks × GDG AI Hackathon 2026\n\nHosted by Daksh Kumar\n\nStudent Life Events Center / Annex I\n\nSan Francisco, CA\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nAbout Event\n\n💻 SF Hacks × GDG AI Hackathon 2026\nJoin us for a full-day AI hackathon at San Francisco State University! Whether this is your first hackathon or you've built dozens of projects, all experience levels are welcome.\nSpend the day turning an idea into a working AI project while meeting other builders, learning from workshops, and connecting with peers and industry professionals.\n\nhttps://gdg.community.dev/events/details/google-gdg-on-campus-san-francisco-state-university-presents-ai-hackathon/\n✨ What to expect\nBuild an AI-focused project\n\nHands-on workshops\n\nMultiple competition tracks\n\nMentorship & networking\n\nConnect with industry professionals\n\nDemo what you built\n\nCompete for prizes 🏆\n\n📅 Friday, October 2, 2026\n⏰ 9:00 AM – 7:00 PM\n📍 SFSU Student Life Events Center / Annex I\nCome with an idea, join a team, or meet people at the event and build something together.\n\nLocation\n\nStudent Life Events Center / Annex I\n1 N State Dr, San Francisco, CA 94132, USA\n\nHosted By\n\nDaksh Kumar\n\n20 Going\n\nHaroon Qahtan, Akshobhya Gupta and 18 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
+      "checkedAt": "2026-09-28T03:30:34.769Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/2w9wezy2",
@@ -2022,7 +2169,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Hack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ!\nAmplitude Analytics\nSan Francisco, CA\nHack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ! · Luma\n\nDiscover Events\nSign In\n\nHosted By\n\nOriane.xyz Video Intelligence\n\nGMI Cloud\n\nContact the Host\nReport Event\n\nTech\n\nHack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ!\n\nHosted by Oriane.xyz Video Intelligence & GMI Cloud\n\nAmplitude Analytics\n\nSan Francisco, CA\n\nRegistration\n\nRegistration Closed\n\nThis event is not currently taking registrations. You may contact the host or subscribe to receive updates.\n\nAbout Event\n\nBuild a product for creators. Ship it by sunset. 🚀\nOne afternoon, the weekend before SF Tech Week.\nFree stack, real data, live demos.\nEvery attendee gets $300 in credits to build their hackathon stack across all three partners:\n🎥 Oriane API : social video intelligence across TikTok & Instagram\n\n💜 Lovable : prompt to product\n\n⚡ GMI Cloud : hosting & GPU compute\n\n📍 Hosted at Amplitude HQ in SF, what a better place to build data-first products right?\nBuild the tool a creator, or an agency running 50 of them, uses on Monday.\nTrend copilot, hook analyzer, influencer finder, competitor watchtower, content playbook, social trend monitoring, review collector from UGCs... anything that comes through your mind, leveraging social media video data!\nDevs, marketers, creators, all in.\nNo code needed: Lovable's got you, or we'll pair you with a builder.\nAgenda\n1:00 — Doors, teams\n\n1:30 — Kickoff & API demos\n\n2:00 — Build 🔨\n\n5:30 — Demos\n\n6:15 — Winners 🏆\n\n6:30 — Drinks 🍻 & Pizza 🍕\n\nPrizes 🏆\n🥇 The $3,000 Package ($1,000 cash + $2,000 in credits across all 3 partners)\n\n🥈 The $1,500 Package ($500 cash + $1,000 in credits)\n\n🥉 The $750 Package ($250 cash + $500 in credits)\n\n✨ Wildcard award for the most unexpected idea\n\nEveryone keeps their credits after the event.\nJury to be announced soon.\nBring your laptop and an idea that won't leave you alone.\n\nLocation\n\nAmplitude Analytics\n201 3rd St #200, San Francisco, CA 94103, USA\n\nHosted By\n\nOriane.xyz Video Intelligence\n\nGMI Cloud\n\nContact the Host\nReport Event\n\nTech\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:46:51.591Z",
+      "checkedAt": "2026-09-28T03:30:18.548Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/92iq2a12",
@@ -2165,8 +2312,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nTechEquity Ai - Silicon Valley\nCompany Brain Hackathon: Build an AI Agent That Knows Your Organization\nMenlo Park, CA\n250 Going\nRegistration Open",
-      "checkedAt": "2026-09-27T18:46:47.718Z",
+      "evidence": "Hosted By\nTechEquity Ai - Silicon Valley\nCompany Brain Hackathon: Build an AI Agent That Knows Your Organization\nMenlo Park, CA\n253 Going\nRegistration Open",
+      "checkedAt": "2026-09-28T03:30:12.370Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/oct-hackathon",
@@ -2184,14 +2331,14 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 250
+        "going": 253
       }
     },
     {
       "url": "https://luma.com/j79caynh",
       "title": "AI Agents for Data Teams: A Practical Mini-Hackathon",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
       "confidence": 78,
       "relevance": 79,
       "signals": {
@@ -2201,8 +2348,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "AI Agents for Data Teams: A Practical Mini-Hackathon\n135 Constitution Dr\nMenlo Park, CA\nAI Agents for Data Teams: A Practical Mini-Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nBay Area Snowflake User Group\n\nFollow\n\nMeetups and hands-on sessions for Snowflake users across the Bay Area. Learn, collaborate, and put Snowflake’s data and AI products to work.\n\nHosted By\n\nJohn Miller (Milbird.com)\n\nDave Nielsen\n\nDivya Koppolu\n\nSilicon Valley AI Hub\n\nSahar Mor (Bond AI)\n\n108 Going\n\nMartín Ezequiel Pulitano, Lokesh and 106 others\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in Bond AI - San Francisco and Bay Area\n\nAI Agents for Data Teams: A Practical Mini-Hackathon\n\nBay Area Snowflake User Group\n\n135 Constitution Dr\n\nMenlo Park, CA\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nAbout Event\n\nBring a real problem. Build something useful. Show what works.\nJoin the Bay Area Snowflake User Group for an evening building with Snowflake’s agentic AI products.\nFind the right data, access it appropriately, improve documentation, check quality or govern how it is used. No problem is too small if solving it adds value to your team.\nCome solo and find collaborators, or bring a team of up to four. Leave with experience collaborating on Snowflake’s agentic AI products, something you built and tested, and an explanation of what improved.\nPlanned products\nExplore Snowflake CoCo for building, Cortex Agents for working with governed data and tools, and Snowflake CoWork as the conversational workspace. A planned Cognee integration example explores memory for Snowflake agents. Final walkthrough and account preparation details will be shared before the session.\nThe evening\n5:00 PM: Arrive & find your team\n\n5:30 PM: Welcome & a practical starting point\n\n5:45 PM: Build with Snowflake’s agentic AI products\n\n7:15 PM: Show what works & share what you learned\n\n8:00 PM: Wrap up\n\nHow we’ll review the work\nValue Creation: Does it add value to a team?\n\nInnovation: Are you using the tools in new ways?\n\nWorking: How much did you build and get running?\n\nPartners & support\nSnowflake is the lead sponsor. Cognee sponsors the session with its focus on memory for AI agents, and Dave Nielsen supports teams. Silicon Valley AI Hub is the venue host. Organized with support from Milbird.\nWhat to bring\nA laptop and a real data-team task. Use public, synthetic or approved sample data you can share with your team.\n\nLocation\n\n135 Constitution Dr\nMenlo Park, CA 94025, USA\n\nSilicon Valley AI Hub, 135 Constitution Drive, Menlo Park.\n\nPresented by\nBay Area Snowflake User Group\n\nFollow\n\nMeetups and hands-on sessions for Snowflake users across the Bay Area. Learn, collaborate, and put Snowflake’s data and AI products to work.\n\nHosted By\n\nJohn Miller (Milbird.com)\n\nDave Nielsen\n\nDivya Koppolu\n\nSilicon Valley AI Hub\n\nSahar Mor (Bond AI)\n\n108 Going\n\nMartín Ezequiel Pulitano, Lokesh and 106 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:06.729Z",
+      "evidence": "AI Agents for Data Teams: A Practical Mini-Hackathon\n135 Constitution Dr\nMenlo Park, CA\nAI Agents for Data Teams: A Practical Mini-Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nBay Area Snowflake User Group\n\nFollow\n\nMeetups and hands-on sessions for Snowflake users across the Bay Area. Learn, collaborate, and put Snowflake’s data and AI products to work.\n\nHosted By\n\nJohn Miller (Milbird.com)\n\nDave Nielsen\n\nDivya Koppolu\n\nSilicon Valley AI Hub\n\nSahar Mor (Bond AI)\n\n114 Going\n\nMartín Ezequiel Pulitano, Lokesh and 112 others\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in Bond AI - San Francisco and Bay Area\n\nAI Agents for Data Teams: A Practical Mini-Hackathon\n\nBay Area Snowflake User Group\n\n135 Constitution Dr\n\nMenlo Park, CA\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nAbout Event\n\nBring a real problem. Build something useful. Show what works.\nJoin the Bay Area Snowflake User Group for an evening building with Snowflake’s agentic AI products.\nFind the right data, access it appropriately, improve documentation, check quality or govern how it is used. No problem is too small if solving it adds value to your team.\nCome solo and find collaborators, or bring a team of up to four. Leave with experience collaborating on Snowflake’s agentic AI products, something you built and tested, and an explanation of what improved.\nPlanned products\nExplore Snowflake CoCo for building, Cortex Agents for working with governed data and tools, and Snowflake CoWork as the conversational workspace. A planned Cognee integration example explores memory for Snowflake agents. Final walkthrough and account preparation details will be shared before the session.\nThe evening\n5:00 PM: Arrive & find your team\n\n5:30 PM: Welcome & a practical starting point\n\n5:45 PM: Build with Snowflake’s agentic AI products\n\n7:15 PM: Show what works & share what you learned\n\n8:00 PM: Wrap up\n\nHow we’ll review the work\nValue Creation: Does it add value to a team?\n\nInnovation: Are you using the tools in new ways?\n\nWorking: How much did you build and get running?\n\nPartners & support\nSnowflake is the lead sponsor. Cognee sponsors the session with its focus on memory for AI agents, and Dave Nielsen supports teams. Silicon Valley AI Hub is the venue host. Organized with support from Milbird.\nWhat to bring\nA laptop and a real data-team task. Use public, synthetic or approved sample data you can share with your team.\n\nLocation\n\n135 Constitution Dr\nMenlo Park, CA 94025, USA\n\nSilicon Valley AI Hub, 135 Constitution Drive, Menlo Park.\n\nPresented by\nBay Area Snowflake User Group\n\nFollow\n\nMeetups and hands-on sessions for Snowflake users across the Bay Area. Learn, collaborate, and put Snowflake’s data and AI products to work.\n\nHosted By\n\nJohn Miller (Milbird.com)\n\nDave Nielsen\n\nDivya Koppolu\n\nSilicon Valley AI Hub\n\nSahar Mor (Bond AI)\n\n114 Going\n\nMartín Ezequiel Pulitano, Lokesh and 112 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
+      "checkedAt": "2026-09-28T03:30:22.016Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/j79caynh",
@@ -2220,7 +2367,7 @@
           "region": "California"
         },
         "offerAvailability": "https://schema.org/InStock",
-        "going": 103
+        "going": 114
       }
     },
     {
@@ -2597,8 +2744,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "UC San Diego Horizon x Techstars Startup Weekend: Justice + AI\nSan Diego, CA\nSan Diego, CA\nUC San Diego Horizon x Techstars Startup Weekend: Justice + AI · Luma\n\nDiscover Events\nSign In\n\nPresented by\nUC San Diego Horizon\n\nFollow\n\nEvents and engagement opportunities for UC San Diego's flagship accelerator. Under the Office of Innovation & Commercialization.\n\nHosted By\n\nShane Moise\n\nJulian\n\nUC San Diego - Office of Innovation\n\nTami Renteria\n\n7 Going\n\nPratik, Mohammed Alkindi and 5 others\n\nContact the Host\nReport Event\n\nAI\n\nUC San Diego Horizon x Techstars Startup Weekend: Justice + AI\n\nUC San Diego Horizon\n\nRegister to See Address\nSan Diego, CA\n\nRegistration\n\nWelcome! Please choose your desired ticket type:\n\nStandard\nSold Out\n\nUC San Diego Undergraduate\n\nUC San Diego Graduate Student\n\nUC San Diego Faculty\n\nUC San Diego Post Doc\n\nUC San Diego Staff\n\nUC San Diego Alumni\n\nInvestor\n\nService Provider/Industry\n\nRegister\n\nAbout Event\n\nUC San Diego's Design and Innovation Building hosts Techstars Startup Weekend San Diego, bringing builders, designers, lawyers, and the legally curious together for a weekend focused squarely on legal tech, software, and innovation. The theme: reimagining law for the AI era. The legal industry touches nearly everyone and has changed less than almost any other sector in the last few decades — this weekend is about building the tools that could finally change that, from AI that helps a tenant fight an eviction to software that lets a small business draft a contract without a $400-an-hour phone call.\nAround 100 participants will pitch ideas, form teams around the strongest ones, and spend the weekend building toward a final pitch to a panel of judges. Mentors and coaches work alongside teams throughout, helping them get out of the building to validate ideas with real users, sharpen product direction, and prepare a polished final pitch.\nJulian Bryant , Lead Organizer of Techstars Startup Weekend San Diego and an attorney/software developer himself, has facilitated roughly 40 Startup Weekends and brings a track record of real companies launched from the format — including CreativeUp, a Santa Barbara-based company that formed at one of his earliest events and is still operating more than six years later.\nJacques Chirazi , Director of the Basement and Entrepreneurship Center at UC San Diego's Office of Innovation and Commercialization, brings UC San Diego's student entrepreneurship ecosystem into the weekend, connecting participants to campus resources that can carry momentum well past Sunday night.\nMason Baldwin : TBD\nThis isn't just a competition — it's an entrepreneurial laboratory. Participants who've never attempted a startup get to try on different roles — founder, designer, engineer — and learn by doing what Julian calls \"experiential education entrepreneurship,\" packed into three days.\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Diego, CA\n\nPresented by\nUC San Diego Horizon\n\nFollow\n\nEvents and engagement opportunities for UC San Diego's flagship accelerator. Under the Office of Innovation & Commercialization.\n\nHosted By\n\nShane Moise\n\nJulian\n\nUC San Diego - Office of Innovation\n\nTami Renteria\n\n7 Going\n\nPratik, Mohammed Alkindi and 5 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:47:13.986Z",
+      "evidence": "UC San Diego Horizon x Techstars Startup Weekend: Justice + AI\nSan Diego, CA\nSan Diego, CA\nUC San Diego Horizon x Techstars Startup Weekend: Justice + AI · Luma\n\nDiscover Events\nSign In\n\nPresented by\nUC San Diego Horizon\n\nFollow\n\nEvents and engagement opportunities for UC San Diego's flagship accelerator. Under the Office of Innovation & Commercialization.\n\nHosted By\n\nShane Moise\n\nJulian\n\nUC San Diego - Office of Innovation\n\nTami Renteria\n\n9 Going\n\nPratik, Mohammed Alkindi and 7 others\n\nContact the Host\nReport Event\n\nAI\n\nUC San Diego Horizon x Techstars Startup Weekend: Justice + AI\n\nUC San Diego Horizon\n\nRegister to See Address\nSan Diego, CA\n\nRegistration\n\nWelcome! Please choose your desired ticket type:\n\nStandard\nSold Out\n\nUC San Diego Undergraduate\n\nUC San Diego Graduate Student\n\nUC San Diego Faculty\n\nUC San Diego Post Doc\n\nUC San Diego Staff\n\nUC San Diego Alumni\n\nInvestor\n\nService Provider/Industry\n\nRegister\n\nAbout Event\n\nUC San Diego's Design and Innovation Building hosts Techstars Startup Weekend San Diego, bringing builders, designers, lawyers, and the legally curious together for a weekend focused squarely on legal tech, software, and innovation. The theme: reimagining law for the AI era. The legal industry touches nearly everyone and has changed less than almost any other sector in the last few decades — this weekend is about building the tools that could finally change that, from AI that helps a tenant fight an eviction to software that lets a small business draft a contract without a $400-an-hour phone call.\nAround 100 participants will pitch ideas, form teams around the strongest ones, and spend the weekend building toward a final pitch to a panel of judges. Mentors and coaches work alongside teams throughout, helping them get out of the building to validate ideas with real users, sharpen product direction, and prepare a polished final pitch.\nJulian Bryant , Lead Organizer of Techstars Startup Weekend San Diego and an attorney/software developer himself, has facilitated roughly 40 Startup Weekends and brings a track record of real companies launched from the format — including CreativeUp, a Santa Barbara-based company that formed at one of his earliest events and is still operating more than six years later.\nJacques Chirazi , Director of the Basement and Entrepreneurship Center at UC San Diego's Office of Innovation and Commercialization, brings UC San Diego's student entrepreneurship ecosystem into the weekend, connecting participants to campus resources that can carry momentum well past Sunday night.\nMason Baldwin : TBD\nThis isn't just a competition — it's an entrepreneurial laboratory. Participants who've never attempted a startup get to try on different roles — founder, designer, engineer — and learn by doing what Julian calls \"experiential education entrepreneurship,\" packed into three days.\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Diego, CA\n\nPresented by\nUC San Diego Horizon\n\nFollow\n\nEvents and engagement opportunities for UC San Diego's flagship accelerator. Under the Office of Innovation & Commercialization.\n\nHosted By\n\nShane Moise\n\nJulian\n\nUC San Diego - Office of Innovation\n\nTami Renteria\n\n9 Going\n\nPratik, Mohammed Alkindi and 7 others\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
+      "checkedAt": "2026-09-28T03:30:33.591Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/kd6of4os",
@@ -2616,7 +2763,7 @@
           "region": "California"
         },
         "offerAvailability": "https://schema.org/InStock",
-        "going": 7
+        "going": 9
       }
     },
     {
@@ -2836,78 +2983,6 @@
       }
     },
     {
-      "url": "https://luma.com/oct-hackathon",
-      "title": "Company Brain Hackathon: Build an AI Agent That Knows Your Organization",
-      "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "confidence": 78,
-      "relevance": 79,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Hosted By\nTechEquity Ai - Silicon Valley\nCompany Brain Hackathon: Build an AI Agent That Knows Your Organization\nMenlo Park, CA\n239 Going\nRegistration Open",
-      "checkedAt": "2026-09-27T09:41:24.512Z",
-      "heldBecause": null,
-      "structuredEvent": {
-        "url": "https://luma.com/oct-hackathon",
-        "name": "Company Brain Hackathon: Build an AI Agent That Knows Your Organization",
-        "description": null,
-        "startDate": "2026-10-12T20:00:00.000Z",
-        "endDate": "2026-10-13T00:00:00.000Z",
-        "timeSource": "luma-api",
-        "organizers": [
-          "TechEquity Ai - Silicon Valley"
-        ],
-        "location": {
-          "name": null,
-          "city": "Menlo Park",
-          "region": "CA"
-        },
-        "offerAvailability": "InStock",
-        "going": 239
-      }
-    },
-    {
-      "url": "https://luma.com/oct-hackathon",
-      "title": "Company Brain Hackathon: Build an AI Agent That Knows Your Organization",
-      "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "confidence": 78,
-      "relevance": 79,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Hosted By\nTechEquity Ai - Silicon Valley\nCompany Brain Hackathon: Build an AI Agent That Knows Your Organization\nMenlo Park, CA\n239 Going\nRegistration Open",
-      "checkedAt": "2026-09-27T08:47:02.550Z",
-      "heldBecause": null,
-      "structuredEvent": {
-        "url": "https://luma.com/oct-hackathon",
-        "name": "Company Brain Hackathon: Build an AI Agent That Knows Your Organization",
-        "description": null,
-        "startDate": "2026-10-12T20:00:00.000Z",
-        "endDate": "2026-10-13T00:00:00.000Z",
-        "timeSource": "luma-api",
-        "organizers": [
-          "TechEquity Ai - Silicon Valley"
-        ],
-        "location": {
-          "name": null,
-          "city": "Menlo Park",
-          "region": "CA"
-        },
-        "offerAvailability": "InStock",
-        "going": 239
-      }
-    },
-    {
       "url": "https://luma.com/g42o84ln",
       "title": "Startup Speedrun Hackathon",
       "category": "hackathon",
@@ -2921,8 +2996,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nBrainbase Labs\nStartup Speedrun Hackathon\nSan Francisco, CA\nSouth Beach\n73 Going\nRegistration Open",
-      "checkedAt": "2026-09-27T18:46:47.718Z",
+      "evidence": "Hosted By\nBrainbase Labs\nStartup Speedrun Hackathon\nSan Francisco, CA\nSouth Beach\n89 Going\nRegistration Open",
+      "checkedAt": "2026-09-28T03:30:12.369Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/g42o84ln",
@@ -2940,7 +3015,7 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
-        "going": 73
+        "going": 89
       }
     },
     {
@@ -2958,7 +3033,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Tech Week Hackathon\nFrontier Tower @ Spaceship 995 Market Street, San Francisco\nSan Francisco, CA\nTech Week Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nFrontier Tower SF\n\nFollow\n\nA 16-floor nexus for frontier tech in SF. Join us at https://frontiertower.io/apply\n\nHosted By\n\nFrontier Tower\n\nJens Ingelstedt\n\nContact the Host\nReport Event\n\nTech\n\nTech Week Hackathon\n\nFrontier Tower SF\n\nFrontier Tower @ Spaceship 995 Market Street, San Francisco\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nLocation\n\nFrontier Tower @ Spaceship 995 Market Street, San Francisco\n\nPresented by\nFrontier Tower SF\n\nFollow\n\nA 16-floor nexus for frontier tech in SF. Join us at https://frontiertower.io/apply\n\nHosted By\n\nFrontier Tower\n\nJens Ingelstedt\n\nContact the Host\nReport Event\n\nTech\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:46:57.903Z",
+      "checkedAt": "2026-09-28T03:30:27.853Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/frontier-99lw",
@@ -2994,7 +3069,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Dell x NVIDIA Hackathon\nFrontier Tower @ Spaceship 995 Market Street, San Francisco\nSan Francisco, CA\nDell x NVIDIA Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nFrontier Tower SF\n\nFollow\n\nA 16-floor nexus for frontier tech in SF. Join us at https://frontiertower.io/apply\n\nHosted By\n\nFrontier Tower\n\nJens Ingelstedt\n\nPhilippe Collet\n\nContact the Host\nReport Event\n\nTech\n\nDell x NVIDIA Hackathon\n\nFrontier Tower SF\n\nFrontier Tower @ Spaceship 995 Market Street, San Francisco\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nLocation\n\nFrontier Tower @ Spaceship 995 Market Street, San Francisco\n\nPresented by\nFrontier Tower SF\n\nFollow\n\nA 16-floor nexus for frontier tech in SF. Join us at https://frontiertower.io/apply\n\nHosted By\n\nFrontier Tower\n\nJens Ingelstedt\n\nPhilippe Collet\n\nContact the Host\nReport Event\n\nTech\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-09-27T18:46:58.123Z",
+      "checkedAt": "2026-09-28T03:30:28.207Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/frontier-al6k",
@@ -3124,48 +3199,12 @@
       }
     },
     {
-      "url": "https://luma.com/g42o84ln",
-      "title": "Startup Speedrun Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "confidence": 62,
-      "relevance": 68,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Hosted By\nBrainbase Labs\nStartup Speedrun Hackathon\nSan Francisco, CA\nSouth Beach\n73 Going\nRegistration Open",
-      "checkedAt": "2026-09-27T09:41:24.512Z",
-      "heldBecause": null,
-      "structuredEvent": {
-        "url": "https://luma.com/g42o84ln",
-        "name": "Startup Speedrun Hackathon",
-        "description": null,
-        "startDate": "2026-09-28T16:00:00.000Z",
-        "endDate": "2026-09-29T00:00:00.000Z",
-        "timeSource": "luma-api",
-        "organizers": [
-          "Brainbase Labs"
-        ],
-        "location": {
-          "name": "South Beach",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "offerAvailability": "InStock",
-        "going": 73
-      }
-    },
-    {
       "url": "https://luma.com/select-2026-hackathon",
       "title": "Supabase Select 2026 Hackathon",
       "category": "hackathon",
       "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
       "confidence": 62,
-      "relevance": 68,
+      "relevance": 60,
       "signals": {
         "directHackathonTerm": true,
         "buildEvidence": false,
@@ -3173,8 +3212,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hosted By\nSupabase Community Events\nSupabase Select 2026 Hackathon\nSan Francisco, CA\nCentral Waterfront\n0 Going\nRegistration Open",
-      "checkedAt": "2026-09-27T09:41:24.512Z",
+      "evidence": "Hosted By\nSupabase Community Events\nSupabase Select 2026 Hackathon\nSan Francisco, CA\nCentral Waterfront\n0 Going\nRegistration Waitlist",
+      "checkedAt": "2026-09-28T03:30:12.369Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://luma.com/select-2026-hackathon",
@@ -3191,44 +3230,8 @@
           "city": "San Francisco",
           "region": "CA"
         },
-        "offerAvailability": "InStock",
+        "offerAvailability": null,
         "going": 0
-      }
-    },
-    {
-      "url": "https://luma.com/g42o84ln",
-      "title": "Startup Speedrun Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "confidence": 62,
-      "relevance": 68,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Hosted By\nBrainbase Labs\nStartup Speedrun Hackathon\nSan Francisco, CA\nSouth Beach\n73 Going\nRegistration Open",
-      "checkedAt": "2026-09-27T08:47:02.549Z",
-      "heldBecause": null,
-      "structuredEvent": {
-        "url": "https://luma.com/g42o84ln",
-        "name": "Startup Speedrun Hackathon",
-        "description": null,
-        "startDate": "2026-09-28T16:00:00.000Z",
-        "endDate": "2026-09-29T00:00:00.000Z",
-        "timeSource": "luma-api",
-        "organizers": [
-          "Brainbase Labs"
-        ],
-        "location": {
-          "name": "South Beach",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "offerAvailability": "InStock",
-        "going": 73
       }
     },
     {
@@ -3268,78 +3271,6 @@
       }
     },
     {
-      "url": "https://luma.com/select-2026-hackathon",
-      "title": "Supabase Select 2026 Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "confidence": 62,
-      "relevance": 68,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Hosted By\nSupabase Community Events\nSupabase Select 2026 Hackathon\nSan Francisco, CA\nCentral Waterfront\n0 Going\nRegistration Open",
-      "checkedAt": "2026-09-27T08:47:02.549Z",
-      "heldBecause": null,
-      "structuredEvent": {
-        "url": "https://luma.com/select-2026-hackathon",
-        "name": "Supabase Select 2026 Hackathon",
-        "description": null,
-        "startDate": "2026-10-03T16:00:00.000Z",
-        "endDate": "2026-10-04T00:00:00.000Z",
-        "timeSource": "luma-api",
-        "organizers": [
-          "Supabase Community Events"
-        ],
-        "location": {
-          "name": "Central Waterfront",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "offerAvailability": "InStock",
-        "going": 0
-      }
-    },
-    {
-      "url": "https://luma.com/select-2026-hackathon",
-      "title": "Supabase Select 2026 Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "confidence": 62,
-      "relevance": 60,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Hosted By\nSupabase Community Events\nSupabase Select 2026 Hackathon\nSan Francisco, CA\nCentral Waterfront\n0 Going\nRegistration Waitlist",
-      "checkedAt": "2026-09-27T18:46:47.718Z",
-      "heldBecause": null,
-      "structuredEvent": {
-        "url": "https://luma.com/select-2026-hackathon",
-        "name": "Supabase Select 2026 Hackathon",
-        "description": null,
-        "startDate": "2026-10-03T16:00:00.000Z",
-        "endDate": "2026-10-04T00:00:00.000Z",
-        "timeSource": "luma-api",
-        "organizers": [
-          "Supabase Community Events"
-        ],
-        "location": {
-          "name": "Central Waterfront",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "offerAvailability": null,
-        "going": 0
-      }
-    },
-    {
       "url": "https://luma.com/r1r5ku5p",
       "title": "Big Earth Hackathon Workshop: Google Earth Engine",
       "category": "hackathon",
@@ -3372,6 +3303,42 @@
           "region": "CA"
         },
         "offerAvailability": "InStock",
+        "going": 0
+      }
+    },
+    {
+      "url": "https://luma.com/jev3",
+      "title": "Rebuild With Jev #3: Decision Bot Architecture + Hackathon",
+      "category": "hackathon",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "confidence": 78,
+      "relevance": 79,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Rebuild With Jev #3: Decision Bot Architecture + Hackathon\nSan Francisco, CA\nSan Francisco, CA\nRebuild With Jev #3: Decision Bot Architecture + Hackathon · Luma\n\nDiscover Events\nSign In\n\nPresented by\nPromptQL Events\n\nFollow\n\nPromptQL is a team AI that automatically organizes and curates shared context as people work with AI and each other.\n\nSign up to stay updated!\n\nHosted By\n\nRajoshi Ghosh\n\nTanmai Gopal\n\nAnushrut Gupta\n\nPromptQL Events\n\nLaura Cruickshanks\n\nContact the Host\nReport Event\n\nAI\n\nFeatured in Bond AI - San Francisco and Bay Area\n\nRebuild With Jev #3: Decision Bot Architecture + Hackathon\n\nPromptQL Events\n\nRegister to See Address\nSan Francisco, CA\n\nRegistration\n\nEvent Full\nIf you’d like, you can join the waitlist.\n\nPlease click on the button below to join the waitlist. You will be notified if additional spots become available.\nJoin Waitlist\n\nAbout Event\n\nJev is a new kind of model from TypeSafe AI. It takes unstructured context and returns typed, probabilistic decisions that software can act on.\nUsing Jev well changes how you design workflows. You have to decide which judgments belong to the model, how to frame those decisions, and when the result should trigger an action, human review, or escalation. The fastest way to develop that instinct, or understand the “Jevability” of a problem, is to build.\nJoin us at the PromptQL office on Tuesday, September 29, from 4–7 p.m. PT for a hands-on evening exploring what becomes possible when decisions get fast, structured, and cheap.\nWe’ll start with a lightning session dissecting the architecture of four or five real systems built with Jev, and show off some of the best builds from the previous session. We’ll look at patterns such as routing work, selecting from existing options, ranking evidence, verifying agent output, and turning confidence into reliable control flow.\nThen we’ll hack.\nBring a workflow, product idea, or recurring judgment you want to rebuild. You’ll leave with a working prototype, a sharper sense of where Jev fits, and practical patterns you can reuse in future systems.\nSchedule\n4:00 PM: Doors open and introductions\n4:15 PM: Jev architecture lightning talks\n5:00 PM: Hackathon\n6:30 PM: Demos and discussion\n7:00 PM: Wrap\nNo Jev or app-building experience is needed. Engineers, founders, product builders, and anyone curious about decision-driven automation are welcome.\nThis is a small, hands-on gathering hosted by PromptQL. Come ready to build. Dinner will be provided.\n\nLocation\n\nPlease register to see the exact location of this event.\nSan Francisco, CA\n\nPresented by\nPromptQL Events\n\nFollow\n\nPromptQL is a team AI that automatically organizes and curates shared context as people work with AI and each other.\n\nSign up to stay updated!\n\nHosted By\n\nRajoshi Ghosh\n\nTanmai Gopal\n\nAnushrut Gupta\n\nPromptQL Events\n\nLaura Cruickshanks\n\nContact the Host\nReport Event\n\nAI\n\nDiscover Pricing Help\n\nGet the App",
+      "checkedAt": "2026-09-28T03:30:22.296Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://luma.com/jev3",
+        "name": "Rebuild With Jev #3: Decision Bot Architecture + Hackathon",
+        "description": "Jev is a new kind of model from TypeSafe AI. It takes unstructured context and returns typed, probabilistic decisions that software can act on.\nUsing Jev well changes how you design workflows. You have to decide which judgments belong to the model, how to frame those decisions, and when the result should trigger an action, human review, or escalation. The fastest way to develop that instinct, or understand the “Jevability” of a problem, is to build.\nJoin us at the PromptQL office on Tuesday, September 29, from 4–7 p.m. PT for a hands-on evening exploring what becomes possible when decisions get fast, structured, and cheap.\nWe’ll start with a lightning session dissecting the architecture of four or five real systems built with Jev, and show off some of the best builds from the previous session. We’ll look at patterns such as routing work, selecting from existing options, ranking evidence, verifying agent output, and turning confidence into reliable control flow.\nThen we’ll hack.\nBring a workflow, product idea, or recurring judgment you want to rebuild. You’ll leave with a working prototype, a sharper sense of where Jev fits, and practical patterns you can reuse in future systems.\nSchedule\n4:00 PM: Doors open and introductions\n4:15 PM: Jev architecture lightning talks\n5:00 PM: Hackathon\n6:30 PM: Demos and discussion\n7:00 PM: Wrap\nNo Jev or app-building experience is needed. Engineers, founders, product builders, and anyone curious about decision-driven automation are welcome.\nThis is a small, hands-on gathering hosted by PromptQL. Come ready to build. Dinner will be provided.",
+        "startDate": "2026-09-29T16:00:00.000-07:00",
+        "endDate": "2026-09-29T19:00:00.000-07:00",
+        "timeSource": "luma-page",
+        "organizers": [
+          "PromptQL Events"
+        ],
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "offerAvailability": "https://schema.org/SoldOut",
         "going": 0
       }
     }
