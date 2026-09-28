@@ -1,17 +1,22 @@
 {
-  "collectedAt": "2026-09-28T09:14:42.616Z",
+  "collectedAt": "2026-09-28T21:00:35.360Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 19,
-  "pagesRead": 12,
+  "pagesFound": 9,
+  "pagesRead": 9,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
   "problems": [
     {
       "stage": "search",
-      "query": "hackathon san diego 2026 lu.ma",
+      "query": "\"ai hackathon\" san diego open registration",
+      "error": "brightdata expect_element"
+    },
+    {
+      "stage": "search",
+      "query": "buildathon OR makeathon san francisco 2026 sign up",
       "error": "brightdata expect_element"
     }
   ],
