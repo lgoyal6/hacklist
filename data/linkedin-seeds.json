@@ -1,14 +1,25 @@
 {
-  "collectedAt": "2026-09-29T03:43:17.204Z",
+  "collectedAt": "2026-09-29T09:25:50.745Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 18,
-  "pagesRead": 12,
+  "pagesFound": 10,
+  "pagesRead": 10,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
+      "error": "brightdata expect_element"
+    },
+    {
+      "stage": "search",
+      "query": "weekly bay area ai events hackathon 2026",
+      "error": "brightdata expect_element"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -18,7 +29,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "isco, California - Host: Luma - Details available on the RSVP page. 5:30 PM PT - Agents in Production: correctness, context, and control - AWS Builder Loft, San Francisco, CA - Host: SurrealDB San Francisco - To sign up for this event, you must register here: https://luma.com/hqz8wi79 -- Agents are ",
-      "lastSeenAt": "2026-09-09T03:31:21.217Z"
+      "lastSeenAt": "2026-09-29T09:25:50.745Z"
     },
     {
       "url": "https://luma.com/zsaa3r3d",
@@ -326,7 +337,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/tezock_builders-cup-2026-a-hackathon-by-ramp-activity-7479926811095867392-A1AN",
       "context": "🏆 Builders Cup 2026, a one-day hackathon in Flatiron NYC. If you're a student looking for a SWE internship or new grad role, this is *definitely* worth your Saturday. Top builders get in front of Ramp directly, on top of food, coffee, and prizes. RSVP here: https://luma.com/nrletiv9 📅 July 18, 10a",
-      "lastSeenAt": "2026-09-18T03:31:55.043Z"
+      "lastSeenAt": "2026-09-29T09:25:50.745Z"
     },
     {
       "url": "https://luma.com/battle-bots-hack-night-jul15-2026",
