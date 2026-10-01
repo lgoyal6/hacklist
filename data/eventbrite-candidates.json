@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-01T04:01:36.038Z",
+  "collectedAt": "2026-10-01T10:00:44.424Z",
   "source": "eventbrite",
   "queries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
@@ -17,19 +17,19 @@
   "problems": [
     {
       "query": "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
-      "error": "Error: getaddrinfo ENOTFOUND www.eventbrite.com"
+      "error": "Error: HTTP 405"
     },
     {
       "query": "https://www.eventbrite.com/d/ca--oakland/hackathon/",
-      "error": "Error: getaddrinfo ENOTFOUND www.eventbrite.com"
+      "error": "Error: HTTP 405"
     },
     {
       "query": "https://www.eventbrite.com/d/ca--san-jose/hackathon/",
-      "error": "Error: getaddrinfo ENOTFOUND www.eventbrite.com"
+      "error": "Error: HTTP 405"
     },
     {
       "query": "https://www.eventbrite.com/d/ca--san-diego/hackathon/",
-      "error": "Error: getaddrinfo ENOTFOUND www.eventbrite.com"
+      "error": "Error: HTTP 405"
     }
   ],
   "carried": 5,
