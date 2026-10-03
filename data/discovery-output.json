@@ -2,10 +2,10 @@
   "sweep": {
     "city": "San Francisco",
     "startedFrom": 28,
-    "personalizedSeeds": 2056,
-    "personalizedPromising": 77,
+    "personalizedSeeds": 2111,
+    "personalizedPromising": 78,
     "searchSeeds": 60,
-    "apiCalendarSeeds": 5,
+    "apiCalendarSeeds": 6,
     "linkedinSeeds": 60,
     "linkedinPromising": 60,
     "pagesVisited": 870,
@@ -19,24 +19,24 @@
     "httpPauses": 3,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 12,
-    "structuredEventsFound": 325,
-    "candidatesFound": 7,
+    "externalPagesVisited": 13,
+    "structuredEventsFound": 101,
+    "candidatesFound": 5,
     "heldForReview": 0,
-    "nearMisses": 4,
+    "nearMisses": 2,
     "stoppedOnTimeBudget": false,
-    "elapsedSeconds": 928,
-    "secondsPerPage": 1.0671,
+    "elapsedSeconds": 910,
+    "secondsPerPage": 1.0463,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 217,
+    "queueRemaining": 235,
     "pagesByRegion": {
       "san-diego": 15
     },
     "regionPageReserve": {
       "san-diego": 150
     },
-    "completedAt": "2026-10-02T19:56:26.084Z"
+    "completedAt": "2026-10-03T09:02:11.194Z"
   },
   "candidates": [
     {
@@ -73,7 +73,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-02T19:41:39.011Z",
+      "checkedAt": "2026-10-03T08:47:40.753Z",
       "heldBecause": null
     },
     {
@@ -90,7 +90,7 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "The AI Commerce Gallery - Hackathon | Walt Disney Family Museum\nAI Valley\nAI Valley\nZooWork Team\nCourtney Ko\nJohnny Chin\nEntire\nLizzie @ Entire\nLily Yang\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "evidence": "The AI Commerce Gallery - Hackathon | Walt Disney Family Museum\nAI Valley\nAI Valley\nZooWork Team\nCourtney Ko\nJohnny Chin\nEntire\nLizzie @ Entire\nSan Francisco, CA\nSan Francisco\nCalifornia",
       "structuredEvent": {
         "url": "https://luma.com/6bbloggr",
         "name": "The AI Commerce Gallery - Hackathon | Walt Disney Family Museum",
@@ -111,12 +111,11 @@
           "Courtney Ko",
           "Johnny Chin",
           "Entire",
-          "Lizzie @ Entire",
-          "Lily Yang"
+          "Lizzie @ Entire"
         ],
         "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-10-02T19:41:46.074Z"
+      "checkedAt": "2026-10-03T08:47:47.450Z"
     },
     {
       "url": "https://luma.com/select-2026-hackathon",
@@ -152,83 +151,7 @@
         ],
         "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-10-02T19:41:17.163Z"
-    },
-    {
-      "url": "https://luma.com/2w9wezy2",
-      "title": "SF Hacks × GDG AI Hackathon 2026",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "SF Hacks × GDG AI Hackathon 2026\nDaksh Kumar\nDaksh Kumar\nStudent Life Events Center / Annex I\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/2w9wezy2",
-        "name": "SF Hacks × GDG AI Hackathon 2026",
-        "description": null,
-        "startDate": "2026-10-02T09:00:00.000-07:00",
-        "endDate": "2026-10-02T19:00:00.000-07:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "Student Life Events Center / Annex I",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Daksh Kumar",
-          "Daksh Kumar"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-10-02T19:41:46.073Z"
-    },
-    {
-      "url": "https://luma.com/7x4tywqh",
-      "title": "Jev Hack/Demo Night | Birds of a Feather",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Jev Hack/Demo Night | Birds of a Feather\nFeatherless.ai\nNehal Agrawal\nRichelle J\nFeatherless ai\nTinyFish\nYunsu Tang\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/7x4tywqh",
-        "name": "Jev Hack/Demo Night | Birds of a Feather",
-        "description": null,
-        "startDate": "2026-10-02T18:00:00.000-07:00",
-        "endDate": "2026-10-02T20:00:00.000-07:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Featherless.ai",
-          "Nehal Agrawal",
-          "Richelle J",
-          "Featherless ai",
-          "TinyFish",
-          "Yunsu Tang"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-10-02T19:41:46.073Z"
+      "checkedAt": "2026-10-03T08:47:19.855Z"
     },
     {
       "url": "https://luma.com/o98aoftq",
@@ -268,7 +191,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-02T19:41:46.073Z"
+      "checkedAt": "2026-10-03T08:47:47.450Z"
     },
     {
       "url": "https://luma.com/hacs1uig",
@@ -305,7 +228,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-02T19:41:46.074Z"
+      "checkedAt": "2026-10-03T08:47:47.450Z"
     }
   ],
   "errors": []
