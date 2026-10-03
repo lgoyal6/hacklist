@@ -5,7 +5,7 @@
     "personalizedSeeds": 2111,
     "personalizedPromising": 78,
     "searchSeeds": 60,
-    "apiCalendarSeeds": 6,
+    "apiCalendarSeeds": 5,
     "linkedinSeeds": 60,
     "linkedinPromising": 60,
     "pagesVisited": 870,
@@ -14,29 +14,29 @@
     "unlockerConfigured": false,
     "unlockerProblem": null,
     "lastDeepSweepAt": "2026-09-30T09:33:17.623Z",
-    "httpFailures": 24,
-    "httpThrottled": 24,
-    "httpPauses": 3,
+    "httpFailures": 32,
+    "httpThrottled": 32,
+    "httpPauses": 4,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
     "externalPagesVisited": 13,
     "structuredEventsFound": 101,
-    "candidatesFound": 5,
+    "candidatesFound": 8,
     "heldForReview": 0,
     "nearMisses": 2,
     "stoppedOnTimeBudget": false,
-    "elapsedSeconds": 910,
-    "secondsPerPage": 1.0463,
+    "elapsedSeconds": 1033,
+    "secondsPerPage": 1.1872,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 235,
+    "queueRemaining": 191,
     "pagesByRegion": {
       "san-diego": 15
     },
     "regionPageReserve": {
       "san-diego": 150
     },
-    "completedAt": "2026-10-03T09:02:11.194Z"
+    "completedAt": "2026-10-03T18:45:16.479Z"
   },
   "candidates": [
     {
@@ -73,7 +73,92 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-03T08:47:40.753Z",
+      "checkedAt": "2026-10-03T18:28:45.357Z",
+      "heldBecause": null
+    },
+    {
+      "url": "https://university.tryprofound.com/events/marketing-engineering-hackathon",
+      "title": "Marketing Engineering Hackathon: San Francisco, October 3, 2026 | Profound University",
+      "category": "hackathon",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 94,
+      "relevance": 96,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "HomeCoursesPodsCertifications\nOpen app\nOctober 3, 2026Profound, San Francisco40 spots\nMarketing Engineering Hackathon: San Francisco\n\n40 builders. One day. $40,000 in prizes.\n\nApplications\nApplications closed\n[01]\nA new discipline emerges\n\nThis past April, Profound introduced Marketing Engineering to the world. Since then, companies like Google have already hired their first Marketing Engineers. Our inaugural hackathon in NYC this June was 5x oversubscribed and brimming with talent. Now, a whole community is thriving.\n\nFor the second iteration and our first in San Francisco, this hackathon will push the limits of this new discipline and ask: how do you build systems and agents that let one marketer produce the work of a hundred?\n\nWatch the manifesto\n[02]\nYour challenge\nPrompt\n\nFind a marketing process that's inhuman in scope or scale, and ship a system or agent that runs it.\n\nThe Hackathon problem statement will be announced during the Kickoff session.\n\nbrief.released=true\n[03]\nHouse rules\nStack\nOpen platform\n\nBuild with whatever platform or tool you want. Everyone gets a Profound instance, but using it is optional\n\nPremise\nSolo building, and no pre-builds\n\nNo teams and you must build on the day. The thesis is that one Marketing Engineer can 10x the productivity of an entire marketing team.\n\nEvaluation\nJudged by demo\n\nBuilders pitch their projects to judges through two rounds of a 4-minute demo format.\n\n[04]\nAgenda of the day\nSaturday, October 3, 2026\n9:00 AM to 10:00 PM PDT\nProfound, San Francisco\nStart\nMarketing Engineering Hackathon: San Francisco\n40\nDoors open\n9:00 AM PDT\n\nBadges, coffee, pastries. Get settled in.\n\nOutput\nroomReady\nKickoff\n9:30 AM PDT\n\nA quick welcome, and the problem statement is revealed.\n\nOutput\nbriefLoaded\nIteration · Build loop\nStep 2/3· Lunch is served\nStart\nHacking begins\n10:00 AM PDT\n\nHeads down. Everything you demo gets built today, no pre-builds.\n\nOutput\nagentRunning\nLunch is served\n12:30 PM PDT\n\nNo break in building. Food shows up next to your laptop.\n\nOutput\nfuelTopped\nJudges walk the room\n4:00 PM PDT\n\nJudges walk around to ask questions and get a sense of what's being built.\n\nOutput\njudgesObserving\nEnd\nOutput\nshippedAgent\nSubmissions close\n6:00 PM PDT\n\nSubmit your demo for judging. The first round of demos begins.\n\nOutput\nsubmissionsLocked\nTop demos on stage\n7:00 PM PDT\n\nThe top demos from the first round are judged on stage in front of everyone.\n\nOutput\ntopDemos\nWinners announced\n8:00 PM PDT\n\nBoth the Best Agent Overall and Best Profound-native Agent receive $10,000 cash and $10,000 in Profound Agent credits.\n\nOutput\nwinners\nAfter-hours hangout\n8:30 PM PDT\n\nStay for drinks, food, and music to celebrate a successful hackathon.\n\nOutput\nafterpartyOn\nEnd\nHackathon concluded\n[05]\nJudges\n\nA panel of leaders hiring Marketing Engineers at top companies\n\nPanel\n\nComing soon\n\n[06]\n$40,000 in prizes\n\nThe top two winners receive $10k in cash and $10k in Profound Agent credits. You'll also receive an offer to interview at Profound. Additional prizes revealed as we get closer to the date.\n\nConditional\nHackathon winners\ncontains\nYou\nIf true\nTop prize\nBest Agent Overall\nTop prize\n\n$10,000 in cash, $10,000 in Profound Agent credits, and an interview offer at Profound.\n\nOutput\nbestAgentOverall\nTop prize\nBest Profound-native Agent\nTop prize\n\n$10,000 in cash, $10,000 in Profound Agent credits, and an interview offer at Profound.\n\nOutput\nbestProfoundNativeAgent\nIf false\nMore prizes\nComing soon\n\nAdditional prizes revealed as we get closer to the date.\n\nOutput\nsurprise\nFrequently Asked Questions\n\nWho is this for?\n\nWe're seeking aspiring and practicing Marketing Engineers. You're building with agents, experimenting daily to solve real marketing challenges and opportunities, and you have proof of your expertise to show us.\n\nDo I have to use Profound?\n\nNo. Every builder gets a Profound instance, but you can ship with whatever stack you want: Cursor, Claude Code, Python, n8n, Replit, your own framework. We keep the playing field clean by giving the Best Profound-native Agent its own prize.\n\nHow long is the build window?\n\nFrom 10 AM to 6 PM PT. You must submit your demo for judging at 6 PM PT, and your workflow must be built on the day of the hackathon, no pre-builds.\n\nCan I bring a teammate?\n\nNo teams. The thesis is that one marketing engineer can 10x the productivity of an entire marketing team.\n\nWhen do I find out if I'm in?\n\nApplications close on at 11:59 pm ET on September 20. Selected builders will hear from us the week of September 21.\n\nWhat does it cost?\n\nNothing. Just bring your laptop, your taste, and the willingness to ship something memorable.\n\nWill Profound cover travel costs?\n\nNo.\n\nCan I participate remotely?\n\nNo, this is an in-person hackathon.\n\nSee you on October 3\n\nApplications closed on September 25. Follow along for the announcements.\n\nCertifications, tutorials, and courses designed for marketers in the AI era\n\nLearn\nHome\nCourses\nPods\nCertifications\nResources\nProfound Partners\nDocumentation\nBlog\nVerify Diploma\nWhat's new\nCompany\nCareers\nProfound\n\n© 2026 Profound\n\nCookie preferences\n🇺🇸English\nCookie preferences\n\nWe use cookies to improve the product and understand how it is used. You can choose which optional cookies to allow. Cookie Policy\n\nAccept all\nReject optional\nCustomize\nCookie preferences\n\nWe use cookies to improve the product and understand how it is used. You can choose which optional cookies to allow.\n\nAccept allReject optional\nCustomize\nCookie Policy",
+      "checkedAt": "2026-10-03T18:30:26.259Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://university.tryprofound.com/events/marketing-engineering-hackathon",
+        "name": "Marketing Engineering Hackathon",
+        "description": "Forty independent builders will race to create AI systems that multiply marketing output, competing for $40K in prizes at this first San Francisco edition of the hackathon.",
+        "startDate": "2026-10-03T16:00:00.000Z",
+        "endDate": "2026-10-04T05:00:00.000Z",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "organizers": [],
+        "offerAvailability": null
+      }
+    },
+    {
+      "url": "https://ushackathons.com/events/new-york-hub-columbia-7th-hack-nation-global-ai-hackathon",
+      "title": "New York Hub (Columbia) - 7th Hack-Nation… — Hackathons USA",
+      "category": "hackathon",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 94,
+      "relevance": 96,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "skip to content\n>_HACKATHONSUSA\n⌘K\nlocations\nSan Francisco\nNew York\nBoston\nLos Angeles\nSeattle\nAustin\nChicago\nWashington DC\nDenver\nAtlanta\naboutget featured\nsubmit hackathon\nlocations\naboutget featured\nsubmit hackathon\nhome/new york/New York Hub (Columbia) - 7th Hack-Nation Global AI Hackathon\nTODAY\nNew York Hub (Columbia) - 7th Hack-Nation Global AI Hackathon\nNYHack-Nation's Global AI Hackathons\nview event ↗\nwhen3–4 Oct 2026\nwhereNew York\nprize$30,000+\npriceFree\nformatIn-Person\norganiserHack-Nation's Global AI Hackathons\nabout this event\n\nHey Columbia, kick off your fall semester by building something that matters! Secure your spot at the Columbia Hub for the 7th Global AI Hackathon, October 3-4, 2026; a weekend for ambitious builders who want to meet exceptional peers, tackle some of the world's most pressing challenges, and turn bold ideas into real ventures.\n\nBuild, prototype, and pitch in just 24 hours, with feedback from mentors and judges whose backgrounds include OpenAI, Meta, Apple, and other leading AI startups.\n\nWhat's in it for you? $30K+ in cash prizes and API credits across approximately 6-8 AI challenges $200K+ in AI tools and credits available to participating teams An invitation for the top 1% of teams to join our Venture Lab and continue incubating their startups after the hackathon The opportunity to meet and build alongside Columbia students, researchers, engineers, designers, and founders\n\nNo idea or team required. Come ready to build. Challenge tracks will be provided.\n\nAgenda October 3 11:00 AM: Local kick-off at Columbia October 4 9:00 AM: Project submission deadline 9:30-10:30 AM: Local pitches at Columbia October 8 Finalists notified October 10 12:00-1:00 PM: Finalist pitches and award ceremony (virtual)\n\nSpots at Columbia are limited and application-only. No walk-ins.\n\nHosted with the MIT Club of Northern California, MIT Club of Germany, and Hack-Nation. Previous partners and sponsors have included OpenAI, Databricks, Lovable, ElevenLabs, and more. Learn more: hack-nation.ai\n\ntracks\nAI Challenges\n\nApproximately 6-8 AI challenges; exact challenge tracks will be provided at the event.\n\nwhen\nOctober 3, 202611:00 AM EDT\nLocal kick-off at Columbia\n\nLocal kick-off at Columbia to start the 24-hour build weekend.\n\n◍ Columbia University\nOctober 4, 202609:00 AM EDT\nProject submission deadline\n\nProject submission deadline.\n\n◍ Columbia University\nOctober 4, 202609:30 AM - 10:30 AM EDT\nLocal pitches at Columbia\n\nLocal pitches at Columbia.\n\n◍ Columbia University\nOctober 8, 2026TBA\nFinalists notified\n\nFinalists are notified.\n\n◍ TBA\nOctober 10, 202612:00 PM - 1:00 PM EDT\nFinalist pitches and award ceremony (virtual)\n\nFinalist pitches and award ceremony, held virtually.\n\n◍ Online\ntickets\nTicket types, prices and availability for New York Hub (Columbia) - 7th Hack-Nation Global AI Hackathon\ntickets\tprice\tFee\tStatus\tdescriptionColumbia Hub Registration\tFree\tTBA\tAvailable\tSpots at Columbia are limited and application-only. No walk-ins.\nprizes\nPrize places and values for New York Hub (Columbia) - 7th Hack-Nation Global AI Hackathon\n#\tPRIZE\tpriceOverall\t$30K+ in cash prizes and API credits across approximately 6-8 AI challenges\t$30,000+\nOverall\t$200K+ in AI tools and credits available to participating teams\t$200,000+\nTop 1% of teams\tAn invitation to join the Venture Lab and continue incubating their startups after the hackathon\tTBA\nfaq\nDo I need an idea or a team to take part?+\nNo idea or team is required. Come ready to build. Challenge tracks will be provided.\nHow do I secure a spot at the Columbia Hub?+\nSpots at Columbia are limited and application-only. No walk-ins.\nHow long do teams have to build?+\nTeams build, prototype, and pitch in just 24 hours, with feedback from mentors and judges whose backgrounds include OpenAI, Meta, Apple, and other leading AI startups.\nWhat can participating teams win?+\nThere is $30K+ in cash prizes and API credits across approximately 6-8 AI challenges, plus $200K+ in AI tools and credits available to participating teams. The top 1% of teams are invited to join the Venture Lab to continue incubating their startups after the hackathon.\nWho is hosting the hackathon?+\nIt is hosted with the MIT Club of Northern California, MIT Club of Germany, and Hack-Nation. Previous partners and sponsors have included OpenAI, Databricks, Lovable, ElevenLabs, and more.\nWhen are finalists notified and when is the award ceremony?+\nFinalists are notified on October 8. Finalist pitches and the award ceremony take place virtually on October 10 from 12:00-1:00 PM.\ntags\n#aihackathon#newyork#columbiauniversity#globalhackathon#24-hourhackathon#aichallenges#venturelab#students#pitchcompetition\ndetails\nwhen\n3–4 Oct 2026\nformat\nIn-Person\nprice\nFree\norganiser\nHack-Nation's Global AI Hackathons\nwhere\nNew York\nNew York, the United States\nGoogle Maps ↗see all hackathons in New York →\nregister / view event ↗\norganiser? add a “listed on” badge to your event page\nNew York Hub (Columbia) - 7th Hack-Nation Global AI Hackathon3–4 Oct 2026 · New York · $30,000+\nview event →\n>_hackathons usa\n\n// every upcoming hackathon in the united states. discover, compete, build.\n\nsubmit hackathon\nDIRECTORY\nbrowse eventslocationssubmit hackathon\nBROWSE BY\nai hackathonsfree hackathonsstudent hackathonsonline hackathonsdatathonsgame jamshackathons near mewhat is a hackathon\nCITIES\nsan francisconew yorkbostonlos angelesseattleaustinchicagowashington dcdenveratlanta\nCOMPANY\naboutcontactfaqget featuredprivacycookie settingsembedorganiser? sign in\nSTAY UPDATED\n\n// the latest hackathons in your inbox\n\nsub\nHACKATHONS NETWORK\nhackathons usahackathons australiacanada hackathonsuk hackathonshackathon singaporehackathon españahackathon deutschlandhackathon francehackathon nederlandhackathon méxicohackathon sverigehackathon japanhackathon italiahackathon việt namhackathon hong konghackathon argentinahackathon colombiahackathon pakistanhackathon österreichhackathon indonesiahackathons indiahackathon koreahackathon taiwanhackathon türkiyehackathon thailandnz hackathons\n© 2026 ushackathons.com — all rights reserved\n>_\nupdated weekly\n×close\nnever miss a hackathon\n\none email a week with every new listing. no spam, unsubscribe any time.\n\nsubscribe\nno thanks",
+      "checkedAt": "2026-10-03T18:30:36.391Z"
+    },
+    {
+      "url": "https://luma.com/select-2026-hackathon",
+      "title": "Supabase Select 2026 Hackathon",
+      "category": "hackathon",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 94,
+      "relevance": 88,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Supabase Select 2026 Hackathon\nSupabase will team up with Vercel, Anthropic, and Stripe for a hackathon where participants can compete for up to $100,000 in combined credits across all platforms.\nSan Francisco, CA\nSan Francisco\nCA",
+      "structuredEvent": {
+        "url": "https://luma.com/select-2026-hackathon",
+        "name": "Supabase Select 2026 Hackathon",
+        "description": "Supabase will team up with Vercel, Anthropic, and Stripe for a hackathon where participants can compete for up to $100,000 in combined credits across all platforms.",
+        "startDate": "2026-10-03T16:00:00.000Z",
+        "endDate": "2026-10-04T00:00:00.000Z",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "organizers": [],
+        "offerAvailability": null
+      },
+      "checkedAt": "2026-10-03T18:28:45.358Z",
       "heldBecause": null
     },
     {
@@ -115,13 +200,13 @@
         ],
         "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-10-03T08:47:47.450Z"
+      "checkedAt": "2026-10-03T18:28:53.070Z"
     },
     {
-      "url": "https://luma.com/select-2026-hackathon",
-      "title": "Supabase Select 2026 Hackathon",
+      "url": "https://luma.com/0435oclq",
+      "title": "Berkeley Hub - 7th Hack-Nation Global AI Hackathon",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
       "confidence": 78,
       "relevance": 71,
       "signals": {
@@ -131,27 +216,32 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Supabase Select 2026 Hackathon\nSupabase Community Events\nSupabase\n580 20th St\nSan Francisco\nCalifornia",
+      "evidence": "Berkeley Hub - 7th Hack-Nation Global AI Hackathon\nHack-Nation's Global AI Hackathons\nJorge Diaz Chao\nLinn _\nKai Wiederhold\nDavid Plügge\nXizhe Daniel Zhang\nChristian Cierny\nBerkeley, CA\nBerkeley\nCalifornia",
       "structuredEvent": {
-        "url": "https://luma.com/select-2026-hackathon",
-        "name": "Supabase Select 2026 Hackathon",
+        "url": "https://luma.com/0435oclq",
+        "name": "Berkeley Hub - 7th Hack-Nation Global AI Hackathon",
         "description": null,
-        "startDate": "2026-10-03T09:00:00.000-07:00",
-        "endDate": "2026-10-03T17:00:00.000-07:00",
+        "startDate": "2026-10-03T08:00:00.000-07:00",
+        "endDate": "2026-10-04T06:30:00.000-07:00",
         "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
-          "name": "580 20th St",
-          "city": "San Francisco",
+          "name": "Berkeley, CA",
+          "city": "Berkeley",
           "region": "California"
         },
         "organizers": [
-          "Supabase Community Events",
-          "Supabase"
+          "Hack-Nation's Global AI Hackathons",
+          "Jorge Diaz Chao",
+          "Linn _",
+          "Kai Wiederhold",
+          "David Plügge",
+          "Xizhe Daniel Zhang",
+          "Christian Cierny"
         ],
         "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-10-03T08:47:19.855Z"
+      "checkedAt": "2026-10-03T18:28:53.070Z"
     },
     {
       "url": "https://luma.com/o98aoftq",
@@ -167,7 +257,7 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Stanford Hub - 7th Hack-Nation Global AI Hackathon\nHack-Nation's Global AI Hackathons\nMalaika Ali\nKai Wiederhold\nLinn _\nChristian Cierny\nJanet Brinz\nPalo Alto, CA\nPalo Alto\nCalifornia",
+      "evidence": "Stanford Hub - 7th Hack-Nation Global AI Hackathon\nHack-Nation's Global AI Hackathons\nMalaika Ali\nKai Wiederhold\nLinn _\nChristian Cierny\nJanet Brinz\nGabriel irazabal\nPalo Alto, CA\nPalo Alto\nCalifornia",
       "structuredEvent": {
         "url": "https://luma.com/o98aoftq",
         "name": "Stanford Hub - 7th Hack-Nation Global AI Hackathon",
@@ -187,11 +277,12 @@
           "Kai Wiederhold",
           "Linn _",
           "Christian Cierny",
-          "Janet Brinz"
+          "Janet Brinz",
+          "Gabriel irazabal"
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-03T08:47:47.450Z"
+      "checkedAt": "2026-10-03T18:28:53.070Z"
     },
     {
       "url": "https://luma.com/hacs1uig",
@@ -226,9 +317,9 @@
           "Michael Ogundare",
           "HackerSquad"
         ],
-        "offerAvailability": "https://schema.org/InStock"
+        "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-10-03T08:47:47.450Z"
+      "checkedAt": "2026-10-03T18:28:53.070Z"
     }
   ],
   "errors": []
