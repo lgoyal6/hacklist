@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-04T03:30:57.864Z",
+  "collectedAt": "2026-10-04T09:33:20.665Z",
   "source": "eventbrite",
   "queries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
@@ -8,10 +8,10 @@
     "https://www.eventbrite.com/d/ca--san-diego/hackathon/"
   ],
   "skipped": {
-    "past": 2,
+    "past": 1,
     "online": 0,
     "notLocal": 2,
-    "notHackathon": 71,
+    "notHackathon": 72,
     "recurring": 0
   },
   "problems": [],
@@ -34,7 +34,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "ODSC AI x NEBIUS | Hackathon\nHyatt Regency San Francisco Airport\nBurlingame, CA\nThis event is part of the ODSC AI West 2026 Conference, bringing together AI and data professionals for practical, expert-led sessions.",
-      "checkedAt": "2026-10-04T03:30:47.989Z",
+      "checkedAt": "2026-10-04T09:33:12.932Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/odsc-ai-x-nebius-hackathon-tickets-2002152139947",
         "name": "ODSC AI x NEBIUS | Hackathon",
@@ -68,7 +68,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "DeveloperWeek 2027 Hackathon\nSanta Clara Convention Center\nSanta Clara, CA\nJoin the nation's largest challenge-driven hackathon @ DeveloperWeek 2027!",
-      "checkedAt": "2026-10-04T03:30:47.992Z",
+      "checkedAt": "2026-10-04T09:33:12.933Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/developerweek-2027-hackathon-registration-1992072331970",
         "name": "DeveloperWeek 2027 Hackathon",
@@ -80,40 +80,6 @@
         "location": {
           "name": "Santa Clara Convention Center",
           "city": "Santa Clara",
-          "region": "CA"
-        },
-        "offerAvailability": null,
-        "going": null
-      }
-    },
-    {
-      "url": "https://www.eventbrite.com/e/startup-weekend-san-diego-justice-ai-tickets-1999007009778",
-      "title": "Startup Weekend San Diego: Justice + AI",
-      "category": "hackathon",
-      "heldBecause": null,
-      "discoveredVia": "eventbrite",
-      "confidence": 62,
-      "relevance": 60,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Startup Weekend San Diego: Justice + AI\nDesign and Innovation Building\nSan Diego, CA\nBring your entrepreneurial drive to create new products and services in an industry that touches everyone's lives.",
-      "checkedAt": "2026-10-03T03:30:56.302Z",
-      "structuredEvent": {
-        "url": "https://www.eventbrite.com/e/startup-weekend-san-diego-justice-ai-tickets-1999007009778",
-        "name": "Startup Weekend San Diego: Justice + AI",
-        "description": "Bring your entrepreneurial drive to create new products and services in an industry that touches everyone's lives.",
-        "startDate": "2026-11-13T08:00:00.000Z",
-        "endDate": "2026-11-16T07:59:00.000Z",
-        "timeSource": "eventbrite",
-        "organizers": [],
-        "location": {
-          "name": "Design and Innovation Building",
-          "city": "San Diego",
           "region": "CA"
         },
         "offerAvailability": null,

@@ -1,33 +1,67 @@
 {
-  "sweepCompletedAt": "2026-10-03T18:45:16.479Z",
+  "sweepCompletedAt": "2026-10-04T09:31:19.253Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
   "nearMisses": [
     {
-      "url": "https://luma.com/rnn57zas",
-      "title": "Build Your AI Team | A hands-on workshop with Turnstone (YC W26) for your everyday work",
-      "readFrom": "listing",
-      "via": "https://luma.com/discover/sf/ai",
+      "url": "https://luma.com/reading-3bnu",
+      "title": "Haunted Library Reading Party",
+      "readFrom": "page",
+      "via": "https://luma.com/sd",
+      "confidence": 52,
+      "relevance": 69,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/s1ge4p03",
+      "title": "Climate Salon @ San Diego Climate Week",
+      "readFrom": "page",
+      "via": "https://luma.com/sd",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/2620atlw",
+      "title": "Sunday Scones.. with a Side of Climate Trivia!",
+      "readFrom": "page",
+      "via": "https://luma.com/sd",
       "confidence": 52,
       "relevance": 54,
       "short": 2,
       "missing": [
-        "no term from candidateTerms",
-        "title names a non-hackathon format"
+        "no term from candidateTerms"
       ]
     },
     {
-      "url": "https://luma.com/devx-weekend-function-oct-17-2026",
-      "title": "Game Jam! — Weekend Function() { Software Developer Meetup } — 10/17/26",
-      "readFrom": "listing",
-      "via": "https://luma.com/discover/sd/tech",
-      "confidence": 48,
-      "relevance": 51,
-      "short": 6,
+      "url": "https://luma.com/09lxnmia",
+      "title": "SDCW: FIRE SUMMIT",
+      "readFrom": "page",
+      "via": "https://luma.com/sd",
+      "confidence": 52,
+      "relevance": 54,
+      "short": 2,
       "missing": [
-        "no prize, judging or submission language",
-        "title names a non-hackathon format"
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/zjdjc3ib",
+      "title": "TechCrunch Disrupt - Founders & Operators Evening",
+      "readFrom": "listing",
+      "via": "https://luma.com/zjdjc3ib",
+      "confidence": 52,
+      "relevance": 54,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
       ]
     }
   ]
