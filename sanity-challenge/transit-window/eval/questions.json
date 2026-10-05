@@ -1,0 +1,643 @@
+{
+ "site": {
+  "name": "La Jolla, California",
+  "lat": 32.8801,
+  "lon": -117.234,
+  "h": 100.0
+ },
+ "builtFrom": "ExoClock catalogue + astropy",
+ "questions": [
+  {
+   "id": "T01",
+   "kind": "midtime",
+   "planet": "TOI-1710b",
+   "question": "When is the mid-transit time of TOI-1710b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-24T15:31:08Z",
+    "sigmaMin": 2.58,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": 0.05,
+   "split": "dev"
+  },
+  {
+   "id": "T02",
+   "kind": "midtime",
+   "planet": "TOI-2977b",
+   "question": "When is the mid-transit time of TOI-2977b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-06T14:27:04Z",
+    "sigmaMin": 1.35,
+    "toleranceMin": 4.1
+   },
+   "defaultOffsetMin": 1.46,
+   "split": "dev"
+  },
+  {
+   "id": "T03",
+   "kind": "midtime",
+   "planet": "HD97658b",
+   "question": "When is the mid-transit time of HD97658b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-11T05:11:28Z",
+    "sigmaMin": 0.85,
+    "toleranceMin": 2.5
+   },
+   "defaultOffsetMin": 143.74,
+   "split": "dev"
+  },
+  {
+   "id": "T04",
+   "kind": "midtime",
+   "planet": "K2-344b",
+   "question": "When is the mid-transit time of K2-344b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-07T05:19:03Z",
+    "sigmaMin": 125.94,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": 0,
+   "split": "dev"
+  },
+  {
+   "id": "T05",
+   "kind": "midtime",
+   "planet": "HD73583b",
+   "question": "When is the mid-transit time of HD73583b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-06T12:59:42Z",
+    "sigmaMin": 1.92,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": -10.08,
+   "split": "dev"
+  },
+  {
+   "id": "T06",
+   "kind": "midtime",
+   "planet": "HAT-P-37b",
+   "question": "When is the mid-transit time of HAT-P-37b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-07T10:47:33Z",
+    "sigmaMin": 0.61,
+    "toleranceMin": 2.0
+   },
+   "defaultOffsetMin": -17.27,
+   "split": "dev"
+  },
+  {
+   "id": "T07",
+   "kind": "midtime",
+   "planet": "HD110082b",
+   "question": "When is the mid-transit time of HD110082b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-14T19:51:25Z",
+    "sigmaMin": 5.29,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": -0.04,
+   "split": "dev"
+  },
+  {
+   "id": "T08",
+   "kind": "midtime",
+   "planet": "K2-36c",
+   "question": "When is the mid-transit time of K2-36c for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-07T04:33:33Z",
+    "sigmaMin": 57.68,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": -195.68,
+   "split": "held-out"
+  },
+  {
+   "id": "T09",
+   "kind": "midtime",
+   "planet": "Qatar-9b",
+   "question": "When is the mid-transit time of Qatar-9b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-06T14:15:23Z",
+    "sigmaMin": 0.59,
+    "toleranceMin": 2.0
+   },
+   "defaultOffsetMin": -128.5,
+   "split": "held-out"
+  },
+  {
+   "id": "T10",
+   "kind": "midtime",
+   "planet": "HATS-30b",
+   "question": "When is the mid-transit time of HATS-30b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-07T22:47:20Z",
+    "sigmaMin": 0.63,
+    "toleranceMin": 2.0
+   },
+   "defaultOffsetMin": 0.74,
+   "split": "dev"
+  },
+  {
+   "id": "T11",
+   "kind": "midtime",
+   "planet": "GJ436b",
+   "question": "When is the mid-transit time of GJ436b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-07T23:39:50Z",
+    "sigmaMin": 0.21,
+    "toleranceMin": 2.0
+   },
+   "defaultOffsetMin": -54.17,
+   "split": "dev"
+  },
+  {
+   "id": "T12",
+   "kind": "midtime",
+   "planet": "HATS-65b",
+   "question": "When is the mid-transit time of HATS-65b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-08T04:14:14Z",
+    "sigmaMin": 0.97,
+    "toleranceMin": 2.9
+   },
+   "defaultOffsetMin": 0.56,
+   "split": "dev"
+  },
+  {
+   "id": "T13",
+   "kind": "midtime",
+   "planet": "K2-353b",
+   "question": "When is the mid-transit time of K2-353b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-16T02:51:34Z",
+    "sigmaMin": 166.63,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": -1.46,
+   "split": "dev"
+  },
+  {
+   "id": "T14",
+   "kind": "midtime",
+   "planet": "TOI-954b",
+   "question": "When is the mid-transit time of TOI-954b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-09T12:44:44Z",
+    "sigmaMin": 3.3,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": 0,
+   "split": "held-out"
+  },
+  {
+   "id": "T15",
+   "kind": "midtime",
+   "planet": "K2-417b",
+   "question": "When is the mid-transit time of K2-417b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-06T19:28:02Z",
+    "sigmaMin": 909.22,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": 0,
+   "split": "dev"
+  },
+  {
+   "id": "T16",
+   "kind": "midtime",
+   "planet": "KELT-17b",
+   "question": "When is the mid-transit time of KELT-17b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-06T04:51:47Z",
+    "sigmaMin": 0.29,
+    "toleranceMin": 2.0
+   },
+   "defaultOffsetMin": -15.84,
+   "split": "dev"
+  },
+  {
+   "id": "T17",
+   "kind": "midtime",
+   "planet": "TOI-1470b",
+   "question": "When is the mid-transit time of TOI-1470b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-07T20:34:20Z",
+    "sigmaMin": 5.89,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": 0,
+   "split": "dev"
+  },
+  {
+   "id": "T18",
+   "kind": "midtime",
+   "planet": "KELT-9b",
+   "question": "When is the mid-transit time of KELT-9b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-06T08:00:43Z",
+    "sigmaMin": 0.29,
+    "toleranceMin": 2.0
+   },
+   "defaultOffsetMin": 18.76,
+   "split": "dev"
+  },
+  {
+   "id": "T19",
+   "kind": "midtime",
+   "planet": "TOI-942c",
+   "question": "When is the mid-transit time of TOI-942c for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-07T18:59:53Z",
+    "sigmaMin": 14.22,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": -19.15,
+   "split": "held-out"
+  },
+  {
+   "id": "T20",
+   "kind": "midtime",
+   "planet": "HD221416b",
+   "question": "When is the mid-transit time of HD221416b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-13T01:30:57Z",
+    "sigmaMin": 1108.23,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": 0,
+   "split": "dev"
+  },
+  {
+   "id": "T21",
+   "kind": "midtime",
+   "planet": "K2-239b",
+   "question": "When is the mid-transit time of K2-239b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-11T04:11:42Z",
+    "sigmaMin": 938.99,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": 0,
+   "split": "dev"
+  },
+  {
+   "id": "T22",
+   "kind": "midtime",
+   "planet": "XO-7b",
+   "question": "When is the mid-transit time of XO-7b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-06T13:33:49Z",
+    "sigmaMin": 0.43,
+    "toleranceMin": 2.0
+   },
+   "defaultOffsetMin": 14.07,
+   "split": "dev"
+  },
+  {
+   "id": "T23",
+   "kind": "midtime",
+   "planet": "TOI-1820b",
+   "question": "When is the mid-transit time of TOI-1820b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-10T04:24:04Z",
+    "sigmaMin": 3.69,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": 0,
+   "split": "held-out"
+  },
+  {
+   "id": "T24",
+   "kind": "midtime",
+   "planet": "WASP-12b",
+   "question": "When is the mid-transit time of WASP-12b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-07T00:33:54Z",
+    "sigmaMin": 0.22,
+    "toleranceMin": 2.0
+   },
+   "defaultOffsetMin": 2.04,
+   "split": "dev"
+  },
+  {
+   "id": "T25",
+   "kind": "midtime",
+   "planet": "HAT-P-44b",
+   "question": "When is the mid-transit time of HAT-P-44b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-09T09:31:54Z",
+    "sigmaMin": 0.63,
+    "toleranceMin": 2.0
+   },
+   "defaultOffsetMin": 52.78,
+   "split": "dev"
+  },
+  {
+   "id": "T26",
+   "kind": "midtime",
+   "planet": "K2-237b",
+   "question": "When is the mid-transit time of K2-237b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-06T06:18:39Z",
+    "sigmaMin": 0.79,
+    "toleranceMin": 2.4
+   },
+   "defaultOffsetMin": -1.87,
+   "split": "dev"
+  },
+  {
+   "id": "T27",
+   "kind": "midtime",
+   "planet": "KELT-18b",
+   "question": "When is the mid-transit time of KELT-18b for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-08T04:22:04Z",
+    "sigmaMin": 0.78,
+    "toleranceMin": 2.3
+   },
+   "defaultOffsetMin": 100.43,
+   "split": "dev"
+  },
+  {
+   "id": "T28",
+   "kind": "midtime",
+   "planet": "HD260655c",
+   "question": "When is the mid-transit time of HD260655c for the first transit after 2026-10-06T00:00:00 UTC? Answer with the UTC time to the minute.",
+   "truth": {
+    "midUtc": "2026-10-08T12:21:52Z",
+    "sigmaMin": 2.52,
+    "toleranceMin": 5.0
+   },
+   "defaultOffsetMin": -92.57,
+   "split": "held-out"
+  },
+  {
+   "id": "O01",
+   "kind": "observable",
+   "question": "Which planets have a complete transit (plus 30 minutes before and after) visible from La Jolla, California on the night starting 2026-10-06 local time, with the planet above 30 degrees and the Sun below -12 degrees the whole time, transit depth at least 10 mmag and host star V magnitude 12.5 or brighter? Only consider planets the ExoClock project monitors.",
+   "truth": {
+    "planets": [
+     "HAT-P-32b",
+     "TOI-4463Ab"
+    ]
+   },
+   "params": {
+    "night": "2026-10-06",
+    "depthMmag": 10,
+    "vmagMax": 12.5,
+    "site": {
+     "name": "La Jolla, California",
+     "lat": 32.8801,
+     "lon": -117.234,
+     "h": 100.0
+    }
+   },
+   "split": "held-out"
+  },
+  {
+   "id": "O02",
+   "kind": "observable",
+   "question": "Which planets have a complete transit (plus 30 minutes before and after) visible from La Jolla, California on the night starting 2026-10-09 local time, with the planet above 30 degrees and the Sun below -12 degrees the whole time, transit depth at least 5 mmag and host star V magnitude 13.0 or brighter? Only consider planets the ExoClock project monitors.",
+   "truth": {
+    "planets": [
+     "TOI-4010c",
+     "WASP-10b"
+    ]
+   },
+   "params": {
+    "night": "2026-10-09",
+    "depthMmag": 5,
+    "vmagMax": 13.0,
+    "site": {
+     "name": "La Jolla, California",
+     "lat": 32.8801,
+     "lon": -117.234,
+     "h": 100.0
+    }
+   },
+   "split": "dev"
+  },
+  {
+   "id": "O03",
+   "kind": "observable",
+   "question": "Which planets have a complete transit (plus 30 minutes before and after) visible from La Jolla, California on the night starting 2026-10-13 local time, with the planet above 30 degrees and the Sun below -12 degrees the whole time, transit depth at least 20 mmag and host star V magnitude 11.5 or brighter? Only consider planets the ExoClock project monitors.",
+   "truth": {
+    "planets": [
+     "WASP-69b",
+     "WASP-77Ab"
+    ]
+   },
+   "params": {
+    "night": "2026-10-13",
+    "depthMmag": 20,
+    "vmagMax": 11.5,
+    "site": {
+     "name": "La Jolla, California",
+     "lat": 32.8801,
+     "lon": -117.234,
+     "h": 100.0
+    }
+   },
+   "split": "dev"
+  },
+  {
+   "id": "O04",
+   "kind": "observable",
+   "question": "Which planets have a complete transit (plus 30 minutes before and after) visible from La Jolla, California on the night starting 2026-10-17 local time, with the planet above 30 degrees and the Sun below -12 degrees the whole time, transit depth at least 8 mmag and host star V magnitude 13.0 or brighter? Only consider planets the ExoClock project monitors.",
+   "truth": {
+    "planets": [
+     "TOI-1518b",
+     "XO-3b"
+    ]
+   },
+   "params": {
+    "night": "2026-10-17",
+    "depthMmag": 8,
+    "vmagMax": 13.0,
+    "site": {
+     "name": "La Jolla, California",
+     "lat": 32.8801,
+     "lon": -117.234,
+     "h": 100.0
+    }
+   },
+   "split": "dev"
+  },
+  {
+   "id": "O05",
+   "kind": "observable",
+   "question": "Which planets have a complete transit (plus 30 minutes before and after) visible from La Jolla, California on the night starting 2026-10-21 local time, with the planet above 30 degrees and the Sun below -12 degrees the whole time, transit depth at least 15 mmag and host star V magnitude 11.5 or brighter? Only consider planets the ExoClock project monitors.",
+   "truth": {
+    "planets": [
+     "HAT-P-32b",
+     "WASP-76b"
+    ]
+   },
+   "params": {
+    "night": "2026-10-21",
+    "depthMmag": 15,
+    "vmagMax": 11.5,
+    "site": {
+     "name": "La Jolla, California",
+     "lat": 32.8801,
+     "lon": -117.234,
+     "h": 100.0
+    }
+   },
+   "split": "dev"
+  },
+  {
+   "id": "O06",
+   "kind": "observable",
+   "question": "Which planets have a complete transit (plus 30 minutes before and after) visible from La Jolla, California on the night starting 2026-10-25 local time, with the planet above 30 degrees and the Sun below -12 degrees the whole time, transit depth at least 15 mmag and host star V magnitude 12.5 or brighter? Only consider planets the ExoClock project monitors.",
+   "truth": {
+    "planets": [
+     "HAT-P-1b",
+     "WASP-52b"
+    ]
+   },
+   "params": {
+    "night": "2026-10-25",
+    "depthMmag": 15,
+    "vmagMax": 12.5,
+    "site": {
+     "name": "La Jolla, California",
+     "lat": 32.8801,
+     "lon": -117.234,
+     "h": 100.0
+    }
+   },
+   "split": "dev"
+  },
+  {
+   "id": "S01",
+   "kind": "trust",
+   "planet": "HAT-P-37b",
+   "question": "For HAT-P-37b, which published timing solution should an observer use tonight, and by how many minutes does the NASA Exoplanet Archive default solution disagree with it at the next transit?",
+   "truth": {
+    "chosenOrigin": "exoclock",
+    "defaultOffsetMin": -17.3,
+    "toleranceMin": 2.0
+   },
+   "split": "held-out"
+  },
+  {
+   "id": "S02",
+   "kind": "trust",
+   "planet": "KELT-9b",
+   "question": "For KELT-9b, which published timing solution should an observer use tonight, and by how many minutes does the NASA Exoplanet Archive default solution disagree with it at the next transit?",
+   "truth": {
+    "chosenOrigin": "exoclock",
+    "defaultOffsetMin": 18.8,
+    "toleranceMin": 2.0
+   },
+   "split": "held-out"
+  },
+  {
+   "id": "S03",
+   "kind": "trust",
+   "planet": "WASP-12b",
+   "question": "For WASP-12b, which published timing solution should an observer use tonight, and by how many minutes does the NASA Exoplanet Archive default solution disagree with it at the next transit?",
+   "truth": {
+    "chosenOrigin": "exoclock",
+    "defaultOffsetMin": 2.0,
+    "toleranceMin": 2.0
+   },
+   "split": "dev"
+  },
+  {
+   "id": "S04",
+   "kind": "trust",
+   "planet": "HD97658b",
+   "question": "For HD97658b, which published timing solution should an observer use tonight, and by how many minutes does the NASA Exoplanet Archive default solution disagree with it at the next transit?",
+   "truth": {
+    "chosenOrigin": "exoclock",
+    "defaultOffsetMin": 143.7,
+    "toleranceMin": 14.374108850955963
+   },
+   "split": "dev"
+  },
+  {
+   "id": "S05",
+   "kind": "trust",
+   "planet": "KELT-18b",
+   "question": "For KELT-18b, which published timing solution should an observer use tonight, and by how many minutes does the NASA Exoplanet Archive default solution disagree with it at the next transit?",
+   "truth": {
+    "chosenOrigin": "exoclock",
+    "defaultOffsetMin": 100.4,
+    "toleranceMin": 10.042919978499413
+   },
+   "split": "held-out"
+  },
+  {
+   "id": "S06",
+   "kind": "trust",
+   "planet": "GJ436b",
+   "question": "For GJ436b, which published timing solution should an observer use tonight, and by how many minutes does the NASA Exoplanet Archive default solution disagree with it at the next transit?",
+   "truth": {
+    "chosenOrigin": "exoclock",
+    "defaultOffsetMin": -54.2,
+    "toleranceMin": 5.416776224970818
+   },
+   "split": "dev"
+  },
+  {
+   "id": "S07",
+   "kind": "trust",
+   "planet": "HATS-58Ab",
+   "question": "For HATS-58Ab, which published timing solution should an observer use tonight, and by how many minutes does the NASA Exoplanet Archive default solution disagree with it at the next transit?",
+   "truth": {
+    "chosenOrigin": "exoclock",
+    "defaultOffsetMin": 17.7,
+    "toleranceMin": 2.0
+   },
+   "split": "dev"
+  },
+  {
+   "id": "S08",
+   "kind": "trust",
+   "planet": "KELT-12b",
+   "question": "For KELT-12b, which published timing solution should an observer use tonight, and by how many minutes does the NASA Exoplanet Archive default solution disagree with it at the next transit?",
+   "truth": {
+    "chosenOrigin": "exoclock",
+    "defaultOffsetMin": -11.5,
+    "toleranceMin": 2.0
+   },
+   "split": "dev"
+  },
+  {
+   "id": "S09",
+   "kind": "trust",
+   "planet": "XO-3b",
+   "question": "For XO-3b, which published timing solution should an observer use tonight, and by how many minutes does the NASA Exoplanet Archive default solution disagree with it at the next transit?",
+   "truth": {
+    "chosenOrigin": "exoclock",
+    "defaultOffsetMin": 888.3,
+    "toleranceMin": 88.83304126560688
+   },
+   "split": "dev"
+  },
+  {
+   "id": "D01",
+   "kind": "trend",
+   "planet": "WASP-12b",
+   "question": "Is the orbital period of WASP-12b changing, and if so, is it getting shorter or longer?",
+   "truth": {
+    "answer": "shorter",
+    "source": "Yee et al. 2020; Turner et al. 2021"
+   },
+   "split": "dev"
+  },
+  {
+   "id": "D02",
+   "kind": "trend",
+   "planet": "WASP-4b",
+   "question": "Do published timing studies agree on whether WASP-4b's transits drift from a constant period?",
+   "truth": {
+    "answer": "disputed",
+    "source": "Baluev et al. 2020 vs later TESS analyses"
+   },
+   "split": "dev"
+  }
+ ]
+}

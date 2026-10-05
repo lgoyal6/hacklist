@@ -1,0 +1,35 @@
+{
+  "name": "transit-window",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "ingest": "tsx scripts/ingest.ts",
+    "select": "tsx scripts/select.ts",
+    "stats": "tsx scripts/stats.ts",
+    "test": "vitest run",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "tsx scripts/export-sanity.ts",
+    "eval": "tsx eval/run.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "@modelcontextprotocol/sdk": "^1.32.0",
+    "@sanity/client": "^7.27.0",
+    "astronomy-engine": "^2.1.19",
+    "groq": "^6.17.0",
+    "next": "^16.3.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zod": "^4.6.5"
+  }
+}

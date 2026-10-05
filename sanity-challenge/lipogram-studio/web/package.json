@@ -1,0 +1,24 @@
+{
+  "name": "lipogram-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3200",
+    "build": "next build",
+    "start": "next start -p 3200"
+  },
+  "dependencies": {
+    "@lipogram/checker": "*",
+    "@lipogram/engine": "*",
+    "@sanity/client": "^7.27.0",
+    "groq-js": "^2.0.0",
+    "next": "^16.3.8",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}

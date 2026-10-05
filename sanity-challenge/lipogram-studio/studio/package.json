@@ -1,0 +1,20 @@
+{
+  "name": "lipogram-studio-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "schema:deploy": "sanity schema deploy"
+  },
+  "dependencies": {
+    "@lipogram/checker": "*",
+    "@sanity/ui": "^4.3.0",
+    "@sanity/vision": "^6.17.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "sanity": "^6.17.0",
+    "styled-components": "^6.5.3"
+  }
+}

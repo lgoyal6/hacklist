@@ -1,0 +1,245 @@
+{
+  "at": "2026-10-04T06:00:00.000Z",
+  "population": "Planets in both the NASA Exoplanet Archive and ExoClock where the selection rule picks ExoClock (corroborated by another published solution and near the smallest uncertainty), excluding systems the archive flags for transit timing variations, whose archive default solution has a midtime in a known time system and stated errors.",
+  "compared": 498,
+  "excluded": {
+    "noExoclock": 4304,
+    "exoclockNotChosen": 105,
+    "ttv": 51,
+    "noDefault": 102,
+    "defaultUnusable": 20
+  },
+  "medianAbsOffsetMin": 5.2,
+  "offBy5Min": 252,
+  "offBy10Min": 175,
+  "offBy20Min": 109,
+  "confidentlyWrong": 33,
+  "selfDeclaredUseless": 204,
+  "worst": [
+    {
+      "name": "XO-3b",
+      "offsetMin": 888.3,
+      "defaultSigmaMin": 0.3,
+      "exoSigmaMin": 0.22877382241856256,
+      "tension": 2392,
+      "defaultCitation": "Rusznak et al. 2025",
+      "defaultYear": 2025
+    },
+    {
+      "name": "CoRoT-11b",
+      "offsetMin": 167.5,
+      "defaultSigmaMin": 35.5,
+      "exoSigmaMin": 1.2369627848629885,
+      "tension": 4.7,
+      "defaultCitation": "Gandolfi et al. 2010",
+      "defaultYear": 2010
+    },
+    {
+      "name": "HD97658b",
+      "offsetMin": 143.7,
+      "defaultSigmaMin": 1.2,
+      "exoSigmaMin": 0.845994987559619,
+      "tension": 98.5,
+      "defaultCitation": "Ellis et al. 2021",
+      "defaultYear": 2021
+    },
+    {
+      "name": "HD108236c",
+      "offsetMin": -141.9,
+      "defaultSigmaMin": 29,
+      "exoSigmaMin": 13.523212044481149,
+      "tension": 4.4,
+      "defaultCitation": "Bonfanti et al. 2021",
+      "defaultYear": 2021
+    },
+    {
+      "name": "WASP-10b",
+      "offsetMin": 104.2,
+      "defaultSigmaMin": 34.7,
+      "exoSigmaMin": 0.27004659668316505,
+      "tension": 3,
+      "defaultCitation": "Johnson et al. 2009",
+      "defaultYear": 2009
+    },
+    {
+      "name": "KELT-18b",
+      "offsetMin": 100.4,
+      "defaultSigmaMin": 5.3,
+      "exoSigmaMin": 0.7811052860555995,
+      "tension": 18.6,
+      "defaultCitation": "McLeod et al. 2017",
+      "defaultYear": 2017
+    },
+    {
+      "name": "WASP-185b",
+      "offsetMin": 98.3,
+      "defaultSigmaMin": 13.8,
+      "exoSigmaMin": 5.709450187189656,
+      "tension": 6.6,
+      "defaultCitation": "Hellier et al. 2019",
+      "defaultYear": 2019
+    },
+    {
+      "name": "WASP-2b",
+      "offsetMin": -94.1,
+      "defaultSigmaMin": 23.9,
+      "exoSigmaMin": 0.3222506064748987,
+      "tension": 3.9,
+      "defaultCitation": "Addison et al. 2019",
+      "defaultYear": 2019
+    },
+    {
+      "name": "KELT-23Ab",
+      "offsetMin": -85.5,
+      "defaultSigmaMin": 24.7,
+      "exoSigmaMin": 0.1318841906522537,
+      "tension": 3.5,
+      "defaultCitation": "Johns et al. 2019",
+      "defaultYear": 2019
+    },
+    {
+      "name": "WASP-31b",
+      "offsetMin": 57.7,
+      "defaultSigmaMin": 13,
+      "exoSigmaMin": 0.47913065274515676,
+      "tension": 4.5,
+      "defaultCitation": "Anderson et al. 2011",
+      "defaultYear": 2011
+    },
+    {
+      "name": "GJ436b",
+      "offsetMin": -54.2,
+      "defaultSigmaMin": 2.1,
+      "exoSigmaMin": 0.20645719660855227,
+      "tension": 25.5,
+      "defaultCitation": "Maciejewski et al. 2014",
+      "defaultYear": 2014
+    },
+    {
+      "name": "TOI-1789b",
+      "offsetMin": -52.3,
+      "defaultSigmaMin": 16.5,
+      "exoSigmaMin": 2.9371609083603167,
+      "tension": 3.1,
+      "defaultCitation": "Khandelwal et al. 2022",
+      "defaultYear": 2022
+    },
+    {
+      "name": "CoRoT-5b",
+      "offsetMin": -51.9,
+      "defaultSigmaMin": 4.7,
+      "exoSigmaMin": 1.0395250923267605,
+      "tension": 10.8,
+      "defaultCitation": "Rauer et al. 2009",
+      "defaultYear": 2009
+    },
+    {
+      "name": "TOI-181b",
+      "offsetMin": -49,
+      "defaultSigmaMin": 1.9,
+      "exoSigmaMin": 0.7887043007261975,
+      "tension": 23.6,
+      "defaultCitation": "Mistry et al. 2023",
+      "defaultYear": 2023
+    },
+    {
+      "name": "TOI-674b",
+      "offsetMin": -42.9,
+      "defaultSigmaMin": 5.9,
+      "exoSigmaMin": 0.47223102420472124,
+      "tension": 7.3,
+      "defaultCitation": "Murgas et al. 2021",
+      "defaultYear": 2021
+    },
+    {
+      "name": "LHS1678c",
+      "offsetMin": 41.6,
+      "defaultSigmaMin": 4.4,
+      "exoSigmaMin": 6.116048719753628,
+      "tension": 5.5,
+      "defaultCitation": "Silverstein et al. 2024",
+      "defaultYear": 2024
+    },
+    {
+      "name": "WASP-90b",
+      "offsetMin": -39.4,
+      "defaultSigmaMin": 5.7,
+      "exoSigmaMin": 1.042433505033295,
+      "tension": 6.9,
+      "defaultCitation": "West et al. 2016",
+      "defaultYear": 2016
+    },
+    {
+      "name": "WASP-164b",
+      "offsetMin": -39.3,
+      "defaultSigmaMin": 9.3,
+      "exoSigmaMin": 0.4333370349462414,
+      "tension": 4.2,
+      "defaultCitation": "Lendl et al. 2019",
+      "defaultYear": 2019
+    },
+    {
+      "name": "MASCARA-4b",
+      "offsetMin": 34.9,
+      "defaultSigmaMin": 5.7,
+      "exoSigmaMin": 0.5190646938638767,
+      "tension": 6.1,
+      "defaultCitation": "Zhang et al. 2022",
+      "defaultYear": 2022
+    },
+    {
+      "name": "WASP-141b",
+      "offsetMin": -29.7,
+      "defaultSigmaMin": 9.4,
+      "exoSigmaMin": 1.1555806114261349,
+      "tension": 3.2,
+      "defaultCitation": "Hellier et al. 2017",
+      "defaultYear": 2017
+    },
+    {
+      "name": "KELT-10b",
+      "offsetMin": 29.5,
+      "defaultSigmaMin": 9.3,
+      "exoSigmaMin": 0.5521184115638963,
+      "tension": 3.2,
+      "defaultCitation": "Kuhn et al. 2016",
+      "defaultYear": 2016
+    },
+    {
+      "name": "WASP-39b",
+      "offsetMin": 28.7,
+      "defaultSigmaMin": 7.3,
+      "exoSigmaMin": 0.08814275641163033,
+      "tension": 3.9,
+      "defaultCitation": "Mancini et al. 2018",
+      "defaultYear": 2018
+    },
+    {
+      "name": "HATS-37Ab",
+      "offsetMin": -27.9,
+      "defaultSigmaMin": 4.6,
+      "exoSigmaMin": 3.064044222176958,
+      "tension": 5.1,
+      "defaultCitation": "Jordán et al. 2020",
+      "defaultYear": 2020
+    },
+    {
+      "name": "WASP-46b",
+      "offsetMin": -25.7,
+      "defaultSigmaMin": 5.6,
+      "exoSigmaMin": 0.33230064643114976,
+      "tension": 4.6,
+      "defaultCitation": "Ciceri et al. 2016",
+      "defaultYear": 2016
+    },
+    {
+      "name": "WASP-81b",
+      "offsetMin": -23.6,
+      "defaultSigmaMin": 6.3,
+      "exoSigmaMin": 0.7158357029821857,
+      "tension": 3.7,
+      "defaultCitation": "Triaud et al. 2017",
+      "defaultYear": 2017
+    }
+  ]
+}
