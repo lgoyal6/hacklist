@@ -2,8 +2,8 @@
   "sweep": {
     "city": "San Francisco",
     "startedFrom": 28,
-    "personalizedSeeds": 2152,
-    "personalizedPromising": 78,
+    "personalizedSeeds": 2178,
+    "personalizedPromising": 79,
     "searchSeeds": 60,
     "apiCalendarSeeds": 6,
     "linkedinSeeds": 60,
@@ -14,29 +14,29 @@
     "unlockerConfigured": false,
     "unlockerProblem": null,
     "lastDeepSweepAt": "2026-10-04T09:31:19.253Z",
-    "httpFailures": 32,
-    "httpThrottled": 32,
-    "httpPauses": 4,
+    "httpFailures": 24,
+    "httpThrottled": 24,
+    "httpPauses": 3,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 14,
-    "structuredEventsFound": 145,
-    "candidatesFound": 8,
+    "externalPagesVisited": 19,
+    "structuredEventsFound": 120,
+    "candidatesFound": 4,
     "heldForReview": 0,
-    "nearMisses": 2,
+    "nearMisses": 1,
     "stoppedOnTimeBudget": false,
-    "elapsedSeconds": 1005,
-    "secondsPerPage": 1.1557,
+    "elapsedSeconds": 941,
+    "secondsPerPage": 1.0818,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 282,
+    "queueRemaining": 249,
     "pagesByRegion": {
       "san-diego": 15
     },
     "regionPageReserve": {
       "san-diego": 150
     },
-    "completedAt": "2026-10-04T18:45:04.159Z"
+    "completedAt": "2026-10-05T10:08:06.737Z"
   },
   "candidates": [
     {
@@ -73,16 +73,16 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-04T18:29:02.531Z",
+      "checkedAt": "2026-10-05T09:53:05.666Z",
       "heldBecause": null
     },
     {
-      "url": "https://luma.com/z3za7zow",
-      "title": "Hack-Nation 7th Global AI Hackathon",
+      "url": "https://luma.com/executorch-hackathon",
+      "title": "ExecuTorch Hackathon",
       "category": "hackathon",
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "discoveredVia": "personalized",
       "confidence": 94,
-      "relevance": 88,
+      "relevance": 96,
       "signals": {
         "directHackathonTerm": true,
         "buildEvidence": true,
@@ -90,65 +90,39 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Hack-Nation 7th Global AI Hackathon\nThe 7th Global AI Hackathon will bring ambitious builders together online and across 15+ hubs to prototype solutions to major challenges, with mentors and judges from OpenAI, Meta, Apple, and leading AI startups. Teams will compete for $30K+ in prizes and API credits, access $200K+ in AI tools…\nSan Francisco, CA\nSan Francisco\nCA",
+      "evidence": "9:57 AM UTC\nDiscover Events\nSign In\nPresented by\n[SF] HackerSquad\nFollow\nPreviously [SF] Builders Collective\n\nA builder first community. Hear from great speakers, learn how to implement new tools, and show off what you're building with them!\nHosted By\nHackerSquad\nQualcomm\nGitHub\nMeta\nContact the Host\nReport Event\nAI\nExecuTorch Hackathon\nOct\n17\nSaturday, October 17\n10:00 AM - Oct 18, 7:00 PM PDT\nFounders, Inc. | San Francisco Lab\nSan Francisco, CA\nRegistration\nWelcome! Please choose your desired ticket type:\nSubmit Proposal - IoT Track\n​\nRequire Approval\nFree\nSubmit your proposal for the IoT track.\nSubmit Proposal - Compute\n​\nRequire Approval\nFree\nSubmit a proposal for the compute track.\nSubmit Proposal - Mobile + XR\n​\nRequire Approval\nFree\nSubmit a proposal for Mobile + XR Track\nRequest to Join\nHave an access code? You can enter it here.\nAbout Event\n\n​NOTE: By registering for the Luma, you are submitting an application to participate. We will reach out on a rolling basis to let you know whether you've been accepted. There are a limited number of devices, we can support up to 200 participants.\n\n​This event is sponsored by Meta, Qualcomm, GitHub, Open Intelligence Foundation, and the PyTorch Foundation.\n\n​Join developers, researchers, and builders for the upcoming ExecuTorch Hackathon on October 17 -18 at Founder’s Inc., officially part of Open Source AI Week 2026.\n\n​Hosted in collaboration with Qualcomm, Meta, GitHub, the PyTorch Foundation, and Open Intelligence Foundation, this hands-on event will challenge teams to build innovative AI experiences powered by ExecuTorch—an open-source framework for deploying and running PyTorch models efficiently on edge and on-device hardware.\n\n​Participants will work in teams of 3–5 people and select one of three tracks outlined below. Each team will receive a device from their selected track to use during the event. Builders will also get access to GitHub Copilot Pro+ to support their builds.\n\n​Compute Track\n\n​Build AI applications optimized for the Copilot+ PC powered by Snapdragon® X Elite processors, exploring the potential of powerful, efficient on-device AI computing.\n\n​Mobile + XR Track\n\n​Create AI-powered experiences for the Samsung Galaxy S25 Ultra powered by Snapdragon 8 Elite and Samsung Galaxy XR powered by Snapdragon® XR2+ Gen 2 processor, with a focus on mobile intelligence, immersive interaction, and multimodal applications.\n\n​IoT Track\n\n​Develop intelligent edge and embedded applications using the Arduino® VENTUNO™ Q boards, combining on-device AI with real-time sensing, control, and connected experiences. Choose from an assortment of modulinos and accessories to complete your project (available on a first come, first served basis).\n\n​To participate, interested teams must select a track, form a team of 3–5, and submit a project proposal by October 4. Selected teams will be announced by October 7.\n\n​Prizes\n\n​The top team in each track will receive a prize package for every member of the team: Meta AI glasses and an Arduino® UNO™ Q. Build a standout project, demonstrate the potential of on-device AI, and take home hardware to continue exploring the edge.\n\nGitHub will also award a one-year subscription to Copilot Pro to the winner.\n\n​Whether you are an experienced edge AI developer or eager to explore the future of open-source, on-device intelligence, the ExecuTorch Hackathon is an opportunity to collaborate, experiment, and build with the latest hardware and software across compute, mobile, XR, and IoT.\n\n​Questions? Join our Discord!\nAsk questions about the event, connect with other participants, form a team, receive event announcements, and stay up to date throughout the hackathon.\n\n​👉 Join here: Join Discord Server\n\n​Bring your ideas. Build with ExecuTorch. Help shape the future of open-source, on device AI.\n\n​\n\n​About Open Intelligence Foundation\n\n​The Open Intelligence Foundation is a community-first nonprofit founded to protect, strengthen, and advance open-source AI, open models, and open science. Supported by a large community of volunteers and organizations, it takes a bottom-up approach to collaboration, working with academia and researchers to support research, development, and education in open-source AI. The foundation also leads Open Source AI Week, a community-run initiative celebrating open-source AI.\n\n​About Founders, Inc.\nFounders, Inc. backs early-stage founders in emerging tech with first checks and 55,000 sq. ft. of lab space in San Francisco's Fort Mason. They run year-round programs to help ambitious builders to go from early stage to scalable companies.\n\n​\n\n​Snapdragon and Qualcomm branded products are products of Qualcomm Technologies, Inc. and/or its subsidiaries. Arduino and VENTUNO are trademarks or registered trademarks of Arduino S.r.l.\n\nLocation\nFounders, Inc. | San Francisco Lab\n2 Marina Blvd B300, San Francisco, CA 94123, USA\nDiscoverPricingHelp\nGet the App",
+      "checkedAt": "2026-10-05T09:57:23.517Z",
+      "heldBecause": null,
       "structuredEvent": {
-        "url": "https://luma.com/z3za7zow",
-        "name": "Hack-Nation 7th Global AI Hackathon",
-        "description": "The 7th Global AI Hackathon will bring ambitious builders together online and across 15+ hubs to prototype solutions to major challenges, with mentors and judges from OpenAI, Meta, Apple, and leading AI startups. Teams will compete for $30K+ in prizes and API credits, access $200K+ in AI tools…",
-        "startDate": "2026-10-03T16:00:00.000Z",
-        "endDate": "2026-10-04T20:30:00.000Z",
+        "url": "https://luma.com/executorch-hackathon",
+        "name": "ExecuTorch Hackathon",
+        "description": "NOTE: By registering for the Luma, you are submitting an application to participate. We will reach out on a rolling basis to let you know whether you've been accepted. There are a limited number of devices, we can support up to 200 participants.\nThis event is sponsored by Meta, Qualcomm, GitHub, Open Intelligence Foundation, and the PyTorch Foundation.\nJoin developers, researchers, and builders for the upcoming ExecuTorch Hackathon on October 17 -18 at Founder’s Inc., officially part of Open Source AI Week 2026.\nHosted in collaboration with Qualcomm, Meta, GitHub, the PyTorch Foundation, and Open Intelligence Foundation, this hands-on event will challenge teams to build innovative AI experiences powered by ExecuTorch—an open-source framework for deploying and running PyTorch models efficiently on edge and on-device hardware.\nParticipants will work in teams of 3–5 people and select one of three tracks outlined below. Each team will receive a device from their selected track to use during the event. Builders will also get access to GitHub Copilot Pro+ to support their builds.\nCompute Track\nBuild AI applications optimized for the Copilot+ PC powered by Snapdragon® X Elite processors, exploring the potential of powerful, efficient on-device AI computing.\nMobile + XR Track\nCreate AI-powered experiences for the Samsung Galaxy S25 Ultra powered by Snapdragon 8 Elite and Samsung Galaxy XR powered by Snapdragon® XR2+ Gen 2 processor, with a focus on mobile intelligence, immersive interaction, and multimodal applications.\nIoT Track\nDevelop intelligent edge and embedded applications using the Arduino® VENTUNO™ Q boards, combining on-device AI with real-time sensing, control, and connected experiences. Choose from an assortment of modulinos and accessories to complete your project (available on a first come, first served basis).\nTo participate, interested teams must select a track, form a team of 3–5, and submit a project proposal by October 4. Selected teams will be announced by October 7.\nPrizes\nThe top team in each track will receive a prize package for every member of the team: Meta AI glasses and an Arduino® UNO™ Q. Build a standout project, demonstrate the potential of on-device AI, and take home hardware to continue exploring the edge.\n\nGitHub will also award a one-year subscription to Copilot Pro to the winner.\nWhether you are an experienced edge AI developer or eager to explore the future of open-source, on-device intelligence, the ExecuTorch Hackathon is an opportunity to collaborate, experiment, and build with the latest hardware and software across compute, mobile, XR, and IoT.\nQuestions? Join our Discord!\nAsk questions about the event, connect with other participants, form a team, receive event announcements, and stay up to date throughout the hackathon.\n👉 Join here: https://discord.gg/A635v4hMSg\nBring your ideas. Build with ExecuTorch. Help shape the future of open-source, on device AI.\n\nAbout Open Intelligence Foundation\nThe Open Intelligence Foundation is a community-first nonprofit founded to protect, strengthen, and advance open-source AI, open models, and open science. Supported by a large community of volunteers and organizations, it takes a bottom-up approach to collaboration, working with academia and researchers to support research, development, and education in open-source AI. The foundation also leads Open Source AI Week, a community-run initiative celebrating open-source AI.\nAbout Founders, Inc.\nFounders, Inc. backs early-stage founders in emerging tech with first checks and 55,000 sq. ft. of lab space in San Francisco's Fort Mason. They run year-round programs to help ambitious builders to go from early stage to scalable companies.\n\nSnapdragon and Qualcomm branded products are products of Qualcomm Technologies, Inc. and/or its subsidiaries. Arduino and VENTUNO are trademarks or registered trademarks of Arduino S.r.l.",
+        "startDate": "2026-10-17T10:00:00.000-07:00",
+        "endDate": "2026-10-18T19:00:00.000-07:00",
         "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
-          "name": "San Francisco, CA",
+          "name": "Founders, Inc. | San Francisco Lab",
           "city": "San Francisco",
-          "region": "CA"
+          "region": "California"
         },
-        "organizers": [],
-        "offerAvailability": null
-      },
-      "checkedAt": "2026-10-04T18:29:02.531Z"
+        "organizers": [
+          "[SF] HackerSquad",
+          "HackerSquad",
+          "Qualcomm",
+          "GitHub",
+          "Meta"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      }
     },
     {
-      "url": "https://luma.com/build-agents",
-      "title": "Build Personal Agents Hack",
+      "url": "https://luma.com/hackersquad-online-hackathon",
+      "title": "AI Remote Hackathon (1 Week for Building)",
       "category": "hackathon",
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "confidence": 94,
-      "relevance": 81,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": true,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Build Personal Agents Hack\nAt SF Tech Week, 200 hackers will build personal AI agents for everyday tasks, working solo or in teams of up to five with tools from co-hosts including Neon, Mastra, Exa, Fly.io, Kernel, Executor, Assistant UI, and AgentMail. Top teams will compete for substantial cloud, AI, and developer-tool…\nSan Francisco, CA\nSan Francisco\nCA",
-      "structuredEvent": {
-        "url": "https://luma.com/build-agents",
-        "name": "Build Personal Agents Hack",
-        "description": "At SF Tech Week, 200 hackers will build personal AI agents for everyday tasks, working solo or in teams of up to five with tools from co-hosts including Neon, Mastra, Exa, Fly.io, Kernel, Executor, Assistant UI, and AgentMail. Top teams will compete for substantial cloud, AI, and developer-tool…",
-        "startDate": "2026-10-04T16:00:00.000Z",
-        "endDate": "2026-10-05T02:00:00.000Z",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "organizers": [],
-        "offerAvailability": null
-      },
-      "checkedAt": "2026-10-04T18:29:02.531Z"
-    },
-    {
-      "url": "https://luma.com/cyberhack",
-      "title": "Cyberdefense Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
+      "discoveredVia": "personalized",
       "confidence": 78,
-      "relevance": 71,
+      "relevance": 79,
       "signals": {
         "directHackathonTerm": true,
         "buildEvidence": true,
@@ -156,38 +130,36 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Cyberdefense Hackathon\ntokens&\ntokens&\nAWS Builder Loft\nAlessandro Amenta\nJacopo Piazza\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "evidence": "9:57 AM UTC\nDiscover Events\nSign In\nPresented by\n[SF] HackerSquad\nFollow\nPreviously [SF] Builders Collective\n\nA builder first community. Hear from great speakers, learn how to implement new tools, and show off what you're building with them!\nHosted By\nHackerSquad\nContact the Host\nReport Event\nAI\nAI Remote Hackathon (1 Week for Building)\nOct\n24\nSaturday, October 24\n1:30 AM - Oct 31, 1:30 AM UTC\nVirtual\nRegistration\nApproval Required\nYour registration is subject to host approval.\nWelcome! To join the event, please register below.\nRequest to Join\nAbout Event\n\n​AI Remote Hackathon (1 Week for Building)\n\n​Build from anywhere. Take one week to turn an AI idea into something real.\n\n​Join developers, AI engineers, researchers, and technical founders for a remote hackathon focused on building AI applications. Whether you’re exploring a new idea or tackling a problem you’ve wanted to solve, this is a chance to make time for building.\n\n​With a full week to work, you’ll have room to experiment, test your approach, and take your project beyond the first prototype.\n\n​What could you build?\n\n​AI agents that handle useful tasks and workflows\n\n​Tools that make developers more productive\n\n​Applications for research, learning, or everyday work\n\n​Creative projects using image, video, voice, or music\n\n​Something unexpected—we’re excited to see where you take it\n\n​How it works\n\n​The hackathon is fully remote, so you can participate from wherever you are. You’ll have one week dedicated to building your project.\n\n​We’ll share more details soon, including the schedule, participation guidelines, and how to submit your project. Register to stay updated as we announce what’s next.\n\n​Bring your curiosity, pick a problem, and build something you’re excited about.\n\nDiscoverPricingHelp\nGet the App",
+      "checkedAt": "2026-10-05T09:57:30.040Z",
+      "heldBecause": null,
       "structuredEvent": {
-        "url": "https://luma.com/cyberhack",
-        "name": "Cyberdefense Hackathon",
-        "description": null,
-        "startDate": "2026-10-09T09:30:00.000-07:00",
-        "endDate": "2026-10-09T19:30:00.000-07:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "url": "https://luma.com/hackersquad-online-hackathon",
+        "name": "AI Remote Hackathon (1 Week for Building)",
+        "description": "AI Remote Hackathon (1 Week for Building)\nBuild from anywhere. Take one week to turn an AI idea into something real.\nJoin developers, AI engineers, researchers, and technical founders for a remote hackathon focused on building AI applications. Whether you’re exploring a new idea or tackling a problem you’ve wanted to solve, this is a chance to make time for building.\nWith a full week to work, you’ll have room to experiment, test your approach, and take your project beyond the first prototype.\nWhat could you build?\nAI agents that handle useful tasks and workflows\nTools that make developers more productive\nApplications for research, learning, or everyday work\nCreative projects using image, video, voice, or music\nSomething unexpected—we’re excited to see where you take it\nHow it works\nThe hackathon is fully remote, so you can participate from wherever you are. You’ll have one week dedicated to building your project.\nWe’ll share more details soon, including the schedule, participation guidelines, and how to submit your project. Register to stay updated as we announce what’s next.\nBring your curiosity, pick a problem, and build something you’re excited about.",
+        "startDate": "2026-10-23T18:30:00.000-07:00",
+        "endDate": "2026-10-30T18:30:00.000-07:00",
+        "attendanceMode": "https://schema.org/OnlineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
+          "name": "Online Event",
+          "city": null,
+          "region": null
         },
         "organizers": [
-          "tokens&",
-          "tokens&",
-          "AWS Builder Loft",
-          "Alessandro Amenta",
-          "Jacopo Piazza"
+          "[SF] HackerSquad",
+          "HackerSquad"
         ],
         "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-10-04T18:28:47.438Z"
+      }
     },
     {
-      "url": "https://luma.com/kane-cli-hack-day",
-      "title": "Kane CLI Hack Day, supported by OpenAI",
+      "url": "https://luma.com/jgl2tejn",
+      "title": "Bay Area AI+car hackathon",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
+      "discoveredVia": "personalized",
       "confidence": 78,
-      "relevance": 71,
+      "relevance": 79,
       "signals": {
         "directHackathonTerm": true,
         "buildEvidence": true,
@@ -195,147 +167,28 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Kane CLI Hack Day, supported by OpenAI\nTestMu AI\nTestMu AI\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "evidence": "9:57 AM UTC\nDiscover Events\nSign In\nPresented by\nDIY Robocars\nFollow\nSmall-scale autonomous car racing and hackathons\nHosted By\nChris Anderson\n43 Going\nAlexander Levin, Akshobhya Gupta and 41 others\nContact the Host\nReport Event\nAI\nBay Area AI+car hackathon\nOct\n25\nSunday, October 25\n10:00 AM - 5:00 PM PDT\nCircuit Launch\nOakland, CA\nRegistration\nWelcome! To join the event, please register below.\nRegister\nAbout Event\n\n​Car AI Navigation Hackathon\n\nChallenge: We have a mini city road with lanes, intersection and traffic signs. Your job is to use AI and a small autonomous car like the Donkeycar or equivalent (typically 1/16th scale or smaller RC car with a Raspberry Pi or equivalent and a camera controlling it) to navigate the \"city\", obeying signs and making it from one side to the other in the fastest time. \n\nYou must bring your own car, which should be ready to run, with compute and camera already onboard and working. The objective of the hackathon is to add AI \"city\" navigation to it.\n\nYou can use onboard AI, AI on your laptop via Wifi or AI in the cloud to help with the navigation. Think creatively about what kind of AI to use and what's the fastest way to do it!\n\nThis is not an event for spectators, nor will cars be provided to those who arrive without one. This is a hackathon, not a regular race. Come ready to hack!\n\nLocation\nCircuit Launch\n8000 Edgewater Dr Ste 200, Oakland, CA 94621, USA\nDiscoverPricingHelp\nGet the App",
+      "checkedAt": "2026-10-05T09:57:38.724Z",
+      "heldBecause": null,
       "structuredEvent": {
-        "url": "https://luma.com/kane-cli-hack-day",
-        "name": "Kane CLI Hack Day, supported by OpenAI",
-        "description": null,
-        "startDate": "2026-10-24T09:30:00.000-07:00",
-        "endDate": "2026-10-24T20:00:00.000-07:00",
+        "url": "https://luma.com/jgl2tejn",
+        "name": "Bay Area AI+car hackathon",
+        "description": "Car AI Navigation Hackathon\n\nChallenge: We have a mini city road with lanes, intersection and traffic signs. Your job is to use AI and a small autonomous car like the Donkeycar or equivalent (typically 1/16th scale or smaller RC car with a Raspberry Pi or equivalent and a camera controlling it) to navigate the \"city\", obeying signs and making it from one side to the other in the fastest time. \n\nYou must bring your own car, which should be ready to run, with compute and camera already onboard and working. The objective of the hackathon is to add AI \"city\" navigation to it. \n\nYou can use onboard AI, AI on your laptop via Wifi or AI in the cloud to help with the navigation. Think creatively about what kind of AI to use and what's the fastest way to do it!\n\nThis is not an event for spectators, nor will cars be provided to those who arrive without one. This is a hackathon, not a regular race. Come ready to hack!",
+        "startDate": "2026-10-25T10:00:00.000-07:00",
+        "endDate": "2026-10-25T17:00:00.000-07:00",
         "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
+          "name": "Circuit Launch",
+          "city": "Oakland",
           "region": "California"
         },
         "organizers": [
-          "TestMu AI",
-          "TestMu AI"
+          "DIY Robocars",
+          "Chris Anderson"
         ],
         "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-10-04T18:28:47.438Z"
-    },
-    {
-      "url": "https://luma.com/92iq2a12",
-      "title": "Hack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ!",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Hack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ!\nOriane.xyz Video Intelligence\nOriane.xyz Video Intelligence\nGMI Cloud\nYuqi Hou\nNico Kuntjoro\nAmplitude Analytics\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/92iq2a12",
-        "name": "Hack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ!",
-        "description": null,
-        "startDate": "2026-11-06T13:00:00.000-08:00",
-        "endDate": "2026-11-06T18:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "Amplitude Analytics",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Oriane.xyz Video Intelligence",
-          "Oriane.xyz Video Intelligence",
-          "GMI Cloud",
-          "Yuqi Hou",
-          "Nico Kuntjoro"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-10-04T18:28:47.439Z"
-    },
-    {
-      "url": "https://luma.com/SalesCopilotAI",
-      "title": "AI Hackathon: Sales Copilot AI",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "AI Hackathon: Sales Copilot AI\nTatianaSF\nTatianaSF com\nYar Doroshenko\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/SalesCopilotAI",
-        "name": "AI Hackathon: Sales Copilot AI",
-        "description": null,
-        "startDate": "2026-12-12T11:00:00.000-08:00",
-        "endDate": "2026-12-12T19:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "TatianaSF",
-          "TatianaSF com",
-          "Yar Doroshenko"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-10-04T18:28:47.439Z"
-    },
-    {
-      "url": "https://luma.com/jrtd50a7",
-      "title": "AI-Native Startup Hackathon | #SFTechWeek",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/genai-sf",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "AI-Native Startup Hackathon | #SFTechWeek\nTech Events SF | BridgeUs\nVin Wanfan\nSahar Mor (Bond AI)\nFinch ai\nAria\narticuler.ai\nDwayne Campbell\nMansi More\nAdaL\nSaurabh Khire\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/jrtd50a7",
-        "name": "AI-Native Startup Hackathon | #SFTechWeek",
-        "description": null,
-        "startDate": "2026-10-07T10:00:00.000-07:00",
-        "endDate": "2026-10-07T18:00:00.000-07:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Tech Events SF | BridgeUs",
-          "Vin Wanfan",
-          "Sahar Mor (Bond AI)",
-          "Finch ai",
-          "Aria",
-          "articuler.ai",
-          "Dwayne Campbell",
-          "Mansi More",
-          "AdaL",
-          "Saurabh Khire"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-10-04T18:28:47.989Z"
+      }
     }
   ],
   "errors": []
