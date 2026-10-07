@@ -473,6 +473,10 @@ async function candidateFromEventPage(
 }
 
 const calendarPass = { calendarsRead: 0, itemsSeen: 0, pagesRead: 0, added: 0, problems: [] };
+// Only what the feed kept, not everything it saw: the feed drops names without
+// a hackathon term, and c0mpiled-16 was in the San Diego feed, dropped there on
+// its name and then skipped here for having been seen.
+const fromFeed = new Set(candidates.map((candidate) => candidate.url));
 for (const slug of calendarSlugsToRead().slice(
   0,
   config.lumaCalendarsPerRun ?? 24,
@@ -499,7 +503,7 @@ for (const slug of calendarSlugsToRead().slice(
     if (!event.url || !event.name) continue;
     calendarPass.itemsSeen += 1;
     const url = `https://luma.com/${event.url}`;
-    if (byUrl.has(url) || sweptUrls.has(url) || claimedByPass.has(url)) continue;
+    if (fromFeed.has(url) || sweptUrls.has(url) || claimedByPass.has(url)) continue;
     // The same loose signal the crawl uses to decide a page is worth reading:
     // a name that says "hack" cannot be dismissed from its title alone.
     if (!patterns.candidate.test(event.name) && !/hack/i.test(event.name)) continue;
