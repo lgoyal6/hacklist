@@ -364,9 +364,16 @@ for (const record of byUrl.values()) {
 // calendar slug to its api_id, /calendar/get-items lists what is on it, and an
 // event page's own JSON-LD carries the description the title cannot supply. No
 // browser is involved, so a rendering failure cannot hide an event.
+
+// Series calendars where every event is a hackathon, whatever it is called:
+// "c0mpiled-16: UCSD" never says hack, so the name filter below skipped it, and
+// the calendar sat past the per-run cap anyway. These are read first, and every
+// upcoming event on them is judged on its own page.
+const seriesCalendars = new Set(config.hackathonSeriesCalendars ?? []);
+
 /** Luma calendar slugs worth enumerating: the configured seeds plus the feed's. */
 function calendarSlugsToRead() {
-  const slugs = new Set(calendarSeeds);
+  const slugs = new Set([...seriesCalendars, ...calendarSeeds]);
   for (const seed of config.seedUrls ?? []) {
     let parsed;
     try {
@@ -506,7 +513,13 @@ for (const slug of calendarSlugsToRead().slice(
     if (fromFeed.has(url) || sweptUrls.has(url) || claimedByPass.has(url)) continue;
     // The same loose signal the crawl uses to decide a page is worth reading:
     // a name that says "hack" cannot be dismissed from its title alone.
-    if (!patterns.candidate.test(event.name) && !/hack/i.test(event.name)) continue;
+    if (
+      !seriesCalendars.has(slug) &&
+      !patterns.candidate.test(event.name) &&
+      !/hack/i.test(event.name)
+    ) {
+      continue;
+    }
     const endMs = Date.parse(event.end_at || event.start_at || "");
     if (Number.isFinite(endMs) && endMs < now) continue;
 
