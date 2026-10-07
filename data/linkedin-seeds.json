@@ -1,28 +1,18 @@
 {
-  "collectedAt": "2026-10-07T04:09:53.861Z",
+  "collectedAt": "2026-10-07T20:20:11.682Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 0,
-  "pagesRead": 0,
+  "pagesFound": 10,
+  "pagesRead": 10,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
   "problems": [
     {
       "stage": "search",
-      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
-      "error": "brightdata: Error: getaddrinfo ENOTFOUND api.brightdata.com"
-    },
-    {
-      "stage": "search",
-      "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
-      "error": "brightdata: Error: getaddrinfo ENOTFOUND api.brightdata.com"
-    },
-    {
-      "stage": "search",
-      "query": "weekly bay area ai events hackathon 2026",
-      "error": "brightdata: Error: getaddrinfo ENOTFOUND api.brightdata.com"
+      "query": "\"we are hosting\" hackathon san francisco 2026",
+      "error": "brightdata captcha"
     }
   ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
@@ -448,13 +438,6 @@
       "sourcePage": "https://www.linkedin.com/posts/mansimore9_hackcalendar-must-attend-sf-bay-area-ai-activity-7506645275973767168-j29x",
       "context": "laude Fable 5.1 Build Day 📅 Saturday, September 19, 9:00 AM -4:00 PM 📍 590 Howard St, San Francisco, CA 🔗 https://lnkd.in/g6V4DkKm 3. Dream AI Hackathon 2026 📅 Saturday, September 19, 9:00 AM -9:00 PM 📍 Frontier Tower, 995 Market St, San Francisco, CA 🔗 https://luma.com/upjkn37w 4. The Executa",
       "lastSeenAt": "2026-10-05T09:51:53.868Z"
-    },
-    {
-      "url": "https://luma.com/geminimeetup",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-charles-guo-s81hc",
-      "context": "t 📍 Palo Alto, CA (Register to See Address) 🔗 https://lu.ma/aiproducts 12:00 PM - Sentient Futures Summit Bay Area 2026 📍 1680 Mission St, San Francisco, CA 🔗 https://lu.ma/or5jede2 5:00 PM - Gemini Meetup 📍 Mountain View, CA (Register to See Address) 🔗 https://lu.ma/geminimeetup SATURDAY, Feb",
-      "lastSeenAt": "2026-09-30T09:12:38.497Z"
     }
   ]
 }
