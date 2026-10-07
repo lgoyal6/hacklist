@@ -865,6 +865,27 @@ for (const rawCandidate of deduped) {
   // the difference, which is how a Seoul hackathon reached the board as an SF
   // one. A region the event named itself ends it here, before that guess runs.
   if (namesUnservedRegion(structuredLocation, config)) continue;
+  // A listing with no city still states its clock. c0mpiled-18 in Taipei said
+  // "Location TBD" and "the series has run in San Francisco", which the city
+  // fallback below read as SF, while its start time said +08:00. A stated offset
+  // no served region ever has at that moment means the event is somewhere else.
+  if (!eventRegion && !isOnlineLocation(structuredLocation)) {
+    const offset = candidate.structuredEvent?.startDate?.match(
+      /([+-])(\d{2}):?(\d{2})$/,
+    );
+    if (offset) {
+      const startMs = Date.parse(candidate.structuredEvent.startDate);
+      const statedMs =
+        (offset[1] === "-" ? -1 : 1) *
+        (Number(offset[2]) * 60 + Number(offset[3])) *
+        60_000;
+      const served = Object.values(config.regions ?? {}).some(
+        (served) =>
+          served.timezone && zoneOffsetMs(startMs, served.timezone) === statedMs,
+      );
+      if (Number.isFinite(startMs) && !served) continue;
+    }
+  }
 
   let location = candidate.structuredEvent
     ? parseStructuredLocation(candidate.structuredEvent, candidate.evidence)

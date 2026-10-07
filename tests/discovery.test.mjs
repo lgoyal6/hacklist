@@ -333,6 +333,41 @@ test("no published event came from a listing that named a foreign region", () =>
   }
 });
 
+test("no published event states a clock no served region keeps", () => {
+  // c0mpiled-18 said "Location TBD" and was published as SF while its listing
+  // started at +08:00 in Taipei.
+  const starts = new Map();
+  for (const file of candidateFiles) {
+    for (const candidate of file.candidates ?? []) {
+      const start = candidate.structuredEvent?.startDate;
+      if (start && !starts.has(candidate.url)) starts.set(candidate.url, start);
+    }
+  }
+  const zones = [
+    ...new Set(Object.values(config.regions).map((region) => region.timezone)),
+  ];
+  const offsetIn = (ms, zone) => {
+    const name = new Intl.DateTimeFormat("en-US", {
+      timeZone: zone,
+      timeZoneName: "longOffset",
+    })
+      .formatToParts(ms)
+      .find((part) => part.type === "timeZoneName").value;
+    return name === "GMT" ? "+00:00" : name.slice(3);
+  };
+  for (const event of board.events) {
+    if (event.region === "online") continue;
+    const start = starts.get(event.url);
+    const stated = start?.match(/[+-]\d{2}:\d{2}$/)?.[0];
+    if (!stated) continue;
+    const ms = Date.parse(start);
+    assert.ok(
+      zones.some((zone) => offsetIn(ms, zone) === stated),
+      `${event.title} is published in ${event.city} but starts at ${start}`,
+    );
+  }
+});
+
 test("no published event is placed in a city outside the configured areas", () => {
   const allowed = localCitySet(config);
   for (const event of board.events) {
