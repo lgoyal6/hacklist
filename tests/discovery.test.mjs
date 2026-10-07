@@ -424,6 +424,26 @@ test("a hackathon named without the word scores over the publishing bar", () => 
   );
 });
 
+test("builders competing for prizes is a hackathon even unnamed", () => {
+  // The exact regression: c0mpiled-16 never says "hackathon" or "hack".
+  const scored = scoreCandidate(
+    "c0mpiled-16: UC San Diego feat. Latted (YC W24) & Gutgutgoose (YC S26)",
+    [
+      "UC San Diego | Student Services Center",
+      "Builders will compete for cash prizes, collaborate with talented",
+      "students, and connect with YC alumni judges!",
+    ].join("\n"),
+    patterns,
+  );
+  assert.equal(scored.signals.directHackathonTerm, true);
+  assert.ok(scored.confidence >= 54, `confidence ${scored.confidence}`);
+  // A pitch competition is not a builder competing.
+  assert.equal(
+    patterns.candidate.test("Ten startups compete in our pitch competition."),
+    false,
+  );
+});
+
 // --- reading a Luma page without a browser ---------------------------------
 // Both the sweep and the calendar pass now read Luma over HTTP, so these two
 // gotchas are load-bearing: a page's own hydration JSON must not become
