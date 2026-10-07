@@ -27,6 +27,14 @@ const ATHON = /\b[a-z]{3,}[-\s]a[-\s]?thon\b/i;
 // Improvement Hack) and one that is not (Hack The Bot And Build Your Career).
 const STANDALONE_HACK = /\bhacks?\b/i;
 
+// Some organisers never name the format at all: c0mpiled-16 at UCSD says only
+// "Builders will compete for cash prizes" with YC judges, and scored 52 in the
+// sweep against a bar of 54. People who build competing is the format, so that
+// phrasing counts as a direct claim. The subject has to be a builder noun, which
+// keeps "startups compete in a pitch competition" out.
+const BUILDERS_COMPETE =
+  /\b(builders?|hackers?|developers?|engineers?|coders?|teams?)\b[^.\n]{0,30}\bcompete\b/i;
+
 export function buildPatterns(config) {
   // Word boundaries, plus an optional plural. The boundaries matter: without
   // them "hackathonic" and any substring counts. The plural matters too --
@@ -43,7 +51,8 @@ export function buildPatterns(config) {
     // 78 means the same thing whichever pass produced it.
     candidate: {
       source: vocabulary.source,
-      test: (text) => vocabulary.test(text) || ATHON.test(text),
+      test: (text) =>
+        vocabulary.test(text) || ATHON.test(text) || BUILDERS_COMPETE.test(text),
     },
     titleFormat: STANDALONE_HACK,
     place: placePattern(config),
