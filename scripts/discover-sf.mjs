@@ -355,11 +355,18 @@ try {
   // Keep the card text: a personalized feed is mostly general events, so the
   // ones whose names look like hackathons are visited first and the rest fill
   // whatever budget is left over.
+  // A card still on the feed in the last few days is an event that is live
+  // now, so it skips the rotation below: c0mpiled-16 sat in a pile of 2,100
+  // rotating 200 at a time behind a budget that ran out, three weeks before it
+  // happened.
+  const recentSince =
+    Date.now() - (config.personalizedRecentDays ?? 3) * 86_400_000;
   personalizedSeeds = (personalized.urls ?? []).map((entry) => ({
     url: entry.url,
     promising: namesFormat(
       `${entry.text ?? ""} ${entry.url.replace(/[^a-z0-9]+/gi, " ")}`,
     ),
+    recent: Date.parse(entry.lastSeenAt ?? "") >= recentSince,
   }));
 } catch {
   // Optional input; absent until the local pass has run.
@@ -502,8 +509,16 @@ for (const item of [
   // all of it every sweep would cost more time than it is worth. Take a slice
   // per run and rotate, so everything is covered over a couple of days while
   // any single sweep stays inside its budget.
+  ...personalizedSeeds
+    .filter((entry) => !entry.promising && entry.recent)
+    .map((entry) => ({
+      url: entry.url,
+      depth: config.maxGraphDepth,
+      via: "personalized",
+      allowExternal: false,
+    })),
   ...rotateSlice(
-    personalizedSeeds.filter((entry) => !entry.promising),
+    personalizedSeeds.filter((entry) => !entry.promising && !entry.recent),
     config.personalizedPerRun ?? 40,
   ).map((entry) => ({
     url: entry.url,
