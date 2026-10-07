@@ -34,7 +34,8 @@
     "https://luma.com/sdx",
     "https://luma.com/beyondhorizon",
     "https://luma.com/DEVxNetwork",
-    "https://luma.com/ucsd"
+    "https://luma.com/ucsd",
+    "https://luma.com/compiled"
   ],
   "seedRegions": {
     "https://luma.com/sd": "san-diego",
@@ -42,7 +43,8 @@
     "https://luma.com/sdx": "san-diego",
     "https://luma.com/beyondhorizon": "san-diego",
     "https://luma.com/DEVxNetwork": "san-diego",
-    "https://luma.com/ucsd": "san-diego"
+    "https://luma.com/ucsd": "san-diego",
+    "https://luma.com/compiled": "san-diego"
   },
   "regionPageReserve": {
     "san-diego": 150
@@ -225,6 +227,9 @@
   "searchSeedCap": 60,
   "searchQueriesPerRun": 4,
   "personalizedPerRun": 200,
+  "hackathonSeriesCalendars": [
+    "compiled"
+  ],
   "linkedinQueries": [
     "hackathon san francisco 2026 lu.ma",
     "hackathon \"bay area\" 2026 register luma",
