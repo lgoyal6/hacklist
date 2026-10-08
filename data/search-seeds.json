@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-10-07T20:18:31.897Z",
+  "collectedAt": "2026-10-08T09:48:34.901Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
   "problems": [
     {
-      "query": "site:luma.com hackathon \"bay area\" 2026",
+      "query": "site:luma.com \"ai hackathon\" san francisco upcoming",
       "error": "brightdata captcha"
     }
   ],
@@ -236,6 +236,13 @@
       "lastSeenAt": "2026-10-06T09:40:03.245Z"
     },
     {
+      "url": "https://luma.com/ai-crypto-expo",
+      "queries": [
+        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
+      ],
+      "lastSeenAt": "2026-10-08T09:48:34.896Z"
+    },
+    {
       "url": "https://luma.com/ai-hackathon-corp-agent-vibe-code",
       "queries": [
         "site:luma.com \"ai hackathon\" san francisco upcoming"
@@ -255,6 +262,13 @@
         "site:lu.ma hackathon san francisco 2026"
       ],
       "lastSeenAt": "2026-09-30T19:44:15.524Z"
+    },
+    {
+      "url": "https://luma.com/ai-summit-2026",
+      "queries": [
+        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
+      ],
+      "lastSeenAt": "2026-10-08T09:48:34.896Z"
     },
     {
       "url": "https://luma.com/aihack",
@@ -304,7 +318,7 @@
       "queries": [
         "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026"
       ],
-      "lastSeenAt": "2026-10-06T19:55:07.200Z"
+      "lastSeenAt": "2026-10-08T09:48:34.896Z"
     },
     {
       "url": "https://luma.com/bod7u1ag",
@@ -360,7 +374,7 @@
       "queries": [
         "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026"
       ],
-      "lastSeenAt": "2026-10-06T19:55:07.200Z"
+      "lastSeenAt": "2026-10-08T09:48:34.896Z"
     },
     {
       "url": "https://luma.com/d80jpiq0",
@@ -368,6 +382,13 @@
         "site:luma.com hackathon \"san diego\" 2026"
       ],
       "lastSeenAt": "2026-10-05T21:43:47.234Z"
+    },
+    {
+      "url": "https://luma.com/darkfactoryhackathon",
+      "queries": [
+        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
+      ],
+      "lastSeenAt": "2026-10-08T09:48:34.896Z"
     },
     {
       "url": "https://luma.com/dataforai",
@@ -409,28 +430,7 @@
       "queries": [
         "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
       ],
-      "lastSeenAt": "2026-10-05T21:43:47.234Z"
-    },
-    {
-      "url": "https://luma.com/eiphx443",
-      "queries": [
-        "site:luma.com buildathon OR makeathon OR \"make-a-thon\" bay area"
-      ],
-      "lastSeenAt": "2026-10-07T20:18:31.890Z"
-    },
-    {
-      "url": "https://luma.com/eipveunj",
-      "queries": [
-        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
-      ],
-      "lastSeenAt": "2026-10-05T21:43:47.234Z"
-    },
-    {
-      "url": "https://luma.com/frontiertower",
-      "queries": [
-        "site:lu.ma hackathon san francisco 2026"
-      ],
-      "lastSeenAt": "2026-10-07T20:18:31.890Z"
+      "lastSeenAt": "2026-10-08T09:48:34.896Z"
     }
   ]
 }
