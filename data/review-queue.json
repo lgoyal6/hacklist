@@ -1,24 +1,60 @@
 {
-  "sweepCompletedAt": "2026-10-08T20:40:29.614Z",
+  "sweepCompletedAt": "2026-10-09T10:13:18.564Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
   "nearMisses": [
     {
-      "url": "https://www.tech-week.com/calendar/sf/events/open-source-x-sovereign-ai-3-day-track-d58667b1-7b16-43a2-a1ff-c1140475a425",
-      "title": "Open Source x Sovereign AI: 3-Day Track",
-      "readFrom": "listing",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "url": "https://luma.com/claudeforgames",
+      "title": "San Francisco | Claude for Games",
+      "readFrom": "page",
+      "via": "personalized",
       "confidence": 52,
-      "relevance": 62,
+      "relevance": 69,
       "short": 2,
       "missing": [
         "no term from candidateTerms"
       ]
     },
     {
-      "url": "https://luma.com/5gcvcaoc",
-      "title": "Pulling their weight: Shipping open models to production",
+      "url": "https://luma.com/uogxuwtw",
+      "title": "Table Stakes: NPU Fund I Kickoff, presented by Monaco & hosted by 43",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 69,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/zuss1w4n",
+      "title": "Find a Cofounder, Help or Join a Startup",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 69,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/vbwtjwn3",
+      "title": "Predicting Tsunamis on the World's Largest Supercomputers",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 69,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/097twxnj",
+      "title": "Serve, Sip & Rally: #SFTechWeek Takes Over SPIN",
       "readFrom": "page",
       "via": "personalized",
       "confidence": 52,
@@ -29,8 +65,8 @@
       ]
     },
     {
-      "url": "https://luma.com/claude-founder-salon",
-      "title": "Claude Founder Salon",
+      "url": "https://luma.com/1yuvipji",
+      "title": "Hiring 3 people this Friday!",
       "readFrom": "page",
       "via": "personalized",
       "confidence": 52,
@@ -41,76 +77,659 @@
       ]
     },
     {
-      "url": "https://partiful.com/e/XxtVxQqzyP3JHWBShTxM",
-      "title": "Heidi Pop-Up: Calling All Builders - Gelato, Swag & Chats",
-      "readFrom": "listing",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "url": "https://luma.com/340fvmew",
+      "title": "The Nordic X-perience",
+      "readFrom": "page",
+      "via": "personalized",
       "confidence": 52,
-      "relevance": 61,
+      "relevance": 62,
       "short": 2,
       "missing": [
         "no term from candidateTerms"
       ]
     },
     {
-      "url": "https://luma.com/6izk9qxu",
-      "title": "Demo Day",
-      "readFrom": "listing",
-      "via": "https://luma.com/discover/sf/tech",
+      "url": "https://luma.com/3di4j2oh",
+      "title": "Robotics & Physical AI: Private Dinner Party with Bifrost & Hebbian Robotics",
+      "readFrom": "page",
+      "via": "personalized",
       "confidence": 52,
-      "relevance": 54,
+      "relevance": 62,
       "short": 2,
       "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://luma.com/b4sf-02",
-      "title": "🚀 Startup Pitch Night SF | B4SF",
-      "readFrom": "listing",
-      "via": "https://luma.com/discover/sf/tech",
-      "confidence": 52,
-      "relevance": 54,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://partiful.com/e/XaBTYkfWChPrquuI6uPH",
-      "title": "Claude Founder House",
-      "readFrom": "listing",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "confidence": 52,
-      "relevance": 54,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://luma.com/9uqdi8bv",
-      "title": "Tripothon S1 World-Building Demo Day @San Francisco",
-      "readFrom": "listing",
-      "via": "https://luma.com/discover/sf/ai",
-      "confidence": 52,
-      "relevance": 54,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://luma.com/devx-weekend-function-oct-17-2026",
-      "title": "Game Jam! — Weekend Function() { Software Developer Meetup } — 10/17/26",
-      "readFrom": "listing",
-      "via": "https://luma.com/discover/sd/tech",
-      "confidence": 48,
-      "relevance": 51,
-      "short": 6,
-      "missing": [
-        "no prize, judging or submission language",
+        "no term from candidateTerms",
         "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/7wn8tsf7",
+      "title": "SF Tech Week Agent Day",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/96jf6qf9",
+      "title": "Lunar Accel SF 2026 Closing Keynote: Sabrina Chueh Ellis (Former CPO, Pinterest)",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/9yqq2r4q",
+      "title": "UA Techcrunch Disrupt Preparty YEP & MZP League",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/a5ouvlt8",
+      "title": "Weave (YC W25) Office Launch | SF Tech Week",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/aifund-c7gz",
+      "title": "AI Fund Mixer with Andrew Ng, SF Tech Week",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/aix-0sp3",
+      "title": "AI x Marketing Shopify Meetup",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/anwar-8t0d",
+      "title": "Canvas Launch Party: Investing in media, IP, and storytelling (SF Tech Week)",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/b7zdjlzs",
+      "title": "International Founders Bowling Night - #SFTechWeek",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/bayarea-3v2a",
+      "title": "AI Pitch Night — Global AI Pitch Summit Qualifier",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/belle-l5wl",
+      "title": "SF AI Summit — The Infrastructure Era #SFTechWeek",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/claude-zyvv",
+      "title": "Claude Community Impact Lab at Sf Tech Week!",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/d11z2sm6",
+      "title": "PrincipiumX presents: The First Principles Way to Find the Next 10x Opportunity Hiding in Your Product",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/eis7567t",
+      "title": "OSA Con 2026 - The Anti-Hype Conference for Open Source Analytics and AI",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/fbltechweek",
+      "title": "SF Tech Week VIP Closing Party with Synexis & Funding Breakthrough Lab (90+ VCs, FOs and Angels)",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/merge-y2z6",
+      "title": "Vercel Ship 26 Afterparty",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/ritpxsfbookbesties",
+      "title": "Read in the Park × SF Book Besties 📚 Lafayette Park",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/6j69xyal",
+      "title": "AI Infra Night @PyTorchCon with dstack, Crusoe, and SGLang",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/n3kog8wp",
+      "title": "The (Deeply Misunderstood) Evolutionary Science of Attraction",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/git-together",
+      "title": "DevOps on Draft: A Universe Git-Together",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/r1d48cpq",
+      "title": "Stripe Startups Build Day San Francisco",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/1e9xcz0e",
+      "title": "The Anti Social Social Game Night",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/Cloud92026",
+      "title": "'Cloud9' Blue/White Party | Modernist 10yr Anniversary | Titanic's End DJs |Bdays: Steve, Khurram, Suzanne, Juliana, Cathy |TechWeek Finale",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/vanta_ycf26_calmpliance_cafe",
+      "title": "Vanta's Calm-pliance Cafe",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/r2nld7i2",
+      "title": "GTM Office Hours - a coffee with lemlist x Attio (San Francisco)",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/vowqotud",
+      "title": "Grace Gong x Brex x Chargebee x Nebius Dinner [Venture with Grace CEO Club]",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/c6cwq5ji",
+      "title": "Hex Presents - Sales Summer Mixer",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/ib-founderfirst-5",
+      "title": "IB Founder-First Series #5: How to Fundraise?",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/usecorgi-wphl",
+      "title": "Ship Your Culture🥮🥻",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/bbaefsww",
+      "title": "Founders Only: The Unofficial Disrupt Side Party for Early-Stage Founders",
+      "readFrom": "listing",
+      "via": "https://luma.com/bbaefsww",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/tbhu1w13",
+      "title": "『Shinhan Square Bridge』(S2B) Meetup @TechCrunch Disrupt",
+      "readFrom": "listing",
+      "via": "https://luma.com/tbhu1w13",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/xq5xrld5",
+      "title": "VC x Founders Lunch",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/kdci5gdv",
+      "title": "Japan Startup Showcase 2026 - Palo Alto, Silicon Valley Presented by Breakpoint #TechCrunch2026",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/berkeley-d8p1",
+      "title": "BGA Speaker Series: Equity Allocation and VC Valuation with Will Glaser",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/revelo-dinner-san-francisco-101426",
+      "title": "ELC 26 Eng Leader Happy Hour",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/9f1a43ls",
+      "title": "[In-Person] The Art of Storytelling with Chris Yeh",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/sv-lq9r",
+      "title": "House Block Party: Japan x Taiwan Startup Mixer & Pitch",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/bm2fsj0r",
+      "title": "ELC Annual 2026 Afterparty w/ Rootly AI, Swarmia, & More!",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/hdl1s7w6",
+      "title": "The Intelligent Table with Kashish Mittal",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/hddco7hd",
+      "title": "localhost(san-francisco)",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/gy7ahmqq",
+      "title": "Ship eve",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/ddp_west_2026",
+      "title": "2026 DataDrivenPharma West",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/bqy5ahct",
+      "title": "Marketing Engineer Cafe",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/kt37tvp0",
+      "title": "[In-Person] Product Design Office Hours with Phil Balliet",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/o5xybogs",
+      "title": "India Deep Tech Demo Day at G2C Ventures by UChicago",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/prq1kcdk",
+      "title": "NYX Ventures @ Meitu: After Hours",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/shipafterhours",
+      "title": "Ship SF After Hours",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/browse-dj05",
+      "title": "BrowserStack Meetup San Francisco : Lessons from Government Tech QA",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/berkeley-wpka",
+      "title": "Lab to Launch: Robotics Pitch Night",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/d8d08cv0",
+      "title": "Smash bugs by day, smash serves by night (eng + data sci ping pong meet up)",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/scout-screener-sf-you-can-see-everything",
+      "title": "Scout Screener SF: You Can See Everything",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/rmh5j5ag",
+      "title": "NXTP Private Dinner",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/m5suhsmb",
+      "title": "Female Founders Hike at Lands End",
+      "readFrom": "page",
+      "via": "https://luma.com/discover/sf/tech",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
       ]
     }
   ]
