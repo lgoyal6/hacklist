@@ -1,12 +1,12 @@
 {
-  "collectedAt": "2026-10-09T09:52:43.782Z",
+  "collectedAt": "2026-10-09T19:53:50.126Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
   "problems": [
     {
-      "query": "site:luma.com hackathon \"bay area\" 2026",
-      "error": "brightdata expect_body"
+      "query": "\"hackathon\" san francisco 2026 register lu.ma",
+      "error": "brightdata captcha"
     }
   ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
@@ -156,7 +156,7 @@
       "queries": [
         "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
       ],
-      "lastSeenAt": "2026-10-03T08:45:14.430Z"
+      "lastSeenAt": "2026-10-09T19:53:50.119Z"
     },
     {
       "url": "https://luma.com/7lww915n",
@@ -210,9 +210,9 @@
     {
       "url": "https://luma.com/ai",
       "queries": [
-        "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026"
+        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
       ],
-      "lastSeenAt": "2026-10-06T19:55:07.200Z"
+      "lastSeenAt": "2026-10-09T19:53:50.119Z"
     },
     {
       "url": "https://luma.com/ai-coding-hack",
@@ -308,9 +308,9 @@
     {
       "url": "https://luma.com/BETAhackathon",
       "queries": [
-        "\"hackathon\" san francisco 2026 register lu.ma"
+        "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026"
       ],
-      "lastSeenAt": "2026-10-08T20:19:59.857Z"
+      "lastSeenAt": "2026-10-09T19:53:50.119Z"
     },
     {
       "url": "https://luma.com/bod7u1ag",
