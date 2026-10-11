@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-10T19:25:46.775Z",
+  "collectedAt": "2026-10-11T03:30:49.040Z",
   "source": "eventbrite",
   "queries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
@@ -10,29 +10,12 @@
   "skipped": {
     "past": 0,
     "online": 0,
-    "notLocal": 0,
-    "notHackathon": 0,
+    "notLocal": 3,
+    "notHackathon": 69,
     "recurring": 0
   },
-  "problems": [
-    {
-      "query": "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
-      "error": "Error: HTTP 405"
-    },
-    {
-      "query": "https://www.eventbrite.com/d/ca--oakland/hackathon/",
-      "error": "Error: HTTP 405"
-    },
-    {
-      "query": "https://www.eventbrite.com/d/ca--san-jose/hackathon/",
-      "error": "Error: HTTP 405"
-    },
-    {
-      "query": "https://www.eventbrite.com/d/ca--san-diego/hackathon/",
-      "error": "Error: HTTP 405"
-    }
-  ],
-  "carried": 4,
+  "problems": [],
+  "carried": 0,
   "note": "Eventbrite search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
   "candidates": [
     {
@@ -51,7 +34,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "The Design Project Hackathon\nCalifornia College of the Arts (CCA)\nSan Francisco, CA\nThe Design Project prepares designers to design with code and they are sharing their process this fall at the coveted CCA.",
-      "checkedAt": "2026-10-10T03:44:39.369Z",
+      "checkedAt": "2026-10-11T03:30:42.498Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/the-design-project-hackathon-tickets-2002977348167",
         "name": "The Design Project Hackathon",
@@ -85,7 +68,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "ODSC AI x NEBIUS | Hackathon\nHyatt Regency San Francisco Airport\nBurlingame, CA\nThis event is part of the ODSC AI West 2026 Conference, bringing together AI and data professionals for practical, expert-led sessions.",
-      "checkedAt": "2026-10-10T03:44:41.786Z",
+      "checkedAt": "2026-10-11T03:30:44.737Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/odsc-ai-x-nebius-hackathon-tickets-2002152139947",
         "name": "ODSC AI x NEBIUS | Hackathon",
@@ -119,7 +102,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "DeveloperWeek 2027 Hackathon\nSanta Clara Convention Center\nSanta Clara, CA\nJoin the nation's largest challenge-driven hackathon @ DeveloperWeek 2027!",
-      "checkedAt": "2026-10-10T03:44:41.786Z",
+      "checkedAt": "2026-10-11T03:30:44.737Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/developerweek-2027-hackathon-registration-1992072331970",
         "name": "DeveloperWeek 2027 Hackathon",
@@ -153,7 +136,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Startup Weekend San Diego: Justice + AI\nDesign and Innovation Building\nSan Diego, CA\nBring your entrepreneurial drive to create new products and services in an industry that touches everyone's lives.",
-      "checkedAt": "2026-10-10T03:44:47.008Z",
+      "checkedAt": "2026-10-11T03:30:49.038Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/startup-weekend-san-diego-justice-ai-tickets-1999007009778",
         "name": "Startup Weekend San Diego: Justice + AI",
