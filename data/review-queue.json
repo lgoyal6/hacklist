@@ -1,33 +1,79 @@
 {
-  "sweepCompletedAt": "2026-10-10T19:24:22.670Z",
+  "sweepCompletedAt": "2026-10-11T09:42:09.283Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
   "nearMisses": [
     {
-      "url": "https://luma.com/eeapccyv",
-      "title": "Build Your AI Team: A Hands-On Workshop with Turnstone × Corgi",
+      "url": "https://luma.com/reading-3bnu",
+      "title": "Haunted Library Reading Party",
+      "readFrom": "page",
+      "via": "https://luma.com/sd",
+      "confidence": 52,
+      "relevance": 69,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/yjt7f4ty",
+      "title": "The AI-Native Talent Hunt with Codex - #SFTechWeek",
+      "readFrom": "page",
+      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 52,
+      "relevance": 69,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/open-web-startup-demo-day-dec8-2026",
+      "title": "Web Data for Startups #03 — The Open Web Startup Demo Day",
       "readFrom": "listing",
-      "via": "https://luma.com/discover/sf/ai",
+      "via": "https://luma.com/sf-builders-collective",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/alignment2026",
+      "title": "Alignment 2026 ｜Valley101 Annual Tech Summit - Live from the AI Frontier, Uncut",
+      "readFrom": "page",
+      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/qsczn6e5",
+      "title": "After Abundance: What Makes AI Content Worth Making - #SFTechWeek",
+      "readFrom": "listing",
+      "via": "https://luma.com/genai-sf",
       "confidence": 52,
       "relevance": 54,
       "short": 2,
       "missing": [
-        "no term from candidateTerms",
-        "title names a non-hackathon format"
+        "no term from candidateTerms"
       ]
     },
     {
-      "url": "https://luma.com/devx-weekend-function-oct-17-2026",
-      "title": "Game Jam! — Weekend Function() { Software Developer Meetup } — 10/17/26",
+      "url": "https://luma.com/zjdjc3ib",
+      "title": "TechCrunch Disrupt - Founders & Operators Evening",
       "readFrom": "listing",
-      "via": "https://luma.com/discover/sd/tech",
-      "confidence": 48,
-      "relevance": 51,
-      "short": 6,
+      "via": "https://luma.com/zjdjc3ib",
+      "confidence": 52,
+      "relevance": 54,
+      "short": 2,
       "missing": [
-        "no prize, judging or submission language",
-        "title names a non-hackathon format"
+        "no term from candidateTerms"
       ]
     }
   ]
