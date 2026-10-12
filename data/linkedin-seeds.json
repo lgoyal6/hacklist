@@ -1,14 +1,20 @@
 {
-  "collectedAt": "2026-10-12T03:33:04.799Z",
+  "collectedAt": "2026-10-12T10:08:08.610Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 19,
-  "pagesRead": 12,
+  "pagesFound": 11,
+  "pagesRead": 11,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon san diego 2026 lu.ma",
+      "error": "brightdata expect_element"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -18,7 +24,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "isco, California - Host: Luma - Details available on the RSVP page. 5:30 PM PT - Agents in Production: correctness, context, and control - AWS Builder Loft, San Francisco, CA - Host: SurrealDB San Francisco - To sign up for this event, you must register here: https://luma.com/hqz8wi79 -- Agents are ",
-      "lastSeenAt": "2026-10-01T04:06:28.719Z"
+      "lastSeenAt": "2026-10-12T10:08:08.610Z"
     },
     {
       "url": "https://luma.com/6eqa8nbh",
@@ -329,27 +335,6 @@
       "lastSeenAt": "2026-09-24T04:27:41.336Z"
     },
     {
-      "url": "https://luma.com/92g7smqv",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/marianebekker_founders-bay-san-francisco-tech-events-activity-7413725053739102208-MDhG",
-      "context": "ME] luma.com/m7alg62v 🗓️ Friday, Jan 9 👉 Vibe Coding: New Year Builder Kickoff (10AM-4PM) [Santa Cruz] luma.com/glh2vw3y 👉 AI x Life Sciences Office Hours (8PM-8:45PM) [Online] luma.com/wp1kszmk 👉 JPM kickoff: deeptech x neurotech pregame (7PM-10PM) [SF] luma.com/92g7smqv 👉 Ambient Cloud Viewin",
-      "lastSeenAt": "2026-09-21T03:31:30.971Z"
-    },
-    {
-      "url": "https://luma.com/treu3jtg",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/marianebekker_founders-bay-san-francisco-tech-events-activity-7413725053739102208-MDhG",
-      "context": "pregame (7PM-10PM) [SF] luma.com/92g7smqv 👉 Ambient Cloud Viewing Software for Game Boy (7PM-8PM) [SF] luma.com/1dxb2fah 🗓️ Saturday, Jan 10 👉 Healthcare x AI Hackathon (9AM-6PM) [SF] luma.com/txlhkuu3 👉 NFX Bio Pre-JPM Networking Run (10AM-11:30AM) [SF] luma.com/treu3jtg 👉 The Analog Station! ",
-      "lastSeenAt": "2026-09-21T03:31:30.971Z"
-    },
-    {
-      "url": "https://luma.com/8xorw5fx",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/marianebekker_founders-bay-san-francisco-tech-events-activity-7413725053739102208-MDhG",
-      "context": "e Boy (7PM-8PM) [SF] luma.com/1dxb2fah 🗓️ Saturday, Jan 10 👉 Healthcare x AI Hackathon (9AM-6PM) [SF] luma.com/txlhkuu3 👉 NFX Bio Pre-JPM Networking Run (10AM-11:30AM) [SF] luma.com/treu3jtg 👉 The Analog Station! A Creative Coding Workshop (10AM-2PM) [SF] luma.com/8xorw5fx 👉 Hackathon - Open Re",
-      "lastSeenAt": "2026-09-21T03:31:30.971Z"
-    },
-    {
       "url": "https://luma.com/0xbcm3kj",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-may-5-12-charles-guo-ebcjc",
@@ -423,8 +408,8 @@
       "url": "https://luma.com/3vnw0e0q",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/boson-ai_hackathon-bayarea-ai-activity-7429553640861859840--b_y",
-      "context": "Higgs Audio Hackathon at Circuit Launch with Eigen AI ... Hackathon to the Bay Area at Circuit Launch, in collaboration with Eigen AI. Sign up here: https://luma.com/3vnw0e0q Open to students ...",
-      "lastSeenAt": "2026-10-10T03:49:17.445Z"
+      "context": "Higgs Audio Hackathon at Circuit Launch with Eigen AI ... Hackathon to the Bay Area at Circuit Launch, in collaboration with Eigen AI. Sign up here: https://luma.com/3vnw0e0q Open to students ...Read more",
+      "lastSeenAt": "2026-10-12T10:08:08.610Z"
     },
     {
       "url": "https://luma.com/6xyy1mul",
@@ -452,13 +437,6 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/velodb_come-join-us-in-the-ai-stack-hackathon-this-activity-7506545443376504832-gxyv",
       "context": "VeloDB (Powered by Apache Doris)'s Post Come join us in the AI Stack hackathon this Saturday (9/19) in the SF Bay Area ... Register: https://luma.com/exruwpkp #TheExecutableWorld # ...",
-      "lastSeenAt": "2026-10-12T03:33:04.799Z"
-    },
-    {
-      "url": "https://luma.com/k84uw71w",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/jenny8lee_wiki-x-ai-hackathon-luma-activity-7181746053438672896-yjJ2",
-      "context": "post Wiki(pedia) and AI hackathon in San Francisco on Monday, April 15 at Gray Area in the Mission. Brainstorm and develop AI tools on Wikipedia and other wikis, for drafting, curating, summarizing and illustrating articles. The cute name for event: Waikiki. https://lu.ma/k84uw71w Wiki x AI Hackatho",
       "lastSeenAt": "2026-10-12T03:33:04.799Z"
     }
   ]
