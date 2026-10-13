@@ -1,14 +1,20 @@
 {
-  "collectedAt": "2026-10-12T22:48:57.614Z",
+  "collectedAt": "2026-10-13T03:44:08.809Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 30,
+  "pagesFound": 16,
   "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
+      "error": "brightdata captcha"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -18,7 +24,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "isco, California - Host: Luma - Details available on the RSVP page. 5:30 PM PT - Agents in Production: correctness, context, and control - AWS Builder Loft, San Francisco, CA - Host: SurrealDB San Francisco - To sign up for this event, you must register here: https://luma.com/hqz8wi79 -- Agents are ",
-      "lastSeenAt": "2026-10-12T10:08:08.610Z"
+      "lastSeenAt": "2026-10-01T04:06:28.719Z"
     },
     {
       "url": "https://luma.com/6eqa8nbh",
@@ -354,7 +360,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-july-14-22-bay-area-charles-guo-zs2qc",
       "context": null,
-      "lastSeenAt": "2026-10-05T09:51:53.868Z"
+      "lastSeenAt": "2026-10-13T03:44:08.809Z"
     },
     {
       "url": "https://luma.com/upjkn37w",
@@ -395,15 +401,15 @@
       "url": "https://luma.com/3vnw0e0q",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/boson-ai_hackathon-bayarea-ai-activity-7429553640861859840--b_y",
-      "context": "Higgs Audio Hackathon at Circuit Launch with Eigen AI ... Hackathon to the Bay Area at Circuit Launch, in collaboration with Eigen AI. Sign up here: https://luma.com/3vnw0e0q Open to students ...Read more",
-      "lastSeenAt": "2026-10-12T10:08:08.610Z"
+      "context": "Higgs Audio Hackathon at Circuit Launch with Eigen AI ... Hackathon to the Bay Area at Circuit Launch, in collaboration with Eigen AI. Sign up here: https://luma.com/3vnw0e0q Open to students ...",
+      "lastSeenAt": "2026-10-10T03:49:17.445Z"
     },
     {
       "url": "https://luma.com/6xyy1mul",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/sumani_solix-empower-2026-hackathon-invitation-activity-7510353409569476608-4fj0",
       "context": "sionaries: Strategists and creative minds shaping what gets built and why. 🗓️ When: October 31 - November 1, 2026 📍 Where: PB Labs, ETH Zürich Spaces are limited. Grab your spot and help us close the gap in who gets to build the future! 👇 🔗 Register here: https://luma.com/6xyy1mul #HackTheGap #W",
-      "lastSeenAt": "2026-10-12T22:48:57.614Z"
+      "lastSeenAt": "2026-10-11T09:35:36.202Z"
     },
     {
       "url": "https://luma.com/nkknxvrz",
@@ -439,6 +445,20 @@
       "sourcePage": "https://www.linkedin.com/posts/emerging-angels_open-source-buildathon-iot-hardware-xr-activity-7483929125448232960-kSHr",
       "context": "1752vc: Venture Fellow & Emerging Angel Program's Post 15 Startup Events: West Coast San Francisco, CA Loop Engineering Hackathon, July 17, 2026 https://luma.com/loophack Embodied Metal Hackathon, July 17, ...",
       "lastSeenAt": "2026-10-10T03:49:17.445Z"
+    },
+    {
+      "url": "https://luma.com/k84uw71w",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/posts/jenny8lee_wiki-x-ai-hackathon-luma-activity-7181746053438672896-yjJ2",
+      "context": "post Wiki(pedia) and AI hackathon in San Francisco on Monday, April 15 at Gray Area in the Mission. Brainstorm and develop AI tools on Wikipedia and other wikis, for drafting, curating, summarizing and illustrating articles. The cute name for event: Waikiki. https://lu.ma/k84uw71w Wiki x AI Hackatho",
+      "lastSeenAt": "2026-10-12T03:33:04.799Z"
+    },
+    {
+      "url": "https://luma.com/battle-bots-hack-night-jul15-2026",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/ai-events-july-14-22-bay-area-charles-guo-zs2qc",
+      "context": null,
+      "lastSeenAt": "2026-10-13T03:44:08.809Z"
     }
   ]
 }
