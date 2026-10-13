@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-13T09:55:19.092Z",
+  "collectedAt": "2026-10-13T20:26:57.537Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
@@ -288,11 +288,25 @@
       "lastSeenAt": "2026-10-10T19:04:10.802Z"
     },
     {
+      "url": "https://luma.com/aiusergroup",
+      "queries": [
+        "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026"
+      ],
+      "lastSeenAt": "2026-10-13T20:26:57.530Z"
+    },
+    {
       "url": "https://luma.com/aixbio-hackathon-2026-sf",
       "queries": [
         "site:luma.com hackathon san francisco 2026"
       ],
       "lastSeenAt": "2026-09-30T19:44:15.524Z"
+    },
+    {
+      "url": "https://luma.com/aixmarketing",
+      "queries": [
+        "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026"
+      ],
+      "lastSeenAt": "2026-10-13T20:26:57.530Z"
     },
     {
       "url": "https://luma.com/aws-builder-loft-events",
@@ -412,20 +426,6 @@
         "luma \"hackathon\" \"san diego\" OR \"la jolla\" OR carlsbad 2026"
       ],
       "lastSeenAt": "2026-10-12T10:04:26.941Z"
-    },
-    {
-      "url": "https://luma.com/deepagentshack",
-      "queries": [
-        "site:luma.com hackathon san francisco 2026"
-      ],
-      "lastSeenAt": "2026-10-10T09:18:09.099Z"
-    },
-    {
-      "url": "https://luma.com/deepmind",
-      "queries": [
-        "site:luma.com \"ai hackathon\" san francisco upcoming"
-      ],
-      "lastSeenAt": "2026-10-10T19:04:10.802Z"
     }
   ]
 }
