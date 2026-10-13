@@ -1,20 +1,14 @@
 {
-  "collectedAt": "2026-10-13T03:44:08.809Z",
+  "collectedAt": "2026-10-13T09:57:58.067Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 16,
+  "pagesFound": 25,
   "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [
-    {
-      "stage": "search",
-      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
-      "error": "brightdata captcha"
-    }
-  ],
+  "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -293,13 +287,6 @@
       "lastSeenAt": "2026-10-10T03:49:17.445Z"
     },
     {
-      "url": "https://luma.com/e9h4kv5k",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/automation-anywhere_aideate-hackathon-activity-7481259109665832960-zoG-",
-      "context": "e. 📈 Go-to-Market (GTM) Guidance: Structured support to validate your business model and prepare for funding. Just to add: We are charging a door fee of SGD3 which will be used to get *real* food and drinks to sustain you throughout the day 💪 Sign Up Now 🔽 https://luma.com/e9h4kv5k ONE AI HACKATH",
-      "lastSeenAt": "2026-09-22T03:36:00.862Z"
-    },
-    {
       "url": "https://luma.com/28lfv71m",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/ai-and-society_mentormefuturaremix2026-futuraremix2026-activity-7497800524134637568-oPJd",
@@ -409,7 +396,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/sumani_solix-empower-2026-hackathon-invitation-activity-7510353409569476608-4fj0",
       "context": "sionaries: Strategists and creative minds shaping what gets built and why. 🗓️ When: October 31 - November 1, 2026 📍 Where: PB Labs, ETH Zürich Spaces are limited. Grab your spot and help us close the gap in who gets to build the future! 👇 🔗 Register here: https://luma.com/6xyy1mul #HackTheGap #W",
-      "lastSeenAt": "2026-10-11T09:35:36.202Z"
+      "lastSeenAt": "2026-10-13T09:57:58.067Z"
     },
     {
       "url": "https://luma.com/nkknxvrz",
@@ -445,20 +432,6 @@
       "sourcePage": "https://www.linkedin.com/posts/emerging-angels_open-source-buildathon-iot-hardware-xr-activity-7483929125448232960-kSHr",
       "context": "1752vc: Venture Fellow & Emerging Angel Program's Post 15 Startup Events: West Coast San Francisco, CA Loop Engineering Hackathon, July 17, 2026 https://luma.com/loophack Embodied Metal Hackathon, July 17, ...",
       "lastSeenAt": "2026-10-10T03:49:17.445Z"
-    },
-    {
-      "url": "https://luma.com/k84uw71w",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/jenny8lee_wiki-x-ai-hackathon-luma-activity-7181746053438672896-yjJ2",
-      "context": "post Wiki(pedia) and AI hackathon in San Francisco on Monday, April 15 at Gray Area in the Mission. Brainstorm and develop AI tools on Wikipedia and other wikis, for drafting, curating, summarizing and illustrating articles. The cute name for event: Waikiki. https://lu.ma/k84uw71w Wiki x AI Hackatho",
-      "lastSeenAt": "2026-10-12T03:33:04.799Z"
-    },
-    {
-      "url": "https://luma.com/battle-bots-hack-night-jul15-2026",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-july-14-22-bay-area-charles-guo-zs2qc",
-      "context": null,
-      "lastSeenAt": "2026-10-13T03:44:08.809Z"
     }
   ]
 }
