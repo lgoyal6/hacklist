@@ -1,14 +1,20 @@
 {
-  "collectedAt": "2026-10-14T03:34:33.259Z",
+  "collectedAt": "2026-10-14T08:21:38.661Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 29,
-  "pagesRead": 12,
+  "pagesFound": 0,
+  "pagesRead": 0,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon \"bay area\" 2026 register luma",
+      "error": "brightdata expect_element"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -103,13 +109,6 @@
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
       "context": "ng Hackathon (9:30 AM) San Francisco - $50k+ prizes, integrations with You.com , Intercom, Lovable, Google DeepMind https://lu.ma/intercomai Evening The Slice Lab by Sentry & Vercel (5:00 PM) Joyride Pizza Yerba Buena Gardens - Super Bowl week VIP pizza party https://lu.ma/slicelab AI Events AI Even",
       "lastSeenAt": "2026-10-14T03:34:33.259Z"
-    },
-    {
-      "url": "https://luma.com/rgk6ln4e",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/troy-gwdn_ive-started-going-to-hackathons-every-single-activity-7458893560977862656-2Ixu",
-      "context": "Broadening Horizons at SF Hackathons Event website: http://codexhackathon.my/ Apply on Luma: https://luma.com/rgk6ln4e #Malaysia #AI #Codex ...",
-      "lastSeenAt": "2026-09-23T03:58:36.984Z"
     },
     {
       "url": "https://luma.com/xt4k5374",
