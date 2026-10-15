@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-15T03:34:09.016Z",
+  "collectedAt": "2026-10-15T07:56:56.173Z",
   "searchProviders": [
     "brightdata"
   ],
@@ -8,10 +8,20 @@
   "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
+      "error": "brightdata expect_element"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
-  "ycEventUrls": [],
+  "ycEventUrls": [
+    "https://events.ycombinator.com/HW0opxy78",
+    "https://events.ycombinator.com/deepmind-march26",
+    "https://events.ycombinator.com/bio-ai-hackathon"
+  ],
   "urls": [
     {
       "url": "https://luma.com/hqz8wi79",
@@ -266,13 +276,6 @@
       "lastSeenAt": "2026-09-28T03:33:41.211Z"
     },
     {
-      "url": "https://luma.com/1dxb2fah",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/marianebekker_founders-bay-san-francisco-tech-events-activity-7413725053739102208-MDhG",
-      "context": "Mariane Bekker's Post - Founders Bay ... [SF] luma.com/1dxb2fah 🗓️ Saturday, Jan 10 Healthcare x AI Hackathon (9AM-6PM) [SF] luma.com/txlhkuu3 NFX Bio Pre-JPM Networking Run ...",
-      "lastSeenAt": "2026-09-24T04:27:41.336Z"
-    },
-    {
       "url": "https://luma.com/ftc-sf-2026",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/maxkrueger1_one-thing-i-feel-strongly-about-right-now-activity-7433186458318028800-x06P",
@@ -306,13 +309,6 @@
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
       "context": "eyond the Prompt: Mastering AI Collaboration (6:00 PM) 5 Palo Alto Square - Shift from command-and-control to improvisation https://lu.ma/5ccq20wd 130th SF Hardware Meetup @ Rivian (6:00 PM) San Francisco - Climate tech and energy topics, bring physical demos https://lu.ma/wi0vt7h6 Thursday, Februar",
       "lastSeenAt": "2026-10-14T03:34:33.259Z"
-    },
-    {
-      "url": "https://luma.com/txlhkuu3",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/marianebekker_founders-bay-san-francisco-tech-events-activity-7413725053739102208-MDhG",
-      "context": "Mariane Bekker's Post - Founders Bay ... [SF] luma.com/1dxb2fah 🗓️ Saturday, Jan 10 Healthcare x AI Hackathon (9AM-6PM) [SF] luma.com/txlhkuu3 NFX Bio Pre-JPM Networking Run ...",
-      "lastSeenAt": "2026-09-24T04:27:41.336Z"
     },
     {
       "url": "https://luma.com/0xbcm3kj",
@@ -432,6 +428,20 @@
       "sourcePage": "https://www.linkedin.com/posts/jenny8lee_wiki-x-ai-hackathon-luma-activity-7181746053438672896-yjJ2",
       "context": "post Wiki(pedia) and AI hackathon in San Francisco on Monday, April 15 at Gray Area in the Mission. Brainstorm and develop AI tools on Wikipedia and other wikis, for drafting, curating, summarizing and illustrating articles. The cute name for event: Waikiki. https://lu.ma/k84uw71w Wiki x AI Hackatho",
       "lastSeenAt": "2026-10-12T03:33:04.799Z"
+    },
+    {
+      "url": "https://luma.com/8q0dr4um.",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-tech-ai-events-may-28-june-4-2026-charles-guo-yvhfc",
+      "context": "Bay Area Tech & AI Events — May 28 to June 4, 2026 Quantum AI Hackathon 1.0 — Berkeley, 9:00 AM https://luma.com/8q0dr4um. SuperPlane Hackathon with Render — 10:00 AM https://luma.com/3yx41qr9.Read more",
+      "lastSeenAt": "2026-10-15T07:56:56.173Z"
+    },
+    {
+      "url": "https://luma.com/3yx41qr9.Read",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/bay-area-tech-ai-events-may-28-june-4-2026-charles-guo-yvhfc",
+      "context": "Bay Area Tech & AI Events — May 28 to June 4, 2026 Quantum AI Hackathon 1.0 — Berkeley, 9:00 AM https://luma.com/8q0dr4um. SuperPlane Hackathon with Render — 10:00 AM https://luma.com/3yx41qr9.Read more",
+      "lastSeenAt": "2026-10-15T07:56:56.173Z"
     }
   ]
 }

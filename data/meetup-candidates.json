@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-14T19:24:37.049Z",
+  "collectedAt": "2026-10-15T08:18:13.701Z",
   "source": "meetup",
   "queries": [
     "https://www.meetup.com/find/?keywords=hackathon&location=us--ca--san%20francisco&source=EVENTS",
@@ -8,7 +8,7 @@
   ],
   "skipped": {
     "past": 0,
-    "online": 4,
+    "online": 3,
     "notLocal": 0,
     "notHackathon": 31,
     "recurring": 0
@@ -33,7 +33,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "ODSC AI x NEBIUS | Hackathon\nHyatt Regency San Francisco Airport\nBurlingame, CA\n**October 28, 2026 · 9:00 AM–7:30 PM PT · Burlingame, CA**\n**Free to apply · Limited spots**\n​Bring an idea. Spend the day building it with other AI builders, Nebius tools, and engineers who can help when you get stuck. We’ll start with coffee and team formation, then get everyone set up for a full day of hacking. You’ll finish by showing what you built.\n​Come with a team, find one when you arrive, or work solo.\n\n**​What you can build**\n​Choose a direction that interests you:\n\n* ​Agents and agentic workflows\n* ​Coding and developer tools\n* ​Personal AI assistants\n* ​Inference and performance\n* ​An open track for your own idea\n\n​Final tracks, partner challenges, and prizes will be announced before the event.\n\n### Nebius challenge: Build a research agent that brings its sources\n\nBuild an agent that turns a question into a sourced, verifiable answer. Use **Nebius Token Factory** for open-model inference and **Tavily** for real-time web search, so people can check the sources behind your agent’s answer.\n**Requirements:**\n\n* Run inference on Nebius Token Factory.\n* Use Tavily for web search.\n* Share a public repository with a README.\n* Prepare a short demo of what you built.\n\n**Get started:** Follow the [deep research agent cookbook](https://dev.nebius.com/cookbook/deep-research-agent-tavily) and claim [free Nebius credits](https://dev.nebius.com/builders).\n\n**​What you’ll have access to**\n​Teams can use **Nebius AI Cloud** for GPU compute and **Nebius Token Factory** credits to work with open-source models. Nebius engineers will be on the floor throughout the day to help you get from idea to working demo.\n​The day at a glance\n​*Tentative schedule, Pacific Time*\n\n* ​**9:00 AM** — Check-in, coffee, and team formation\n* ​**10:00 AM** — Kickoff and Nebius workshop\n* ​**11:00 AM** — Hacking begins\n* ​**1:00 PM** — Break\n* ​**5:30 PM** — Submissions close\n* ​**6:00 PM** — Demos and judging\n* ​**7:30 PM** — Winners announced\n\n​Who should apply?\n​AI and ML engineers, data scientists, developers, agent builders, and startup teams, anyone ready to spend the day building. Bring your laptop, charger, and an idea.\n​**You don’t need an ODSC AI West pass to apply.** Applications are reviewed on a rolling basis. Accepted participants will receive venue and setup details by email.\n​*Co-hosted by ODSC AI and Nebius at ODSC AI West 2026.*",
-      "checkedAt": "2026-10-14T19:24:33.339Z",
+      "checkedAt": "2026-10-15T08:18:09.299Z",
       "structuredEvent": {
         "url": "https://www.meetup.com/san-francisco-odsc/events/316812136/",
         "name": "ODSC AI x NEBIUS | Hackathon",
@@ -47,6 +47,42 @@
         "location": {
           "name": "Hyatt Regency San Francisco Airport",
           "city": "Burlingame",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    },
+    {
+      "url": "https://www.meetup.com/hackathon-practice-sessions-and-social-nights/events/316980745/",
+      "title": "San Francisco Hackathon Prep and Pizza Social",
+      "category": "hackathon",
+      "heldBecause": null,
+      "discoveredVia": "meetup",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "San Francisco Hackathon Prep and Pizza Social\n575 Maritime St\nSan Francisco, CA\nWhether you are gearing up for an upcoming hackathon or just looking to sharpen your coding skills in a low-pressure environment, join us for our Hackathon Prep and Pizza Social. This evening is all about getting ready to build. We will spend some time working through project ideas, troubleshooting potential tech stacks, and sharing tips on how to manage your time and team dynamics during a sprint. It is a great space to bounce ideas off others and get some honest feedback before the clock starts ticking at your next competition.\n\nThis meetup is designed for anyone who enjoys the collaborative, fast-paced nature of hackathons, regardless of your experience level. We want to keep things casual, so expect a mix of collaborative problem-solving and plenty of conversation over pizza. It is a chance to meet fellow developers, designers, and creators in the city who are looking to ship projects and make connections. If you plan on coming by, please take a moment to RSVP so we can get an accurate head count for the food.",
+      "checkedAt": "2026-10-15T08:18:09.299Z",
+      "structuredEvent": {
+        "url": "https://www.meetup.com/hackathon-practice-sessions-and-social-nights/events/316980745/",
+        "name": "San Francisco Hackathon Prep and Pizza Social",
+        "description": "Whether you are gearing up for an upcoming hackathon or just looking to sharpen your coding skills in a low-pressure environment, join us for our Hackathon Prep and Pizza Social. This evening is all about getting ready to build. We will spend some time working through project ideas, troubleshooting potential tech stacks, and sharing tips on how to manage your time and team dynamics during a sprint. It is a great space to bounce ideas off others and get some honest feedback before the clock starts ticking at your next competition.\n\nThis meetup is designed for anyone who enjoys the collaborative, fast-paced nature of hackathons, regardless of your experience level. We want to keep things casual, so expect a mix of collaborative problem-solving and plenty of conversation over pizza. It is a chance to meet fellow developers, designers, and creators in the city who are looking to ship projects and make connections. If you plan on coming by, please take a moment to RSVP so we can get an accurate head count for the food.",
+        "startDate": "2026-10-16T01:00:00.000Z",
+        "endDate": "2026-10-16T01:00:00.000Z",
+        "timeSource": "meetup",
+        "organizers": [
+          "Hackathon Practice Sessions and Social Nights"
+        ],
+        "location": {
+          "name": "575 Maritime St",
+          "city": "San Francisco",
           "region": "CA"
         },
         "offerAvailability": null,
@@ -69,7 +105,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "San Francisco Hackathon Prep and Pizza Social\nQJ4M+46 Central Waterfront\nSan Francisco, CA\nWe are hosting a casual evening to help everyone get ready for upcoming hackathons. Whether you are looking for a project partner, want to brainstorm technical approaches, or just need a quiet space to brush up on your documentation before a big weekend event, this is the place to do it. We will have plenty of pizza and a relaxed environment where you can work through code hurdles or find someone to team up with.\n\nThis meetup is for anyone who enjoys the hackathon scene, from first-timers who want to know what to expect to veterans looking to sharpen their skills. It is an informal session, so feel free to bring your laptop and a specific challenge you are stuck on, or just come by to meet some like-minded folks in the local developer community.\n\nWe would love to get an accurate headcount for the food order, so please take a moment to RSVP if you think you can make it. We look forward to seeing you there.",
-      "checkedAt": "2026-10-14T19:24:33.339Z",
+      "checkedAt": "2026-10-15T08:18:09.299Z",
       "structuredEvent": {
         "url": "https://www.meetup.com/hackathon-practice-sessions-and-social-nights/events/316979433/",
         "name": "San Francisco Hackathon Prep and Pizza Social",
@@ -90,35 +126,35 @@
       }
     },
     {
-      "url": "https://www.meetup.com/sandiegowikimediansusergroup/events/315963740/",
-      "title": "Filipino American History Month edit-a-thon/salon",
+      "url": "https://www.meetup.com/hackathon-practice-sessions-and-social-nights/events/316982134/",
+      "title": "Oakland Hackathon Training and Late Night Networking",
       "category": "hackathon",
       "heldBecause": null,
       "discoveredVia": "meetup",
-      "confidence": 62,
-      "relevance": 68,
+      "confidence": 48,
+      "relevance": 59,
       "signals": {
         "directHackathonTerm": true,
-        "buildEvidence": false,
+        "buildEvidence": true,
         "competitionEvidence": false,
         "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
+        "negativeTitleEvidence": true
       },
-      "evidence": "Filipino American History Month edit-a-thon/salon\nMission Valley Branch Library\nSan Diego, CA\nThe [San Diego Wikimedians User Group](https://meta.wikimedia.org/wiki/San_Diego_Wikimedians_User_Group) will be hosting a [Filipino American History Month](https://en.wikipedia.org/wiki/Filipino_American_History_Month) [edit-a-thon](https://en.wikipedia.org/wiki/Edit-a-thon)/[salon](https://en.wikipedia.org/wiki/Salon_(gathering)) at the [San Diego Public Library](https://en.wikipedia.org/wiki/San_Diego_Public_Library)'s Mission Valley branch library. All are encouraged to attend. This will be the 140th Wikipedia meetup in San Diego County.\n\nSan Diego Wikimedians User Group has reserved Seminar Room A at the San Diego Public Library Mission Valley branch library. We shall be open to the public and will teach those interested in learning more about Wikipedia. Specifically how to edit/modify/create content on Wikipedia. We will also teach interested individuals how to upload content onto Wikimedia Commons. Moreover, this will provide a forum where individuals from the public may ask any questions in person about the various open knowledge projects that are operated by the Wikimedia Foundation.\n\n**\"Granting permission to use library facilities does not constitute endorsement by the San Diego Public Library, the Board of Library Commissioners, or the City of San Diego.\".**\n\n[Wikipedia Meetup event page](https://en.wikipedia.org/wiki/Wikipedia:Meetup/San_Diego/October_2026)",
-      "checkedAt": "2026-10-14T19:24:37.049Z",
+      "evidence": "Oakland Hackathon Training and Late Night Networking\n1024 Buena Vista Ave\nOakland, CA\nIf you have been looking to get some practice in before your next big competition or just want to brush up on your coding skills in a supportive environment, come join us for our upcoming session. We are hosting an evening dedicated to working through technical challenges and collaborative problem-solving. Whether you are a beginner looking to understand the hackathon format or an experienced developer working on a specific project, this is a space to focus, learn, and trade tips with others in the community.\n\nWe will start the night with some structured practice time, but as the evening moves along, the focus will shift toward casual conversation. It is a great chance to meet people who share your interests, discuss new tools, or just talk shop over a drink or snack. We keep things low-pressure and open-ended, so come as you are and stay for as long as you like. We hope to see a good mix of familiar faces and newcomers this time around.\n\nIf you think you can make it, please take a second to RSVP so we have a general idea of how many people to expect. Looking forward to seeing you there.",
+      "checkedAt": "2026-10-15T08:18:09.298Z",
       "structuredEvent": {
-        "url": "https://www.meetup.com/sandiegowikimediansusergroup/events/315963740/",
-        "name": "Filipino American History Month edit-a-thon/salon",
-        "description": "The [San Diego Wikimedians User Group](https://meta.wikimedia.org/wiki/San_Diego_Wikimedians_User_Group) will be hosting a [Filipino American History Month](https://en.wikipedia.org/wiki/Filipino_American_History_Month) [edit-a-thon](https://en.wikipedia.org/wiki/Edit-a-thon)/[salon](https://en.wikipedia.org/wiki/Salon_(gathering)) at the [San Diego Public Library](https://en.wikipedia.org/wiki/San_Diego_Public_Library)'s Mission Valley branch library. All are encouraged to attend. This will be the 140th Wikipedia meetup in San Diego County.\n\nSan Diego Wikimedians User Group has reserved Seminar Room A at the San Diego Public Library Mission Valley branch library. We shall be open to the public and will teach those interested in learning more about Wikipedia. Specifically how to edit/modify/create content on Wikipedia. We will also teach interested individuals how to upload content onto Wikimedia Commons. Moreover, this will provide a forum where individuals from the public may ask any questions in person about the various open knowledge projects that are operated by the Wikimedia Foundation.\n\n**\"Granting permission to use library facilities does not constitute endorsement by the San Diego Public Library, the Board of Library Commissioners, or the City of San Diego.\".**\n\n[Wikipedia Meetup event page](https://en.wikipedia.org/wiki/Wikipedia:Meetup/San_Diego/October_2026)",
-        "startDate": "2026-10-17T18:30:00.000Z",
-        "endDate": "2026-10-17T18:30:00.000Z",
+        "url": "https://www.meetup.com/hackathon-practice-sessions-and-social-nights/events/316982134/",
+        "name": "Oakland Hackathon Training and Late Night Networking",
+        "description": "If you have been looking to get some practice in before your next big competition or just want to brush up on your coding skills in a supportive environment, come join us for our upcoming session. We are hosting an evening dedicated to working through technical challenges and collaborative problem-solving. Whether you are a beginner looking to understand the hackathon format or an experienced developer working on a specific project, this is a space to focus, learn, and trade tips with others in the community.\n\nWe will start the night with some structured practice time, but as the evening moves along, the focus will shift toward casual conversation. It is a great chance to meet people who share your interests, discuss new tools, or just talk shop over a drink or snack. We keep things low-pressure and open-ended, so come as you are and stay for as long as you like. We hope to see a good mix of familiar faces and newcomers this time around.\n\nIf you think you can make it, please take a second to RSVP so we have a general idea of how many people to expect. Looking forward to seeing you there.",
+        "startDate": "2026-10-16T02:00:00.000Z",
+        "endDate": "2026-10-16T02:00:00.000Z",
         "timeSource": "meetup",
         "organizers": [
-          "San Diego Wikimedians User Group"
+          "Hackathon Practice Sessions and Social Nights"
         ],
         "location": {
-          "name": "Mission Valley Branch Library",
-          "city": "San Diego",
+          "name": "1024 Buena Vista Ave",
+          "city": "Oakland",
           "region": "CA"
         },
         "offerAvailability": null,
