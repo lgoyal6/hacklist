@@ -1,27 +1,17 @@
 {
-  "collectedAt": "2026-10-15T07:56:56.173Z",
+  "collectedAt": "2026-10-15T18:47:04.945Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 12,
+  "pagesFound": 17,
   "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [
-    {
-      "stage": "search",
-      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
-      "error": "brightdata expect_element"
-    }
-  ],
+  "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
-  "ycEventUrls": [
-    "https://events.ycombinator.com/HW0opxy78",
-    "https://events.ycombinator.com/deepmind-march26",
-    "https://events.ycombinator.com/bio-ai-hackathon"
-  ],
+  "ycEventUrls": [],
   "urls": [
     {
       "url": "https://luma.com/hqz8wi79",
@@ -419,8 +409,8 @@
       "url": "https://luma.com/loophack",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/emerging-angels_open-source-buildathon-iot-hardware-xr-activity-7483929125448232960-kSHr",
-      "context": "1752vc: Venture Fellow & Emerging Angel Program's Post 15 Startup Events: West Coast San Francisco, CA Loop Engineering Hackathon, July 17, 2026 https://luma.com/loophack Embodied Metal Hackathon, July 17, ...",
-      "lastSeenAt": "2026-10-10T03:49:17.445Z"
+      "context": "bs Games Sign in Join now 1752vc: Venture Fellow & Emerging Angel Program’s Post 1752vc: Venture Fellow & Emerging Angel Program 10,526 followers 3mo Report this post 15 Startup Events: West Coast San Francisco, CA Loop Engineering Hackathon, July 17, 2026 🔗 https://luma.com/loophack Embodied Metal",
+      "lastSeenAt": "2026-10-15T18:47:04.945Z"
     },
     {
       "url": "https://luma.com/k84uw71w",
