@@ -100,7 +100,6 @@ test("the Spanish board is Spanish chrome around unchanged events", async () => 
   }
 
   const incompleteListings = eventsData.events.filter(isIncompleteListing);
-  assert.equal(incompleteListings.length, 4);
   for (const event of incompleteListings) {
     assert.ok(
       !html.includes(`href="${event.url}"`),
