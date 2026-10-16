@@ -1,19 +1,14 @@
 {
-  "collectedAt": "2026-10-16T03:40:34.127Z",
+  "collectedAt": "2026-10-16T07:46:54.491Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 20,
-  "pagesRead": 1,
-  "readStoppedOnTimeBudget": true,
+  "pagesFound": 18,
+  "pagesRead": 12,
+  "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [
-    {
-      "stage": "read",
-      "error": "time budget reached with 11 page(s) unread"
-    }
-  ],
+  "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -23,7 +18,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "isco, California - Host: Luma - Details available on the RSVP page. 5:30 PM PT - Agents in Production: correctness, context, and control - AWS Builder Loft, San Francisco, CA - Host: SurrealDB San Francisco - To sign up for this event, you must register here: https://luma.com/hqz8wi79 -- Agents are ",
-      "lastSeenAt": "2026-10-15T03:34:09.016Z"
+      "lastSeenAt": "2026-10-16T07:46:54.491Z"
     },
     {
       "url": "https://luma.com/6eqa8nbh",
@@ -385,9 +380,9 @@
     {
       "url": "https://luma.com/nkknxvrz",
       "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/emerging-angels_startup-couve-coffee-luma-activity-7494056389217193984-7wHZ",
-      "context": "1752vc: Venture Fellow & Emerging Angel Program's Post ... Hackathon, August 17, 2026 https://luma.com/nkknxvrz ModCon 2026, August 18 ... 2026 https://luma.com/eat5sm3n.",
-      "lastSeenAt": "2026-10-16T03:40:34.127Z"
+      "sourcePage": "https://www.linkedin.com/posts/michaeljcalvey_the-physical-ai-sprint-hackathon-luma-activity-7490123373633708032-yx2y",
+      "context": "sco, the day before Foxglove 's Actuate conference. Bring a team or make new friends, develop in simulation, deploy on real robots, and win prizes. If you’re a robotics / ML / CV engineer, technical founder, or similar, we hope to see you there. Sign up here: https://luma.com/nkknxvrz The Physical A",
+      "lastSeenAt": "2026-10-16T07:46:54.491Z"
     },
     {
       "url": "https://luma.com/jw2nuuqt",
@@ -437,20 +432,6 @@
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-tech-ai-events-may-28-june-4-2026-charles-guo-yvhfc",
       "context": "Bay Area Tech & AI Events — May 28 to June 4, 2026 Quantum AI Hackathon 1.0 — Berkeley, 9:00 AM https://luma.com/8q0dr4um. SuperPlane Hackathon with Render — 10:00 AM https://luma.com/3yx41qr9.Read more",
       "lastSeenAt": "2026-10-15T07:56:56.173Z"
-    },
-    {
-      "url": "https://luma.com/hncudfxb",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/emerging-angels_the-shipyard-vol-2-brewing-after-dark-x-activity-7473780163093192704-BBbu",
-      "context": "1752vc: Venture Fellow & Emerging Angel Program's Post 14 Startup Events: West Coast San Francisco, CA Inference-Time Compute Hackathon, June 19, 2026 https://luma.com/hncudfxb The Global ...",
-      "lastSeenAt": "2026-10-16T03:40:34.127Z"
-    },
-    {
-      "url": "https://luma.com/eat5sm3n.",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/emerging-angels_startup-couve-coffee-luma-activity-7494056389217193984-7wHZ",
-      "context": "1752vc: Venture Fellow & Emerging Angel Program's Post ... Hackathon, August 17, 2026 https://luma.com/nkknxvrz ModCon 2026, August 18 ... 2026 https://luma.com/eat5sm3n.",
-      "lastSeenAt": "2026-10-16T03:40:34.127Z"
     }
   ]
 }

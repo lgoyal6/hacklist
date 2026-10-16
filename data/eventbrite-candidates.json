@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-16T03:34:33.505Z",
+  "collectedAt": "2026-10-16T08:09:23.320Z",
   "source": "eventbrite",
   "queries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
@@ -8,10 +8,10 @@
     "https://www.eventbrite.com/d/ca--san-diego/hackathon/"
   ],
   "skipped": {
-    "past": 0,
+    "past": 5,
     "online": 0,
     "notLocal": 4,
-    "notHackathon": 65,
+    "notHackathon": 60,
     "recurring": 0
   },
   "problems": [],
@@ -19,8 +19,8 @@
   "note": "Eventbrite search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
   "candidates": [
     {
-      "url": "https://www.eventbrite.com/e/the-design-project-hackathon-tickets-2002977348167",
-      "title": "The Design Project Hackathon",
+      "url": "https://www.eventbrite.com/e/dmba-design-project-ai-hackathon-tickets-2002977348167",
+      "title": "DMBA  Design Project AI Hackathon",
       "category": "hackathon",
       "heldBecause": null,
       "discoveredVia": "eventbrite",
@@ -33,14 +33,14 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "The Design Project Hackathon\nCalifornia College of the Arts (CCA)\nSan Francisco, CA\nThe Design Project prepares designers to design with code and they are sharing their process this fall at the coveted CCA.",
-      "checkedAt": "2026-10-15T03:30:43.101Z",
+      "evidence": "DMBA  Design Project AI Hackathon\nCalifornia College of the Arts (CCA)\nSan Francisco, CA\nThe Design Project prepares designers to design with code and they are sharing their process this fall at the coveted CCA.",
+      "checkedAt": "2026-10-16T08:08:56.028Z",
       "structuredEvent": {
-        "url": "https://www.eventbrite.com/e/the-design-project-hackathon-tickets-2002977348167",
-        "name": "The Design Project Hackathon",
+        "url": "https://www.eventbrite.com/e/dmba-design-project-ai-hackathon-tickets-2002977348167",
+        "name": "DMBA  Design Project AI Hackathon",
         "description": "The Design Project prepares designers to design with code and they are sharing their process this fall at the coveted CCA.",
-        "startDate": "2026-11-14T08:00:00.000Z",
-        "endDate": "2026-11-15T07:59:00.000Z",
+        "startDate": "2026-11-12T08:00:00.000Z",
+        "endDate": "2026-11-13T07:59:00.000Z",
         "timeSource": "eventbrite",
         "organizers": [],
         "location": {
@@ -68,7 +68,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "The Debug Table SF: 24-Hour AI Operations Hackathon\nStanford Court San Francisco\nSan Francisco, CA\n24 hours. One real challenge. Join builders and problem-solvers in an overnight sprint to create a working AI-powered solution.",
-      "checkedAt": "2026-10-16T03:34:26.927Z",
+      "checkedAt": "2026-10-16T08:08:56.026Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/the-debug-table-sf-24-hour-ai-operations-hackathon-tickets-2003275795832",
         "name": "The Debug Table SF: 24-Hour AI Operations Hackathon",
@@ -80,6 +80,40 @@
         "location": {
           "name": "Stanford Court San Francisco",
           "city": "San Francisco",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    },
+    {
+      "url": "https://www.eventbrite.com/e/odsc-ai-x-nebius-hackathon-tickets-2002152139947",
+      "title": "ODSC AI x NEBIUS | Hackathon",
+      "category": "hackathon",
+      "heldBecause": null,
+      "discoveredVia": "eventbrite",
+      "confidence": 62,
+      "relevance": 60,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "ODSC AI x NEBIUS | Hackathon\nHyatt Regency San Francisco Airport\nBurlingame, CA\nThis event is part of the ODSC AI West 2026 Conference, bringing together AI and data professionals for practical, expert-led sessions.",
+      "checkedAt": "2026-10-16T08:09:03.420Z",
+      "structuredEvent": {
+        "url": "https://www.eventbrite.com/e/odsc-ai-x-nebius-hackathon-tickets-2002152139947",
+        "name": "ODSC AI x NEBIUS | Hackathon",
+        "description": "This event is part of the ODSC AI West 2026 Conference, bringing together AI and data professionals for practical, expert-led sessions.",
+        "startDate": "2026-12-29T08:00:00.000Z",
+        "endDate": "2026-12-30T07:59:00.000Z",
+        "timeSource": "eventbrite",
+        "organizers": [],
+        "location": {
+          "name": "Hyatt Regency San Francisco Airport",
+          "city": "Burlingame",
           "region": "CA"
         },
         "offerAvailability": null,
@@ -102,7 +136,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "DeveloperWeek 2027 Hackathon\nSanta Clara Convention Center\nSanta Clara, CA\nJoin the nation's largest challenge-driven hackathon @ DeveloperWeek 2027!",
-      "checkedAt": "2026-10-16T03:34:29.139Z",
+      "checkedAt": "2026-10-16T08:09:03.421Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/developerweek-2027-hackathon-registration-1992072331970",
         "name": "DeveloperWeek 2027 Hackathon",
@@ -136,7 +170,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Startup Weekend San Diego: Justice + AI\nDesign and Innovation Building\nSan Diego, CA\nBring your entrepreneurial drive to create new products and services in an industry that touches everyone's lives.",
-      "checkedAt": "2026-10-16T03:34:33.502Z",
+      "checkedAt": "2026-10-16T08:09:23.318Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/startup-weekend-san-diego-justice-ai-tickets-1999007009778",
         "name": "Startup Weekend San Diego: Justice + AI",
@@ -148,74 +182,6 @@
         "location": {
           "name": "Design and Innovation Building",
           "city": "San Diego",
-          "region": "CA"
-        },
-        "offerAvailability": null,
-        "going": null
-      }
-    },
-    {
-      "url": "https://www.eventbrite.com/e/odsc-ai-x-nebius-hackathon-tickets-2002152139947",
-      "title": "ODSC AI x NEBIUS | Hackathon",
-      "category": "hackathon",
-      "heldBecause": null,
-      "discoveredVia": "eventbrite",
-      "confidence": 62,
-      "relevance": 60,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "ODSC AI x NEBIUS | Hackathon\nHyatt Regency San Francisco Airport\nBurlingame, CA\nThis event is part of the ODSC AI West 2026 Conference, bringing together AI and data professionals for practical, expert-led sessions.",
-      "checkedAt": "2026-10-16T03:34:29.139Z",
-      "structuredEvent": {
-        "url": "https://www.eventbrite.com/e/odsc-ai-x-nebius-hackathon-tickets-2002152139947",
-        "name": "ODSC AI x NEBIUS | Hackathon",
-        "description": "This event is part of the ODSC AI West 2026 Conference, bringing together AI and data professionals for practical, expert-led sessions.",
-        "startDate": "2026-12-29T08:00:00.000Z",
-        "endDate": "2026-12-30T07:59:00.000Z",
-        "timeSource": "eventbrite",
-        "organizers": [],
-        "location": {
-          "name": "Hyatt Regency San Francisco Airport",
-          "city": "Burlingame",
-          "region": "CA"
-        },
-        "offerAvailability": null,
-        "going": null
-      }
-    },
-    {
-      "url": "https://www.eventbrite.com/e/dmba-design-project-ai-hackathon-tickets-2002977348167",
-      "title": "DMBA  Design Project AI Hackathon",
-      "category": "hackathon",
-      "heldBecause": null,
-      "discoveredVia": "eventbrite",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "DMBA  Design Project AI Hackathon\nCalifornia College of the Arts (CCA)\nSan Francisco, CA\nThe Design Project prepares designers to design with code and they are sharing their process this fall at the coveted CCA.",
-      "checkedAt": "2026-10-16T03:34:26.928Z",
-      "structuredEvent": {
-        "url": "https://www.eventbrite.com/e/dmba-design-project-ai-hackathon-tickets-2002977348167",
-        "name": "DMBA  Design Project AI Hackathon",
-        "description": "The Design Project prepares designers to design with code and they are sharing their process this fall at the coveted CCA.",
-        "startDate": "2026-11-12T08:00:00.000Z",
-        "endDate": "2026-11-13T07:59:00.000Z",
-        "timeSource": "eventbrite",
-        "organizers": [],
-        "location": {
-          "name": "California College of the Arts (CCA)",
-          "city": "San Francisco",
           "region": "CA"
         },
         "offerAvailability": null,
