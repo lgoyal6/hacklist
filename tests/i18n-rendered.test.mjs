@@ -7,6 +7,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { isIncompleteListing } from "../app/ranking.mjs";
 
 import { formatEventDate, zoneParts } from "../app/i18n/dates.mjs";
 
@@ -88,12 +89,22 @@ test("the Spanish board is Spanish chrome around unchanged events", async () => 
   for (const event of eventsData.events.filter(
     (candidate) =>
       candidate.category === "hackathon" &&
+      !isIncompleteListing(candidate) &&
       isUpcoming(candidate) &&
       regionOf(candidate) === defaultRegion,
   )) {
     assert.ok(
       html.includes(`href="${event.url}"`),
       `${event.title} is not hyperlinked on the Spanish board`,
+    );
+  }
+
+  const incompleteListings = eventsData.events.filter(isIncompleteListing);
+  assert.equal(incompleteListings.length, 4);
+  for (const event of incompleteListings) {
+    assert.ok(
+      !html.includes(`href="${event.url}"`),
+      `${event.title} must not be hyperlinked on the Spanish Hackathons board`,
     );
   }
 });
