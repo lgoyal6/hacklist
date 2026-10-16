@@ -21,6 +21,10 @@
 /** The view the board opens on. */
 export const BOARD_DEFAULT_VIEW = "hackathons";
 
+/** A venue-level placeholder lacks enough event details for the Hackathons view. */
+export const isIncompleteListing = (event) =>
+  event.title?.trim().toLowerCase().startsWith("venue placeholder -") ?? false;
+
 /** The region an event is published under, defaulting the way the feed does. */
 export const regionOf = (event, defaultRegion) => event.region ?? defaultRegion;
 
@@ -50,6 +54,9 @@ export function boardVisible(events, options) {
       if (Number.isFinite(over) && over < asOf) return false;
       return true;
     })
+    .filter(
+      (event) => view !== "hackathons" || !isIncompleteListing(event),
+    )
     .filter((event) => {
       const haystack = `${event.title} ${event.organizer} ${event.tags.join(" ")} ${event.city ?? ""}`;
       if (needle && !haystack.toLowerCase().includes(needle)) return false;

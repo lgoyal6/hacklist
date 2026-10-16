@@ -1,4 +1,5 @@
 import discovery from "../../data/events.json";
+import { isIncompleteListing } from "../ranking.mjs";
 
 type FeedEvent = {
   id: string;
@@ -229,6 +230,7 @@ function buildCalendar(region: FeedRegion): string {
   const asOf = Date.now();
   const events = (discovery.events as FeedEvent[]).filter((event) => {
     if (!event.start) return false;
+    if (isIncompleteListing(event)) return false;
     // An event written before regions existed belongs to the default one, which
     // is where the single-region board had it.
     if ((event.region ?? defaultRegion) !== region.key) return false;

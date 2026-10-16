@@ -14,7 +14,13 @@ import {
   monthGroupLabel,
   updatedStampLabel,
 } from "./i18n/dates.mjs";
-import { boardVisible, dayKeyOf, rankedList, regionOf } from "./ranking.mjs";
+import {
+  boardVisible,
+  dayKeyOf,
+  isIncompleteListing,
+  rankedList,
+  regionOf,
+} from "./ranking.mjs";
 import { model } from "./model";
 import {
   identity,
@@ -486,6 +492,9 @@ export default function Board({ locale }: { locale: Locale }) {
                     )}
                     {event.category === "adjacent" && (
                       <span className="aside-tag">{t("event.notHackathon")}</span>
+                    )}
+                    {isIncompleteListing(event) && (
+                      <span className="aside-tag">{t("event.detailsPending")}</span>
                     )}
                   </div>
                 </article>

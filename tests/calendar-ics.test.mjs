@@ -70,6 +70,22 @@ test("the same event keeps its UID across two builds of the feed", async () => {
   assert.deepEqual(uidsOf(first), uidsOf(second), "UIDs are not stable between reads");
 });
 
+test("venue-level placeholders are omitted while confirmed events remain", async () => {
+  const ics = unfold(await (await fetchIcs()).text());
+  for (const id of [
+    "venue-placeholder-cline-open-source-ai-h",
+    "venue-placeholder-testmu-ai-hackathon",
+    "venue-placeholder-builderbase-dell-x-nvi",
+    "venue-placeholder-nerdconf-stranger-buil",
+  ]) {
+    assert.ok(!ics.includes(`UID:${id}@hacklist-sf`), `${id} should not enter the feed`);
+  }
+  assert.ok(
+    ics.includes("UID:m8euvq9n@hacklist-sf"),
+    "a confirmed upcoming hackathon should remain in the feed",
+  );
+});
+
 test("a timed event declares a timezone the feed also defines", async () => {
   const ics = unfold(await (await fetchIcs()).text());
   const declared = new Set([...ics.matchAll(/BEGIN:VTIMEZONE\r\nTZID:(.+)\r\n/g)].map((m) => m[1]));

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { isIncompleteListing } from "../app/ranking.mjs";
 
 const eventsData = JSON.parse(
   await readFile(new URL("../data/events.json", import.meta.url), "utf8"),
@@ -90,12 +91,19 @@ test("server-renders the ranked event board", async () => {
   for (const event of eventsData.events.filter(
     (candidate) =>
       candidate.category === "hackathon" &&
+      !isIncompleteListing(candidate) &&
       isUpcoming(candidate) &&
       regionOf(candidate) === defaultRegion,
   )) {
     assert.ok(
       html.includes(`href="${event.url}"`),
       `${event.title} is not hyperlinked on the board`,
+    );
+  }
+  for (const event of eventsData.events.filter(isIncompleteListing)) {
+    assert.ok(
+      !html.includes(`href="${event.url}"`),
+      `${event.title} must wait for event-specific details before the default view`,
     );
   }
   // And another region's events are genuinely not on it.
@@ -141,7 +149,11 @@ test("serves an ICS feed with one VEVENT per dated event", async () => {
   // The bare path is the default region's feed and nothing else: an existing
   // subscriber asked for the Bay Area, not for every region the board grows.
   const datedEvents = eventsData.events.filter(
-    (e) => e.start && isUpcoming(e) && regionOf(e) === defaultRegion,
+    (e) =>
+      e.start &&
+      !isIncompleteListing(e) &&
+      isUpcoming(e) &&
+      regionOf(e) === defaultRegion,
   );
   const vevents = ics.match(/BEGIN:VEVENT/g) ?? [];
   assert.equal(vevents.length, datedEvents.length);
@@ -221,7 +233,7 @@ test("each region's feed carries that region's events and no others", async () =
       const present = ics.includes(`UID:${event.id}@hacklist-sf`);
       assert.equal(
         present,
-        regionOf(event) === region.key,
+        regionOf(event) === region.key && !isIncompleteListing(event),
         `${event.title} (${regionOf(event)}) ${present ? "is in" : "is missing from"} the ${region.key} feed`,
       );
     }
