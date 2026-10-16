@@ -7,6 +7,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { isIncompleteListing } from "../app/ranking.mjs";
 
 const eventsData = JSON.parse(
   await readFile(new URL("../data/events.json", import.meta.url), "utf8"),
@@ -72,16 +73,17 @@ test("the same event keeps its UID across two builds of the feed", async () => {
 
 test("venue-level placeholders are omitted while confirmed events remain", async () => {
   const ics = unfold(await (await fetchIcs()).text());
-  for (const id of [
-    "venue-placeholder-cline-open-source-ai-h",
-    "venue-placeholder-testmu-ai-hackathon",
-    "venue-placeholder-builderbase-dell-x-nvi",
-    "venue-placeholder-nerdconf-stranger-buil",
-  ]) {
-    assert.ok(!ics.includes(`UID:${id}@hacklist-sf`), `${id} should not enter the feed`);
+  for (const event of eventsData.events.filter(isIncompleteListing)) {
+    assert.ok(!ics.includes(`UID:${event.id}@hacklist-sf`), `${event.id} should not enter the feed`);
   }
+  const confirmed = eventsData.events.find((event) =>
+    event.start && !isIncompleteListing(event) &&
+    (event.region ?? eventsData.meta.defaultRegion) === eventsData.meta.defaultRegion &&
+    Date.parse(event.end ?? event.start) >= Date.now(),
+  );
+  assert.ok(confirmed, "the current feed needs an upcoming confirmed event");
   assert.ok(
-    ics.includes("UID:m8euvq9n@hacklist-sf"),
+    ics.includes(`UID:${confirmed.id}@hacklist-sf`),
     "a confirmed upcoming hackathon should remain in the feed",
   );
 });

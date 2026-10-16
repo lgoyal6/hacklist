@@ -213,28 +213,37 @@ test("venue-level placeholders stay in Everything but not Hackathons", () => {
     query: "",
     asOf: Date.parse("2026-10-16T00:00:00-07:00"),
   };
-  const placeholders = data.events.filter(isIncompleteListing);
-  assert.deepEqual(
-    placeholders.map((event) => event.id).sort(),
-    [
-      "venue-placeholder-builderbase-dell-x-nvi",
-      "venue-placeholder-cline-open-source-ai-h",
-      "venue-placeholder-nerdconf-stranger-buil",
-      "venue-placeholder-testmu-ai-hackathon",
-    ].sort(),
+  const confirmed = {
+    id: "confirmed-build-day",
+    title: "Confirmed build day",
+    organizer: "Example organizer",
+    tags: [],
+    category: "hackathon",
+    region: region.key,
+    start: "2026-10-19T09:00:00-07:00",
+    end: "2026-10-19T18:00:00-07:00",
+  };
+  // Fixed examples keep coverage when discovery replaces or expires its records.
+  const placeholders = ["Cline", "TestMu", "Builderbase", "NerdConf"].map(
+    (name) => ({
+      ...confirmed,
+      id: `venue-placeholder-${name.toLowerCase()}`,
+      title: `Venue Placeholder - ${name} Hackathon`,
+    }),
   );
+  const events = [confirmed, ...placeholders];
 
-  const hackathons = boardVisible(data.events, {
+  const hackathons = boardVisible(events, {
     ...options,
     view: "hackathons",
   });
   assert.equal(hackathons.some(isIncompleteListing), false);
   assert.ok(
-    hackathons.some((event) => event.id === "m8euvq9n"),
+    hackathons.includes(confirmed),
     "a confirmed upcoming hackathon should remain on the board",
   );
 
-  const everything = boardVisible(data.events, { ...options, view: "everything" });
+  const everything = boardVisible(events, { ...options, view: "everything" });
   assert.ok(placeholders.every((event) => everything.includes(event)));
 });
 

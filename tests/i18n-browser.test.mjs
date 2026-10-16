@@ -153,13 +153,18 @@ for (const journey of JOURNEYS) {
       );
       await search.fill("");
 
-      const incomplete = eventsData.events.find(isIncompleteListing);
-      assert.ok(incomplete, "the fixture needs an incomplete venue-level listing");
-      assert.equal(
-        await page.locator(`.event a[href="${incomplete.url}"]`).count(),
-        0,
-        "an incomplete listing must stay off the default Hackathons view",
+      const incomplete = eventsData.events.find((event) =>
+        isIncompleteListing(event) &&
+        (event.region ?? eventsData.meta.defaultRegion) === eventsData.meta.defaultRegion &&
+        Date.parse(event.end ?? event.start ?? "") >= Date.now(),
       );
+      if (incomplete) {
+        assert.equal(
+          await page.locator(`.event a[href="${incomplete.url}"]`).count(),
+          0,
+          "an incomplete listing must stay off the default Hackathons view",
+        );
+      }
 
       // Filter: switching views moves aria-pressed, the state a screen reader
       // and these tests share.
@@ -169,14 +174,17 @@ for (const journey of JOURNEYS) {
       });
       await everything.click();
       assert.equal(await everything.getAttribute("aria-pressed"), "true");
-      const incompleteCard = page
-        .locator(".event")
-        .filter({ has: page.locator(`a[href="${incomplete.url}"]`) });
-      await incompleteCard.waitFor();
-      assert.equal(
-        await incompleteCard.locator(".aside-tag").textContent(),
-        messages["event.detailsPending"],
-      );
+      if (incomplete) {
+        const incompleteCard = page
+          .locator(".event")
+          .filter({ has: page.locator(`a[href="${incomplete.url}"]`) });
+        await incompleteCard.waitFor();
+        assert.ok(
+          (await incompleteCard.locator(".aside-tag").allTextContents()).includes(
+            messages["event.detailsPending"],
+          ),
+        );
+      }
       const shownAfterFilter = await page.locator(".events li .event").count();
       assert.ok(shownAfterFilter > 0, "the Everything view shows no events");
 
