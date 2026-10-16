@@ -17,6 +17,7 @@ import {
   candidateOrder,
   draftSeed,
   extractFeatures,
+  isIncompleteListing,
   logLoss,
   productionOrder,
   productionOrderIds,
@@ -199,6 +200,42 @@ test("boardVisible is what the views and the search actually filter with", () =>
     "searching for an event's own title finds nothing",
   );
   assert.equal(call({ query: "zzz-nothing-matches-this" }).length, 0);
+});
+
+test("venue-level placeholders stay in Everything but not Hackathons", () => {
+  const region = data.meta.regions.find(
+    (entry) => entry.key === data.meta.defaultRegion,
+  );
+  const options = {
+    regionKey: region.key,
+    coreArea: region.coreArea,
+    defaultRegion: data.meta.defaultRegion,
+    query: "",
+    asOf: Date.parse("2026-10-16T00:00:00-07:00"),
+  };
+  const placeholders = data.events.filter(isIncompleteListing);
+  assert.deepEqual(
+    placeholders.map((event) => event.id).sort(),
+    [
+      "venue-placeholder-builderbase-dell-x-nvi",
+      "venue-placeholder-cline-open-source-ai-h",
+      "venue-placeholder-nerdconf-stranger-buil",
+      "venue-placeholder-testmu-ai-hackathon",
+    ].sort(),
+  );
+
+  const hackathons = boardVisible(data.events, {
+    ...options,
+    view: "hackathons",
+  });
+  assert.equal(hackathons.some(isIncompleteListing), false);
+  assert.ok(
+    hackathons.some((event) => event.id === "m8euvq9n"),
+    "a confirmed upcoming hackathon should remain on the board",
+  );
+
+  const everything = boardVisible(data.events, { ...options, view: "everything" });
+  assert.ok(placeholders.every((event) => everything.includes(event)));
 });
 
 // --- the page renders that ordering ---
