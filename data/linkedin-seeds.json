@@ -1,14 +1,19 @@
 {
-  "collectedAt": "2026-10-15T18:47:04.945Z",
+  "collectedAt": "2026-10-16T03:40:34.127Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 17,
-  "pagesRead": 12,
-  "readStoppedOnTimeBudget": false,
+  "pagesFound": 20,
+  "pagesRead": 1,
+  "readStoppedOnTimeBudget": true,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "read",
+      "error": "time budget reached with 11 page(s) unread"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -380,9 +385,9 @@
     {
       "url": "https://luma.com/nkknxvrz",
       "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/michaeljcalvey_the-physical-ai-sprint-hackathon-luma-activity-7490123373633708032-yx2y",
-      "context": "The Physical AI Sprint Hackathon · Luma | Michael C. We'll be training robots to complete real-world tasks in simulation, August 17th in San Francisco, Sign up here: https://luma.com/nkknxvrz",
-      "lastSeenAt": "2026-10-12T03:33:04.799Z"
+      "sourcePage": "https://www.linkedin.com/posts/emerging-angels_startup-couve-coffee-luma-activity-7494056389217193984-7wHZ",
+      "context": "1752vc: Venture Fellow & Emerging Angel Program's Post ... Hackathon, August 17, 2026 https://luma.com/nkknxvrz ModCon 2026, August 18 ... 2026 https://luma.com/eat5sm3n.",
+      "lastSeenAt": "2026-10-16T03:40:34.127Z"
     },
     {
       "url": "https://luma.com/jw2nuuqt",
@@ -409,8 +414,8 @@
       "url": "https://luma.com/loophack",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/emerging-angels_open-source-buildathon-iot-hardware-xr-activity-7483929125448232960-kSHr",
-      "context": "bs Games Sign in Join now 1752vc: Venture Fellow & Emerging Angel Program’s Post 1752vc: Venture Fellow & Emerging Angel Program 10,526 followers 3mo Report this post 15 Startup Events: West Coast San Francisco, CA Loop Engineering Hackathon, July 17, 2026 🔗 https://luma.com/loophack Embodied Metal",
-      "lastSeenAt": "2026-10-15T18:47:04.945Z"
+      "context": "1752vc: Venture Fellow & Emerging Angel Program's Post 15 Startup Events: West Coast San Francisco, CA Loop Engineering Hackathon, July 17, 2026 https://luma.com/loophack Embodied Metal Hackathon, July 17, ...",
+      "lastSeenAt": "2026-10-16T03:40:34.127Z"
     },
     {
       "url": "https://luma.com/k84uw71w",
@@ -432,6 +437,20 @@
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-tech-ai-events-may-28-june-4-2026-charles-guo-yvhfc",
       "context": "Bay Area Tech & AI Events — May 28 to June 4, 2026 Quantum AI Hackathon 1.0 — Berkeley, 9:00 AM https://luma.com/8q0dr4um. SuperPlane Hackathon with Render — 10:00 AM https://luma.com/3yx41qr9.Read more",
       "lastSeenAt": "2026-10-15T07:56:56.173Z"
+    },
+    {
+      "url": "https://luma.com/hncudfxb",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/posts/emerging-angels_the-shipyard-vol-2-brewing-after-dark-x-activity-7473780163093192704-BBbu",
+      "context": "1752vc: Venture Fellow & Emerging Angel Program's Post 14 Startup Events: West Coast San Francisco, CA Inference-Time Compute Hackathon, June 19, 2026 https://luma.com/hncudfxb The Global ...",
+      "lastSeenAt": "2026-10-16T03:40:34.127Z"
+    },
+    {
+      "url": "https://luma.com/eat5sm3n.",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/posts/emerging-angels_startup-couve-coffee-luma-activity-7494056389217193984-7wHZ",
+      "context": "1752vc: Venture Fellow & Emerging Angel Program's Post ... Hackathon, August 17, 2026 https://luma.com/nkknxvrz ModCon 2026, August 18 ... 2026 https://luma.com/eat5sm3n.",
+      "lastSeenAt": "2026-10-16T03:40:34.127Z"
     }
   ]
 }
