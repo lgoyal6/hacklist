@@ -19,24 +19,24 @@
     "httpPauses": 3,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 13,
-    "structuredEventsFound": 106,
-    "candidatesFound": 9,
-    "heldForReview": 1,
-    "nearMisses": 1,
+    "externalPagesVisited": 15,
+    "structuredEventsFound": 470,
+    "candidatesFound": 16,
+    "heldForReview": 7,
+    "nearMisses": 48,
     "stoppedOnTimeBudget": false,
-    "elapsedSeconds": 957,
-    "secondsPerPage": 1.1001,
+    "elapsedSeconds": 954,
+    "secondsPerPage": 1.0966,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 356,
+    "queueRemaining": 441,
     "pagesByRegion": {
       "san-diego": 21
     },
     "regionPageReserve": {
       "san-diego": 150
     },
-    "completedAt": "2026-10-17T08:26:02.853Z"
+    "completedAt": "2026-10-17T17:55:26.460Z"
   },
   "candidates": [
     {
@@ -73,8 +73,84 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-17T08:10:47.269Z",
+      "checkedAt": "2026-10-17T17:40:12.912Z",
       "heldBecause": null
+    },
+    {
+      "url": "https://luma.com/p5q5kdlu",
+      "title": "The Builder Base: Buildathon",
+      "category": "hackathon",
+      "discoveredVia": "personalized",
+      "confidence": 94,
+      "relevance": 96,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Skip to Content\n5:44 PM UTC\nDiscover Events\nSign In\nPresented by\nDevnovate\nFollow\nHosted By\nAviral\n107 Going\nPhillip An, Ashish Toshniwal and 105 others\nContact the Host\nReport Event\nAI\nThe Builder Base: Buildathon\nOCT\n30\nFriday, October 30\n9:30 AM - 5:30 PM PDT\nRegister to See Address\nSan Francisco, CA\nRegistration\nApproval Required\nYour registration is subject to host approval.\nWelcome! To join the event, please register below.\nRequest to Join\nAbout Event\n​The Builder Base: Buildathon\n\n​Your idea. Your stack. Your build.\n\n​Welcome to The Builder Base: Buildathon — a one-day gathering in San Francisco for engineers, AI builders, founders, designers, and technology professionals who want to spend a full day turning ideas into working products.\n\n​Builder Base is built around one simple idea: give builders the space, tools, people, and time to build.\n\n​Whether you're experimenting with an AI agent, launching a developer tool, creating an enterprise workflow, building a data product, automating a painful process, or working on something completely unconventional, this is your base for the day.\n\n​Come with an idea, a problem, a technology you want to explore — or nothing more than the desire to build. Find teammates, get feedback from experienced builders, learn from industry experts, and ship something you're proud of.\n\n​Event Details\n\n​When: 9:30 AM – 7:00 PM, 30 October 2026\nWhere: San Francisco, CA\nFormat: One-day, in-person buildathon\nWho: Engineers, AI Builders, Founders, Product Managers, Designers, Data Scientists, and Technology Professionals\nTheme: Open-ended — Build what matters\n\n​What to Expect\n\n​A full day dedicated to building\n\n​Turn an idea into a functional prototype\n\n​Collaborate with engineers, founders, designers, and AI practitioners\n\n​Meet potential teammates and future collaborators\n\n​Mentorship and guidance from experienced industry professionals\n\n​Access to modern AI tools, APIs, platforms, and developer resources\n\n​Partner credits, challenges, and special prizes\n\n​Live product demos and project showcases\n\n​Networking with San Francisco's technology and startup community\n\n​Food, refreshments, swag, and prizes\n\n​What Can You Build?\n\n​Anything worth building.\n\n​Build an AI application, autonomous agent, developer tool, enterprise workflow, data platform, automation system, productivity tool, consumer product, infrastructure project, or an idea nobody has tried before.\n\n​There are no prescribed problem statements and no requirement to build around a particular technology.\n\n​Find a problem. Build the solution. Ship it.\n\n​You can arrive with a fully formed idea or figure it out once you get there. The goal is to spend the day building, experimenting, learning, and turning an idea into something real.\n\n​Who Should Join?\n\n​The Builder Base is for people who make things.\n\n​Whether you're an experienced software engineer, an AI developer exploring agentic systems, a founder testing a new idea, a product manager turning a concept into a prototype, a designer bringing an experience to life, or a student and early-career developer looking for your next challenge — you're welcome.\n\n​You don't need to be an expert. You just need to be ready to build.\n\n​Come with an idea. Leave with a build.\n\nLocation\nPlease register to see the exact location of this event.\nSan Francisco, CA\nDiscoverPricingHelp\nGet the App",
+      "checkedAt": "2026-10-17T17:44:47.691Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://luma.com/p5q5kdlu",
+        "name": "The Builder Base: Buildathon",
+        "description": "The Builder Base: Buildathon\nYour idea. Your stack. Your build.\nWelcome to The Builder Base: Buildathon — a one-day gathering in San Francisco for engineers, AI builders, founders, designers, and technology professionals who want to spend a full day turning ideas into working products.\nBuilder Base is built around one simple idea: give builders the space, tools, people, and time to build.\nWhether you're experimenting with an AI agent, launching a developer tool, creating an enterprise workflow, building a data product, automating a painful process, or working on something completely unconventional, this is your base for the day.\nCome with an idea, a problem, a technology you want to explore — or nothing more than the desire to build. Find teammates, get feedback from experienced builders, learn from industry experts, and ship something you're proud of.\nEvent Details\nWhen: 9:30 AM – 7:00 PM, 30 October 2026\nWhere: San Francisco, CA\nFormat: One-day, in-person buildathon\nWho: Engineers, AI Builders, Founders, Product Managers, Designers, Data Scientists, and Technology Professionals\nTheme: Open-ended — Build what matters\nWhat to Expect\nA full day dedicated to building\nTurn an idea into a functional prototype\nCollaborate with engineers, founders, designers, and AI practitioners\nMeet potential teammates and future collaborators\nMentorship and guidance from experienced industry professionals\nAccess to modern AI tools, APIs, platforms, and developer resources\nPartner credits, challenges, and special prizes\nLive product demos and project showcases\nNetworking with San Francisco's technology and startup community\nFood, refreshments, swag, and prizes\nWhat Can You Build?\nAnything worth building.\nBuild an AI application, autonomous agent, developer tool, enterprise workflow, data platform, automation system, productivity tool, consumer product, infrastructure project, or an idea nobody has tried before.\nThere are no prescribed problem statements and no requirement to build around a particular technology.\nFind a problem. Build the solution. Ship it.\nYou can arrive with a fully formed idea or figure it out once you get there. The goal is to spend the day building, experimenting, learning, and turning an idea into something real.\nWho Should Join?\nThe Builder Base is for people who make things.\nWhether you're an experienced software engineer, an AI developer exploring agentic systems, a founder testing a new idea, a product manager turning a concept into a prototype, a designer bringing an experience to life, or a student and early-career developer looking for your next challenge — you're welcome.\nYou don't need to be an expert. You just need to be ready to build.\nCome with an idea. Leave with a build.",
+        "startDate": "2026-10-30T09:30:00.000-07:00",
+        "endDate": "2026-10-30T17:30:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Devnovate",
+          "Aviral"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "url": "https://luma.com/s3b7lwtt",
+      "title": "Bubble Lab (YC W26) X Lunatechs - Pretty Cool Demos and Pre-Tech Week Social!",
+      "category": "adjacent",
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "confidence": 94,
+      "relevance": 96,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Skip to Content\n5:54 PM UTC\nDiscover Events\nSign In\nPresented by\nLunatechs San Francisco\nFollow\nSan Francisco Chapter for Lunatechs, Global Community of Tech Enthusiasts! Learn, Share, Help, Builds Together!\nHosted By\nSelina Li\nHanley Leung\nEuropean Startup Embassy\nContact the Host\nReport Event\nTech\nBubble Lab (YC W26) X Lunatechs - Pretty Cool Demos and Pre-Tech Week Social!\nOCT\n28\nWednesday, October 28\n6:00 PM - 10:00 PM PDT\nEuropean Startup Embassy\nSan Francisco, CA\nRegistration\nApproval Required\nYour registration is subject to host approval.\nWelcome! To join the event, please register below.\nRequest to Join\nAbout Event\n\n​EDIT: This was supposed to be on Oct 3 but is getting delayed because both cohosts are sick :(\n\n​Bubble Lab and Lunatechs is happy to present to you guys our 2026 PRE-SF Tech Week event! We know everyone is SUPER excited for tech week so we designed what hopefully will be the PERFECT event to kick it off!\n\n​We're bringing this event to you in partnership with the European Startup Embassy, Europe's base in Silicon Valley — a Bay Area hub where European founders land, work, and plug into the US market.\n\n​What is Pretty Cool Demos and Pre-Tech Week Social?\n\n​First we'll do what we're calling \"Pretty Cool Demos!\". This will be an open demo sign up list where each person gets 5 minutes to show their demo. Skip the long slow roll dramatic story, just cut to the chase and show us the AMAZING thing you are building! Get to know what each other is doing and help each other connect during Tech Week.\n\n​We'll also have a system to share your interests and the Bubble Lab AI system will help us all find potential crew mates! Having a good crew will not only make Tech Week 10x more effective but also make it 10x more enjoyable! We all know that social awkwardness of going to events!\n\n​Agenda\n\n​6:00pm - Check-in\n\n​6:15pm - Introductions - Selina Li and Hanley Leung\n\n​6:25pm - Lucky Drop Prize Game - PRIZES TO BE ANNOUNCED!\n\n​6:30pm - 5 Minute Demo's Begin\n\n​7:00pm - Pre-Tech Week Social w/ AI Matching\n\n​7:30pm - Speakers (TBD/OPTIONAL)\n\n​8:30pm - Lucky Drop Prize Game #2 - PRIZES TO BE ANNOUNCED!\n\n​9:00pm - wrap up\n\n​The Demo Lineup So Far!\n\n​Hanley - Lucky Drop 3.0 - Battle Royale Prize Game!\n\n​Mike Chop - Code.Blue - Making Stroke Obsolete\n\n​Matthew Ao - Space (a16z speedrun) - Infinity Space for Computer\n\n​Carlo Pizzuti - Rolling Around - making bikepacking easier\n\n​Ira Puteri - Legali AI - trauma informed companion for women navigating abuse\n\n​Elvin Atwine - Klo - an agentic video editor\n\n​Garett Brennan - Epoch Trade - AI quant researcher\n\n​Bhanu Kowshik - TBD\n\n​Shutian Cheng - TryOffice - Tracking your leads' buying signals\n\n​YOU\n\n​YOU\n\n​YOU\n\n​SIGN UP PEOPLE! Let's Go!\n\n​Who's this event for?\n\n​Founders, Builders, Dreamers, VC and Angels, looking to get some elevator pitch practice, and \"looking for crew\" for SF Tech Week. No technical level requirements. Just a passion for technology , AI and desire to change the world!\n\n​What to Bring?\n\n​Yourself, your enthusiasm, your passion, and just be ready to meet great people! Learn, Share, Help, Connect! If you want to give a demo see below on how to add yourself to the list. We'll have an app you can connect to before you arrive, that will be sent to approved attendees.\n\n​How to sign up to Demo?\n\n​Demo's are totally optional but we highly encourage everyone to sign up. We'll set up the demo line by whoever signs up first and also picking out a few special ones to go first. Please contact HANLEY by:\n\n​email info@lunatechs.social\n\n​WhatsApp / iMessage: +1 650 4318036\n\n​IG: @hanleyleung\n\n​And send him the following:\n\n​mention: Pretty Cool Demos Event\n\n​demo title\n\n​one sentence description\n\n​URL to slides/demo so ideally we can have it ready for you on our laptop\n\n​Any special instructions of extra requirements on the computer such as files to download, logged into what accounts, etc\n\n​if you need to use your own computer that's ok too but let us know before hand, we try to minimize computer swapping to keep the pace up\n\n​Who Is Bubble Lab?\n\n​Bubble Lab (YC W26) is the operating system for paid professional communities — member directory, applications, onboarding, matchmaking and engagement workflows in one place, built around Slack and compatible with Discord, WhatsApp and the rest of your stack. Communities show up juggling ~14 tools and about 20 hours a week of manual admin; Bubble Lab replaces the lot.\n\n​It's built by Selina Li and Zach Zhong, a second-time founding duo out of Cornell Tech. Selina went UPenn → quant researcher at J.P. Morgan Asset Management → CEO; Zach went UCSD CS → founding engineer at CutiePet → CTO. Before Bubble Lab they shipped gymii.ai together, an AI nutrition tracker that reached thousands of users through Cornell Tech's Spinouts program. Two people, in San Francisco, out-shipping teams many times their size.\n\n​Who is Lunatechs?\n\n​A tech-enthusiast community — find your fellow tech lunatics. Talks, workshops, meetups, hackathons; no gatekeeping, no monthly commitment. Born in Hong Kong, now 1,000+ members there, with chapters in Hong Kong and Singapore. After Shanghai the tour hits San Francisco, Dallas, Houston, Los Angeles and Palo Alto — Shanghai gets to open it.\n\n​Lunatechs is run by people who've shipped things you've used. Co-founder Hanley Leung is an engineering leader out of Apple, EA and Yahoo!. Co-founder Jason Xu built product at Google and Alibaba. Between them: decades in big tech, and years of hands-on experience working in China's tech world — this isn't a fly-in event; it's a community run by people who know Shanghai's builders are among the best anywhere.\n\n​Who is the European Startup Embassy?\n\n​\"Europe's base in Silicon Valley.\" A Bay Area hub giving European startups and investors a physical and virtual foothold in the US: coworking and event space, a coliving residence, an online community, and hands-on help with market entry, customer acquisition and raising from US VCs. Led by CEO Vladimira Cincurova.\n\n​The details\n\n​Time and Date: Saturday. Oct 3rd, 6pm - 10pm\nVenue: European Startup Embassy, 461 Bryant St, San Francisco\n\n​​Find us\n\n​Bubble Lab ​www: https://bubblelab.ai\nBubble Lab email: hello@bubblelab.ai\n\n​Lunatechs ​www: https://lunatechs.social\nLunatechs email: info@lunatechs.social\n\nLocation\nEuropean Startup Embassy\n461 Bryant St, San Francisco, CA 94107, USA\njust show up bro! let's go!\nDiscoverPricingHelp\nGet the App",
+      "checkedAt": "2026-10-17T17:55:00.129Z",
+      "heldBecause": "title names a non-hackathon format",
+      "structuredEvent": {
+        "url": "https://luma.com/s3b7lwtt",
+        "name": "Bubble Lab (YC W26) X Lunatechs - Pretty Cool Demos and Pre-Tech Week Social!",
+        "description": "EDIT: This was supposed to be on Oct 3 but is getting delayed because both cohosts are sick :(\n\nBubble Lab and Lunatechs is happy to present to you guys our 2026 PRE-SF Tech Week event!  We know everyone is SUPER excited for tech week so we designed what hopefully will be the PERFECT event to kick it off!\nWe're bringing this event to you in partnership with the European Startup Embassy, Europe's base in Silicon Valley — a Bay Area hub where European founders land, work, and plug into the US market.\n\n\nWhat is Pretty Cool Demos and Pre-Tech Week Social?\nFirst we'll do what we're calling \"Pretty Cool Demos!\".  This will be an open demo sign up list where each person gets 5 minutes to show their demo. Skip the long slow roll dramatic story, just cut to the chase and show us the AMAZING thing you are building! Get to know what each other is doing and help each other connect during Tech Week.\nWe'll also have a system to share your interests and the Bubble Lab AI system will help us all find potential crew mates! Having a good crew will not only make Tech Week 10x more effective but also make it 10x more enjoyable! We all know that social awkwardness of going to events!\nAgenda\n6:00pm - Check-in\n6:15pm - Introductions - Selina Li and Hanley Leung\n6:25pm - Lucky Drop Prize Game - PRIZES TO BE ANNOUNCED!\n6:30pm - 5 Minute Demo's Begin\n7:00pm - Pre-Tech Week Social w/ AI Matching\n7:30pm - Speakers (TBD/OPTIONAL)\n8:30pm - Lucky Drop Prize Game #2 - PRIZES TO BE ANNOUNCED!\n9:00pm - wrap up\nThe Demo Lineup So Far!\nHanley - Lucky Drop 3.0 - Battle Royale Prize Game!\nMike Chop - Code.Blue - Making Stroke Obsolete\nMatthew Ao - Space (a16z speedrun) - Infinity Space for Computer\nCarlo Pizzuti - Rolling Around - making bikepacking easier\nIra Puteri - Legali AI - trauma informed companion for women navigating abuse\nElvin Atwine - Klo - an agentic video editor\nGarett Brennan - Epoch Trade - AI quant researcher\nBhanu Kowshik - TBD\nShutian Cheng - TryOffice - Tracking your leads' buying signals\nYOU\nYOU\nYOU\nSIGN UP PEOPLE! Let's Go!\n\nWho's this event for?\nFounders, Builders, Dreamers, VC and Angels, looking to get some elevator pitch practice, and \"looking for crew\" for SF Tech Week.  No technical level requirements. Just a passion for technology , AI and desire to change the world!\nWhat to Bring?\nYourself, your enthusiasm, your passion, and just be ready to meet great people! Learn, Share, Help, Connect! If you want to give a demo see below on how to add yourself to the list.  We'll have an app you can connect to before you arrive, that will be sent to approved attendees.\nHow to sign up to Demo?\nDemo's are totally optional but we highly encourage everyone to sign up. We'll set up the demo line by whoever signs up first and also picking out a few special ones to go first. Please contact HANLEY by:\nemail info@lunatechs.social\nWhatsApp / iMessage: +1 650 4318036\nIG: @hanleyleung\nAnd send him the following:\nmention: Pretty Cool Demos Event\ndemo title\none sentence description\nURL to slides/demo so ideally we can have it ready for you on our laptop\nAny special instructions of extra requirements on the computer such as files to download, logged into what accounts, etc\nif you need to use your own computer that's ok too but let us know before hand, we try to minimize computer swapping to keep the pace up\nWho Is Bubble Lab?\nBubble Lab (YC W26) is the operating system for paid professional communities — member directory, applications, onboarding, matchmaking and engagement workflows in one place, built around Slack and compatible with Discord, WhatsApp and the rest of your stack. Communities show up juggling ~14 tools and about 20 hours a week of manual admin; Bubble Lab replaces the lot.\nIt's built by Selina Li and Zach Zhong, a second-time founding duo out of Cornell Tech. Selina went UPenn → quant researcher at J.P. Morgan Asset Management → CEO; Zach went UCSD CS → founding engineer at CutiePet → CTO. Before Bubble Lab they shipped gymii.ai together, an AI nutrition tracker that reached thousands of users through Cornell Tech's Spinouts program. Two people, in San Francisco, out-shipping teams many times their size.\n\nWho is Lunatechs?\nA tech-enthusiast community — find your fellow tech lunatics. Talks, workshops, meetups, hackathons; no gatekeeping, no monthly commitment. Born in Hong Kong, now 1,000+ members there, with chapters in Hong Kong and Singapore. After Shanghai the tour hits San Francisco, Dallas, Houston, Los Angeles and Palo Alto — Shanghai gets to open it.\nLunatechs is run by people who've shipped things you've used. Co-founder Hanley Leung is an engineering leader out of Apple, EA and Yahoo!. Co-founder Jason Xu built product at Google and Alibaba. Between them: decades in big tech, and years of hands-on experience working in China's tech world — this isn't a fly-in event; it's a community run by people who know Shanghai's builders are among the best anywhere.\n\nWho is the European Startup Embassy?\n\"Europe's base in Silicon Valley.\" A Bay Area hub giving European startups and investors a physical and virtual foothold in the US: coworking and event space, a coliving residence, an online community, and hands-on help with market entry, customer acquisition and raising from US VCs. Led by CEO Vladimira Cincurova.\n\nThe details\nTime and Date: Saturday. Oct 3rd, 6pm - 10pm\nVenue: European Startup Embassy, 461 Bryant St, San Francisco\nFind us\nBubble Lab  www: https://bubblelab.ai\nBubble Lab email: hello@bubblelab.ai\nLunatechs  www: https://lunatechs.social \nLunatechs email: info@lunatechs.social",
+        "startDate": "2026-10-28T18:00:00.000-07:00",
+        "endDate": "2026-10-28T22:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "European Startup Embassy",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Lunatechs San Francisco",
+          "Selina Li",
+          "Hanley Leung",
+          "European Startup Embassy"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      }
     },
     {
       "url": "https://cerebralvalley.ai/e/intelligence-at-work-hackathon",
@@ -91,7 +167,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Skip to Main Content\nEvents\nSearchSign InSign In\nMore\nHostsSnowflake & Anthropic\nIntelligence at Work Hackathon\nMenlo Park, CAFri, Oct 23 at 8:30 AM – 8:00 PM (PDT)\n\nBring a real problem from your company. Build a solution with Claude and Snowflake.\n\nJoin Snowflake and Anthropic at the Silicon Valley AI Hub for Intelligence at Work, a day of hands-on building alongside engineers, product builders, and data teams.\n\nBuild something that makes the business run better, from getting people from question to decision faster to automating recurring multi-step work, or change what the business offers by creating a new product or reimagining a customer experience, all grounded in what your company actually knows.\n\nBring your own data and put it to work. Company data approved for use is preferred, and relevant public data is welcome. A fallback dataset will be available if needed.\n\nPrizes, speakers, and judges to be announced soon. Stay tuned.\n\nNote: This event is fully in person in Menlo Park. Space is limited. Teams may have up to three members. All attendees must apply and be approved, then confirm their attendance.\n\nRegister",
-      "checkedAt": "2026-10-17T08:13:47.299Z",
+      "checkedAt": "2026-10-17T17:43:11.933Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://cerebralvalley.ai/e/intelligence-at-work-hackathon",
@@ -109,6 +185,81 @@
         "organizers": [
           "Snowflake",
           "Anthropic"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "url": "https://luma.com/qzct3ybt",
+      "title": "AI Hackathon: Sales Copilot AI",
+      "category": "hackathon",
+      "discoveredVia": "personalized",
+      "confidence": 94,
+      "relevance": 89,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Skip to Content\n5:44 PM UTC\nDiscover Events\nSign In\nPresented by\nTatianaSF\nFollow\nHosted By\nTatianaSF com\nYar Doroshenko\n603 Going\nAle Amenta, Smit Kakadiya and 601 others\nContact the Host\nReport Event\nAI\nFeatured in\nSan Francisco Tech Week\nAI Hackathon: Sales Copilot AI\nDEC\n12\nSaturday, December 12\n11:00 AM - 7:00 PM PST\nRegister to See Address\nSan Francisco, CA\nRegistration\nWelcome! Please choose your desired ticket type:\nBuilders\nFree\nVolunteers\n​\nRequire Approval\nFree\nMentors\nFree\n​\n10 Left\n​\nRequire Approval\nJudges\n​\nRequire Approval\nFree\nJudges not pre-approved by Tatiana will be removed.\nSponsor\n​\nRequire Approval\nFree\nRegister\nAbout Event\n​Venture Mindset Hackathon - Reinvent Yourself in SF - builders, founders and judges: GSB/MSx, YC ...\n\n​⏰ Doors open at 11:00 AM sharp.\n🚪 Entry closes at 11:15 AM or once we’re full — come early!\n\n​🚀 Join us on January 17 (Sat), 2026 in downtown SF for a one-day Hackathon focused on bold ideas, teamwork, and innovation.\n\n​Participants create a clear vision of who they want to become in 10 years — not in a linear way, but in an exponential, ambitious way, similar to how venture investors think about long-term growth.\n\n​✨ Why it matters:\n\n​GSB/MSx alumni will see how the younger generation learns to think in true Stanford GSB style — with courage, long-term vision, and strategic imagination.\n\n​✅ Challenge:\nCreate the ultimate AI sales copilot!\nThis hackathon is for developers, product managers, sales engineers, marketers, and AI enthusiasts who want to reinvent how sales teams work using AI.\n\n​🔧 Choose the sales pain point you want to solve:\n\n​qualifying and prioritizing leads,\n\n​automating repetitive follow-ups,\n\n​optimizing sales funnels,\n\n​or giving teams real-time AI coaching during calls.\n\n​🎯 The main goal is to build a working app or prototype that empowers sales teams, saves time, and drives measurable revenue impact.\n\n​\n\n​\n\n​🗓️ Schedule\n\n​10:00 AM | Doors Open & Breakfast Networking\n10:55 AM | Doors Close (or earlier if capacity is reached)\n11:00 AM | Team Kick-Off\n11:15 AM | Hacking Starts\n1:30 PM | 🍴 Delicious Lunch Break (our special feature!)\n4:00 PM | Final Demos (2 min per team + 1 Q&A)\n5:00 PM | Networking\n6:00 PM | Doors Close\n\n​🏆 Prizes\n\n​1st Place - $30k ** + TBA\n\n​2nd Place - $20k ** + TBA\n\n​3rd Place - $10k ** +TBA\n\n​(**Prizes via equity through FAST Advisory Agreement; see disclaimer - **.)\n\n​✅  Judges\n\n​OpenAI - TBA\n\n​YC Alumnus - TBA\n\n​Google - TBA\n\n​Apple - TBA\n\n​Cisco - TBA\n\n​NVIDIA - TBA\n\n​Perplexity - TBA\n\n​🧑‍⚖️ Judging Note\nOur judges are selection-only and chosen through a thorough 2-step interview process. Last time, we received 65 applications — it’s a tough and competitive selection. Please, Apply here to become a judge\n\n​Judges’ participation does not imply endorsement of any team, product, or technology.\n\n​👉 If you truly have something to bring to the table, or can help us by sponsoring the event, we’d love to hear from you.\n\n​\n\n​✅ Mentors- TBA:\n\n​Rashid Aliyev | Innovator, ex Big-4, People’s Choice Awardee\n\n​Sako M | Senior Software Engineer @ Gladly, Hackathon Champion\n\n​Natalie Pan | Founder of Funding Breakthrough Lab, Software Engineer, Cursor Vibe Coder, Hackathon Champion, Mindset Coach\n\n​Mentor #3 - spot is available\n\n​Mentor #4 - spot is available\n\n​Mentor #5 - spot is available\n\n​Mentor #6 - spot is available\n\n​Mentor #7 - spot is available\n\n​\n\n​\n\n​Previous hackathon in San Francisco:\n\n​GPT Hackathon, San Francisco\n\n​AI Vibe Coding Hackathon, San Francisco\n\n​\n\n​✅Hosts:\n\n​TatianaSF.com – Tatiana Isa (primary host)\n\n​✅ Why Join?\n\n​Power Network: 100 + AI experts, YC founders, mentors, and advisors\n\n​Bold Innovation: Shape the Agent Era before it arrives\n\n​Electric Vibe: One day of hacking, learning, and building\n\n​✅ Want to Join?\n\n​✅If you have ideas or would like to support the hackathon as a 🤝sponsor, 🤝volunteer, or you have any 📩 questions, please reach out anytime at /tatianasf\n\n​✅Judges - please, Apply here for the selection process\n\n​Let’s build something extraordinary together.\n🚀 Register now!\n\n​#AIhackathon #AgentEra #AIagents #SFtech #Hackathon2025 #YC #StartupLife #AIinSF #Innovation #Founders\n\n​✅ ABOUT SECTION:\n\n​About me TatianaSF.com\n\n​🌟 Tatiana Isa is a San Francisco–based entrepreneur and five-time founder, best known as Co-Founder & GP at kitSF and as an advisor to AI and edtech startups. With over 20 years of experience and holding O-1A and EB-2 NIW visas, she champions innovation in education and technology.\n\nLocation\nPlease register to see the exact location of this event.\nSan Francisco, CA\nDiscoverPricingHelp\nGet the App",
+      "checkedAt": "2026-10-17T17:44:55.565Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://luma.com/SalesCopilotAI",
+        "name": "AI Hackathon: Sales Copilot AI",
+        "description": "Venture Mindset Hackathon - Reinvent Yourself in SF - builders, founders and judges: GSB/MSx, YC ...\n⏰ Doors open at 11:00 AM sharp.\n🚪 Entry closes at 11:15 AM or once we’re full — come early!\n🚀 Join us on January 17 (Sat), 2026 in downtown SF for a one-day Hackathon focused on bold ideas, teamwork, and innovation.\nParticipants create a clear vision of who they want to become in 10 years — not in a linear way, but in an exponential, ambitious way, similar to how venture investors think about long-term growth.\n✨ Why it matters:\nGSB/MSx alumni will see how the younger generation learns to think in true Stanford GSB style — with courage, long-term vision, and strategic imagination.\n\n✅ Challenge:\nCreate the ultimate AI sales copilot!\nThis hackathon is for developers, product managers, sales engineers, marketers, and AI enthusiasts who want to reinvent how sales teams work using AI.\n🔧 Choose the sales pain point you want to solve:\nqualifying and prioritizing leads,\nautomating repetitive follow-ups,\noptimizing sales funnels,\nor giving teams real-time AI coaching during calls.\n🎯 The main goal is to build a working app or prototype that empowers sales teams, saves time, and drives measurable revenue impact.\n\n\n\n🗓️ Schedule\n10:00 AM | Doors Open & Breakfast Networking\n10:55 AM | Doors Close (or earlier if capacity is reached)\n11:00 AM | Team Kick-Off\n11:15 AM | Hacking Starts\n1:30 PM | 🍴 Delicious Lunch Break (our special feature!)\n4:00 PM | Final Demos (2 min per team + 1 Q&A)\n5:00 PM | Networking\n6:00 PM | Doors Close\n🏆 Prizes\n1st Place - $30k ** + TBA\n2nd Place - $20k ** + TBA\n3rd Place - $10k ** +TBA\n(**Prizes via equity through FAST Advisory Agreement; see disclaimer - **.)\n\n✅  Judges\nOpenAI - TBA\nYC Alumnus - TBA\nGoogle - TBA\nApple - TBA\nCisco - TBA\nNVIDIA - TBA\nPerplexity - TBA\n🧑‍⚖️ Judging Note\nOur judges are selection-only and chosen through a thorough 2-step interview process. Last time, we received 65 applications — it’s a tough and competitive selection. Please, Apply here to become a judge\nJudges’ participation does not imply endorsement of any team, product, or technology.\n👉 If you truly have something to bring to the table, or can help us by sponsoring the event, we’d love to hear from you.\n\n\n✅ Mentors- TBA:\nRashid Aliyev | Innovator, ex Big-4, People’s Choice Awardee\nSako M | Senior Software Engineer @ Gladly, Hackathon Champion\nNatalie Pan | Founder of Funding Breakthrough Lab, Software Engineer, Cursor Vibe Coder, Hackathon Champion, Mindset Coach\nMentor #3 - spot is available\nMentor #4 - spot is available\nMentor #5 - spot is available\nMentor #6 - spot is available\nMentor #7 - spot is available\n\n\n\n\nPrevious hackathon in San Francisco:\nGPT Hackathon, San Francisco\nAI Vibe Coding Hackathon, San Francisco\n\n\n✅Hosts:\nTatianaSF.com – Tatiana Isa (primary host)\n✅ Why Join?\nPower Network: 100 + AI experts, YC founders, mentors, and advisors\nBold Innovation: Shape the Agent Era before it arrives\nElectric Vibe: One day of hacking, learning, and building\n✅ Want to Join?\n✅If you have ideas or would like to support the hackathon as a 🤝sponsor, 🤝volunteer, or you have any 📩 questions, please reach out anytime at https://www.linkedin.com/in/tatianasf/\n✅Judges - please, Apply here  for the selection process\nLet’s build something extraordinary together.\n🚀 Register now!\n#AIhackathon #AgentEra #AIagents #SFtech #Hackathon2025 #YC #StartupLife #AIinSF #Innovation #Founders\n\n✅ ABOUT SECTION:\nAbout me TatianaSF.com\n🌟 Tatiana Isa is a San Francisco–based entrepreneur and five-time founder, best known as Co-Founder & GP at kitSF and as an advisor to AI and edtech startups. With over 20 years of experience and holding O-1A and EB-2 NIW visas, she champions innovation in education and technology.",
+        "startDate": "2026-12-12T11:00:00.000-08:00",
+        "endDate": "2026-12-12T19:00:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "TatianaSF",
+          "TatianaSF com",
+          "Yar Doroshenko"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "url": "https://luma.com/tyjq8g49",
+      "title": "☕️ Codex Community Meetup-San Francisco #11",
+      "category": "adjacent",
+      "discoveredVia": "personalized",
+      "confidence": 94,
+      "relevance": 89,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": true
+      },
+      "evidence": "Skip to Content\n5:50 PM UTC\nDiscover Events\nSign In\nPresented by\nTatianaSF\nFollow\nHosted By\nTatianaSF com\n360 Going\nSaleeh Kalluvetti, Sara Alão and 358 others\nContact the Host\nReport Event\nAI\n☕️ Codex Community Meetup-San Francisco #11\nOCT\n29\nThursday, October 29\n5:00 PM - 8:00 PM PDT\nRegister to See Address\nSan Francisco, CA\nRegistration\nWelcome! Please choose your desired ticket type:\nStandard\nFree\nNo coding background is required. This event is open to everyone:\npeople who code and people who do not, people already using Codex and people who are simply curious about it.\n​Come meet builders, founders, engineers, creatives, operators, students, and community members interested in AI, coding agents, and the future of building faster with better tools.\nPanelists (Guest Speakers)\n​\nRequire Approval\nFree\n❓ Would you like to be one of the participants in a panel discussion at the OpenAI Codex Community event, together with members of the OpenAI Codex team (tentative)?\nThis opportunity is available.\nVolunteer\n​\nRequire Approval\nFree\nWould you like to volunteer at our event? It is very easy. We need help with registration and basic event support. Easy tasks, great connections, and sweet gifts as a thank-you.\nSponsor / Partnership\n​\nRequire Approval\nFree\nRegister\nAbout Event\n​Codex Community Meetup in San Francisco #11\n\n​Guest Speakers from the Codex Team SF\n\n​Join us at 📍Sports Basement in San Francisco for an interactive evening for builders, founders, engineers, creators, students, and anyone curious about how Codex is changing the way people build.\n\n​No coding background is required. Whether you already use Codex every day or are exploring coding agents for the first time, you are welcome.\n\n​Come meet the community, hear real-world Codex use cases, see demos, make new connections, and take part in an evening designed around participation rather than passive listening.\n\n​Invited Panelists\n\n​Codex, San Francisco ✅ Confirmed\n\n​Ethan Truong, ChatGPT Futures 2026 Honoree, OpenAI ChatGPT Lab Member\n\n​Shiv Sakhuja, Co-founder @ Gooseworks (YC W23)\n\n​Joe Zhuang, Founding engineer, Donkey (YC S26)\n\n​Tejas Gupta, Co-Founder , tryclean.ai (YC F26)\n\n​Pranav Mishra, FDE @ Harper (YC W25)\n\n​​​​​​​Invited Speakers:\n\n​Kobe Wang, Founder of IDitor\n\n​Topic: The best personal memory agent in your Codex\n\n​Recent Codex Community Events\n\n​Codex Community Meetup #10 | September 24, 2026\n\n​Codex Community Meetup #9 | August 25, 2026\n\n​Codex Community Meetup #8 | July 30, 2026\n\n​Codex Community Meetup #7 | June 23, 2026\n\n​Codex Community Hackathon #6 | May 26, 2026\n\n​Codex Community Meetup | May 14, 2026\n\n​Codex Community Meetup | April 16, 2026\n\n​What to Expect\n\n​This is not a passive event.\n\n​Expect a warm, high-energy, highly interactive evening with:\n\n​Practical conversations about real-world Codex use cases\n\n​A panel with experienced builders and founders\n\n​Short demos and community presentations\n\n​Codex games and competitions\n\n​Giveaways and special prizes\n\n​Networking with builders, founders, engineers, creators, operators, and students\n\n​Most attendees will also be invited to give a brief 30-second introduction.\n\n​Come ready to tell the room who you are, what you are building or exploring, and who you would like to meet.\n\n​You will leave with new connections, fresh ideas, practical examples of how people are using Codex, and a better understanding of what AI coding agents can make possible.\n\n​\n\n​\n\n​Who Should Attend?\n\n​This meetup is for:\n\n​Experienced Codex users\n\n​People trying Codex for the first time\n\n​Founders and startup teams\n\n​Engineers and product builders\n\n​Non-technical builders and creators\n\n​Students\n\n​Anyone curious about AI-assisted software development and coding agents\n\n​You do not need a coding background to participate.\n\n​Agenda\n\n​📅 Thursday, October 29, 2026\n\n​5:00 PM - Doors Open & Networking\n\n​5:45-6:45 PM - ✅ Panel: Real-World Ways to Use Codex\n\n​6:45-7:45 PM - ✅ Codex Games, Giveaways, Competition & Networking\n\n​8:00 PM - Event Ends\n\n​\n\n​\n\n​Speaker Opportunities\n\n​✅ Limited Speaker Spots Available\n\n​We are opening 5-6 short community speaker spots for people who would like to share what they are building, demonstrate an interesting Codex use case, or present something useful to the community.\n\n​If you would like to be considered as a speaker or panelist, please apply through the event page or contact the organizer directly: TatianaSF\n\n​\n\n​Special Giveaways\n\n​🎁 Registered attendees will have a chance to win special giveaways during the event.\n\n​About Codex\n\n​Codex is OpenAI's coding agent designed to help people build, understand, and ship software faster.\n\n​This meetup brings together people who are already building with Codex and those who simply want to understand what coding agents can do.\n\n​\n\n​​​Upcoming Codex Community Events and Pitch Nights:\n\n​November 2026:\n\n🚀 Startup Pitch Night SF | Builders for San Francisco\nThu, Nov 5 · San Francisco\n\n​Codex Community Meetup - subscribe to be informed\n\n​December 2026:\n\n🚀 Startup Pitch Night SF | Builders for San Francisco\nThu, Dec 3 · San Francisco\n\n​✅ Codex Community Meetup - subscribe for updates\n\n​\n\n​Host\n\n​✅ TatianaSF.com - Tatiana Isa, Codex Ambassador\n\n​​​Venue\n\n​📍 Sports Basement, San Francisco\n\n​Thank you to Sports Basement for hosting our community.\n\n​Attendees will receive 20% discount coupons from Sports Basement.\n\n​Sports Basement is offering an exclusive discount to Codex AI Community! 20% off for Basementeers and 11% off for Non-Basementeers from Sept 24th through Sept 30th.\n\n​Shopping Online? Enter the code CODEXAI at checkout - just use this link!\n\n​Shopping In-Store? Show this email at checkout to receive your discount. 12542. Some exclusions apply.\n\n​P.S. Not a Sports Basement Basementeer yet? Join today for $25 (lifetime fee!) to unlock even more perks and benefits! 10% off for life and 10% back to local schools and non-profits.\n\n​Interested in booking an event with Sports Basement? Reach out to madie@sportsbasement.com for more information!\n\n​\n\n​Volunteering, Sponsorship & Community Support\n\n​Interested in volunteering or supporting future community events as a sponsor, media partner, or collaborator?\n\n​Contact:\n\n​or message TatianaSF on LinkedIn.\n\n​\n\n​This is an independent community event and is not affiliated with, sponsored by, or endorsed by OpenAI London office.\n\nLocation\nPlease register to see the exact location of this event.\nSan Francisco, CA\nDiscoverPricingHelp\nGet the App",
+      "checkedAt": "2026-10-17T17:50:38.309Z",
+      "heldBecause": "title names a non-hackathon format",
+      "structuredEvent": {
+        "url": "https://luma.com/codex-11",
+        "name": "☕️ Codex Community Meetup-San Francisco #11",
+        "description": "Codex Community Meetup in San Francisco #11\nGuest Speakers from the Codex Team SF\nJoin us at 📍Sports Basement in San Francisco for an interactive evening for builders, founders, engineers, creators, students, and anyone curious about how Codex is changing the way people build.\n\nNo coding background is required. Whether you already use Codex every day or are exploring coding agents for the first time, you are welcome.\nCome meet the community, hear real-world Codex use cases, see demos, make new connections, and take part in an evening designed around participation rather than passive listening.\n\n\n\nInvited Panelists\nCodex, San Francisco ✅ Confirmed\nEthan Truong, ChatGPT Futures 2026 Honoree, OpenAI ChatGPT Lab Member\nShiv Sakhuja, Co-founder @ Gooseworks (YC W23)\nJoe Zhuang, Founding engineer, Donkey (YC S26)\nTejas Gupta, Co-Founder , tryclean.ai (YC F26)\nPranav Mishra, FDE @ Harper (YC W25)\nInvited Speakers:\nKobe Wang, Founder of IDitor\nTopic: The best personal memory agent in your Codex\n\nRecent Codex Community Events\nCodex Community Meetup #10 | September 24, 2026\n\n\nCodex Community Meetup #9 | August 25, 2026\n\nCodex Community Meetup #8 | July 30, 2026\n\nCodex Community Meetup #7 | June 23, 2026\n\nCodex Community Hackathon #6 | May 26, 2026\n\nCodex Community Meetup | May 14, 2026\n\nCodex Community Meetup | April 16, 2026\n\nWhat to Expect\nThis is not a passive event.\nExpect a warm, high-energy, highly interactive evening with:\nPractical conversations about real-world Codex use cases\nA panel with experienced builders and founders\nShort demos and community presentations\nCodex games and competitions\nGiveaways and special prizes\nNetworking with builders, founders, engineers, creators, operators, and students\nMost attendees will also be invited to give a brief 30-second introduction.\nCome ready to tell the room who you are, what you are building or exploring, and who you would like to meet.\nYou will leave with new connections, fresh ideas, practical examples of how people are using Codex, and a better understanding of what AI coding agents can make possible.\n\n\n\n\n\n\n\nWho Should Attend?\nThis meetup is for:\nExperienced Codex users\nPeople trying Codex for the first time\nFounders and startup teams\nEngineers and product builders\nNon-technical builders and creators\nStudents\nAnyone curious about AI-assisted software development and coding agents\nYou do not need a coding background to participate.\n\n\n\nAgenda\n📅 Thursday, October 29, 2026\n5:00 PM - Doors Open & Networking\n5:45-6:45 PM - ✅ Panel: Real-World Ways to Use Codex\n6:45-7:45 PM - ✅ Codex Games, Giveaways, Competition & Networking\n8:00 PM - Event Ends\n\n\n\n\nSpeaker Opportunities\n✅ Limited Speaker Spots Available\nWe are opening 5-6 short community speaker spots for people who would like to share what they are building, demonstrate an interesting Codex use case, or present something useful to the community.\nIf you would like to be considered as a speaker or panelist, please apply through the event page or contact the organizer directly: TatianaSF\n\n\nSpecial Giveaways\n🎁 Registered attendees will have a chance to win special giveaways during the event.\nAbout Codex\nCodex is OpenAI's coding agent designed to help people build, understand, and ship software faster.\nThis meetup brings together people who are already building with Codex and those who simply want to understand what coding agents can do.\n\n\nUpcoming Codex Community Events and Pitch Nights:\nNovember 2026:\n🚀 Startup Pitch Night SF | Builders for San Francisco - https://luma.com/event/evt-U1YqXORn6kFznYH\nCodex Community Meetup - subscribe to be informed\nDecember 2026:\n🚀 Startup Pitch Night SF | Builders for San Francisco - https://luma.com/event/evt-3cEVw2HHNyLFBKb\n✅ Codex Community Meetup - subscribe for updates\n\n\nHost\n✅ TatianaSF.com - Tatiana Isa, Codex  Ambassador\n\nVenue\n📍 Sports Basement, San Francisco\nThank you to Sports Basement for hosting our community.\nAttendees will receive 20% discount coupons from Sports Basement.\nSports Basement is offering an exclusive discount to Codex AI Community! 20% off for Basementeers and 11% off for Non-Basementeers from Sept 24th through Sept 30th.\nShopping Online? Enter the code CODEXAI at checkout - just use this link!\nShopping In-Store? Show this email at checkout to receive your discount. 12542. Some exclusions apply.\nP.S. Not a Sports Basement Basementeer yet? Join today for $25 (lifetime fee!) to unlock even more perks and benefits! 10% off for life and 10% back to local schools and non-profits.\nInterested in booking an event with Sports Basement? Reach out to madie@sportsbasement.com for more information!\n\n\nVolunteering, Sponsorship & Community Support\nInterested in volunteering or supporting future community events as a sponsor, media partner, or collaborator?\nContact:\nor message TatianaSF on LinkedIn.\n\nThis is an independent community event and is not affiliated with, sponsored by, or endorsed by OpenAI London office.",
+        "startDate": "2026-10-29T17:00:00.000-07:00",
+        "endDate": "2026-10-29T20:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "TatianaSF",
+          "TatianaSF com"
         ],
         "offerAvailability": "https://schema.org/InStock"
       }
@@ -147,7 +298,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-17T08:10:54.185Z"
+      "checkedAt": "2026-10-17T17:40:20.423Z"
     },
     {
       "url": "https://opensourceaiweek.com",
@@ -180,7 +331,7 @@
         "organizers": [],
         "offerAvailability": null
       },
-      "checkedAt": "2026-10-17T08:10:47.270Z",
+      "checkedAt": "2026-10-17T17:40:12.912Z",
       "heldBecause": "no competition or submission evidence"
     },
     {
@@ -216,8 +367,121 @@
         ],
         "offerAvailability": null
       },
-      "checkedAt": "2026-10-17T08:12:40.492Z",
+      "checkedAt": "2026-10-17T17:42:04.592Z",
       "heldBecause": null
+    },
+    {
+      "url": "https://luma.com/o9hcn6kk",
+      "title": "Personalized Medicine Builders: Demos, Discussion and Social",
+      "category": "adjacent",
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "confidence": 78,
+      "relevance": 79,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Skip to Content\n5:54 PM UTC\nDiscover Events\nSign In\nPresented by\nResearch to the People Patient Hackathons\nFollow\nVirtual patient case hackathons for AI and Bio researchers to recieve grants, publish and present at our annual symposium.\nHosted By\nPete Kane\n17 Going\nLeni Gruendl, Chris Nelson and 15 others\nContact the Host\nReport Event\nTech\nPersonalized Medicine Builders: Demos, Discussion and Social\nOCT\n23\nFriday, October 23\n6:00 PM - 8:00 PM PDT\n81 Langton St\nSan Francisco, CA\nRegistration\nApproval Required\nYour registration is subject to host approval.\nWelcome! To join the event, please register below.\nRequest to Join\nAbout Event\n\n​Idea and seed stage builders are invited to this event. A new vertical stack of services and tech products need to be built for personalized medicine to thrive. If you're ready to build, come to this event.\n\n​WHO\n\n​Idea stage startups\n\n​Seed stage companies\n\n​Seeking a coFounder\n\n​Builders who want to join cancer and personalized medicine projects.\n\n​Full stack devs who want to work on Cancer and personalized medicine.\n\n​AGENDA\n\n​Share vibe-coded demo's, share insights and lessons learned. Socialized. Will have food and drinks\n\nLocation\n81 Langton St\nSan Francisco, CA 94103, USA\nDiscoverPricingHelp\nGet the App",
+      "checkedAt": "2026-10-17T17:54:34.435Z",
+      "heldBecause": "title names a non-hackathon format",
+      "structuredEvent": {
+        "url": "https://luma.com/o9hcn6kk",
+        "name": "Personalized Medicine Builders: Demos, Discussion and Social",
+        "description": "Idea and seed stage builders are invited to this event. A new vertical stack of services and tech products need to be built for personalized medicine to thrive. If you're ready to build, come to this event.\nWHO\nIdea stage startups\nSeed stage companies\nSeeking a coFounder\nBuilders who want to join cancer and personalized medicine projects.\nFull stack devs who want to work on Cancer and personalized medicine.\nAGENDA\nShare vibe-coded demo's, share insights and lessons learned. Socialized. Will have food and drinks",
+        "startDate": "2026-10-23T18:00:00.000-07:00",
+        "endDate": "2026-10-23T20:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "81 Langton St",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Research to the People Patient Hackathons",
+          "Pete Kane"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "url": "https://luma.com/aivalley-lqjv",
+      "title": "Who Killed the Build? 💀 A Halloween DevTools Murder Mystery with Flox",
+      "category": "adjacent",
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "confidence": 78,
+      "relevance": 79,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Skip to Content\n5:54 PM UTC\nDiscover Events\nSign In\nPresented by\nAI Valley\nFollow\nA community for exceptional first-gen builders and talent worldwide.\nHosted By\nAI Valley\nCourtney Ko\nJustin Castilla\nContact the Host\nReport Event\nTech\nWho Killed the Build? 💀 A Halloween DevTools Murder Mystery with Flox\nOCT\n27\nTuesday, October 27\n5:00 PM - 8:00 PM PDT\nRegister to See Address\nSan Francisco, CA\nRegistration\nApproval Required\nYour registration is subject to host approval.\nWelcome! To join the event, please register below.\nRequest to Join\nAbout Event\n​Who Killed the Build? 💀\n\n​A Halloween DevTools Murder Mystery with Flox\n\n​The build is dead. The cause? Unknown.\n\n​Join AI Valley and Flox for a Halloween devtools night where you’ll investigate what went wrong, follow the clues, and figure out who (or what) killed the build.\n\n​Instead of a traditional product demo, Flox will take us through an interactive investigation of a broken development environment. Along the way, you’ll uncover suspicious dependencies, environment issues, and other clues before making your final guess.\n\n​🔎 Investigate the crime scene\n💻 See Flox in action\n🕵️ Follow the clues and solve the mystery\n🎃 Enjoy Halloween food, drinks, and networking\n\n​Costumes are encouraged. Production incidents are not.\n\n​Meet the Speakers\n\n​Justin Castilla — Flox\n\n​Jessica Garson Beauchemin — Runpod\n\n​Amin Karbas — Resolve AI\n\n​Dan Gross — FriendliAI\n\n​Agenda\n\n​5:00–6:00 PM — Doors Open + Halloween Food, Drinks & Networking\n\n​6:00–6:10 PM — The Crime Scene: Welcome from AI Valley + Flox and meet the speakers\n\n​6:10–6:50 PM — The Investigation: Talks and demos with Justin Castilla (Flox), Jessica Garson Beauchemin (Runpod), Amin Karbas (Resolve AI), and Dan Gross (FriendliAI), with clues revealed throughout\n\n​6:50–7:00 PM — Solve the Murder: Review the evidence and vote on what killed the build\n\n​7:00–7:10 PM — The Reveal: Uncover the culprit + how Flox helps prevent the underlying problem\n\n​7:10–8:00 PM — Halloween Mixer + Food, Drinks & Networking\n\n​About HAC\nHanwha AI Center (HAC) is a private membership for all those dedicated to AI. As a hub for innovation, HAC brings together passionate entrepreneurs, researchers, and visionaries to explore the societal and technological impacts of AI on human life.\n\n​Flox is a developer tool that creates reproducible, hash-pinned software environments across laptops, CI pipelines, and production. It eliminates environment drift by using a single configuration file to lock exact software versions everywhere. Flox is powered by the Nix package manager, but simplifies the experience so users do not have to write Nix code directly.\n\n​AI Valley is a community rooted in supporting exceptional first generation builders, founders, and creators. We curate environments where ambitious people meet collaborators, mentors, and opportunities through hackathons, workshops, and intimate gatherings across AI, tech, and the arts. If you care about who you build with as much as what you build, this is your place.\n\n​🌐 Website: https://aivalley.io\n\n​📅 Events: https://lu.ma/aivalley\n\n​👥 Community (Discord): Join Discord Server\n\n​📰 Newsletter: https://aivalleyio.substack.com\n\n​🔗 All links: https://aivalley.io/links\n\nLocation\nPlease register to see the exact location of this event.\nSan Francisco, CA\nDiscoverPricingHelp\nGet the App",
+      "checkedAt": "2026-10-17T17:54:49.775Z",
+      "heldBecause": "no competition or submission evidence",
+      "structuredEvent": {
+        "url": "https://luma.com/aivalley-lqjv",
+        "name": "Who Killed the Build? 💀 A Halloween DevTools Murder Mystery with Flox",
+        "description": "Who Killed the Build? 💀\nA Halloween DevTools Murder Mystery with Flox\nThe build is dead. The cause? Unknown.\nJoin AI Valley and Flox for a Halloween devtools night where you’ll investigate what went wrong, follow the clues, and figure out who (or what) killed the build.\nInstead of a traditional product demo, Flox will take us through an interactive investigation of a broken development environment. Along the way, you’ll uncover suspicious dependencies, environment issues, and other clues before making your final guess.\n🔎 Investigate the crime scene\n💻 See Flox in action\n🕵️ Follow the clues and solve the mystery\n🎃 Enjoy Halloween food, drinks, and networking\nCostumes are encouraged. Production incidents are not.\nMeet the Speakers\nJustin Castilla — Flox\nJessica Garson Beauchemin — Runpod\nAmin Karbas — Resolve AI\nDan Gross — FriendliAI\nAgenda\n5:00–6:00 PM — Doors Open + Halloween Food, Drinks & Networking\n6:00–6:10 PM — The Crime Scene: Welcome from AI Valley + Flox and meet the speakers\n6:10–6:50 PM — The Investigation: Talks and demos with Justin Castilla (Flox), Jessica Garson Beauchemin (Runpod), Amin Karbas (Resolve AI), and Dan Gross (FriendliAI), with clues revealed throughout\n6:50–7:00 PM — Solve the Murder: Review the evidence and vote on what killed the build\n7:00–7:10 PM — The Reveal: Uncover the culprit + how Flox helps prevent the underlying problem\n7:10–8:00 PM — Halloween Mixer + Food, Drinks & Networking\nAbout HAC\nHanwha AI Center (HAC) is a private membership for all those dedicated to AI. As a hub for innovation, HAC brings together passionate entrepreneurs, researchers, and visionaries to explore the societal and technological impacts of AI on human life.\nFlox is a developer tool that creates reproducible, hash-pinned software environments across laptops, CI pipelines, and production. It eliminates environment drift by using a single configuration file to lock exact software versions everywhere. Flox is powered by the Nix package manager, but simplifies the experience so users do not have to write Nix code directly.\nAI Valley is a community rooted in supporting exceptional first generation builders, founders, and creators. We curate environments where ambitious people meet collaborators, mentors, and opportunities through hackathons, workshops, and intimate gatherings across AI, tech, and the arts. If you care about who you build with as much as what you build, this is your place.\n🌐 Website: https://aivalley.io\n📅 Events: https://lu.ma/aivalley\n👥 Community (Discord): Join Discord Server\n📰 Newsletter: https://aivalleyio.substack.com\n🔗 All links: https://aivalley.io/links",
+        "startDate": "2026-10-27T17:00:00.000-07:00",
+        "endDate": "2026-10-27T20:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "AI Valley",
+          "AI Valley",
+          "Courtney Ko",
+          "Justin Castilla"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "url": "https://luma.com/qby4olpj",
+      "title": "ITCH - Businesses share what needs to be built - (Retail)",
+      "category": "adjacent",
+      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "confidence": 78,
+      "relevance": 79,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Skip to Content\n5:55 PM UTC\nDiscover Events\nSign In\nPresented by\nEuropean Startup Embassy\nFollow\nProviding the physical and virtual infrastructure for European startups and investors to thrive in the U.S.\nHosted By\nEuropean Startup Embassy\n8 Going\nRahul Krishnan, Simon Shu and 6 others\nContact the Host\nReport Event\nTech\nITCH - Businesses share what needs to be built - (Retail)\nOCT\n29\nThursday, October 29\n6:00 PM - 8:00 PM PDT\nEuropean Startup Embassy\nSan Francisco, CA\nRegistration\nWelcome! To join the event, please register below.\nRegister\nAbout Event\n\n​Agenda\n\n​6:00 PM: Doors open\n\n​6:30 to 7:15 PM: Panel\n\n​After that: Free conversation and networking\n\n​\"The way to get startup ideas is not to try to think of startup ideas. It's to look for problems, preferably problems you have yourself.\" Paul Graham\n\n​Most people who want to build something sit in a room and brainstorm ideas. That is the wrong starting point.\n\n​\n\n​The right starting point is a real problem. That is the ITCH worth scratching.\n\n​\n\n​If you do not have that problem yourself, come find it here. ITCH is a panel discussion with business owners or industry experts in the SF community. We dig into what is actually hard in their business right now. Together, we find the ITCH.\n\n​\n\n​You leave with a list of real problems you can actually work on. And some of the panelists might let you pilot your solution with them directly.You can find ways to leverage AI for these problems.\n\n​\n\n​Industry\n\n​We're inviting a San Francisco retail owner who runs a physical clothing store and also designs and manufactures their own clothing line.\n\n​\n\n​ITCHATHON\n\n​Two days later we run the ITCHATHON, a hackathon where we solve the problems we found here. Sign up for that too →\n\n​\n\n​This is for anyone who wants to build something. A startup, a side project, or just something for your CV. Up to you.\n\n​\n\n​Come and leave with an ITCH.September 24th, 6 PM\n\n​\n\n​Partners\n\n​Apify The largest marketplace of trusted tools for AI. Get real-time web data, track competitors, generate leads, monitor social media, and integrate your apps.\n\n​European Startup Embassy Providing the physical and virtual infrastructure for European startups and investors to thrive in the U.S.\n\n​Community partners\n\n​Build Club The world's most collaborative AI community.\n\n​\n\n​If you know a small or medium business owner who'd be great to invite to the panels, connect with me on LinkedIn.\n\nLocation\nEuropean Startup Embassy\n461 Bryant St, San Francisco, CA 94107, USA\nDiscoverPricingHelp\nGet the App",
+      "checkedAt": "2026-10-17T17:55:21.124Z",
+      "heldBecause": "no competition or submission evidence",
+      "structuredEvent": {
+        "url": "https://luma.com/qby4olpj",
+        "name": "ITCH - Businesses share what needs to be built - (Retail)",
+        "description": "Agenda\n6:00 PM: Doors open\n6:30 to 7:15 PM: Panel\nAfter that: Free conversation and networking\n\"The way to get startup ideas is not to try to think of startup ideas. It's to look for problems, preferably problems you have yourself.\" Paul Graham\nMost people who want to build something sit in a room and brainstorm ideas. That is the wrong starting point.\n\nThe right starting point is a real problem. That is the ITCH worth scratching.\n\nIf you do not have that problem yourself, come find it here. ITCH is a panel discussion with business owners or industry experts in the SF community. We dig into what is actually hard in their business right now. Together, we find the ITCH.\n\nYou leave with a list of real problems you can actually work on. And some of the panelists might let you pilot your solution with them directly.You can find ways to leverage AI for these problems.\n\nIndustry\nWe're inviting a San Francisco retail owner who runs a physical clothing store and also designs and manufactures their own clothing line.\n\nITCHATHON\nTwo days later we run the ITCHATHON, a hackathon where we solve the problems we found here. Sign up for that too →\n\nThis is for anyone who wants to build something. A startup, a side project, or just something for your CV. Up to you.\n\nCome and leave with an ITCH.September 24th, 6 PM\n\nPartners\nApify The largest marketplace of trusted tools for AI. Get real-time web data, track competitors, generate leads, monitor social media, and integrate your apps.\nEuropean Startup Embassy Providing the physical and virtual infrastructure for European startups and investors to thrive in the U.S.\nCommunity partners\nBuild Club The world's most collaborative AI community.\n\nIf you know a small or medium business owner who'd be great to invite to the panels, connect with me on LinkedIn.",
+        "startDate": "2026-10-29T18:00:00.000-07:00",
+        "endDate": "2026-10-29T20:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "European Startup Embassy",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "European Startup Embassy",
+          "European Startup Embassy"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      }
     },
     {
       "url": "https://luma.com/mvcg9eyw",
@@ -255,7 +519,7 @@
         ],
         "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-10-17T08:10:25.158Z",
+      "checkedAt": "2026-10-17T17:39:51.745Z",
       "heldBecause": null
     },
     {
@@ -294,7 +558,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-17T08:10:25.159Z"
+      "checkedAt": "2026-10-17T17:39:51.746Z"
     },
     {
       "url": "https://luma.com/buo3rgvs",
@@ -335,7 +599,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-17T08:10:54.185Z"
+      "checkedAt": "2026-10-17T17:40:20.423Z"
     },
     {
       "url": "https://luma.com/executorch-hackathon",
@@ -374,7 +638,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-17T08:10:54.185Z"
+      "checkedAt": "2026-10-17T17:40:20.423Z"
     }
   ],
   "errors": []
