@@ -1,18 +1,9 @@
 {
-  "collectedAt": "2026-10-17T07:26:07.546Z",
+  "collectedAt": "2026-10-17T08:08:45.401Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
-  "problems": [
-    {
-      "query": "site:luma.com buildathon OR makeathon OR \"make-a-thon\" bay area",
-      "error": "brightdata: TimeoutError: The operation was aborted due to timeout"
-    },
-    {
-      "query": "site:luma.com \"ai hackathon\" san francisco upcoming",
-      "error": "brightdata expect_element"
-    }
-  ],
+  "problems": [],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
     {
@@ -48,7 +39,7 @@
       "queries": [
         "site:luma.com buildathon OR makeathon OR \"make-a-thon\" bay area"
       ],
-      "lastSeenAt": "2026-10-15T18:46:00.745Z"
+      "lastSeenAt": "2026-10-17T08:08:45.394Z"
     },
     {
       "url": "https://luma.com/1zwlnq89",
