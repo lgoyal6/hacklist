@@ -10,8 +10,8 @@
         "boardName": "Hacklist SF",
         "lumaUrl": "https://luma.com/hacklist-sf",
         "timezone": "America/Los_Angeles",
-        "count": 86,
-        "hackathonCount": 82
+        "count": 84,
+        "hackathonCount": 81
       },
       {
         "key": "san-diego",
@@ -30,25 +30,25 @@
         "boardName": "Hacklist Online",
         "lumaUrl": null,
         "timezone": "America/Los_Angeles",
-        "count": 75,
-        "hackathonCount": 75
+        "count": 78,
+        "hackathonCount": 77
       }
     ],
     "timezone": "America/Los_Angeles",
     "sweepCompletedAt": "2026-10-16T18:50:21.078Z",
     "pagesVisited": 870,
     "candidatesFound": 30,
-    "publishedCount": 166,
-    "hackathonCount": 162,
+    "publishedCount": 167,
+    "hackathonCount": 163,
     "adjacentCount": 4,
     "organizerCount": 137,
-    "sourceCount": 29,
+    "sourceCount": 27,
     "seedCount": 29,
     "inputs": [
       {
         "file": "data/devpost-candidates.json",
-        "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08",
-        "bytes": 85348
+        "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931",
+        "bytes": 86616
       },
       {
         "file": "data/discovery-output.json",
@@ -57,18 +57,23 @@
       },
       {
         "file": "data/dorahacks-candidates.json",
-        "sha256": "0c2bca9021e785060ec521fe4decbd129fc9add4da3b0abb872f49c71fc411fe",
-        "bytes": 15594
+        "sha256": "e8b13b60f6020b65ff8a737163fbc1df9831c86cda2eba24a1a6ed1a6be18150",
+        "bytes": 15596
       },
       {
         "file": "data/ethglobal-candidates.json",
-        "sha256": "ef248d4293ad5c7194923041db1fd035921f7c4c2ff99530c6ef65ca28cd25a5",
+        "sha256": "17dd7f65dbb460dedd88b2b644fe3ae5918fd74be58fac16ec80f4358ee5734e",
         "bytes": 827
       },
       {
         "file": "data/eventbrite-candidates.json",
-        "sha256": "6c4ee7f95bc32ff9496b2303148a1eb7129fc234b082d9fbc2cd248cd780b34a",
+        "sha256": "579b4b86cf6f87e5284a44c46f21f879ae2a51400c6f55426593248808b72f03",
         "bytes": 8668
+      },
+      {
+        "file": "data/hackerrank-candidates.json",
+        "sha256": "d3c7a86c6e0a2d4a2047293ef6ab291db8deaebaf0462e8c4640e9bb99328ad6",
+        "bytes": 6110
       },
       {
         "file": "data/history/sweep-2026-10-16T08-07-26-685Z.json",
@@ -77,33 +82,33 @@
       },
       {
         "file": "data/lablab-candidates.json",
-        "sha256": "6be35ce675b14236254260c9d608852ef6242d7b42cc672e99844690132ee767",
+        "sha256": "3d506075bf4494c4f90986ee43b7f400b8ad5613c039bd8eeaec245b627e4a70",
         "bytes": 4919
       },
       {
         "file": "data/luma-api.json",
-        "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d",
-        "bytes": 1118883
+        "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441",
+        "bytes": 1123033
       },
       {
         "file": "data/meetup-candidates.json",
-        "sha256": "d608c6a82e79347b88df1140b2d21672622e867073ce58fe72da046c776d5222",
+        "sha256": "00e21d46e7969f3f4b33db1b95d6d29e247e81d352493d5553c39e032ee0772b",
         "bytes": 9484
       },
       {
         "file": "data/mlh-candidates.json",
-        "sha256": "52a025509435c23169cd0b0dc3a890a7a962603256c5113dc84c1d5e60ae5b35",
+        "sha256": "3d7357c863416bceb95f57fd31e1c8e9f519331a7e52d7cf82c037fc205a225a",
         "bytes": 4450
       },
       {
         "file": "data/yc-candidates.json",
-        "sha256": "23e86f1dd276cdd1178284c2b6bbd572a0f3d069541197ab0079067f07f12b8e",
-        "bytes": 17408
+        "sha256": "89270c1d825387ebf1165e8108fac7e2085843c9b2399849e1d62cfa0967070d",
+        "bytes": 17446
       }
     ],
     "deletedCount": 0,
     "redactedCount": 0,
-    "externalCount": 93
+    "externalCount": 96
   },
   "events": [
     {
@@ -114,7 +119,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "9448ac64dbf2e4593ef05a9db7d7b1aedecd95f3031bf9a8b95cd099d02d7a04"
@@ -163,10 +168,10 @@
         "inputs": [
           {
             "file": "data/yc-candidates.json",
-            "sha256": "23e86f1dd276cdd1178284c2b6bbd572a0f3d069541197ab0079067f07f12b8e"
+            "sha256": "89270c1d825387ebf1165e8108fac7e2085843c9b2399849e1d62cfa0967070d"
           }
         ],
-        "contentSha256": "420b6b2651814ce555d1afcb24c5cba94f9fef85ae481a8b69ec50f6e8541361"
+        "contentSha256": "db035a11e5ed7e4cd2e45bf88ed23000c1f81d0dd0e5fd5e00ed9a4ff7febf31"
       },
       "platform": "external",
       "category": "hackathon",
@@ -200,7 +205,7 @@
         "freshness": 100
       },
       "discoveredVia": "https://www.ycombinator.com/events",
-      "checkedAt": "2026-10-16T18:50:21.758Z",
+      "checkedAt": "2026-10-17T07:27:55.147Z",
       "missedSweeps": 0
     },
     {
@@ -259,10 +264,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "f183544c6938398be38f89f9421b1be2cd82c46e89465e753f8d1f556d504d36"
+        "contentSha256": "70193acbd497671b230dd148b6670690865a86d7cd7a402af26233276fb9d229"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -296,8 +301,8 @@
         "accessibility": 100,
         "freshness": 84
       },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-10-16T18:32:40.477Z",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-10-17T07:27:32.243Z",
       "missedSweeps": 0
     },
     {
@@ -308,7 +313,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "13492ece10618d075d90c01b23315b9d3c71bcfa89cd363c7e7e6aa91f1c97b7"
@@ -356,14 +361,14 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           },
           {
             "file": "data/yc-candidates.json",
-            "sha256": "23e86f1dd276cdd1178284c2b6bbd572a0f3d069541197ab0079067f07f12b8e"
+            "sha256": "89270c1d825387ebf1165e8108fac7e2085843c9b2399849e1d62cfa0967070d"
           }
         ],
-        "contentSha256": "e6174448dc397eba9be66a5e2499e21c4702321bc3d2d1a8d3358f039e6550e1"
+        "contentSha256": "789bfbcc963efa25a1fa91e7ebcc4560200be9dfbe8d70719fe6927e0b3df8f8"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -397,7 +402,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-10-16T18:32:41.024Z",
+      "checkedAt": "2026-10-17T07:27:42.680Z",
       "missedSweeps": 0
     },
     {
@@ -408,10 +413,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "85f30c489837d2525e792553df8b55f6600467211eb7703ee432a7bfe70e672d"
+        "contentSha256": "61b068b8d89bb2ed27f798f47cc33aae282f54895d3222b412825edb81cda7d5"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -446,7 +451,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-10-16T18:32:41.378Z",
+      "checkedAt": "2026-10-17T07:27:42.948Z",
       "missedSweeps": 0
     },
     {
@@ -457,7 +462,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "d13efb5a5ca8b536bb5c08d4328d7d8ec7843b356d5d43981016729903cf455e"
@@ -494,7 +499,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:50:40.644Z",
+      "checkedAt": "2026-10-17T07:28:16.455Z",
       "missedSweeps": 0
     },
     {
@@ -505,10 +510,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "f1bb7fc23691c0efbf4866b2ba1170c4a06c494dc8371f37f357aafc8fbb7d3b"
+        "contentSha256": "bb2e730f2a6673481ef510d52a4dd5678727ed0b0d4b21b28c353e58f8ca4a55"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -542,7 +547,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://luma.com/dahacks",
-      "checkedAt": "2026-10-16T18:32:40.820Z",
+      "checkedAt": "2026-10-17T07:27:43.187Z",
       "missedSweeps": 0
     },
     {
@@ -601,10 +606,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "99d43383283df789d85f57e58729d44af254abf6d80c360697ec7b180e57e061"
+        "contentSha256": "3a40cd00b063d7000e4406e975dd544a9083e04d26ca948883113d1abc9bd1f8"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -640,8 +645,8 @@
         "accessibility": 100,
         "freshness": 84
       },
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-10-16T18:32:41.928Z",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-10-17T07:27:31.763Z",
       "missedSweeps": 0
     },
     {
@@ -652,11 +657,11 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           },
           {
             "file": "data/meetup-candidates.json",
-            "sha256": "d608c6a82e79347b88df1140b2d21672622e867073ce58fe72da046c776d5222"
+            "sha256": "00e21d46e7969f3f4b33db1b95d6d29e247e81d352493d5553c39e032ee0772b"
           }
         ],
         "contentSha256": "3547c1c1595ee8d64cc19be1059582f964e58b0e14e22e3733b340719fba44de"
@@ -694,7 +699,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-10-16T18:32:42.121Z",
+      "checkedAt": "2026-10-17T07:27:43.401Z",
       "missedSweeps": 0
     },
     {
@@ -705,10 +710,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "37650be02d42059060e4a95d3bf28aa807a397d0f1cfb95805425fa4375ddb2b"
+        "contentSha256": "d609b0427d317f9f5a319432041eb950ea7fad1a2bbe5bf850c084f295079f79"
       },
       "platform": "external",
       "category": "hackathon",
@@ -729,7 +734,7 @@
       "status": "Open",
       "prize": "$100k+ prizes",
       "tags": [],
-      "going": 545,
+      "going": 554,
       "why": "146-day build with a submission deadline; $100k+ prizes.",
       "score": 90,
       "confidence": 94,
@@ -740,7 +745,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:25.834Z",
+      "checkedAt": "2026-10-17T07:28:59.217Z",
       "missedSweeps": 0
     },
     {
@@ -751,10 +756,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "f809fc0a90fb81fa8be57f380a41c23fccecae099ac3670f22ab851d8e19f468"
+        "contentSha256": "da580d48dae43fcef8c4342a5b166ffa3b9f404f546de638e69f8d6ee3a04caa"
       },
       "platform": "external",
       "category": "hackathon",
@@ -775,7 +780,7 @@
       "status": "Open",
       "prize": "$50,000 prizes",
       "tags": [],
-      "going": 24041,
+      "going": 24176,
       "why": "66-day build with a submission deadline; $50,000 prizes.",
       "score": 90,
       "confidence": 94,
@@ -786,7 +791,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:21.846Z",
+      "checkedAt": "2026-10-17T07:28:55.205Z",
       "missedSweeps": 0
     },
     {
@@ -797,10 +802,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "ccc3182611faf6809fba9e54705f97dae11b31d110a834233d161cd2de03ac82"
+        "contentSha256": "9a19a0eec7b476f49dd88d4b5dae3dddaaa29c35e5114b7f72982a68874d8653"
       },
       "platform": "external",
       "category": "hackathon",
@@ -821,7 +826,7 @@
       "status": "Open",
       "prize": "$138,000 prizes",
       "tags": [],
-      "going": 56015,
+      "going": 56175,
       "why": "54-day build with a submission deadline; $138,000 prizes.",
       "score": 90,
       "confidence": 94,
@@ -832,7 +837,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:21.432Z",
+      "checkedAt": "2026-10-17T07:28:54.799Z",
       "missedSweeps": 0
     },
     {
@@ -843,10 +848,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "31f95299046f497ce61379771dd175f581518aa235fecea27c04c85c95b4cd2a"
+        "contentSha256": "4af5988cec7ac12bdf3f1454e366f308dbb7eee2fa1134f8426a070eacd41d58"
       },
       "platform": "external",
       "category": "hackathon",
@@ -869,7 +874,7 @@
       "tags": [
         "Agents"
       ],
-      "going": 919,
+      "going": 922,
       "why": "45-day build with a submission deadline; $40,000 prizes.",
       "score": 90,
       "confidence": 94,
@@ -880,7 +885,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:21.037Z",
+      "checkedAt": "2026-10-17T07:28:54.413Z",
       "missedSweeps": 0
     },
     {
@@ -891,10 +896,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "0eb679e183ac1d1040be757a02db9f0f573e26485fbd8a33485864825de8d550"
+        "contentSha256": "f0f2f0ecc0bc11fd7d3e6fab04cb78a7c98cf7cbbd44aa2cd2538e0ace0f4f6e"
       },
       "platform": "external",
       "category": "hackathon",
@@ -915,7 +920,7 @@
       "status": "Open",
       "prize": "$6,000 prizes",
       "tags": [],
-      "going": 960,
+      "going": 974,
       "why": "36-day build with a submission deadline; $6,000 prizes.",
       "score": 90,
       "confidence": 94,
@@ -926,7 +931,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:20.242Z",
+      "checkedAt": "2026-10-17T07:28:53.192Z",
       "missedSweeps": 0
     },
     {
@@ -937,10 +942,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "80ef64d8ae73bcc099cac91f3b155e060ec073e5388379535ed6977254da821c"
+        "contentSha256": "056d1d3b8a31835d493b5eb8a8a0a1abf699680dd8db0c48b16c16d6a191e8b6"
       },
       "platform": "external",
       "category": "hackathon",
@@ -963,7 +968,7 @@
       "tags": [
         "Agents"
       ],
-      "going": 1604,
+      "going": 1640,
       "why": "31-day build with a submission deadline; $25,000 prizes.",
       "score": 90,
       "confidence": 94,
@@ -974,7 +979,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:19.033Z",
+      "checkedAt": "2026-10-17T07:28:52.393Z",
       "missedSweeps": 0
     },
     {
@@ -985,10 +990,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "74bf1839e2db18bc4c11d1a62861fd3ee8e8a88add6ca4326a9aca26fd0555d2"
+        "contentSha256": "6d2d458036ad24b60cc78acbff879fbc5f4df6e422ff4dfd3156a74d65d505f9"
       },
       "platform": "external",
       "category": "hackathon",
@@ -1009,7 +1014,7 @@
       "status": "Open",
       "prize": "$67,500 prizes",
       "tags": [],
-      "going": 15682,
+      "going": 15901,
       "why": "44-day build with a submission deadline; $67,500 prizes.",
       "score": 90,
       "confidence": 94,
@@ -1020,7 +1025,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:18.241Z",
+      "checkedAt": "2026-10-17T07:28:51.604Z",
       "missedSweeps": 0
     },
     {
@@ -1031,10 +1036,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "77cc2d1e8eac107bfa3a2a6aec70431f9e22912015bccdd155a0ef698b99f7b5"
+        "contentSha256": "ac306bb54ba9762bea73550c325d0d0f2f5f27c72aa9ef6f0f5114511bbab3c5"
       },
       "platform": "external",
       "category": "hackathon",
@@ -1057,7 +1062,7 @@
       "tags": [
         "Social impact"
       ],
-      "going": 877,
+      "going": 885,
       "why": "21-day build with a submission deadline; $3,000 prizes.",
       "score": 90,
       "confidence": 94,
@@ -1068,7 +1073,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:25.437Z",
+      "checkedAt": "2026-10-17T07:28:58.415Z",
       "missedSweeps": 0
     },
     {
@@ -1079,10 +1084,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "25020f1425bd56dbfe5daa7e0c754d8e5a4b85d890f0480901ef34d4746faaf1"
+        "contentSha256": "5b629a3ad86a34a7b39a2b670d9c5856798133d637496cc8e0fdb09b34223d40"
       },
       "platform": "external",
       "category": "hackathon",
@@ -1103,7 +1108,7 @@
       "status": "Open",
       "prize": "$100 prizes",
       "tags": [],
-      "going": 231,
+      "going": 237,
       "why": "26-day build with a submission deadline; $100 prizes.",
       "score": 90,
       "confidence": 94,
@@ -1114,7 +1119,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:17.454Z",
+      "checkedAt": "2026-10-17T07:28:50.793Z",
       "missedSweeps": 0
     },
     {
@@ -1125,10 +1130,10 @@
         "inputs": [
           {
             "file": "data/lablab-candidates.json",
-            "sha256": "6be35ce675b14236254260c9d608852ef6242d7b42cc672e99844690132ee767"
+            "sha256": "3d506075bf4494c4f90986ee43b7f400b8ad5613c039bd8eeaec245b627e4a70"
           }
         ],
-        "contentSha256": "f87f63600452d70495e363066c19355168e4030c60552f00046abbfd7a12a48d"
+        "contentSha256": "d42782f8d5a36f370b26bcfb5ee0b70c4f3ebe4b188f9a44b77331b8953f2803"
       },
       "platform": "external",
       "category": "hackathon",
@@ -1149,7 +1154,7 @@
       "status": "Open",
       "prize": "$17,000 prizes",
       "tags": [],
-      "going": 5997,
+      "going": 6022,
       "why": "7-day build; $17,000 prizes.",
       "score": 90,
       "confidence": 94,
@@ -1160,7 +1165,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://lablab.ai/event",
-      "checkedAt": "2026-10-16T18:51:43.497Z",
+      "checkedAt": "2026-10-17T07:29:16.518Z",
       "missedSweeps": 0
     },
     {
@@ -1171,10 +1176,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "c694df3a73dddee8f4c4c295863c98e282c2c0d87c25abe7789f387f50cf5566"
+        "contentSha256": "98259e6901b64e1c31338eaabb5508405f3278536503232eca235d1d6b42ce9b"
       },
       "platform": "external",
       "category": "hackathon",
@@ -1197,7 +1202,7 @@
       "tags": [
         "Social impact"
       ],
-      "going": 16,
+      "going": 18,
       "why": "15-day build with a submission deadline; $50 prizes.",
       "score": 90,
       "confidence": 94,
@@ -1208,7 +1213,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:15.439Z",
+      "checkedAt": "2026-10-17T07:28:49.192Z",
       "missedSweeps": 0
     },
     {
@@ -1219,10 +1224,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "70a1ecacdbf6a2f6fc6afee173739db53b80fdc3a0f1d6c079cc705dc1fab9fb"
+        "contentSha256": "97fabc869d985ebdef8ae254344206d6f6f8b016eb3ad4376443f662092ed11e"
       },
       "platform": "external",
       "category": "hackathon",
@@ -1243,7 +1248,7 @@
       "status": "Open",
       "prize": "$300 prizes",
       "tags": [],
-      "going": 15,
+      "going": 18,
       "why": "37-day build with a submission deadline; $300 prizes.",
       "score": 90,
       "confidence": 94,
@@ -1254,7 +1259,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:14.244Z",
+      "checkedAt": "2026-10-17T07:28:47.611Z",
       "missedSweeps": 0
     },
     {
@@ -1265,10 +1270,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "27a6b9505f6a661eae5f4c851bcd8ff2978849c8ad25f9afcbf095bee7018115"
+        "contentSha256": "8ec092d98c144fc1d629abb8e8ff06572cd9e1a15c26a71f6869c31e8296870a"
       },
       "platform": "external",
       "category": "hackathon",
@@ -1291,7 +1296,7 @@
       "tags": [
         "Social impact"
       ],
-      "going": 405,
+      "going": 420,
       "why": "9-day build with a submission deadline; $57,866 prizes.",
       "score": 90,
       "confidence": 94,
@@ -1302,7 +1307,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:22.248Z",
+      "checkedAt": "2026-10-17T07:28:55.617Z",
       "missedSweeps": 0
     },
     {
@@ -1313,10 +1318,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "e9f4d44aa0921ad694c4ce3e413075137b793b6b132711b0f246a35f4433d5c7"
+        "contentSha256": "0d8557441f489155c29bdf761acff568ac6ff0efd5861f7a8cfb3e69180e407d"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -1340,7 +1345,7 @@
         "Tech",
         "Design"
       ],
-      "going": 165,
+      "going": 179,
       "why": "8-hour build with judging, demos, a submission deadline; $100 prizes.",
       "score": 90,
       "confidence": 94,
@@ -1351,7 +1356,7 @@
         "freshness": 100
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-10-16T18:32:29.366Z",
+      "checkedAt": "2026-10-17T07:27:29.395Z",
       "missedSweeps": 0
     },
     {
@@ -1366,7 +1371,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "9fb420779eec888e871e0e7578f5ae6dcd3ddcbaf3947e4a17f437afefc3d50b"
@@ -1405,6 +1410,55 @@
       "missedSweeps": 0
     },
     {
+      "id": "external-hackerrank-com-hackerrank-orchestrate-october26-fad735d0",
+      "url": "https://www.hackerrank.com/hackerrank-orchestrate-october26",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/hackerrank-candidates.json",
+            "sha256": "d3c7a86c6e0a2d4a2047293ef6ab291db8deaebaf0462e8c4640e9bb99328ad6"
+          }
+        ],
+        "contentSha256": "002666c3c594852297f7eb0ba04d84440e3fcf81aabc608947e3005767c4e51c"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "HackerRank Orchestrate October 2026",
+      "organizer": "HackerRank",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-10-24T05:30:00-07:00",
+      "end": "2026-10-25T05:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 24",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Open",
+      "prize": "$2400 cash",
+      "tags": [
+        "Agents",
+        "Design"
+      ],
+      "going": 42678,
+      "why": "24-hour build; $2400 cash.",
+      "score": 90,
+      "confidence": 94,
+      "scores": {
+        "confidence": 94,
+        "builderValue": 86,
+        "accessibility": 92,
+        "freshness": 84
+      },
+      "discoveredVia": "https://www.hackerrank.com/contests",
+      "checkedAt": "2026-10-17T07:29:19.435Z",
+      "missedSweeps": 0
+    },
+    {
       "id": "ptc",
       "url": "https://luma.com/ptc",
       "provenance": {
@@ -1412,10 +1466,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "e7155f708de498ebf4a85cda5c3f19f7c5375486f6407b48f54ca0b91d21a402"
+        "contentSha256": "8fc195e40e0bac7137bc6672471602367f9924dac5a6938ee04d5ee16931e215"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -1449,8 +1503,8 @@
         "accessibility": 100,
         "freshness": 84
       },
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-10-16T18:32:42.635Z",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-10-17T07:27:31.971Z",
       "missedSweeps": 0
     },
     {
@@ -1461,10 +1515,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "970bb1080ae835d9573088e76e252a43003254ed96682d0e55ae209f59ebe0ea"
+        "contentSha256": "bedea6f82c55ab8d8bd82ea4530022d917618e5f2c960f2cc38361abbfd83f8d"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -1499,7 +1553,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-10-16T18:32:29.596Z",
+      "checkedAt": "2026-10-17T07:27:29.591Z",
       "missedSweeps": 0
     },
     {
@@ -1510,10 +1564,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "0ece10ca9c69261fa4e7cafec14f2366092f820ea9f694d7a25e5b6a93ff70e8"
+        "contentSha256": "249f978a4c5da69834c03ae33dcd5dfa36caa2f57198dd899fd6d853cbde4b28"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -1547,7 +1601,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-10-16T18:32:43.152Z",
+      "checkedAt": "2026-10-17T07:27:43.887Z",
       "missedSweeps": 0
     },
     {
@@ -1562,10 +1616,10 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "d687eca738d1124088d800153938199cd99a2e2b679238547883a61086fe768f"
+        "contentSha256": "e38354fa9eb4c944a107523bae23fc06cae5be8352f01f16a71bb9e5fb695ad3"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -1578,7 +1632,7 @@
       "region": "online",
       "regionLabel": "Online",
       "start": "2026-10-17T10:00:00-07:00",
-      "end": "2026-10-18T17:00:00-07:00",
+      "end": "2026-10-18T18:00:00-07:00",
       "timezone": "America/Los_Angeles",
       "dateLabel": "OCT 17",
       "dateDetail": "Sat–Sun · 2 days",
@@ -1589,7 +1643,7 @@
         "AI"
       ],
       "going": 26,
-      "why": "2-day build with judging; $1,000 prizes.",
+      "why": "2-day build with judging, team formation, a submission deadline; $1,000 prizes.",
       "score": 89,
       "confidence": 94,
       "scores": {
@@ -1599,7 +1653,7 @@
         "freshness": 100
       },
       "discoveredVia": "https://luma.com/wajo",
-      "checkedAt": "2026-10-15T03:30:30.238Z",
+      "checkedAt": "2026-10-17T07:27:44.166Z",
       "missedSweeps": 0
     },
     {
@@ -1610,7 +1664,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "5a377102b86638ed77f3d135f215fbf98895215fdf7502df13a4dc3d52a0ade9"
@@ -1648,7 +1702,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-10-16T18:32:43.866Z",
+      "checkedAt": "2026-10-17T07:27:44.417Z",
       "missedSweeps": 0
     },
     {
@@ -1659,7 +1713,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "5697eedd91b77f38b377815f2cdde10393d95646d26cbf2b634f9780b8a1db3a"
@@ -1696,7 +1750,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-10-16T18:32:44.118Z",
+      "checkedAt": "2026-10-17T07:27:44.656Z",
       "missedSweeps": 0
     },
     {
@@ -1711,7 +1765,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "799cdd25811bb7eb74be7616092e22d15bf1eb0fcd10a57d3ce286504ef65e6f"
@@ -1759,7 +1813,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "53610834c51fd7824ddab834c6370e68e371ab88576d6e442597314b328fd0a5"
@@ -1794,7 +1848,7 @@
         "freshness": 100
       },
       "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-10-16T18:32:44.842Z",
+      "checkedAt": "2026-10-17T07:27:45.148Z",
       "missedSweeps": 0
     },
     {
@@ -1805,10 +1859,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "5f03d074445d489331f8c1629dd7a85e33c022bb1b541433b2bbb209a7a276d2"
+        "contentSha256": "76198a99286ccbf6e3fd371df3aead2f93a239ae0c2dbeeb8fda3a6bc33e8804"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -1841,8 +1895,8 @@
         "accessibility": 100,
         "freshness": 100
       },
-      "discoveredVia": "https://luma.com/DEVxNetwork",
-      "checkedAt": "2026-10-16T18:32:45.177Z",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-10-17T07:27:41.839Z",
       "missedSweeps": 0
     },
     {
@@ -1853,7 +1907,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "833b062d506b13d2e04b32abd99033ebd68a2d9d2293eb99df48ac35cb8387c5"
@@ -1890,7 +1944,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-10-16T18:32:45.644Z",
+      "checkedAt": "2026-10-17T07:27:45.401Z",
       "missedSweeps": 0
     },
     {
@@ -1905,10 +1959,10 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "73ea9ca006ccfa80e4b53d307495c8c240cb55d259c644c78e88f3f2a74cb6f4"
+        "contentSha256": "7a79c15dbb4b117bb57602d5e284e3f9e1eb19c177834ced7a85bf128fb2b4b6"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -1953,10 +2007,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "7cff8f0461dfa84a4a32bbdf20d19299d34d581d9c4156c87154cb5c97ded2d4"
+        "contentSha256": "44790a7829c5439cf71cc484e2daa34eb5e2b04196dc362fb994cd8566f0cd2e"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -1990,8 +2044,8 @@
         "accessibility": 82,
         "freshness": 92
       },
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "checkedAt": "2026-10-16T18:32:46.411Z",
+      "discoveredVia": "https://luma.com/southparkcommons-events",
+      "checkedAt": "2026-10-16T03:34:14.540Z",
       "missedSweeps": 0
     },
     {
@@ -2002,10 +2056,10 @@
         "inputs": [
           {
             "file": "data/lablab-candidates.json",
-            "sha256": "6be35ce675b14236254260c9d608852ef6242d7b42cc672e99844690132ee767"
+            "sha256": "3d506075bf4494c4f90986ee43b7f400b8ad5613c039bd8eeaec245b627e4a70"
           }
         ],
-        "contentSha256": "9ad9fc909e00d424436bc5da30c20c0d70b6607ccc6d6c19dd9e6f9e3c595c28"
+        "contentSha256": "ac13baa154f8ce6abf7674a94c315ad76c9578e2a15c0133d525faf5bae31681"
       },
       "platform": "external",
       "category": "hackathon",
@@ -2028,7 +2082,7 @@
       "tags": [
         "Agents"
       ],
-      "going": 882,
+      "going": 893,
       "why": "6-day build; $9,000 prizes.",
       "score": 87,
       "confidence": 94,
@@ -2039,7 +2093,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://lablab.ai/event",
-      "checkedAt": "2026-10-16T18:51:44.544Z",
+      "checkedAt": "2026-10-17T07:29:17.564Z",
       "missedSweeps": 0
     },
     {
@@ -2050,7 +2104,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "5e7d66a3f71e02087ebf5ef1da8f13f3a077f3849a0bd6a17d4b63d94ad386ef"
@@ -2085,7 +2139,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-10-16T18:32:46.873Z",
+      "checkedAt": "2026-10-17T03:30:33.598Z",
       "missedSweeps": 0
     },
     {
@@ -2100,7 +2154,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "1e37f7af034acf59af436b9ceef69e75788d573b4658777ad49a2347d99060b3"
@@ -2148,16 +2202,16 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "1b48f3a7eb998128d48dd46d57ef98d1c013d727d64bd04b50d24d787149b2a8"
+        "contentSha256": "f2138f0af8c823b67b95ed01170b5537eb0a27b45c87cd407c6184534a8ac41e"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
       "title": "Hack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ!",
-      "organizer": "Oriane.xyz Video Intelligence",
+      "organizer": "Personal",
       "venue": "Amplitude Analytics",
       "city": "San Francisco",
       "area": "SF",
@@ -2184,8 +2238,8 @@
         "accessibility": 100,
         "freshness": 70
       },
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-10-16T18:32:47.409Z",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-10-17T07:27:33.081Z",
       "missedSweeps": 0
     },
     {
@@ -2196,7 +2250,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "7a9fe68961b7ed71c2c71bb4f4a8cc98bc72d93e55193d88d499b48bcb31b537"
@@ -2244,7 +2298,7 @@
         "inputs": [
           {
             "file": "data/dorahacks-candidates.json",
-            "sha256": "0c2bca9021e785060ec521fe4decbd129fc9add4da3b0abb872f49c71fc411fe"
+            "sha256": "e8b13b60f6020b65ff8a737163fbc1df9831c86cda2eba24a1a6ed1a6be18150"
           }
         ],
         "contentSha256": "f4ff3a32a4a4c75ecfdca63d4f207bbc87e015ef0fae1ff8e522b51dbd2c6f55"
@@ -2279,7 +2333,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://dorahacks.io/hackathon",
-      "checkedAt": "2026-10-16T18:51:49.204Z",
+      "checkedAt": "2026-10-17T07:29:26.320Z",
       "missedSweeps": 0
     },
     {
@@ -2290,10 +2344,10 @@
         "inputs": [
           {
             "file": "data/dorahacks-candidates.json",
-            "sha256": "0c2bca9021e785060ec521fe4decbd129fc9add4da3b0abb872f49c71fc411fe"
+            "sha256": "e8b13b60f6020b65ff8a737163fbc1df9831c86cda2eba24a1a6ed1a6be18150"
           }
         ],
-        "contentSha256": "2a5df2cfc0a78baf73c7b251c6e710fe8e68acd646c719900f4599863e45ad87"
+        "contentSha256": "195cb11cb72e1a02d2759a5dbde460976c81a4bedeba6c3243d1e21e710a9734"
       },
       "platform": "external",
       "category": "hackathon",
@@ -2314,7 +2368,7 @@
       "status": "Open",
       "prize": "$1,000 prizes",
       "tags": [],
-      "going": 274,
+      "going": 276,
       "why": "293-day build; $1,000 prizes.",
       "score": 84,
       "confidence": 78,
@@ -2325,7 +2379,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://dorahacks.io/hackathon",
-      "checkedAt": "2026-10-16T18:51:49.204Z",
+      "checkedAt": "2026-10-17T07:29:26.320Z",
       "missedSweeps": 0
     },
     {
@@ -2336,10 +2390,10 @@
         "inputs": [
           {
             "file": "data/dorahacks-candidates.json",
-            "sha256": "0c2bca9021e785060ec521fe4decbd129fc9add4da3b0abb872f49c71fc411fe"
+            "sha256": "e8b13b60f6020b65ff8a737163fbc1df9831c86cda2eba24a1a6ed1a6be18150"
           }
         ],
-        "contentSha256": "9a17fc02fcc4c4f6a30b2dd45189bae2548e62a0613776c41ba66fa4222c2c6e"
+        "contentSha256": "cf2f7e2a0109cde4354b992033140e7efb275d58de7fc51470599a84e0dd7256"
       },
       "platform": "external",
       "category": "hackathon",
@@ -2360,7 +2414,7 @@
       "status": "Open",
       "prize": "$20,000 prizes",
       "tags": [],
-      "going": 482,
+      "going": 485,
       "why": "170-day build; $20,000 prizes.",
       "score": 84,
       "confidence": 78,
@@ -2371,7 +2425,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://dorahacks.io/hackathon",
-      "checkedAt": "2026-10-16T18:51:49.204Z",
+      "checkedAt": "2026-10-17T07:29:26.320Z",
       "missedSweeps": 0
     },
     {
@@ -2382,7 +2436,7 @@
         "inputs": [
           {
             "file": "data/dorahacks-candidates.json",
-            "sha256": "0c2bca9021e785060ec521fe4decbd129fc9add4da3b0abb872f49c71fc411fe"
+            "sha256": "e8b13b60f6020b65ff8a737163fbc1df9831c86cda2eba24a1a6ed1a6be18150"
           }
         ],
         "contentSha256": "a2bf2e6e6e16e07513e8d81786b30914d57f04638d7bf594a90168e5ff30515d"
@@ -2419,7 +2473,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://dorahacks.io/hackathon",
-      "checkedAt": "2026-10-16T18:51:49.204Z",
+      "checkedAt": "2026-10-17T07:29:26.320Z",
       "missedSweeps": 0
     },
     {
@@ -2430,10 +2484,10 @@
         "inputs": [
           {
             "file": "data/dorahacks-candidates.json",
-            "sha256": "0c2bca9021e785060ec521fe4decbd129fc9add4da3b0abb872f49c71fc411fe"
+            "sha256": "e8b13b60f6020b65ff8a737163fbc1df9831c86cda2eba24a1a6ed1a6be18150"
           }
         ],
-        "contentSha256": "a66ecbc0ee0ac4baa34c4b94f25f4f20e4c16dc1544e955545e21bdac007cbc5"
+        "contentSha256": "7124ebfd6595a576c5b70cbf75f8375680e00dd8442bad64665a9370df891c7d"
       },
       "platform": "external",
       "category": "hackathon",
@@ -2454,7 +2508,7 @@
       "status": "Open",
       "prize": "$5,200 prizes",
       "tags": [],
-      "going": 122,
+      "going": 124,
       "why": "38-day build; $5,200 prizes.",
       "score": 84,
       "confidence": 78,
@@ -2465,7 +2519,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://dorahacks.io/hackathon",
-      "checkedAt": "2026-10-16T18:51:49.204Z",
+      "checkedAt": "2026-10-17T07:29:26.320Z",
       "missedSweeps": 0
     },
     {
@@ -2476,10 +2530,10 @@
         "inputs": [
           {
             "file": "data/dorahacks-candidates.json",
-            "sha256": "0c2bca9021e785060ec521fe4decbd129fc9add4da3b0abb872f49c71fc411fe"
+            "sha256": "e8b13b60f6020b65ff8a737163fbc1df9831c86cda2eba24a1a6ed1a6be18150"
           }
         ],
-        "contentSha256": "73ad8b59fa8113eaddcffaf9ec0bffcba4b26f4139b18719590bc8f2ff92b04d"
+        "contentSha256": "774de85d567031f8bb2fa2ebee5984a8f1b4edf71ba04394b659c24164fdc57f"
       },
       "platform": "external",
       "category": "hackathon",
@@ -2500,7 +2554,7 @@
       "status": "Open",
       "prize": "$8,000 prizes",
       "tags": [],
-      "going": 68,
+      "going": 72,
       "why": "43-day build; $8,000 prizes.",
       "score": 84,
       "confidence": 78,
@@ -2511,7 +2565,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://dorahacks.io/hackathon",
-      "checkedAt": "2026-10-16T18:51:49.204Z",
+      "checkedAt": "2026-10-17T07:29:26.320Z",
       "missedSweeps": 0
     },
     {
@@ -2522,10 +2576,10 @@
         "inputs": [
           {
             "file": "data/dorahacks-candidates.json",
-            "sha256": "0c2bca9021e785060ec521fe4decbd129fc9add4da3b0abb872f49c71fc411fe"
+            "sha256": "e8b13b60f6020b65ff8a737163fbc1df9831c86cda2eba24a1a6ed1a6be18150"
           }
         ],
-        "contentSha256": "a7912c5b0886d94310dffdfb7442a98b729a14ec87f73c08d8e7cf5280de1131"
+        "contentSha256": "08cccf379eaa3c0727e6875302b267d09b64843d39c181aa007a01b2ed8236de"
       },
       "platform": "external",
       "category": "hackathon",
@@ -2546,7 +2600,7 @@
       "status": "Open",
       "prize": "$4,000 prizes",
       "tags": [],
-      "going": 79,
+      "going": 88,
       "why": "18-day build; $4,000 prizes.",
       "score": 84,
       "confidence": 78,
@@ -2557,7 +2611,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://dorahacks.io/hackathon",
-      "checkedAt": "2026-10-16T18:51:49.203Z",
+      "checkedAt": "2026-10-17T07:29:26.319Z",
       "missedSweeps": 0
     },
     {
@@ -2568,10 +2622,10 @@
         "inputs": [
           {
             "file": "data/dorahacks-candidates.json",
-            "sha256": "0c2bca9021e785060ec521fe4decbd129fc9add4da3b0abb872f49c71fc411fe"
+            "sha256": "e8b13b60f6020b65ff8a737163fbc1df9831c86cda2eba24a1a6ed1a6be18150"
           }
         ],
-        "contentSha256": "18597bd673f02ae5acb84f8196e56f83a46f53169840a92aebe1058081641b57"
+        "contentSha256": "216c1f1f74be9af98f0a7997d5cc6b491e4c6bfd6b8b77495d48a5a96adc9111"
       },
       "platform": "external",
       "category": "hackathon",
@@ -2594,7 +2648,7 @@
       "tags": [
         "Agents"
       ],
-      "going": 8,
+      "going": 11,
       "why": "65-day build; $1,150 prizes.",
       "score": 84,
       "confidence": 78,
@@ -2605,7 +2659,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://dorahacks.io/hackathon",
-      "checkedAt": "2026-10-16T18:51:49.204Z",
+      "checkedAt": "2026-10-17T07:29:26.320Z",
       "missedSweeps": 0
     },
     {
@@ -2616,7 +2670,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "6c2ecea3400141cb0bee389105a246beeb0f9ca4174cbb149d44f99b7c1c5ae4"
@@ -2653,7 +2707,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://luma.com/sf-science-studio",
-      "checkedAt": "2026-10-16T07:47:17.047Z",
+      "checkedAt": "2026-10-17T03:30:33.976Z",
       "missedSweeps": 0
     },
     {
@@ -2668,7 +2722,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "d0c3e22065891b53c69439b184dc9f12978f17d040098f212f604511a278296e"
@@ -2717,10 +2771,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "402cf0d45334cbd246448055be6e2e31e21a7892ee70ae5d0f880931ca825728"
+        "contentSha256": "908a1577486596713a2a2d620b08ec7f0682ec558d3d80c27e3fdf19ebf3d4f0"
       },
       "platform": "external",
       "category": "hackathon",
@@ -2741,7 +2795,7 @@
       "status": "Check page",
       "prize": "$3,800 prizes",
       "tags": [],
-      "going": 332,
+      "going": 338,
       "why": "64-day build with a submission deadline; $3,800 prizes.",
       "score": 83,
       "confidence": 94,
@@ -2752,7 +2806,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:36.250Z",
+      "checkedAt": "2026-10-17T07:29:09.605Z",
       "missedSweeps": 0
     },
     {
@@ -2767,7 +2821,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "7bbf6fef3c3c0e5adf0b4180a5501d6ad89865e0689e3a175acdf8fadda364b6"
@@ -2815,10 +2869,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "1a5bb086571d29b3d144fc4a6e4f57915d47ea3a5186b927eaddf78999d923e7"
+        "contentSha256": "76c4dd9e2136f8c3b565b492208fbef5b590dd114e87df628ae02d4ef383bb1e"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -2853,7 +2907,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://luma.com/techequity-ai",
-      "checkedAt": "2026-10-16T07:47:18.229Z",
+      "checkedAt": "2026-10-16T03:34:16.621Z",
       "missedSweeps": 0
     },
     {
@@ -2864,7 +2918,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "06ebd6230b92f59f5f1c420a9463d6679eecd7975bd4fd7ce1a246ec4d4049e3"
@@ -2912,14 +2966,14 @@
         "inputs": [
           {
             "file": "data/eventbrite-candidates.json",
-            "sha256": "6c4ee7f95bc32ff9496b2303148a1eb7129fc234b082d9fbc2cd248cd780b34a"
+            "sha256": "579b4b86cf6f87e5284a44c46f21f879ae2a51400c6f55426593248808b72f03"
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "983065d8f4dfb0420a67686bc2084d43b7faed0ad57b5e586aa22c60f55cef18"
+        "contentSha256": "a362224a2fbe6c3c345beaee8436fdec92fa0df5727d15bf299f12ecd4ad43fc"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -2952,8 +3006,8 @@
         "accessibility": 100,
         "freshness": 70
       },
-      "discoveredVia": "https://luma.com/beyondhorizon",
-      "checkedAt": "2026-10-16T18:32:44.623Z",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-10-17T07:27:41.472Z",
       "missedSweeps": 0
     },
     {
@@ -2964,10 +3018,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "d641f27b3a719d3319fc12812333cd5bb73fd9aae80fa7e29cacd52a1ee1b5cf"
+        "contentSha256": "82480045c90c763215ede5e4987749a5cd8962aef6778ec55b3c40ee191b70fa"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -3000,8 +3054,8 @@
         "accessibility": 100,
         "freshness": 70
       },
-      "discoveredVia": "https://luma.com/frontiertower",
-      "checkedAt": "2026-10-16T18:32:43.418Z",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-10-17T07:27:38.654Z",
       "missedSweeps": 0
     },
     {
@@ -3012,7 +3066,7 @@
         "inputs": [
           {
             "file": "data/dorahacks-candidates.json",
-            "sha256": "0c2bca9021e785060ec521fe4decbd129fc9add4da3b0abb872f49c71fc411fe"
+            "sha256": "e8b13b60f6020b65ff8a737163fbc1df9831c86cda2eba24a1a6ed1a6be18150"
           }
         ],
         "contentSha256": "97c3bfa7c05ea834ebaaabca34cb65d89237675e0877610685b0f9d8628c7a57"
@@ -3049,7 +3103,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://dorahacks.io/hackathon",
-      "checkedAt": "2026-10-16T18:51:49.204Z",
+      "checkedAt": "2026-10-17T07:29:26.320Z",
       "missedSweeps": 0
     },
     {
@@ -3064,7 +3118,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "33947844150277291445552fe094cf9d43c727cf77bd3ca2e10906e382506dbb"
@@ -3114,7 +3168,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "6e0ffbbd05c49cd5e74fc847be6372ab7db8ed5c355947df57c8a0c9ab2c4f40"
@@ -3163,7 +3217,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "b9285739ddbb9fe752073c2b89b593a9f209e25af37754d2c927e68a0b723d90"
@@ -3211,7 +3265,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "143a6e3c61e645f7ac421baeae744cec6502b6cdcef11a816668810c5640de98"
@@ -3261,7 +3315,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "3d7d856a85c61534fe835c3b96b72be1acc7e8c69e580585c598690a2866e881"
@@ -3298,7 +3352,7 @@
         "freshness": 55
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-10-16T07:47:11.591Z",
+      "checkedAt": "2026-10-17T07:27:40.428Z",
       "missedSweeps": 0
     },
     {
@@ -3313,7 +3367,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "9949f842984900e1cabe0a15820f323b44dfc003784acaa00b8d1ec59e73866d"
@@ -3362,7 +3416,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "6a691119a1997092b0cb58462dbe429d5eece13c0edf6772a9ab3038d0ed9795"
@@ -3410,16 +3464,16 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "e44d5c6bfa0b1c7d74fcdc79166f08c7383e7f5df6362b89cc838d2120b7f854"
+        "contentSha256": "ad4f96325f99d91949c0bd5842618b7f24ef52394ea93334b390f624842c24e7"
       },
       "platform": "luma",
       "category": "hackathon",
       "adjacentReason": null,
       "title": "Cleantech Hackathon at Stanford",
-      "organizer": "Sacha Ledan",
+      "organizer": "Personal",
       "venue": "Jen-Hsun Huang Engineering Center",
       "city": "Stanford",
       "area": "Peninsula",
@@ -3447,8 +3501,8 @@
         "accessibility": 95,
         "freshness": 84
       },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-10-16T18:32:46.638Z",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-10-17T07:27:31.475Z",
       "missedSweeps": 0
     },
     {
@@ -3459,10 +3513,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "d65da182c6b8d6c6cfbf3ca9dfd102993ff5818f456f21f3c6f8f052034b8db6"
+        "contentSha256": "291e58000cfdd805b328132ded8a53f7c49d4aa708626c49c2851faf7c88117f"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -3485,7 +3539,7 @@
       "tags": [
         "AI"
       ],
-      "going": null,
+      "going": 0,
       "why": "2-day build with judging, demos, team formation; prizes listed.",
       "score": 81,
       "confidence": 78,
@@ -3495,8 +3549,8 @@
         "accessibility": 82,
         "freshness": 70
       },
-      "discoveredVia": "https://luma.com/IterateHacks",
-      "checkedAt": "2026-10-16T18:32:45.839Z",
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-10-17T07:27:39.835Z",
       "missedSweeps": 0
     },
     {
@@ -3507,7 +3561,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "366131b53a76f6acbdc4a91d35dc9c3271e981017d180e276e56f8835bc6de89"
@@ -3553,10 +3607,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "a21cc088715768f2bb5706d000ea908ca96e1918dbdda0c68314ad368a775e3d"
+        "contentSha256": "702e9da6bd758534d117882cb9a7415eb5f9640e49333a919939923b11e21cda"
       },
       "platform": "external",
       "category": "hackathon",
@@ -3577,7 +3631,7 @@
       "status": "Open",
       "prize": "Not listed",
       "tags": [],
-      "going": 168,
+      "going": 171,
       "why": "19-day build with a submission deadline.",
       "score": 80,
       "confidence": 78,
@@ -3588,7 +3642,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:18.649Z",
+      "checkedAt": "2026-10-17T07:28:51.998Z",
       "missedSweeps": 0
     },
     {
@@ -3599,10 +3653,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "d89a0ebcca4fe0500e66f6a951e4c70a9e00b86e3a6053dab60dd15a5ee517ec"
+        "contentSha256": "1face6c3d074e49792527659769cca27a888e28241bc3b12c798e7a62f998aae"
       },
       "platform": "external",
       "category": "hackathon",
@@ -3625,7 +3679,7 @@
       "tags": [
         "Social impact"
       ],
-      "going": 44,
+      "going": 47,
       "why": "11-day build with a submission deadline.",
       "score": 80,
       "confidence": 78,
@@ -3636,7 +3690,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:17.031Z",
+      "checkedAt": "2026-10-17T07:28:50.408Z",
       "missedSweeps": 0
     },
     {
@@ -3647,10 +3701,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "b42ac7378b4ea37b318e9497f368caa56c154bfac766c4adf87b9e4a0ff9caa4"
+        "contentSha256": "b93f82c41781ab7c21178ce9a2d732ff73bafd0d4856a97c9b378b397610d53b"
       },
       "platform": "external",
       "category": "hackathon",
@@ -3673,7 +3727,7 @@
       "tags": [
         "Social impact"
       ],
-      "going": 11,
+      "going": 22,
       "why": "2-day build with a submission deadline.",
       "score": 80,
       "confidence": 78,
@@ -3684,7 +3738,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:15.062Z",
+      "checkedAt": "2026-10-17T07:28:48.419Z",
       "missedSweeps": 0
     },
     {
@@ -3699,7 +3753,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "4af63eea80d691a3dff1e3cfaf7b09711d491d1fc1db2879f4c25d288bcf0ad7"
@@ -3740,6 +3794,52 @@
       "missedSweeps": 0
     },
     {
+      "id": "external-hackerrank-com-event-micro1-eval-hackathon-2408416c",
+      "url": "https://www.hackerrank.com/event/micro1-eval-hackathon",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/hackerrank-candidates.json",
+            "sha256": "d3c7a86c6e0a2d4a2047293ef6ab291db8deaebaf0462e8c4640e9bb99328ad6"
+          }
+        ],
+        "contentSha256": "8014443bbb06baa6477b954dd51cffe23308143bac906f949a9f5aeb3c025244"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "micro1 Eval Hackathon",
+      "organizer": "micro1",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-10-30T00:15:00-07:00",
+      "end": "2026-11-08T21:15:00-08:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 30",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [],
+      "going": null,
+      "why": "10-day build.",
+      "score": 80,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 71,
+        "accessibility": 92,
+        "freshness": 84
+      },
+      "discoveredVia": "https://www.hackerrank.com/contests",
+      "checkedAt": "2026-10-17T07:29:21.755Z",
+      "missedSweeps": 0
+    },
+    {
       "id": "external-kuk-virtual-hackathon-devpost-com--14e918eb",
       "url": "https://kuk-virtual-hackathon.devpost.com",
       "provenance": {
@@ -3747,7 +3847,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "3442a34f4440d74a645a3e2de831498bf4e42a53c17bae7cca52885ee892287a"
@@ -3782,7 +3882,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:32.632Z",
+      "checkedAt": "2026-10-17T07:29:06.004Z",
       "missedSweeps": 0
     },
     {
@@ -3887,7 +3987,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "4d2e359cf682811be1bfec4915e52eab093cfc7633d6feb0923e55468f8f345d"
@@ -3922,7 +4022,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:29.449Z",
+      "checkedAt": "2026-10-17T07:29:02.824Z",
       "missedSweeps": 0
     },
     {
@@ -3933,7 +4033,7 @@
         "inputs": [
           {
             "file": "data/dorahacks-candidates.json",
-            "sha256": "0c2bca9021e785060ec521fe4decbd129fc9add4da3b0abb872f49c71fc411fe"
+            "sha256": "e8b13b60f6020b65ff8a737163fbc1df9831c86cda2eba24a1a6ed1a6be18150"
           }
         ],
         "contentSha256": "1cb2ec539df6c5e78fc4207d1ff1aa414b605fc68204c7af617c73787e371d22"
@@ -3968,7 +4068,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://dorahacks.io/hackathon",
-      "checkedAt": "2026-10-16T18:51:49.204Z",
+      "checkedAt": "2026-10-17T07:29:26.320Z",
       "missedSweeps": 0
     },
     {
@@ -3983,7 +4083,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "c7700ac2248e9acae9c55495df81bfc0535b61b6bb2bb9b0ab4301e9b2dc0716"
@@ -4029,7 +4129,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "04dd09258d1b1654b2255f92e3c49d37fb6b2b4403e14b2174ed1ff10a34bf0b"
@@ -4077,15 +4177,15 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "b81ff983cd8b887a60118d2c361bfe716f23c1d4222d8903175a858863fa0504"
+        "contentSha256": "433cd57e7a2df4a9592a11ba9b23b086ff0831cfdb1bf7def5b605dcca45fa9d"
       },
       "platform": "external",
       "category": "hackathon",
       "adjacentReason": null,
-      "title": "Cosmo Hacks",
+      "title": "Cosmo Hacks 2026",
       "organizer": "Cosmo Hacks",
       "venue": null,
       "city": null,
@@ -4101,7 +4201,7 @@
       "status": "Check page",
       "prize": "$196,955 prizes",
       "tags": [],
-      "going": 317,
+      "going": 327,
       "why": "4-day build with a submission deadline; $196,955 prizes.",
       "score": 76,
       "confidence": 94,
@@ -4112,7 +4212,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:34.634Z",
+      "checkedAt": "2026-10-17T07:29:08.008Z",
       "missedSweeps": 0
     },
     {
@@ -4123,10 +4223,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "27d3b1ef1362196dcf6153fdd9dec5858a27e63b050258e027ff4b595abe21fe"
+        "contentSha256": "7700114b40f45c8594da7001846ffabe89474143d504e0bcb533f7306f47f1a5"
       },
       "platform": "external",
       "category": "hackathon",
@@ -4149,7 +4249,7 @@
       "tags": [
         "Design"
       ],
-      "going": 243,
+      "going": 244,
       "why": "3-day build with a submission deadline; $13,700 prizes.",
       "score": 76,
       "confidence": 94,
@@ -4160,7 +4260,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:35.842Z",
+      "checkedAt": "2026-10-17T07:29:09.215Z",
       "missedSweeps": 0
     },
     {
@@ -4171,7 +4271,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "8b5a57f55a9078c849568c7dcdb0e6e071e62d26e55f021ae92b061b73a5ec5c"
@@ -4206,7 +4306,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:31.445Z",
+      "checkedAt": "2026-10-17T07:29:04.803Z",
       "missedSweeps": 0
     },
     {
@@ -4217,7 +4317,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "a5835a1a124ae818fb30a463cf379660058cc230a354b1b83246ba6b8c310e62"
@@ -4252,7 +4352,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-10-16T07:47:08.198Z",
+      "checkedAt": "2026-10-17T07:27:37.384Z",
       "missedSweeps": 0
     },
     {
@@ -4267,7 +4367,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "f1739ea3e66ffdf3713f45fc44e5d46e3598c823c0438583aacfbbd0679c2652"
@@ -4363,7 +4463,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "481ea67aa32ef0138a397d1a3d2f00f793908756e177678d99f6aef1e8fd7f75"
@@ -4413,7 +4513,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "dd48e0c6d369ba3ee7e8bfeccf20bf70e30433f222b6e1983d8d3ff207b0b12e"
@@ -4461,10 +4561,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "baec6432dc550cca4a3c330d397d3cab68393f2f3126c9068d693a4f7400e22f"
+        "contentSha256": "ddd592135d9614c4777d8701a1b874f111fb95bdeabbd90e66501e87d79d91d5"
       },
       "platform": "external",
       "category": "hackathon",
@@ -4485,7 +4585,7 @@
       "status": "Open",
       "prize": "$14,644 prizes",
       "tags": [],
-      "going": 1012,
+      "going": 1017,
       "why": "109-day build with a submission deadline; $14,644 prizes.",
       "score": 74,
       "confidence": 52,
@@ -4496,7 +4596,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:26.239Z",
+      "checkedAt": "2026-10-17T07:28:59.606Z",
       "missedSweeps": 0
     },
     {
@@ -4507,7 +4607,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "9b87361914bd2f8c9564cd4d4c3f0cc232b5a11f1d7e0733f4ec504355fae2b9"
@@ -4544,7 +4644,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:23.846Z",
+      "checkedAt": "2026-10-17T07:28:57.222Z",
       "missedSweeps": 0
     },
     {
@@ -4555,10 +4655,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "d3d7f652ab486608c31280148d2546c8ad98cb52ba85d984c464e6debcdb54be"
+        "contentSha256": "40eb2cd99c0d1c52f32119f9797f27ebf68be395b479422768e9df3ef26cc8e8"
       },
       "platform": "external",
       "category": "hackathon",
@@ -4579,7 +4679,7 @@
       "status": "Open",
       "prize": "$20,250 prizes",
       "tags": [],
-      "going": 5049,
+      "going": 5070,
       "why": "63-day build with a submission deadline; $20,250 prizes.",
       "score": 74,
       "confidence": 52,
@@ -4590,7 +4690,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:23.434Z",
+      "checkedAt": "2026-10-17T07:28:56.805Z",
       "missedSweeps": 0
     },
     {
@@ -4601,10 +4701,10 @@
         "inputs": [
           {
             "file": "data/lablab-candidates.json",
-            "sha256": "6be35ce675b14236254260c9d608852ef6242d7b42cc672e99844690132ee767"
+            "sha256": "3d506075bf4494c4f90986ee43b7f400b8ad5613c039bd8eeaec245b627e4a70"
           }
         ],
-        "contentSha256": "79276571a974dff5efbbdfaac0781a19df50d7a988457f53c2ea00c670b142fa"
+        "contentSha256": "948769bee273bc6a9cab71f24e4148717214f4f90940a1a6df7f2b0b48213ef4"
       },
       "platform": "external",
       "category": "hackathon",
@@ -4625,7 +4725,7 @@
       "status": "Open",
       "prize": "$10,000 prizes",
       "tags": [],
-      "going": 5655,
+      "going": 5682,
       "why": "92-day build; $10,000 prizes.",
       "score": 74,
       "confidence": 52,
@@ -4636,7 +4736,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://lablab.ai/event",
-      "checkedAt": "2026-10-16T18:51:42.391Z",
+      "checkedAt": "2026-10-17T07:29:15.512Z",
       "missedSweeps": 0
     },
     {
@@ -4647,10 +4747,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "3e48ea43dc817a10fbb4361f718dfe0167f3191c404f083b461f0271a7736bb8"
+        "contentSha256": "b18e739f446235b7b761fa20bd6a02924a492c7c854defbb6293633cd50cdc7f"
       },
       "platform": "external",
       "category": "hackathon",
@@ -4671,7 +4771,7 @@
       "status": "Open",
       "prize": "$2,500 prizes",
       "tags": [],
-      "going": 3858,
+      "going": 3909,
       "why": "35-day build with a submission deadline; $2,500 prizes.",
       "score": 74,
       "confidence": 52,
@@ -4682,7 +4782,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:20.647Z",
+      "checkedAt": "2026-10-17T07:28:54.003Z",
       "missedSweeps": 0
     },
     {
@@ -4693,10 +4793,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "60baaf5e9c7f9739252336cbd2f945b749530a692d13deede03876902078468b"
+        "contentSha256": "069073c9311c75114b65e949bbba347b145a14fd13e56aaea15b54203fbce819"
       },
       "platform": "external",
       "category": "hackathon",
@@ -4717,7 +4817,7 @@
       "status": "Open",
       "prize": "$1,000,000 prizes",
       "tags": [],
-      "going": 3292,
+      "going": 3309,
       "why": "57-day build with a submission deadline; $1,000,000 prizes.",
       "score": 74,
       "confidence": 52,
@@ -4728,7 +4828,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:19.844Z",
+      "checkedAt": "2026-10-17T07:28:53.594Z",
       "missedSweeps": 0
     },
     {
@@ -4739,10 +4839,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "e10e1930c3cd72412d428c6b1182cdc23f69d80b5be7e30faf80cb5d4bd04edd"
+        "contentSha256": "8b3f4d4efbe2f741c722650c05714ba1e7055174eeb1c5669d27cb68675fb878"
       },
       "platform": "external",
       "category": "hackathon",
@@ -4765,7 +4865,7 @@
       "tags": [
         "Social impact"
       ],
-      "going": 490,
+      "going": 499,
       "why": "24-day build with a submission deadline; $19,122 prizes.",
       "score": 74,
       "confidence": 52,
@@ -4776,7 +4876,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:24.635Z",
+      "checkedAt": "2026-10-17T07:28:58.805Z",
       "missedSweeps": 0
     },
     {
@@ -4787,10 +4887,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "eeab0a34294710f7c5fdb29aa75eb573c54004c9669396ec904a8f611e13047b"
+        "contentSha256": "885256c8a4217510a86d702268ba9093a14dde552311bd87f846b88fe7bffd07"
       },
       "platform": "external",
       "category": "hackathon",
@@ -4813,7 +4913,7 @@
       "tags": [
         "Design"
       ],
-      "going": 574,
+      "going": 587,
       "why": "19-day build with a submission deadline; $9,117 prizes.",
       "score": 74,
       "confidence": 52,
@@ -4824,7 +4924,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:23.035Z",
+      "checkedAt": "2026-10-17T07:28:56.411Z",
       "missedSweeps": 0
     },
     {
@@ -4835,10 +4935,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "9c7414cce4ad739746b872ddfaa17ecaa58cc2a9c6608a025f897c9b045946b3"
+        "contentSha256": "8e2917f50477433e0c26b097a33f4be2decfae0c968606bc91b418c1bc2f5048"
       },
       "platform": "external",
       "category": "hackathon",
@@ -4859,7 +4959,7 @@
       "status": "Open",
       "prize": "$45,000 prizes",
       "tags": [],
-      "going": 2402,
+      "going": 2441,
       "why": "23-day build with a submission deadline; $45,000 prizes.",
       "score": 74,
       "confidence": 52,
@@ -4870,7 +4970,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:19.435Z",
+      "checkedAt": "2026-10-17T07:28:52.795Z",
       "missedSweeps": 0
     },
     {
@@ -4881,10 +4981,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "bc00d343659de43e9613b3d0f0813cc8002f1ed0030be4549c515c5dd3cdbd60"
+        "contentSha256": "581c88d0ee0e7bcd89f26b5c6016f739b0275e13e0e77c0775dc7e47b008fcd4"
       },
       "platform": "external",
       "category": "hackathon",
@@ -4907,7 +5007,7 @@
       "tags": [
         "Design"
       ],
-      "going": 68,
+      "going": 73,
       "why": "19-day build with a submission deadline; $30 prizes.",
       "score": 74,
       "confidence": 52,
@@ -4918,7 +5018,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:16.647Z",
+      "checkedAt": "2026-10-17T07:28:50.012Z",
       "missedSweeps": 0
     },
     {
@@ -4929,10 +5029,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "b3c33fc5fd8d7810f31779beb62c05f7d534aecd051f32f602a9a76d7c19bb72"
+        "contentSha256": "333807f063ed56bfc01f2744ebfbf79d7f263c5a086b9f9cc54e8780404861ed"
       },
       "platform": "external",
       "category": "hackathon",
@@ -4955,7 +5055,7 @@
       "tags": [
         "Design"
       ],
-      "going": 290,
+      "going": 316,
       "why": "27-day build with a submission deadline; $2,500 prizes.",
       "score": 74,
       "confidence": 52,
@@ -4966,7 +5066,53 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:14.641Z",
+      "checkedAt": "2026-10-17T07:28:48.017Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "external-sephacks-2026-devpost-com--b5220497",
+      "url": "https://sephacks-2026.devpost.com",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/devpost-candidates.json",
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
+          }
+        ],
+        "contentSha256": "372097674ac63bc09cbaa6931e593a321521049a3c0cda6f967523cace4269d9"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "SEPHacks 2026",
+      "organizer": "Sigma Eta Pi",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-10-16T00:00:00-07:00",
+      "end": "2026-10-17T23:59:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 16",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Open",
+      "prize": "$3,300 prizes",
+      "tags": [],
+      "going": 12,
+      "why": "2-day build with a submission deadline; $3,300 prizes.",
+      "score": 74,
+      "confidence": 52,
+      "scores": {
+        "confidence": 52,
+        "builderValue": 80,
+        "accessibility": 92,
+        "freshness": 96
+      },
+      "discoveredVia": "https://devpost.com/api/hackathons",
+      "checkedAt": "2026-10-17T07:28:47.215Z",
       "missedSweeps": 0
     },
     {
@@ -4977,10 +5123,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "e7cea592685bb04553a62ba25384738eccaf6d4083e47774c78b562d65a2f527"
+        "contentSha256": "bcffe183159f4a741cf9db28ef5715c26169948a11ce60e51c66c46557c230fe"
       },
       "platform": "external",
       "category": "hackathon",
@@ -5003,7 +5149,7 @@
       "tags": [
         "Social impact"
       ],
-      "going": 9,
+      "going": 11,
       "why": "2-day build with a submission deadline.",
       "score": 74,
       "confidence": 78,
@@ -5014,7 +5160,55 @@
         "freshness": 100
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:31.848Z",
+      "checkedAt": "2026-10-17T07:29:04.413Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "GTM-multiplayerAI-hackathon",
+      "url": "https://luma.com/GTM-multiplayerAI-hackathon",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
+          }
+        ],
+        "contentSha256": "c1abf5c44c303a5786b2e810645632ca07aa5c68c787c629123c1ceacc957dbd"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "Build for GTM: A Multiplayer AI Hackathon",
+      "organizer": "PromptQL Events",
+      "venue": null,
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-23T13:00:00-07:00",
+      "end": "2026-10-23T16:00:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 23",
+      "dateDetail": "Fri · 1pm–4pm",
+      "timeUnverified": false,
+      "status": "Approval",
+      "prize": "Not listed",
+      "tags": [
+        "AI"
+      ],
+      "going": 0,
+      "why": "3-hour build with demos, team formation.",
+      "score": 74,
+      "confidence": 78,
+      "scores": {
+        "confidence": 78,
+        "builderValue": 55,
+        "accessibility": 82,
+        "freshness": 84
+      },
+      "discoveredVia": "https://api.lu.ma/calendar/get-items",
+      "checkedAt": "2026-10-17T07:27:31.320Z",
       "missedSweeps": 0
     },
     {
@@ -5025,7 +5219,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "6228d2ddaddeb6d72f7527bc34ffe2dcc7eee046975aba1e785401f44cfb487e"
@@ -5073,10 +5267,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "e5ca03588ad8aec61f4b2aa935506317304c2df997e9e22cc46e5ef431d9c07e"
+        "contentSha256": "e374c747f4ed1399f96d420201cfd54c6afa13d51b5b93e328af5ef6890b3f5b"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -5097,7 +5291,7 @@
       "status": "Open",
       "prize": "Not listed",
       "tags": [],
-      "going": 3,
+      "going": 4,
       "why": "11-hour build.",
       "score": 74,
       "confidence": 62,
@@ -5108,7 +5302,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-10-16T07:47:08.460Z",
+      "checkedAt": "2026-10-17T07:27:37.661Z",
       "missedSweeps": 0
     },
     {
@@ -5119,10 +5313,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "b24fc5f32effbbbadbc3770ab2f8459f5221b6f4a3fd831ec95c721a086cdf17"
+        "contentSha256": "2fa559cc60ad9f819b04f05c749be7557affe5eb2247caec72bf5eb7e8c2a7fa"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -5143,7 +5337,7 @@
       "status": "Open",
       "prize": "Not listed",
       "tags": [],
-      "going": 6,
+      "going": 7,
       "why": "12-hour build.",
       "score": 74,
       "confidence": 62,
@@ -5154,7 +5348,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-10-16T07:47:08.682Z",
+      "checkedAt": "2026-10-17T07:27:37.899Z",
       "missedSweeps": 0
     },
     {
@@ -5165,7 +5359,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "320c1e5f99195160b7f1f4e55c808501bce486772dbc1acebe6d61786fecd394"
@@ -5213,7 +5407,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "75a2c029ad203dc4b0a75c014f170d3878dff444db8ef71f57d519b07a95e714"
@@ -5263,7 +5457,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "f599d4bbb0fadb78f2a0ff0c716e8310d5a65156b9220cd7c2da62c38a984e7a"
@@ -5309,10 +5503,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "1abfabb1a0b0485fe97e95d062a7443b6e5bbafe12d2c2e5f67c5d24b9aacbdd"
+        "contentSha256": "cada366e3d5e4f2589b6bc5929a700276069ec11fd493fdc9a791d731fa7b7f4"
       },
       "platform": "external",
       "category": "hackathon",
@@ -5333,7 +5527,7 @@
       "status": "Open",
       "prize": "Prizes listed",
       "tags": [],
-      "going": 144,
+      "going": 147,
       "why": "29-day build with a submission deadline; prizes listed.",
       "score": 72,
       "confidence": 52,
@@ -5344,7 +5538,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:17.827Z",
+      "checkedAt": "2026-10-17T07:28:51.220Z",
       "missedSweeps": 0
     },
     {
@@ -5355,10 +5549,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "397bbf54c022475506fe8a40c45ff75027da856492714a6c0421d11e400abd0b"
+        "contentSha256": "167ece9da180a60c8fa7d7fb2767a775509b369e8a79871df6abec82a220d5a2"
       },
       "platform": "external",
       "category": "hackathon",
@@ -5379,7 +5573,7 @@
       "status": "Open",
       "prize": "Prizes listed",
       "tags": [],
-      "going": 3,
+      "going": 9,
       "why": "42-day build with a submission deadline; prizes listed.",
       "score": 72,
       "confidence": 52,
@@ -5390,53 +5584,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:13.846Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "granola-gtm-hackathon",
-      "url": "https://luma.com/granola-gtm-hackathon",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
-          }
-        ],
-        "contentSha256": "11057db44356e4566202f1b5a99f32b3e1d65bc1c2455ec9d27de9d1a0277868"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "GTM & Marketing Hackathon by Granola x Anthropic",
-      "organizer": "Granola",
-      "venue": "Yerba Buena",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-20T17:30:00-07:00",
-      "end": "2026-10-20T20:30:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 20",
-      "dateDetail": "Tue · 5:30pm–8:30pm",
-      "timeUnverified": false,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [],
-      "going": 0,
-      "why": "3-hour build.",
-      "score": 72,
-      "confidence": 62,
-      "scores": {
-        "confidence": 62,
-        "builderValue": 55,
-        "accessibility": 100,
-        "freshness": 92
-      },
-      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-10-16T18:32:28.853Z",
+      "checkedAt": "2026-10-17T07:28:46.809Z",
       "missedSweeps": 0
     },
     {
@@ -5447,7 +5595,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "3cedecd776aced51ac8ae8e927f0a6e16c0df85be5991078f592fc02e3997b99"
@@ -5482,7 +5630,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-10-16T07:47:09.254Z",
+      "checkedAt": "2026-10-17T07:27:38.487Z",
       "missedSweeps": 0
     },
     {
@@ -5493,7 +5641,7 @@
         "inputs": [
           {
             "file": "data/eventbrite-candidates.json",
-            "sha256": "6c4ee7f95bc32ff9496b2303148a1eb7129fc234b082d9fbc2cd248cd780b34a"
+            "sha256": "579b4b86cf6f87e5284a44c46f21f879ae2a51400c6f55426593248808b72f03"
           }
         ],
         "contentSha256": "82fdbf1e13e919d659387f45cabd9f46f2a8639a2c73f70db32ba8b5b252bab3"
@@ -5530,7 +5678,7 @@
         "freshness": 70
       },
       "discoveredVia": "eventbrite",
-      "checkedAt": "2026-10-16T08:08:56.028Z",
+      "checkedAt": "2026-10-17T03:30:45.370Z",
       "missedSweeps": 0
     },
     {
@@ -5541,7 +5689,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "33dd42b292d5716d84854685c1fbb104ef0ff2bba4fc63b7b22755f3bdcfa220"
@@ -5587,10 +5735,10 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
-        "contentSha256": "cee2642085f4e2bc178ddb4fb5eb0372ebbf37132ff9c17efd92042d2aa502b3"
+        "contentSha256": "29d0207fea03daaf9a1725f51779e3df632d4a53963a7c106598ebf2eee17570"
       },
       "platform": "luma",
       "category": "hackathon",
@@ -5624,7 +5772,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://api.lu.ma/calendar/get-items",
-      "checkedAt": "2026-10-16T07:47:02.312Z",
+      "checkedAt": "2026-10-17T07:27:32.545Z",
       "missedSweeps": 0
     },
     {
@@ -5635,10 +5783,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "cc37e4214386a09f0a0f1d05c486d7e06ff1a36917f6309e394948da3f0d51c4"
+        "contentSha256": "a1428d801d8532489f9debc1aee5d4fd8e0d5d9830b8b2c241e6175b1d0f0774"
       },
       "platform": "external",
       "category": "hackathon",
@@ -5661,7 +5809,7 @@
       "tags": [
         "Social impact"
       ],
-      "going": 100,
+      "going": 102,
       "why": "17-day build with a submission deadline.",
       "score": 70,
       "confidence": 78,
@@ -5672,7 +5820,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:35.044Z",
+      "checkedAt": "2026-10-17T07:29:08.411Z",
       "missedSweeps": 0
     },
     {
@@ -5683,7 +5831,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "e54a0ba2a04e93deb0e33c4bfa98089952eb886712b4a99fb5771f57582cc6e7"
@@ -5718,7 +5866,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:27.433Z",
+      "checkedAt": "2026-10-17T07:29:00.819Z",
       "missedSweeps": 0
     },
     {
@@ -5729,10 +5877,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "288748bb6f85e71cc01b253c4e92959fe6322eb2575a7c33c082037be640e85f"
+        "contentSha256": "1dcd8a8e4348c1ed89246acadcab5b362936961e1669916bd3bd06f7eebe73ea"
       },
       "platform": "external",
       "category": "hackathon",
@@ -5753,7 +5901,7 @@
       "status": "Check page",
       "prize": "Not listed",
       "tags": [],
-      "going": 38,
+      "going": 39,
       "why": "6-day build with a submission deadline.",
       "score": 70,
       "confidence": 78,
@@ -5764,7 +5912,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:31.052Z",
+      "checkedAt": "2026-10-17T07:29:05.199Z",
       "missedSweeps": 0
     },
     {
@@ -5775,10 +5923,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "f258214a83ee576b2448adb0fa83cbc14fa05b0e048f68e18217365c340e4a50"
+        "contentSha256": "4be41fa7a72517ce143bda0d829f9667ac538e27ce80ade360a7b644757cf218"
       },
       "platform": "external",
       "category": "hackathon",
@@ -5801,7 +5949,7 @@
       "tags": [
         "Social impact"
       ],
-      "going": 42,
+      "going": 43,
       "why": "7-day build with a submission deadline.",
       "score": 70,
       "confidence": 78,
@@ -5812,103 +5960,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:36.637Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "kqw4jp3y",
-      "url": "https://luma.com/kqw4jp3y",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
-          }
-        ],
-        "contentSha256": "fa1dd6c6b11d849a148b221abbefa81e2d164ac8bafbf777fbb279381564580a"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Ra's Circle · Edition IV The Atlantic Stack",
-      "organizer": "Samira Curtis",
-      "venue": "Menlo Tavern",
-      "city": "Menlo Park",
-      "area": "Peninsula",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-16T18:00:00-07:00",
-      "end": "2026-10-16T21:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 16",
-      "dateDetail": "Fri · 6pm–9pm",
-      "timeUnverified": false,
-      "status": "Sold out",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 6,
-      "why": "3-hour build.",
-      "score": 68,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 55,
-        "accessibility": 38,
-        "freshness": 100
-      },
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "checkedAt": "2026-10-16T03:34:19.007Z",
-      "missedSweeps": 0
-    },
-    {
-      "id": "external-glitchathon-devpost-com--aff4a1ed",
-      "url": "https://glitchathon.devpost.com",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
-          }
-        ],
-        "contentSha256": "64afc55b01def082d3a92a853f0c333130570f116c14728a3357f8e660f173ed"
-      },
-      "platform": "external",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "GLITCHATHON",
-      "organizer": "sir padampat singhania university ",
-      "venue": null,
-      "city": null,
-      "area": "Online",
-      "region": "online",
-      "regionLabel": "Online",
-      "start": "2026-10-18T00:00:00-07:00",
-      "end": "2026-10-25T23:59:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 18",
-      "dateDetail": "Time on event page",
-      "timeUnverified": true,
-      "status": "Check page",
-      "prize": "$200 prizes",
-      "tags": [
-        "Design"
-      ],
-      "going": 0,
-      "why": "8-day build with a submission deadline; $200 prizes.",
-      "score": 68,
-      "confidence": 52,
-      "scores": {
-        "confidence": 52,
-        "builderValue": 80,
-        "accessibility": 60,
-        "freshness": 100
-      },
-      "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:26.651Z",
+      "checkedAt": "2026-10-17T07:29:09.989Z",
       "missedSweeps": 0
     },
     {
@@ -5919,7 +5971,7 @@
         "inputs": [
           {
             "file": "data/mlh-candidates.json",
-            "sha256": "52a025509435c23169cd0b0dc3a890a7a962603256c5113dc84c1d5e60ae5b35"
+            "sha256": "3d7357c863416bceb95f57fd31e1c8e9f519331a7e52d7cf82c037fc205a225a"
           }
         ],
         "contentSha256": "12e11b418d6fc5f92dedaf2f20f44083e17b31ff2a39427e041e940bbc5ef3b8"
@@ -5954,7 +6006,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://www.mlh.com/seasons",
-      "checkedAt": "2026-10-16T18:51:40.689Z",
+      "checkedAt": "2026-10-17T07:29:13.121Z",
       "missedSweeps": 0
     },
     {
@@ -5965,7 +6017,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "a7299ddd7bfcf8108bfb13b80911c078bd7b2cf6d7f645e1d7fc096615b384c9"
@@ -6002,7 +6054,7 @@
         "freshness": 55
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:09.058Z",
+      "checkedAt": "2026-10-17T07:28:42.013Z",
       "missedSweeps": 0
     },
     {
@@ -6013,7 +6065,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "fe37cca0dea89012e302071239fa6a6bbc86ce7ee1e4499fedb43a1b8855ae9b"
@@ -6048,7 +6100,7 @@
         "freshness": 55
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:27.047Z",
+      "checkedAt": "2026-10-17T07:29:00.426Z",
       "missedSweeps": 0
     },
     {
@@ -6059,7 +6111,7 @@
         "inputs": [
           {
             "file": "data/eventbrite-candidates.json",
-            "sha256": "6c4ee7f95bc32ff9496b2303148a1eb7129fc234b082d9fbc2cd248cd780b34a"
+            "sha256": "579b4b86cf6f87e5284a44c46f21f879ae2a51400c6f55426593248808b72f03"
           }
         ],
         "contentSha256": "85421e49e0f1160961699380d86c8546f6714295e66889d9ab1b3048ad396a79"
@@ -6094,7 +6146,55 @@
         "freshness": 84
       },
       "discoveredVia": "eventbrite",
-      "checkedAt": "2026-10-16T08:08:56.026Z",
+      "checkedAt": "2026-10-17T03:30:45.368Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "external-glitchathon-devpost-com--aff4a1ed",
+      "url": "https://glitchathon.devpost.com",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/devpost-candidates.json",
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
+          }
+        ],
+        "contentSha256": "d61630785bb62c2e9cf4aafdc2bc1d5906e6a22a4af46eaa6f04863acc6b54b3"
+      },
+      "platform": "external",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "GLITCHATHON",
+      "organizer": "sir padampat singhania university ",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-10-18T00:00:00-07:00",
+      "end": "2026-10-25T23:59:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 18",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Check page",
+      "prize": "Prizes listed",
+      "tags": [
+        "Design"
+      ],
+      "going": 3,
+      "why": "8-day build with a submission deadline; prizes listed.",
+      "score": 66,
+      "confidence": 52,
+      "scores": {
+        "confidence": 52,
+        "builderValue": 73,
+        "accessibility": 60,
+        "freshness": 100
+      },
+      "discoveredVia": "https://devpost.com/api/hackathons",
+      "checkedAt": "2026-10-17T07:29:00.005Z",
       "missedSweeps": 0
     },
     {
@@ -6105,7 +6205,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "e3e9ca960cee31eded9091d1a5e2f4f9a0fc213665007d6531944096d0e0367e"
@@ -6153,10 +6253,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "8e867dc8b907fa20065eb9a9d65d083ba9c65c4bd70a1fc12f3785577e17e18b"
+        "contentSha256": "b0457177dcd488780c0f31fd6c61faf3152e051f684eaf300334d99b7968c156"
       },
       "platform": "external",
       "category": "hackathon",
@@ -6179,7 +6279,7 @@
       "tags": [
         "Social impact"
       ],
-      "going": 10,
+      "going": 14,
       "why": "34-day build with a submission deadline; $100 prizes.",
       "score": 65,
       "confidence": 52,
@@ -6190,7 +6290,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:28.253Z",
+      "checkedAt": "2026-10-17T07:29:01.222Z",
       "missedSweeps": 0
     },
     {
@@ -6201,10 +6301,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "732aec6657b9abfd57ea6b873b16928d02e80bdff8df1641691f700b201120ce"
+        "contentSha256": "9c383f5a688077e10e753b13d4ef1ba3277015c5ddc54ebc122e877201db1ea1"
       },
       "platform": "external",
       "category": "hackathon",
@@ -6225,7 +6325,7 @@
       "status": "Check page",
       "prize": "$100,000 prizes",
       "tags": [],
-      "going": 299,
+      "going": 380,
       "why": "37-day build with a submission deadline; $100,000 prizes.",
       "score": 65,
       "confidence": 52,
@@ -6236,7 +6336,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:28.631Z",
+      "checkedAt": "2026-10-17T07:29:01.611Z",
       "missedSweeps": 0
     },
     {
@@ -6247,7 +6347,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "14103c6da38bf374d4f386afffc4070aa0e647568eaa5b198ad58c2ff3b9336d"
@@ -6284,7 +6384,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:33.033Z",
+      "checkedAt": "2026-10-17T07:29:06.399Z",
       "missedSweeps": 0
     },
     {
@@ -6295,7 +6395,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "0bb58967bd5019d0e8d9327c4650d90a3c6e6e89e7c26f3f3ad39eec0138e93f"
@@ -6330,7 +6430,7 @@
         "freshness": 84
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:29.066Z",
+      "checkedAt": "2026-10-17T07:29:02.398Z",
       "missedSweeps": 0
     },
     {
@@ -6341,7 +6441,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "ca358a508af1f0dddafb91be0dbd2436bdf17114e69b843c39881f76eca50138"
@@ -6376,7 +6476,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:50:50.675Z",
+      "checkedAt": "2026-10-17T07:28:25.607Z",
       "missedSweeps": 0
     },
     {
@@ -6387,10 +6487,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "3af0d87d52bb08b44b4b051eddbdc27968f1e23b0f1223ce915f704825e86dec"
+        "contentSha256": "ff2ac59d50929fff89ef37c36760daef549d1139a334b82aa250a44b4cc6a9af"
       },
       "platform": "external",
       "category": "hackathon",
@@ -6411,7 +6511,7 @@
       "status": "Open",
       "prize": "Not listed",
       "tags": [],
-      "going": 13,
+      "going": 14,
       "why": "18-day build with a submission deadline.",
       "score": 63,
       "confidence": 36,
@@ -6422,7 +6522,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:16.236Z",
+      "checkedAt": "2026-10-17T07:28:49.592Z",
       "missedSweeps": 0
     },
     {
@@ -6433,10 +6533,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "e950230b845e00e7fe25af6c133ad3ebde3aaebe0589335692db17af29850cad"
+        "contentSha256": "bb736b5afb82e4fbf78ed5cdba06fe614e41375fc1208df1db80457c1af8586c"
       },
       "platform": "external",
       "category": "hackathon",
@@ -6457,7 +6557,7 @@
       "status": "Open",
       "prize": "Not listed",
       "tags": [],
-      "going": 13,
+      "going": 15,
       "why": "18-day build with a submission deadline.",
       "score": 63,
       "confidence": 36,
@@ -6468,7 +6568,7 @@
         "freshness": 96
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:15.837Z",
+      "checkedAt": "2026-10-17T07:28:48.799Z",
       "missedSweeps": 0
     },
     {
@@ -6479,7 +6579,7 @@
         "inputs": [
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "8cb671618a1652a9c41d2f8618ef763daaf1bd441e407fbaf3d7bca1750d101a"
@@ -6514,7 +6614,53 @@
         "freshness": 92
       },
       "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
-      "checkedAt": "2026-10-16T18:32:28.853Z",
+      "checkedAt": "2026-10-17T07:27:29.016Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "granola-gtm-hackathon",
+      "url": "https://luma.com/granola-gtm-hackathon",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/luma-api.json",
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
+          }
+        ],
+        "contentSha256": "686a1b5563b97c5df2dd15b572d8d4d972dec90db2d28e2f71c7cfda30802d57"
+      },
+      "platform": "luma",
+      "category": "hackathon",
+      "adjacentReason": null,
+      "title": "GTM & Marketing Hackathon by Granola x Anthropic",
+      "organizer": "Granola",
+      "venue": "Yerba Buena",
+      "city": "San Francisco",
+      "area": "SF",
+      "region": "bay-area",
+      "regionLabel": "Bay Area",
+      "start": "2026-10-20T17:30:00-07:00",
+      "end": "2026-10-20T20:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 20",
+      "dateDetail": "Tue · 5:30pm–8:30pm",
+      "timeUnverified": false,
+      "status": "Waitlist",
+      "prize": "Not listed",
+      "tags": [],
+      "going": 0,
+      "why": "3-hour build.",
+      "score": 63,
+      "confidence": 62,
+      "scores": {
+        "confidence": 62,
+        "builderValue": 55,
+        "accessibility": 53,
+        "freshness": 92
+      },
+      "discoveredVia": "https://api.lu.ma/discover/get-paginated-events",
+      "checkedAt": "2026-10-17T07:27:29.016Z",
       "missedSweeps": 0
     },
     {
@@ -6525,10 +6671,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "14615dd7785dc4528408129eddcdc571b3af27bb966c072a4e3e679011a7eb83"
+        "contentSha256": "59c9410c2bfd98821da48df5017fbd805c31ef803c0af69d4c217ad3e53fb63f"
       },
       "platform": "external",
       "category": "hackathon",
@@ -6549,7 +6695,7 @@
       "status": "Check page",
       "prize": "$17,150 prizes",
       "tags": [],
-      "going": 43,
+      "going": 48,
       "why": "8-day build with a submission deadline; $17,150 prizes.",
       "score": 63,
       "confidence": 52,
@@ -6560,7 +6706,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:30.240Z",
+      "checkedAt": "2026-10-17T07:29:03.605Z",
       "missedSweeps": 0
     },
     {
@@ -6571,7 +6717,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "375b6b8951656953bfd28761de78f00c9e00df4b37e6d6fdffe71c0cc5c6940f"
@@ -6606,7 +6752,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:33.831Z",
+      "checkedAt": "2026-10-17T07:29:07.196Z",
       "missedSweeps": 0
     },
     {
@@ -6617,10 +6763,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "e667467cff5e1a1bf0982af1b2f2df4f300a5d336ed5f430427efc3c9726a355"
+        "contentSha256": "a44cf41aeb996318e1ed2d8dc6a76c173b8ed6cb2041ad6899546a35a0301783"
       },
       "platform": "external",
       "category": "hackathon",
@@ -6643,7 +6789,7 @@
       "tags": [
         "Agents"
       ],
-      "going": 73,
+      "going": 76,
       "why": "45-day build with a submission deadline; prizes listed.",
       "score": 62,
       "confidence": 52,
@@ -6654,7 +6800,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:34.239Z",
+      "checkedAt": "2026-10-17T07:29:07.595Z",
       "missedSweeps": 0
     },
     {
@@ -6665,7 +6811,7 @@
         "inputs": [
           {
             "file": "data/eventbrite-candidates.json",
-            "sha256": "6c4ee7f95bc32ff9496b2303148a1eb7129fc234b082d9fbc2cd248cd780b34a"
+            "sha256": "579b4b86cf6f87e5284a44c46f21f879ae2a51400c6f55426593248808b72f03"
           }
         ],
         "contentSha256": "2bd209726107b8b09d8478778206ac3de6b7c8cfc6bb6fcbd1e4bf5fb67546d5"
@@ -6702,7 +6848,7 @@
         "freshness": 40
       },
       "discoveredVia": "eventbrite",
-      "checkedAt": "2026-10-16T08:09:03.420Z",
+      "checkedAt": "2026-10-17T03:30:47.546Z",
       "missedSweeps": 0
     },
     {
@@ -6713,7 +6859,7 @@
         "inputs": [
           {
             "file": "data/mlh-candidates.json",
-            "sha256": "52a025509435c23169cd0b0dc3a890a7a962603256c5113dc84c1d5e60ae5b35"
+            "sha256": "3d7357c863416bceb95f57fd31e1c8e9f519331a7e52d7cf82c037fc205a225a"
           }
         ],
         "contentSha256": "5d3c7d089bf3eaf393ecbb28fd136164c912aa73879cb4a8c1bfc04690d2e809"
@@ -6748,7 +6894,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://www.mlh.com/seasons",
-      "checkedAt": "2026-10-16T18:51:40.690Z",
+      "checkedAt": "2026-10-17T07:29:13.122Z",
       "missedSweeps": 0
     },
     {
@@ -6759,7 +6905,7 @@
         "inputs": [
           {
             "file": "data/mlh-candidates.json",
-            "sha256": "52a025509435c23169cd0b0dc3a890a7a962603256c5113dc84c1d5e60ae5b35"
+            "sha256": "3d7357c863416bceb95f57fd31e1c8e9f519331a7e52d7cf82c037fc205a225a"
           }
         ],
         "contentSha256": "3053d4944edcbd5da6607ec6aae863a9f4b3c796cb934dca19b5be033b348ed0"
@@ -6794,7 +6940,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://www.mlh.com/seasons",
-      "checkedAt": "2026-10-16T18:51:40.698Z",
+      "checkedAt": "2026-10-17T07:29:13.127Z",
       "missedSweeps": 0
     },
     {
@@ -6805,7 +6951,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "f2c24bcc022ec6a54c6917fc6025cfff975750fb7feb4c180430c8656c204326"
@@ -6840,7 +6986,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:07.438Z",
+      "checkedAt": "2026-10-17T07:28:40.396Z",
       "missedSweeps": 0
     },
     {
@@ -6851,10 +6997,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "6f7c59230d5c79f824965ae145428158c11840eec38fd04fb9c607b8dd6606cc"
+        "contentSha256": "9a413a47535e5652ef0ad32aebe2c5ae23c4884fe51cdf014c2d5442fe46be1c"
       },
       "platform": "external",
       "category": "hackathon",
@@ -6875,7 +7021,7 @@
       "status": "Check page",
       "prize": "Not listed",
       "tags": [],
-      "going": 114,
+      "going": 125,
       "why": "2-day build with a submission deadline.",
       "score": 59,
       "confidence": 36,
@@ -6886,7 +7032,7 @@
         "freshness": 100
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:00.637Z",
+      "checkedAt": "2026-10-17T07:28:33.602Z",
       "missedSweeps": 0
     },
     {
@@ -6897,7 +7043,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "7ebc20eb14275f08f6e7db793fff8402d6b9c3b73d8434f5af99922e891f5c60"
@@ -6932,7 +7078,7 @@
         "freshness": 55
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:29.837Z",
+      "checkedAt": "2026-10-17T07:29:03.229Z",
       "missedSweeps": 0
     },
     {
@@ -6943,7 +7089,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "fde7d03d4b30f94fef91c2709bdbbc3dd87dcba13039fb7d93d56507e338ba64"
@@ -6978,7 +7124,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:37.834Z",
+      "checkedAt": "2026-10-17T07:29:11.208Z",
       "missedSweeps": 0
     },
     {
@@ -6989,7 +7135,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "356e7428857f4e086c9d0de7b4e2ba108dfae36b82bb44d1fa7ee78b4ca2d9f6"
@@ -7026,7 +7172,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:35.449Z",
+      "checkedAt": "2026-10-17T07:29:08.818Z",
       "missedSweeps": 0
     },
     {
@@ -7037,7 +7183,7 @@
         "inputs": [
           {
             "file": "data/eventbrite-candidates.json",
-            "sha256": "6c4ee7f95bc32ff9496b2303148a1eb7129fc234b082d9fbc2cd248cd780b34a"
+            "sha256": "579b4b86cf6f87e5284a44c46f21f879ae2a51400c6f55426593248808b72f03"
           }
         ],
         "contentSha256": "05515a3a666fae90e8eb94ef0593f2edacfa75373cf9e868958444d5e2e4633d"
@@ -7072,7 +7218,7 @@
         "freshness": 40
       },
       "discoveredVia": "eventbrite",
-      "checkedAt": "2026-10-16T08:09:03.421Z",
+      "checkedAt": "2026-10-17T03:30:47.547Z",
       "missedSweeps": 0
     },
     {
@@ -7083,10 +7229,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "a6a266678730d8c8ab0308155d909af4365d77bf7b480abea4c00485e7cbc5d8"
+        "contentSha256": "e9fe81e83a74e67509c77a8c749c4e9965c58de5585709071a586a23e7fcdba1"
       },
       "platform": "external",
       "category": "hackathon",
@@ -7107,7 +7253,7 @@
       "status": "Check page",
       "prize": "$10,000 prizes",
       "tags": [],
-      "going": 175,
+      "going": 176,
       "why": "3-day build with a submission deadline; $10,000 prizes.",
       "score": 59,
       "confidence": 52,
@@ -7118,7 +7264,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:37.035Z",
+      "checkedAt": "2026-10-17T07:29:10.404Z",
       "missedSweeps": 0
     },
     {
@@ -7129,10 +7275,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "2798802ffab8ac4953c49e2fc0ea78988d6011bea02023c7c9920aa7a9b82a14"
+        "contentSha256": "064ad2e57d2ff77289f3d863e1db1c3dfc7a7724e38ed575ebecbb83610a4c08"
       },
       "platform": "external",
       "category": "hackathon",
@@ -7153,7 +7299,7 @@
       "status": "Check page",
       "prize": "Not listed",
       "tags": [],
-      "going": 13,
+      "going": 27,
       "why": "2-day build with a submission deadline.",
       "score": 58,
       "confidence": 36,
@@ -7164,7 +7310,7 @@
         "freshness": 100
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:27.836Z",
+      "checkedAt": "2026-10-17T07:29:02.018Z",
       "missedSweeps": 0
     },
     {
@@ -7175,10 +7321,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "907a68b58527492deec62f7b52cf6db3a0f17c590895778eff753f9b7588dd9e"
+        "contentSha256": "b8ae30586b318d21f1f18fc070a7a1cf121722897317e961b256b46e92563f00"
       },
       "platform": "external",
       "category": "hackathon",
@@ -7199,7 +7345,7 @@
       "status": "Check page",
       "prize": "Not listed",
       "tags": [],
-      "going": 61,
+      "going": 66,
       "why": "3-day build with a submission deadline.",
       "score": 58,
       "confidence": 36,
@@ -7210,7 +7356,7 @@
         "freshness": 100
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:32.243Z",
+      "checkedAt": "2026-10-17T07:29:05.596Z",
       "missedSweeps": 0
     },
     {
@@ -7221,7 +7367,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "0858294630834e192f82d2827dc1a58253dc7abb80d4bbd2f404a063e1ba254f"
@@ -7256,7 +7402,7 @@
         "freshness": 40
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:37.445Z",
+      "checkedAt": "2026-10-17T07:29:10.816Z",
       "missedSweeps": 0
     },
     {
@@ -7267,10 +7413,10 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
-        "contentSha256": "26802ac30c96f3914f3039b2edf59833a325200cde29234b4f8422b662acbb30"
+        "contentSha256": "31461d619768c1d5773ad2e03aea1571b9bbdd04fa5b74b286070d63a814ea25"
       },
       "platform": "external",
       "category": "hackathon",
@@ -7293,7 +7439,7 @@
       "tags": [
         "Social impact"
       ],
-      "going": 5,
+      "going": 3,
       "why": "8-day build with a submission deadline.",
       "score": 56,
       "confidence": 36,
@@ -7304,7 +7450,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:33.444Z",
+      "checkedAt": "2026-10-17T07:29:06.800Z",
       "missedSweeps": 0
     },
     {
@@ -7315,7 +7461,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "d2cbcdafac95b0ea2f4d276bf3c324d8ec242264a2f25b0762e6b14eeab2cc8e"
@@ -7352,7 +7498,7 @@
         "freshness": 92
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:51:30.652Z",
+      "checkedAt": "2026-10-17T07:29:04.030Z",
       "missedSweeps": 0
     },
     {
@@ -7363,7 +7509,7 @@
         "inputs": [
           {
             "file": "data/devpost-candidates.json",
-            "sha256": "0856bbfad3f44c1643a02971633f068c1ed902d7320da56642b5b2ec8987bd08"
+            "sha256": "647f49af922baa92cea74f0408946eb65b6b8d463958cec7c63811bd9b6b8931"
           }
         ],
         "contentSha256": "fe81da9e56f5ee606c671e57904433683df9f883a57efc50dd6d05850f61d432"
@@ -7398,7 +7544,7 @@
         "freshness": 70
       },
       "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T18:50:43.426Z",
+      "checkedAt": "2026-10-17T07:28:19.226Z",
       "missedSweeps": 0
     },
     {
@@ -7413,7 +7559,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "cdb641654f2c9103c7ec6beb7368edf8a7549b3ac0b1a447fc98f8d6df2ea8ac"
@@ -7454,58 +7600,6 @@
       "missedSweeps": 0
     },
     {
-      "id": "b1x6dmp6",
-      "url": "https://luma.com/b1x6dmp6",
-      "provenance": {
-        "kind": "observed",
-        "inputs": [
-          {
-            "file": "data/discovery-output.json",
-            "sha256": "a10ff0c8e34e0acff697813e0eeb9f5586c8e57a41f36c82707e4bb5d406e84d"
-          },
-          {
-            "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
-          }
-        ],
-        "contentSha256": "21df54fa8244dce86d12bb534f86383bd6b02b713c04b4d10034d017b27394aa"
-      },
-      "platform": "luma",
-      "category": "adjacent",
-      "adjacentReason": "title names a non-hackathon format",
-      "title": "Noisebridge 18th Birthday Party Kickoff (FRIDAY)",
-      "organizer": "Noisebridge events",
-      "venue": "Noisebridge",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-16T19:00:00-07:00",
-      "end": "2026-10-17T00:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 16",
-      "dateDetail": "Fri–Sat · 2 days",
-      "timeUnverified": false,
-      "status": "Check page",
-      "prize": "Not listed",
-      "tags": [
-        "Tech"
-      ],
-      "going": 11,
-      "why": "5-hour build with team formation.",
-      "score": 80,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 55,
-        "accessibility": 68,
-        "freshness": 100
-      },
-      "discoveredVia": "personalized",
-      "checkedAt": "2026-10-16T18:42:58.675Z",
-      "missedSweeps": 0
-    },
-    {
       "id": "ceeotcql",
       "url": "https://luma.com/ceeotcql",
       "provenance": {
@@ -7517,7 +7611,7 @@
           },
           {
             "file": "data/luma-api.json",
-            "sha256": "0a612c9e0cc7f0e68928eefacb2a6bf867523c06ef317ecf7c22ed27d5581c3d"
+            "sha256": "e3933a56c36c3b186612c770376407e02c52c7d2da99eee414e9aa3ccb946441"
           }
         ],
         "contentSha256": "63d45b85b54acc9421e81d7a3d42ebaac0c383c3d622624905f158a61505212b"
@@ -7555,6 +7649,54 @@
       },
       "discoveredVia": "personalized",
       "checkedAt": "2026-10-16T18:43:05.657Z",
+      "missedSweeps": 0
+    },
+    {
+      "id": "external-hackerrank-com-event-salesforce-architect-virtual-hiri-b541bf5f",
+      "url": "https://www.hackerrank.com/event/salesforce-architect-virtual-hiring-event-september-2026",
+      "provenance": {
+        "kind": "observed",
+        "inputs": [
+          {
+            "file": "data/hackerrank-candidates.json",
+            "sha256": "d3c7a86c6e0a2d4a2047293ef6ab291db8deaebaf0462e8c4640e9bb99328ad6"
+          }
+        ],
+        "contentSha256": "6723fbf8f6114b3dd1639ce4f5902ca1a6898e01a2408b777921f145d23535c4"
+      },
+      "platform": "external",
+      "category": "adjacent",
+      "adjacentReason": "company challenge on HackerRank, not a hackathon",
+      "title": "Salesforce Design Challenge",
+      "organizer": "Salesforce",
+      "venue": null,
+      "city": null,
+      "area": "Online",
+      "region": "online",
+      "regionLabel": "Online",
+      "start": "2026-10-31T01:30:00-07:00",
+      "end": "2026-10-31T02:30:00-07:00",
+      "timezone": "America/Los_Angeles",
+      "dateLabel": "OCT 31",
+      "dateDetail": "Time on event page",
+      "timeUnverified": true,
+      "status": "Open",
+      "prize": "Not listed",
+      "tags": [
+        "Design"
+      ],
+      "going": null,
+      "why": "1-hour build.",
+      "score": 51,
+      "confidence": 20,
+      "scores": {
+        "confidence": 20,
+        "builderValue": 55,
+        "accessibility": 92,
+        "freshness": 70
+      },
+      "discoveredVia": "https://www.hackerrank.com/contests",
+      "checkedAt": "2026-10-17T07:29:21.025Z",
       "missedSweeps": 0
     },
     {
@@ -7718,57 +7860,6 @@
       "missedSweeps": 1
     },
     {
-      "id": "external-mlai-hackathon-devpost-com--d144a493",
-      "url": "https://mlai-hackathon.devpost.com",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-10-16T08-07-26-685Z.json",
-            "sha256": "74468a07519274f6be46c8eae613d496a760ff51f93d0bc20a9565fa58d4324d"
-          }
-        ],
-        "contentSha256": "264a2a13c35d9bf230f2b1cf940c21df30c90219c9dee41b63472635ee6c8b75",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-10-16T08-07-26-685Z.json",
-          "sweepCompletedAt": "2026-10-16T08:07:26.685Z"
-        },
-        "lastConfirmedAt": "2026-10-16T08:07:26.685Z"
-      },
-      "platform": "external",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "MLAI Hackathon 2026",
-      "organizer": "Mạng Lưới AI",
-      "venue": null,
-      "city": null,
-      "area": "Online",
-      "region": "online",
-      "regionLabel": "Online",
-      "start": "2026-09-18T00:00:00-07:00",
-      "end": "2026-10-16T23:59:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "SEP 18",
-      "dateDetail": "Time on event page",
-      "timeUnverified": true,
-      "status": "Open",
-      "prize": "Not listed",
-      "tags": [],
-      "going": 1001,
-      "why": "29-day build with a submission deadline.",
-      "score": 80,
-      "confidence": 78,
-      "scores": {
-        "confidence": 78,
-        "builderValue": 65,
-        "accessibility": 92,
-        "freshness": 96
-      },
-      "discoveredVia": "https://devpost.com/api/hackathons",
-      "checkedAt": "2026-10-16T08:08:24.868Z",
-      "missedSweeps": 1
-    },
-    {
       "id": "zm2drf33",
       "url": "https://luma.com/zm2drf33",
       "provenance": {
@@ -7819,57 +7910,6 @@
       },
       "discoveredVia": "https://luma.com/discover/sf/tech",
       "checkedAt": "2026-10-16T08:00:39.092Z",
-      "missedSweeps": 1
-    },
-    {
-      "id": "pcfayy36",
-      "url": "https://luma.com/pcfayy36",
-      "provenance": {
-        "kind": "carried-forward",
-        "inputs": [
-          {
-            "file": "data/history/sweep-2026-10-16T08-07-26-685Z.json",
-            "sha256": "74468a07519274f6be46c8eae613d496a760ff51f93d0bc20a9565fa58d4324d"
-          }
-        ],
-        "contentSha256": "18092ecb0caf33a426123cd6520276e0bfddbf79a34407d525b5cbe53aeb13dd",
-        "carriedFrom": {
-          "file": "data/history/sweep-2026-10-16T08-07-26-685Z.json",
-          "sweepCompletedAt": "2026-10-16T08:07:26.685Z"
-        },
-        "lastConfirmedAt": "2026-10-16T08:07:26.685Z"
-      },
-      "platform": "luma",
-      "category": "hackathon",
-      "adjacentReason": null,
-      "title": "Crusoe Field Day: Build, Train, Deploy",
-      "organizer": "Ben Walters",
-      "venue": "Civil War Parade Ground",
-      "city": "San Francisco",
-      "area": "SF",
-      "region": "bay-area",
-      "regionLabel": "Bay Area",
-      "start": "2026-10-16T13:00:00-07:00",
-      "end": "2026-10-16T17:00:00-07:00",
-      "timezone": "America/Los_Angeles",
-      "dateLabel": "OCT 16",
-      "dateDetail": "Fri · 1pm–5pm",
-      "timeUnverified": false,
-      "status": "Sold out",
-      "prize": "Not listed",
-      "tags": [],
-      "going": null,
-      "why": "4-hour build with team formation.",
-      "score": 75,
-      "confidence": 94,
-      "scores": {
-        "confidence": 94,
-        "builderValue": 55,
-        "accessibility": 43,
-        "freshness": 100
-      },
-      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "checkedAt": "2026-10-16T07:55:34.877Z",
       "missedSweeps": 1
     },
     {

@@ -1,20 +1,14 @@
 {
-  "collectedAt": "2026-10-17T03:33:28.713Z",
+  "collectedAt": "2026-10-17T07:27:28.216Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 9,
-  "pagesRead": 9,
+  "pagesFound": 15,
+  "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [
-    {
-      "stage": "search",
-      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
-      "error": "brightdata expect_element"
-    }
-  ],
+  "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -24,7 +18,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "isco, California - Host: Luma - Details available on the RSVP page. 5:30 PM PT - Agents in Production: correctness, context, and control - AWS Builder Loft, San Francisco, CA - Host: SurrealDB San Francisco - To sign up for this event, you must register here: https://luma.com/hqz8wi79 -- Agents are ",
-      "lastSeenAt": "2026-10-17T03:33:28.713Z"
+      "lastSeenAt": "2026-10-17T07:27:28.216Z"
     },
     {
       "url": "https://luma.com/6eqa8nbh",
@@ -335,13 +329,6 @@
       "lastSeenAt": "2026-10-13T03:44:08.809Z"
     },
     {
-      "url": "https://luma.com/upjkn37w",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/mansimore9_hackcalendar-must-attend-sf-bay-area-ai-activity-7506645275973767168-j29x",
-      "context": "laude Fable 5.1 Build Day 📅 Saturday, September 19, 9:00 AM -4:00 PM 📍 590 Howard St, San Francisco, CA 🔗 https://lnkd.in/g6V4DkKm 3. Dream AI Hackathon 2026 📅 Saturday, September 19, 9:00 AM -9:00 PM 📍 Frontier Tower, 995 Market St, San Francisco, CA 🔗 https://luma.com/upjkn37w 4. The Executa",
-      "lastSeenAt": "2026-10-05T09:51:53.868Z"
-    },
-    {
       "url": "https://luma.com/oeacjgyz",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/firasomer_excited-to-be-a-judge-along-with-the-illustrious-activity-7441995095056289792-TVoV",
@@ -398,13 +385,6 @@
       "lastSeenAt": "2026-10-12T03:33:04.799Z"
     },
     {
-      "url": "https://luma.com/exruwpkp",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/velodb_come-join-us-in-the-ai-stack-hackathon-this-activity-7506545443376504832-gxyv",
-      "context": "VeloDB (Powered by Apache Doris)'s Post Come join us in the AI Stack hackathon this Saturday (9/19) in the SF Bay Area ... Register: https://luma.com/exruwpkp #TheExecutableWorld # ...",
-      "lastSeenAt": "2026-10-12T03:33:04.799Z"
-    },
-    {
       "url": "https://luma.com/new-founder-school-ai-hackathon-with-fra",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/priyabajaj12_new-founder-school-ai-hackathon-with-fractal-activity-7417975415023161344-C9nR",
@@ -438,6 +418,20 @@
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-tech-ai-events-may-28-june-4-2026-charles-guo-yvhfc",
       "context": "Bay Area Tech & AI Events — May 28 to June 4, 2026 Quantum AI Hackathon 1.0 — Berkeley, 9:00 AM https://luma.com/8q0dr4um. SuperPlane Hackathon with Render — 10:00 AM https://luma.com/3yx41qr9.Read more",
       "lastSeenAt": "2026-10-15T07:56:56.173Z"
+    },
+    {
+      "url": "https://luma.com/truefoundry-agent-harness-hackathon-sep19-2026",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/pulse/ai-events-sep-17-25-2026-bay-area-charles-guo-7wjwc",
+      "context": null,
+      "lastSeenAt": "2026-10-17T07:27:28.216Z"
+    },
+    {
+      "url": "https://luma.com/zsaa3r3d",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/posts/pepijn-kooijmans-737545175_seeed-2026-embodied-ai-hackathon-in-bay-area-activity-7438243939834564608-8o7_",
+      "context": "o Store Coupon per Team 🚀 Participation Award (16th–25th Place) 1× Amazing Hand per Team 📅 Event Details Date: March 21-22, 2026 Location: Seeed U.S. Office, Santa Clara 🔗 How to Join Registration entry: https://lnkd.in/g5ERmCsq Learn more about hackathon: https://luma.com/zsaa3r3d A huge thank y",
+      "lastSeenAt": "2026-10-17T07:27:28.216Z"
     }
   ]
 }
