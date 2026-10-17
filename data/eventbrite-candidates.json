@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-16T18:51:52.896Z",
+  "collectedAt": "2026-10-17T03:30:52.935Z",
   "source": "eventbrite",
   "queries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
@@ -10,29 +10,12 @@
   "skipped": {
     "past": 0,
     "online": 0,
-    "notLocal": 0,
-    "notHackathon": 0,
+    "notLocal": 4,
+    "notHackathon": 67,
     "recurring": 0
   },
-  "problems": [
-    {
-      "query": "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
-      "error": "Error: HTTP 405"
-    },
-    {
-      "query": "https://www.eventbrite.com/d/ca--oakland/hackathon/",
-      "error": "Error: HTTP 405"
-    },
-    {
-      "query": "https://www.eventbrite.com/d/ca--san-jose/hackathon/",
-      "error": "Error: HTTP 405"
-    },
-    {
-      "query": "https://www.eventbrite.com/d/ca--san-diego/hackathon/",
-      "error": "Error: HTTP 405"
-    }
-  ],
-  "carried": 5,
+  "problems": [],
+  "carried": 0,
   "note": "Eventbrite search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
   "candidates": [
     {
@@ -51,7 +34,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "DMBA  Design Project AI Hackathon\nCalifornia College of the Arts (CCA)\nSan Francisco, CA\nThe Design Project prepares designers to design with code and they are sharing their process this fall at the coveted CCA.",
-      "checkedAt": "2026-10-16T08:08:56.028Z",
+      "checkedAt": "2026-10-17T03:30:45.370Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/dmba-design-project-ai-hackathon-tickets-2002977348167",
         "name": "DMBA  Design Project AI Hackathon",
@@ -85,7 +68,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "The Debug Table SF: 24-Hour AI Operations Hackathon\nStanford Court San Francisco\nSan Francisco, CA\n24 hours. One real challenge. Join builders and problem-solvers in an overnight sprint to create a working AI-powered solution.",
-      "checkedAt": "2026-10-16T08:08:56.026Z",
+      "checkedAt": "2026-10-17T03:30:45.368Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/the-debug-table-sf-24-hour-ai-operations-hackathon-tickets-2003275795832",
         "name": "The Debug Table SF: 24-Hour AI Operations Hackathon",
@@ -119,7 +102,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "ODSC AI x NEBIUS | Hackathon\nHyatt Regency San Francisco Airport\nBurlingame, CA\nThis event is part of the ODSC AI West 2026 Conference, bringing together AI and data professionals for practical, expert-led sessions.",
-      "checkedAt": "2026-10-16T08:09:03.420Z",
+      "checkedAt": "2026-10-17T03:30:47.546Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/odsc-ai-x-nebius-hackathon-tickets-2002152139947",
         "name": "ODSC AI x NEBIUS | Hackathon",
@@ -153,7 +136,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "DeveloperWeek 2027 Hackathon\nSanta Clara Convention Center\nSanta Clara, CA\nJoin the nation's largest challenge-driven hackathon @ DeveloperWeek 2027!",
-      "checkedAt": "2026-10-16T08:09:03.421Z",
+      "checkedAt": "2026-10-17T03:30:47.547Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/developerweek-2027-hackathon-registration-1992072331970",
         "name": "DeveloperWeek 2027 Hackathon",
@@ -187,7 +170,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Startup Weekend San Diego: Justice + AI\nDesign and Innovation Building\nSan Diego, CA\nBring your entrepreneurial drive to create new products and services in an industry that touches everyone's lives.",
-      "checkedAt": "2026-10-16T08:09:23.318Z",
+      "checkedAt": "2026-10-17T03:30:52.933Z",
       "structuredEvent": {
         "url": "https://www.eventbrite.com/e/startup-weekend-san-diego-justice-ai-tickets-1999007009778",
         "name": "Startup Weekend San Diego: Justice + AI",

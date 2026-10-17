@@ -1,14 +1,20 @@
 {
-  "collectedAt": "2026-10-16T18:32:27.145Z",
+  "collectedAt": "2026-10-17T03:33:28.713Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 19,
-  "pagesRead": 12,
+  "pagesFound": 9,
+  "pagesRead": 9,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
+      "error": "brightdata expect_element"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -18,7 +24,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "isco, California - Host: Luma - Details available on the RSVP page. 5:30 PM PT - Agents in Production: correctness, context, and control - AWS Builder Loft, San Francisco, CA - Host: SurrealDB San Francisco - To sign up for this event, you must register here: https://luma.com/hqz8wi79 -- Agents are ",
-      "lastSeenAt": "2026-10-16T07:46:54.491Z"
+      "lastSeenAt": "2026-10-17T03:33:28.713Z"
     },
     {
       "url": "https://luma.com/6eqa8nbh",
@@ -375,14 +381,14 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/sumani_solix-empower-2026-hackathon-invitation-activity-7510353409569476608-4fj0",
       "context": "sionaries: Strategists and creative minds shaping what gets built and why. 🗓️ When: October 31 - November 1, 2026 📍 Where: PB Labs, ETH Zürich Spaces are limited. Grab your spot and help us close the gap in who gets to build the future! 👇 🔗 Register here: https://luma.com/6xyy1mul #HackTheGap #W",
-      "lastSeenAt": "2026-10-16T18:32:27.145Z"
+      "lastSeenAt": "2026-10-11T09:35:36.202Z"
     },
     {
       "url": "https://luma.com/nkknxvrz",
       "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/michaeljcalvey_the-physical-ai-sprint-hackathon-luma-activity-7490123373633708032-yx2y",
-      "context": "sco, the day before Foxglove 's Actuate conference. Bring a team or make new friends, develop in simulation, deploy on real robots, and win prizes. If you’re a robotics / ML / CV engineer, technical founder, or similar, we hope to see you there. Sign up here: https://luma.com/nkknxvrz The Physical A",
-      "lastSeenAt": "2026-10-16T07:46:54.491Z"
+      "sourcePage": "https://www.linkedin.com/posts/emerging-angels_startup-couve-coffee-luma-activity-7494056389217193984-7wHZ",
+      "context": "1752vc: Venture Fellow & Emerging Angel Program's Post ... Hackathon, August 17, 2026 https://luma.com/nkknxvrz ModCon 2026, August 18 ... 2026 https://luma.com/eat5sm3n.",
+      "lastSeenAt": "2026-10-16T03:40:34.127Z"
     },
     {
       "url": "https://luma.com/jw2nuuqt",
