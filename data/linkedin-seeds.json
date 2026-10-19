@@ -1,14 +1,20 @@
 {
-  "collectedAt": "2026-10-19T03:32:02.050Z",
+  "collectedAt": "2026-10-19T08:24:28.693Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 10,
-  "pagesRead": 10,
+  "pagesFound": 6,
+  "pagesRead": 6,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "weekly bay area ai events hackathon 2026",
+      "error": "brightdata: TimeoutError: The operation was aborted due to timeout"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -103,48 +109,6 @@
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
       "context": "ng Hackathon (9:30 AM) San Francisco - $50k+ prizes, integrations with You.com , Intercom, Lovable, Google DeepMind https://lu.ma/intercomai Evening The Slice Lab by Sentry & Vercel (5:00 PM) Joyride Pizza Yerba Buena Gardens - Super Bowl week VIP pizza party https://lu.ma/slicelab AI Events AI Even",
       "lastSeenAt": "2026-10-14T03:34:33.259Z"
-    },
-    {
-      "url": "https://luma.com/xt4k5374",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-charles-guo-s81hc",
-      "context": "o, CA 🔗 https://lu.ma/14qcsr01 THURSDAY, February 5 10:00 AM - ✶ Fractal Alignment ✶ (All-day immersion) 📍 San Francisco, CA (Register to See Address) 🔗 https://lu.ma/5k0e0qtp 3:30 PM - Odyssey-2 Pro Hackathon 📍 Menlo Park, CA (Register to See Address) 🔗 https://lu.ma/xt4k5374 4:00 PM - Vision ",
-      "lastSeenAt": "2026-09-28T03:33:41.211Z"
-    },
-    {
-      "url": "https://luma.com/v53qzodf",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-charles-guo-s81hc",
-      "context": ") 📍 San Francisco, CA (Register to See Address) 🔗 https://lu.ma/5k0e0qtp 3:30 PM - Odyssey-2 Pro Hackathon 📍 Menlo Park, CA (Register to See Address) 🔗 https://lu.ma/xt4k5374 4:00 PM - Vision AI Happy Hour 📍 San Francisco, CA (Register to See Address) 🔗 https://lu.ma/v53qzodf 4:00 PM - As AI C",
-      "lastSeenAt": "2026-09-28T03:33:41.211Z"
-    },
-    {
-      "url": "https://luma.com/fine-tuning-friday-13",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-charles-guo-s81hc",
-      "context": "📍 5 Palo Alto Square, Palo Alto, CA 🔗 https://lu.ma/5ccq20wd FRIDAY, February 6 9:30 AM - Continual Learning Hackathon 📍 San Francisco, CA (Register to See Address) 🔗 https://lu.ma/intercomai 10:00 AM - Fine-Tune Friday - w/AILA Demos! 📍 Online Event 🔗 https://lu.ma/fine-tuning-friday-13 11:00",
-      "lastSeenAt": "2026-09-28T03:33:41.211Z"
-    },
-    {
-      "url": "https://luma.com/or5jede2",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-charles-guo-s81hc",
-      "context": "ng Summit 📍 House of AI, San Francisco, CA 🔗 https://lu.ma/i80cla8y 12:00 PM - Agentic AI Summit 📍 Palo Alto, CA (Register to See Address) 🔗 https://lu.ma/aiproducts 12:00 PM - Sentient Futures Summit Bay Area 2026 📍 1680 Mission St, San Francisco, CA 🔗 https://lu.ma/or5jede2 5:00 PM - Gemini ",
-      "lastSeenAt": "2026-09-28T03:33:41.211Z"
-    },
-    {
-      "url": "https://luma.com/50si7fw4",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-charles-guo-s81hc",
-      "context": "St, San Francisco, CA 🔗 https://lu.ma/or5jede2 5:00 PM - Gemini Meetup 📍 Mountain View, CA (Register to See Address) 🔗 https://lu.ma/geminimeetup SATURDAY, February 7 9:00 AM - AI-Memory Hackathon by cognee 📍 San Francisco, CA (Register to See Address) 🔗 https://lu.ma/50si7fw4 SUNDAY, February ",
-      "lastSeenAt": "2026-09-28T03:33:41.211Z"
-    },
-    {
-      "url": "https://luma.com/9m10r1bo",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-charles-guo-s81hc",
-      "context": "p SATURDAY, February 7 9:00 AM - AI-Memory Hackathon by cognee 📍 San Francisco, CA (Register to See Address) 🔗 https://lu.ma/50si7fw4 SUNDAY, February 8 2:30 PM - Drop-In - Grow as We Go (A cappella singing) 📍 San Francisco, CA (Register to See Address) 🔗 https://lu.ma/9m10r1bo MONDAY, February ",
-      "lastSeenAt": "2026-09-28T03:33:41.211Z"
     },
     {
       "url": "https://luma.com/sk000djt",
@@ -287,13 +251,6 @@
       "lastSeenAt": "2026-10-12T03:33:04.799Z"
     },
     {
-      "url": "https://luma.com/pmmmyml4",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/pear-vc_voice-video-ai-hackathon-luma-activity-7433294637160861696--Hoe",
-      "context": "g the sprint ⚡ This hackathon, organized by HEC IA and our friends from École Polytechnique ’s Binet Artificial Intelligence , is all about building fast, shipping bold, and pushing AI projects into real, tangible prototypes in record time. Link to register : https://luma.com/pmmmyml4 To make that p",
-      "lastSeenAt": "2026-09-28T03:33:41.211Z"
-    },
-    {
       "url": "https://luma.com/wi0vt7h6",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
@@ -368,7 +325,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/sumani_solix-empower-2026-hackathon-invitation-activity-7510353409569476608-4fj0",
       "context": "sionaries: Strategists and creative minds shaping what gets built and why. 🗓️ When: October 31 - November 1, 2026 📍 Where: PB Labs, ETH Zürich Spaces are limited. Grab your spot and help us close the gap in who gets to build the future! 👇 🔗 Register here: https://luma.com/6xyy1mul #HackTheGap #W",
-      "lastSeenAt": "2026-10-11T09:35:36.202Z"
+      "lastSeenAt": "2026-10-19T08:24:28.693Z"
     },
     {
       "url": "https://luma.com/nkknxvrz",
