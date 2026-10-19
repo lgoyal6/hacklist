@@ -1,18 +1,18 @@
 {
-  "collectedAt": "2026-10-19T08:24:28.693Z",
+  "collectedAt": "2026-10-19T20:23:37.929Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 6,
-  "pagesRead": 6,
+  "pagesFound": 19,
+  "pagesRead": 12,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
   "problems": [
     {
       "stage": "search",
-      "query": "weekly bay area ai events hackathon 2026",
-      "error": "brightdata: TimeoutError: The operation was aborted due to timeout"
+      "query": "buildathon OR makeathon OR \"game jam\" san diego 2026",
+      "error": "brightdata expect_element"
     }
   ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
@@ -290,14 +290,14 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/firasomer_excited-to-be-a-judge-along-with-the-illustrious-activity-7441995095056289792-TVoV",
       "context": "Firas Omer's Post HAC Hackathon: with tool sponsors Lovable, n8n, and MiniMax. 📍 300 Grant Ave, San Francisco, CA Register here → https://luma.com/oeacjgyz",
-      "lastSeenAt": "2026-10-09T19:54:44.778Z"
+      "lastSeenAt": "2026-10-19T20:23:37.929Z"
     },
     {
       "url": "https://luma.com/d5spcs8l",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/hack-nation_what-do-hackathon-judges-actually-look-for-activity-7509947320973680640-NoAX",
       "context": "we received more than 7,000 applications from builders around the world. The hackathon takes place on October 3–4. One week later, selected teams will pitch their projects live. If you want to see what they built and watch the pitches, you can register here: https://luma.com/d5spcs8l A huge thank yo",
-      "lastSeenAt": "2026-10-09T19:54:44.778Z"
+      "lastSeenAt": "2026-10-19T20:23:37.929Z"
     },
     {
       "url": "https://luma.com/ai-conference-hack-day-2026",
@@ -389,6 +389,55 @@
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-july-10-18-2026-bay-area-charles-guo-hzktc",
       "context": null,
       "lastSeenAt": "2026-10-17T08:09:30.486Z"
+    },
+    {
+      "url": "https://luma.com/ubrw29w5",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/posts/aryanraigangar_voice-ai-hackathon-soma-x-ef-luma-activity-7358148287050219520-Q08k",
+      "context": "g together top builders to reimagine white-collar workflows with voice AI—winning teams take home $10K+ in prizes. Big thanks to our sponsors and judges from : Mercor , Hedra , PlayAI , Vapi , Sixtyfour .ai, and more. Spots are limited—submit your team below! https://lu.ma/ubrw29w5 Voice AI Hackatho",
+      "lastSeenAt": "2026-10-19T20:23:37.929Z"
+    },
+    {
+      "url": "https://luma.com/robotic-agents-hackathon",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/posts/khushisharma-22_we-are-hosting-the-robotic-agents-hackathon-activity-7430591712529461248-AQXd",
+      "context": "ine! In the frame: Cyberwave Vittorio Banfi Mario Francesco De Pascale Philip Tambè Michele Mihu Jacopo Nascimbene Registration link in description. 169 7 Comments Like Comment Share Copy LinkedIn Facebook X Khushi Sharma 8mo Report this comment Register now: https://luma.com/robotic-agents-hackatho",
+      "lastSeenAt": "2026-10-19T20:23:37.929Z"
+    },
+    {
+      "url": "https://luma.com/f13dwefh",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/posts/marianebekker_sf-ai-vibe-coding-hackathon-luma-activity-7372707343802777600-lopf",
+      "context": "ave of AI agents — from coding copilots to real-world impact tools. The energy is already building, and I can’t wait to see what these teams create in just one day. 🚀 👉 Join me at 6:00 PM at 501 Folsom St, San Francisco for the final presentations + awards: https://luma.com/f13dwefh The top 10 tea",
+      "lastSeenAt": "2026-10-19T20:23:37.929Z"
+    },
+    {
+      "url": "https://luma.com/egkoj2ml",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/posts/hack-nation_what-do-hackathon-judges-actually-look-for-activity-7509947320973680640-NoAX",
+      "context": "ndset and will read and learn something about Skill management: WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution. 📅 When: 12 October 16:00 - 19:00 📍 Where: Copenhagen Main Library, 4th floor (look for Snaren area) 🔗 RSVP: https://luma.com/egkoj2ml 📝 Paper: http",
+      "lastSeenAt": "2026-10-19T20:23:37.929Z"
+    },
+    {
+      "url": "https://luma.com/camels-group",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/posts/hack-nation_what-do-hackathon-judges-actually-look-for-activity-7509947320973680640-NoAX",
+      "context": "Copenhagen Main Library, 4th floor (look for Snaren area) 🔗 RSVP: https://luma.com/egkoj2ml 📝 Paper: https://lnkd.in/eUYEQSGU Please sign up in the luma event if you plan to attend. If you want to follow the CAMeLS-Group on Luma you can do so via this link: luma.com/camels-group If you have any qu",
+      "lastSeenAt": "2026-10-19T20:23:37.929Z"
+    },
+    {
+      "url": "https://luma.com/meofrw3d",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/posts/robert-a-brennan_ai-agents-hackathon-gtc-2025-edition-1-activity-7308492376237326337-9NyB",
+      "context": "Learning Jobs Games Sign in Join now Robert Brennan’s Post Robert Brennan 1y Report this post Can't wait for this! Saroop Bharwani 1y Edited 15 hours left to register. Compete for $50k+ in prizes and network with leading sponsors and judges in San Francisco: https://lu.ma/meofrw3d 📅 Saturday, March",
+      "lastSeenAt": "2026-10-19T20:23:37.929Z"
+    },
+    {
+      "url": "https://luma.com/kxoq82yq",
+      "promising": false,
+      "sourcePage": "https://www.linkedin.com/posts/cj-na-carvis_had-a-great-time-joining-ralphthon-sf-as-activity-7445198466131238912-A4FA",
+      "context": null,
+      "lastSeenAt": "2026-10-19T20:23:37.929Z"
     }
   ]
 }
