@@ -1070,6 +1070,12 @@ function buildOutput(events) {
       regions: regionSummary,
       timezone,
       sweepCompletedAt: discovery.sweep.completedAt,
+      // When this board was published, which is not the same thing. A Luma
+      // crawl cut short by its time limit leaves sweepCompletedAt at its last
+      // finished crawl, so a board with every other source refreshed still
+      // looked days old to readers judging freshness by it (hackqueue refused
+      // to rank on Oct 23). Readers asking "how fresh is this board" want this.
+      publishedAt: new Date().toISOString(),
       pagesVisited: discovery.sweep.pagesVisited,
       candidatesFound: discovery.sweep.candidatesFound,
       publishedCount: events.length,
