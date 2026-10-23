@@ -269,7 +269,13 @@ if (discovery.__missing) {
   // early is fine; a run still being refused without having given up is
   // misconfigured, and a run well under its page budget lost real coverage.
   const gaveUp = (discovery.sweep?.httpPauses ?? 0) > 0;
-  const collapsed = budget > 0 && visited < budget * 0.6;
+  // A deep run reads Luma through the unlocker at about 9s a page, so its
+  // 20 minutes reach roughly 130 of the 870-page budget by design: it trades
+  // breadth for pages the direct path cannot read (133 pages there found 61
+  // candidates where a full shallow run found 38). Judged by page count, every
+  // deep run failed health. One that used its whole time budget did its job.
+  const deepUsedItsTime = deepRun && discovery.sweep?.stoppedOnTimeBudget === true;
+  const collapsed = budget > 0 && visited < budget * 0.6 && !deepUsedItsTime;
   if (throttled > 0 && !gaveUp) {
     failures.push(
       `sweep: ${throttled} read(s) rate-limited and the HTTP path was never ` +
@@ -286,6 +292,9 @@ if (discovery.__missing) {
       `sweep: ${throttled} read(s) rate-limited, absorbed by the browser ` +
         `fallback after ${visited} pages`,
     );
+  }
+  if (deepUsedItsTime && visited < budget * 0.6) {
+    notes.push(`sweep: deep run, ${visited} of ${budget} pages through the unlocker in its time budget`);
   }
   // The unlocker exists to answer exactly the block above, so a broken one is a
   // configuration error rather than a bad day: nobody is coming to fix a dead
