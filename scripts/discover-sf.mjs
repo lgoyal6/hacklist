@@ -305,8 +305,8 @@ try {
 
 const host = "127.0.0.1";
 // A previous interrupted sweep must not block the next one on a fixed port.
-const port = 10_000 + Math.floor(Math.random() * 20_000);
-const processHandle = await lightpanda.serve({ host, port });
+let port = 10_000 + Math.floor(Math.random() * 20_000);
+let processHandle = await lightpanda.serve({ host, port });
 
 /**
  * Connect to the CDP server, waiting for it to actually accept connections.
@@ -340,9 +340,48 @@ async function connectToLightpanda(endpoint, { attempts = 40, waitMs = 250 } = {
   );
 }
 
-const browser = await connectToLightpanda(`ws://${host}:${port}`);
-const context = await browser.newContext();
-const page = await context.newPage();
+let browser = await connectToLightpanda(`ws://${host}:${port}`);
+let context = await browser.newContext();
+let page = await context.newPage();
+
+/**
+ * A page read with a hard limit. Playwright's goto has a timeout, but evaluate
+ * and waitForTimeout do not, and when Lightpanda wedges on a page they never
+ * return: every scheduled sweep from Oct 20 2026 hung on one such read until
+ * the job was cancelled, and the sweep's own deadline, checked between pages,
+ * never came round. A read that overruns is abandoned and the browser with it.
+ */
+function withDeadline(promise, ms, what) {
+  let timer;
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => {
+      timer = setTimeout(() => reject(new Error(`${what} gave no answer in ${Math.round(ms / 1000)}s`)), ms);
+    }),
+  ]).finally(() => clearTimeout(timer));
+}
+
+/** Best-effort teardown that cannot itself hang on a wedged browser. */
+async function stopBrowser() {
+  for (const close of [() => page.close(), () => context.close(), () => browser.close()]) {
+    await withDeadline(Promise.resolve().then(close), 5_000, "browser close").catch(() => {});
+  }
+  processHandle.stdout?.destroy();
+  processHandle.stderr?.destroy();
+  processHandle.kill("SIGKILL");
+}
+
+/** A fresh Lightpanda on a fresh port, replacing a wedged one. */
+async function restartBrowser() {
+  await stopBrowser();
+  port = 10_000 + Math.floor(Math.random() * 20_000);
+  processHandle = await lightpanda.serve({ host, port });
+  browser = await connectToLightpanda(`ws://${host}:${port}`);
+  context = await browser.newContext();
+  page = await context.newPage();
+  browserRestarts += 1;
+}
+let browserRestarts = 0;
 
 // Event URLs collected by the local personalized pass (see
 // scripts/discover-personalized.mjs). They are crawled and classified exactly
@@ -656,6 +695,11 @@ try {
     );
     if (!url || visited.has(url)) continue;
     visited.add(url);
+    // A line every 25 pages, so a stalled crawl shows where it stalled. The
+    // Oct 20 to 22 hangs printed nothing for 24 minutes before being killed.
+    if (visited.size % 25 === 0) {
+      console.log(`  crawl: ${visited.size} pages, ${Math.round((Date.now() - sweepStartedAt) / 1000)}s, ${browserRestarts} browser restart(s)`);
+    }
     queue.spend(current.region);
     if (!isLumaUrl(url)) externalPagesVisited += 1;
 
@@ -743,15 +787,21 @@ try {
         }
       }
       if (!result) {
-        result = await extractPage(
-          page,
-          url,
-          needsSlowRender(url) || current.spa
-            ? { settleMs: 3_500, timeoutMs: 25_000, scrollPasses: 6 }
-            : isBrowseSurface(url)
-              ? { settleMs: 1_200, timeoutMs: 20_000, scrollPasses: 6 }
-              : {},
-        );
+        const options = needsSlowRender(url) || current.spa
+          ? { settleMs: 3_500, timeoutMs: 25_000, scrollPasses: 6 }
+          : isBrowseSurface(url)
+            ? { settleMs: 1_200, timeoutMs: 20_000, scrollPasses: 6 }
+            : {};
+        // The navigation timeout, the settle and scroll waits, and slack.
+        const budget = (options.timeoutMs ?? 12_000) + (options.settleMs ?? 350) + (options.scrollPasses ?? 0) * 900 + 30_000;
+        try {
+          result = await withDeadline(extractPage(page, url, options), budget, `reading ${url}`);
+        } catch (error) {
+          if (!/gave no answer/.test(String(error))) throw error;
+          console.warn(`${error.message}; restarting the browser and moving on.`);
+          await restartBrowser();
+          throw error;
+        }
       }
       const title = result.title.replace(/\s*[·|]\s*Luma\s*$/i, "").trim();
       const score = scorePage(title, result.bodyText);
@@ -1048,12 +1098,7 @@ try {
     }
   }
 } finally {
-  await page.close();
-  await context.close();
-  await browser.close();
-  processHandle.stdout.destroy();
-  processHandle.stderr.destroy();
-  processHandle.kill();
+  await stopBrowser();
 }
 
 const outputPath = resolve(root, "data/discovery-output.json");
@@ -1099,6 +1144,7 @@ const output = {
     heldForReview: review.size,
     nearMisses: nearMisses.size,
     stoppedOnTimeBudget: stoppedOnTime,
+    browserRestarts,
     // Which budget actually bound the sweep. Without this the page cap could
     // only ever be tuned by guesswork: every run so far stopped on pages with
     // time to spare, and nothing recorded how much.
