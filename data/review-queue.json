@@ -1,9 +1,21 @@
 {
-  "sweepCompletedAt": "2026-10-23T06:01:56.416Z",
+  "sweepCompletedAt": "2026-10-23T19:10:42.357Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
   "nearMisses": [
+    {
+      "url": "https://luma.com/1ieibldt",
+      "title": "What Poetry Can Teach Us About Being Human",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 69,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
     {
       "url": "https://events.linuxfoundation.org/agntcon-mcpcon-north-america",
       "title": "AGNTCon + MCPCon",
@@ -17,10 +29,10 @@
       ]
     },
     {
-      "url": "https://luma.com/open-web-startup-demo-day-dec8-2026",
-      "title": "Web Data for Startups #03 — The Open Web Startup Demo Day",
-      "readFrom": "listing",
-      "via": "https://luma.com/sf-builders-collective",
+      "url": "https://luma.com/6688717c",
+      "title": "The Wanderment Creative Jam",
+      "readFrom": "page",
+      "via": "personalized",
       "confidence": 52,
       "relevance": 62,
       "short": 2,
@@ -29,15 +41,40 @@
       ]
     },
     {
-      "url": "https://luma.com/agentcon-us",
-      "title": "AGNTCon + MCPCon North America",
+      "url": "https://luma.com/b3u04qyl",
+      "title": "Redwood Materials Open House",
       "readFrom": "page",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "via": "personalized",
       "confidence": 52,
       "relevance": 62,
       "short": 2,
       "missing": [
         "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/7ndhdy7n",
+      "title": "Startup Sprint: Prove you're fundable",
+      "readFrom": "listing",
+      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 52,
+      "relevance": 54,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/ptc",
+      "title": "Win iPhone Duos at Patch the Conference Hackathon",
+      "readFrom": "listing",
+      "via": "https://luma.com/discover/sf/ai",
+      "confidence": 48,
+      "relevance": 51,
+      "short": 6,
+      "missing": [
+        "no prize, judging or submission language",
+        "title names a non-hackathon format"
       ]
     }
   ]
