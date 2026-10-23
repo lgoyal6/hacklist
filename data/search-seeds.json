@@ -1,9 +1,14 @@
 {
-  "collectedAt": "2026-10-23T01:41:10.039Z",
+  "collectedAt": "2026-10-23T05:39:58.443Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
-  "problems": [],
+  "problems": [
+    {
+      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
+      "error": "brightdata expect_element"
+    }
+  ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
     {
@@ -32,7 +37,7 @@
       "queries": [
         "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
       ],
-      "lastSeenAt": "2026-10-23T01:41:10.032Z"
+      "lastSeenAt": "2026-10-23T05:39:58.436Z"
     },
     {
       "url": "https://luma.com/1tbk6nmd",
@@ -268,9 +273,9 @@
     {
       "url": "https://luma.com/ai-meets-robotics-sf",
       "queries": [
-        "site:luma.com hackathon san francisco 2026"
+        "\"hackathon\" san francisco 2026 register lu.ma"
       ],
-      "lastSeenAt": "2026-10-20T19:47:41.330Z"
+      "lastSeenAt": "2026-10-23T05:39:58.436Z"
     },
     {
       "url": "https://luma.com/ai-sf",
@@ -287,11 +292,18 @@
       "lastSeenAt": "2026-10-08T09:48:34.896Z"
     },
     {
+      "url": "https://luma.com/aibuildathon25",
+      "queries": [
+        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
+      ],
+      "lastSeenAt": "2026-10-23T05:39:58.436Z"
+    },
+    {
       "url": "https://luma.com/aic-tr-june",
       "queries": [
         "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
       ],
-      "lastSeenAt": "2026-10-23T01:41:10.032Z"
+      "lastSeenAt": "2026-10-23T05:39:58.436Z"
     },
     {
       "url": "https://luma.com/aihack",
@@ -413,18 +425,11 @@
       "lastSeenAt": "2026-10-23T01:41:10.032Z"
     },
     {
-      "url": "https://luma.com/jcl34t84",
+      "url": "https://luma.com/hackathonrio",
       "queries": [
         "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
       ],
-      "lastSeenAt": "2026-10-23T01:41:10.032Z"
-    },
-    {
-      "url": "https://luma.com/sfagents",
-      "queries": [
-        "site:luma.com hackathon san francisco 2026"
-      ],
-      "lastSeenAt": "2026-10-23T01:41:10.032Z"
+      "lastSeenAt": "2026-10-23T05:39:58.436Z"
     }
   ]
 }
