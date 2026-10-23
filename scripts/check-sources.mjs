@@ -82,7 +82,7 @@ if (board.__missing) {
   // that ended sixteen minutes after the sweep completed. The site and the feed
   // now filter those per request, so only an event the normalizer itself should
   // have dropped counts against the build.
-  const writtenAt = Date.parse(board.meta?.sweepCompletedAt ?? "") || now;
+  const writtenAt = Date.parse(board.meta?.publishedAt ?? board.meta?.sweepCompletedAt ?? "") || now;
   const past = events.filter(
     (event) => Date.parse(event.end ?? event.start ?? "") < writtenAt,
   );
@@ -104,7 +104,10 @@ if (board.__missing) {
   }
   const undated = events.filter((event) => !event.start);
   if (undated.length) warnings.push(`${undated.length} event(s) published without a start`);
-  checkFreshness("events.json", board.meta?.sweepCompletedAt, { required: true });
+  // When the board was published, not when the crawl last finished: a run whose
+  // crawl times out still publishes a fresh board from the other sources, and
+  // the "sweep" check below already reports the crawl on its own.
+  checkFreshness("events.json", board.meta?.publishedAt ?? board.meta?.sweepCompletedAt, { required: true });
   notes.push(`board: ${events.length} events, ${new Set(events.map((e) => e.organizer)).size} organizers`);
 }
 
