@@ -1,14 +1,29 @@
 {
-  "collectedAt": "2026-10-23T18:51:57.178Z",
+  "collectedAt": "2026-10-24T04:34:01.138Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
   "pagesFound": 10,
-  "pagesRead": 10,
-  "readStoppedOnTimeBudget": false,
+  "pagesRead": 0,
+  "readStoppedOnTimeBudget": true,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon san diego 2026 lu.ma",
+      "error": "brightdata: Error: getaddrinfo ENOTFOUND api.brightdata.com"
+    },
+    {
+      "stage": "search",
+      "query": "hackathon \"bay area\" 2026 register luma",
+      "error": "brightdata: TimeoutError: The operation was aborted due to timeout"
+    },
+    {
+      "stage": "read",
+      "error": "time budget reached with 10 page(s) unread"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -333,7 +348,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
       "context": "Bay Area AI Events - Jan 31 - Feb 8, 2026 ... Hackathon (9:00 AM) San Francisco - B ... Francisco - Focus on building usable AI agents https://lu.ma/jw2nuuqt; AI for ...Read more",
-      "lastSeenAt": "2026-10-12T03:33:04.799Z"
+      "lastSeenAt": "2026-10-24T04:34:01.138Z"
     },
     {
       "url": "https://luma.com/new-founder-school-ai-hackathon-with-fra",
@@ -396,7 +411,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/khushisharma-22_we-are-hosting-the-robotic-agents-hackathon-activity-7430591712529461248-AQXd",
       "context": "ine! In the frame: Cyberwave Vittorio Banfi Mario Francesco De Pascale Philip Tambè Michele Mihu Jacopo Nascimbene Registration link in description. 169 7 Comments Like Comment Share Copy LinkedIn Facebook X Khushi Sharma 8mo Report this comment Register now: https://luma.com/robotic-agents-hackatho",
-      "lastSeenAt": "2026-10-23T18:51:57.178Z"
+      "lastSeenAt": "2026-10-19T20:23:37.929Z"
     },
     {
       "url": "https://luma.com/6ok9h92y",
