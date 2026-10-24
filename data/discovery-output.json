@@ -9,7 +9,7 @@
     "linkedinSeeds": 60,
     "linkedinPromising": 60,
     "pagesVisited": 870,
-    "pagesReadOverHttp": 71,
+    "pagesReadOverHttp": 3,
     "pagesReadViaUnlocker": 0,
     "unlockerConfigured": false,
     "unlockerProblem": null,
@@ -20,24 +20,24 @@
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
     "externalPagesVisited": 10,
-    "structuredEventsFound": 243,
-    "candidatesFound": 16,
-    "heldForReview": 3,
-    "nearMisses": 51,
+    "structuredEventsFound": 174,
+    "candidatesFound": 21,
+    "heldForReview": 1,
+    "nearMisses": 1,
     "stoppedOnTimeBudget": false,
     "browserRestarts": 2,
-    "elapsedSeconds": 1014,
-    "secondsPerPage": 1.1651,
+    "elapsedSeconds": 1064,
+    "secondsPerPage": 1.2233,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 320,
+    "queueRemaining": 328,
     "pagesByRegion": {
-      "san-diego": 25
+      "san-diego": 23
     },
     "regionPageReserve": {
       "san-diego": 150
     },
-    "completedAt": "2026-10-24T08:07:46.325Z"
+    "completedAt": "2026-10-24T18:02:07.358Z"
   },
   "candidates": [
     {
@@ -55,7 +55,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Skip to Main Content\nEvents\nSearchSign InSign In\nMore\nHostsCerebral Valley & Google DeepMind\nGemini 4 Argon SF Hackathon\nSan Francisco, CASun, Oct 25 at 9:00 AM – 10:00 PM (PDT)\nGemini 4 Argon is here. What will you build with it?\n\nPush the boundaries of what's possible with Argon. Join Google DeepMind in San Francisco to explore the frontier, from advanced reasoning and visual coding to robotics and world models.\n\nWe're looking for ambitious projects that push Argon to its limits. We want to see something that wasn't possible last week.\n\nPrizes\n\nWe've got $20K in cash prizes lined up for winning teams.\n\nFirst place: $7,500\n\nSecond place: $5,000\n\nThird place: $2,500\n\nBest use of Managed Agents: $5,000\n\nWe'll have the Deepmind team in house for judging and speaking including Ivan Leo. More judges from the ecosystem announced soon, stay tuned!\n\nNote: This event is fully in-person in San Francisco. Space is limited. Maximum team size is four. All attendees must apply and be approved. Submitting an application does not guarantee attendance.\n\nRegister",
-      "checkedAt": "2026-10-24T07:54:17.259Z",
+      "checkedAt": "2026-10-24T17:47:54.689Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://cerebralvalley.ai/e/gemini-4-argon-sf",
@@ -92,7 +92,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Skip to Main Content\nEvents\nSearchSign InSign In\nMore\nHostsCerebral Valley\nAIE Code Summit 2026 Hackathon\nSan Francisco, CASat, Nov 7 at 9:00 AM – 10:00 PM (PST)\n\nWelcome to the AI Engineer Code Summit Hackathon!\n\nWe've teamed up with Meta, Google Deepmind, MongoDB, and Fetch.ai to host a one day hackathon for working on frontier AI engineering problems, the weekend before the official summit.\n\n$11,000 in prizes for winners including special prizes from partners.\n\nMore details on speakers and judges coming soon!\n\nNote: This event is fully in-person in San Francisco. Space is limited. Maximum team size is four. All attendees must submit an application and be approved to attend.\n\nRegister",
-      "checkedAt": "2026-10-24T07:53:53.553Z",
+      "checkedAt": "2026-10-24T17:47:31.279Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://cerebralvalley.ai/e/aie-code-2026-hackathon",
@@ -112,6 +112,47 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       }
+    },
+    {
+      "url": "https://luma.com/strangerbuilds",
+      "title": "STRANGER BUILDS I 10k in PRIZES I Halloween hackathon",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 94,
+      "relevance": 81,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "STRANGER BUILDS I 10k in PRIZES I Halloween hackathon\nSTRANGER BUILDS 🎃\nNERDCONF\nPhebe Polk\nRayyan Zahid\nAsh Kumra\nThe AI Collective\nVonage Developer\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/strangerbuilds",
+        "name": "STRANGER BUILDS I 10k in PRIZES I Halloween hackathon",
+        "description": null,
+        "startDate": "2026-10-31T10:00:00.000-07:00",
+        "endDate": "2026-10-31T18:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "STRANGER BUILDS 🎃",
+          "NERDCONF",
+          "Phebe Polk",
+          "Rayyan Zahid",
+          "Ash Kumra",
+          "The AI Collective",
+          "Vonage Developer"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-10-24T17:44:49.893Z"
     },
     {
       "url": "https://opensourceaiweek.com",
@@ -144,16 +185,16 @@
         "organizers": [],
         "offerAvailability": null
       },
-      "checkedAt": "2026-10-24T07:51:33.395Z",
+      "checkedAt": "2026-10-24T17:45:05.032Z",
       "heldBecause": "no competition or submission evidence"
     },
     {
-      "url": "https://luma.com/qby4olpj",
-      "title": "ITCH - Businesses share what needs to be built - (Retail)",
-      "category": "adjacent",
-      "discoveredVia": "https://luma.com/discover/sf/tech",
+      "url": "https://luma.com/usecorgi-avov",
+      "title": "Lovable x Girls into VC Buildathon",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/sf",
       "confidence": 78,
-      "relevance": 79,
+      "relevance": 71,
       "signals": {
         "directHackathonTerm": true,
         "buildEvidence": true,
@@ -161,65 +202,30 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "ITCH - Businesses share what needs to be built - (Retail) · Luma Skip to Content\n\nDiscover Events\nSign In\n\nPresented by\nEuropean Startup Embassy\n\nFollow\n\nProviding the physical and virtual infrastructure for European startups and investors to thrive in the U.S.\n\nHosted By\n\nEuropean Startup Embassy\n\n11 Going\n\nJake Magner, Rahul Krishnan and 9 others\n\nContact the Host\nReport Event\n\nTech\n\nITCH - Businesses share what needs to be built - (Retail)\n\nEuropean Startup Embassy\n\nEuropean Startup Embassy\n\nSan Francisco, CA\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nAbout Event\n\nAgenda\n6:00 PM: Doors open\n\n6:30 to 7:15 PM: Panel\n\nAfter that: Free conversation and networking\n\n\"The way to get startup ideas is not to try to think of startup ideas. It's to look for problems, preferably problems you have yourself.\" Paul Graham\n\nMost people who want to build something sit in a room and brainstorm ideas. That is the wrong starting point.\n\nThe right starting point is a real problem. That is the ITCH worth scratching.\n\nIf you do not have that problem yourself, come find it here. ITCH is a panel discussion with business owners or industry experts in the SF community. We dig into what is actually hard in their business right now. Together, we find the ITCH.\n\nYou leave with a list of real problems you can actually work on. And some of the panelists might let you pilot your solution with them directly.You can find ways to leverage AI for these problems.\n\nIndustry\nWe're inviting a San Francisco retail owner who runs a physical clothing store and also designs and manufactures their own clothing line.\n\nITCHATHON\nTwo days later we run the ITCHATHON, a hackathon where we solve the problems we found here. Sign up for that too →\n\nThis is for anyone who wants to build something. A startup, a side project, or just something for your CV. Up to you.\n\nCome and leave with an ITCH.September 24th, 6 PM\n\nPartners\nApify The largest marketplace of trusted tools for AI. Get real-time web data, track competitors, generate leads, monitor social media, and integrate your apps.\nEuropean Startup Embassy Providing the physical and virtual infrastructure for European startups and investors to thrive in the U.S.\nCommunity partners\nBuild Club The world's most collaborative AI community.\n\nIf you know a small or medium business owner who'd be great to invite to the panels, connect with me on LinkedIn.\n\nLocation\n\nEuropean Startup Embassy\n461 Bryant St, San Francisco, CA 94107, USA\n\nPresented by\nEuropean Startup Embassy\n\nFollow\n\nProviding the physical and virtual infrastructure for European startups and investors to thrive in the U.S.\n\nHosted By\n\nEuropean Startup Embassy\n\n11 Going\n\nJake Magner, Rahul Krishnan and 9 others\n\nContact the Host\nReport Event\n\nTech\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-10-24T08:07:08.913Z",
-      "heldBecause": "no competition or submission evidence",
+      "evidence": "Lovable x Girls into VC Buildathon\nCorgi\nJeanette Li\nErika Lee\nMarie Hua-Ying Adant\n425 Bush St\nSan Francisco\nCalifornia",
       "structuredEvent": {
-        "url": "https://luma.com/qby4olpj",
-        "name": "ITCH - Businesses share what needs to be built - (Retail)",
-        "description": "Agenda\n6:00 PM: Doors open\n6:30 to 7:15 PM: Panel\nAfter that: Free conversation and networking\n\"The way to get startup ideas is not to try to think of startup ideas. It's to look for problems, preferably problems you have yourself.\" Paul Graham\nMost people who want to build something sit in a room and brainstorm ideas. That is the wrong starting point.\n\nThe right starting point is a real problem. That is the ITCH worth scratching.\n\nIf you do not have that problem yourself, come find it here. ITCH is a panel discussion with business owners or industry experts in the SF community. We dig into what is actually hard in their business right now. Together, we find the ITCH.\n\nYou leave with a list of real problems you can actually work on. And some of the panelists might let you pilot your solution with them directly.You can find ways to leverage AI for these problems.\n\nIndustry\nWe're inviting a San Francisco retail owner who runs a physical clothing store and also designs and manufactures their own clothing line.\n\nITCHATHON\nTwo days later we run the ITCHATHON, a hackathon where we solve the problems we found here. Sign up for that too →\n\nThis is for anyone who wants to build something. A startup, a side project, or just something for your CV. Up to you.\n\nCome and leave with an ITCH.September 24th, 6 PM\n\nPartners\nApify The largest marketplace of trusted tools for AI. Get real-time web data, track competitors, generate leads, monitor social media, and integrate your apps.\nEuropean Startup Embassy Providing the physical and virtual infrastructure for European startups and investors to thrive in the U.S.\nCommunity partners\nBuild Club The world's most collaborative AI community.\n\nIf you know a small or medium business owner who'd be great to invite to the panels, connect with me on LinkedIn.",
-        "startDate": "2026-10-29T18:00:00.000-07:00",
-        "endDate": "2026-10-29T20:00:00.000-07:00",
+        "url": "https://luma.com/usecorgi-avov",
+        "name": "Lovable x Girls into VC Buildathon",
+        "description": null,
+        "startDate": "2026-10-24T13:00:00.000-07:00",
+        "endDate": "2026-10-24T18:00:00.000-07:00",
         "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
-          "name": "European Startup Embassy",
+          "name": "425 Bush St",
           "city": "San Francisco",
           "region": "California"
         },
         "organizers": [
-          "European Startup Embassy",
-          "European Startup Embassy"
+          "Corgi",
+          "Jeanette Li",
+          "Erika Lee",
+          "Marie Hua-Ying Adant"
         ],
-        "offerAvailability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "url": "https://luma.com/7c2wohwf",
-      "title": "Omarchy SF",
-      "category": "adjacent",
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "confidence": 78,
-      "relevance": 79,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
+        "offerAvailability": "https://schema.org/SoldOut"
       },
-      "evidence": "Omarchy SF · Luma Skip to Content\n\nDiscover Events\nSign In\n\nHosted By\n\nSteve Derico\n\n33 Going\n\nPatrick Damaso, Carl Vincent Kho and 31 others\n\nContact the Host\nReport Event\n\nTech\n\nOmarchy SF\n\nHosted by Steve Derico\n\nCloudflare\n\nSan Francisco, CA\n\nRegistration\n\nWelcome! To join the event, please register below.\nRegister\n\nAbout Event\n\nJoin the Omarchy meetup in San Francisco\n• Food + Drinks\n• Lightning demos\n• Chat\nBring your laptop and show us what you have built with Omarchy. Share themes, plugins, workflows, agents, hardware, hacks. Or just come hang and get inspired by how other people made Linux theirs.\nInterested in speaking? @stevederico on X\n\nWe meet in San Francisco to talk Omarchy, Linux, open source, programming, customization, and the rest of adjacent builder culture. Bring a laptop if you want to install or customize. Or just come hang, see machines running, and meet other people who think Linux can be fun, beautiful, and actually good with agents.\nTech talks, install nights, workshops, and the occasional hack night. Community-run. Not an official Omarchy or Omacom Foundation event.\nFree and open to everyone. Room capacity is the only limit.\nOmarchy: https://omarchy.org\nMeetups calendar: https://omarchy.org/meetups\n\nLocation\n\nCloudflare\n101 Townsend St, San Francisco, CA 94107, USA\n\nHosted By\n\nSteve Derico\n\n33 Going\n\nPatrick Damaso, Carl Vincent Kho and 31 others\n\nContact the Host\nReport Event\n\nTech\n\nDiscover Pricing Help\n\nGet the App",
-      "checkedAt": "2026-10-24T08:07:18.607Z",
-      "heldBecause": "no competition or submission evidence",
-      "structuredEvent": {
-        "url": "https://luma.com/7c2wohwf",
-        "name": "Omarchy SF",
-        "description": "Join the Omarchy meetup in San Francisco\n• Food + Drinks \n• Lightning demos\n• Chat\nBring your laptop and show us what you have built with Omarchy. Share themes, plugins, workflows, agents, hardware, hacks. Or just come hang and get inspired by how other people made Linux theirs.\nInterested in speaking? @stevederico on X\n\nWe meet in San Francisco to talk Omarchy, Linux, open source, programming, customization, and the rest of adjacent builder culture. Bring a laptop if you want to install or customize. Or just come hang, see machines running, and meet other people who think Linux can be fun, beautiful, and actually good with agents.\nTech talks, install nights, workshops, and the occasional hack night. Community-run. Not an official Omarchy or Omacom Foundation event.\nFree and open to everyone. Room capacity is the only limit.\nOmarchy: https://omarchy.org \nMeetups calendar: https://omarchy.org/meetups",
-        "startDate": "2026-11-04T17:00:00.000-08:00",
-        "endDate": "2026-11-04T20:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "Cloudflare",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Steve Derico",
-          "Steve Derico"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      }
+      "checkedAt": "2026-10-24T17:44:29.450Z",
+      "heldBecause": null
     },
     {
       "url": "https://luma.com/opp84p2y",
@@ -258,7 +264,8 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-24T07:51:11.740Z"
+      "checkedAt": "2026-10-24T17:44:42.778Z",
+      "heldBecause": null
     },
     {
       "url": "https://luma.com/59t8euck",
@@ -302,7 +309,8 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-24T07:51:11.740Z"
+      "checkedAt": "2026-10-24T17:44:42.778Z",
+      "heldBecause": null
     },
     {
       "url": "https://luma.com/z2di760y",
@@ -340,7 +348,280 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-24T07:51:11.741Z"
+      "checkedAt": "2026-10-24T17:44:42.779Z"
+    },
+    {
+      "url": "https://luma.com/kane-cli-hack-day",
+      "title": "Kane CLI Hack Day, supported by OpenAI",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Kane CLI Hack Day, supported by OpenAI\nTestMu AI\nTestMu AI\nKavya Nair\nXenofon\nSparsh Kesari\nFrontier Tower\nLayan\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/kane-cli-hack-day",
+        "name": "Kane CLI Hack Day, supported by OpenAI",
+        "description": null,
+        "startDate": "2026-10-24T09:30:00.000-07:00",
+        "endDate": "2026-10-24T20:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "TestMu AI",
+          "TestMu AI",
+          "Kavya Nair",
+          "Xenofon",
+          "Sparsh Kesari",
+          "Frontier Tower",
+          "Layan"
+        ],
+        "offerAvailability": "https://schema.org/SoldOut"
+      },
+      "checkedAt": "2026-10-24T17:44:49.893Z",
+      "heldBecause": null
+    },
+    {
+      "url": "https://luma.com/jgl2tejn",
+      "title": "Bay Area AI+car hackathon",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Bay Area AI+car hackathon\nDIY Robocars\nChris Anderson\nCircuit Launch\nOakland\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/jgl2tejn",
+        "name": "Bay Area AI+car hackathon",
+        "description": null,
+        "startDate": "2026-10-25T10:00:00.000-07:00",
+        "endDate": "2026-10-25T17:00:00.000-07:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "Circuit Launch",
+          "city": "Oakland",
+          "region": "California"
+        },
+        "organizers": [
+          "DIY Robocars",
+          "Chris Anderson"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-10-24T17:44:49.893Z",
+      "heldBecause": null
+    },
+    {
+      "url": "https://luma.com/92iq2a12",
+      "title": "Hack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ!",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Hack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ!\nOriane.xyz Video Intelligence\nOriane.xyz Video Intelligence\nGMI Cloud\nYuqi Hou\nNico Kuntjoro\nSimon Lorenzo\nAmplitude Analytics\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/92iq2a12",
+        "name": "Hack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ!",
+        "description": null,
+        "startDate": "2026-11-06T13:00:00.000-08:00",
+        "endDate": "2026-11-06T18:00:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "Amplitude Analytics",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Oriane.xyz Video Intelligence",
+          "Oriane.xyz Video Intelligence",
+          "GMI Cloud",
+          "Yuqi Hou",
+          "Nico Kuntjoro",
+          "Simon Lorenzo"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-10-24T17:44:49.893Z"
+    },
+    {
+      "url": "https://luma.com/frontierSF2",
+      "title": "SF Frontier Hackathon: Build your Autonomous Code Factory",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "SF Frontier Hackathon: Build your Autonomous Code Factory\nObvious Community Events\nObvious\nDavid Boskovic\nJon Bell\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/frontierSF2",
+        "name": "SF Frontier Hackathon: Build your Autonomous Code Factory",
+        "description": null,
+        "startDate": "2026-11-13T10:00:00.000-08:00",
+        "endDate": "2026-11-13T20:00:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Obvious Community Events",
+          "Obvious",
+          "David Boskovic",
+          "Jon Bell"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-10-24T17:44:49.893Z"
+    },
+    {
+      "url": "https://luma.com/sht6n8du",
+      "title": "AI Research Hackathon",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "AI Research Hackathon\nIterate\nElsa Ibos\nYoan Di Cosmo\nDarijan Ducic\nBoardy Boardman\nHenri Bonamy\nModal Events\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/sht6n8du",
+        "name": "AI Research Hackathon",
+        "description": null,
+        "startDate": "2026-11-14T09:00:00.000-08:00",
+        "endDate": "2026-11-15T20:00:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Iterate",
+          "Elsa Ibos",
+          "Yoan Di Cosmo",
+          "Darijan Ducic",
+          "Boardy Boardman",
+          "Henri Bonamy",
+          "Modal Events"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-10-24T17:44:49.893Z"
+    },
+    {
+      "url": "https://luma.com/physicalhack",
+      "title": "Physical AI Hack",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Physical AI Hack\ntokens&\ntokens&\nAlessandro Amenta\nJacopo Piazza\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/physicalhack",
+        "name": "Physical AI Hack",
+        "description": null,
+        "startDate": "2026-11-28T09:30:00.000-08:00",
+        "endDate": "2026-11-28T19:30:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "tokens&",
+          "tokens&",
+          "Alessandro Amenta",
+          "Jacopo Piazza"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-10-24T17:44:49.893Z"
+    },
+    {
+      "url": "https://luma.com/SalesCopilotAI",
+      "title": "AI Hackathon: Sales Copilot AI",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "AI Hackathon: Sales Copilot AI\nTatianaSF\nTatianaSF com\nYar Doroshenko\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/SalesCopilotAI",
+        "name": "AI Hackathon: Sales Copilot AI",
+        "description": null,
+        "startDate": "2026-12-12T11:00:00.000-08:00",
+        "endDate": "2026-12-12T19:00:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "TatianaSF",
+          "TatianaSF com",
+          "Yar Doroshenko"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-10-24T17:44:49.893Z"
     },
     {
       "url": "https://luma.com/0rycyhrt",
@@ -377,46 +658,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-24T07:51:40.825Z"
-    },
-    {
-      "url": "https://luma.com/kane-cli-hack-day",
-      "title": "Kane CLI Hack Day, supported by OpenAI",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Kane CLI Hack Day, supported by OpenAI\nTestMu AI\nTestMu AI\nKavya Nair\nXenofon\nSparsh Kesari\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/kane-cli-hack-day",
-        "name": "Kane CLI Hack Day, supported by OpenAI",
-        "description": null,
-        "startDate": "2026-10-24T09:30:00.000-07:00",
-        "endDate": "2026-10-24T20:00:00.000-07:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "TestMu AI",
-          "TestMu AI",
-          "Kavya Nair",
-          "Xenofon",
-          "Sparsh Kesari"
-        ],
-        "offerAvailability": "https://schema.org/SoldOut"
-      },
-      "checkedAt": "2026-10-24T07:51:40.826Z"
+      "checkedAt": "2026-10-24T17:45:12.358Z"
     },
     {
       "url": "https://luma.com/3vc5oeit",
@@ -454,7 +696,7 @@
         ],
         "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-10-24T07:51:40.826Z"
+      "checkedAt": "2026-10-24T17:45:12.358Z"
     },
     {
       "url": "https://luma.com/poqk5sgn",
@@ -470,7 +712,7 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Agent Builders Hackathon\nOmnara\nIshaan Sehgal\nBenjamin Swerdlow\nEthan Byrd\nYahia Bakour (Context.dev)\nMichael Ryaboy\nPeter Masone\nGreg Kress\nKartik Sarangmath\n639 Howard St\nSan Francisco\nCalifornia",
+      "evidence": "Agent Builders Hackathon\nOmnara\nIshaan Sehgal\nBenjamin Swerdlow\nEthan Byrd\nYahia Bakour (Context.dev)\nMichael Ryaboy\nPeter Masone\nGreg Kress\nKartik Sarangmath\nprimitive.space (YC P26)\nSan Francisco, CA\nSan Francisco\nCalifornia",
       "structuredEvent": {
         "url": "https://luma.com/poqk5sgn",
         "name": "Agent Builders Hackathon",
@@ -480,7 +722,7 @@
         "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
-          "name": "639 Howard St",
+          "name": "San Francisco, CA",
           "city": "San Francisco",
           "region": "California"
         },
@@ -493,11 +735,12 @@
           "Michael Ryaboy",
           "Peter Masone",
           "Greg Kress",
-          "Kartik Sarangmath"
+          "Kartik Sarangmath",
+          "primitive.space (YC P26)"
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-24T07:51:40.826Z"
+      "checkedAt": "2026-10-24T17:45:12.358Z"
     },
     {
       "url": "https://luma.com/bo69pa9j",
@@ -535,45 +778,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-24T07:51:40.826Z"
-    },
-    {
-      "url": "https://luma.com/usecorgi-avov",
-      "title": "Lovable x Girls into VC Buildathon",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Lovable x Girls into VC Buildathon\nCorgi\nJeanette Li\nErika Lee\nMarie Hua-Ying Adant\n425 Bush St\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/usecorgi-avov",
-        "name": "Lovable x Girls into VC Buildathon",
-        "description": null,
-        "startDate": "2026-10-24T13:00:00.000-07:00",
-        "endDate": "2026-10-24T18:00:00.000-07:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "425 Bush St",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Corgi",
-          "Jeanette Li",
-          "Erika Lee",
-          "Marie Hua-Ying Adant"
-        ],
-        "offerAvailability": "https://schema.org/SoldOut"
-      },
-      "checkedAt": "2026-10-24T07:51:40.826Z"
+      "checkedAt": "2026-10-24T17:45:12.358Z"
     },
     {
       "url": "https://luma.com/builde-ixyz",
@@ -612,15 +817,15 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-24T07:51:40.826Z"
+      "checkedAt": "2026-10-24T17:45:12.359Z"
     },
     {
-      "url": "https://luma.com/jgl2tejn",
-      "title": "Bay Area AI+car hackathon",
+      "url": "https://luma.com/yc-meetup-7183-9316f87f",
+      "title": "Haunted Hacks: Real-Time AI Edition",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "discoveredVia": "https://luma.com/hackathon_collections",
       "confidence": 78,
-      "relevance": 71,
+      "relevance": 51,
       "signals": {
         "directHackathonTerm": true,
         "buildEvidence": true,
@@ -628,41 +833,37 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Bay Area AI+car hackathon\nDIY Robocars\nChris Anderson\nCircuit Launch\nOakland\nCalifornia",
+      "evidence": "Haunted Hacks: Real-Time AI Edition\nY Combinator\nY Combinator",
       "structuredEvent": {
-        "url": "https://luma.com/jgl2tejn",
-        "name": "Bay Area AI+car hackathon",
+        "url": "https://luma.com/yc-meetup-7183-9316f87f",
+        "name": "Haunted Hacks: Real-Time AI Edition",
         "description": null,
-        "startDate": "2026-10-25T10:00:00.000-07:00",
-        "endDate": "2026-10-25T17:00:00.000-07:00",
+        "startDate": "2026-10-31T10:00:00.000-07:00",
+        "endDate": "2026-10-31T18:00:00.000-07:00",
         "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
-          "name": "Circuit Launch",
-          "city": "Oakland",
-          "region": "California"
+          "name": null,
+          "city": null,
+          "region": null
         },
         "organizers": [
-          "DIY Robocars",
-          "Chris Anderson"
+          "Y Combinator",
+          "Y Combinator"
         ],
-        "offerAvailability": "https://schema.org/InStock"
+        "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-10-24T07:51:40.826Z"
+      "checkedAt": "2026-10-24T17:44:49.893Z"
     }
   ],
   "errors": [
     {
-      "url": "https://www.meetup.com/elifes-ai%E6%8A%80%E8%A1%93%E8%80%85%E3%81%AE%E9%9B%86%E3%81%84-coderbar%E5%8B%89%E5%BC%B7%E4%BC%9A/events/316906397",
-      "message": "page.goto: TooManyRedirects at https://www.meetup.com/elifes-ai%E6%8A%80%E8%A1%93%E8%80%85%E3%81%AE%E9%9B%86%E3%81%84-coderbar%E5%8B%89%E5%BC%B7%E4%BC%9A/events/316906397\nCall log:\n  - navigating to \"https://www.meetup.com/elifes-ai%E6%8A%80%E8%A1%93%E8%80%85%E3%81%AE%E9%9B%86%E3%81%84-coderbar%E5%8B%89%E5%BC%B7%E4%BC%9A/events/316906397\", waiting until \"domcontentloaded\"\n"
+      "url": "https://luma.com/56c0h8k9",
+      "message": "reading https://luma.com/56c0h8k9 gave no answer in 42s"
     },
     {
-      "url": "https://luma.com/accelr8-xgfd",
-      "message": "reading https://luma.com/accelr8-xgfd gave no answer in 42s"
-    },
-    {
-      "url": "https://luma.com/ai-exec-salon-santa-clara-aiinfra",
-      "message": "reading https://luma.com/ai-exec-salon-santa-clara-aiinfra gave no answer in 42s"
+      "url": "https://luma.com/build-2aqz",
+      "message": "reading https://luma.com/build-2aqz gave no answer in 42s"
     }
   ]
 }
