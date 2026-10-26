@@ -1,24 +1,32 @@
 {
-  "collectedAt": "2026-10-25T18:00:16.515Z",
+  "collectedAt": "2026-10-26T03:33:30.242Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 4,
-  "pagesRead": 4,
+  "pagesFound": 10,
+  "pagesRead": 10,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon san francisco 2026 lu.ma",
+      "error": "brightdata expect_element"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
-  "ycEventUrls": [],
+  "ycEventUrls": [
+    "https://events.ycombinator.com/hud-frontier-june-26"
+  ],
   "urls": [
     {
       "url": "https://luma.com/hqz8wi79",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "isco, California - Host: Luma - Details available on the RSVP page. 5:30 PM PT - Agents in Production: correctness, context, and control - AWS Builder Loft, San Francisco, CA - Host: SurrealDB San Francisco - To sign up for this event, you must register here: https://luma.com/hqz8wi79 -- Agents are ",
-      "lastSeenAt": "2026-10-19T03:32:02.050Z"
+      "lastSeenAt": "2026-10-26T03:33:30.242Z"
     },
     {
       "url": "https://luma.com/6eqa8nbh",
@@ -277,7 +285,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/hack-nation_what-do-hackathon-judges-actually-look-for-activity-7509947320973680640-NoAX",
       "context": "we received more than 7,000 applications from builders around the world. The hackathon takes place on October 3–4. One week later, selected teams will pitch their projects live. If you want to see what they built and watch the pitches, you can register here: https://luma.com/d5spcs8l A huge thank yo",
-      "lastSeenAt": "2026-10-25T18:00:16.515Z"
+      "lastSeenAt": "2026-10-09T19:54:44.778Z"
     },
     {
       "url": "https://luma.com/ai-conference-hack-day-2026",
@@ -305,7 +313,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/sumani_solix-empower-2026-hackathon-invitation-activity-7510353409569476608-4fj0",
       "context": "sionaries: Strategists and creative minds shaping what gets built and why. 🗓️ When: October 31 - November 1, 2026 📍 Where: PB Labs, ETH Zürich Spaces are limited. Grab your spot and help us close the gap in who gets to build the future! 👇 🔗 Register here: https://luma.com/6xyy1mul #HackTheGap #W",
-      "lastSeenAt": "2026-10-25T07:59:15.073Z"
+      "lastSeenAt": "2026-10-11T09:35:36.202Z"
     },
     {
       "url": "https://luma.com/nkknxvrz",
@@ -432,6 +440,13 @@
       "sourcePage": "https://www.linkedin.com/posts/jowyang_san-francisco-bay-area-the-worlds-hackathon-activity-7396548754440511488-bmnc",
       "context": "rs tackling industrial bottlenecks at STAK Space in Oakland on Saturday, April 18. Apply: joincodecapital.com - Meet the community at the kickoff reception on Friday, April 17 to meet the mentors, judges, and fellow builders before the hackathon begins. RSVP: luma.com/1lyhi3z3 Code & Capital Kickoff",
       "lastSeenAt": "2026-10-25T18:00:16.515Z"
+    },
+    {
+      "url": "https://luma.com/oeacjgyz",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/posts/firasomer_excited-to-be-a-judge-along-with-the-illustrious-activity-7441995095056289792-TVoV",
+      "context": "Firas Omer's Post HAC Hackathon: with tool sponsors Lovable, n8n, and MiniMax. 📍 300 Grant Ave, San Francisco, CA Register here → https://luma.com/oeacjgyz",
+      "lastSeenAt": "2026-10-09T19:54:44.778Z"
     }
   ]
 }
