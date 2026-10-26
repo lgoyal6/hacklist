@@ -1,25 +1,17 @@
 {
-  "collectedAt": "2026-10-26T03:33:30.242Z",
+  "collectedAt": "2026-10-26T08:24:41.442Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 10,
-  "pagesRead": 10,
+  "pagesFound": 9,
+  "pagesRead": 9,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [
-    {
-      "stage": "search",
-      "query": "hackathon san francisco 2026 lu.ma",
-      "error": "brightdata expect_element"
-    }
-  ],
+  "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
-  "ycEventUrls": [
-    "https://events.ycombinator.com/hud-frontier-june-26"
-  ],
+  "ycEventUrls": [],
   "urls": [
     {
       "url": "https://luma.com/hqz8wi79",
@@ -397,14 +389,14 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/ucsdinnovation_sic-x-ds3-x-bow-capital-defense-hackathon-activity-7465453026019983362-77Yz",
       "context": "w for the Bow Capital Incubator, which begins June 15. If you’re a UC San Diego student, faculty member, researcher, or alum interested in building frontier technologies with real-world impact, we’d love to see you there. Apply to be in the Defense Hackathon: https://luma.com/qxpcf35r Apply to the B",
-      "lastSeenAt": "2026-10-22T04:06:00.192Z"
+      "lastSeenAt": "2026-10-26T08:24:41.442Z"
     },
     {
       "url": "https://luma.com/kfgh2fvu",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/aryelipman_san-diego-defensebio-hackathon-luma-activity-7500562050042048513-1ZnP",
       "context": "cement Corporation and Biosphere . Patrick Malone, MD PhD 1mo if you're working at the intersection of bio and defense, including biosecurity, biomanufacturing, and human performance, this is worth checking out. Toby Gollan-Myers Spencer Macdonald Arye Lipman https://luma.com/kfgh2fvu San Diego Defe",
-      "lastSeenAt": "2026-10-22T04:06:00.192Z"
+      "lastSeenAt": "2026-10-26T08:24:41.442Z"
     },
     {
       "url": "https://luma.com/executorch-hackathon",
@@ -440,13 +432,6 @@
       "sourcePage": "https://www.linkedin.com/posts/jowyang_san-francisco-bay-area-the-worlds-hackathon-activity-7396548754440511488-bmnc",
       "context": "rs tackling industrial bottlenecks at STAK Space in Oakland on Saturday, April 18. Apply: joincodecapital.com - Meet the community at the kickoff reception on Friday, April 17 to meet the mentors, judges, and fellow builders before the hackathon begins. RSVP: luma.com/1lyhi3z3 Code & Capital Kickoff",
       "lastSeenAt": "2026-10-25T18:00:16.515Z"
-    },
-    {
-      "url": "https://luma.com/oeacjgyz",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/firasomer_excited-to-be-a-judge-along-with-the-illustrious-activity-7441995095056289792-TVoV",
-      "context": "Firas Omer's Post HAC Hackathon: with tool sponsors Lovable, n8n, and MiniMax. 📍 300 Grant Ave, San Francisco, CA Register here → https://luma.com/oeacjgyz",
-      "lastSeenAt": "2026-10-09T19:54:44.778Z"
     }
   ]
 }
