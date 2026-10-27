@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-26T20:13:23.895Z",
+  "collectedAt": "2026-10-27T08:33:10.647Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
@@ -30,9 +30,10 @@
     {
       "url": "https://luma.com/1mkqg22a",
       "queries": [
+        "luma \"hackathon\" \"san diego\" OR \"la jolla\" OR carlsbad 2026",
         "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
       ],
-      "lastSeenAt": "2026-10-23T05:39:58.436Z"
+      "lastSeenAt": "2026-10-27T08:33:10.639Z"
     },
     {
       "url": "https://luma.com/1tbk6nmd",
@@ -175,6 +176,13 @@
       "lastSeenAt": "2026-10-23T01:41:10.032Z"
     },
     {
+      "url": "https://luma.com/72733n3s",
+      "queries": [
+        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
+      ],
+      "lastSeenAt": "2026-10-27T08:33:10.639Z"
+    },
+    {
       "url": "https://luma.com/76w11xtx",
       "queries": [
         "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
@@ -298,14 +306,21 @@
       "queries": [
         "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
       ],
-      "lastSeenAt": "2026-10-23T05:39:58.436Z"
+      "lastSeenAt": "2026-10-27T08:33:10.639Z"
     },
     {
       "url": "https://luma.com/aic-tr-june",
       "queries": [
         "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
       ],
-      "lastSeenAt": "2026-10-23T05:39:58.436Z"
+      "lastSeenAt": "2026-10-27T08:33:10.639Z"
+    },
+    {
+      "url": "https://luma.com/aiforgoodhackathon",
+      "queries": [
+        "luma \"hackathon\" \"san diego\" OR \"la jolla\" OR carlsbad 2026"
+      ],
+      "lastSeenAt": "2026-10-27T08:33:10.639Z"
     },
     {
       "url": "https://luma.com/aihack",
@@ -366,16 +381,23 @@
     {
       "url": "https://luma.com/BETAhackathon",
       "queries": [
-        "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026"
+        "\"hackathon\" san francisco 2026 register lu.ma"
       ],
-      "lastSeenAt": "2026-10-25T17:57:56.892Z"
+      "lastSeenAt": "2026-10-27T08:33:10.639Z"
+    },
+    {
+      "url": "https://luma.com/bfcpaloalto",
+      "queries": [
+        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
+      ],
+      "lastSeenAt": "2026-10-27T08:33:10.639Z"
     },
     {
       "url": "https://luma.com/builde-pozq",
       "queries": [
-        "\"hackathon\" san francisco 2026 register lu.ma"
+        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
       ],
-      "lastSeenAt": "2026-10-20T19:47:41.330Z"
+      "lastSeenAt": "2026-10-27T08:33:10.639Z"
     },
     {
       "url": "https://luma.com/claude-08pt",
@@ -404,27 +426,6 @@
         "site:luma.com hackathon \"bay area\" 2026"
       ],
       "lastSeenAt": "2026-10-25T07:58:32.047Z"
-    },
-    {
-      "url": "https://luma.com/cnlno79w",
-      "queries": [
-        "luma \"hackathon\" \"san diego\" OR \"la jolla\" OR carlsbad 2026"
-      ],
-      "lastSeenAt": "2026-10-13T20:57:25.290Z"
-    },
-    {
-      "url": "https://luma.com/composableai",
-      "queries": [
-        "\"hackathon\" san francisco 2026 register lu.ma"
-      ],
-      "lastSeenAt": "2026-10-24T17:42:59.673Z"
-    },
-    {
-      "url": "https://luma.com/connectbayarea",
-      "queries": [
-        "site:luma.com hackathon \"san diego\" 2026"
-      ],
-      "lastSeenAt": "2026-10-23T18:51:09.209Z"
     }
   ]
 }
