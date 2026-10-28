@@ -1,14 +1,30 @@
 {
-  "collectedAt": "2026-10-27T19:45:56.208Z",
+  "collectedAt": "2026-10-28T04:07:06.258Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 1,
-  "pagesRead": 1,
+  "pagesFound": 0,
+  "pagesRead": 0,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon san diego 2026 lu.ma",
+      "error": "brightdata: Error: getaddrinfo ENOTFOUND api.brightdata.com"
+    },
+    {
+      "stage": "search",
+      "query": "hackathon san francisco 2026 lu.ma",
+      "error": "brightdata: Error: getaddrinfo ENOTFOUND api.brightdata.com"
+    },
+    {
+      "stage": "search",
+      "query": "hackathon \"bay area\" 2026 register luma",
+      "error": "brightdata: Error: getaddrinfo ENOTFOUND api.brightdata.com"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -18,7 +34,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "isco, California - Host: Luma - Details available on the RSVP page. 5:30 PM PT - Agents in Production: correctness, context, and control - AWS Builder Loft, San Francisco, CA - Host: SurrealDB San Francisco - To sign up for this event, you must register here: https://luma.com/hqz8wi79 -- Agents are ",
-      "lastSeenAt": "2026-10-27T08:34:27.758Z"
+      "lastSeenAt": "2026-10-26T03:33:30.242Z"
     },
     {
       "url": "https://luma.com/6eqa8nbh",
@@ -268,9 +284,9 @@
     {
       "url": "https://luma.com/ai-hack-day-bright-data-jul18-2026",
       "promising": true,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-july-17-25-2026-bay-area-charles-guo-i5adc",
+      "sourcePage": "https://www.linkedin.com/pulse/ai-events-july-14-22-bay-area-charles-guo-zs2qc",
       "context": null,
-      "lastSeenAt": "2026-10-27T08:34:27.758Z"
+      "lastSeenAt": "2026-10-13T03:44:08.809Z"
     },
     {
       "url": "https://luma.com/d5spcs8l",
