@@ -1,20 +1,14 @@
 {
-  "collectedAt": "2026-10-28T09:11:40.365Z",
+  "collectedAt": "2026-10-28T19:59:03.079Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 6,
-  "pagesRead": 6,
+  "pagesFound": 1,
+  "pagesRead": 1,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [
-    {
-      "stage": "search",
-      "query": "hackathon san francisco 2026 lu.ma",
-      "error": "brightdata captcha"
-    }
-  ],
+  "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
