@@ -1,28 +1,18 @@
 {
-  "collectedAt": "2026-10-28T04:07:06.258Z",
+  "collectedAt": "2026-10-28T09:11:40.365Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 0,
-  "pagesRead": 0,
+  "pagesFound": 6,
+  "pagesRead": 6,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
   "problems": [
     {
       "stage": "search",
-      "query": "hackathon san diego 2026 lu.ma",
-      "error": "brightdata: Error: getaddrinfo ENOTFOUND api.brightdata.com"
-    },
-    {
-      "stage": "search",
       "query": "hackathon san francisco 2026 lu.ma",
-      "error": "brightdata: Error: getaddrinfo ENOTFOUND api.brightdata.com"
-    },
-    {
-      "stage": "search",
-      "query": "hackathon \"bay area\" 2026 register luma",
-      "error": "brightdata: Error: getaddrinfo ENOTFOUND api.brightdata.com"
+      "error": "brightdata captcha"
     }
   ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
@@ -34,7 +24,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "isco, California - Host: Luma - Details available on the RSVP page. 5:30 PM PT - Agents in Production: correctness, context, and control - AWS Builder Loft, San Francisco, CA - Host: SurrealDB San Francisco - To sign up for this event, you must register here: https://luma.com/hqz8wi79 -- Agents are ",
-      "lastSeenAt": "2026-10-26T03:33:30.242Z"
+      "lastSeenAt": "2026-10-28T09:11:40.365Z"
     },
     {
       "url": "https://luma.com/6eqa8nbh",
@@ -247,13 +237,6 @@
       "lastSeenAt": "2026-10-10T03:49:17.445Z"
     },
     {
-      "url": "https://luma.com/28lfv71m",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/ai-and-society_mentormefuturaremix2026-futuraremix2026-activity-7497800524134637568-oPJd",
-      "context": "r people doing the same thing. It's not a hackathon. No challenges, no teams, no prizes. It's not an accelerator either. No application, no equity, no demo day. You don't need to be technical, funded or incorporated. Free to attend, every second Friday. Book: https://luma.com/28lfv71m 45 2 Comments ",
-      "lastSeenAt": "2026-10-06T19:57:37.180Z"
-    },
-    {
       "url": "https://luma.com/4cvz0tzf",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/pear-vc_voice-video-ai-hackathon-luma-activity-7433294637160861696--Hoe",
@@ -370,7 +353,7 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/posts/pepijn-kooijmans-737545175_seeed-2026-embodied-ai-hackathon-in-bay-area-activity-7438243939834564608-8o7_",
       "context": "o Store Coupon per Team 🚀 Participation Award (16th–25th Place) 1× Amazing Hand per Team 📅 Event Details Date: March 21-22, 2026 Location: Seeed U.S. Office, Santa Clara 🔗 How to Join Registration entry: https://lnkd.in/g5ERmCsq Learn more about hackathon: https://luma.com/zsaa3r3d A huge thank y",
-      "lastSeenAt": "2026-10-17T08:09:30.486Z"
+      "lastSeenAt": "2026-10-28T09:11:40.365Z"
     },
     {
       "url": "https://luma.com/battle-bots-hack-night-jul15-2026",
@@ -448,6 +431,13 @@
       "sourcePage": "https://www.linkedin.com/posts/jowyang_san-francisco-bay-area-the-worlds-hackathon-activity-7396548754440511488-bmnc",
       "context": "rs tackling industrial bottlenecks at STAK Space in Oakland on Saturday, April 18. Apply: joincodecapital.com - Meet the community at the kickoff reception on Friday, April 17 to meet the mentors, judges, and fellow builders before the hackathon begins. RSVP: luma.com/1lyhi3z3 Code & Capital Kickoff",
       "lastSeenAt": "2026-10-25T18:00:16.515Z"
+    },
+    {
+      "url": "https://luma.com/0d16go33",
+      "promising": true,
+      "sourcePage": "https://www.linkedin.com/posts/startup-san-diego_hackathon-datascience-sandiego-activity-7496238276987527168-F3z1",
+      "context": "ility or downtown homelessness, all focused on societal good, or take on EyePop.ai ’s computer vision challenge. 🏆 Compete for prizes, collaborate with top talent in San Diego, and create solutions that can create lasting impact in our community. 💻 Sign up: https://luma.com/0d16go33 #Hackathon #Da",
+      "lastSeenAt": "2026-10-28T09:11:40.365Z"
     }
   ]
 }
