@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-29T09:29:51.128Z",
+  "collectedAt": "2026-10-29T20:16:47.468Z",
   "source": "meetup",
   "queries": [
     "https://www.meetup.com/find/?keywords=hackathon&location=us--ca--san%20francisco&source=EVENTS",
@@ -10,48 +10,11 @@
     "past": 0,
     "online": 8,
     "notLocal": 5,
-    "notHackathon": 22,
+    "notHackathon": 23,
     "recurring": 0
   },
   "problems": [],
   "carried": 0,
   "note": "Meetup search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
-  "candidates": [
-    {
-      "url": "https://www.meetup.com/mongodb-usergroup-sanfrancisco/events/316994209/",
-      "title": "Robot Hackathon: Harnessing Physical AI & Data",
-      "category": "hackathon",
-      "heldBecause": null,
-      "discoveredVia": "meetup",
-      "confidence": 78,
-      "relevance": 86,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Robot Hackathon: Harnessing Physical AI & Data \nRobotics Center of Silicon Valley\nSan Francisco, CA\nJoin **[Viam](https://www.linkedin.com/company/viaminc/)** and **[MongoDB](https://www.linkedin.com/company/mongodbinc/)** for a hands-on Robot Hackathon in San Francisco, October 29–30, 2026! Build with real robot arms, explore Physical AI, and compete to win a robot arm kit plus up to $10,000 in credits per winning team.\n\nNo robotics experience required—just bring your ideas and a laptop! 🚀\n\n📍 Robotics Center of Silicon Valley, San Francisco\n🔗 Register now: [https://luma.com/ta40197s](https://luma.com/ta40197s)\n\nSpace is limited, and approval is required. Sign up today!",
-      "checkedAt": "2026-10-29T09:29:46.879Z",
-      "structuredEvent": {
-        "url": "https://www.meetup.com/mongodb-usergroup-sanfrancisco/events/316994209/",
-        "name": "Robot Hackathon: Harnessing Physical AI & Data ",
-        "description": "Join **[Viam](https://www.linkedin.com/company/viaminc/)** and **[MongoDB](https://www.linkedin.com/company/mongodbinc/)** for a hands-on Robot Hackathon in San Francisco, October 29–30, 2026! Build with real robot arms, explore Physical AI, and compete to win a robot arm kit plus up to $10,000 in credits per winning team.\n\nNo robotics experience required—just bring your ideas and a laptop! 🚀\n\n📍 Robotics Center of Silicon Valley, San Francisco\n🔗 Register now: [https://luma.com/ta40197s](https://luma.com/ta40197s)\n\nSpace is limited, and approval is required. Sign up today!",
-        "startDate": "2026-10-29T16:00:00.000Z",
-        "endDate": "2026-10-29T16:00:00.000Z",
-        "timeSource": "meetup",
-        "organizers": [
-          "San Francisco Bay Area MongoDB User Group"
-        ],
-        "location": {
-          "name": "Robotics Center of Silicon Valley",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "offerAvailability": null,
-        "going": null
-      }
-    }
-  ]
+  "candidates": []
 }

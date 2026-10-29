@@ -1,14 +1,9 @@
 {
-  "collectedAt": "2026-10-29T09:09:23.852Z",
+  "collectedAt": "2026-10-29T19:56:50.366Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
-  "problems": [
-    {
-      "query": "site:luma.com hackathon \"bay area\" 2026",
-      "error": "brightdata captcha"
-    }
-  ],
+  "problems": [],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
     {
@@ -17,6 +12,13 @@
         "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026"
       ],
       "lastSeenAt": "2026-10-18T17:39:56.474Z"
+    },
+    {
+      "url": "https://luma.com/073ixmuf",
+      "queries": [
+        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
+      ],
+      "lastSeenAt": "2026-10-29T19:56:50.358Z"
     },
     {
       "url": "https://luma.com/07v1nnt3",
@@ -280,13 +282,6 @@
       "lastSeenAt": "2026-10-10T19:04:10.802Z"
     },
     {
-      "url": "https://luma.com/ai-crypto-expo",
-      "queries": [
-        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
-      ],
-      "lastSeenAt": "2026-10-08T09:48:34.896Z"
-    },
-    {
       "url": "https://luma.com/ai-hackathon-corp-agent-vibe-code",
       "queries": [
         "site:luma.com \"ai hackathon\" san francisco upcoming"
@@ -303,16 +298,9 @@
     {
       "url": "https://luma.com/ai-sf",
       "queries": [
-        "site:lu.ma hackathon san francisco 2026"
+        "\"hackathon\" san francisco 2026 register lu.ma"
       ],
-      "lastSeenAt": "2026-10-11T19:17:23.673Z"
-    },
-    {
-      "url": "https://luma.com/ai-summit-2026",
-      "queries": [
-        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
-      ],
-      "lastSeenAt": "2026-10-08T09:48:34.896Z"
+      "lastSeenAt": "2026-10-29T19:56:50.358Z"
     },
     {
       "url": "https://luma.com/aibuildathon25",
@@ -355,6 +343,13 @@
         "luma \"hackathon\" \"san diego\" OR \"la jolla\" OR carlsbad 2026"
       ],
       "lastSeenAt": "2026-10-13T20:57:25.289Z"
+    },
+    {
+      "url": "https://luma.com/aivalley",
+      "queries": [
+        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
+      ],
+      "lastSeenAt": "2026-10-29T19:56:50.358Z"
     },
     {
       "url": "https://luma.com/aixbio-hackathon-2026-sf",
