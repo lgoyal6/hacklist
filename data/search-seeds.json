@@ -1,9 +1,14 @@
 {
-  "collectedAt": "2026-10-28T19:58:52.012Z",
+  "collectedAt": "2026-10-29T09:09:23.852Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
-  "problems": [],
+  "problems": [
+    {
+      "query": "site:luma.com hackathon \"bay area\" 2026",
+      "error": "brightdata captcha"
+    }
+  ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
     {

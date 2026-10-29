@@ -1,14 +1,25 @@
 {
-  "collectedAt": "2026-10-29T03:31:48.742Z",
+  "collectedAt": "2026-10-29T09:10:25.844Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 14,
-  "pagesRead": 12,
+  "pagesFound": 2,
+  "pagesRead": 2,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [],
+  "problems": [
+    {
+      "stage": "search",
+      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
+      "error": "brightdata captcha"
+    },
+    {
+      "stage": "search",
+      "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
+      "error": "brightdata captcha"
+    }
+  ],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -432,13 +443,6 @@
       "sourcePage": "https://www.linkedin.com/posts/startup-san-diego_hackathon-datascience-sandiego-activity-7496238276987527168-F3z1",
       "context": "ility or downtown homelessness, all focused on societal good, or take on EyePop.ai ’s computer vision challenge. 🏆 Compete for prizes, collaborate with top talent in San Diego, and create solutions that can create lasting impact in our community. 💻 Sign up: https://luma.com/0d16go33 #Hackathon #Da",
       "lastSeenAt": "2026-10-28T09:11:40.365Z"
-    },
-    {
-      "url": "https://cerebralvalley.ai/e/gpt5-nyc",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-san-francisco-bay-area-september-24-29-2025-charles-guo-e2mtc",
-      "context": ", Berg Hall, Stanford Host: Stanford University Sign-up URL: https://events.stanford.edu/ September 27, 2025 1. GPT-5 Startup Hackathon Time: 9:00 AM – 5:00 PM EDT Location: New York City, NY Host: Cerebral Valley Events Note: Early startup teams Sign-up URL: https://cerebralvalley.ai/e/gpt5-nyc?utm",
-      "lastSeenAt": "2026-10-29T03:31:48.742Z"
     }
   ]
 }
