@@ -513,6 +513,7 @@ export default function Board({ locale }: { locale: Locale }) {
 
       <footer>
         <p className="footer-brand">Hacklist</p>
+        <a href="https://github.com/lgoyal6/hacklist" target="_blank" rel="noopener noreferrer">GitHub</a>
         <p>{t("footer.tagline")}</p>
         <a href="#top">{t("footer.backToTop")}</a>
       </footer>
