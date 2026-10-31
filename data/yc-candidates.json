@@ -1,9 +1,9 @@
 {
-  "collectedAt": "2026-10-31T09:24:23.666Z",
+  "collectedAt": "2026-10-31T19:11:21.091Z",
   "source": "https://www.ycombinator.com/events",
-  "listed": 3,
-  "shortlisted": 1,
-  "read": 1,
+  "listed": 4,
+  "shortlisted": 2,
+  "read": 2,
   "note": "Hackathons from Y Combinator's own events site, read from the Inertia props its pages ship. Same candidate shape as the Luma sweep; merged and scored by scripts/normalize-events.mjs.",
   "problems": [],
   "skipped": [],
@@ -23,7 +23,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Hosted By\nY Combinator\nHaunted Hacks\nSaturday, October 31\nSan Francisco, CA\nCapacity 225\nAbout Event\nCome join us for Haunted Hacks to kick off Halloween this year. Hosted by[ Terse](https://www.useterse.ai/) (F26) and[ AgentRelay](https://agentrelay.com/) (F26), brought to you by OpenAI, Supabase (S20), Mastra (W25),  Freestyle (F24) and Superserve (F26).\n\nEvery participant will receive:\n\n\\- $100 in OpenAI API credits per participant.\n\n- $25 in Supabase credits per each attendee (equivalent to 1 free month of Pro plan)\n\n- $100 in [Freestyle](https://www.freestyle.sh/) credits per each attendee\n\n- $100 in [Superserve.ai](http://Superserve.ai)[ ](http://superserve.ai)credits per attendee\n\n\nLove Durable Objects? Come build with our Open Source alternative!\n\nTired of copy/pasting messages between your agents? Come see how much you can build when you let agents collaborate directly with Agent Relay!\n\nWant to do both at the same time? Even better!\n\nLunch, snacks, candy, bad Halloween/AI puns, swag, coffee, and prizes are all included.\n\nTracks include:\n\n Hackathon winner: A guaranteed YC interview\n Stateful Apps: Build with [Durable Actors](https://docs.useterse.ai/quickstart) from Terse - iPhone Duo\n Agent to agent communication built with Agent Relay: Mac Mini\n Costume contest: Bragging rights\n\n### October 31, 2026 · San Francisco, CA\n\n### Eligibility\n\nWe recommend working in groups, and we're happy to help you form a team if you're coming on your own.\n\nThis is an in-person event in San Francisco. You must be able to attend on-site to participate.\n\nAttendees must be 16 or older.\n\n### Schedule\n\n 10:00am - 11:00am: Doors Open + Registration\n 11:00am: Hacking begins\n 1:00pm: Lunch\n 4:00pm: Submission deadline\n 4:00pm - 5:00pm: Judging\n 5:00pm - 6:00pm: Award Ceremony\n\n\nWhat to build\n\nThe Actor world is hot right now. Come build your own Software Factory, long-running agent, multiplayer AI system or something super creative you've been itching to try out.\n\n### Projects should ideally use either Durable actors, or Agent Relay (bonus points if you use both at the same time).\\\n\n\nRules\n\nAll code must be created at the hackathon.\n\nThinking of ideas before the hackathon is fine.\n\n### Judging\n\n\nWe will be using [Builderbase](https://builderbase.com/) to manage the judging! Participant signup will occur on check-in. \n\nThe top entries will demo live at the end of the event, and judges will select winners from those demos.\n\nJudges are looking for either very well-executed products or incredibly creative use cases using Durable Actors and Agent Relay. Again, bonus points if you can do both!\n\nJudges will be announced soon.\n\n### Prizes\n\nThe best overall project will receive a guaranteed YC Interview, $5k in OpenAI API credits, $10,000 in Freestyle credits, $1000 in [Superserve.ai](http://Superserve.ai) credits and 3 months free of Mastra Platform.\n\nThe second place team will receive $2.5k in OpenAI API Credits and 2 months free of Mastra Platform.\n\nThe third place team will receive $1k in OpenAI API Credits and 1 month free of Mastra Platform.\n\n\nThe best project using Durable Actors will get an iPhone duo. \n\nThe best project built using Agent Relay will get a Mac mini.\n\nThe project deemed the “most likely to scale to millions” will receive $1K in credits from Supabase\n\n\nMore prizes will be announced!\n\n### Don’t Know What Actors/Durable Objects Are?\n\nHere are some great resources:\n\n <https://docs.useterse.ai/quickstart>\n <https://boristane.com/blog/what-are-cloudflare-durable-objects/>\n <https://x.com/aboodman/status/2088155104851657110>",
-      "checkedAt": "2026-10-31T09:24:23.666Z",
+      "checkedAt": "2026-10-31T19:11:19.948Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://events.ycombinator.com/haunted-hacks-2026",
@@ -42,6 +42,42 @@
         },
         "offerAvailability": null,
         "capacity": 225
+      }
+    },
+    {
+      "url": "https://events.ycombinator.com/naive-autonomous-companies-hackathon",
+      "title": "Naïve Autonomous Company Hackathon: Build an agent-run company that runs itself",
+      "category": "hackathon",
+      "discoveredVia": "https://www.ycombinator.com/events",
+      "confidence": 94,
+      "relevance": 96,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Hosted By\nY Combinator\nNaïve Autonomous Company Hackathon\nSaturday, November 7\nSan Francisco, CA\nCapacity 200\nAbout Event\nA two-day hackathon for builders who want to start a company run by agents.\n\nJoin Naïve at the YC office in San Francisco. Choose a business, build its team with the Naïve SDK, and put it to work: finding customers, delivering the product, and running day-to-day operations.\n\nAt demo time, show the company operating. Not just what it could do, but what its agents actually accomplished. What did they deliver? What decisions did they make? Where did you need to step in?\n\nApplications are reviewed by Naïve and YC, and attendance is subject to approval.\n\n### About Naïve\n\nNaïve is building autonomous companies: agent systems that can run real businesses end to end.\n\nUse the Naïve SDK to create the agents that run your company, connect their tools, set their budgets, and keep their work running. Our studio lets you deploy and operate these systems.\n\nWe've raised a $28.5M Series A from Nexus Venture Partners, Y Combinator, Zetta Venture Partners, Liquid 2, and leading operators.\n\n### What You Can Build\n\nBuild any company that is primarily run by agents. The industry and business model are up to you.\n\nAll teams must use the Naïve SDK to build their company. SDK documentation: [usenaive.ai/docs](https://usenaive.ai/docs)\n\nA few examples (not required tracks):\n\n Media companies: Agents decide what to publish, produce the content, and use audience results to plan what comes next.\n Agencies: Agents find prospects, scope projects, deliver client work, and manage follow-up.\n Commerce businesses: Agents choose what to sell, run campaigns, handle customer requests, and adjust based on sales.\n Software businesses: Agents build a product, bring in users, handle support, and decide what to improve from customer feedback.\n\n### Prizes\n\nWe'll recognize 1st, 2nd, and 3rd place overall, plus winners in these categories:\n\n Most Autonomous Company\n Most Likely to Become a Unicorn\n Best Use of Naïve\n People's Choice\n\nPrizes\n\\- iPhone 18 Pros for every team member AND a guaranteed YC interview for 1st place\n\n\\- $50,000+ in sponsor credits for 1st place\n\n\\- Mac Mini Pros for every team member (2nd place)\n\n\\- Mac Minis for every team member (3rd place)\n\n\\- Additional prize tracks ($15k+ in prizes): Most likely to scale to millions, People’s Choice, Best Design  \n\n\\- All participants get $1k+ in Naive and sponsor credits\n\n### Schedule\n\nNov 7, 2026\n\n11:00 AM: Doors open\n\n11:30 AM: Welcome Note\n\n12:00 PM: Lunch served\n\n1:00 PM: Hacking begins\n\n6:30 PM: Dinner served\n\nNov 8, 2026\n\n9:00 AM: Breakfast served\n\n11:00 AM: Hacking stops, judging begins\n\n12:00 PM: Lunch served\n\n1:00 PM: Final presentations\n\n1:45 PM: Winner Announcement + Prizes\n\n2:30 PM: Event ends\n\n### Judges & Mentors\n\nComing soon.\n\n### Rules & Logistics\n\n Plan to attend both days in San Francisco. Come solo, bring a team, or meet teammates at kickoff.\n Apply through this page. Only approved attendees may attend.\n Attendees must be at least 15. Participants aged 15-17 must have YC's parental consent form signed before the event.\n Teams will present live demos. Judges will focus on how much of the company runs without you.\n Meals, snacks, and non-alcoholic drinks will be provided. Bring your laptop and charger.\n\n### Sponsors\n\nComing soon.\n\nBring a business idea. Build the team that runs it.",
+      "checkedAt": "2026-10-31T19:11:21.091Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://events.ycombinator.com/naive-autonomous-companies-hackathon",
+        "name": "Naïve Autonomous Company Hackathon: Build an agent-run company that runs itself",
+        "description": "**A two-day hackathon for builders who want to start a company run by agents.**\n\nJoin Naïve at the YC office in San Francisco. Choose a business, build its team with the Naïve SDK, and put it to work: finding customers, delivering the product, and running day-to-day operations.\n\nAt demo time, show the company operating. Not just what it could do, but what its agents actually accomplished. What did they deliver? What decisions did they make? Where did you need to step in?\n\nApplications are reviewed by Naïve and YC, and attendance is subject to approval.\n\n### About Naïve\n\nNaïve is building autonomous companies: agent systems that can run real businesses end to end.\n\nUse the Naïve SDK to create the agents that run your company, connect their tools, set their budgets, and keep their work running. Our studio lets you deploy and operate these systems.\n\nWe've raised a $28.5M Series A from Nexus Venture Partners, Y Combinator, Zetta Venture Partners, Liquid 2, and leading operators.\n\n### What You Can Build\n\n**Build any company that is primarily run by agents. The industry and business model are up to you.**\n\n**All teams must use the Naïve SDK to build their company.** SDK documentation: [usenaive.ai/docs](https://usenaive.ai/docs)\n\nA few examples (not required tracks):\n\n* **Media companies:** Agents decide what to publish, produce the content, and use audience results to plan what comes next.\n* **Agencies:** Agents find prospects, scope projects, deliver client work, and manage follow-up.\n* **Commerce businesses:** Agents choose what to sell, run campaigns, handle customer requests, and adjust based on sales.\n* **Software businesses:** Agents build a product, bring in users, handle support, and decide what to improve from customer feedback.\n\n### Prizes\n\nWe'll recognize 1st, 2nd, and 3rd place overall, plus winners in these categories:\n\n* Most Autonomous Company\n* Most Likely to Become a Unicorn\n* Best Use of Naïve\n* People's Choice\n\n**Prizes**\\\n\\- iPhone 18 Pros for every team member AND a guaranteed YC interview for 1st place\\\n\\\n\\- $50,000+ in sponsor credits for 1st place\\\n\\\n\\- Mac Mini Pros for every team member (2nd place)\\\n\\\n\\- Mac Minis for every team member (3rd place)\\\n\\\n\\- Additional prize tracks ($15k+ in prizes): Most likely to scale to millions, People’s Choice, Best Design  \\\n\\\n\\- All participants get $1k+ in Naive and sponsor credits\n\n### Schedule\n\n**Nov 7, 2026**\n\n11:00 AM: Doors open\n\n11:30 AM: Welcome Note\n\n12:00 PM: Lunch served\n\n1:00 PM: Hacking begins\n\n6:30 PM: Dinner served\n\n**Nov 8, 2026**\n\n9:00 AM: Breakfast served\n\n11:00 AM: Hacking stops, judging begins\n\n12:00 PM: Lunch served\n\n1:00 PM: Final presentations\n\n1:45 PM: Winner Announcement + Prizes\n\n2:30 PM: Event ends\n\n### Judges &amp; Mentors\n\nComing soon.\n\n### Rules &amp; Logistics\n\n* Plan to attend both days in San Francisco. Come solo, bring a team, or meet teammates at kickoff.\n* Apply through this page. Only approved attendees may attend.\n* Attendees must be at least 15. Participants aged 15-17 must have YC's parental consent form signed before the event.\n* Teams will present live demos. Judges will focus on how much of the company runs without you.\n* Meals, snacks, and non-alcoholic drinks will be provided. Bring your laptop and charger.\n\n### Sponsors\n\nComing soon.\n\n**Bring a business idea. Build the team that runs it.**",
+        "startDate": "2026-11-07T19:00:00.000Z",
+        "endDate": "2026-11-08T19:00:00.000Z",
+        "timeSource": "yc",
+        "organizers": [
+          "Y Combinator"
+        ],
+        "location": {
+          "name": null,
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "capacity": 200
       }
     }
   ]
