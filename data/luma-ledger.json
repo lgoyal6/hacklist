@@ -3,7 +3,7 @@
     "bay-area": "https://luma.com/calendar/manage/cal-LHMcppIqcJ4kHZt",
     "san-diego": "https://luma.com/hacklist-sd"
   },
-  "updatedAt": "2026-10-31T09:27:03.839Z",
+  "updatedAt": "2026-10-31T19:15:59.410Z",
   "synced": {
     "03qfnx8f": {
       "url": "https://luma.com/03qfnx8f",
@@ -987,6 +987,12 @@
       "url": "https://events.ycombinator.com/MakeSomethingAgentsWant",
       "title": "Make Something Agents Want",
       "syncedAt": "2026-09-21T01:30:55.080Z",
+      "method": "luma-ui-external"
+    },
+    "external-events-ycombinator-com-naive-autonomous-companies-hack-543986ab": {
+      "url": "https://events.ycombinator.com/naive-autonomous-companies-hackathon",
+      "title": "Naïve Autonomous Company Hackathon: Build an agent-run company that runs itself",
+      "syncedAt": "2026-10-31T19:15:03.273Z",
       "method": "luma-ui-external"
     },
     "external-events-ycombinator-com-thefasthackathon-0a9aaa26": {
@@ -2251,20 +2257,5 @@
     }
   },
   "submitted": {},
-  "failures": {
-    "balgbgpw": {
-      "url": "https://luma.com/balgbgpw",
-      "title": "Social Good Hackathon: Maximizing Potential X Code for Good @ UC Berkeley",
-      "lastAttemptAt": "2026-10-31T09:26:50.402Z",
-      "attempts": 1,
-      "message": "Submit control not found or disabled"
-    },
-    "beta-msyd": {
-      "url": "https://luma.com/beta-msyd",
-      "title": "AI Tutor Hackathon",
-      "lastAttemptAt": "2026-10-31T09:26:57.667Z",
-      "attempts": 1,
-      "message": "Submit control not found or disabled"
-    }
-  }
+  "failures": {}
 }
