@@ -1,9 +1,14 @@
 {
-  "collectedAt": "2026-11-01T09:56:34.198Z",
+  "collectedAt": "2026-11-01T19:17:19.852Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
-  "problems": [],
+  "problems": [
+    {
+      "query": "\"hackathon\" san francisco 2026 register lu.ma",
+      "error": "brightdata captcha"
+    }
+  ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
     {
