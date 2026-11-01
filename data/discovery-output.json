@@ -4,40 +4,40 @@
     "startedFrom": 29,
     "personalizedSeeds": 3132,
     "personalizedPromising": 109,
-    "searchSeeds": 60,
+    "searchSeeds": 57,
     "apiCalendarSeeds": 10,
     "linkedinSeeds": 60,
     "linkedinPromising": 60,
     "pagesVisited": 870,
-    "pagesReadOverHttp": 1,
+    "pagesReadOverHttp": 65,
     "pagesReadViaUnlocker": 0,
     "unlockerConfigured": false,
     "unlockerProblem": null,
     "lastDeepSweepAt": "2026-10-30T09:42:00.844Z",
-    "httpFailures": 24,
-    "httpThrottled": 24,
-    "httpPauses": 3,
+    "httpFailures": 32,
+    "httpThrottled": 32,
+    "httpPauses": 4,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 14,
-    "structuredEventsFound": 95,
-    "candidatesFound": 3,
+    "externalPagesVisited": 17,
+    "structuredEventsFound": 308,
+    "candidatesFound": 12,
     "heldForReview": 0,
-    "nearMisses": 0,
+    "nearMisses": 47,
     "stoppedOnTimeBudget": false,
     "browserRestarts": 2,
-    "elapsedSeconds": 934,
-    "secondsPerPage": 1.0738,
+    "elapsedSeconds": 1107,
+    "secondsPerPage": 1.272,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 444,
+    "queueRemaining": 227,
     "pagesByRegion": {
       "san-diego": 22
     },
     "regionPageReserve": {
       "san-diego": 150
     },
-    "completedAt": "2026-10-31T19:11:19.325Z"
+    "completedAt": "2026-11-01T10:15:47.107Z"
   },
   "candidates": [
     {
@@ -55,7 +55,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Skip to Main Content\nEvents\nSearchSign InSign In\nMore\nHostsCerebral Valley\nAIE Code Summit 2026 Hackathon\nSan Francisco, CASat, Nov 7 at 9:00 AM – 10:00 PM (PST)\n\nWelcome to the AI Engineer Code Summit Hackathon!\n\nWe've teamed up with Meta, Google Deepmind, MongoDB, Subquadratic, and Fetch.ai to host a one day hackathon for working on frontier AI engineering problems, the weekend before the official summit.\n\nCoding agents can already write code, but what happens when they must understand, finish, and judge real software on their own? Come build agents that close the gap, building systems that get measurably better with every run, reconstruct software from imperfect evidence, and verify what other agents ship before it merges.\n\nSpeakers and judges will be drawn from the top of the industry. Full lineup dropping soon.\n\nWin $11,000 in total prizes, including $5,000 for the best use of the Meta Model API!\n\nNote: This event is fully in-person in San Francisco. Space is limited. Maximum team size is four. All attendees must submit an application and be approved to attend.\n\nRegister",
-      "checkedAt": "2026-10-31T18:59:11.854Z",
+      "checkedAt": "2026-11-01T10:01:36.432Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://cerebralvalley.ai/e/aie-code-2026-hackathon",
@@ -75,6 +75,81 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       }
+    },
+    {
+      "url": "https://luma.com/fireworks-8kmc",
+      "title": "Fireworks: Deploy Buildathon with Microsoft & NVIDIA",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/sf",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Fireworks: Deploy Buildathon with Microsoft & NVIDIA\nFireworks\nFireworks\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/fireworks-8kmc",
+        "name": "Fireworks: Deploy Buildathon with Microsoft & NVIDIA",
+        "description": null,
+        "startDate": "2026-11-02T09:00:00.000-08:00",
+        "endDate": "2026-11-02T20:00:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Fireworks",
+          "Fireworks"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-11-01T09:57:26.816Z",
+      "heldBecause": null
+    },
+    {
+      "url": "https://luma.com/mistral-elastic",
+      "title": "Make SF Better: A Hack Night with Mistral AI",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/sf",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Make SF Better: A Hack Night with Mistral AI\nYou Know, for Search\nJD Armada\nElastic\nPhilipp Krenn\n33 New Montgomery St\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/mistral-elastic",
+        "name": "Make SF Better: A Hack Night with Mistral AI",
+        "description": null,
+        "startDate": "2026-11-03T17:00:00.000-08:00",
+        "endDate": "2026-11-03T20:30:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "33 New Montgomery St",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "You Know, for Search",
+          "JD Armada",
+          "Elastic",
+          "Philipp Krenn"
+        ],
+        "offerAvailability": "https://schema.org/SoldOut"
+      },
+      "checkedAt": "2026-11-01T09:57:26.816Z"
     },
     {
       "url": "https://luma.com/y1kfgy3x",
@@ -112,13 +187,13 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-31T18:56:03.559Z"
+      "checkedAt": "2026-11-01T09:57:39.594Z"
     },
     {
-      "url": "https://luma.com/fireworks-8kmc",
-      "title": "Fireworks: Deploy Buildathon with Microsoft & NVIDIA",
+      "url": "https://luma.com/92iq2a12",
+      "title": "Hack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ!",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "discoveredVia": "https://luma.com/hackathon_collections",
       "confidence": 78,
       "relevance": 71,
       "signals": {
@@ -128,13 +203,54 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Fireworks: Deploy Buildathon with Microsoft & NVIDIA\nFireworks\nFireworks\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "evidence": "Hack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ!\nOriane.xyz Video Intelligence\nOriane.xyz Video Intelligence\nGMI Cloud\nYuqi Hou\nNico Kuntjoro\nSimon Lorenzo\nAmplitude Analytics\nSan Francisco\nCalifornia",
       "structuredEvent": {
-        "url": "https://luma.com/fireworks-8kmc",
-        "name": "Fireworks: Deploy Buildathon with Microsoft & NVIDIA",
+        "url": "https://luma.com/92iq2a12",
+        "name": "Hack the Feed: Creator Tools Hackathon with Oriane, GMI Cloud & Lovable at Amplitude HQ!",
         "description": null,
-        "startDate": "2026-11-02T09:00:00.000-08:00",
-        "endDate": "2026-11-02T20:00:00.000-08:00",
+        "startDate": "2026-11-06T13:00:00.000-08:00",
+        "endDate": "2026-11-06T18:00:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "Amplitude Analytics",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Oriane.xyz Video Intelligence",
+          "Oriane.xyz Video Intelligence",
+          "GMI Cloud",
+          "Yuqi Hou",
+          "Nico Kuntjoro",
+          "Simon Lorenzo"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-11-01T09:57:46.643Z",
+      "heldBecause": null
+    },
+    {
+      "url": "https://luma.com/frontierSF2",
+      "title": "SF Frontier Hackathon: Build your Autonomous Code Factory",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "SF Frontier Hackathon: Build your Autonomous Code Factory\nObvious Community Events\nObvious\nDavid Boskovic\nJon Bell\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/frontierSF2",
+        "name": "SF Frontier Hackathon: Build your Autonomous Code Factory",
+        "description": null,
+        "startDate": "2026-11-13T10:00:00.000-08:00",
+        "endDate": "2026-11-13T20:00:00.000-08:00",
         "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
@@ -143,22 +259,257 @@
           "region": "California"
         },
         "organizers": [
-          "Fireworks",
-          "Fireworks"
+          "Obvious Community Events",
+          "Obvious",
+          "David Boskovic",
+          "Jon Bell"
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-10-31T18:56:30.953Z"
+      "checkedAt": "2026-11-01T09:57:46.643Z"
+    },
+    {
+      "url": "https://luma.com/sht6n8du",
+      "title": "AI Research Hackathon",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "AI Research Hackathon\nIterate\nElsa Ibos\nYoan Di Cosmo\nDarijan Ducic\nBoardy Boardman\nHenri Bonamy\nModal Events\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/sht6n8du",
+        "name": "AI Research Hackathon",
+        "description": null,
+        "startDate": "2026-11-14T09:00:00.000-08:00",
+        "endDate": "2026-11-15T20:00:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Iterate",
+          "Elsa Ibos",
+          "Yoan Di Cosmo",
+          "Darijan Ducic",
+          "Boardy Boardman",
+          "Henri Bonamy",
+          "Modal Events"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-11-01T09:57:46.643Z"
+    },
+    {
+      "url": "https://luma.com/personalagenthack",
+      "title": "Personal Agents Hackathon",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Personal Agents Hackathon\ntokens&\ntokens&\nAlessandro Amenta\nJacopo Piazza\nAWS Builder Loft\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/personalagenthack",
+        "name": "Personal Agents Hackathon",
+        "description": null,
+        "startDate": "2026-11-20T09:30:00.000-08:00",
+        "endDate": "2026-11-20T19:30:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "tokens&",
+          "tokens&",
+          "Alessandro Amenta",
+          "Jacopo Piazza",
+          "AWS Builder Loft"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-11-01T09:57:46.644Z"
+    },
+    {
+      "url": "https://luma.com/physicalhack",
+      "title": "Physical AI Hack",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Physical AI Hack\ntokens&\ntokens&\nAlessandro Amenta\nJacopo Piazza\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/physicalhack",
+        "name": "Physical AI Hack",
+        "description": null,
+        "startDate": "2026-11-28T09:30:00.000-08:00",
+        "endDate": "2026-11-28T19:30:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "tokens&",
+          "tokens&",
+          "Alessandro Amenta",
+          "Jacopo Piazza"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-11-01T09:57:46.644Z"
+    },
+    {
+      "url": "https://luma.com/SalesCopilotAI",
+      "title": "AI Hackathon: Sales Copilot AI",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/hackathon_collections",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "AI Hackathon: Sales Copilot AI\nTatianaSF\nTatianaSF com\nYar Doroshenko\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/SalesCopilotAI",
+        "name": "AI Hackathon: Sales Copilot AI",
+        "description": null,
+        "startDate": "2026-12-12T11:00:00.000-08:00",
+        "endDate": "2026-12-12T19:00:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "TatianaSF",
+          "TatianaSF com",
+          "Yar Doroshenko"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-11-01T09:57:46.644Z"
+    },
+    {
+      "url": "https://luma.com/ai-summit-2026",
+      "title": "TechEquity Ai Summit 2026: Talks + Workshops + Hackathon, Ft Google, Nvidia, DeepMind, Snowflake and more",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/genai-sf",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "TechEquity Ai Summit 2026: Talks + Workshops + Hackathon, Ft Google, Nvidia, DeepMind, Snowflake and more\nTechEquity Ai - Silicon Valley\nTechEquity Ai\nSheena Tu\nMahan Soltanzadeh\nDave Nielsen\nSilicon Valley AI Hub\n135 Constitution Dr\nMenlo Park\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/ai-summit-2026",
+        "name": "TechEquity Ai Summit 2026: Talks + Workshops + Hackathon, Ft Google, Nvidia, DeepMind, Snowflake and more",
+        "description": null,
+        "startDate": "2026-11-03T08:30:00.000-08:00",
+        "endDate": "2026-11-06T17:00:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "135 Constitution Dr",
+          "city": "Menlo Park",
+          "region": "California"
+        },
+        "organizers": [
+          "TechEquity Ai - Silicon Valley",
+          "TechEquity Ai",
+          "Sheena Tu",
+          "Mahan Soltanzadeh",
+          "Dave Nielsen",
+          "Silicon Valley AI Hub"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-11-01T09:57:47.376Z",
+      "heldBecause": null
+    },
+    {
+      "url": "https://luma.com/t9hsthtk",
+      "title": "Agents Need Solid Ground: An Archil Hackathon",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/genai-sf",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Agents Need Solid Ground: An Archil Hackathon\nArchil\nJill Riley\nHunter Leath\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/t9hsthtk",
+        "name": "Agents Need Solid Ground: An Archil Hackathon",
+        "description": null,
+        "startDate": "2026-11-10T18:00:00.000-08:00",
+        "endDate": "2026-11-10T22:00:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "California"
+        },
+        "organizers": [
+          "Archil",
+          "Jill Riley",
+          "Hunter Leath"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-11-01T09:57:47.376Z"
     }
   ],
   "errors": [
     {
-      "url": "https://luma.com/3z82tlfd",
-      "message": "reading https://luma.com/3z82tlfd gave no answer in 42s"
+      "url": "https://luma.com/90minstartupinSF",
+      "message": "reading https://luma.com/90minstartupinSF gave no answer in 42s"
     },
     {
-      "url": "https://luma.com/kn3b7aj6",
-      "message": "reading https://luma.com/kn3b7aj6 gave no answer in 42s"
+      "url": "https://luma.com/robot-learning-world-models-nov4-2026",
+      "message": "reading https://luma.com/robot-learning-world-models-nov4-2026 gave no answer in 42s"
     }
   ]
 }
