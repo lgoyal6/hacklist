@@ -1,20 +1,14 @@
 {
-  "collectedAt": "2026-11-02T04:31:21.115Z",
+  "collectedAt": "2026-11-02T10:25:37.355Z",
   "searchProviders": [
     "brightdata"
   ],
   "queriesRun": 3,
-  "pagesFound": 3,
-  "pagesRead": 3,
+  "pagesFound": 1,
+  "pagesRead": 1,
   "readStoppedOnTimeBudget": false,
   "paidSpendUsd": 0,
-  "problems": [
-    {
-      "stage": "search",
-      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
-      "error": "brightdata captcha"
-    }
-  ],
+  "problems": [],
   "note": "Event URLs pulled from public LinkedIn posts and articles. Classified by the normal crawler; a LinkedIn mention is not evidence. `promising` means the words around the link named a hackathon format.",
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
@@ -230,13 +224,6 @@
       "lastSeenAt": "2026-10-21T03:33:24.448Z"
     },
     {
-      "url": "https://luma.com/4cvz0tzf",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/pear-vc_voice-video-ai-hackathon-luma-activity-7433294637160861696--Hoe",
-      "context": "rX S24) are bringing together a small, handpicked group of engineers who are building at the intersection of voice intelligence and visual understanding for a hackathon on March 7th. Fully in-person, with real APIs, real infra, and real prizes. 👉 Apply here: https://luma.com/4cvz0tzf Mustafa Bal 7m",
-      "lastSeenAt": "2026-10-12T03:33:04.799Z"
-    },
-    {
       "url": "https://luma.com/wi0vt7h6",
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/bay-area-ai-events-jan-31-feb-8-2026-charles-guo-t9vyc",
@@ -291,13 +278,6 @@
       "sourcePage": "https://www.linkedin.com/posts/priyabajaj12_new-founder-school-ai-hackathon-with-fractal-activity-7417975415023161344-C9nR",
       "context": null,
       "lastSeenAt": "2026-10-12T22:19:51.798Z"
-    },
-    {
-      "url": "https://luma.com/k84uw71w",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/jenny8lee_wiki-x-ai-hackathon-luma-activity-7181746053438672896-yjJ2",
-      "context": "post Wiki(pedia) and AI hackathon in San Francisco on Monday, April 15 at Gray Area in the Mission. Brainstorm and develop AI tools on Wikipedia and other wikis, for drafting, curating, summarizing and illustrating articles. The cute name for event: Waikiki. https://lu.ma/k84uw71w Wiki x AI Hackatho",
-      "lastSeenAt": "2026-10-12T03:33:04.799Z"
     },
     {
       "url": "https://luma.com/8q0dr4um.",
@@ -451,13 +431,6 @@
       "promising": true,
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-apr-26-may-2-charles-guo-siolc",
       "context": "tivity, and social connection intersect. These events remind us that the AI world is not only ambitious; it is also increasingly vibrant and human. Apr 26 (Sun) 9:00 AM — BETA 2026 Hackathon https://lu.ma/BETAhackathon 9:30 AM — Agent-Whispering (3rd Session) https://lu.ma/pfjda5pp 12:00 PM — Commun",
-      "lastSeenAt": "2026-11-02T04:31:21.115Z"
-    },
-    {
-      "url": "https://luma.com/q9uvx8r7",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/pulse/ai-events-apr-26-may-2-charles-guo-siolc",
-      "context": "the AI world is not only ambitious; it is also increasingly vibrant and human. Apr 26 (Sun) 9:00 AM — BETA 2026 Hackathon https://lu.ma/BETAhackathon 9:30 AM — Agent-Whispering (3rd Session) https://lu.ma/pfjda5pp 12:00 PM — Community Day at Hidden Currencies https://lu.ma/q9uvx8r7 3:00 PM — The Ind",
       "lastSeenAt": "2026-11-02T04:31:21.115Z"
     }
   ]
