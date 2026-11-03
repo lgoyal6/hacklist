@@ -1,12 +1,16 @@
 {
-  "collectedAt": "2026-11-03T10:21:11.474Z",
+  "collectedAt": "2026-11-03T20:46:29.057Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
   "problems": [
     {
-      "query": "site:lu.ma hackathon san francisco 2026",
-      "error": "brightdata net_err_tunnel"
+      "query": "site:luma.com buildathon OR makeathon OR \"make-a-thon\" bay area",
+      "error": "brightdata captcha"
+    },
+    {
+      "query": "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026",
+      "error": "brightdata captcha"
     }
   ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
@@ -301,6 +305,13 @@
       "lastSeenAt": "2026-10-27T08:33:10.639Z"
     },
     {
+      "url": "https://luma.com/aihack",
+      "queries": [
+        "site:luma.com \"ai hackathon\" san francisco upcoming"
+      ],
+      "lastSeenAt": "2026-11-03T20:46:29.049Z"
+    },
+    {
       "url": "https://luma.com/AITX",
       "queries": [
         "site:luma.com hackathon \"bay area\" 2026"
@@ -327,13 +338,6 @@
         "site:luma.com hackathon san francisco 2026"
       ],
       "lastSeenAt": "2026-10-19T08:20:55.929Z"
-    },
-    {
-      "url": "https://luma.com/aixmarketing",
-      "queries": [
-        "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026"
-      ],
-      "lastSeenAt": "2026-10-13T20:26:57.530Z"
     },
     {
       "url": "https://luma.com/alif",
