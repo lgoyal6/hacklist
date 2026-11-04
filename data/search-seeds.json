@@ -1,9 +1,14 @@
 {
-  "collectedAt": "2026-11-04T11:42:24.979Z",
+  "collectedAt": "2026-11-04T21:00:21.725Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
-  "problems": [],
+  "problems": [
+    {
+      "query": "site:luma.com hackathon \"bay area\" 2026",
+      "error": "brightdata captcha"
+    }
+  ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
     {
@@ -203,13 +208,6 @@
         "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026"
       ],
       "lastSeenAt": "2026-10-17T17:37:06.416Z"
-    },
-    {
-      "url": "https://luma.com/90minstartupinSF",
-      "queries": [
-        "site:luma.com buildathon OR makeathon OR \"make-a-thon\" bay area"
-      ],
-      "lastSeenAt": "2026-10-14T19:02:22.230Z"
     },
     {
       "url": "https://luma.com/aeu0cl7d",
