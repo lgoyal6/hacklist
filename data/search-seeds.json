@@ -1,12 +1,24 @@
 {
-  "collectedAt": "2026-11-04T21:00:21.725Z",
+  "collectedAt": "2026-11-05T10:07:05.115Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
   "problems": [
     {
-      "query": "site:luma.com hackathon \"bay area\" 2026",
-      "error": "brightdata captcha"
+      "query": "luma \"hackathon\" \"san diego\" OR \"la jolla\" OR carlsbad 2026",
+      "error": "brightdata HTTP 401: Token expired"
+    },
+    {
+      "query": "site:luma.com \"ai hackathon\" san francisco upcoming",
+      "error": "brightdata HTTP 401: Token expired"
+    },
+    {
+      "query": "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026",
+      "error": "brightdata HTTP 401: Token expired"
+    },
+    {
+      "query": "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026",
+      "error": "brightdata HTTP 401: Token expired"
     }
   ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
