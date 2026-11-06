@@ -11,33 +11,33 @@
     "pagesVisited": 870,
     "pagesReadOverHttp": 1,
     "pagesReadViaUnlocker": 0,
-    "unlockerConfigured": false,
-    "unlockerProblem": null,
+    "unlockerConfigured": true,
+    "unlockerProblem": "Error: unlocker HTTP 401: Token expired",
     "lastDeepSweepAt": "2026-11-02T23:49:06.666Z",
-    "httpFailures": 32,
-    "httpThrottled": 32,
-    "httpPauses": 4,
+    "httpFailures": 25,
+    "httpThrottled": 24,
+    "httpPauses": 3,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 15,
-    "structuredEventsFound": 144,
-    "candidatesFound": 14,
+    "externalPagesVisited": 14,
+    "structuredEventsFound": 96,
+    "candidatesFound": 13,
     "heldForReview": 0,
     "nearMisses": 3,
     "stoppedOnTimeBudget": false,
     "browserRestarts": 0,
-    "elapsedSeconds": 998,
-    "secondsPerPage": 1.1476,
+    "elapsedSeconds": 912,
+    "secondsPerPage": 1.0484,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 399,
+    "queueRemaining": 416,
     "pagesByRegion": {
       "san-diego": 19
     },
     "regionPageReserve": {
       "san-diego": 150
     },
-    "completedAt": "2026-11-06T10:30:06.110Z"
+    "completedAt": "2026-11-06T20:56:59.072Z"
   },
   "candidates": [
     {
@@ -54,8 +54,8 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Skip to Main Content\nEvents\nSearchSign InSign In\nMore\nHostsCerebral Valley\nAIE Code Summit 2026 Hackathon\nSan Francisco, CASat, Nov 7 at 9:00 AM – 10:00 PM (PST)\n\nWelcome to the AI Engineer Code Summit Hackathon!\n\nWe've teamed up with Meta, Google Deepmind, MongoDB, Subquadratic, and Fetch.ai to host a one day hackathon for working on frontier AI engineering problems, the weekend before the official summit.\n\nCoding agents can already write code, but what happens when they must understand, finish, and judge real software on their own? Come build agents that close the gap, building systems that get measurably better with every run, reconstruct software from imperfect evidence, and verify what other agents ship before it merges.\n\nSpeakers and judges will be drawn from the top of the industry, including Ivan Leo from Google DeepMind and Mike Beltzner from Meta.\n\nWin $11,000 in total prizes, including $5,000 for the best use of the Meta Model API!\n\nNote: This event is fully in-person in San Francisco. Space is limited. Maximum team size is four. All attendees must submit an application and be approved to attend.\n\nGuest List\n436Going\nRegister",
-      "checkedAt": "2026-11-06T10:17:24.899Z",
+      "evidence": "Skip to Main Content\nEvents\nSearchSign InSign In\nMore\nHostsCerebral Valley\nAIE Code Summit 2026 Hackathon\nSan Francisco, CASat, Nov 7 at 9:00 AM – 10:00 PM (PST)\n\nWelcome to the AI Engineer Code Summit Hackathon!\n\nWe've teamed up with Meta, Google Deepmind, MongoDB, Subquadratic, and Fetch.ai to host a one day hackathon for working on frontier AI engineering problems, the weekend before the official summit.\n\nCoding agents can already write code, but what happens when they must understand, finish, and judge real software on their own? Come build agents that close the gap, building systems that get measurably better with every run, reconstruct software from imperfect evidence, and verify what other agents ship before it merges.\n\nSpeakers and judges will be drawn from the top of the industry, including Ivan Leo from Google DeepMind and Mike Beltzner from Meta.\n\nWin $11,000 in total prizes, including $5,000 for the best use of the Meta Model API!\n\nNote: This event is fully in-person in San Francisco. Space is limited. Maximum team size is four. All attendees must submit an application and be approved to attend.\n\nGuest List\n444Going\nRegister",
+      "checkedAt": "2026-11-06T20:45:36.979Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://cerebralvalley.ai/e/aie-code-2026-hackathon",
@@ -110,7 +110,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-06T10:13:47.179Z"
+      "checkedAt": "2026-11-06T20:42:05.558Z"
     },
     {
       "url": "https://luma.com/gap48i1m",
@@ -149,7 +149,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-06T10:14:16.715Z"
+      "checkedAt": "2026-11-06T20:42:33.333Z"
     },
     {
       "url": "https://luma.com/6nwwah7d",
@@ -187,44 +187,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-06T10:14:47.129Z"
-    },
-    {
-      "url": "https://luma.com/hackersquad-online-hackathon",
-      "title": "AI Remote Hackathon (1 Week for Building)",
-      "category": "hackathon",
-      "discoveredVia": "personalized",
-      "confidence": 78,
-      "relevance": 79,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Skip to Content\n10:18 AM UTC\nDiscover Events\nSign In\nPresented by\n[SF] HackerSquad\nFollow\nPreviously [SF] Builders Collective\n\nA builder first community. Hear from great speakers, learn how to implement new tools, and show off what you're building with them!\nHosted By\nHackerSquad\nContact the Host\nReport Event\nAI\nAI Remote Hackathon (1 Week for Building)\nNOV\n7\nSaturday, November 7\n5:30 AM - Nov 16, 7:59 AM UTC\nGoogle Meet\nRegistration\nApproval Required\nYour registration is subject to host approval.\nWelcome! To join the event, please register below.\nRequest to Join\nAbout Event\n\n​AI Remote Hackathon (1 Week for Building)\n\n​Build from anywhere. Take one week to turn an AI idea into something real.\n\n​Join developers, AI engineers, researchers, and technical founders for a remote hackathon focused on building AI applications. Whether you’re exploring a new idea or tackling a problem you’ve wanted to solve, this is a chance to make time for building.\n\n​With a full week to work, you’ll have room to experiment, test your approach, and take your project beyond the first prototype.\n\n​What could you build?\n\n​AI agents that handle useful tasks and workflows\n\n​Tools that make developers more productive\n\n​Applications for research, learning, or everyday work\n\n​Creative projects using image, video, voice, or music\n\n​Something unexpected—we’re excited to see where you take it\n\n​How it works\n\n​The hackathon is fully remote, so you can participate from wherever you are. You’ll have one week dedicated to building your project.\n\n​We’ll share more details soon, including the schedule, participation guidelines, and how to submit your project. Register to stay updated as we announce what’s next.\n\n​Bring your curiosity, pick a problem, and build something you’re excited about.\n\nDiscoverPricingHelp\nGet the App",
-      "checkedAt": "2026-11-06T10:18:50.488Z",
-      "heldBecause": null,
-      "structuredEvent": {
-        "url": "https://luma.com/hackersquad-online-hackathon",
-        "name": "AI Remote Hackathon (1 Week for Building)",
-        "description": "AI Remote Hackathon (1 Week for Building)\nBuild from anywhere. Take one week to turn an AI idea into something real.\nJoin developers, AI engineers, researchers, and technical founders for a remote hackathon focused on building AI applications. Whether you’re exploring a new idea or tackling a problem you’ve wanted to solve, this is a chance to make time for building.\nWith a full week to work, you’ll have room to experiment, test your approach, and take your project beyond the first prototype.\nWhat could you build?\nAI agents that handle useful tasks and workflows\nTools that make developers more productive\nApplications for research, learning, or everyday work\nCreative projects using image, video, voice, or music\nSomething unexpected—we’re excited to see where you take it\nHow it works\nThe hackathon is fully remote, so you can participate from wherever you are. You’ll have one week dedicated to building your project.\nWe’ll share more details soon, including the schedule, participation guidelines, and how to submit your project. Register to stay updated as we announce what’s next.\nBring your curiosity, pick a problem, and build something you’re excited about.",
-        "startDate": "2026-11-06T21:30:00.000-08:00",
-        "endDate": "2026-11-15T23:59:00.000-08:00",
-        "attendanceMode": "https://schema.org/OnlineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "Online Event",
-          "city": null,
-          "region": null
-        },
-        "organizers": [
-          "[SF] HackerSquad",
-          "HackerSquad"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      }
+      "checkedAt": "2026-11-06T20:43:03.201Z"
     },
     {
       "url": "https://luma.com/92iq2a12",
@@ -264,7 +227,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-06T10:13:47.178Z"
+      "checkedAt": "2026-11-06T20:42:05.558Z"
     },
     {
       "url": "https://luma.com/d7k1r7h4",
@@ -305,7 +268,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-06T10:13:47.178Z"
+      "checkedAt": "2026-11-06T20:42:05.558Z"
     },
     {
       "url": "https://luma.com/seldon-4b3d",
@@ -344,7 +307,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-06T10:13:47.179Z"
+      "checkedAt": "2026-11-06T20:42:05.558Z"
     },
     {
       "url": "https://luma.com/ccsf-robotics-hack",
@@ -381,7 +344,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-06T10:14:16.714Z"
+      "checkedAt": "2026-11-06T20:42:33.333Z"
     },
     {
       "url": "https://luma.com/unu-q-3-nov-6-26",
@@ -419,7 +382,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-06T10:14:16.714Z"
+      "checkedAt": "2026-11-06T20:42:33.333Z"
     },
     {
       "url": "https://luma.com/pah",
@@ -458,7 +421,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-06T10:14:16.715Z"
+      "checkedAt": "2026-11-06T20:42:33.333Z"
     },
     {
       "url": "https://luma.com/6vb82jnj",
@@ -497,7 +460,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-06T10:14:16.715Z"
+      "checkedAt": "2026-11-06T20:42:33.333Z"
     },
     {
       "url": "https://luma.com/sfxmit-energy-staged",
@@ -513,7 +476,7 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "SF × MIT Hack Day: Energy\nAscension - by AGI House SF\nAscension - by AGI House SF\nJulius Ritter\nMicah Stubbs\nSerge Alexander Didenko\nMicah Stubbs\nAI Tinkerers Paris\nSan Francisco, CA\nSan Francisco\nCalifornia",
+      "evidence": "SF × MIT Hack Day: Energy\nAscension - by AGI House SF\nAscension - by AGI House SF\nJulius Ritter\nMicah Stubbs\nSerge Alexander Didenko\nMicah Stubbs\nAbdoulaye DOUCOURE\nSan Francisco, CA\nSan Francisco\nCalifornia",
       "structuredEvent": {
         "url": "https://luma.com/sfxmit-energy-staged",
         "name": "SF × MIT Hack Day: Energy",
@@ -534,11 +497,11 @@
           "Micah Stubbs",
           "Serge Alexander Didenko",
           "Micah Stubbs",
-          "AI Tinkerers Paris"
+          "Abdoulaye DOUCOURE"
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-06T10:14:16.715Z"
+      "checkedAt": "2026-11-06T20:42:33.333Z"
     },
     {
       "url": "https://luma.com/buildclub-lugq",
@@ -582,7 +545,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-06T10:14:16.715Z"
+      "checkedAt": "2026-11-06T20:42:33.333Z"
     }
   ],
   "errors": []

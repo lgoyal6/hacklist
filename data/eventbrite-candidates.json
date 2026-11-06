@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-11-06T10:31:42.683Z",
+  "collectedAt": "2026-11-06T20:58:41.322Z",
   "source": "eventbrite",
   "queries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
@@ -17,19 +17,19 @@
   "problems": [
     {
       "query": "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
-      "error": "Error: HTTP 405"
+      "error": "Error: HTTP 405, then unlocker HTTP 401: Token expired"
     },
     {
       "query": "https://www.eventbrite.com/d/ca--oakland/hackathon/",
-      "error": "Error: HTTP 405"
+      "error": "Error: HTTP 405, then unlocker HTTP 401: Token expired"
     },
     {
       "query": "https://www.eventbrite.com/d/ca--san-jose/hackathon/",
-      "error": "Error: HTTP 405"
+      "error": "Error: HTTP 405, then unlocker HTTP 401: Token expired"
     },
     {
       "query": "https://www.eventbrite.com/d/ca--san-diego/hackathon/",
-      "error": "Error: HTTP 405"
+      "error": "Error: HTTP 405, then unlocker HTTP 401: Token expired"
     }
   ],
   "carried": 5,
