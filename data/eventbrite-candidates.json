@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-11-07T04:30:44.647Z",
+  "collectedAt": "2026-11-07T09:47:14.319Z",
   "source": "eventbrite",
   "queries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
@@ -11,11 +11,28 @@
     "past": 0,
     "online": 0,
     "notLocal": 0,
-    "notHackathon": 70,
+    "notHackathon": 0,
     "recurring": 0
   },
-  "problems": [],
-  "carried": 0,
+  "problems": [
+    {
+      "query": "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
+      "error": "Error: HTTP 405, then unlocker HTTP 401: Token expired"
+    },
+    {
+      "query": "https://www.eventbrite.com/d/ca--oakland/hackathon/",
+      "error": "Error: HTTP 405, then unlocker HTTP 401: Token expired"
+    },
+    {
+      "query": "https://www.eventbrite.com/d/ca--san-jose/hackathon/",
+      "error": "Error: HTTP 405, then unlocker HTTP 401: Token expired"
+    },
+    {
+      "query": "https://www.eventbrite.com/d/ca--san-diego/hackathon/",
+      "error": "Error: HTTP 405, then unlocker HTTP 401: Token expired"
+    }
+  ],
+  "carried": 5,
   "note": "Eventbrite search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
   "candidates": [
     {
