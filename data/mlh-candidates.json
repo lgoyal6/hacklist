@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-11-08T19:31:50.679Z",
+  "collectedAt": "2026-11-09T10:58:41.776Z",
   "source": "https://www.mlh.com/seasons",
   "seasons": [
     2026,
@@ -8,12 +8,54 @@
   "eventsSeen": 72,
   "skipped": {
     "past": 48,
-    "online": 3,
+    "online": 1,
     "notLocal": 21,
     "notHackathon": 0,
-    "unplaceable": []
+    "unplaceable": [
+      {
+        "name": "QWER Hacks",
+        "location": "Los Angeles, CA, US, Los Angeles, CA"
+      }
+    ]
   },
   "problems": [],
   "note": "Major League Hacking's season calendar, read anonymously from the JSON the season page embeds. Real timestamps and a structured venueAddress, so locality is decided on stated fields. Sees further ahead than any calendar source because student hackathons are announced a semester out.",
-  "candidates": []
+  "candidates": [
+    {
+      "url": "https://hackathon.csesatucsd.com/",
+      "title": "SanD Hacks",
+      "category": "hackathon",
+      "discoveredVia": "https://www.mlh.com/seasons",
+      "confidence": 62,
+      "relevance": 60,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "SanD Hacks\nLa Jolla, CA, US, La Jolla, CA\nNOV 14 - 15\nhackathon\nhttps://hackathon.csesatucsd.com/",
+      "checkedAt": "2026-11-09T10:58:41.775Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://hackathon.csesatucsd.com/",
+        "name": "SanD Hacks",
+        "description": null,
+        "startDate": "2026-11-14T14:00:00.000Z",
+        "endDate": "2026-11-15T20:00:00.000Z",
+        "timeSource": "mlh",
+        "organizers": [
+          "Major League Hacking"
+        ],
+        "location": {
+          "name": "La Jolla, CA",
+          "city": "La Jolla",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    }
+  ]
 }

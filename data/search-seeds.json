@@ -1,23 +1,23 @@
 {
-  "collectedAt": "2026-11-08T19:15:17.821Z",
+  "collectedAt": "2026-11-09T10:42:01.313Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
   "problems": [
     {
-      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
+      "query": "site:luma.com hackathon \"san diego\" 2026",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
-      "query": "site:lu.ma hackathon san francisco 2026",
+      "query": "site:luma.com \"ai hackathon\" san francisco upcoming",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
-      "query": "site:luma.com hackathon \"bay area\" 2026",
+      "query": "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
-      "query": "site:luma.com buildathon OR makeathon OR \"make-a-thon\" bay area",
+      "query": "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026",
       "error": "brightdata HTTP 401: Token expired"
     }
   ],
@@ -152,13 +152,6 @@
       "lastSeenAt": "2026-10-28T19:58:52.004Z"
     },
     {
-      "url": "https://luma.com/6o6yljv2",
-      "queries": [
-        "site:luma.com hackathon \"san diego\" 2026"
-      ],
-      "lastSeenAt": "2026-10-19T08:20:55.929Z"
-    },
-    {
       "url": "https://luma.com/6s3u6xwc",
       "queries": [
         "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
@@ -269,13 +262,6 @@
         "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
       ],
       "lastSeenAt": "2026-10-29T19:56:50.358Z"
-    },
-    {
-      "url": "https://luma.com/aixbio-hackathon-2026-sf",
-      "queries": [
-        "site:luma.com hackathon san francisco 2026"
-      ],
-      "lastSeenAt": "2026-10-19T08:20:55.929Z"
     },
     {
       "url": "https://luma.com/alif",
