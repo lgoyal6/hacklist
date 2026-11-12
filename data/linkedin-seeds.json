@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-11-12T10:31:55.344Z",
+  "collectedAt": "2026-11-12T21:41:25.682Z",
   "searchProviders": [
     "brightdata"
   ],
@@ -11,17 +11,17 @@
   "problems": [
     {
       "stage": "search",
-      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
+      "query": "buildathon OR makeathon OR \"game jam\" san diego 2026",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
       "stage": "search",
-      "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
+      "query": "hackathon sponsors judges san francisco apply luma",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
       "stage": "search",
-      "query": "weekly bay area ai events hackathon 2026",
+      "query": "\"we are hosting\" hackathon san francisco 2026",
       "error": "brightdata HTTP 401: Token expired"
     }
   ],

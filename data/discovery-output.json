@@ -14,32 +14,65 @@
     "unlockerConfigured": true,
     "unlockerProblem": "Error: unlocker HTTP 401: Token expired",
     "lastDeepSweepAt": "2026-11-02T23:49:06.666Z",
-    "httpFailures": 25,
-    "httpThrottled": 24,
-    "httpPauses": 3,
+    "httpFailures": 33,
+    "httpThrottled": 32,
+    "httpPauses": 4,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 17,
-    "structuredEventsFound": 113,
-    "candidatesFound": 1,
+    "externalPagesVisited": 14,
+    "structuredEventsFound": 97,
+    "candidatesFound": 2,
     "heldForReview": 0,
-    "nearMisses": 6,
+    "nearMisses": 5,
     "stoppedOnTimeBudget": false,
     "browserRestarts": 0,
-    "elapsedSeconds": 909,
-    "secondsPerPage": 1.0444,
+    "elapsedSeconds": 1014,
+    "secondsPerPage": 1.1654,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 433,
+    "queueRemaining": 397,
     "pagesByRegion": {
       "san-diego": 17
     },
     "regionPageReserve": {
       "san-diego": 150
     },
-    "completedAt": "2026-11-12T10:47:41.869Z"
+    "completedAt": "2026-11-12T21:58:54.314Z"
   },
   "candidates": [
+    {
+      "url": "https://luma.com/advrricd",
+      "title": "Do Not Disturb",
+      "category": "hackathon",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 94,
+      "relevance": 88,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Do Not Disturb\nA 32-hour hackathon will challenge teams of 1–3 to build impressive AI agents that use phones, with every feature accessible from a phone. Hosted by Entrepreneur First in partnership with LangChain, the event will bring together 100 builders to compete for $3,000 in cash prizes.\nSan Francisco, CA\nSan Francisco\nCA",
+      "structuredEvent": {
+        "url": "https://luma.com/advrricd",
+        "name": "Do Not Disturb",
+        "description": "A 32-hour hackathon will challenge teams of 1–3 to build impressive AI agents that use phones, with every feature accessible from a phone. Hosted by Entrepreneur First in partnership with LangChain, the event will bring together 100 builders to compete for $3,000 in cash prizes.",
+        "startDate": "2026-11-12T17:30:00.000Z",
+        "endDate": "2026-11-14T04:30:00.000Z",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "organizers": [],
+        "offerAvailability": null
+      },
+      "checkedAt": "2026-11-12T21:42:41.475Z"
+    },
     {
       "url": "https://luma.com/ngp87mr4",
       "title": "EcoNova Hacks",
@@ -74,7 +107,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-12T10:33:50.761Z"
+      "checkedAt": "2026-11-12T21:43:19.847Z"
     }
   ],
   "errors": []
