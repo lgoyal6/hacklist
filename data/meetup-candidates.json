@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-11-13T10:42:27.066Z",
+  "collectedAt": "2026-11-13T21:09:34.060Z",
   "source": "meetup",
   "queries": [
     "https://www.meetup.com/find/?keywords=hackathon&location=us--ca--san%20francisco&source=EVENTS",
@@ -8,15 +8,51 @@
   ],
   "skipped": {
     "past": 0,
-    "online": 1,
+    "online": 5,
     "notLocal": 4,
-    "notHackathon": 29,
+    "notHackathon": 25,
     "recurring": 0
   },
   "problems": [],
   "carried": 0,
   "note": "Meetup search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
   "candidates": [
+    {
+      "url": "https://www.meetup.com/sfcivictech/events/317200521/",
+      "title": "In-person (Hybrid) Civic Hack Night & MapTime GIS Day Map-a-thon",
+      "category": "hackathon",
+      "heldBecause": null,
+      "discoveredVia": "meetup",
+      "confidence": 78,
+      "relevance": 79,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "In-person (Hybrid) Civic Hack Night & MapTime GIS Day Map-a-thon\n1885 Mission Street\nSan Francisco, CA\n**Update:** Join us in-person if you can for the November 18th Weekly Civic Hack Night in San Francisco at 1885 Mission St! Please RSVP in advance if you will be joining us so that we can order enough food and drinks.\n\nJoin SF Civic Tech (formerly Code for San Francisco), a grassroots group of volunteers learning and applying our skills with technology, design, research, and more in service of the public good of San Francisco.\n\n**Special guest event:** MapTime GIS Day Map-a-thon\nMapTime is a light gathering for all those map-curious and map-makers. We aim to be an open learning environment for all levels and degrees of knowledge. Whether you have spent years in GIS or simply have a spatial/mapping interest, you are welcome here.\n\nTo celebrate GIS Day, MapTime SF is hosting a map-a-thon: an evening of making maps together, sharing what we are working on, and learning from each other. Come with a laptop, a sketchbook, or just curiosity. You can build something from scratch, pick up a project you have been meaning to finish, or work alongside someone and learn their approach.\n\n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\nPLEASE help promote our community by registering ahead of time in Meetup.\nTo join online: [https://c4sf.me/zoom](https://c4sf.me/zoom)\n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\n\nOur weekly \"hack nights\" offer an opportunity to join the tech community, network, learn about what's going on, and contribute to projects for your passion or portfolio.\n\nEveryone is welcome regardless of your current skillset. If you're unable to attend at this time, you can still join us on slack ([https://c4sf.me/slack](https://c4sf.me/slack)), where you'll find links to current projects and links to project calls.\n\nHow it works:\n\n* **6:30**: Zoom opens: Meet and Greet\n* **6:45:** Opening announcements\n* **6:50**: New Member Orientation\n* **7:00 - 9:00**: Work on projects, explore civic issues, and make new connections. Special guest event: MapTime GIS Day Map-a-thon\n* **9:00**: Lights out!\n\nGood to know:\n\n* Join our Slack workspace ([https://c4sf.me/slack](https://c4sf.me/slack)), where we collaborate remotely\n* We ask everyone to abide by our Code of Conduct ([https://c4sf.me/code-of-conduct/](https://c4sf.me/code-of-conduct/)). We will not hesitate to remove anyone who does not respect our community norms.",
+      "checkedAt": "2026-11-13T21:09:31.311Z",
+      "structuredEvent": {
+        "url": "https://www.meetup.com/sfcivictech/events/317200521/",
+        "name": "In-person (Hybrid) Civic Hack Night & MapTime GIS Day Map-a-thon",
+        "description": "**Update:** Join us in-person if you can for the November 18th Weekly Civic Hack Night in San Francisco at 1885 Mission St! Please RSVP in advance if you will be joining us so that we can order enough food and drinks.\n\nJoin SF Civic Tech (formerly Code for San Francisco), a grassroots group of volunteers learning and applying our skills with technology, design, research, and more in service of the public good of San Francisco.\n\n**Special guest event:** MapTime GIS Day Map-a-thon\nMapTime is a light gathering for all those map-curious and map-makers. We aim to be an open learning environment for all levels and degrees of knowledge. Whether you have spent years in GIS or simply have a spatial/mapping interest, you are welcome here.\n\nTo celebrate GIS Day, MapTime SF is hosting a map-a-thon: an evening of making maps together, sharing what we are working on, and learning from each other. Come with a laptop, a sketchbook, or just curiosity. You can build something from scratch, pick up a project you have been meaning to finish, or work alongside someone and learn their approach.\n\n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\nPLEASE help promote our community by registering ahead of time in Meetup.\nTo join online: [https://c4sf.me/zoom](https://c4sf.me/zoom)\n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\n\nOur weekly \"hack nights\" offer an opportunity to join the tech community, network, learn about what's going on, and contribute to projects for your passion or portfolio.\n\nEveryone is welcome regardless of your current skillset. If you're unable to attend at this time, you can still join us on slack ([https://c4sf.me/slack](https://c4sf.me/slack)), where you'll find links to current projects and links to project calls.\n\nHow it works:\n\n* **6:30**: Zoom opens: Meet and Greet\n* **6:45:** Opening announcements\n* **6:50**: New Member Orientation\n* **7:00 - 9:00**: Work on projects, explore civic issues, and make new connections. Special guest event: MapTime GIS Day Map-a-thon\n* **9:00**: Lights out!\n\nGood to know:\n\n* Join our Slack workspace ([https://c4sf.me/slack](https://c4sf.me/slack)), where we collaborate remotely\n* We ask everyone to abide by our Code of Conduct ([https://c4sf.me/code-of-conduct/](https://c4sf.me/code-of-conduct/)). We will not hesitate to remove anyone who does not respect our community norms.",
+        "startDate": "2026-11-19T02:30:00.000Z",
+        "endDate": "2026-11-19T02:30:00.000Z",
+        "timeSource": "meetup",
+        "organizers": [
+          "SF Civic Tech"
+        ],
+        "location": {
+          "name": "1885 Mission Street",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "offerAvailability": null,
+        "going": null
+      }
+    },
     {
       "url": "https://www.meetup.com/san-francisco-hacky-sack-club/events/317316185/",
       "title": "Park Hack",
@@ -33,7 +69,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "Park Hack\nPanhandle\nSan Francisco, CA\nCome for five minutes or stay for the whole afternoon. Friends, newcomers, and curious passersby are all welcome. No special equipment, or commitment necessary.\n\nThe idea is simple: get outside, play, laugh, and build a little community along the way.",
-      "checkedAt": "2026-11-13T10:42:23.463Z",
+      "checkedAt": "2026-11-13T21:09:31.310Z",
       "structuredEvent": {
         "url": "https://www.meetup.com/san-francisco-hacky-sack-club/events/317316185/",
         "name": "Park Hack",
@@ -46,42 +82,6 @@
         ],
         "location": {
           "name": "Panhandle",
-          "city": "San Francisco",
-          "region": "CA"
-        },
-        "offerAvailability": null,
-        "going": null
-      }
-    },
-    {
-      "url": "https://www.meetup.com/sfcivictech/events/317200521/",
-      "title": "In-person (Hybrid) Civic Hack Night",
-      "category": "hackathon",
-      "heldBecause": null,
-      "discoveredVia": "meetup",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "In-person (Hybrid) Civic Hack Night\n1885 Mission Street\nSan Francisco, CA\n**Update:** Join us in-person if you can for the November 18th Weekly Civic Hack Night in San Francisco at 1885 Mission St! Please RSVP in advance if you will be joining us so that we can order enough food and drinks.\n\nJoin SF Civic Tech (formerly Code for San Francisco), a grassroots group of volunteers learning and applying our skills with technology, design, research, and more in service of the public good of San Francisco.\n\n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\nPLEASE help promote our community by registering ahead of time in Meetup.\nTo join online: [https://c4sf.me/zoom](https://c4sf.me/zoom)\n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\n\nOur weekly \"hack nights\" offer an opportunity to join the tech community, network, learn about what's going on, and contribute to projects for your passion or portfolio.\n\nEveryone is welcome regardless of your current skillset. If you're unable to attend at this time, you can still join us on slack ([https://c4sf.me/slack](https://c4sf.me/slack)), where you'll find links to current projects and links to project calls.\n\nHow it works:\n\n* **6:30**: Zoom opens: Meet and Greet\n* **6:45:** Opening announcements\n* **6:50**: New Member Orientation\n* **7:00 - 9:00**: Work on projects, explore civic issues, and make new connections\n* **9:00**: Lights out!\n\nGood to know:\n\n* Join our Slack workspace ([https://c4sf.me/slack](https://c4sf.me/slack)), where we collaborate remotely\n* We ask everyone to abide by our Code of Conduct ([https://c4sf.me/code-of-conduct/](https://c4sf.me/code-of-conduct/)). We will not hesitate to remove anyone who does not respect our community norms.",
-      "checkedAt": "2026-11-13T10:42:23.464Z",
-      "structuredEvent": {
-        "url": "https://www.meetup.com/sfcivictech/events/317200521/",
-        "name": "In-person (Hybrid) Civic Hack Night",
-        "description": "**Update:** Join us in-person if you can for the November 18th Weekly Civic Hack Night in San Francisco at 1885 Mission St! Please RSVP in advance if you will be joining us so that we can order enough food and drinks.\n\nJoin SF Civic Tech (formerly Code for San Francisco), a grassroots group of volunteers learning and applying our skills with technology, design, research, and more in service of the public good of San Francisco.\n\n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\nPLEASE help promote our community by registering ahead of time in Meetup.\nTo join online: [https://c4sf.me/zoom](https://c4sf.me/zoom)\n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\n\nOur weekly \"hack nights\" offer an opportunity to join the tech community, network, learn about what's going on, and contribute to projects for your passion or portfolio.\n\nEveryone is welcome regardless of your current skillset. If you're unable to attend at this time, you can still join us on slack ([https://c4sf.me/slack](https://c4sf.me/slack)), where you'll find links to current projects and links to project calls.\n\nHow it works:\n\n* **6:30**: Zoom opens: Meet and Greet\n* **6:45:** Opening announcements\n* **6:50**: New Member Orientation\n* **7:00 - 9:00**: Work on projects, explore civic issues, and make new connections\n* **9:00**: Lights out!\n\nGood to know:\n\n* Join our Slack workspace ([https://c4sf.me/slack](https://c4sf.me/slack)), where we collaborate remotely\n* We ask everyone to abide by our Code of Conduct ([https://c4sf.me/code-of-conduct/](https://c4sf.me/code-of-conduct/)). We will not hesitate to remove anyone who does not respect our community norms.",
-        "startDate": "2026-11-19T02:30:00.000Z",
-        "endDate": "2026-11-19T02:30:00.000Z",
-        "timeSource": "meetup",
-        "organizers": [
-          "SF Civic Tech"
-        ],
-        "location": {
-          "name": "1885 Mission Street",
           "city": "San Francisco",
           "region": "CA"
         },
