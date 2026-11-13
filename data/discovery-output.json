@@ -4,40 +4,40 @@
     "startedFrom": 29,
     "personalizedSeeds": 3613,
     "personalizedPromising": 134,
-    "searchSeeds": 41,
+    "searchSeeds": 38,
     "apiCalendarSeeds": 21,
     "linkedinSeeds": 16,
     "linkedinPromising": 15,
     "pagesVisited": 870,
-    "pagesReadOverHttp": 4,
+    "pagesReadOverHttp": 1,
     "pagesReadViaUnlocker": 0,
     "unlockerConfigured": true,
     "unlockerProblem": "Error: unlocker HTTP 401: Token expired",
     "lastDeepSweepAt": "2026-11-02T23:49:06.666Z",
-    "httpFailures": 26,
-    "httpThrottled": 24,
-    "httpPauses": 3,
+    "httpFailures": 33,
+    "httpThrottled": 32,
+    "httpPauses": 4,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 15,
-    "structuredEventsFound": 196,
-    "candidatesFound": 22,
+    "externalPagesVisited": 10,
+    "structuredEventsFound": 112,
+    "candidatesFound": 11,
     "heldForReview": 0,
     "nearMisses": 1,
     "stoppedOnTimeBudget": false,
     "browserRestarts": 0,
-    "elapsedSeconds": 926,
-    "secondsPerPage": 1.0649,
+    "elapsedSeconds": 989,
+    "secondsPerPage": 1.1369,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 416,
+    "queueRemaining": 383,
     "pagesByRegion": {
-      "san-diego": 17
+      "san-diego": 15
     },
     "regionPageReserve": {
       "san-diego": 150
     },
-    "completedAt": "2026-11-13T10:40:45.555Z"
+    "completedAt": "2026-11-13T22:04:12.006Z"
   },
   "candidates": [
     {
@@ -55,7 +55,7 @@
         "negativeTitleEvidence": false
       },
       "evidence": "All Hackathons\nHome\nHackathons\nTools\nIdeas\nBlog\nAbout\nAdd hackathon\nLog in\n  Back to Results\nDo Not Disturb: Phone Use Hackathon\naimachine learningmobile\n  In-person\nOpen\nAbout This Hackathon\n\nYour phone is on Do Not Disturb. Your agent isn't. A 32-hour hackathon (Nov 12-13) at Entrepreneurs First, 501 Folsom St, SF, where 100 builders teach AI agents to use the phone. Teams of 1 to 3, everything must be accessible from a phone. $3,000 in cash prizes. Hosted by Entrepreneurs First, in partnership with LangChain.\n\n  Event Dates\nNov. 12, 2026\nto Nov. 13, 2026\n  Location\n\nEntrepreneurs First, 501 Folsom St, San Francisco, CA\n\n  Organizer\n\nExit 1\n\n  Prizes\n\n$3,000 in cash prizes ($1,500 / $1,000 / $500)\n\nOfficial Website\nVisit Website\nGet ahead in innovation - receive all the latest hackathons directly in your inbox.\nSubscribe\nHackathons\nSearchThemesCountries\nResources\nList of toolsIdeas\nAll Hackathons\nAbout\n\nAll Hackathons 2026\n\nPrivacy & termsTerms of service\n\nHackathons in Discover the Power of Hackathons: Connect, Learn, Innovate.",
-      "checkedAt": "2026-11-13T10:28:53.984Z",
+      "checkedAt": "2026-11-13T21:50:43.194Z",
       "heldBecause": null,
       "structuredEvent": {
         "url": "https://allhackathons.com/hackathon/do-not-disturb-phone-use-hackathon",
@@ -75,53 +75,10 @@
       }
     },
     {
-      "url": "https://luma.com/t2598jt6",
-      "title": "Stanford vs Berkeley · The Big Hack Game · Up to $10,000 in Cash Prizes · Kickoffs on Both Campuses",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "confidence": 94,
-      "relevance": 88,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": true,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Stanford vs Berkeley · The Big Hack Game · Up to $10,000 in Cash Prizes · Kickoffs on Both Campuses\nHarnessRouter Labs\nHarnessRouter\nTatianaSF com\nKairui Ying\nLiana Zhou\nFunding Breakthrough Lab\nNatalie Pan\nSahar Mor (Bond AI)\nBerkeley, CA\nBerkeley\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/t2598jt6",
-        "name": "Stanford vs Berkeley · The Big Hack Game · Up to $10,000 in Cash Prizes · Kickoffs on Both Campuses",
-        "description": null,
-        "startDate": "2026-11-15T10:00:00.000-08:00",
-        "endDate": "2026-11-20T12:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "Berkeley, CA",
-          "city": "Berkeley",
-          "region": "California"
-        },
-        "organizers": [
-          "HarnessRouter Labs",
-          "HarnessRouter",
-          "TatianaSF com",
-          "Kairui Ying",
-          "Liana Zhou",
-          "Funding Breakthrough Lab",
-          "Natalie Pan",
-          "Sahar Mor (Bond AI)"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-13T10:25:45.462Z",
-      "heldBecause": null
-    },
-    {
       "url": "https://luma.com/beta-3ue5",
       "title": "2k Cash-prize Multi-Modal AI for Education Hackathon @ Snowflake | Beta Fund × Epic",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/genai-sf",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
       "confidence": 94,
       "relevance": 88,
       "signals": {
@@ -131,7 +88,7 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "2k Cash-prize Multi-Modal AI for Education Hackathon @ Snowflake | Beta Fund × Epic\nBETA\nBeta University\nDaniel Niu\nSahar Mor (Bond AI)\nSilicon Valley AI Hub\nGeorgy Trushevskiy ⚡\nSFPlayground\nMenlo Park, CA\nMenlo Park\nCalifornia",
+      "evidence": "Multi-Modal AI for Education Hackathon @ Snowflake | Beta Fund × Epic\nBeta Fund and Epic will host a build-first hackathon focused on multimodal education tools that combine text with voice, images, handwriting, or video, with teams creating working demos and measurable learning outcomes. The day will feature an education-AI panel with speakers from Epic, Khan…\nMenlo Park, CA\nMenlo Park\nCA",
       "structuredEvent": {
         "url": "https://luma.com/beta-3ue5",
         "name": "2k Cash-prize Multi-Modal AI for Education Hackathon @ Snowflake | Beta Fund × Epic",
@@ -156,8 +113,41 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-13T10:25:47.303Z",
+      "checkedAt": "2026-11-13T21:48:31.028Z",
       "heldBecause": null
+    },
+    {
+      "url": "https://luma.com/band-ai-hacks-nov13-2026",
+      "title": "BAND Dark Factory Buildathon",
+      "category": "hackathon",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 94,
+      "relevance": 88,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "BAND Dark Factory Buildathon\nThe BAND Dark Factory Buildathon will bring developers, designers, founders, and builders together to create AI software factories with Band Desktop, exploring how coding agents can collaborate to turn specifications into working software. The kickoff will feature prize announcements, a panel…\nSan Francisco, CA\nSan Francisco\nCA",
+      "structuredEvent": {
+        "url": "https://luma.com/band-ai-hacks-nov13-2026",
+        "name": "BAND Dark Factory Buildathon",
+        "description": "The BAND Dark Factory Buildathon will bring developers, designers, founders, and builders together to create AI software factories with Band Desktop, exploring how coding agents can collaborate to turn specifications into working software. The kickoff will feature prize announcements, a panel…",
+        "startDate": "2026-11-13T18:00:00.000Z",
+        "endDate": "2026-11-14T03:00:00.000Z",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "organizers": [],
+        "offerAvailability": null
+      },
+      "checkedAt": "2026-11-13T21:48:24.330Z"
     },
     {
       "url": "https://luma.com/BoatHackathonChristening",
@@ -201,9 +191,9 @@
           "Joseph Perla",
           "Yahia Bakour (Context.dev)"
         ],
-        "offerAvailability": "https://schema.org/InStock"
+        "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-11-13T10:25:38.536Z"
+      "checkedAt": "2026-11-13T21:48:02.323Z"
     },
     {
       "url": "https://luma.com/advrricd",
@@ -219,7 +209,7 @@
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "Do Not Disturb HACKATHON\nOn November 12–13, 100 builders will compete in a 32-hour hackathon to create phone-accessible AI agents, with $3,000 in prizes at stake. The event will be held in partnership with LangChain, Bond AI, and Intertech Talents, and teams of one to three will build their projects.\nSan Francisco, CA\nSan Francisco\nCA",
+      "evidence": "Do Not Disturb Hackathon at Entrepreneurs First\nOn November 13, 50 builders will have 10 hours to create AI agents that use a phone, with every project required to be phone-accessible and $3,000 in prizes at stake. The hackathon will be backed by Entrepreneurs First, Replit, LangChain, Phone Use, Bond AI, and Intertech Talents.\nSan Francisco, CA\nSan Francisco\nCA",
       "structuredEvent": {
         "url": "https://luma.com/advrricd",
         "name": "Do Not Disturb HACKATHON",
@@ -236,58 +226,48 @@
         "organizers": [],
         "offerAvailability": null
       },
-      "checkedAt": "2026-11-13T10:25:59.337Z",
+      "checkedAt": "2026-11-13T21:48:24.329Z",
       "heldBecause": null
     },
     {
-      "url": "https://luma.com/xdzhu4tn",
-      "title": "DNAForge & MTC Berkeley: AI × Biology Hackathon",
+      "url": "https://luma.com/AIECodeSummitHackathon",
+      "title": "AIE x MLH Hackathon",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/sf",
-      "confidence": 78,
-      "relevance": 71,
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 94,
+      "relevance": 81,
       "signals": {
         "directHackathonTerm": true,
         "buildEvidence": true,
-        "competitionEvidence": false,
+        "competitionEvidence": true,
         "sfBayAreaEvidence": true,
         "negativeTitleEvidence": false
       },
-      "evidence": "DNAForge & MTC Berkeley: AI × Biology Hackathon\nMTC Berkeley\nHeba Alazzeh\nHassaan Qadir\nMonishee at Modal\nModal Events\nVanessa Esquivel\nDeniz Kavi\nSahar Mor (Bond AI)\nNebius Developer Community\nBerkeley, CA\nBerkeley\nCalifornia",
+      "evidence": "AIE x MLH Hackathon\nMajor League Hacking will host a full-day hackathon for AI Engineer Code Summit attendees to turn conference ideas and techniques into working projects, with peer feedback and demos. The day will run from opening ceremony through submissions and demos, wrapping up at 7 p.m.\nSan Francisco, CA\nSan Francisco\nCA",
       "structuredEvent": {
-        "url": "https://luma.com/xdzhu4tn",
-        "name": "DNAForge & MTC Berkeley: AI × Biology Hackathon",
-        "description": null,
-        "startDate": "2026-11-14T09:00:00.000-08:00",
-        "endDate": "2026-11-14T21:00:00.000-08:00",
+        "url": "https://luma.com/AIECodeSummitHackathon",
+        "name": "AIE x MLH Hackathon",
+        "description": "Major League Hacking will host a full-day hackathon for AI Engineer Code Summit attendees to turn conference ideas and techniques into working projects, with peer feedback and demos. The day will run from opening ceremony through submissions and demos, wrapping up at 7 p.m.",
+        "startDate": "2026-11-13T17:00:00.000Z",
+        "endDate": "2026-11-14T03:00:00.000Z",
         "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "location": {
-          "name": "Berkeley, CA",
-          "city": "Berkeley",
-          "region": "California"
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "CA"
         },
-        "organizers": [
-          "MTC Berkeley",
-          "Heba Alazzeh",
-          "Hassaan Qadir",
-          "Monishee at Modal",
-          "Modal Events",
-          "Vanessa Esquivel",
-          "Deniz Kavi",
-          "Sahar Mor (Bond AI)",
-          "Nebius Developer Community"
-        ],
-        "offerAvailability": "https://schema.org/SoldOut"
+        "organizers": [],
+        "offerAvailability": null
       },
-      "checkedAt": "2026-11-13T10:25:25.390Z",
+      "checkedAt": "2026-11-13T21:48:24.329Z",
       "heldBecause": null
     },
     {
       "url": "https://luma.com/frontierSF2",
       "title": "SF Frontier Hackathon: Build your Autonomous Code Factory",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
       "confidence": 78,
       "relevance": 71,
       "signals": {
@@ -320,14 +300,52 @@
         ],
         "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-11-13T10:25:45.462Z",
-      "heldBecause": null
+      "checkedAt": "2026-11-13T21:48:31.028Z"
+    },
+    {
+      "url": "https://luma.com/mays98bp",
+      "title": "Hack with Claude - HBSA X SCET X Anthropic",
+      "category": "hackathon",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
+      "confidence": 78,
+      "relevance": 71,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": false,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Hack with Claude - HBSA X SCET X Anthropic\nEric Nguyen\nEric Nguyen\nGyan Bhambhani\nCody Jung\nOmar Alfaro\nBerkeley, CA\nBerkeley\nCalifornia",
+      "structuredEvent": {
+        "url": "https://luma.com/mays98bp",
+        "name": "Hack with Claude - HBSA X SCET X Anthropic",
+        "description": null,
+        "startDate": "2026-11-13T11:00:00.000-08:00",
+        "endDate": "2026-11-13T18:00:00.000-08:00",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "Berkeley, CA",
+          "city": "Berkeley",
+          "region": "California"
+        },
+        "organizers": [
+          "Eric Nguyen",
+          "Eric Nguyen",
+          "Gyan Bhambhani",
+          "Cody Jung",
+          "Omar Alfaro"
+        ],
+        "offerAvailability": "https://schema.org/InStock"
+      },
+      "checkedAt": "2026-11-13T21:48:31.028Z"
     },
     {
       "url": "https://luma.com/adalagent-i97q",
       "title": "Full-Stack Agents Hackathon",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
       "confidence": 78,
       "relevance": 71,
       "signals": {
@@ -365,333 +383,13 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-13T10:25:45.462Z",
-      "heldBecause": null
-    },
-    {
-      "url": "https://luma.com/bc8etq9q",
-      "title": "Diwali Festiverse Agent to Agent Hackathon (SF Edition)",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Diwali Festiverse Agent to Agent Hackathon (SF Edition)\nAI House\nDeepak Chawla\nRakesh Kumar\nAdaL\nAgent37\nAmarachi Amaechi\nFinch ai\nAbhishek Garg\nAria\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/bc8etq9q",
-        "name": "Diwali Festiverse Agent to Agent Hackathon (SF Edition)",
-        "description": null,
-        "startDate": "2026-11-13T16:00:00.000-08:00",
-        "endDate": "2026-11-19T17:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "AI House",
-          "Deepak Chawla",
-          "Rakesh Kumar",
-          "AdaL",
-          "Agent37",
-          "Amarachi Amaechi",
-          "Finch ai",
-          "Abhishek Garg",
-          "Aria"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-13T10:25:45.462Z",
-      "heldBecause": null
-    },
-    {
-      "url": "https://luma.com/sht6n8du",
-      "title": "AI Research Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "AI Research Hackathon\nIterate\nElsa Ibos\nYoan Di Cosmo\nDarijan Ducic\nBoardy Boardman\nHenri Bonamy\nModal Events\nCognition\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/sht6n8du",
-        "name": "AI Research Hackathon",
-        "description": null,
-        "startDate": "2026-11-14T08:30:00.000-08:00",
-        "endDate": "2026-11-15T20:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Iterate",
-          "Elsa Ibos",
-          "Yoan Di Cosmo",
-          "Darijan Ducic",
-          "Boardy Boardman",
-          "Henri Bonamy",
-          "Modal Events",
-          "Cognition"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-13T10:25:45.462Z",
-      "heldBecause": null
-    },
-    {
-      "url": "https://luma.com/9ndjo3rj",
-      "title": "Day 1: NASA Space Apps Mountain View Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Day 1: NASA Space Apps Mountain View Hackathon\nInternational Space Alliance\nRussel Estardo\nAsh Kumra\nThe AI Collective\nOnline Event",
-      "structuredEvent": {
-        "url": "https://luma.com/9ndjo3rj",
-        "name": "Day 1: NASA Space Apps Mountain View Hackathon",
-        "description": null,
-        "startDate": "2026-11-14T09:00:00.000-08:00",
-        "endDate": "2026-11-14T23:30:00.000-08:00",
-        "attendanceMode": "https://schema.org/OnlineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "Online Event",
-          "city": null,
-          "region": null
-        },
-        "organizers": [
-          "International Space Alliance",
-          "Russel Estardo",
-          "Ash Kumra",
-          "The AI Collective"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-13T10:25:45.462Z"
-    },
-    {
-      "url": "https://luma.com/fv2lub4a",
-      "title": "Day 2: NASA Space Apps Mountain View Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Day 2: NASA Space Apps Mountain View Hackathon\nInternational Space Alliance\nRussel Estardo\nAsh Kumra\nThe AI Collective\nOnline Event",
-      "structuredEvent": {
-        "url": "https://luma.com/fv2lub4a",
-        "name": "Day 2: NASA Space Apps Mountain View Hackathon",
-        "description": null,
-        "startDate": "2026-11-15T09:00:00.000-08:00",
-        "endDate": "2026-11-15T23:30:00.000-08:00",
-        "attendanceMode": "https://schema.org/OnlineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "Online Event",
-          "city": null,
-          "region": null
-        },
-        "organizers": [
-          "International Space Alliance",
-          "Russel Estardo",
-          "Ash Kumra",
-          "The AI Collective"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-13T10:25:45.462Z"
-    },
-    {
-      "url": "https://luma.com/personalagenthack",
-      "title": "Personal Agents Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Personal Agents Hackathon\ntokens&\ntokens&\nAlessandro Amenta\nJacopo Piazza\nAWS Builder Loft\nMarlene Ronstedt\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/personalagenthack",
-        "name": "Personal Agents Hackathon",
-        "description": null,
-        "startDate": "2026-11-20T09:30:00.000-08:00",
-        "endDate": "2026-11-20T19:30:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "tokens&",
-          "tokens&",
-          "Alessandro Amenta",
-          "Jacopo Piazza",
-          "AWS Builder Loft",
-          "Marlene Ronstedt"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-13T10:25:45.462Z"
-    },
-    {
-      "url": "https://luma.com/physicalhack",
-      "title": "Physical AI Hack",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Physical AI Hack\ntokens&\ntokens&\nAlessandro Amenta\nJacopo Piazza\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/physicalhack",
-        "name": "Physical AI Hack",
-        "description": null,
-        "startDate": "2026-11-28T09:30:00.000-08:00",
-        "endDate": "2026-11-28T19:30:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "tokens&",
-          "tokens&",
-          "Alessandro Amenta",
-          "Jacopo Piazza"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-13T10:25:45.462Z"
-    },
-    {
-      "url": "https://luma.com/SalesCopilotAI",
-      "title": "AI Hackathon: Sales Copilot AI",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/hackathon_collections",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "AI Hackathon: Sales Copilot AI\nTatianaSF\nTatianaSF com\nYar Doroshenko\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/SalesCopilotAI",
-        "name": "AI Hackathon: Sales Copilot AI",
-        "description": null,
-        "startDate": "2026-12-12T11:00:00.000-08:00",
-        "endDate": "2026-12-12T19:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "TatianaSF",
-          "TatianaSF com",
-          "Yar Doroshenko"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-13T10:25:45.462Z"
-    },
-    {
-      "url": "https://luma.com/band-ai-hacks-nov13-2026",
-      "title": "BAND Dark Factory Buildathon: San Francisco & Remote",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/genai-sf",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "BAND Dark Factory Buildathon: San Francisco & Remote\n[SF] HackerSquad\nHackerSquad\nAdam Chan\nOfer Mendelevitch\nAWS Builder Loft\nSahar Mor (Bond AI)\nBAND AI\nAWS Builder Loft, 2nd floor, 525 Market St, San Francisco, CA 94105",
-      "structuredEvent": {
-        "url": "https://luma.com/band-ai-hacks-nov13-2026",
-        "name": "BAND Dark Factory Buildathon: San Francisco & Remote",
-        "description": null,
-        "startDate": "2026-11-13T10:00:00.000-08:00",
-        "endDate": "2026-11-13T20:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "AWS Builder Loft, 2nd floor, 525 Market St, San Francisco, CA 94105",
-          "city": null,
-          "region": null
-        },
-        "organizers": [
-          "[SF] HackerSquad",
-          "HackerSquad",
-          "Adam Chan",
-          "Ofer Mendelevitch",
-          "AWS Builder Loft",
-          "Sahar Mor (Bond AI)",
-          "BAND AI"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-13T10:25:47.303Z"
+      "checkedAt": "2026-11-13T21:48:31.028Z"
     },
     {
       "url": "https://luma.com/0nsdnkoa",
       "title": "On-Device AI Hackathon: Cleared for Takeoff ✈️",
       "category": "hackathon",
-      "discoveredVia": "https://luma.com/genai-sf",
+      "discoveredVia": "https://luma.com/discover/sf/ai",
       "confidence": 78,
       "relevance": 71,
       "signals": {
@@ -720,166 +418,9 @@
           "Viviana Márquez",
           "Heath Blandford"
         ],
-        "offerAvailability": "https://schema.org/SoldOut"
-      },
-      "checkedAt": "2026-11-13T10:25:47.303Z",
-      "heldBecause": null
-    },
-    {
-      "url": "https://luma.com/lw202zjx",
-      "title": "She Builds: A Women in AI × Lovable Hackathon",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/genai-sf",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "She Builds: A Women in AI × Lovable Hackathon\nWomen in AI\nWomen in AI Club\nClaire Xie\nSean Chiu\nBuilderBase\nFounders Bay\nSahar Mor (Bond AI)\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/lw202zjx",
-        "name": "She Builds: A Women in AI × Lovable Hackathon",
-        "description": null,
-        "startDate": "2026-11-14T10:00:00.000-08:00",
-        "endDate": "2026-11-14T19:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Women in AI",
-          "Women in AI Club",
-          "Claire Xie",
-          "Sean Chiu",
-          "BuilderBase",
-          "Founders Bay",
-          "Sahar Mor (Bond AI)"
-        ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-13T10:25:47.304Z"
-    },
-    {
-      "url": "https://luma.com/21palhfw",
-      "title": "Physical AI Hackathon 🦾 [with X Square Robot]",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/genai-sf",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Physical AI Hackathon 🦾 [with X Square Robot]\nOsama F Rama\nOsama F Rama\nX Square Robot\nAscension - by AGI House SF\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/21palhfw",
-        "name": "Physical AI Hackathon 🦾 [with X Square Robot]",
-        "description": null,
-        "startDate": "2026-11-14T10:00:00.000-08:00",
-        "endDate": "2026-11-15T20:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Osama F Rama",
-          "Osama F Rama",
-          "X Square Robot",
-          "Ascension - by AGI House SF"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-13T10:25:47.304Z"
-    },
-    {
-      "url": "https://luma.com/nace-drexathon",
-      "title": "Drexathon: Nace AI's Decision Model Hackathon x Adobe EDU (win Mac Mini!!)",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/frontiertower",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Drexathon: Nace AI's Decision Model Hackathon x Adobe EDU (win Mac Mini!!)\nNace AI\nAiza Zhex\nNace AI\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/nace-drexathon",
-        "name": "Drexathon: Nace AI's Decision Model Hackathon x Adobe EDU (win Mac Mini!!)",
-        "description": null,
-        "startDate": "2026-11-14T09:30:00.000-08:00",
-        "endDate": "2026-11-14T20:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Nace AI",
-          "Aiza Zhex",
-          "Nace AI"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-13T10:25:50.084Z"
-    },
-    {
-      "url": "https://luma.com/AIECodeSummitHackathon",
-      "title": "AIE x MLH Hackathon @ Code Summit",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/ai",
-      "confidence": 78,
-      "relevance": 71,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": true,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "AIE x MLH Hackathon @ Code Summit\nMajor League Hacking\nMajor League Hacking\nAI Engineer\nBright Data\nRyan Swift\nDigitalOcean\nSan Francisco, CA\nSan Francisco\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/AIECodeSummitHackathon",
-        "name": "AIE x MLH Hackathon @ Code Summit",
-        "description": null,
-        "startDate": "2026-11-13T09:00:00.000-08:00",
-        "endDate": "2026-11-13T18:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "San Francisco, CA",
-          "city": "San Francisco",
-          "region": "California"
-        },
-        "organizers": [
-          "Major League Hacking",
-          "Major League Hacking",
-          "AI Engineer",
-          "Bright Data",
-          "Ryan Swift",
-          "DigitalOcean"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-13T10:26:05.986Z"
+      "checkedAt": "2026-11-13T21:48:31.028Z"
     },
     {
       "url": "https://luma.com/ngp87mr4",
@@ -915,7 +456,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-13T10:26:36.694Z"
+      "checkedAt": "2026-11-13T21:49:02.313Z"
     }
   ],
   "errors": []
