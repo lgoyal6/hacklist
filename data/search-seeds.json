@@ -1,23 +1,23 @@
 {
-  "collectedAt": "2026-11-12T22:06:50.812Z",
+  "collectedAt": "2026-11-13T10:23:55.082Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
   "problems": [
     {
-      "query": "luma \"hackathon\" \"san diego\" OR \"la jolla\" OR carlsbad 2026",
+      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
-      "query": "site:lu.ma hackathon san francisco 2026",
+      "query": "site:luma.com \"ai hackathon\" san francisco upcoming",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
-      "query": "site:luma.com hackathon \"bay area\" 2026",
+      "query": "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
-      "query": "site:luma.com buildathon OR makeathon OR \"make-a-thon\" bay area",
+      "query": "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026",
       "error": "brightdata HTTP 401: Token expired"
     }
   ],
@@ -88,20 +88,6 @@
       "lastSeenAt": "2026-10-27T19:45:38.957Z"
     },
     {
-      "url": "https://luma.com/45ided3d",
-      "queries": [
-        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
-      ],
-      "lastSeenAt": "2026-10-23T01:41:10.032Z"
-    },
-    {
-      "url": "https://luma.com/4cvz0tzf",
-      "queries": [
-        "site:luma.com hackathon san francisco 2026"
-      ],
-      "lastSeenAt": "2026-10-23T01:41:10.032Z"
-    },
-    {
       "url": "https://luma.com/4t0rb8fc",
       "queries": [
         "site:luma.com hackathon \"bay area\" 2026"
@@ -136,13 +122,6 @@
         "luma \"hackathon\" \"san diego\" OR \"la jolla\" OR carlsbad 2026"
       ],
       "lastSeenAt": "2026-10-28T19:58:52.004Z"
-    },
-    {
-      "url": "https://luma.com/6s3u6xwc",
-      "queries": [
-        "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026"
-      ],
-      "lastSeenAt": "2026-10-23T01:41:10.032Z"
     },
     {
       "url": "https://luma.com/72733n3s",

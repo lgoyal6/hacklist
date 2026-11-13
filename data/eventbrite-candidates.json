@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-11-13T04:30:50.058Z",
+  "collectedAt": "2026-11-13T10:42:21.115Z",
   "source": "eventbrite",
   "queries": [
     "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
@@ -8,14 +8,31 @@
     "https://www.eventbrite.com/d/ca--san-diego/hackathon/"
   ],
   "skipped": {
-    "past": 3,
+    "past": 0,
     "online": 0,
     "notLocal": 0,
-    "notHackathon": 72,
+    "notHackathon": 0,
     "recurring": 0
   },
-  "problems": [],
-  "carried": 0,
+  "problems": [
+    {
+      "query": "https://www.eventbrite.com/d/ca--san-francisco/hackathon/",
+      "error": "Error: HTTP 405, then unlocker HTTP 401: Token expired"
+    },
+    {
+      "query": "https://www.eventbrite.com/d/ca--oakland/hackathon/",
+      "error": "Error: HTTP 405, then unlocker HTTP 401: Token expired"
+    },
+    {
+      "query": "https://www.eventbrite.com/d/ca--san-jose/hackathon/",
+      "error": "Error: HTTP 405, then unlocker HTTP 401: Token expired"
+    },
+    {
+      "query": "https://www.eventbrite.com/d/ca--san-diego/hackathon/",
+      "error": "Error: HTTP 405, then unlocker HTTP 401: Token expired"
+    }
+  ],
+  "carried": 2,
   "note": "Eventbrite search pages, read anonymously. They server-render schema.org Events with a postal address and a description. Names that say the event repeats are recorded as adjacent rather than published as hackathons.",
   "candidates": [
     {
@@ -80,40 +97,6 @@
         "location": {
           "name": "Santa Clara Convention Center",
           "city": "Santa Clara",
-          "region": "CA"
-        },
-        "offerAvailability": null,
-        "going": null
-      }
-    },
-    {
-      "url": "https://www.eventbrite.com/e/startup-weekend-san-diego-justice-ai-tickets-1999007009778",
-      "title": "Startup Weekend San Diego: Justice + AI",
-      "category": "hackathon",
-      "heldBecause": null,
-      "discoveredVia": "eventbrite",
-      "confidence": 62,
-      "relevance": 60,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Startup Weekend San Diego: Justice + AI\nDesign and Innovation Building\nSan Diego, CA\nBring your entrepreneurial drive to create new products and services in an industry that touches everyone's lives.",
-      "checkedAt": "2026-11-05T04:30:57.662Z",
-      "structuredEvent": {
-        "url": "https://www.eventbrite.com/e/startup-weekend-san-diego-justice-ai-tickets-1999007009778",
-        "name": "Startup Weekend San Diego: Justice + AI",
-        "description": "Bring your entrepreneurial drive to create new products and services in an industry that touches everyone's lives.",
-        "startDate": "2026-11-13T08:00:00.000Z",
-        "endDate": "2026-11-16T07:59:00.000Z",
-        "timeSource": "eventbrite",
-        "organizers": [],
-        "location": {
-          "name": "Design and Innovation Building",
-          "city": "San Diego",
           "region": "CA"
         },
         "offerAvailability": null,
