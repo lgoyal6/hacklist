@@ -1,23 +1,23 @@
 {
-  "collectedAt": "2026-11-14T09:41:22.826Z",
+  "collectedAt": "2026-11-14T19:35:03.682Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
   "problems": [
     {
-      "query": "luma \"hackathon\" \"san diego\" OR \"la jolla\" OR carlsbad 2026",
+      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
-      "query": "site:luma.com hackathon \"bay area\" 2026",
+      "query": "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
-      "query": "site:luma.com buildathon OR makeathon OR \"make-a-thon\" bay area",
+      "query": "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
-      "query": "site:luma.com \"ai hackathon\" san francisco upcoming",
+      "query": "\"hackathon\" san francisco 2026 register lu.ma",
       "error": "brightdata HTTP 401: Token expired"
     }
   ],
@@ -36,13 +36,6 @@
         "site:luma.com hackathon \"bay area\" 2026"
       ],
       "lastSeenAt": "2026-10-25T07:58:32.047Z"
-    },
-    {
-      "url": "https://luma.com/12545fxr",
-      "queries": [
-        "\"hackathon\" san francisco 2026 register lu.ma"
-      ],
-      "lastSeenAt": "2026-10-24T17:42:59.673Z"
     },
     {
       "url": "https://luma.com/1mkqg22a",
@@ -131,13 +124,6 @@
       "lastSeenAt": "2026-10-25T17:57:56.892Z"
     },
     {
-      "url": "https://luma.com/8ca2z1rr",
-      "queries": [
-        "site:luma.com hackathon san francisco 2026"
-      ],
-      "lastSeenAt": "2026-10-24T17:42:59.673Z"
-    },
-    {
       "url": "https://luma.com/aeu0cl7d",
       "queries": [
         "site:lu.ma hackathon san francisco 2026"
@@ -157,13 +143,6 @@
         "site:luma.com \"ai hackathon\" san francisco upcoming"
       ],
       "lastSeenAt": "2026-11-02T10:23:54.447Z"
-    },
-    {
-      "url": "https://luma.com/ai-meets-robotics-sf",
-      "queries": [
-        "site:luma.com hackathon san francisco 2026"
-      ],
-      "lastSeenAt": "2026-10-24T17:42:59.673Z"
     },
     {
       "url": "https://luma.com/ai-sf",
