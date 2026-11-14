@@ -32,6 +32,7 @@ import {
   buildPatterns,
   scoreCandidate,
 } from "./lib/candidate-score.mjs";
+import { safeFetch } from "./lib/safe-fetch.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
@@ -54,7 +55,7 @@ async function get(url) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
-    const res = await fetch(url, {
+    const res = await safeFetch(url, {
       headers: { "user-agent": UA, accept: "text/html" },
       signal: controller.signal,
     });

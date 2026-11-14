@@ -14,6 +14,11 @@ import {
   resolveRegion,
 } from "./lib/candidate-score.mjs";
 import { isSameEvent, mergeDuplicate } from "./lib/dedupe.mjs";
+import {
+  CANCELLED,
+  cancelledByOrganizer,
+  reconcile,
+} from "./lib/event-revisions.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
@@ -46,7 +51,7 @@ async function readCandidates(file) {
     return JSON.parse(raw).candidates ?? [];
   } catch (error) {
     console.warn(
-      `WARNING: ${file} exists but is not valid JSON (${String(error).slice(0, 80)}) — ` +
+      `WARNING: ${file} exists but is not valid JSON (${String(error).slice(0, 80)}) - ` +
         "ignoring it, which means this run is missing whatever it held.",
     );
     return [];
@@ -84,7 +89,7 @@ try {
     lumaEnrichment = JSON.parse(raw).enrichment ?? {};
   } catch (error) {
     console.warn(
-      `WARNING: data/luma-api.json is not valid JSON (${String(error).slice(0, 80)}) — ` +
+      `WARNING: data/luma-api.json is not valid JSON (${String(error).slice(0, 80)}) - ` +
         "publishing without its times, guest counts and registration state.",
     );
   }
@@ -467,6 +472,8 @@ function parseStatus(lines) {
 
 function parseCandidateStatus(candidate, lines) {
   const evidence = candidate.evidence;
+  // The organizer's own JSON-LD outranks everything below it.
+  if (cancelledByOrganizer(candidate)) return CANCELLED;
   if (
     /applications? closed|application deadline.*(?:passed|closed)/i.test(
       evidence,
@@ -787,7 +794,7 @@ for (const rawCandidate of deduped) {
     parseStructuredSchedule(candidate.structuredEvent) ?? parseSchedule(lines);
   // Second-layer past filter, against the later of the sweep's clock and now.
   // Using the sweep's alone publishes events that ended between the crawl and
-  // the write — which is any event that finished while a sweep was running, and
+  // the write - which is any event that finished while a sweep was running, and
   // every event that ended since, whenever `npm run normalize` is re-run on its
   // own against an older sweep.
   if (schedule && schedule.endUtc < Math.max(sweepTime, Date.now())) continue;
@@ -823,8 +830,8 @@ for (const rawCandidate of deduped) {
       ? parseLocation(lines, schedule.timeLineIndex)
       : { venue: null, city: null };
   // Keep the best venue any pass has ever found for this event. Sources disagree
-  // about how much they know — Luma's API gives a neighbourhood, a rendered page
-  // gives a street address, Devpost sometimes gives only a region — and a sweep
+  // about how much they know - Luma's API gives a neighbourhood, a rendered page
+  // gives a street address, Devpost sometimes gives only a region - and a sweep
   // that happens to read the thinner one should not erase what a richer one
   // already established. Only fills gaps; never overwrites a fresh value.
   const remembered = previousByUrlForVenue.get(candidate.url);
@@ -932,41 +939,49 @@ events.sort(
 
 // What the site and the ICS feed need to know about the regions, counted here
 // rather than derived in two places from the events themselves.
-const regionSummary = Object.entries(regionsOf(config)).map(([key, region]) => {
-  const mine = events.filter((event) => event.region === key);
-  return {
-    key,
-    label: region.label,
-    // The area that is "in the city" for this region: SF for the Bay Area, San
-    // Diego proper for San Diego.
-    coreArea: region.coreArea ?? null,
-    boardName: region.boardName ?? `Hacklist ${region.label}`,
-    timezone: region.timezone ?? timezone,
-    count: mine.length,
-    hackathonCount: mine.filter((event) => event.category === "hackathon").length,
-  };
-});
+//
+// A function of the published set rather than of `events`, because what gets
+// published is not simply what this sweep read: an event a sweep failed to
+// reach is carried forward from the last good one. See lib/event-revisions.mjs.
+function buildOutput(events) {
+  const regionSummary = Object.entries(regionsOf(config)).map(
+    ([key, region]) => {
+      const mine = events.filter((event) => event.region === key);
+      return {
+        key,
+        label: region.label,
+        // The area that is "in the city" for this region: SF for the Bay
+        // Area, San Diego proper for San Diego.
+        coreArea: region.coreArea ?? null,
+        boardName: region.boardName ?? `Hacklist ${region.label}`,
+        timezone: region.timezone ?? timezone,
+        count: mine.length,
+        hackathonCount: mine.filter((e) => e.category === "hackathon").length,
+      };
+    },
+  );
 
-const output = {
-  meta: {
-    city: discovery.sweep.city,
-    defaultRegion: defaultRegionKey(config),
-    regions: regionSummary,
-    timezone,
-    sweepCompletedAt: discovery.sweep.completedAt,
-    pagesVisited: discovery.sweep.pagesVisited,
-    candidatesFound: discovery.sweep.candidatesFound,
-    publishedCount: events.length,
-    hackathonCount: events.filter((event) => event.category === "hackathon").length,
-    adjacentCount: events.filter((event) => event.category === "adjacent").length,
-    organizerCount: new Set(events.map((e) => e.organizer)).size,
-    sourceCount: new Set(events.map((e) => e.discoveredVia)).size,
-    seedCount: config.seedUrls.length,
-    externalCount: events.filter((event) => event.platform === "external")
-      .length,
-  },
-  events,
-};
+  return {
+    meta: {
+      city: discovery.sweep.city,
+      defaultRegion: defaultRegionKey(config),
+      regions: regionSummary,
+      timezone,
+      sweepCompletedAt: discovery.sweep.completedAt,
+      pagesVisited: discovery.sweep.pagesVisited,
+      candidatesFound: discovery.sweep.candidatesFound,
+      publishedCount: events.length,
+      hackathonCount: events.filter((e) => e.category === "hackathon").length,
+      adjacentCount: events.filter((e) => e.category === "adjacent").length,
+      organizerCount: new Set(events.map((e) => e.organizer)).size,
+      sourceCount: new Set(events.map((e) => e.discoveredVia)).size,
+      seedCount: config.seedUrls.length,
+      externalCount: events.filter((event) => event.platform === "external")
+        .length,
+    },
+    events,
+  };
+}
 
 // --- history + change detection ---
 
@@ -988,41 +1003,11 @@ if (previousSnapshots.length) {
   );
 }
 
-const TRACKED_FIELDS = ["title", "start", "end", "status", "venue", "prize"];
-const previousByUrl = new Map(
-  (previous?.events ?? []).map((event) => [event.url, event]),
-);
-const currentByUrl = new Map(events.map((event) => [event.url, event]));
-
-const changes = {
-  comparedTo: previous?.meta.sweepCompletedAt ?? null,
-  sweepCompletedAt: discovery.sweep.completedAt,
-  added: events.filter((e) => !previousByUrl.has(e.url)).map((e) => e.url),
-  removed: [...previousByUrl.keys()].filter((url) => !currentByUrl.has(url)),
-  updated: events
-    .filter((event) => {
-      const before = previousByUrl.get(event.url);
-      return (
-        before && TRACKED_FIELDS.some((field) => before[field] !== event[field])
-      );
-    })
-    .map((event) => {
-      const before = previousByUrl.get(event.url);
-      const fields = {};
-      for (const field of TRACKED_FIELDS) {
-        if (before[field] !== event[field]) {
-          fields[field] = { from: before[field], to: event[field] };
-        }
-      }
-      return { url: event.url, title: event.title, fields };
-    }),
-};
-
 // A published board is more valuable than a fresh one. Every discovery pass is
 // built to survive its own failures, but nothing was stopping their *combined*
 // failure from being written out as the truth: a network outage mid-run once
 // left every source with zero results, and this script cheerfully replaced 29
-// events with none — deleting the board and reporting success.
+// events with none - deleting the board and reporting success.
 //
 // So the write is now conditional. A collapse relative to the last good sweep is
 // treated as a pipeline failure, not as news about the world: the previous
@@ -1030,8 +1015,8 @@ const changes = {
 // exits non-zero so it is visible. Legitimate shrinkage is gradual; sources do
 // not all lose their events at once.
 // Compare against the last snapshot that actually had events, not simply the
-// last one. A single empty snapshot — from a run that collapsed before this
-// guard existed, or one written by hand — would otherwise set the baseline to
+// last one. A single empty snapshot - from a run that collapsed before this
+// guard existed, or one written by hand - would otherwise set the baseline to
 // zero and quietly disable the breaker for every run after it.
 let baselineCount = 0;
 for (const name of [...previousSnapshots].reverse()) {
@@ -1064,11 +1049,29 @@ if (collapsed) {
       `${Math.max(floor, Math.ceil(previousCount * collapseRatio))} floor.\n` +
       `Candidates in: ${JSON.stringify(sourceCounts)}.\n` +
       "data/events.json is untouched and the board keeps serving the last good " +
-      "data. This is a pipeline failure, not a quiet week — check whether the " +
+      "data. This is a pipeline failure, not a quiet week - check whether the " +
       "sources could reach the network.",
   );
   process.exit(1);
 }
+
+const maxMissedSweeps = Number(config.maxMissedSweeps ?? 3);
+// The sweep's own output was judged above, before anything was carried into it.
+// That ordering is the point: the breaker exists to catch a run whose sources
+// all failed, and reconciling first would refill the board from history and
+// hide exactly that.
+const { events: published, changes: revisions } = reconcile({
+  current: events,
+  previous: previous?.events ?? [],
+  now: Date.now(),
+  maxMissedSweeps,
+});
+const changes = {
+  comparedTo: previous?.meta.sweepCompletedAt ?? null,
+  sweepCompletedAt: discovery.sweep.completedAt,
+  ...revisions,
+};
+const output = buildOutput(published);
 
 await writeFile(
   resolve(historyDir, currentHistoryName),
@@ -1084,7 +1087,9 @@ await writeFile(
 );
 
 console.log(
-  `Normalized ${events.length}/${deduped.length} candidates ` +
+  `Normalized ${events.length}/${deduped.length} candidates, publishing ` +
+    `${published.length} ` +
     `(+${changes.added.length} added, ~${changes.updated.length} updated, ` +
-    `-${changes.removed.length} removed vs previous sweep).`,
+    `-${changes.removed.length} removed, ${changes.carried.length} carried over ` +
+    `from a sweep that did not reach them, ${changes.cancelled.length} cancelled).`,
 );

@@ -114,17 +114,26 @@ The API pass and the crawl both run because they find different things, measured
 rather than assumed: the API surfaced 4 hackathons the crawl missed, the crawl had
 8 the feed never returned.
 
-## Deploying it
+## Running it, and deploying it
 
 The site and the ICS feed are one Cloudflare Worker, configured in
 `wrangler.jsonc` with `ASSETS` and `IMAGES` bindings.
 
 ```bash
-npm install
-npm run dev          # local worker
+npm install          # Node 22.13 or newer, per `engines` in package.json
+npm run dev          # local worker on http://localhost:3000
 npm run build
 npm run deploy       # vinext deploy, to Cloudflare
 ```
+
+Only the last line needs a Cloudflare account. `npm run dev` serves the real
+board and both ICS feeds on the first request, because `data/events.json` is
+committed: `curl localhost:3000/calendar.ics` returns a subscribable calendar
+without running a single discovery pass, and
+`curl 'localhost:3000/calendar.ics?region=san-diego'` returns the other region.
+That is the same split described below - the site never depends on a scraper
+being up - and it is why a clone is worth looking at before you decide whether
+to run the sweep.
 
 The discovery passes are separate from the deploy: they write `data/events.json`,
 which is committed, and the Worker serves whatever is in it. That split is why the

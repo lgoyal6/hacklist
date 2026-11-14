@@ -3,7 +3,7 @@
 //
 // Search discovery (scripts/discover-search.mjs) only finds an event once a
 // search engine has indexed its registration page. Plenty of Bay Area
-// hackathons are announced first — sometimes only — as a LinkedIn post or a
+// hackathons are announced first - sometimes only - as a LinkedIn post or a
 // weekly "Bay Area AI events" digest, and the registration link lives in the
 // post body or in the author's own first comment. Those are the ones this pass
 // is for.
@@ -12,7 +12,7 @@
 //
 //   1. Search for LinkedIn pages that talk about Bay Area hackathons. Uses
 //      whichever search provider is available; see pickFreeProvider(). When the
-//      free provider comes back empty — the keyless endpoint throttles hard —
+//      free provider comes back empty - the keyless endpoint throttles hard -
 //      it escalates to a paid per-call LinkedIn search over Zero (x402, no
 //      signup), bounded by linkedinMaxPaidQueriesPerRun.
 //   2. Read each of those LinkedIn pages over plain HTTPS and pull the event
@@ -20,7 +20,7 @@
 //      the article body and the top comments to an anonymous reader, which is
 //      where the registration links are. No login, no cookie, no session.
 //
-// Output is data/linkedin-seeds.json — the same shape as data/search-seeds.json,
+// Output is data/linkedin-seeds.json - the same shape as data/search-seeds.json,
 // consumed by the sweep in scripts/discover-sf.mjs. A LinkedIn mention is not
 // evidence of anything: every URL is still visited and classified on its own
 // event page like any other find.
@@ -37,6 +37,7 @@ import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 
 import { buildPatterns } from "./lib/candidate-score.mjs";
+import { safeFetch } from "./lib/safe-fetch.mjs";
 import { brightDataSearch } from "./lib/serp.mjs";
 
 const execFileAsync = promisify(execFile);
@@ -44,7 +45,7 @@ const execFileAsync = promisify(execFile);
 // evening sweep skips them: every query is a paid request, seeds change slowly,
 // and the sweep still crawls what the morning found.
 if (process.env.RUN_SEARCH_LEGS === "false") {
-  console.log("RUN_SEARCH_LEGS=false — skipping this pass, previous seeds stand.");
+  console.log("RUN_SEARCH_LEGS=false - skipping this pass, previous seeds stand.");
   process.exit(0);
 }
 
@@ -60,7 +61,7 @@ const UA =
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Every network call is bounded. This pass runs unattended on a schedule, and a
-// single socket that never answers would otherwise hang the job indefinitely —
+// single socket that never answers would otherwise hang the job indefinitely -
 // one link shortener that stopped responding stalled a test run for ten minutes.
 const FETCH_TIMEOUT_MS = Number(process.env.LINKEDIN_FETCH_TIMEOUT_MS ?? 20_000);
 function timed(init = {}) {
@@ -80,13 +81,13 @@ const ZERO_SEARCH_CAPABILITY =
 
 /**
  * LinkedIn URL shapes worth reading. Everything else a `site:linkedin.com`
- * search returns — profiles, company pages, job ads, /top-content/ SEO pages —
+ * search returns - profiles, company pages, job ads, /top-content/ SEO pages -
  * either never carries a registration link or carries hundreds of unrelated
  * ones, so it is not worth a fetch.
  */
 const READABLE_LINKEDIN =
   /^\/(?:posts\/[^/]+|pulse\/[^/]+|feed\/update\/[^/]+)\/?$/i;
-/** LinkedIn's own event pages. Recorded, not seeded — see the note below. */
+/** LinkedIn's own event pages. Recorded, not seeded - see the note below. */
 const LINKEDIN_EVENT = /^\/events\/[^/]+\/?$/i;
 
 // Luma paths that are surfaces, not events. Same list search discovery uses.
@@ -130,7 +131,7 @@ function buildQueries() {
 
 function pickFreeProvider() {
   // Bright Data first when configured: its whole purpose is unblocking, so it is
-  // the only provider here that reliably returns results from a datacenter IP —
+  // the only provider here that reliably returns results from a datacenter IP -
   // which is what GitHub Actions is. Free tier is 5,000 credits a month with no
   // card, and this pass needs a few hundred.
   if (process.env.BRIGHTDATA_API_KEY) return "brightdata";
@@ -150,7 +151,7 @@ function scopeToLinkedIn(query) {
 }
 
 async function searchDuckDuckGo(query) {
-  const response = await fetch(
+  const response = await safeFetch(
     `https://html.duckduckgo.com/html/?q=${encodeURIComponent(scopeToLinkedIn(query))}`,
     timed({ headers: { "user-agent": UA, "accept-language": "en-US,en;q=0.9" } }),
   );
@@ -170,7 +171,7 @@ async function searchDuckDuckGo(query) {
 }
 
 async function searchSerper(query) {
-  const response = await fetch(
+  const response = await safeFetch(
     "https://google.serper.dev/search",
     timed({
       method: "POST",
@@ -194,7 +195,7 @@ async function searchSerper(query) {
 }
 
 async function searchTavily(query) {
-  const response = await fetch(
+  const response = await safeFetch(
     "https://api.tavily.com/search",
     timed({
       method: "POST",
@@ -230,7 +231,7 @@ async function searchBrightData(query) {
 }
 
 async function searchBrave(query) {
-  const response = await fetch(
+  const response = await safeFetch(
     `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(scopeToLinkedIn(query))}&count=20`,
     timed({
       headers: {
@@ -257,7 +258,7 @@ async function searchBrave(query) {
  * Resolved by path rather than by trusting $PATH, because the schedule this
  * pass runs on is launchd, which starts with a minimal PATH that has no
  * ~/.zero in it. Trusting PATH here would mean the paid fallback worked in a
- * terminal and silently did nothing twice a day — the same trap that broke
+ * terminal and silently did nothing twice a day - the same trap that broke
  * node resolution in scripts/local-passes.sh once already.
  */
 function zeroBinary() {
@@ -291,7 +292,7 @@ async function searchZero(query, maxPay) {
     JSON.stringify({ query: cleaned }),
   ];
   // The CLI exits non-zero when the capability answers with an error, but it
-  // still prints the envelope — which is where the amount actually charged is.
+  // still prints the envelope - which is where the amount actually charged is.
   // Throwing that away would lose both the reason and the spend.
   let stdout;
   try {
@@ -443,7 +444,7 @@ function collectYcUrls(source, into) {
  */
 async function resolveShortLink(url) {
   try {
-    const response = await fetch(
+    const response = await safeFetch(
       url,
       timed({ method: "GET", redirect: "manual", headers: { "user-agent": UA } }),
     );
@@ -462,7 +463,7 @@ async function resolveShortLink(url) {
 }
 
 async function readLinkedInPage(url) {
-  const response = await fetch(
+  const response = await safeFetch(
     url,
     timed({
       headers: { "user-agent": UA, "accept-language": "en-US,en;q=0.9" },
@@ -521,7 +522,7 @@ async function runSearch(provider, query) {
 
 /** LinkedIn pages worth reading -> the search text that surfaced them. */
 const pages = new Map();
-/** LinkedIn-native event pages seen. Reported, not seeded — see the output note. */
+/** LinkedIn-native event pages seen. Reported, not seeded - see the output note. */
 const linkedinEvents = new Set();
 /** Y Combinator event pages seen. Handed to scripts/discover-yc.mjs. */
 const ycEventUrls = new Set();

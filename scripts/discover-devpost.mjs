@@ -1,4 +1,4 @@
-// Devpost — the largest hackathon registry the pipeline was not reading.
+// Devpost - the largest hackathon registry the pipeline was not reading.
 //
 // `devpost.com/api/hackathons` is public and keyless: it takes status and
 // challenge-type filters, paginates, and answers 200 to an anonymous caller from
@@ -6,7 +6,7 @@
 //
 // Coverage is narrower than the volume suggests, and honestly so: of ~80
 // upcoming in-person hackathons worldwide, only a handful are Bay Area, and
-// Devpost's location field is free text an organizer typed — sometimes a city
+// Devpost's location field is free text an organizer typed - sometimes a city
 // ("San Francisco, CA, USA"), sometimes a region ("Bay Area"), sometimes just a
 // venue ("AWS Builder Loft"). Venue-only strings cannot be placed without
 // guessing, so they are skipped and recorded rather than published to the wrong
@@ -16,7 +16,7 @@
 // Devpost publishes submission-period *dates* and no clock times, so every event
 // here is date-only. That is passed through as local midnight to end-of-day,
 // which trips the normalizer's "time we do not believe" guard and publishes the
-// date without a time — which is the truth.
+// date without a time - which is the truth.
 //
 // Never exits non-zero for a source problem.
 import { readFile, writeFile } from "node:fs/promises";
@@ -32,6 +32,7 @@ import {
 } from "./lib/candidate-score.mjs";
 import { parseDevpostDates } from "./lib/event-dates.mjs";
 import { createPacer, DEFAULT_UA } from "./lib/page-http.mjs";
+import { safeFetch } from "./lib/safe-fetch.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
@@ -52,7 +53,7 @@ const localCities = localCitySet(config);
 const REGION_ALIAS = /\b(bay area|silicon valley|sf bay)\b/i;
 
 async function getJson(url) {
-  const response = await fetch(url, {
+  const response = await safeFetch(url, {
     headers: { "user-agent": UA, accept: "application/json" },
     signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
   });
@@ -149,7 +150,7 @@ async function statedSchedule(pageUrl) {
   let html;
   try {
     await pacePage();
-    const response = await fetch(pageUrl, {
+    const response = await safeFetch(pageUrl, {
       headers: { "user-agent": DEFAULT_UA, accept: "text/html" },
       redirect: "follow",
       signal: AbortSignal.timeout(15_000),
@@ -259,7 +260,7 @@ for (const hackathon of seen.values()) {
 
   // A region-only location ("Bay Area") is left without a city rather than
   // promoted to San Francisco. The board renders a missing city by omitting it,
-  // and areaForCity() already falls back to "Bay Area" — which is all the
+  // and areaForCity() already falls back to "Bay Area" - which is all the
   // organizer actually told us.
   const city = placed.city;
   const prize = cleanPrize(hackathon.prize_amount);
@@ -337,7 +338,7 @@ await writeFile(
       note:
         "Devpost's public hackathon API, read anonymously. Online hackathons are " +
         "taken whole, without a place filter, and go to the online board. " +
-        "Dates only — Devpost " +
+        "Dates only - Devpost " +
         "publishes no clock times, so the normalizer prints the date and omits " +
         "the time. Locations that name only a venue are skipped rather than " +
         "assigned to a guessed city; see skipped.unplaceable.",
