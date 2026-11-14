@@ -18,6 +18,8 @@
 // a dependency; the sweep only needs visible text, anchors and JSON-LD, and
 // those survive regex extraction from Luma's server-rendered markup.
 
+import { safeFetch } from "./safe-fetch.mjs";
+
 export const DEFAULT_UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
   "(KHTML, like Gecko) Chrome/124.0 Safari/537.36";
@@ -41,7 +43,7 @@ const ENTITIES = {
   "#39": "'",
   "#x27": "'",
   hellip: "…",
-  mdash: "—",
+  mdash: "-",
   ndash: "–",
   rsquo: "’",
   lsquo: "‘",
@@ -299,7 +301,7 @@ async function unlockerHtml(url, { zone, apiKey, timeoutMs, fetchImpl }) {
  */
 export async function fetchPage(
   url,
-  { timeoutMs = 15_000, userAgent, unlocker = null, fetchImpl = fetch } = {},
+  { timeoutMs = 15_000, userAgent, unlocker = null, fetchImpl = safeFetch } = {},
 ) {
   const html = unlocker
     ? await unlockerHtml(url, { ...unlocker, timeoutMs, fetchImpl })

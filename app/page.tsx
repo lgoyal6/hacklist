@@ -26,6 +26,16 @@ type EventRecord = {
   going: number | null;
   why: string;
   score: number;
+  // A sweep that cannot reach a listing republishes it from the last snapshot
+  // rather than dropping the row off every subscription. These two are what a
+  // renderer needs to say "last confirmed on the 4th" instead of showing a
+  // three-day-old row as if it had been read this morning.
+  missedSweeps?: number;
+  provenance?: {
+    kind: "observed" | "carried-forward";
+    carriedFrom?: { file: string; sweepCompletedAt: string | null } | null;
+    lastConfirmedAt?: string | null;
+  };
 };
 
 type RegionSummary = {
@@ -242,7 +252,17 @@ export default function Home() {
             <code title={feedUrl}>
               {origin ? `${origin.replace(/^https?:\/\//, "")}${feedPath}` : feedPath}
             </code>
-            <button onClick={copyFeed} aria-label="Copy calendar link">
+            {/* The announced name has to move with the visible one: a label
+                that stays "Copy calendar link" makes the confirmation visual
+                only, and it does not contain the visible "Copy link" either,
+                which is what WCAG 2.5.3 asks for so speech input can say what
+                it sees. */}
+            <button
+              onClick={copyFeed}
+              aria-label={
+                copied ? "Copied calendar link" : "Copy link to calendar feed"
+              }
+            >
               {copied ? "Copied" : "Copy link"}
             </button>
           </div>
@@ -275,11 +295,17 @@ export default function Home() {
               key={item}
               onClick={() => setView(item)}
               className={view === item ? "active" : ""}
+              aria-pressed={view === item}
             >
               {item}
             </button>
           ))}
-          <span className="count">{visible.length} shown</span>
+          {/* Typing or picking a filter rewrites this and nothing else, so it
+              is the only confirmation the search worked. Announced politely,
+              which lets a screen reader finish the keystroke first. */}
+          <span className="count" role="status" aria-live="polite">
+            {visible.length} shown
+          </span>
         </nav>
 
         <ol className="events">

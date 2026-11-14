@@ -8,7 +8,12 @@
   --paper-sunk: #f3f1eb;
   --ink: #191813;
   --ink-soft: #55524a;
-  --ink-faint: #8a8679;
+  /* #8a8679 measured 3.64:1 on the listing's white, 2.98:1 on the byline band
+     and 3.15:1 on the masthead card, all below the 4.5:1 that WCAG 1.4.3 AA
+     asks of text this small. Darkened by 22%, which is the least that clears
+     4.5:1 on every ground the board composites it over; one step lighter
+     (#6d6a60) still fails the byline band at 4.43:1. */
+  --ink-faint: #6c695e;
   --accent: #9a3412;
   --rule: rgba(25, 24, 19, 0.13);
   --rule-firm: rgba(25, 24, 19, 0.28);

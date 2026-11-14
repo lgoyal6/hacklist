@@ -24,6 +24,7 @@ import {
 } from "./candidate-score.mjs";
 import { localToUtc } from "./event-dates.mjs";
 import { DEFAULT_UA, structuredEventsFromHtml } from "./page-http.mjs";
+import { safeFetch } from "./safe-fetch.mjs";
 
 /** A name that says the event happens again and again. */
 const RECURRING =
@@ -80,7 +81,7 @@ export async function searchPageCandidates({
   timeoutMs = 25_000,
 }) {
   const timeZone = config.timezone ?? "America/Los_Angeles";
-  const response = await fetch(url, {
+  const response = await safeFetch(url, {
     headers: {
       "user-agent": DEFAULT_UA,
       accept: "text/html,application/xhtml+xml",

@@ -4,11 +4,11 @@
 // calendars, so a hackathon nobody curates stays invisible. This asks a search
 // engine instead, and writes the event URLs it finds to data/search-seeds.json
 // for the normal crawler to visit and classify. Being a search hit is not
-// evidence of anything — every URL still faces the same classifier.
+// evidence of anything - every URL still faces the same classifier.
 //
 // Providers:
-//   * Brave Search API when BRAVE_API_KEY is set — reliable, use this in CI.
-//   * DuckDuckGo's public HTML endpoint otherwise — no key, but it rate-limits
+//   * Brave Search API when BRAVE_API_KEY is set - reliable, use this in CI.
+//   * DuckDuckGo's public HTML endpoint otherwise - no key, but it rate-limits
 //     aggressively, so queries are spaced out and soft failures are tolerated.
 //
 // This script never exits non-zero for search problems: a sweep with no search
@@ -17,13 +17,14 @@ import { readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { safeFetch } from "./lib/safe-fetch.mjs";
 import { brightDataSearch } from "./lib/serp.mjs";
 
 // Metered legs can be switched off for a given run. Set by the workflow so the
 // evening sweep skips them: every query is a paid request, seeds change slowly,
 // and the sweep still crawls what the morning found.
 if (process.env.RUN_SEARCH_LEGS === "false") {
-  console.log("RUN_SEARCH_LEGS=false — skipping this pass, previous seeds stand.");
+  console.log("RUN_SEARCH_LEGS=false - skipping this pass, previous seeds stand.");
   process.exit(0);
 }
 
@@ -111,7 +112,7 @@ function urlsFromDuckDuckGo(html) {
 }
 
 async function searchDuckDuckGo(query) {
-  const response = await fetch(
+  const response = await safeFetch(
     `https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`,
     {
       headers: {
@@ -129,7 +130,7 @@ async function searchDuckDuckGo(query) {
 }
 
 async function searchSerper(query) {
-  const response = await fetch("https://google.serper.dev/search", {
+  const response = await safeFetch("https://google.serper.dev/search", {
     method: "POST",
     headers: {
       "x-api-key": process.env.SERPER_API_KEY,
@@ -147,7 +148,7 @@ async function searchSerper(query) {
 }
 
 async function searchTavily(query) {
-  const response = await fetch("https://api.tavily.com/search", {
+  const response = await safeFetch("https://api.tavily.com/search", {
     method: "POST",
     headers: {
       authorization: `Bearer ${process.env.TAVILY_API_KEY}`,
@@ -164,7 +165,7 @@ async function searchTavily(query) {
 
 /**
  * Bright Data's SERP API. Everything awkward about it lives in
- * brightDataSearch() in lib/serp.mjs — required fields, the retry a transient
+ * brightDataSearch() in lib/serp.mjs - required fields, the retry a transient
  * upstream failure needs, and the cooldown that retry has to respect.
  */
 async function searchBrightData(query) {
@@ -174,7 +175,7 @@ async function searchBrightData(query) {
 }
 
 async function searchBrave(query) {
-  const response = await fetch(
+  const response = await safeFetch(
     `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(query)}&count=20`,
     {
       headers: {

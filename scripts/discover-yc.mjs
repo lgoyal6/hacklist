@@ -1,7 +1,7 @@
 // Y Combinator events discovery.
 //
 // YC runs a lot of Bay Area hackathons on its own events site and never puts
-// them on Luma, so the entire rest of the pipeline is blind to them — the
+// them on Luma, so the entire rest of the pipeline is blind to them - the
 // sweep crawls outward from Luma calendars, and search discovery only accepts
 // Luma permalinks. That is how "The Fast Hackathon" (Greptile's second, at YC
 // on 23 Aug 2026) stayed off the board while it was open for applications.
@@ -9,7 +9,7 @@
 // events.ycombinator.com is a client-rendered Inertia app: fetching it gets you
 // an empty shell, which is why the headless sweep cannot read it either. But
 // Inertia ships its props in a `data-page` attribute on the root element, so the
-// event list arrives as clean structured JSON — title, slug, city, starts_at,
+// event list arrives as clean structured JSON - title, slug, city, starts_at,
 // ends_at, time_zone and an `event_type_label`. No browser, no API key, no
 // third-party scraper needed for this one.
 //
@@ -29,6 +29,7 @@ import {
   namesHackathonFormat,
   placePattern,
 } from "./lib/candidate-score.mjs";
+import { safeFetch } from "./lib/safe-fetch.mjs";
 import { isSuspectSchedule, recoverTimeRange } from "./lib/event-dates.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -84,7 +85,7 @@ function inertiaProps(html) {
 const FETCH_TIMEOUT_MS = Number(process.env.YC_FETCH_TIMEOUT_MS ?? 20_000);
 
 async function fetchProps(url) {
-  const response = await fetch(url, {
+  const response = await safeFetch(url, {
     headers: { "user-agent": UA, "accept-language": "en-US,en;q=0.9" },
     redirect: "follow",
     signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
@@ -139,7 +140,7 @@ function resolveSchedule(meetup) {
  * YC's public_location is often just the city spelled out long-hand ("San
  * Francisco, California, United States"). Publishing that as the venue would
  * print the city twice, so anything that is only place words becomes no venue at
- * all — the venue is genuinely unknown until you register.
+ * all - the venue is genuinely unknown until you register.
  */
 function resolveVenue(meetup, city) {
   const raw = (meetup.public_location || "").trim();
@@ -253,7 +254,7 @@ const problems = [];
 
 // Extra slugs found elsewhere. discover-linkedin.mjs records YC event URLs it
 // sees in posts rather than seeding them, because the headless sweep cannot
-// read this site — this is where they get picked up.
+// read this site - this is where they get picked up.
 const extraSlugs = new Set();
 try {
   const linkedin = JSON.parse(

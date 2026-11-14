@@ -14,14 +14,48 @@ import {
   resolveRegion,
 } from "./lib/candidate-score.mjs";
 import { isSameEvent, mergeDuplicate } from "./lib/dedupe.mjs";
+import {
+  CANCELLED,
+  cancelledByOrganizer,
+  reconcile,
+} from "./lib/event-revisions.mjs";
+import { Provenance } from "./lib/provenance.mjs";
+import {
+  TOMBSTONE_FILE,
+  apply as applyTombstones,
+  readTombstonesStrict,
+} from "./lib/tombstones.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(
   await readFile(resolve(root, "config/discovery.json"), "utf8"),
 );
-const discovery = JSON.parse(
-  await readFile(resolve(root, "data/discovery-output.json"), "utf8"),
+// Every input this run reads is hashed as it is read, so the published board
+// can name the exact revisions it was built from rather than the file paths.
+const provenance = new Provenance();
+// Which input files each candidate came from, keyed by URL.
+//
+// Not by object identity: the deduplicator returns a new object for a merge and
+// the enricher returns another, so an identity key loses the source at the
+// first transformation and 34 of 145 events came out with no traceable input.
+// The URL is what survives both, and it is the record's identity anyway.
+const candidateSources = new Map();
+const noteSource = (url, file) => {
+  const seen = candidateSources.get(url);
+  if (seen) seen.add(file);
+  else candidateSources.set(url, new Set([file]));
+};
+const sourcesOf = (url) => candidateSources.get(url) ?? new Set(["unknown"]);
+
+const discoveryRaw = await readFile(
+  resolve(root, "data/discovery-output.json"),
+  "utf8",
 );
+provenance.record("data/discovery-output.json", discoveryRaw);
+const discovery = JSON.parse(discoveryRaw);
+for (const candidate of discovery.candidates) {
+  noteSource(candidate.url, "data/discovery-output.json");
+}
 
 // Sources that arrive as structured data rather than as a page the sweep could
 // render: Y Combinator's own events site, Luma's public discover API, and
@@ -43,10 +77,15 @@ async function readCandidates(file) {
     return []; // optional input; absent until that pass has run
   }
   try {
-    return JSON.parse(raw).candidates ?? [];
+    const candidates = JSON.parse(raw).candidates ?? [];
+    // Recorded only once the file parsed: an input version that names bytes
+    // nothing was read from would be a provenance claim with no content.
+    provenance.record(file, raw);
+    for (const candidate of candidates) noteSource(candidate.url, file);
+    return candidates;
   } catch (error) {
     console.warn(
-      `WARNING: ${file} exists but is not valid JSON (${String(error).slice(0, 80)}) — ` +
+      `WARNING: ${file} exists but is not valid JSON (${String(error).slice(0, 80)}) - ` +
         "ignoring it, which means this run is missing whatever it held.",
     );
     return [];
@@ -82,9 +121,10 @@ try {
   const raw = await readFile(resolve(root, "data/luma-api.json"), "utf8");
   try {
     lumaEnrichment = JSON.parse(raw).enrichment ?? {};
+    provenance.record("data/luma-api.json", raw);
   } catch (error) {
     console.warn(
-      `WARNING: data/luma-api.json is not valid JSON (${String(error).slice(0, 80)}) — ` +
+      `WARNING: data/luma-api.json is not valid JSON (${String(error).slice(0, 80)}) - ` +
         "publishing without its times, guest counts and registration state.",
     );
   }
@@ -467,6 +507,8 @@ function parseStatus(lines) {
 
 function parseCandidateStatus(candidate, lines) {
   const evidence = candidate.evidence;
+  // The organizer's own JSON-LD outranks everything below it.
+  if (cancelledByOrganizer(candidate)) return CANCELLED;
   if (
     /applications? closed|application deadline.*(?:passed|closed)/i.test(
       evidence,
@@ -764,7 +806,12 @@ for (const candidate of allCandidates) {
   for (const [index, kept] of deduped.entries()) {
     const why = isSameEvent(candidate, kept, resolvers);
     if (!why) continue;
-    deduped[index] = mergeDuplicate(kept, candidate, config.timezone);
+    const merged = mergeDuplicate(kept, candidate, config.timezone);
+    // The merged record is derived from both sides, so it inherits both sets of
+    // sources. Whichever URL survives carries them.
+    for (const file of sourcesOf(kept.url)) noteSource(merged.url, file);
+    for (const file of sourcesOf(candidate.url)) noteSource(merged.url, file);
+    deduped[index] = merged;
     mergedAny = true;
     console.log(
       `  merged duplicate (${why}): "${candidate.title.slice(0, 36)}" + ` +
@@ -787,7 +834,7 @@ for (const rawCandidate of deduped) {
     parseStructuredSchedule(candidate.structuredEvent) ?? parseSchedule(lines);
   // Second-layer past filter, against the later of the sweep's clock and now.
   // Using the sweep's alone publishes events that ended between the crawl and
-  // the write — which is any event that finished while a sweep was running, and
+  // the write - which is any event that finished while a sweep was running, and
   // every event that ended since, whenever `npm run normalize` is re-run on its
   // own against an older sweep.
   if (schedule && schedule.endUtc < Math.max(sweepTime, Date.now())) continue;
@@ -823,8 +870,8 @@ for (const rawCandidate of deduped) {
       ? parseLocation(lines, schedule.timeLineIndex)
       : { venue: null, city: null };
   // Keep the best venue any pass has ever found for this event. Sources disagree
-  // about how much they know — Luma's API gives a neighbourhood, a rendered page
-  // gives a street address, Devpost sometimes gives only a region — and a sweep
+  // about how much they know - Luma's API gives a neighbourhood, a rendered page
+  // gives a street address, Devpost sometimes gives only a region - and a sweep
   // that happens to read the thinner one should not erase what a richer one
   // already established. Only fills gaps; never overwrites a fresh value.
   const remembered = previousByUrlForVenue.get(candidate.url);
@@ -882,6 +929,9 @@ for (const rawCandidate of deduped) {
   events.push({
     id: stableEventId(candidate.url),
     url: candidate.url,
+    // Which revision of which input produced this row, and the hash of the
+    // record inside it. `discoveredVia` names a website; this names a version.
+    provenance: provenance.stamp(sourcesOf(candidate.url), candidate),
     platform:
       new URL(candidate.url).hostname === "luma.com" ? "luma" : "external",
     // "hackathon" is the real thing; "adjacent" is a build-adjacent event
@@ -930,43 +980,89 @@ events.sort(
     (a.start ?? "9999").localeCompare(b.start ?? "9999"),
 );
 
+// --- deletions ---
+//
+// Applied here, after scoring and before anything is counted, so a deleted
+// event is missing from the counts, the regions, the snapshot, the change log
+// and the feed rather than being filtered out at the last moment by whichever
+// consumer remembered to.
+//
+// This is also what makes a deletion durable. The sweep runs twice a day and
+// will find the same page again; without this the record returns on the next
+// run. A tombstone file that cannot be read stops the publish, because
+// publishing without it would republish everything ever deleted.
+const tombstonePath = resolve(root, TOMBSTONE_FILE);
+let tombstones;
+try {
+  tombstones = await readTombstonesStrict(tombstonePath);
+} catch (error) {
+  console.error(
+    `Refusing to publish: ${TOMBSTONE_FILE} could not be read (${String(error).slice(0, 120)}).\n` +
+      "Publishing without it would restore every deleted record, so " +
+      "data/events.json is untouched.",
+  );
+  process.exit(1);
+}
+const applied = applyTombstones(events, tombstones);
+if (applied.deleted.length || applied.redacted.length) {
+  events.splice(0, events.length, ...applied.events);
+  console.log(
+    `Applied ${tombstones.length} tombstone(s): ` +
+      `${applied.deleted.length} deleted, ${applied.redacted.length} redacted.`,
+  );
+}
+
 // What the site and the ICS feed need to know about the regions, counted here
 // rather than derived in two places from the events themselves.
-const regionSummary = Object.entries(regionsOf(config)).map(([key, region]) => {
-  const mine = events.filter((event) => event.region === key);
-  return {
-    key,
-    label: region.label,
-    // The area that is "in the city" for this region: SF for the Bay Area, San
-    // Diego proper for San Diego.
-    coreArea: region.coreArea ?? null,
-    boardName: region.boardName ?? `Hacklist ${region.label}`,
-    timezone: region.timezone ?? timezone,
-    count: mine.length,
-    hackathonCount: mine.filter((event) => event.category === "hackathon").length,
-  };
-});
+//
+// A function of the published set rather than of `events`, because what gets
+// published is not simply what this sweep read: an event a sweep failed to
+// reach is carried forward from the last good one. See lib/event-revisions.mjs.
+function buildOutput(events) {
+  const regionSummary = Object.entries(regionsOf(config)).map(
+    ([key, region]) => {
+      const mine = events.filter((event) => event.region === key);
+      return {
+        key,
+        label: region.label,
+        // The area that is "in the city" for this region: SF for the Bay
+        // Area, San Diego proper for San Diego.
+        coreArea: region.coreArea ?? null,
+        boardName: region.boardName ?? `Hacklist ${region.label}`,
+        timezone: region.timezone ?? timezone,
+        count: mine.length,
+        hackathonCount: mine.filter((e) => e.category === "hackathon").length,
+      };
+    },
+  );
 
-const output = {
-  meta: {
-    city: discovery.sweep.city,
-    defaultRegion: defaultRegionKey(config),
-    regions: regionSummary,
-    timezone,
-    sweepCompletedAt: discovery.sweep.completedAt,
-    pagesVisited: discovery.sweep.pagesVisited,
-    candidatesFound: discovery.sweep.candidatesFound,
-    publishedCount: events.length,
-    hackathonCount: events.filter((event) => event.category === "hackathon").length,
-    adjacentCount: events.filter((event) => event.category === "adjacent").length,
-    organizerCount: new Set(events.map((e) => e.organizer)).size,
-    sourceCount: new Set(events.map((e) => e.discoveredVia)).size,
-    seedCount: config.seedUrls.length,
-    externalCount: events.filter((event) => event.platform === "external")
-      .length,
-  },
-  events,
-};
+  return {
+    meta: {
+      city: discovery.sweep.city,
+      defaultRegion: defaultRegionKey(config),
+      regions: regionSummary,
+      timezone,
+      sweepCompletedAt: discovery.sweep.completedAt,
+      pagesVisited: discovery.sweep.pagesVisited,
+      candidatesFound: discovery.sweep.candidatesFound,
+      publishedCount: events.length,
+      hackathonCount: events.filter((e) => e.category === "hackathon").length,
+      adjacentCount: events.filter((e) => e.category === "adjacent").length,
+      organizerCount: new Set(events.map((e) => e.organizer)).size,
+      sourceCount: new Set(events.map((e) => e.discoveredVia)).size,
+      seedCount: config.seedUrls.length,
+      // The exact input revisions this board was built from.
+      inputs: provenance.manifest(),
+      // How many records were withheld, so a count that dropped can be explained
+      // without diffing two snapshots.
+      deletedCount: applied.deleted.length,
+      redactedCount: applied.redacted.length,
+      externalCount: events.filter((event) => event.platform === "external")
+        .length,
+    },
+    events,
+  };
+}
 
 // --- history + change detection ---
 
@@ -979,50 +1075,28 @@ const previousSnapshots = (await readdir(historyDir))
   .sort();
 
 let previous = null;
+let previousSource = null;
 if (previousSnapshots.length) {
-  previous = JSON.parse(
-    await readFile(
-      resolve(historyDir, previousSnapshots[previousSnapshots.length - 1]),
-      "utf8",
-    ),
-  );
+  const name = previousSnapshots[previousSnapshots.length - 1];
+  const raw = await readFile(resolve(historyDir, name), "utf8");
+  previous = JSON.parse(raw);
+  // Yesterday's output is one of today's inputs. Every event this sweep failed
+  // to reach is republished out of these bytes, and what is removed is decided
+  // against them, so the snapshot is versioned like any other input file and
+  // appears in meta.inputs. That is what a carried event's provenance points
+  // at, and it makes the lineage walkable: snapshot names snapshot, back to the
+  // sweep that read the listing.
+  previousSource = {
+    ...provenance.record(`data/history/${name}`, raw),
+    capturedAt: previous.meta?.sweepCompletedAt ?? null,
+  };
 }
-
-const TRACKED_FIELDS = ["title", "start", "end", "status", "venue", "prize"];
-const previousByUrl = new Map(
-  (previous?.events ?? []).map((event) => [event.url, event]),
-);
-const currentByUrl = new Map(events.map((event) => [event.url, event]));
-
-const changes = {
-  comparedTo: previous?.meta.sweepCompletedAt ?? null,
-  sweepCompletedAt: discovery.sweep.completedAt,
-  added: events.filter((e) => !previousByUrl.has(e.url)).map((e) => e.url),
-  removed: [...previousByUrl.keys()].filter((url) => !currentByUrl.has(url)),
-  updated: events
-    .filter((event) => {
-      const before = previousByUrl.get(event.url);
-      return (
-        before && TRACKED_FIELDS.some((field) => before[field] !== event[field])
-      );
-    })
-    .map((event) => {
-      const before = previousByUrl.get(event.url);
-      const fields = {};
-      for (const field of TRACKED_FIELDS) {
-        if (before[field] !== event[field]) {
-          fields[field] = { from: before[field], to: event[field] };
-        }
-      }
-      return { url: event.url, title: event.title, fields };
-    }),
-};
 
 // A published board is more valuable than a fresh one. Every discovery pass is
 // built to survive its own failures, but nothing was stopping their *combined*
 // failure from being written out as the truth: a network outage mid-run once
 // left every source with zero results, and this script cheerfully replaced 29
-// events with none — deleting the board and reporting success.
+// events with none - deleting the board and reporting success.
 //
 // So the write is now conditional. A collapse relative to the last good sweep is
 // treated as a pipeline failure, not as news about the world: the previous
@@ -1030,8 +1104,8 @@ const changes = {
 // exits non-zero so it is visible. Legitimate shrinkage is gradual; sources do
 // not all lose their events at once.
 // Compare against the last snapshot that actually had events, not simply the
-// last one. A single empty snapshot — from a run that collapsed before this
-// guard existed, or one written by hand — would otherwise set the baseline to
+// last one. A single empty snapshot - from a run that collapsed before this
+// guard existed, or one written by hand - would otherwise set the baseline to
 // zero and quietly disable the breaker for every run after it.
 let baselineCount = 0;
 for (const name of [...previousSnapshots].reverse()) {
@@ -1064,11 +1138,30 @@ if (collapsed) {
       `${Math.max(floor, Math.ceil(previousCount * collapseRatio))} floor.\n` +
       `Candidates in: ${JSON.stringify(sourceCounts)}.\n` +
       "data/events.json is untouched and the board keeps serving the last good " +
-      "data. This is a pipeline failure, not a quiet week — check whether the " +
+      "data. This is a pipeline failure, not a quiet week - check whether the " +
       "sources could reach the network.",
   );
   process.exit(1);
 }
+
+const maxMissedSweeps = Number(config.maxMissedSweeps ?? 3);
+// The sweep's own output was judged above, before anything was carried into it.
+// That ordering is the point: the breaker exists to catch a run whose sources
+// all failed, and reconciling first would refill the board from history and
+// hide exactly that.
+const { events: published, changes: revisions } = reconcile({
+  current: events,
+  previous: previous?.events ?? [],
+  previousSource,
+  now: Date.now(),
+  maxMissedSweeps,
+});
+const changes = {
+  comparedTo: previous?.meta.sweepCompletedAt ?? null,
+  sweepCompletedAt: discovery.sweep.completedAt,
+  ...revisions,
+};
+const output = buildOutput(published);
 
 await writeFile(
   resolve(historyDir, currentHistoryName),
@@ -1084,7 +1177,9 @@ await writeFile(
 );
 
 console.log(
-  `Normalized ${events.length}/${deduped.length} candidates ` +
+  `Normalized ${events.length}/${deduped.length} candidates, publishing ` +
+    `${published.length} ` +
     `(+${changes.added.length} added, ~${changes.updated.length} updated, ` +
-    `-${changes.removed.length} removed vs previous sweep).`,
+    `-${changes.removed.length} removed, ${changes.carried.length} carried over ` +
+    `from a sweep that did not reach them, ${changes.cancelled.length} cancelled).`,
 );

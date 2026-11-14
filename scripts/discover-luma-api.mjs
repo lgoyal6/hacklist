@@ -1,4 +1,4 @@
-// Luma's public discovery API — the same events the sweep crawls, as structured
+// Luma's public discovery API - the same events the sweep crawls, as structured
 // JSON instead of rendered HTML.
 //
 // Why this exists alongside the headless sweep rather than replacing it: they
@@ -6,7 +6,7 @@
 // this script the API's SF metro feed returned 891 upcoming events in 19
 // requests and 49 seconds, of which 15 were hackathon-shaped and 4 were not on
 // the board at all. Going the other way, 8 of the board's 27 Luma events never
-// appeared in the feed — they live on organizer calendars the feed does not
+// appeared in the feed - they live on organizer calendars the feed does not
 // surface, which is exactly what crawling outward from seed calendars is for.
 // Dropping either source would cost coverage, so both run.
 //
@@ -16,16 +16,16 @@
 // It does NOT work from a datacenter, which is why this runs on the local
 // schedule rather than in CI. The feed is IP-geolocated: asked for the SF place
 // from a residential Bay Area address it returns ~900 upcoming events, and from a
-// GitHub Actions runner it returns two — with a 200 and no error, so nothing
+// GitHub Actions runner it returns two - with a 200 and no error, so nothing
 // looks wrong. That silently overwrote a good pull once and cost the board seven
 // hackathons, hence the floor check before writing.
 //
 // Three outputs, all in data/luma-api.json:
-//   * candidates      — hackathon-shaped events, in the sweep's candidate shape
-//   * enrichment      — exact times, guest counts and registration state for
+//   * candidates      - hackathon-shaped events, in the sweep's candidate shape
+//   * enrichment      - exact times, guest counts and registration state for
 //                       events the sweep already found, so the normalizer can
 //                       stop guessing them out of page text
-//   * calendarSeeds   — calendars seen hosting a hackathon, fed back into the
+//   * calendarSeeds   - calendars seen hosting a hackathon, fed back into the
 //                       sweep's seed list so the crawl reaches further next run
 //
 // Never exits non-zero for a source problem.
@@ -34,6 +34,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { createPacer, fetchPage } from "./lib/page-http.mjs";
+import { safeFetch } from "./lib/safe-fetch.mjs";
 import {
   buildPatterns,
   localCitySet,
@@ -87,7 +88,7 @@ async function getJson(path, params) {
   for (const [key, value] of Object.entries(params ?? {})) {
     url.searchParams.set(key, String(value));
   }
-  const response = await fetch(url, {
+  const response = await safeFetch(url, {
     headers: { "user-agent": UA, accept: "application/json" },
     signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
   });
@@ -590,7 +591,7 @@ console.log(
     `last board, ${retention.released.length} released).`,
 );
 for (const gone of retention.released.slice(0, 6)) {
-  console.log(`    released "${gone.title}" — ${gone.why}`);
+  console.log(`    released "${gone.title}" - ${gone.why}`);
 }
 
 candidates.sort((a, b) => b.relevance - a.relevance);
