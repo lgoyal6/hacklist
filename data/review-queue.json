@@ -1,14 +1,27 @@
 {
-  "sweepCompletedAt": "2026-11-15T20:17:19.967Z",
+  "sweepCompletedAt": "2026-11-16T10:40:46.707Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
   "nearMisses": [
     {
-      "url": "https://www.eventbrite.com/e/tickets-2003723451783",
-      "title": "2026 Epic AI MegaJam | in-person event",
-      "readFrom": "listing",
+      "url": "https://qconsf.com",
+      "title": "QCon San Francisco 2026: Senior Software Engineering Conference",
+      "readFrom": "page",
       "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/agentic-web-browser-runtime-nov16-2026",
+      "title": "Agentic Web #02 — The Browser as an Agent Runtime",
+      "readFrom": "listing",
+      "via": "https://cerebralvalley.ai/events/san-francisco",
       "confidence": 52,
       "relevance": 54,
       "short": 2,
@@ -17,8 +30,8 @@
       ]
     },
     {
-      "url": "https://luma.com/agentic-web-browser-runtime-nov16-2026",
-      "title": "Agentic Web #02 — The Browser as an Agent Runtime",
+      "url": "https://luma.com/reductoai-rpl5",
+      "title": "Women in GTM - Transitioning into an AI-native company",
       "readFrom": "listing",
       "via": "https://cerebralvalley.ai/events/san-francisco",
       "confidence": 52,
