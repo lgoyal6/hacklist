@@ -1,9 +1,33 @@
 {
-  "sweepCompletedAt": "2026-11-17T11:39:01.165Z",
+  "sweepCompletedAt": "2026-11-17T23:02:49.899Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
   "nearMisses": [
+    {
+      "url": "https://portcon.port.io",
+      "title": "PortCon 2026: AI Software Factory Summit | Nov 17-18, San Francisco",
+      "readFrom": "page",
+      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://ignite.microsoft.com/en-US/home",
+      "title": "Your home for Microsoft Ignite",
+      "readFrom": "page",
+      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
     {
       "url": "https://qconsf.com",
       "title": "QCon San Francisco 2026: Senior Software Engineering Conference",
@@ -15,6 +39,31 @@
       "missing": [
         "no term from candidateTerms",
         "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/tatianasf-gooseworks-N10",
+      "title": "DTC & E-Commerce Growth Leaders Dinner | San Francisco",
+      "readFrom": "page",
+      "via": "personalized",
+      "confidence": 52,
+      "relevance": 62,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://www.eventbrite.com/e/small-business-ai-builder-tour-san-francisco-registration-2003517292154",
+      "title": "Small Business AI Builder Event | San Francisco Tickets, Wednesday, December 9  •  9 AM - 6 PM | Eventbrite",
+      "readFrom": "page",
+      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 52,
+      "relevance": 61,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
       ]
     },
     {
