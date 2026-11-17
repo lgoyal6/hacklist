@@ -1,21 +1,9 @@
 {
-  "sweepCompletedAt": "2026-11-16T23:49:56.889Z",
+  "sweepCompletedAt": "2026-11-17T11:39:01.165Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
   "nearMisses": [
-    {
-      "url": "https://luma.com/2a7wm1zs",
-      "title": "2026 Super Demo Day",
-      "readFrom": "page",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "confidence": 52,
-      "relevance": 62,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
     {
       "url": "https://qconsf.com",
       "title": "QCon San Francisco 2026: Senior Software Engineering Conference",
@@ -30,10 +18,22 @@
       ]
     },
     {
-      "url": "https://luma.com/tech-y3kx",
-      "title": "Building the Resilient Enterprise: Data, Cloud, and AI in the Next Era",
-      "readFrom": "page",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "url": "https://luma.com/jsv-2nzb",
+      "title": "JSV Book Club: The Infinity Machine with Sebastian Mallaby",
+      "readFrom": "listing",
+      "via": "https://cerebralvalley.ai/events/san-francisco",
+      "confidence": 52,
+      "relevance": 61,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
+    {
+      "url": "https://luma.com/genspark-3w7f",
+      "title": "Women's Night with Genspark and Citi: Build Your AI Team for 2027",
+      "readFrom": "listing",
+      "via": "https://luma.com/discover/sf/ai",
       "confidence": 52,
       "relevance": 54,
       "short": 2,
@@ -42,27 +42,16 @@
       ]
     },
     {
-      "url": "https://luma.com/agentic-web-browser-runtime-nov16-2026",
-      "title": "Agentic Web #02 — The Browser as an Agent Runtime",
+      "url": "https://luma.com/fdotinc-njo4",
+      "title": "Fireside with Thariq Shihipar",
       "readFrom": "listing",
       "via": "https://cerebralvalley.ai/events/san-francisco",
       "confidence": 52,
       "relevance": 54,
       "short": 2,
       "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://luma.com/reductoai-rpl5",
-      "title": "Women in GTM - Transitioning into an AI-native company",
-      "readFrom": "listing",
-      "via": "https://cerebralvalley.ai/events/san-francisco",
-      "confidence": 52,
-      "relevance": 54,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
       ]
     }
   ]
