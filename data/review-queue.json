@@ -1,9 +1,21 @@
 {
-  "sweepCompletedAt": "2026-11-18T11:14:49.974Z",
+  "sweepCompletedAt": "2026-11-18T23:05:51.833Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
   "nearMisses": [
+    {
+      "url": "https://luma.com/5chb737c",
+      "title": "Food Biz + AI Coworking Day",
+      "readFrom": "page",
+      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 52,
+      "relevance": 69,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms"
+      ]
+    },
     {
       "url": "https://portcon.port.io",
       "title": "PortCon 2026: AI Software Factory Summit | Nov 17-18, San Francisco",
@@ -44,6 +56,19 @@
     {
       "url": "https://luma.com/ynkkkhqp",
       "title": "🔗 Founder Peer Group Meetup - Agentic Building with a Small Team",
+      "readFrom": "listing",
+      "via": "https://luma.com/discover/sf/ai",
+      "confidence": 52,
+      "relevance": 54,
+      "short": 2,
+      "missing": [
+        "no term from candidateTerms",
+        "title names a non-hackathon format"
+      ]
+    },
+    {
+      "url": "https://luma.com/28oapx7i",
+      "title": "Executive Dinner: Why Isn’t AI Helping SaaS Teams Ship Faster?",
       "readFrom": "listing",
       "via": "https://luma.com/discover/sf/ai",
       "confidence": 52,
