@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-11-18T22:50:46.063Z",
+  "collectedAt": "2026-11-19T11:00:17.944Z",
   "searchProviders": [
     "brightdata"
   ],
@@ -11,17 +11,17 @@
   "problems": [
     {
       "stage": "search",
-      "query": "buildathon OR makeathon OR \"game jam\" san diego 2026",
+      "query": "hackathon san diego 2026 lu.ma",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
       "stage": "search",
-      "query": "hackathon sponsors judges san francisco apply luma",
+      "query": "hackathon san francisco 2026 lu.ma",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
       "stage": "search",
-      "query": "\"we are hosting\" hackathon san francisco 2026",
+      "query": "hackathon \"bay area\" 2026 register luma",
       "error": "brightdata HTTP 401: Token expired"
     }
   ],
@@ -35,13 +35,6 @@
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "isco, California - Host: Luma - Details available on the RSVP page. 5:30 PM PT - Agents in Production: correctness, context, and control - AWS Builder Loft, San Francisco, CA - Host: SurrealDB San Francisco - To sign up for this event, you must register here: https://luma.com/hqz8wi79 -- Agents are ",
       "lastSeenAt": "2026-10-31T03:32:02.398Z"
-    },
-    {
-      "url": "https://luma.com/6xyy1mul",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/sumani_solix-empower-2026-hackathon-invitation-activity-7510353409569476608-4fj0",
-      "context": "sionaries: Strategists and creative minds shaping what gets built and why. 🗓️ When: October 31 - November 1, 2026 📍 Where: PB Labs, ETH Zürich Spaces are limited. Grab your spot and help us close the gap in who gets to build the future! 👇 🔗 Register here: https://luma.com/6xyy1mul #HackTheGap #W",
-      "lastSeenAt": "2026-10-29T03:31:48.742Z"
     },
     {
       "url": "https://luma.com/9vr0zktj",
