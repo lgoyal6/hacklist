@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-11-19T22:57:01.213Z",
+  "collectedAt": "2026-11-20T10:48:54.736Z",
   "searchProviders": [
     "brightdata"
   ],
@@ -11,17 +11,17 @@
   "problems": [
     {
       "stage": "search",
-      "query": "\"ai hackathon\" san diego open registration",
+      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
       "stage": "search",
-      "query": "\"ai hackathon\" san francisco open registration",
+      "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
       "stage": "search",
-      "query": "buildathon OR makeathon san francisco 2026 sign up",
+      "query": "weekly bay area ai events hackathon 2026",
       "error": "brightdata HTTP 401: Token expired"
     }
   ],
@@ -35,13 +35,6 @@
       "sourcePage": "https://www.linkedin.com/pulse/ai-events-jun-25-jul-4-2026-bay-area-charles-guo-kjlyc",
       "context": "isco, California - Host: Luma - Details available on the RSVP page. 5:30 PM PT - Agents in Production: correctness, context, and control - AWS Builder Loft, San Francisco, CA - Host: SurrealDB San Francisco - To sign up for this event, you must register here: https://luma.com/hqz8wi79 -- Agents are ",
       "lastSeenAt": "2026-10-31T03:32:02.398Z"
-    },
-    {
-      "url": "https://luma.com/9vr0zktj",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/claireoatway_future-states-hackathon-at-no-10-luma-activity-7505304504628830208-FNjM",
-      "context": "in 10 Downing Street ! Help us tackle the real problems the civil service are dealing with today. Spots are limited and Larry the Cat sightings are not guaranteed! 🐱 Prizes from our partners and an opportunity to present to Cabinet Secretary Antonia Romeo ! https://luma.com/9vr0zktj Future States: ",
-      "lastSeenAt": "2026-10-30T09:21:31.549Z"
     },
     {
       "url": "https://luma.com/BETAhackathon",
