@@ -1,5 +1,5 @@
 {
-  "sweepCompletedAt": "2026-11-19T23:12:23.869Z",
+  "sweepCompletedAt": "2026-11-20T12:37:12.280Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
@@ -23,31 +23,6 @@
       "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
       "confidence": 52,
       "relevance": 62,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://qconsf.com",
-      "title": "QCon San Francisco 2026: Senior Software Engineering Conference",
-      "readFrom": "page",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "confidence": 52,
-      "relevance": 62,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms",
-        "title names a non-hackathon format"
-      ]
-    },
-    {
-      "url": "https://luma.com/Agentic_AI_Night-11-19",
-      "title": "Agentic + AI Night: AI Agents Across the App Stack",
-      "readFrom": "listing",
-      "via": "https://cerebralvalley.ai/events/san-francisco",
-      "confidence": 52,
-      "relevance": 54,
       "short": 2,
       "missing": [
         "no term from candidateTerms"
