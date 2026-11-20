@@ -1,9 +1,48 @@
 {
-  "collectedAt": "2026-11-20T12:38:27.584Z",
+  "collectedAt": "2026-11-20T22:20:51.637Z",
   "source": "https://ethglobal.com/events",
-  "seen": 8,
-  "candidates": [],
-  "online": 0,
+  "seen": 9,
+  "candidates": [
+    {
+      "url": "https://ethglobal.com/events/agenticmarkets",
+      "title": "Agentic Markets",
+      "category": "hackathon",
+      "discoveredVia": "https://ethglobal.com/events",
+      "confidence": 78,
+      "relevance": 51,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": false,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": false,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "ETHGlobal\nAgentic Markets\nAsync Hackathon\nPrizes $20,000\nAsync Hackathon",
+      "checkedAt": "2026-11-20T22:20:51.636Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://ethglobal.com/events/agenticmarkets",
+        "name": "Agentic Markets",
+        "description": null,
+        "startDate": "2026-12-03T07:00:00.000Z",
+        "endDate": "2026-12-11T06:59:00.000Z",
+        "timeSource": "ethglobal-date-only",
+        "organizers": [
+          "ETHGlobal"
+        ],
+        "location": {
+          "name": "Online",
+          "city": null,
+          "region": null,
+          "online": true
+        },
+        "offerAvailability": "InStock",
+        "going": null,
+        "prize": "$20,000"
+      }
+    }
+  ],
+  "online": 1,
   "skipped": {
     "notAsync": 8,
     "undated": 0,
