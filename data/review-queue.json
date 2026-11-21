@@ -1,69 +1,7 @@
 {
-  "sweepCompletedAt": "2026-11-20T22:19:33.294Z",
+  "sweepCompletedAt": "2026-11-21T10:46:10.745Z",
   "note": "Local build-ish events held back by a format check. Promote by adding the title's format word to candidateTerms, or ignore.",
   "nearMissNote": "Local events that scored under the 54 confidence bar rather than failing a format check, with the signal each one lacked. A page whose only missing signal is a candidateTerms match is usually a hackathon this vocabulary has no word for.",
   "held": [],
-  "nearMisses": [
-    {
-      "url": "https://lextalk.world/san-francisco-delegate-registration",
-      "title": "San Francisco Delegate Registration - LexTalk World",
-      "readFrom": "page",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "confidence": 52,
-      "relevance": 69,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://luma.com/dp9aal1h",
-      "title": "Tech Weekend | VC Panels, Pitch Competition & Happy Hour",
-      "readFrom": "page",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "confidence": 52,
-      "relevance": 62,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms",
-        "title names a non-hackathon format"
-      ]
-    },
-    {
-      "url": "https://ignite.microsoft.com/en-US/home",
-      "title": "Your home for Microsoft Ignite",
-      "readFrom": "page",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "confidence": 52,
-      "relevance": 62,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://luma.com/p2cjmz2s",
-      "title": "ITCHATHON - Solve actual problems (Waste Industry)",
-      "readFrom": "page",
-      "via": "https://luma.com/genai-sf",
-      "confidence": 52,
-      "relevance": 62,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    },
-    {
-      "url": "https://luma.com/ycgqy17s",
-      "title": "Tech Weekend November 19-20, 2026 | Menlo Park | Silicon Valley",
-      "readFrom": "page",
-      "via": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
-      "confidence": 52,
-      "relevance": 54,
-      "short": 2,
-      "missing": [
-        "no term from candidateTerms"
-      ]
-    }
-  ]
+  "nearMisses": []
 }
