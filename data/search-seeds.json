@@ -1,35 +1,28 @@
 {
-  "collectedAt": "2026-11-22T20:54:59.402Z",
+  "collectedAt": "2026-11-23T11:34:31.816Z",
   "provider": "brightdata",
   "queriesRun": 4,
   "throttledQueries": 0,
   "problems": [
     {
-      "query": "site:luma.com hackathon \"san diego\" 2026",
+      "query": "luma \"hackathon\" \"san diego\" OR \"la jolla\" OR carlsbad 2026",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
-      "query": "luma \"hackathon\" oakland OR berkeley OR \"palo alto\" 2026",
+      "query": "site:luma.com hackathon san francisco 2026",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
-      "query": "luma.com hackathon \"san jose\" OR \"santa clara\" OR sunnyvale 2026",
+      "query": "site:lu.ma hackathon san francisco 2026",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
-      "query": "\"hackathon\" san francisco 2026 register lu.ma",
+      "query": "site:luma.com hackathon \"bay area\" 2026",
       "error": "brightdata HTTP 401: Token expired"
     }
   ],
   "note": "Public event URLs from web search. Classified by the normal crawler; a search hit is not evidence.",
   "urls": [
-    {
-      "url": "https://luma.com/ai-hackathon-corp-agent-vibe-code",
-      "queries": [
-        "site:luma.com \"ai hackathon\" san francisco upcoming"
-      ],
-      "lastSeenAt": "2026-11-02T10:23:54.447Z"
-    },
     {
       "url": "https://luma.com/aihack",
       "queries": [
