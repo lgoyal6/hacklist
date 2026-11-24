@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-11-23T11:35:25.507Z",
+  "collectedAt": "2026-11-24T01:59:50.952Z",
   "searchProviders": [
     "brightdata"
   ],
@@ -11,17 +11,17 @@
   "problems": [
     {
       "stage": "search",
-      "query": "hackathon san diego 2026 lu.ma",
+      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
       "stage": "search",
-      "query": "hackathon san francisco 2026 lu.ma",
+      "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
       "stage": "search",
-      "query": "hackathon \"bay area\" 2026 register luma",
+      "query": "weekly bay area ai events hackathon 2026",
       "error": "brightdata HTTP 401: Token expired"
     }
   ],
@@ -42,13 +42,6 @@
       "sourcePage": "https://www.linkedin.com/posts/lancedb_ai-valley-hackathon-luma-activity-7318653223353880577-Pffl",
       "context": "to main content LinkedIn Top Content People Learning Jobs Games Sign in Join now LanceDB’s Post LanceDB 12,838 followers 1y Report this post We are coming to AI Valley Hackathon is happening THIS WEEKEND! 🗓 April 19–20 | 📍 Downtown Palo Alto ✅ Register Now: https://lu.ma/vb9wfmw6 🌐 https://lnkd.i",
       "lastSeenAt": "2026-11-04T11:43:15.928Z"
-    },
-    {
-      "url": "https://luma.com/f13dwefh",
-      "promising": false,
-      "sourcePage": "https://www.linkedin.com/posts/marianebekker_sf-ai-vibe-coding-hackathon-luma-activity-7372707343802777600-lopf",
-      "context": "ave of AI agents — from coding copilots to real-world impact tools. The energy is already building, and I can’t wait to see what these teams create in just one day. 🚀 👉 Join me at 6:00 PM at 501 Folsom St, San Francisco for the final presentations + awards: https://luma.com/f13dwefh The top 10 tea",
-      "lastSeenAt": "2026-11-02T23:28:37.759Z"
     }
   ]
 }
