@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-11-24T01:59:50.952Z",
+  "collectedAt": "2026-11-24T13:09:15.712Z",
   "searchProviders": [
     "brightdata"
   ],
@@ -11,17 +11,17 @@
   "problems": [
     {
       "stage": "search",
-      "query": "hackathon \"uc san diego\" OR ucsd 2026 register",
+      "query": "buildathon OR makeathon OR \"game jam\" san diego 2026",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
       "stage": "search",
-      "query": "hackathon \"palo alto\" OR berkeley OR oakland 2026 luma",
+      "query": "hackathon sponsors judges san francisco apply luma",
       "error": "brightdata HTTP 401: Token expired"
     },
     {
       "stage": "search",
-      "query": "weekly bay area ai events hackathon 2026",
+      "query": "\"we are hosting\" hackathon san francisco 2026",
       "error": "brightdata HTTP 401: Token expired"
     }
   ],
@@ -29,13 +29,6 @@
   "linkedinEventsSeen": [],
   "ycEventUrls": [],
   "urls": [
-    {
-      "url": "https://luma.com/jgl2tejn",
-      "promising": true,
-      "sourcePage": "https://www.linkedin.com/posts/chrisanderson6_bay-area-aicar-hackathon-luma-activity-7505379875034337280-kD5C",
-      "context": "Chris Anderson - Bay Area AI+car hackathon · Luma \" Sign up here: https://luma.com/jgl2tejn · Bay Area AI+car hackathon · Luma luma.com · 29 4 Comments · Like Comment.Read more",
-      "lastSeenAt": "2026-11-03T04:31:38.259Z"
-    },
     {
       "url": "https://luma.com/vb9wfmw6",
       "promising": true,
