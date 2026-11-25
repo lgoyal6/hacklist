@@ -4,7 +4,7 @@
     "startedFrom": 29,
     "personalizedSeeds": 3643,
     "personalizedPromising": 135,
-    "searchSeeds": 3,
+    "searchSeeds": 2,
     "apiCalendarSeeds": 25,
     "linkedinSeeds": 1,
     "linkedinPromising": 1,
@@ -19,27 +19,61 @@
     "httpPauses": 4,
     "httpPausedAtEnd": true,
     "httpPacingMs": 250,
-    "externalPagesVisited": 14,
-    "structuredEventsFound": 84,
+    "externalPagesVisited": 15,
+    "structuredEventsFound": 126,
     "candidatesFound": 4,
-    "heldForReview": 0,
+    "heldForReview": 1,
     "nearMisses": 1,
     "stoppedOnTimeBudget": false,
     "browserRestarts": 0,
-    "elapsedSeconds": 989,
-    "secondsPerPage": 1.1373,
+    "elapsedSeconds": 1057,
+    "secondsPerPage": 1.2153,
     "pageBudget": 870,
     "timeBudgetSeconds": 1200,
-    "queueRemaining": 74,
+    "queueRemaining": 75,
     "pagesByRegion": {
       "san-diego": 8
     },
     "regionPageReserve": {
       "san-diego": 150
     },
-    "completedAt": "2026-11-24T13:26:11.898Z"
+    "completedAt": "2026-11-25T00:02:02.704Z"
   },
   "candidates": [
+    {
+      "url": "https://builder.aws.com/connect/event/be86da3d-fdfd-35c6-a419-2dc8a2233299",
+      "title": "HackwithBay 4.0 | AWS Builder Center",
+      "category": "hackathon",
+      "discoveredVia": "https://cerebralvalley.ai/events?locations=BAY_AREA&type=HACKATHON",
+      "confidence": 94,
+      "relevance": 89,
+      "signals": {
+        "directHackathonTerm": true,
+        "buildEvidence": true,
+        "competitionEvidence": true,
+        "sfBayAreaEvidence": true,
+        "negativeTitleEvidence": false
+      },
+      "evidence": "Sign in\nSign in\nMore\nMore\nBuilder Center\nHome\nLearn\nStudents\nTopics\nBuild\nCapabilities\nNew\nHackathons\nToolbox\nWorkshops\nConnect\nEvents\nNew\nSpaces\nCommunity\nHeroes\nCommunity Builders\nUser Groups\nStudent Builder Groups\nWishlist\nHackwithBay 4.0\nEvents\nAWS Builder Center\nEvents\nHackwithBay 4.0\nHackwithBay 4.0\nNovember 24, 2026\n·\n9:30 AM - 6:30 PM PST\nSan Francisco, CA\nPublic\n·\n265/999 attendees\nRegisterCreate post\nAbout\nDiscussion\n🎉 HackwithBay 4.0: 8-Hour Hackathon at AWS Builder Loft, SF 🎉\nJoin us for HackwithBay 4.0, an electrifying 8-hour hackathon bringing together the brightest minds in tech, creativity, and innovation, all under one roof at the iconic AWS Builder Loft in San Francisco!\n🚀 Whether you're a seasoned hacker, a budding coder, a design wizard, or an idea machine, HackwithBay 4.0 is your chance to build, learn, and connect with the most passionate problem-solvers in the city.\n🗓️ Event Details\nWhen: 09:30 AM – 7:00 PM, 24 November 2026\nWhere: AWS Builder Loft\nTheme: Thoughtful Agents for Productivity\n💡 What to Expect:\nHigh-energy hacking sessions\nChallenges that push you to build impactful products\nSwag, snacks & networking\nExpert mentorship\nExciting prizes for top teams\nA chance to demo your project to industry leader\n📋 Agenda:\n10:00 AM – 11:00 AM: Opening & Presentations\n11:00 AM – 12:00 PM: Hackathon Begins\n12:00 PM – 01:00 PM: Lunch Break 🍕🍽️\n01:00 PM – 03:30 PM: Hacking Continues\n03:30 PM : Submission Deadline\n04:00 PM – 04:40 PM : Final Presentations (Top 5 Teams)\n04:40 PM – 05:00 PM: Closing Ceremony\n05:00 PM – 05:30 PM: Networking Session\n🔥 Limited seats are available; register now and hack the future with us!\nbuilder-loft-SF\nHosts\nAviral BhardwajOrganizer\nTrong TranBuilder Loft\nEvent content level\n200 - Intermediate\nEvent format\nHackathon\nLocation\nAWS Builder Loft\nSan Francisco, CA, 94105\nOnly attendees can view event location details.\nStartFAQsSupportStudent RewardsMobileAWS Builder Terms\nAccessibility Privacy Site Terms \nYour Privacy Choices\nCookie preferences\n© 2026, Amazon Web Services, Inc. or its affiliates. All rights reserved.",
+      "checkedAt": "2026-11-24T23:47:02.192Z",
+      "heldBecause": null,
+      "structuredEvent": {
+        "url": "https://builder.aws.com/connect/event/be86da3d-fdfd-35c6-a419-2dc8a2233299",
+        "name": "HackwithBay 4.0",
+        "description": "HackwithBay 4.0 will bring tech and creative talent together for an eight-hour hackathon focused on building innovative ideas. The event will take place at AWS Builder Loft.",
+        "startDate": "2026-11-24T17:30:00.000Z",
+        "endDate": "2026-11-25T03:00:00.000Z",
+        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "name": "San Francisco, CA",
+          "city": "San Francisco",
+          "region": "CA"
+        },
+        "organizers": [],
+        "offerAvailability": null
+      }
+    },
     {
       "url": "https://luma.com/jmukm34y",
       "title": "Hardware Hack Night & Fixit Clinic",
@@ -74,7 +108,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-24T13:10:01.107Z"
+      "checkedAt": "2026-11-24T23:44:44.742Z"
     },
     {
       "url": "https://luma.com/32d8mqid",
@@ -117,7 +151,7 @@
         ],
         "offerAvailability": "https://schema.org/SoldOut"
       },
-      "checkedAt": "2026-11-24T13:10:29.926Z"
+      "checkedAt": "2026-11-24T23:45:15.710Z"
     },
     {
       "url": "https://luma.com/sfxmit-peptides-staged",
@@ -156,44 +190,7 @@
         ],
         "offerAvailability": "https://schema.org/InStock"
       },
-      "checkedAt": "2026-11-24T13:10:29.926Z"
-    },
-    {
-      "url": "https://luma.com/g0gbxib6",
-      "title": "Cranberry Jam: The Edible Game Jam",
-      "category": "hackathon",
-      "discoveredVia": "https://luma.com/discover/sf/tech",
-      "confidence": 62,
-      "relevance": 60,
-      "signals": {
-        "directHackathonTerm": true,
-        "buildEvidence": false,
-        "competitionEvidence": false,
-        "sfBayAreaEvidence": true,
-        "negativeTitleEvidence": false
-      },
-      "evidence": "Cranberry Jam: The Edible Game Jam\nthe MADE (museum of art and digital entertainment)\nthe MADE (museum of art and digital entertainment)\nLucas Immanuel\nMuseum of Art and Digital Entertainment - (MADE)\nOakland\nCalifornia",
-      "structuredEvent": {
-        "url": "https://luma.com/g0gbxib6",
-        "name": "Cranberry Jam: The Edible Game Jam",
-        "description": null,
-        "startDate": "2026-11-25T13:00:00.000-08:00",
-        "endDate": "2026-11-26T13:00:00.000-08:00",
-        "attendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "name": "Museum of Art and Digital Entertainment - (MADE)",
-          "city": "Oakland",
-          "region": "California"
-        },
-        "organizers": [
-          "the MADE (museum of art and digital entertainment)",
-          "the MADE (museum of art and digital entertainment)",
-          "Lucas Immanuel"
-        ],
-        "offerAvailability": "https://schema.org/InStock"
-      },
-      "checkedAt": "2026-11-24T13:10:01.107Z"
+      "checkedAt": "2026-11-24T23:45:15.711Z"
     }
   ],
   "errors": []
